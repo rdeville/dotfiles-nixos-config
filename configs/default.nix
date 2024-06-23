@@ -1,6 +1,6 @@
 {
   mkLib,
-  direnv,
+  inputs,
   ...
 }: let
   defaults = {
@@ -21,9 +21,53 @@
   };
 
   modules = [
-    direnv.homeManagerModules.direnv
+    # Personnal home-manager packaged dotfiles
+    inputs.awesomerc.homeManagerModules.awesomerc
+    inputs.direnvrc.homeManagerModules.direnvrc
+    inputs.neovimrc.homeManagerModules.neovimrc
+    inputs.tmuxrc.homeManagerModules.tmuxrc
+    inputs.zshrc.homeManagerModules.shellrc
+    # Personnal packaged programs
+    inputs.dotgit-sync.homeManagerModules.dotgit-sync
+    ../modules/home-manager.nix
+    ../home-manager/default.nix
   ];
 
+  git = {
+    perso = {
+      condition = "gitdir:/";
+      contents = {
+        commit = {
+          gpgSign = true;
+        };
+        credential = {
+          "https://framagit.org" = {
+            username = "rdeville";
+          };
+          "https://github.com" = {
+            username = "rdeville";
+          };
+          "https://gitlab.com" = {
+            username = "rdeville";
+          };
+        };
+        push = {
+          gpgSign = "if-asked";
+        };
+        tag = {
+          forceSignAnnotated = true;
+          gpgSign = true;
+        };
+        user = {
+          name = "Romain Deville";
+          email = "code@romaindeville.fr";
+          signingKey = "0x700E80E57C25C99A";
+        };
+      };
+    };
+  };
+
+>>>>>>> 873f0fa (✨ Add config account default.nix)
   mergeUserWithDefaults = hostname: userCfgs:
   # Must do accounts after merge of presets is done
     builtins.mapAttrs (
@@ -51,11 +95,19 @@
         accounts =
           if userCfg ? accounts
           then userCfg.accounts
-          else {};
+          else [];
         modules =
           if userCfg ? modules
           then modules ++ userCfg.modules
           else modules;
+        git =
+          if userCfg ? git
+          then git // userCfg.git
+          else git;
+        config =
+          if userCfg ? extraConfig
+          then userCfg.extraConfig
+          else {};
       })
     userCfgs);
 
@@ -72,7 +124,6 @@
     )
     hostCfgs;
 in {
-  # hosts = mkLib.mkDebug (mergeHostWithDefaults (import ./hosts)) mergeHostWithDefaults (import ./hosts);
-  hosts = mergeHostWithDefaults (import ./hosts);
-  vms = mergeHostWithDefaults (import ./vms);
+  hosts = mergeHostWithDefaults (import ./hosts {inherit inputs;});
+  vms = mergeHostWithDefaults (import ./vms {inherit inputs;});
 }
