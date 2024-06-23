@@ -1,0 +1,10 @@
+keys:
+    # Age Home Manager Masters Keys
+  - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
+  - &rdeville-rey age1x74gl6dq9mlj7hka0qe4cykhf749wjzax5cc97leumvvhllu09cs6h44n5
+creation_rules:
+  - path_regex: rey\/rdeville\.enc\.(yaml|json|env|ini)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *rdeville-rey
