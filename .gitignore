@@ -655,3 +655,4 @@ FodyWeavers.xsd
 
 # End of https://www.toptal.com/developers/gitignore/api/archive,archives,backup,direnv,dotenv,emacs,linux,macos,nohup,ssh,tags,vim,windows,zsh,vs,visualstudio
 # END DOTGIT-SYNC BLOCK MANAGED
+!home-manager/flavors/bin
