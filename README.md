@@ -1,5 +1,20 @@
 <!-- BEGIN DOTGIT-SYNC BLOCK MANAGED -->
-# 👋 Welcome to nixos-data
+# 👋 Welcome to Nixos Config Data
+
+<center>
+
+> ⚠️ IMPORTANT !
+>
+> Main repo is on [framagit.org](https://framagit.org/rdeville-private/dotfiles/nixos-data).
+>
+> On other online git platforms, they are just mirror of the main repo.
+>
+> Any issues, pull/merge requests, etc., might not be considered on those other
+> platforms.
+
+</center>
+
+---
 
 <center>
 
@@ -19,7 +34,7 @@
 [changelog_badge]: https://img.shields.io/badge/Changelog-Python%20Semantic%20Release-yellow
 [changelog_badge_url]: https://github.com/python-semantic-release/python-semantic-release
 
-> Repository storing configuration for my computer and users used with NixOS and Home-Manager
+> Repository storing configuration for my computer and users used with NixOS and
 
 ---
 <!-- BEGIN DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
@@ -51,7 +66,6 @@ hm switch -i
 Simply type `nixvm` to be prompt questions to help start NixOs VMs.
 
 <!-- END DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
-
 ## 🤝 Contributing
 
 Contributions, issues and feature requests are welcome!
