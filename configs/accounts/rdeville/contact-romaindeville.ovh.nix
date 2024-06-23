@@ -33,7 +33,7 @@
         ;
     };
     contact = {
-      url = "https://cloud.romaindeville.ovh/remote.php/dav/contacs/rdeville/";
+      url = "https://cloud.romaindeville.ovh/remote.php/dav/addressbooks/users/rdeville/contacts/";
       primary = true;
       inherit
         userName

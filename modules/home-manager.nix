@@ -1,0 +1,4 @@
+{userCfg,...}:
+{
+  config = userCfg.extraConfig;
+}
