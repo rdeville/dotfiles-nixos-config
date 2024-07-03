@@ -1,0 +1,14 @@
+.folder-count-badge {
+  text-align: right !important;
+  width: 3rem !important;
+  border-radius: 5px !important;
+}
+
+.unread-count {
+  color: red !important;
+}
+
+.folder-size {
+  width: 4rem !important;
+  text-align: right !important;
+}
