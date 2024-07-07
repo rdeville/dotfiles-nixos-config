@@ -1,7 +1,5 @@
 # BEGIN DOTGIT-SYNC BLOCK MANAGED
 #!/usr/bin/env bash
-# """TODO
-# """
 
 # shellcheck disable=SC2034
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1 ; pwd -P )"
