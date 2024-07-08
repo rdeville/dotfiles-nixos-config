@@ -5,13 +5,6 @@
   ...
 }: let
   repos = {
-    "mr" = {
-      enable = with pkgs; builtins.elem mr config.home.packages;
-      # url = "/home/rdeville/git/framagit.org/rdeville-public/dotfiles/myrepos";
-      url = "https://framagit.org/rdeville-public/dotfiles/myrepos";
-      rev = "7873921e81850c23ec1a9009b09447de20a9a506";
-      ref = "main";
-    };
     "tmux" = {
       enable = with pkgs; builtins.elem tmux config.home.packages;
       # url = "/home/rdeville/git/framagit.org/rdeville-public/dotfiles/tmux";
