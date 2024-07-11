@@ -29,7 +29,7 @@
         pkgs = pkgsForSystem cfg.system;
         # stateVersion = cfg.stateVersion;
         inherit (cfg) stateVersion;
-        inherit cfg ;
+        inherit cfg;
       };
     };
 

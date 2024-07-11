@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: let
+{inputs, ...}: let
   pkgsForSystem = system:
     import nixpkgs {
       inherit system;
