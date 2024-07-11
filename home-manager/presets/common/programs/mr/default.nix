@@ -1,4 +1,8 @@
-{lib, config, ...}: {
+{
+  lib,
+  config,
+  ...
+}: {
   programs = {
     mr = {
       enable = true;
@@ -42,7 +46,7 @@
             cat "''${XDG_DATA_DIR:-''${HOME}/.local/share}/mr/hosts/''${HOST}/''${USER}.git"
 
           # vim: ft=conf
-          '';
+        '';
       };
     };
   };

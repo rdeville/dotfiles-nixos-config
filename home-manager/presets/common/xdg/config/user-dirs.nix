@@ -1,7 +1,7 @@
 {config, ...}: {
   xdg = {
     configFile = {
-      "user-dirs.locale" ={
+      "user-dirs.locale" = {
         text = "en_US";
       };
     };
