@@ -1,11 +1,6 @@
-{
-  inputs,
-  ...
-}:
-let
+{inputs, ...}: let
   mkLib = import ../../lib {inherit inputs;};
-in
-{
+in {
   imports =
     (mkLib.mkImportDir ./base)
     ++ (mkLib.mkImportDir ./common)
