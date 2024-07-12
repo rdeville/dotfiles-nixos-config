@@ -1,6 +1,29 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.0 (2024-07-12)
+
+### ✨ Minor
+
+  * ✨ Add myrepos config and git packages (!5) by Romain Deville ([`b35c864`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b35c864449e6b28bc31bdb9c547d54211a749ba5))
+  * ✨(hm): Update spotify flavors with options by Romain Deville ([`2a0dd6e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a0dd6ec85b0c89649c5fe4b42c69d5aae9dfd8e)) 🔏
+  * ✨(hm): Add lazygit to common preset by Romain Deville ([`08e9ab5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/08e9ab524355183130b50bc6189b8b926b06ef42)) 🔏
+  * ✨(presets): Add user-dirs to common by Romain Deville ([`c33eabc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c33eabc195ef9b2867ec12ec197e18f8cb5f3152)) 🔏
+  * ✨(presets): Add myrepos to common preset by Romain Deville ([`f7aeef4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7aeef4351002f55d7d4454f68e4eaacbfad5cbb)) 🔏
+
+### 🩹 Patch
+
+  * 📌 Update flake.lock by Romain Deville ([`44716ca`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/44716ca720e77a07eda1a7f0007af5ef6a0f30f2)) 🔏
+
+### 🔊 Others
+
+  * 🎨(nixos): Nix fmt preset default.nix by Romain Deville ([`5284fcb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5284fcbbcc841b1a637359885ab1aacc846044eb)) 🔏
+  * 🎨(lib): Nix fmt my nix lib by Romain Deville ([`b8f6b4b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b8f6b4bdde0ec8962d4b09fe4e365f27c5a249dc)) 🔏
+  * 🎨(hm): Nix fmt common preset by Romain Deville ([`915d535`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/915d53589db2d9f46aba78f7b69d0b1a1a3c72d4)) 🔏
+  * 🔥(presets): Remove MR from common xdf dotfile by Romain Deville ([`de1561a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/de1561ab65e5f0470cea5c3842efef0738d2e8b2)) 🔏
+  * 🔨 Make init_hook devbox script executable by Romain Deville ([`7f6834c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f6834c30fe38b9a882cd6814c841bc960851701)) 🔏
+  * 🔨 Update .envrc from DGS template by Romain Deville ([`cb2f749`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cb2f749dc4e6a07ba52487bc376070a028eacfd7)) 🔏
+
 ## v0.1.0 (2024-07-03)
 
 ### ✨ Minor
@@ -22,12 +45,14 @@
   * ✨ Add NixOS presets base by Romain Deville ([`69688cb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/69688cb439e2b02d5240edbb37e627f8646cedc8)) 🔏
   * ✨ Add NixOS Host Configuration for nixbox by Romain Deville ([`57ee5bb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/57ee5bb903f3b6fd1d8ab1955976bbc5e33b359b)) 🔏
   * ✨ Add NixOS vms modules for nixos-shell and microvm by Romain Deville ([`df5c39c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/df5c39cc5d0691f852ecf0752224b0c74f5d70c4)) 🔏
-  * ✨ Add library functions by Romain Deville ([`d23ace6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d23ace60948a15f9c2074bed8ef750875a857ecc)) 🔏
 
 ### 🩹 Patch
 
   * ➕ Add flake.nix and flake.lock by Romain Deville ([`d6a4056`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d6a40560f1bd90546517929efad035e0ef497cf7)) 🔏
-  * 🍱 Add colors sets by Romain Deville ([`72c198a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72c198a4ea07fa89986bc309fcec37919fbe4b8d)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`aa66026`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aa66026ea8cde07c0f57ffdcd51e00359376de7d))
 
 ## v0.0.0 (2024-07-03)
 
