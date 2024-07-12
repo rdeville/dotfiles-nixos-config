@@ -13,8 +13,6 @@
       xdg-utils # Environment integration
       zsh # Shell Emulator
       dbus
-      # direnv # Automate directory environment loadin
-      # nix-direnv # Integration betwwen direnv and nix
       devenv
       mr # MyRepos, multiple git repo manager
       tig # Text Iterface Git

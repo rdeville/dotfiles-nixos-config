@@ -5,50 +5,55 @@
   lib,
   ...
 }: let
-  moduleCfg = userCfg.flavors.spotify-player;
+  cfg = config.spotify-player // userCfg.flavors.spotify-player;
 in {
   options = {
     spotify-player = {
       enable = lib.mkEnableOption "Install Spotify-Player Related Packages";
+      audio_backend = lib.mkOption {
+        type = lib.types.uniq lib.types.str;
+        description = "Audio backend to use (default: rodio)";
+        example = "pulseaudio";
+        default = "rodio";
+      };
+      cliend_id = {
+        type = lib.types.uniq lib.types.str;
+        description = "Personal client ID to use for the player (required)";
+        example = "abcdefgh123456789";
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     programs = {
       spotify-player = {
         enable = true;
-        # package = with pkgs; [ spotify-player ];
-        package = pkgs.spotify-player.override {withAudioBackend = "pulseaudio";};
+        package = pkgs.spotify-player.override {
+          withAudioBackend = cfg.audio_backend;
+        };
         settings = {
           theme = "dracula";
-          client_id = "5ac4a3019524480dbd73b7bf729cc832";
+          client_id = cfg.client_id;
           client_port = 8080;
-          # tracks_playback_limit = 50;
-          # app_refresh_duration_in_ms = 32;
-          # playback_refresh_duration_in_ms = 0;
-          # page_size_in_rows = 20;
-          # play_icon = "▶";
-          # pause_icon = "▌▌";
-          # liked_icon = "❤️ ";
-          # border_type = "Plain";
-          # progress_bar_type = "Rectangle";
-          # playback_window_position = "Top";
-          # playback_window_width = 6;
-          # enable_media_control = true;
-          # notify_streaming_only = true;
-          # enable_streaming = "always";
-          # enable_cover_image_cache = false;
+          tracks_playback_limit = 50;
+          app_refresh_duration_in_ms = 32;
+          playback_refresh_duration_in_ms = 0;
+          page_size_in_rows = 20;
+          play_icon = "▶️";
+          pause_icon = "⏸️";
+          liked_icon = "❤️";
+          border_type = "Plain";
+          progress_bar_type = "Rectangle";
+          playback_window_position = "Top";
+          playback_window_width = 6;
+          enable_media_control = true;
+          notify_streaming_only = true;
+          enable_streaming = "always";
+          enable_cover_image_cache = false;
           default_device = userCfg.hostname;
-          # copy_command = {
-          #   command = "xclip";
-          #   args = [
-          #     "-sel"
-          #     "c"
-          #   ];
-          # };
           device = {
             name = userCfg.hostname;
-            backend = "pulseaudio";
+            backend = cfg.audio_backend;
             device_type = "speaker";
             volume = 100;
             bitrate = 320;
