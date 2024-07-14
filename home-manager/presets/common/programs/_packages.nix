@@ -14,7 +14,6 @@
       zsh # Shell Emulator
       dbus
       devenv
-      mr # MyRepos, multiple git repo manager
       tig # Text Iterface Git
       tree # Show folder as tree
       fzf # Fuzzy Finder
