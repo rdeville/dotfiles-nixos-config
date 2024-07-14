@@ -15,7 +15,7 @@
           thread = true;
         };
         logo = {
-          source = "./logo.txt";
+          source = ./logo.txt;
           color = {
             "1" = "bright_red";
             "2" = "red";
@@ -29,12 +29,13 @@
             title = "yellow";
           };
           # // "keyWidth"= 8;
-          separator = "\u001b[36m   ";
+          separator = "   ";
           binaryPrefix = "iec";
           bar = {
-            border = false;
+            borderLeft = "";
+            borderRight = "";
             width = 10;
-            charTotal = "\u001b[30m■";
+            charTotal = "□";
             charElapsed = "■";
           };
           percent = {
@@ -45,36 +46,36 @@
         modules = [
           {
             type = "custom";
-            format = "\u001b[31m┌─── \u001b[33mHardware Information \u001b[31m──────────────────────────────────";
+            format = ''{#31}┌─── {#33}Hardware Information {#31}──────────────────────────────────'';
           }
           {
             type = "host";
-            key = "│ 󰌢 ";
+            key = "│ {#32}󰌢 ";
             format = "{2} {5}";
           }
           {
             type = "cpu";
-            key = "│ 󰻠 ";
+            key = "│ {#32}󰻠 ";
           }
           {
             type = "cpuusage";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "gpu";
-            key = "│ 󰍛 ";
+            key = "│ {#32}󰍛 ";
           }
           {
             type = "memory";
-            key = "│ 󰑭 ";
+            key = "│ {#32}󰑭 ";
           }
           {
             type = "disk";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "battery";
-            key = "│  ";
+            key = "│ {#32} ";
             # // "format"= "{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}-{9}-{10}-{11}-{12}";
             # // Will be availabled in later version
             # // "percent"= {
@@ -83,7 +84,7 @@
           }
           {
             type = "sound";
-            key = "│  ";
+            key = "│ {#32} ";
             soundType = "all";
             # // Will be availabled in later version
             # // "percent"= {
@@ -92,102 +93,102 @@
           }
           {
             type = "custom";
-            format = "\u001b[31m├─── \u001b[33mOS Information \u001b[31m────────────────────────────────────────";
+            format = "{#31}├─── {#33}OS Information {#31}────────────────────────────────────────";
           }
           {
             type = "kernel";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "os";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "uptime";
-            key = "│ 󰅐 ";
+            key = "│ {#32}󰅐 ";
             format = "{?1}{1} day(s) {?}{?2}{2} hours and {?}{3} minutes";
           }
           {
             type = "packages";
-            key = "│ 󰏖 ";
+            key = "│ {#32}󰏖 ";
             # // "format"= "TTL : {1} {?2} {2}{?} (pacman){?3}[{3}]{?} {4} (dpkg), {5} (rpm), {6} (emerge), \n{7} (eopkg), {8} (xbps), {9} (nix-system), {10} (nix-user), \n{11} (nix-default), {12} (apk), {13} (pkg), {14} (flatpak-system), {15} (flatpack-user), \n{16} (snap), {17} (brew), {18} (brew-cask), {19} (MacPorts), \n{20} (scoop), {21} (choco), {22} (pkgtool), {23} (paludis), {24} (winget), \n{25} (opkg), {26} (am), {27} (sorcery), {28} (lpkg), {29} (lpkgbuild)";
           }
           {
             type = "opengl";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "users";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "shell";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "terminal";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "locale";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "custom";
-            format = "\u001b[31m├─── \u001b[33mNetwork Information \u001b[31m───────────────────────────────────";
+            format = "{#31}├─── {#33}Network Information {#31}───────────────────────────────────";
           }
           {
             type = "localip";
-            key = "│ 󰩠 ";
+            key = "│ {#32}󰩠 ";
             showAllIps = true;
             compact = true;
           }
           {
             type = "publicip";
             format = "{1}";
-            key = "│ 󱫋 ";
+            key = "│ {#32}󱫋 ";
           }
           {
             type = "wifi";
-            key = "│ 󰀂 ";
+            key = "│ {#32}󰀂 ";
             format = "{4}";
           }
           {
             type = "custom";
-            format = "\u001b[31m├─── \u001b[33mGraphical Information \u001b[31m─────────────────────────────────";
+            format = "{#31}├─── {#33}Graphical Information {#31}─────────────────────────────────";
           }
           {
             type = "lm";
-            key = "│ 󰧨 ";
+            key = "│ {#32}󰧨 ";
           }
           {
             type = "de";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "wm";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "theme";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "icons";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "cursor";
-            key = "│  ";
+            key = "│ {#32} ";
           }
           {
             type = "weather";
-            key = "│ 󰼲 ";
+            key = "│ {#32}󰼲 ";
             location = "Lyon";
           }
           {
             type = "custom";
-            format = "\u001b[31m└───────────────────────────────────────────────────────────";
+            format = "{#31}└───────────────────────────────────────────────────────────";
           }
           {
             type = "colors";
