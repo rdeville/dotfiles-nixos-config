@@ -35,20 +35,21 @@ in {
           theme = "dracula";
           client_id = cfg.client_id;
           client_port = 8080;
+          playback_format = "
+            {track} • {artists}
+            {album}
+            {metadata}";
           tracks_playback_limit = 50;
           app_refresh_duration_in_ms = 32;
           playback_refresh_duration_in_ms = 0;
           page_size_in_rows = 20;
-          play_icon = "▶️";
-          pause_icon = "⏸️";
-          liked_icon = "❤️";
           border_type = "Plain";
           progress_bar_type = "Rectangle";
           playback_window_position = "Top";
           playback_window_width = 6;
           enable_media_control = true;
           notify_streaming_only = true;
-          enable_streaming = "always";
+          enable_streaming = "DaemonOnly";
           enable_cover_image_cache = false;
           default_device = userCfg.hostname;
           device = {
@@ -57,8 +58,8 @@ in {
             device_type = "speaker";
             volume = 100;
             bitrate = 320;
-            # audio_cache = true;
-            # normalization = false;
+            audio_cache = true;
+            normalization = false;
           };
         };
       };
