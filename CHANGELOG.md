@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.3.2 (2024-07-14)
+
+### 🩹 Patch
+
+  * ⚡️ Remove mr from packages as it&#39;s now a programs (!8) by Romain Deville ([`a654f80`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a654f80a6bb94a2c4d83fec378de82f2c90bc8c0))
+  * ⚡️ Remove mr from packages as it&#39;s now a programs by Romain Deville ([`31092e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/31092e9576e8e5ecbffedcfc31c59aa1771f03f7)) 🔏
+
 ## v0.3.1 (2024-07-14)
 
 ### 🩹 Patch
@@ -8,6 +15,10 @@
   * 🐛 Fix (trying to) spotify player (!7) by Romain Deville ([`dff376a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dff376a1aa274316011ad266cbcb62cfa415b0e7))
   * 🐛(flavors) Fix spotify player by Romain Deville ([`f6a746e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f6a746e5fc1e2ad0ca29e86f61736142274069e3)) 🔏
   * 📌 Update flake.lock by Romain Deville ([`4ac0776`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4ac07763b577f453d9fdb4d9e8a622f539477994)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.3.1 (NO-CI) by Python Semantic Release [bot] ([`a386c5b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a386c5b1115c3e509606059b20a9262e5421d07a))
 
 ## v0.3.0 (2024-07-14)
 
@@ -63,8 +74,6 @@
   * ✨ Add HM presets main by Romain Deville ([`74b4a8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/74b4a8bccb0eb51b920def19d7f8f45432cf5ad4)) 🔏
   * ✨ Add HM presets common by Romain Deville ([`21d9805`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/21d98055be631f485279799b79c570821b461801)) 🔏
   * ✨ Add HM presets minimal by Romain Deville ([`8940b60`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8940b60a070e460662bc418aca09c1271310e907)) 🔏
-  * ✨ Add NixOS presets default.nix by Romain Deville ([`c4418af`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4418afe874a6102b3208bc04de14b1230b4a03b)) 🔏
-  * ✨ Add NixOS presets gui by Romain Deville ([`72862e4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72862e4e3a38a57370956e32345931d20e01d6fe)) 🔏
 
 ### 🩹 Patch
 
