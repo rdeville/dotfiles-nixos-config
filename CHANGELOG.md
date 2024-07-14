@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.3.1 (2024-07-14)
+
+### 🩹 Patch
+
+  * 🐛 Fix (trying to) spotify player (!7) by Romain Deville ([`dff376a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dff376a1aa274316011ad266cbcb62cfa415b0e7))
+  * 🐛(flavors) Fix spotify player by Romain Deville ([`f6a746e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f6a746e5fc1e2ad0ca29e86f61736142274069e3)) 🔏
+  * 📌 Update flake.lock by Romain Deville ([`4ac0776`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4ac07763b577f453d9fdb4d9e8a622f539477994)) 🔏
+
 ## v0.3.0 (2024-07-14)
 
 ### ✨ Minor
@@ -11,6 +19,10 @@
 ### 🩹 Patch
 
   * 🐛(presets): Fix user-dirs in preset common by Romain Deville ([`7ec5aac`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ec5aac5f13ab2b76aa6402a6026243218dcd759)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.3.0 (NO-CI) by Python Semantic Release [bot] ([`f372209`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f372209749631514121a350280490b32b1c465f9))
 
 ## v0.2.0 (2024-07-12)
 
@@ -53,8 +65,6 @@
   * ✨ Add HM presets minimal by Romain Deville ([`8940b60`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8940b60a070e460662bc418aca09c1271310e907)) 🔏
   * ✨ Add NixOS presets default.nix by Romain Deville ([`c4418af`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4418afe874a6102b3208bc04de14b1230b4a03b)) 🔏
   * ✨ Add NixOS presets gui by Romain Deville ([`72862e4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72862e4e3a38a57370956e32345931d20e01d6fe)) 🔏
-  * ✨ Add NixOS presets common by Romain Deville ([`8a63b93`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8a63b9327759584144405d9e441cba6da7c9b6bc)) 🔏
-  * ✨ Add NixOS presets base by Romain Deville ([`69688cb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/69688cb439e2b02d5240edbb37e627f8646cedc8)) 🔏
 
 ### 🩹 Patch
 
