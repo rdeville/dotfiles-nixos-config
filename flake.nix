@@ -5,17 +5,16 @@
   inputs = {
     # Stable Nix Packages
     nixpkgs = {
-      url = "nixpkgs/nixos-24.05";
-      # url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-24.05";
     };
     # Home Manager, manage your Home from nix
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.05";
+      url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
     # Unstable Nix Packages
     nixpkgs-unstable = {
-      url = "nixpkgs/nixos-unstable";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     # Hardware Specific configuration
     nixos-hardware = {
@@ -44,7 +43,6 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
     # Devenv to automate development environment combined with direnv
     devenv = {
       url = "github:cachix/devenv";
@@ -62,8 +60,7 @@
   };
 
   outputs = inputs @ {self, ...}: let
-    colors = import ./colors;
-    hmLib = import ./lib/hm.nix {inherit inputs;};
+    # hmLib = import ./lib/hm.nix {inherit inputs;};
     mkLib = import ./lib {inherit inputs;};
     nixosLib = import ./lib/nixos.nix {inherit inputs;};
 
@@ -84,7 +81,7 @@
     inputs.utils.lib.eachSystem allSystems (
       system: let
         pkgs = mkLib.pkgsForSystem system;
-      in rec {
+      in {
         legacyPackages = mkLib.pkgsForSystem system;
 
         packages = {
@@ -139,7 +136,6 @@
       #     (hmLib.mkHomeConfigs allConfigs);
 
       homeManagerModules = {
-        hm = import ./modules/hm.nix;
         accountLib = import ./lib/accounts;
         hmLib = import ./lib/hm.nix;
         nixosLib = import ./lib/nixos.nix;
