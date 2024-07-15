@@ -1,12 +1,33 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.4.0 (2024-07-15)
+
+### ✨ Minor
+
+  * ✨ Update fastfetch by Romain Deville ([`b23b71a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b23b71a02a0f34fa0ccec9fc45e757c0c9052a6f)) 🔏
+  * ✨(hm): Add fastfetch config to common preset (!9) by Romain Deville ([`cd02823`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cd028237c407cf75f7e1cf30f51bfeb19c36000d))
+  * ✨(hm): Add fastfetch config to common preset by Romain Deville ([`9056e3c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9056e3cc2d31b7066352c14f7b193f72c0dcebad)) 🔏
+
+### 🩹 Patch
+
+  * 🐛 Update FastFetch and Flake.nix (!10) by Romain Deville ([`2553485`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25534855733e4a342f84f862f0579aee2a4e1fc5))
+  * 🐛 Fix flake.nix (and lock) to have HM up-to-date by Romain Deville ([`e626563`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e6265630fbbf4246018698f7c247ef013ed153bb)) 🔏
+
+### 🔊 Others
+
+  * 🔥 Remove vimiv by Romain Deville ([`10a9e2c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/10a9e2cc855affa6d87c4dc8b3d1c8ac3ded9e70)) 🔏
+
 ## v0.3.2 (2024-07-14)
 
 ### 🩹 Patch
 
   * ⚡️ Remove mr from packages as it&#39;s now a programs (!8) by Romain Deville ([`a654f80`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a654f80a6bb94a2c4d83fec378de82f2c90bc8c0))
   * ⚡️ Remove mr from packages as it&#39;s now a programs by Romain Deville ([`31092e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/31092e9576e8e5ecbffedcfc31c59aa1771f03f7)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.3.2 (NO-CI) by Python Semantic Release [bot] ([`228eb3e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/228eb3e87295d8b14b8873f02a7c9947e3309790))
 
 ## v0.3.1 (2024-07-14)
 
@@ -57,7 +78,6 @@
   * 🔖 v0.2.0 (NO-CI) by Python Semantic Release [bot] ([`11db51f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11db51f3a095d75fd1e40a46920b2ec1c4ada936))
   * 🔥(presets): Remove MR from common xdf dotfile by Romain Deville ([`de1561a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/de1561ab65e5f0470cea5c3842efef0738d2e8b2)) 🔏
   * 🔨 Make init_hook devbox script executable by Romain Deville ([`7f6834c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f6834c30fe38b9a882cd6814c841bc960851701)) 🔏
-  * 🔨 Update .envrc from DGS template by Romain Deville ([`cb2f749`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cb2f749dc4e6a07ba52487bc376070a028eacfd7)) 🔏
 
 ## v0.1.0 (2024-07-03)
 
@@ -71,9 +91,6 @@
   * ✨ Add HM flavors spotify by Romain Deville ([`e728b7f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e728b7f8601ddc3f62dbc973fdbbcd141ce6d2ad)) 🔏
   * ✨ Add HM flavors bluetooth by Romain Deville ([`70800b6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/70800b60d4b32000b32470135fd1cd516e73f59e)) 🔏
   * ✨ Add HM presets gui by Romain Deville ([`7b5a3aa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7b5a3aa1a41fd732afc4a8d323a0895b6b39c48d)) 🔏
-  * ✨ Add HM presets main by Romain Deville ([`74b4a8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/74b4a8bccb0eb51b920def19d7f8f45432cf5ad4)) 🔏
-  * ✨ Add HM presets common by Romain Deville ([`21d9805`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/21d98055be631f485279799b79c570821b461801)) 🔏
-  * ✨ Add HM presets minimal by Romain Deville ([`8940b60`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8940b60a070e460662bc418aca09c1271310e907)) 🔏
 
 ### 🩹 Patch
 
