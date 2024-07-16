@@ -17,6 +17,10 @@
         "alt+ctrl+shift+h" = "move_tab_backward";
         "alt+ctrl+shift+l" = "move_tab_forward";
       };
+      font = {
+        name = "FiraCode";
+        package = with pkgs; (nerdfonts.override {fonts = ["FiraCode"];});
+      };
       settings =
         {
           # Kitty Configuration File
@@ -24,7 +28,7 @@
           startup_session = "none";
           # Font config
           # -----------------------------------------------------------------------------
-          font_family = "terminal-font";
+          # font_family = "terminal-font";
           bold_font = "auto";
           italic_font = "auto";
           bold_italic_font = "auto";
