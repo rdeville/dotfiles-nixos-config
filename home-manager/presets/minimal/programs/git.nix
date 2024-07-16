@@ -384,16 +384,14 @@
         # DETLA CONFIG (Git Pager config when using git diff)
         enable = true;
         options = {
-          delta = {
-            dark = true;
-            line-numbers = true;
-            side-by-side = true;
-            true-color = "always";
-            #plus-style   = "syntax #4CAF50";
-            #minux-style  = "syntax #F44336";
-            #plus-style = "syntax #013400";
-            #minus-style = "syntax #340001";
-          };
+          dark = true;
+          line-numbers = true;
+          side-by-side = true;
+          true-color = "always";
+          plus-style   = "syntax #4CAF50";
+          minux-style  = "syntax #F44336";
+          # plus-style = "syntax #013400";
+          # minus-style = "syntax #340001";
         };
       };
     };
