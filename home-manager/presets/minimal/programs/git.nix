@@ -388,10 +388,8 @@
           line-numbers = true;
           side-by-side = true;
           true-color = "always";
-          plus-style   = "syntax #4CAF50";
-          minux-style  = "syntax #F44336";
-          # plus-style = "syntax #013400";
-          # minus-style = "syntax #340001";
+          plus-style = "syntax #013400";
+          minus-style = "syntax #340001";
         };
       };
     };
