@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.1 (2024-07-16)
+
+### 🩹 Patch
+
+  * 🐛(preset/commont): Fix way mr setup symlink (!15) by Romain Deville ([`921a980`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/921a980703b172a9136b9b2f4233047760e4f74a))
+  * 🐛(preset/commont): Fix way mr setup symlink by Romain Deville ([`3f04728`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f0472875356f8018a8cba44d08d0c61c8aa56f7)) 🔏
+
 ## v0.5.0 (2024-07-16)
 
 ### ✨ Minor
@@ -11,6 +18,10 @@
 ### 🩹 Patch
 
   * ⚡️(presets/gui): Add FiraCode font to kitty conf by Romain Deville ([`65ee86d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65ee86dab9f318ec23a8a0888df796238721ce14)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.5.0 (NO-CI) by Python Semantic Release [bot] ([`88f4939`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/88f4939d5f59d6b07bed7fb19fa2fbaa53984854))
 
 ## v0.4.2 (2024-07-16)
 
@@ -105,26 +116,10 @@
 
 ### 🔊 Others
 
-  * 🎨(nixos): Nix fmt preset default.nix by Romain Deville ([`5284fcb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5284fcbbcc841b1a637359885ab1aacc846044eb)) 🔏
-  * 🎨(lib): Nix fmt my nix lib by Romain Deville ([`b8f6b4b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b8f6b4bdde0ec8962d4b09fe4e365f27c5a249dc)) 🔏
   * 🔖 v0.2.0 (NO-CI) by Python Semantic Release [bot] ([`11db51f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11db51f3a095d75fd1e40a46920b2ec1c4ada936))
 
 ## v0.1.0 (2024-07-03)
 
-### ✨ Minor
-
-  * ✨ Huge initialisation of my NixOS/HM Configs (!4) by Romain Deville ([`986987b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/986987bd49c189e143bddf89ef1c18d74d610ea7))
-
-### 🩹 Patch
-
-  * ➕ Add flake.nix and flake.lock by Romain Deville ([`d6a4056`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d6a40560f1bd90546517929efad035e0ef497cf7)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`aa66026`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aa66026ea8cde07c0f57ffdcd51e00359376de7d))
-
-## v0.0.0 (2024-07-03)
-
-### 🔊 Others
-
-  * 🎉 Initial Commit by Romain Deville ([`bda6cd5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bda6cd56f4093b88c1fdd5ea633367ea4d07a346)) 🔏
