@@ -1,12 +1,27 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.0 (2024-07-16)
+
+### ✨ Minor
+
+  * ✨ Update myrepos libs and kitty conf (!14) by Romain Deville ([`01ab977`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/01ab977a3802b94b4cacafd59e12c0a4a032dedd))
+  * ✨(presets/common): Add myrepos lib setup_symlinks by Romain Deville ([`2aaabb1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2aaabb19b4cdaa266c02e396eac9537f6db4c311)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(presets/gui): Add FiraCode font to kitty conf by Romain Deville ([`65ee86d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65ee86dab9f318ec23a8a0888df796238721ce14)) 🔏
+
 ## v0.4.2 (2024-07-16)
 
 ### 🩹 Patch
 
   * 🐛 Fix git delta color config (!13) by Romain Deville ([`100151a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/100151a925def9adb0faaeeb8f4adbc7d6d97601))
   * 🐛 Fix git delta color config by Romain Deville ([`a4bf38a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a4bf38a9a779b9f86ea9706ca605055b795b207c)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.4.2 (NO-CI) by Python Semantic Release [bot] ([`d1e9532`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1e953232a960fe26ae0a396f2b9c38f847c392d))
 
 ## v0.4.1 (2024-07-16)
 
@@ -83,8 +98,6 @@
 ### ✨ Minor
 
   * ✨ Add myrepos config and git packages (!5) by Romain Deville ([`b35c864`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b35c864449e6b28bc31bdb9c547d54211a749ba5))
-  * ✨(hm): Update spotify flavors with options by Romain Deville ([`2a0dd6e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a0dd6ec85b0c89649c5fe4b42c69d5aae9dfd8e)) 🔏
-  * ✨(hm): Add lazygit to common preset by Romain Deville ([`08e9ab5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/08e9ab524355183130b50bc6189b8b926b06ef42)) 🔏
 
 ### 🩹 Patch
 
@@ -101,8 +114,6 @@
 ### ✨ Minor
 
   * ✨ Huge initialisation of my NixOS/HM Configs (!4) by Romain Deville ([`986987b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/986987bd49c189e143bddf89ef1c18d74d610ea7))
-  * ✨ Add modules hm to nixify my config by Romain Deville ([`3bd89df`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3bd89df4b1f484b453400cdd239053558528c600)) 🔏
-  * ✨ Add config default.nix by Romain Deville ([`26cb70a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/26cb70a015ae4fd0eae0cdb0bbd278f2c55dcf8e)) 🔏
 
 ### 🩹 Patch
 
