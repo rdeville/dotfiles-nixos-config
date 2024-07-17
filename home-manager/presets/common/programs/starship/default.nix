@@ -1,7 +1,5 @@
 {
-  config,
   userCfg,
-  pkgs,
   lib,
   colors,
   ...
@@ -66,7 +64,6 @@ in {
         follow_symlinks = true;
 
         # Module configurations
-        battery = import ./battery.nix {inherit lib userCfg colors sep;};
         cmd_duration = import ./command_duration.nix {inherit lib userCfg colors sep;};
         character = import ./character.nix {inherit lib userCfg colors sep stdin;};
         container = import ./container.nix {inherit lib userCfg colors sep;};
