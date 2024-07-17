@@ -1,18 +1,4 @@
-{
-  inputs,
-  # config,
-  # pkgs,
-  # allSystems,
-  # home-manager,
-  # microvm,
-  # nixos-shell,
-  # nixpkgs,
-  # nixgl,
-  # sops-nix,
-  # colors,
-  # direnv,
-  ...
-}: let
+{inputs, ...}: let
   cfg = config.hm;
   home-manager = inputs.home-manager;
   nixpkgs = inputs.nixpkgs;

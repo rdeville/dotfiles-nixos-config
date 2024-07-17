@@ -26,7 +26,6 @@
       usbutils # Manage USB
       curl # Retriever
       xdg-utils # Environment integration
-      tmux # Terminal Multiplexer
       neovim # Text Editor
 
       # File Management

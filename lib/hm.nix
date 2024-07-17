@@ -55,8 +55,6 @@
           sops-nix.homeManagerModules.sops
           # Internal Modules
           ../home-manager
-          # TODO: Move this inputs to another folder
-          # direnv.homeManagerModules.direnv
         ]
         ++ userCfg.modules;
       extraSpecialArgs = {
