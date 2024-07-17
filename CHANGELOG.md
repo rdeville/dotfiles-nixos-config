@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.2 (2024-07-17)
+
+### 🩹 Patch
+
+  * 🐛(presets/common): Fix users-dirs config (!16) by Romain Deville ([`7ad5f41`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ad5f41c7ee2c097d6673282c5d4bcb8df61cc69))
+  * 🐛(presets/common): Fix users-dirs config by Romain Deville ([`b1b872a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1b872ae7d1174cf9616617e9420f78d725c5a6a)) 🔏
+
 ## v0.5.1 (2024-07-16)
 
 ### 🩹 Patch
 
   * 🐛(preset/commont): Fix way mr setup symlink (!15) by Romain Deville ([`921a980`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/921a980703b172a9136b9b2f4233047760e4f74a))
   * 🐛(preset/commont): Fix way mr setup symlink by Romain Deville ([`3f04728`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f0472875356f8018a8cba44d08d0c61c8aa56f7)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.5.1 (NO-CI) by Python Semantic Release [bot] ([`d27738c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d27738c9617965f67e90cb0e5eb40b572df26e01))
 
 ## v0.5.0 (2024-07-16)
 
@@ -96,30 +107,12 @@
   * ✨ Add git config and fix userdirs (!6) by Romain Deville ([`500ec38`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/500ec38990b7486529012d7c2b33b3d2d619a18c))
   * ✨(presets): Add git to minimal preset by Romain Deville ([`0c3a8d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0c3a8d463fb9b110aadd6dcfb1691e58e20edfe2)) 🔏
 
-### 🩹 Patch
-
-  * 🐛(presets): Fix user-dirs in preset common by Romain Deville ([`7ec5aac`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ec5aac5f13ab2b76aa6402a6026243218dcd759)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.3.0 (NO-CI) by Python Semantic Release [bot] ([`f372209`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f372209749631514121a350280490b32b1c465f9))
 
 ## v0.2.0 (2024-07-12)
 
-### ✨ Minor
-
-  * ✨ Add myrepos config and git packages (!5) by Romain Deville ([`b35c864`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b35c864449e6b28bc31bdb9c547d54211a749ba5))
-
-### 🩹 Patch
-
-  * 📌 Update flake.lock by Romain Deville ([`44716ca`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/44716ca720e77a07eda1a7f0007af5ef6a0f30f2)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.2.0 (NO-CI) by Python Semantic Release [bot] ([`11db51f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11db51f3a095d75fd1e40a46920b2ec1c4ada936))
-
-## v0.1.0 (2024-07-03)
-
-### 🔊 Others
-
-  * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`aa66026`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aa66026ea8cde07c0f57ffdcd51e00359376de7d))
