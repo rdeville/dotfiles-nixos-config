@@ -41,7 +41,7 @@ in {
 
   sops =
     pkgs.lib.mkIf (
-      userCfg.sops.enable && builtins.hasAttr "defaultSopsFile" userCfg.sops
+      userCfg.sops.enable && userCfg.sops ? defaultSopsFile
     ) {
       age = {
         # This is using an age key that is expected to already be in the
@@ -72,4 +72,3 @@ in {
   };
 }
 # // userCfg.home-manager
-

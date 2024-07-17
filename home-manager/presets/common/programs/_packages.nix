@@ -9,7 +9,6 @@
       pciutils # Manage PCI
       smartmontools # Disk Health
       usbutils # Manage USB
-      tmux # Terminal Multiplexer
       xdg-utils # Environment integration
       zsh # Shell Emulator
       dbus
