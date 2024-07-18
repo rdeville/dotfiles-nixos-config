@@ -1,12 +1,30 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.3 (2024-07-18)
+
+### 🩹 Patch
+
+  * 🐛(flavors/spotify): Update spotify enable_streaming config (!19) by Romain Deville ([`afcf613`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/afcf6133daf661ff30ac50fa6592003788d1bdb7))
+  * 🐛(flavors/spotify): Update spotify enable_streaming config by Romain Deville ([`c432186`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c432186880eb82b10c3bafd1f768b543743d7cfe)) 🔏
+
+### 🔊 Others
+
+  * 🔥(preset/common): Remove starship battery segment as in my tmux (!18) by Romain Deville ([`24204e0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24204e03bd7cc897b00f2bba941e9bfde00faa0b))
+  * 🔥(preset/common): Remove starship battery segment as in my tmux by Romain Deville ([`ebf00d8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ebf00d822e7fbfc9dac1c1dea60bd5f9c1291174)) 🔏
+  * 🔥 Remove useless code and programs I&#39;v packaged myself (!17) by Romain Deville ([`f564b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f564b24da551ad9435fa48afacf35bda27487866))
+  * 🔥 Remove useless code and programs I&#39;v packaged myself by Romain Deville ([`1675b63`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1675b63f2ebf2d580f975de09a524ccd8437e01e)) 🔏
+
 ## v0.5.2 (2024-07-17)
 
 ### 🩹 Patch
 
   * 🐛(presets/common): Fix users-dirs config (!16) by Romain Deville ([`7ad5f41`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ad5f41c7ee2c097d6673282c5d4bcb8df61cc69))
   * 🐛(presets/common): Fix users-dirs config by Romain Deville ([`b1b872a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1b872ae7d1174cf9616617e9420f78d725c5a6a)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.5.2 (NO-CI) by Python Semantic Release [bot] ([`8981019`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/898101916fe17dd7114f063ee625d41483ce009b))
 
 ## v0.5.1 (2024-07-16)
 
@@ -90,29 +108,6 @@
 
 ## v0.3.1 (2024-07-14)
 
-### 🩹 Patch
-
-  * 🐛 Fix (trying to) spotify player (!7) by Romain Deville ([`dff376a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dff376a1aa274316011ad266cbcb62cfa415b0e7))
-  * 🐛(flavors) Fix spotify player by Romain Deville ([`f6a746e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f6a746e5fc1e2ad0ca29e86f61736142274069e3)) 🔏
-  * 📌 Update flake.lock by Romain Deville ([`4ac0776`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4ac07763b577f453d9fdb4d9e8a622f539477994)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.3.1 (NO-CI) by Python Semantic Release [bot] ([`a386c5b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a386c5b1115c3e509606059b20a9262e5421d07a))
-
-## v0.3.0 (2024-07-14)
-
-### ✨ Minor
-
-  * ✨ Add git config and fix userdirs (!6) by Romain Deville ([`500ec38`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/500ec38990b7486529012d7c2b33b3d2d619a18c))
-  * ✨(presets): Add git to minimal preset by Romain Deville ([`0c3a8d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0c3a8d463fb9b110aadd6dcfb1691e58e20edfe2)) 🔏
-
-### 🔊 Others
-
-  * 🔖 v0.3.0 (NO-CI) by Python Semantic Release [bot] ([`f372209`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f372209749631514121a350280490b32b1c465f9))
-
-## v0.2.0 (2024-07-12)
-
-### 🔊 Others
-
-  * 🔖 v0.2.0 (NO-CI) by Python Semantic Release [bot] ([`11db51f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11db51f3a095d75fd1e40a46920b2ec1c4ada936))
