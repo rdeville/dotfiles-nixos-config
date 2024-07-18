@@ -49,7 +49,7 @@ in {
           playback_window_width = 6;
           enable_media_control = true;
           notify_streaming_only = true;
-          enable_streaming = "DaemonOnly";
+          enable_streaming = "Always";
           enable_cover_image_cache = false;
           default_device = userCfg.hostname;
           device = {
