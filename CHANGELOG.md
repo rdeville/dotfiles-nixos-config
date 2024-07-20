@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.6.0 (2024-07-20)
+
+### ✨ Minor
+
+  * ✨ Add bc package to minial hm presets (!20) by Romain Deville ([`df0727b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/df0727bfb01909a5312b08030f133bdd96e56bcb))
+  * ✨(preset/minimal): Add bc package by Romain Deville ([`d6efb72`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d6efb726c731f405ef7bba585cee6adbd5e0c7c8)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(preset/gui): Update kitty font config by Romain Deville ([`1222919`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/12229193ead1dc496f67255e278acd838cf42f3d)) 🔏
+
 ## v0.5.3 (2024-07-18)
 
 ### 🩹 Patch
@@ -10,6 +21,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.5.3 (NO-CI) by Python Semantic Release [bot] ([`5e55067`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5e55067a8ba22527468110ed23d300ae0c9570e8))
   * 🔥(preset/common): Remove starship battery segment as in my tmux (!18) by Romain Deville ([`24204e0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24204e03bd7cc897b00f2bba941e9bfde00faa0b))
   * 🔥(preset/common): Remove starship battery segment as in my tmux by Romain Deville ([`ebf00d8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ebf00d822e7fbfc9dac1c1dea60bd5f9c1291174)) 🔏
   * 🔥 Remove useless code and programs I&#39;v packaged myself (!17) by Romain Deville ([`f564b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f564b24da551ad9435fa48afacf35bda27487866))
@@ -93,21 +105,9 @@
 ### 🔊 Others
 
   * 🔖 v0.4.0 (NO-CI) by Python Semantic Release [bot] ([`7d66836`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d66836f62386434354b3539fb04e05650edfc62))
-  * 🔥 Remove vimiv by Romain Deville ([`10a9e2c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/10a9e2cc855affa6d87c4dc8b3d1c8ac3ded9e70)) 🔏
 
 ## v0.3.2 (2024-07-14)
-
-### 🩹 Patch
-
-  * ⚡️ Remove mr from packages as it&#39;s now a programs (!8) by Romain Deville ([`a654f80`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a654f80a6bb94a2c4d83fec378de82f2c90bc8c0))
-  * ⚡️ Remove mr from packages as it&#39;s now a programs by Romain Deville ([`31092e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/31092e9576e8e5ecbffedcfc31c59aa1771f03f7)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.3.2 (NO-CI) by Python Semantic Release [bot] ([`228eb3e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/228eb3e87295d8b14b8873f02a7c9947e3309790))
-
-## v0.3.1 (2024-07-14)
-
-### 🔊 Others
-
-  * 🔖 v0.3.1 (NO-CI) by Python Semantic Release [bot] ([`a386c5b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a386c5b1115c3e509606059b20a9262e5421d07a))
