@@ -18,7 +18,7 @@
         "alt+ctrl+shift+l" = "move_tab_forward";
       };
       font = {
-        name = "FiraCode";
+        name = "FiraCode Nerd Fonts Mono";
         package = with pkgs; (nerdfonts.override {fonts = ["FiraCode"];});
       };
       settings =
