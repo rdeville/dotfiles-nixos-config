@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.0 (2024-07-21)
+
+### ✨ Minor
+
+  * ✨(preset/commont): Add mirror publish to mr and improve logging (!22) by Romain Deville ([`672c4fc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/672c4fc11269fcfd5bb3b968b3683587af46f9e2))
+  * ✨(preset/commont): Add mirror publish to mr and improve logging by Romain Deville ([`347c01b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/347c01b2679667ef0f761743755ab4b63ab19579)) 🔏
+
 ## v0.7.0 (2024-07-21)
 
 ### ✨ Minor
@@ -15,6 +22,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.7.0 (NO-CI) by Python Semantic Release [bot] ([`ff79f2f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff79f2f0833c200d245596daff17ade364db4a86))
   * 🔥(preset/common): Remove eza as it does not have icon by Romain Deville ([`c83385c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c83385cecc31816da0194fd75f205f988b7936b2)) 🔏
 
 ## v0.6.0 (2024-07-20)
@@ -104,17 +112,5 @@
 
 ### 🔊 Others
 
-  * 🎨 Remove unused param in modules by Romain Deville ([`e714384`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e714384993ac96c546feae8569ab8ef982ab9ae8)) 🔏
   * 🔖 v0.4.1 (NO-CI) by Python Semantic Release [bot] ([`fbb31cd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fbb31cd3e5559409b0ad33275a07e935fdd7b040))
   * 🔥 Remove old tmux install method (!11) by Romain Deville ([`2405c5f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2405c5f5c4d82fa4d70973e9b0b44ff53bcade6f))
-  * 🔥 Remove old tmux dotfile install method by Romain Deville ([`f272666`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f272666245db81abfadec67195f3c76c54bdb223)) 🔏
-
-## v0.4.0 (2024-07-15)
-
-### 🩹 Patch
-
-  * 🐛 Update FastFetch and Flake.nix (!10) by Romain Deville ([`2553485`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25534855733e4a342f84f862f0579aee2a4e1fc5))
-
-### 🔊 Others
-
-  * 🔖 v0.4.0 (NO-CI) by Python Semantic Release [bot] ([`7d66836`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d66836f62386434354b3539fb04e05650edfc62))
