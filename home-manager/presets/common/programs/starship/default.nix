@@ -76,9 +76,9 @@ in {
         };
         fill = import ./fill.nix {inherit lib userCfg colors sep;};
         gcloud = import ./gcloud.nix {inherit lib userCfg colors sep;};
-        hostname = import ./hostname.nix {inherit lib userCfg colors sep;};
+        # hostname = import ./hostname.nix {inherit lib userCfg colors sep;};
         status = import ./status.nix {inherit lib userCfg colors sep;};
-        username = import ./username.nix {inherit lib userCfg colors sep;};
+        # username = import ./username.nix {inherit lib userCfg colors sep;};
         git_branch = import ./git/branch.nix {inherit lib userCfg colors sep git;};
         git_commit = import ./git/commit.nix {inherit lib userCfg colors sep git;};
         git_state = import ./git/state.nix {inherit lib userCfg colors sep git;};
