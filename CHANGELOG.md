@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.1 (2024-07-21)
+
+### 🩹 Patch
+
+  * 🔧(preset/minimal): Activate autocd for zsh (!23) by Romain Deville ([`f0c2634`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f0c2634019e568bcc3df4b6f3d10030110283564))
+  * 🔧(preset/minimal): Activate autocd for zsh by Romain Deville ([`be05d95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/be05d95a0d90048235675057465077dac6d34cc8)) 🔏
+
 ## v0.8.0 (2024-07-21)
 
 ### ✨ Minor
 
   * ✨(preset/commont): Add mirror publish to mr and improve logging (!22) by Romain Deville ([`672c4fc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/672c4fc11269fcfd5bb3b968b3683587af46f9e2))
   * ✨(preset/commont): Add mirror publish to mr and improve logging by Romain Deville ([`347c01b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/347c01b2679667ef0f761743755ab4b63ab19579)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.8.0 (NO-CI) by Python Semantic Release [bot] ([`885710c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/885710c404b8717c76c5444c7289c6ede874c724))
 
 ## v0.7.0 (2024-07-21)
 
@@ -105,12 +116,6 @@
 
 ## v0.4.1 (2024-07-16)
 
-### 🩹 Patch
-
-  * 🐛 Fix git delta configuration (!12) by Romain Deville ([`246f5e2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/246f5e2d009e248ea7d71a6eead62601707c24a9))
-  * 🐛 Fix git delta configuration by Romain Deville ([`148dc9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/148dc9d39375865834acd4ff94ee0a5876eaa636)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.4.1 (NO-CI) by Python Semantic Release [bot] ([`fbb31cd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fbb31cd3e5559409b0ad33275a07e935fdd7b040))
-  * 🔥 Remove old tmux install method (!11) by Romain Deville ([`2405c5f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2405c5f5c4d82fa4d70973e9b0b44ff53bcade6f))
