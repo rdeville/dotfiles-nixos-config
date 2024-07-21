@@ -1,5 +1,7 @@
 [DEFAULT]
 lib =
+  MR_LOG_FILE="${XDG_CACHE_HOME:-${HOME}/.cache}"/mr/myrepos.$(date +%Y-%M-%d-%H-%M).log
+  touch "${MR_LOG_FILE}"
   # Load method library
   for file in "${XDG_CONFIG_HOME:-${HOME}/.config}"/mr/*
   do
@@ -10,8 +12,10 @@ pull          = mr_update "$@"
 update        = mr_update "$@"
 push          = mr_push "$@"
 status        = mr_status "$@"
-remote        = mr_remote "$@"
-branch        = mr_branch "$@"
+setup_mirror  = mr_setup_mirror "$@"
+publis        = mr_publish "$@"
+remote        = git remote -v "$@"
+branch        = git branch "$@"
 glab          = glab "$@"
 git           = git "$@"
 
