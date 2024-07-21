@@ -1,6 +1,22 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.7.0 (2024-07-21)
+
+### ✨ Minor
+
+  * ✨ Update config to work with my custom zsh flake (!21) by Romain Deville ([`b533fe4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b533fe437c32943c64a398bb2bf6be7de056760e))
+  * ✨(preset/minimal): Upgrade zsh to work with my own flake by Romain Deville ([`c08dd9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c08dd9d6374284d022689e009dfb7aad65c8b76b)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(preset/common): Remove lsd alias to avoid conflict with mine by Romain Deville ([`2f75457`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2f754571a8b1a1c64feda33255f47da13b0d8810)) 🔏
+  * 🔧(preset/common): Remove hostname and username from starship by Romain Deville ([`46904ba`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/46904bae268de0d10d2fe6fc814b24cf6e4e22cc)) 🔏
+
+### 🔊 Others
+
+  * 🔥(preset/common): Remove eza as it does not have icon by Romain Deville ([`c83385c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c83385cecc31816da0194fd75f205f988b7936b2)) 🔏
+
 ## v0.6.0 (2024-07-20)
 
 ### ✨ Minor
@@ -11,6 +27,10 @@
 ### 🩹 Patch
 
   * 🔧(preset/gui): Update kitty font config by Romain Deville ([`1222919`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/12229193ead1dc496f67255e278acd838cf42f3d)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.6.0 (NO-CI) by Python Semantic Release [bot] ([`759200b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/759200b8f1f7cbcf76dc23c0d3519fabb906dd63))
 
 ## v0.5.3 (2024-07-18)
 
@@ -91,23 +111,10 @@
 
 ## v0.4.0 (2024-07-15)
 
-### ✨ Minor
-
-  * ✨ Update fastfetch by Romain Deville ([`b23b71a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b23b71a02a0f34fa0ccec9fc45e757c0c9052a6f)) 🔏
-  * ✨(hm): Add fastfetch config to common preset (!9) by Romain Deville ([`cd02823`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cd028237c407cf75f7e1cf30f51bfeb19c36000d))
-  * ✨(hm): Add fastfetch config to common preset by Romain Deville ([`9056e3c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9056e3cc2d31b7066352c14f7b193f72c0dcebad)) 🔏
-
 ### 🩹 Patch
 
   * 🐛 Update FastFetch and Flake.nix (!10) by Romain Deville ([`2553485`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25534855733e4a342f84f862f0579aee2a4e1fc5))
-  * 🐛 Fix flake.nix (and lock) to have HM up-to-date by Romain Deville ([`e626563`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e6265630fbbf4246018698f7c247ef013ed153bb)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.4.0 (NO-CI) by Python Semantic Release [bot] ([`7d66836`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d66836f62386434354b3539fb04e05650edfc62))
-
-## v0.3.2 (2024-07-14)
-
-### 🔊 Others
-
-  * 🔖 v0.3.2 (NO-CI) by Python Semantic Release [bot] ([`228eb3e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/228eb3e87295d8b14b8873f02a7c9947e3309790))
