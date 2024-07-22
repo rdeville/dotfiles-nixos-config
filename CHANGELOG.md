@@ -1,12 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.2 (2024-07-22)
+
+### 🩹 Patch
+
+  * 🐛 Fix HM zsh module to load my custom zshrc in the right order (!24) by Romain Deville ([`6a89483`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6a89483af21f16274569fc474c9b497b56b2bada))
+  * 🐛(presets/common): Fix zsh loading order to load my custom zshrc by Romain Deville ([`b73df15`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b73df15749e770117d284cbd21c08bc750fa161d)) 🔏
+  * 🔧(preset/common): Remove weather from fastfetch by Romain Deville ([`eab940e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eab940ebad56a9a67c834bcf447c8968053b9ead)) 🔏
+
+### 🔊 Others
+
+  * 🔥 Remove uselesss code by Romain Deville ([`0914b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0914b247e1824e12dee008ffa418802270251ba9)) 🔏
+
 ## v0.8.1 (2024-07-21)
 
 ### 🩹 Patch
 
   * 🔧(preset/minimal): Activate autocd for zsh (!23) by Romain Deville ([`f0c2634`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f0c2634019e568bcc3df4b6f3d10030110283564))
   * 🔧(preset/minimal): Activate autocd for zsh by Romain Deville ([`be05d95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/be05d95a0d90048235675057465077dac6d34cc8)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.8.1 (NO-CI) by Python Semantic Release [bot] ([`3e0e588`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3e0e5885b15f45befe3c1806cf20c7c3cd38df8d))
 
 ## v0.8.0 (2024-07-21)
 
@@ -93,7 +109,6 @@
 ### ✨ Minor
 
   * ✨ Update myrepos libs and kitty conf (!14) by Romain Deville ([`01ab977`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/01ab977a3802b94b4cacafd59e12c0a4a032dedd))
-  * ✨(presets/common): Add myrepos lib setup_symlinks by Romain Deville ([`2aaabb1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2aaabb19b4cdaa266c02e396eac9537f6db4c311)) 🔏
 
 ### 🩹 Patch
 
@@ -105,17 +120,6 @@
 
 ## v0.4.2 (2024-07-16)
 
-### 🩹 Patch
-
-  * 🐛 Fix git delta color config (!13) by Romain Deville ([`100151a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/100151a925def9adb0faaeeb8f4adbc7d6d97601))
-  * 🐛 Fix git delta color config by Romain Deville ([`a4bf38a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a4bf38a9a779b9f86ea9706ca605055b795b207c)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.4.2 (NO-CI) by Python Semantic Release [bot] ([`d1e9532`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1e953232a960fe26ae0a396f2b9c38f847c392d))
-
-## v0.4.1 (2024-07-16)
-
-### 🔊 Others
-
-  * 🔖 v0.4.1 (NO-CI) by Python Semantic Release [bot] ([`fbb31cd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fbb31cd3e5559409b0ad33275a07e935fdd7b040))
