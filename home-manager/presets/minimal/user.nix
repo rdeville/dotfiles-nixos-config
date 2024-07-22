@@ -1,7 +1,5 @@
 {
-  config,
   userCfg,
-  pkgs,
   ...
 }: {
   home = {
@@ -21,7 +19,6 @@
 
     sessionVariables = {
       HOST = userCfg.hostname;
-      SHELL_DIR = "$HOME/.config/shell";
       EDITOR = "nvim";
     };
   };
