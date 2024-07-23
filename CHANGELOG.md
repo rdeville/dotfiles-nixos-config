@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.3 (2024-07-23)
+
+### 🩹 Patch
+
+  * 🔧(preset/commont): Restore battery with only 25% threshold (!25) by Romain Deville ([`90ac412`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/90ac41240511aeecc6dba27556f9c07e8145cfe0))
+  * 🔧(preset/commont): Restore battery with only 25% threshold by Romain Deville ([`394418d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/394418d9182cc6602c273027580a8c99fd73eef4)) 🔏
+
 ## v0.8.2 (2024-07-22)
 
 ### 🩹 Patch
@@ -11,6 +18,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.8.2 (NO-CI) by Python Semantic Release [bot] ([`24e1e17`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24e1e17fd67acd46264e9aefd8e808e0d773fa84))
   * 🔥 Remove uselesss code by Romain Deville ([`0914b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0914b247e1824e12dee008ffa418802270251ba9)) 🔏
 
 ## v0.8.1 (2024-07-21)
@@ -106,20 +114,6 @@
 
 ## v0.5.0 (2024-07-16)
 
-### ✨ Minor
-
-  * ✨ Update myrepos libs and kitty conf (!14) by Romain Deville ([`01ab977`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/01ab977a3802b94b4cacafd59e12c0a4a032dedd))
-
-### 🩹 Patch
-
-  * ⚡️(presets/gui): Add FiraCode font to kitty conf by Romain Deville ([`65ee86d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65ee86dab9f318ec23a8a0888df796238721ce14)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.5.0 (NO-CI) by Python Semantic Release [bot] ([`88f4939`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/88f4939d5f59d6b07bed7fb19fa2fbaa53984854))
-
-## v0.4.2 (2024-07-16)
-
-### 🔊 Others
-
-  * 🔖 v0.4.2 (NO-CI) by Python Semantic Release [bot] ([`d1e9532`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1e953232a960fe26ae0a396f2b9c38f847c392d))
