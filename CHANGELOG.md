@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.4 (2024-07-25)
+
+### 🩹 Patch
+
+  * 🔧(hm/preset/gui): Update redshift config (!26) by Romain Deville ([`16489d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/16489d40de8f3107998ceb1a3e2d7bc9d66948ce))
+  * 🔧(hm/preset/gui): Update redshift config by Romain Deville ([`03251a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/03251a65b4e1b54ac755f714db9e5255ad27e95c)) 🔏
+
 ## v0.8.3 (2024-07-23)
 
 ### 🩹 Patch
 
   * 🔧(preset/commont): Restore battery with only 25% threshold (!25) by Romain Deville ([`90ac412`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/90ac41240511aeecc6dba27556f9c07e8145cfe0))
   * 🔧(preset/commont): Restore battery with only 25% threshold by Romain Deville ([`394418d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/394418d9182cc6602c273027580a8c99fd73eef4)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.8.3 (NO-CI) by Python Semantic Release [bot] ([`f379dc6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f379dc6f5d934f4b390d47b3782abb0088e05968))
 
 ## v0.8.2 (2024-07-22)
 
@@ -103,17 +114,6 @@
 
 ## v0.5.1 (2024-07-16)
 
-### 🩹 Patch
-
-  * 🐛(preset/commont): Fix way mr setup symlink (!15) by Romain Deville ([`921a980`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/921a980703b172a9136b9b2f4233047760e4f74a))
-  * 🐛(preset/commont): Fix way mr setup symlink by Romain Deville ([`3f04728`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f0472875356f8018a8cba44d08d0c61c8aa56f7)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.5.1 (NO-CI) by Python Semantic Release [bot] ([`d27738c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d27738c9617965f67e90cb0e5eb40b572df26e01))
-
-## v0.5.0 (2024-07-16)
-
-### 🔊 Others
-
-  * 🔖 v0.5.0 (NO-CI) by Python Semantic Release [bot] ([`88f4939`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/88f4939d5f59d6b07bed7fb19fa2fbaa53984854))
