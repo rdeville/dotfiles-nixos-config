@@ -1,17 +1,23 @@
 {
-  config,
   pkgs,
   ...
 }: {
+  home = {
+    packages = with pkgs; [
+      redshift
+    ];
+  };
   services = {
     redshift = {
       enable = false;
       dawnTime = "6:30-8:00";
       duskTime = "22:00-23:30";
+      provider = "manual";
       temperature = {
         day = 6500;
         night = 4000;
       };
+      tray = true;
       settings = {
         # Global settings for redshift
         redshift = {
