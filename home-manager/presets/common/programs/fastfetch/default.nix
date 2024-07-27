@@ -30,7 +30,9 @@
           };
           # // "keyWidth"= 8;
           separator = "   ";
-          binaryPrefix = "iec";
+          size = {
+            binaryPrefix = "iec";
+          };
           bar = {
             borderLeft = "";
             borderRight = "";
