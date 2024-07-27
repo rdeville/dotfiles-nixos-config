@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.5 (2024-07-27)
+
+### 🩹 Patch
+
+  * 🐛(hm/preset/common): Fix breaking change in fastfetch (!27) by Romain Deville ([`9485471`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9485471de084d0b4252054451c323e34003d3423))
+  * 🐛(hm/preset/common): Fix breaking change in fastfetch by Romain Deville ([`8aa43b3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8aa43b3323dd4b8a19477383ee1a328762967ede)) 🔏
+
 ## v0.8.4 (2024-07-25)
 
 ### 🩹 Patch
 
   * 🔧(hm/preset/gui): Update redshift config (!26) by Romain Deville ([`16489d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/16489d40de8f3107998ceb1a3e2d7bc9d66948ce))
   * 🔧(hm/preset/gui): Update redshift config by Romain Deville ([`03251a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/03251a65b4e1b54ac755f714db9e5255ad27e95c)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.8.4 (NO-CI) by Python Semantic Release [bot] ([`77ea199`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/77ea19928a3bfad5bf0c899912204e7b64ececdb))
 
 ## v0.8.3 (2024-07-23)
 
@@ -103,17 +114,6 @@
 
 ## v0.5.2 (2024-07-17)
 
-### 🩹 Patch
-
-  * 🐛(presets/common): Fix users-dirs config (!16) by Romain Deville ([`7ad5f41`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ad5f41c7ee2c097d6673282c5d4bcb8df61cc69))
-  * 🐛(presets/common): Fix users-dirs config by Romain Deville ([`b1b872a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1b872ae7d1174cf9616617e9420f78d725c5a6a)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.5.2 (NO-CI) by Python Semantic Release [bot] ([`8981019`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/898101916fe17dd7114f063ee625d41483ce009b))
-
-## v0.5.1 (2024-07-16)
-
-### 🔊 Others
-
-  * 🔖 v0.5.1 (NO-CI) by Python Semantic Release [bot] ([`d27738c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d27738c9617965f67e90cb0e5eb40b572df26e01))
