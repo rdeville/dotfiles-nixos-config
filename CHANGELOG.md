@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.0 (2024-08-05)
+
+### ✨ Minor
+
+  * ✨(hm/flavors): Add vscode flavors (!28) by Romain Deville ([`36d0d62`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36d0d62a2b8b94c501f68048b1ded1cc54c6141d))
+  * ✨(hm/flavors): Add vscode flavors by Romain Deville ([`a7f7d55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a7f7d55a644eef1eb0e03d416350289db15cd765)) 🔏
+
 ## v0.8.5 (2024-07-27)
 
 ### 🩹 Patch
 
   * 🐛(hm/preset/common): Fix breaking change in fastfetch (!27) by Romain Deville ([`9485471`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9485471de084d0b4252054451c323e34003d3423))
   * 🐛(hm/preset/common): Fix breaking change in fastfetch by Romain Deville ([`8aa43b3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8aa43b3323dd4b8a19477383ee1a328762967ede)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.8.5 (NO-CI) by Python Semantic Release [bot] ([`023ec00`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/023ec006bbb60114308fa01dcd455a2f7ad41788))
 
 ## v0.8.4 (2024-07-25)
 
@@ -108,12 +119,3 @@
 
   * 🔖 v0.5.3 (NO-CI) by Python Semantic Release [bot] ([`5e55067`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5e55067a8ba22527468110ed23d300ae0c9570e8))
   * 🔥(preset/common): Remove starship battery segment as in my tmux (!18) by Romain Deville ([`24204e0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24204e03bd7cc897b00f2bba941e9bfde00faa0b))
-  * 🔥(preset/common): Remove starship battery segment as in my tmux by Romain Deville ([`ebf00d8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ebf00d822e7fbfc9dac1c1dea60bd5f9c1291174)) 🔏
-  * 🔥 Remove useless code and programs I&#39;v packaged myself (!17) by Romain Deville ([`f564b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f564b24da551ad9435fa48afacf35bda27487866))
-  * 🔥 Remove useless code and programs I&#39;v packaged myself by Romain Deville ([`1675b63`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1675b63f2ebf2d580f975de09a524ccd8437e01e)) 🔏
-
-## v0.5.2 (2024-07-17)
-
-### 🔊 Others
-
-  * 🔖 v0.5.2 (NO-CI) by Python Semantic Release [bot] ([`8981019`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/898101916fe17dd7114f063ee625d41483ce009b))
