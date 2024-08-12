@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.1 (2024-08-12)
+
+### 🩹 Patch
+
+  * ⬆️(hm/presets/common): Update SHA for LS_COLORS repos (!29) by Romain Deville ([`a318d5a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a318d5a13ec9c48b5d124703b824b03011668b56))
+  * ⬆️(hm/presets/common): Update SHA for LS_COLORS repos by Romain Deville ([`653489c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/653489cb786e1e48a2f932079a79d4927d96e87c)) 🔏
+
 ## v0.9.0 (2024-08-05)
 
 ### ✨ Minor
 
   * ✨(hm/flavors): Add vscode flavors (!28) by Romain Deville ([`36d0d62`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36d0d62a2b8b94c501f68048b1ded1cc54c6141d))
   * ✨(hm/flavors): Add vscode flavors by Romain Deville ([`a7f7d55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a7f7d55a644eef1eb0e03d416350289db15cd765)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.9.0 (NO-CI) by Python Semantic Release [bot] ([`14309bc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/14309bcb814a53bbbd98e523c13fe9fe0e03f19b))
 
 ## v0.8.5 (2024-07-27)
 
@@ -91,7 +102,6 @@
 ### 🔊 Others
 
   * 🔖 v0.7.0 (NO-CI) by Python Semantic Release [bot] ([`ff79f2f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff79f2f0833c200d245596daff17ade364db4a86))
-  * 🔥(preset/common): Remove eza as it does not have icon by Romain Deville ([`c83385c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c83385cecc31816da0194fd75f205f988b7936b2)) 🔏
 
 ## v0.6.0 (2024-07-20)
 
@@ -100,22 +110,12 @@
   * ✨ Add bc package to minial hm presets (!20) by Romain Deville ([`df0727b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/df0727bfb01909a5312b08030f133bdd96e56bcb))
   * ✨(preset/minimal): Add bc package by Romain Deville ([`d6efb72`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d6efb726c731f405ef7bba585cee6adbd5e0c7c8)) 🔏
 
-### 🩹 Patch
-
-  * 🔧(preset/gui): Update kitty font config by Romain Deville ([`1222919`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/12229193ead1dc496f67255e278acd838cf42f3d)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.6.0 (NO-CI) by Python Semantic Release [bot] ([`759200b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/759200b8f1f7cbcf76dc23c0d3519fabb906dd63))
 
 ## v0.5.3 (2024-07-18)
 
-### 🩹 Patch
-
-  * 🐛(flavors/spotify): Update spotify enable_streaming config (!19) by Romain Deville ([`afcf613`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/afcf6133daf661ff30ac50fa6592003788d1bdb7))
-  * 🐛(flavors/spotify): Update spotify enable_streaming config by Romain Deville ([`c432186`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c432186880eb82b10c3bafd1f768b543743d7cfe)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.5.3 (NO-CI) by Python Semantic Release [bot] ([`5e55067`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5e55067a8ba22527468110ed23d300ae0c9570e8))
-  * 🔥(preset/common): Remove starship battery segment as in my tmux (!18) by Romain Deville ([`24204e0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24204e03bd7cc897b00f2bba941e9bfde00faa0b))
