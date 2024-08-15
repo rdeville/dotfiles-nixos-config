@@ -1,7 +1,4 @@
-{
-  userCfg,
-  ...
-}: {
+{userCfg, ...}: {
   home = {
     username = userCfg.username;
 

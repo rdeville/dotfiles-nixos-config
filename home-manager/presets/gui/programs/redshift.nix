@@ -1,15 +1,8 @@
-{
-  pkgs,
-  ...
-}: {
-  home = {
-    packages = with pkgs; [
-      redshift
-    ];
-  };
+{pkgs, ...}: {
   services = {
     redshift = {
-      enable = false;
+      enable = true;
+      package = with pkgs; redshift;
       dawnTime = "6:30-8:00";
       duskTime = "22:00-23:30";
       provider = "manual";

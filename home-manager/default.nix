@@ -1,6 +1,5 @@
 {
   userCfg,
-  lib,
   pkgs,
   ...
 }: let
@@ -59,16 +58,24 @@ in {
   accounts = {
     email = {
       maildirBasePath = ".local/share/mails";
-      accounts = builtins.mapAttrs (_: value: mkLib.mkEmailCfg userCfg value) userCfg.accounts;
+      accounts =
+        builtins.mapAttrs
+        (_: value: mkLib.mkEmailCfg userCfg value)
+        userCfg.accounts;
     };
     calendar = {
       basePath = ".local/share/calendars";
-      accounts = builtins.mapAttrs (_: value: mkLib.mkCalendarCfg userCfg value) userCfg.accounts;
+      accounts =
+        builtins.mapAttrs
+        (_: value: mkLib.mkCalendarCfg userCfg value)
+        userCfg.accounts;
     };
     contact = {
       basePath = ".local/share/contacts";
-      accounts = builtins.mapAttrs (_: value: mkLib.mkContactCfg userCfg value) userCfg.accounts;
+      accounts =
+        builtins.mapAttrs
+        (_: value: mkLib.mkContactCfg userCfg value)
+        userCfg.accounts;
     };
   };
 }
-# // userCfg.home-manager
