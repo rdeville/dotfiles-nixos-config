@@ -1,9 +1,4 @@
-{
-  cfg,
-  userAccount,
-  ...
-}: {
-  # name = builtins.replaceStrings ["@" "."] ["_at_" "_"] userAccount.email.address;
+{userAccount, ...}: {
   primary = userAccount.calendar.primary;
   khal = {
     enable = true;
@@ -29,6 +24,5 @@
     collections = ["from a" "from b"];
     conflictResolution = ["b wins"];
     metadata = ["displayname" "color"];
-    # postHook = "";
   };
 }
