@@ -1,12 +1,33 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.10.0 (2024-08-15)
+
+### ✨ Minor
+
+  * ✨ Reactivate redshift, upgrade khard config, clean and format (!30) by Romain Deville ([`31e690b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/31e690bd57250f0ed26859ee012193ca8b1e0567))
+  * ✨(hm/presets/gui): Reactivate redshift by Romain Deville ([`41d68e7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/41d68e7e825eac790a9e204324cdeb6c095fe28f)) 🔏
+
+### 🩹 Patch
+
+  * 👽️(hm/presets/main): Update khard to use defaultCollection by Romain Deville ([`5866c7b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5866c7b1ca954f51730b8c55ef6049025e5ecd94)) 🔏
+
+### 🔊 Others
+
+  * 🎨 Run nix fmt on repos by Romain Deville ([`c9fb6d5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c9fb6d5d5f1461ffdd8feb397e055a84a5be521b)) 🔏
+  * 🎨(lib/accounts): Remove useless codes by Romain Deville ([`ee67927`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ee67927682a2dfba0fc7e76d33900309ba4c821a)) 🔏
+  * 🔥(hm/preset/main): Remove SSH hosts config by Romain Deville ([`bc1934b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bc1934b7ba054d90419960dba17247d53f9a4c7b)) 🔏
+
 ## v0.9.1 (2024-08-12)
 
 ### 🩹 Patch
 
   * ⬆️(hm/presets/common): Update SHA for LS_COLORS repos (!29) by Romain Deville ([`a318d5a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a318d5a13ec9c48b5d124703b824b03011668b56))
   * ⬆️(hm/presets/common): Update SHA for LS_COLORS repos by Romain Deville ([`653489c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/653489cb786e1e48a2f932079a79d4927d96e87c)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.9.1 (NO-CI) by Python Semantic Release [bot] ([`b5d1b76`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b5d1b768ddaa8a83ed80afad14cb233a451b68c4))
 
 ## v0.9.0 (2024-08-05)
 
@@ -92,12 +113,10 @@
 ### ✨ Minor
 
   * ✨ Update config to work with my custom zsh flake (!21) by Romain Deville ([`b533fe4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b533fe437c32943c64a398bb2bf6be7de056760e))
-  * ✨(preset/minimal): Upgrade zsh to work with my own flake by Romain Deville ([`c08dd9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c08dd9d6374284d022689e009dfb7aad65c8b76b)) 🔏
 
 ### 🩹 Patch
 
   * 🔧(preset/common): Remove lsd alias to avoid conflict with mine by Romain Deville ([`2f75457`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2f754571a8b1a1c64feda33255f47da13b0d8810)) 🔏
-  * 🔧(preset/common): Remove hostname and username from starship by Romain Deville ([`46904ba`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/46904bae268de0d10d2fe6fc814b24cf6e4e22cc)) 🔏
 
 ### 🔊 Others
 
@@ -105,17 +124,6 @@
 
 ## v0.6.0 (2024-07-20)
 
-### ✨ Minor
-
-  * ✨ Add bc package to minial hm presets (!20) by Romain Deville ([`df0727b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/df0727bfb01909a5312b08030f133bdd96e56bcb))
-  * ✨(preset/minimal): Add bc package by Romain Deville ([`d6efb72`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d6efb726c731f405ef7bba585cee6adbd5e0c7c8)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.6.0 (NO-CI) by Python Semantic Release [bot] ([`759200b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/759200b8f1f7cbcf76dc23c0d3519fabb906dd63))
-
-## v0.5.3 (2024-07-18)
-
-### 🔊 Others
-
-  * 🔖 v0.5.3 (NO-CI) by Python Semantic Release [bot] ([`5e55067`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5e55067a8ba22527468110ed23d300ae0c9570e8))
