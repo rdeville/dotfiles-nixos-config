@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  mkLib,
-  ...
-}: let
+{config, ...}: let
   khalCalendarAccounts = builtins.filter (account:
     account.khal.enable) (
     builtins.attrValues config.accounts.calendar.accounts
