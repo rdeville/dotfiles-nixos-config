@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, config, ...}: {
   home = {
     packages = with pkgs; [
       tmux # Shell Emulator
@@ -9,11 +9,11 @@
     configFile = {
       "tmuxp/default.yaml" = {
         enable = with pkgs; builtins.elem tmuxp config.home.packages;
-        source = ./tmuxp/default.yaml;
+        source = ./default.yaml;
       };
       "tmuxp/home.yaml" = {
         enable = with pkgs; builtins.elem tmuxp config.home.packages;
-        source = ./tmuxp/home.yaml;
+        source = ./home.yaml;
       };
     };
   };
