@@ -1,0 +1,23 @@
+---
+# Name of the session
+session_name: "home"
+
+# Load session relative to config location (project root).
+start_directory: "${HOME}"
+
+# Run a specific script before tmux start
+# before_script: ./script.sh
+
+# Shell command to run before tmux windows and pane start
+# shell_command_before: command
+
+windows:
+  - window_name: " "
+    panes:
+      - clear
+  - window_name: " "
+    panes:
+      - btop
+  - window_name: " "
+    panes:
+      - clear

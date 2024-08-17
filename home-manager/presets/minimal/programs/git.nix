@@ -394,7 +394,7 @@
       };
       difftastic = {
         # DETLA CONFIG (Git Pager config when using git diff)
-        enable = ! config.programs.git.delta.enable ;
+        enable = ! config.programs.git.delta.enable;
         background = "dark";
         display = "side-by-side-show-both";
       };
