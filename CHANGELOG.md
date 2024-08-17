@@ -1,12 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.0 (2024-08-17)
+
+### ✨ Minor
+
+  * ✨(hm/flavors): Add gh and glab CLI flavors (!34) by Romain Deville ([`ec0b561`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ec0b5612ef2ffbd0a4f660c93f13653fe43534ee))
+  * ✨(hm/flavors/glab): Add glab flavors by Romain Deville ([`8b0259f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8b0259f42fcc89ebde3a9c7faa7eccce027e65f3)) 🔏
+  * ✨(hm/flavors/gh): Add gh flavors by Romain Deville ([`f934bc9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f934bc926ff22b438b82e35515ce7b47456a5b84)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/presets): Run nix fmt by Romain Deville ([`e16479c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e16479cc1efa64ff64f912a179dfcb209feea477)) 🔏
+
 ## v0.12.1 (2024-08-17)
 
 ### 🩹 Patch
 
   * 🐛(hm/presets/minimal): Fix tmuxp config (!33) by Romain Deville ([`b3c0873`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b3c08730c604ce394ca2ff75b5a88f8860bf3b2e))
   * 🐛(hm/presets/minimal): Fix tmuxp config by Romain Deville ([`4152a2d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4152a2dab4dd99696eb9558b8ba7f7e8b027714c)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.12.1 (NO-CI) by Python Semantic Release [bot] ([`6b32d6d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b32d6db729096a3824e5a3e0e52d7cedf396587))
 
 ## v0.12.0 (2024-08-17)
 
@@ -105,17 +121,6 @@
 
 ## v0.8.2 (2024-07-22)
 
-### 🩹 Patch
-
-  * 🐛 Fix HM zsh module to load my custom zshrc in the right order (!24) by Romain Deville ([`6a89483`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6a89483af21f16274569fc474c9b497b56b2bada))
-
 ### 🔊 Others
 
   * 🔖 v0.8.2 (NO-CI) by Python Semantic Release [bot] ([`24e1e17`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24e1e17fd67acd46264e9aefd8e808e0d773fa84))
-  * 🔥 Remove uselesss code by Romain Deville ([`0914b24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0914b247e1824e12dee008ffa418802270251ba9)) 🔏
-
-## v0.8.1 (2024-07-21)
-
-### 🔊 Others
-
-  * 🔖 v0.8.1 (NO-CI) by Python Semantic Release [bot] ([`3e0e588`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3e0e5885b15f45befe3c1806cf20c7c3cd38df8d))
