@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.12.1 (2024-08-17)
+
+### 🩹 Patch
+
+  * 🐛(hm/presets/minimal): Fix tmuxp config (!33) by Romain Deville ([`b3c0873`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b3c08730c604ce394ca2ff75b5a88f8860bf3b2e))
+  * 🐛(hm/presets/minimal): Fix tmuxp config by Romain Deville ([`4152a2d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4152a2dab4dd99696eb9558b8ba7f7e8b027714c)) 🔏
+
 ## v0.12.0 (2024-08-17)
 
 ### ✨ Minor
 
   * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config (!32) by Romain Deville ([`9aec0a2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9aec0a20d9891b1dd777602d04aca78130ff1d8d))
   * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config by Romain Deville ([`a8ed045`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a8ed045fc8ffebb3d0de5114a26b55cc49bb47d7)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.12.0 (NO-CI) by Python Semantic Release [bot] ([`42e7d8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/42e7d8ca12d80a089802afea4a7978d682977e06))
 
 ## v0.11.0 (2024-08-17)
 
@@ -97,8 +108,6 @@
 ### 🩹 Patch
 
   * 🐛 Fix HM zsh module to load my custom zshrc in the right order (!24) by Romain Deville ([`6a89483`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6a89483af21f16274569fc474c9b497b56b2bada))
-  * 🐛(presets/common): Fix zsh loading order to load my custom zshrc by Romain Deville ([`b73df15`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b73df15749e770117d284cbd21c08bc750fa161d)) 🔏
-  * 🔧(preset/common): Remove weather from fastfetch by Romain Deville ([`eab940e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eab940ebad56a9a67c834bcf447c8968053b9ead)) 🔏
 
 ### 🔊 Others
 
@@ -107,17 +116,6 @@
 
 ## v0.8.1 (2024-07-21)
 
-### 🩹 Patch
-
-  * 🔧(preset/minimal): Activate autocd for zsh (!23) by Romain Deville ([`f0c2634`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f0c2634019e568bcc3df4b6f3d10030110283564))
-  * 🔧(preset/minimal): Activate autocd for zsh by Romain Deville ([`be05d95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/be05d95a0d90048235675057465077dac6d34cc8)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.8.1 (NO-CI) by Python Semantic Release [bot] ([`3e0e588`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3e0e5885b15f45befe3c1806cf20c7c3cd38df8d))
-
-## v0.8.0 (2024-07-21)
-
-### 🔊 Others
-
-  * 🔖 v0.8.0 (NO-CI) by Python Semantic Release [bot] ([`885710c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/885710c404b8717c76c5444c7289c6ede874c724))
