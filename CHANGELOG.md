@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.12.0 (2024-08-17)
+
+### ✨ Minor
+
+  * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config (!32) by Romain Deville ([`9aec0a2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9aec0a20d9891b1dd777602d04aca78130ff1d8d))
+  * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config by Romain Deville ([`a8ed045`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a8ed045fc8ffebb3d0de5114a26b55cc49bb47d7)) 🔏
+
 ## v0.11.0 (2024-08-17)
 
 ### ✨ Minor
 
   * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken (!31) by Romain Deville ([`85a48d2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/85a48d2879bc2dd0ad7b0638532b1d5b1a64b11a))
   * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken by Romain Deville ([`2a7f226`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a7f2260817fc3dae1957ab5e08c4d76a0301b97)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.11.0 (NO-CI) by Python Semantic Release [bot] ([`9266799`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92667992328a3e6f44d614f57ac7c38c63dc9dc0))
 
 ## v0.10.0 (2024-08-15)
 
@@ -107,17 +118,6 @@
 
 ## v0.8.0 (2024-07-21)
 
-### ✨ Minor
-
-  * ✨(preset/commont): Add mirror publish to mr and improve logging (!22) by Romain Deville ([`672c4fc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/672c4fc11269fcfd5bb3b968b3683587af46f9e2))
-  * ✨(preset/commont): Add mirror publish to mr and improve logging by Romain Deville ([`347c01b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/347c01b2679667ef0f761743755ab4b63ab19579)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.8.0 (NO-CI) by Python Semantic Release [bot] ([`885710c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/885710c404b8717c76c5444c7289c6ede874c724))
-
-## v0.7.0 (2024-07-21)
-
-### 🔊 Others
-
-  * 🔖 v0.7.0 (NO-CI) by Python Semantic Release [bot] ([`ff79f2f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff79f2f0833c200d245596daff17ade364db4a86))
