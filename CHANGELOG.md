@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.11.0 (2024-08-17)
+
+### ✨ Minor
+
+  * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken (!31) by Romain Deville ([`85a48d2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/85a48d2879bc2dd0ad7b0638532b1d5b1a64b11a))
+  * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken by Romain Deville ([`2a7f226`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a7f2260817fc3dae1957ab5e08c4d76a0301b97)) 🔏
+
 ## v0.10.0 (2024-08-15)
 
 ### ✨ Minor
@@ -16,6 +23,7 @@
 
   * 🎨 Run nix fmt on repos by Romain Deville ([`c9fb6d5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c9fb6d5d5f1461ffdd8feb397e055a84a5be521b)) 🔏
   * 🎨(lib/accounts): Remove useless codes by Romain Deville ([`ee67927`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ee67927682a2dfba0fc7e76d33900309ba4c821a)) 🔏
+  * 🔖 v0.10.0 (NO-CI) by Python Semantic Release [bot] ([`c91fc55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c91fc55537fdb67389ec4805286363f4ef76ae85))
   * 🔥(hm/preset/main): Remove SSH hosts config by Romain Deville ([`bc1934b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bc1934b7ba054d90419960dba17247d53f9a4c7b)) 🔏
 
 ## v0.9.1 (2024-08-12)
@@ -110,20 +118,6 @@
 
 ## v0.7.0 (2024-07-21)
 
-### ✨ Minor
-
-  * ✨ Update config to work with my custom zsh flake (!21) by Romain Deville ([`b533fe4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b533fe437c32943c64a398bb2bf6be7de056760e))
-
-### 🩹 Patch
-
-  * 🔧(preset/common): Remove lsd alias to avoid conflict with mine by Romain Deville ([`2f75457`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2f754571a8b1a1c64feda33255f47da13b0d8810)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.7.0 (NO-CI) by Python Semantic Release [bot] ([`ff79f2f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff79f2f0833c200d245596daff17ade364db4a86))
-
-## v0.6.0 (2024-07-20)
-
-### 🔊 Others
-
-  * 🔖 v0.6.0 (NO-CI) by Python Semantic Release [bot] ([`759200b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/759200b8f1f7cbcf76dc23c0d3519fabb906dd63))
