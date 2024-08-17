@@ -382,7 +382,7 @@
       };
       delta = {
         # DETLA CONFIG (Git Pager config when using git diff)
-        enable = true;
+        enable = false;
         options = {
           dark = true;
           line-numbers = true;
@@ -391,6 +391,12 @@
           plus-style = "syntax #013400";
           minus-style = "syntax #340001";
         };
+      };
+      difftastic = {
+        # DETLA CONFIG (Git Pager config when using git diff)
+        enable = ! config.programs.git.delta.enable ;
+        background = "dark";
+        display = "side-by-side-show-both";
       };
     };
   };
