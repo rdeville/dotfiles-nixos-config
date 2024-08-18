@@ -1,12 +1,30 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.1.2 (2024-08-18)
+
+### 🩹 Patch
+
+  * ⚡️ Improve scripts and update config from DGS (!4) by Romain Deville ([`82cd728`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/82cd728824e46277ae243c9a906dc4cd9b007cd6))
+  * ⚡️(scripts): Improve scripts allowing to build locally by Romain Deville ([`eee9b1f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/eee9b1f3d10b0da26524a8c243d22881c664450c)) 🔏
+  * 📦️ Update flake.* from DGS by Romain Deville ([`e416036`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e416036403c90b24e2d11dc011aa7cf7c755cf61)) 🔏
+
+### 🔊 Others
+
+  * 💚 Update Gitlab CI from DGS by Romain Deville ([`c98464b`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/c98464b46d0c8b25afba5ae78f2174e1523a87ca)) 🔏
+  * 📝 Update README from DGS by Romain Deville ([`91ddbea`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/91ddbea9fa6d925cc8d287426863752ce4b67596)) 🔏
+  * 🔨 Update devenv from DGS by Romain Deville ([`680d926`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/680d926e0f26751df59f1080d226e4e29bb9861b)) 🔏
+
 ## v0.1.1 (2024-08-18)
 
 ### 🩹 Patch
 
   * ✏️ Fix typos in configs/default.nix (!3) by Romain Deville ([`522349e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/522349e597d7ecf3202e94834878f3e0e793c2ed))
   * ✏️ Fix typos in configs/default.nix by Romain Deville ([`c58343f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/c58343f9bd58147355b74ee896b6e6ecdb820c6f)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.1.1 (NO-CI) by Python Semantic Release [bot] ([`8b77934`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/8b77934e22e7684ad93b2d7684de05055a3cdd6a))
 
 ## v0.1.0 (2024-08-18)
 
@@ -30,10 +48,6 @@
   * ✨ Add config host default by Romain Deville ([`e29c62d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e29c62de95e853c6bd0b464f85921ab66f7e3802)) 🔏
   * ✨ Add config host rey by Romain Deville ([`ed78691`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ed78691dc03f7da09afeda68432b02175352a3b9)) 🔏
 
-### 🩹 Patch
-
-  * 🔧 Add .dotgit.yaml by Romain Deville ([`26053d7`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/26053d7d0068dd3244e107e9bb7e48161322d03c)) 🔏
-
 ### 🔊 Others
 
   * 👷 Add Gitlab CI Build System by Romain Deville ([`13323fd`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/13323fd84154041b01fff6a58c2389b352a7912a)) 🔏
@@ -51,9 +65,6 @@
   * 🔨 Add devbox configuration by Romain Deville ([`86878e9`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/86878e99d8c696e87182bcf73fd66a2d93f3d18a)) 🔏
   * 🔨 Add python-semantic-release configuration by Romain Deville ([`8e939c8`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/8e939c8eb8c45ecd4da2f80857ae1b0ad57ab622)) 🔏
   * 🔨 Add markdownlint configuration by Romain Deville ([`0144460`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/01444606cfcddec26b302a57f6c05e9193d7e49e)) 🔏
-  * 🔨 Add commitlint configuration by Romain Deville ([`c5e1b15`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/c5e1b1508072980c50c787bd0ecc6baf830794fe)) 🔏
-  * 🔨 Add cspell configuration by Romain Deville ([`f5c9158`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/f5c91587614048d9f9da9acf248963fd29f82cc1)) 🔏
-  * 🙈 Add .gitignore by Romain Deville ([`955469d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/955469de99c18618903597041feaae6eab54d62e)) 🔏
 
 ## v0.0.0 (2024-08-18)
 
