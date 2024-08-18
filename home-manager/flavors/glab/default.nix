@@ -22,7 +22,7 @@ in {
 
     xdg = {
       configFile = {
-        "glab/config.yml" = {
+        "glab-cli/config.yml" = {
           enable = with pkgs; builtins.elem glab config.home.packages;
           text = pkgs.lib.generators.toYAML {} {
             # What protocol to use when performing git operations. Supported values: ssh, https
@@ -33,7 +33,7 @@ in {
             check_update = "false";
           };
         };
-        "glab/aliases.yml" = {
+        "glab-cli/aliases.yml" = {
           enable = with pkgs; builtins.elem glab config.home.packages;
           text = pkgs.lib.generators.toYAML {} {
             ci = "pipeline ci";
