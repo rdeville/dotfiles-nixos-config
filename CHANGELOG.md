@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.1 (2024-08-18)
+
+### 🩹 Patch
+
+  * 🐛(hm/flavors/glab): Update xdgConfig folder path (!35) by Romain Deville ([`6887b8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6887b8bcaeaabbe364da117a4db18da181ba9bd2))
+  * 🐛(hm/flavors/glab): Update xdgConfig folder path by Romain Deville ([`a52b3ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a52b3ad53c8d83dc4ad63768cf66778926ec8d9f)) 🔏
+
 ## v0.13.0 (2024-08-17)
 
 ### ✨ Minor
@@ -12,6 +19,7 @@
 ### 🔊 Others
 
   * 🎨(hm/presets): Run nix fmt by Romain Deville ([`e16479c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e16479cc1efa64ff64f912a179dfcb209feea477)) 🔏
+  * 🔖 v0.13.0 (NO-CI) by Python Semantic Release [bot] ([`f7990fa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7990fa5d1be58986c9260f8b5edeb1f5e731cea))
 
 ## v0.12.1 (2024-08-17)
 
@@ -110,17 +118,6 @@
 
 ## v0.8.3 (2024-07-23)
 
-### 🩹 Patch
-
-  * 🔧(preset/commont): Restore battery with only 25% threshold (!25) by Romain Deville ([`90ac412`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/90ac41240511aeecc6dba27556f9c07e8145cfe0))
-  * 🔧(preset/commont): Restore battery with only 25% threshold by Romain Deville ([`394418d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/394418d9182cc6602c273027580a8c99fd73eef4)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.8.3 (NO-CI) by Python Semantic Release [bot] ([`f379dc6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f379dc6f5d934f4b390d47b3782abb0088e05968))
-
-## v0.8.2 (2024-07-22)
-
-### 🔊 Others
-
-  * 🔖 v0.8.2 (NO-CI) by Python Semantic Release [bot] ([`24e1e17`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24e1e17fd67acd46264e9aefd8e808e0d773fa84))
