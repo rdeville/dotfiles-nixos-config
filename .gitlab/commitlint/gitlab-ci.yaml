@@ -28,8 +28,8 @@ Lint MR Title and Desc:
   script:
   - echo -e "${CI_MERGE_REQUEST_COMMIT}" | npx commitlint
   rules:
-  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
-    when: always
   - if: $CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     when: never
+  - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+    when: always
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
