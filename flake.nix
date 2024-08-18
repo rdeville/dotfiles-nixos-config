@@ -15,8 +15,8 @@
   inputs = {
     # Stable Nix Packages
     nixpkgs = {
-      # url = "github:nixos/nixpkgs/nixos-24.05";
-      url = "github:nixos/nixpkgs/nixos-unstable";
+      url = "nixpkgs/nixos-24.05";
+      # url = "github:nixos/nixpkgs/nixos-unstable";
     };
     # Flake Utils Lib
     utils = {
@@ -26,7 +26,6 @@
     devenv = {
       url = "github:cachix/devenv";
     };
-    # Nix formatter
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -45,7 +44,7 @@
     nixos = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
-        nixpkgs.follows = "nixpkgs";
+        nixpkgs.follows = "nixpkgs-unstable";
         utils.follows = "utils";
         home-manager.follows = "home-manager";
         nixpkgs-unstable.follows = "nixpkgs-unstable";
@@ -102,7 +101,6 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
-
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
     allConfigs = import ./configs {
       mkLib = inputs.nixos.homeManagerModules.accountLib;
@@ -113,11 +111,12 @@
     nixosLib = inputs.nixos.homeManagerModules.nixosLib {inherit (inputs.nixos) inputs;};
     # mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
+
   in
     inputs.utils.lib.eachSystem allSystems (
       system: let
         pkgs = pkgsForSystem system;
-      in {
+      in rec {
         packages = {
           devenv-up = self.devShells.${system}.default.config.procfileScript;
         };
@@ -132,15 +131,15 @@
         };
       }
     )
-    // {
-      # TOOLING
-      # ========================================================================
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (
-        system:
-          inputs.alejandra.defaultPackage.${system}
-      );
+  // {
+    # TOOLING
+    # ========================================================================
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forAllSystems (
+      system:
+        inputs.alejandra.defaultPackage.${system}
+    );
 
       # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
       # CONFIGURATION
@@ -170,6 +169,6 @@
         hmLib.mkHomeConfiguration value)
       (hmLib.mkHomeConfigs allConfigs);
       # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
-    };
+  };
 }
 # END DOTGIT-SYNC BLOCK MANAGED
