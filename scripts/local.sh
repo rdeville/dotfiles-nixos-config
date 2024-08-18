@@ -8,16 +8,7 @@ SCRIPTPATH="$(
 SCRIPTNAME="$(basename "$0")"
 set -e
 
-declare -A inputs
-# Dotfiles
-# inputs[awesomerc]="${HOME}/git/framagit.org/public/dotfiles/awesome"
-# inputs[direnvrc]="${HOME}/git/framagit.org/public/dotfiles/direnv"
-# inputs[neovimrc]="${HOME}/git/framagit.org/public/dotfiles/neovim"
-# inputs[tmuxrc]="${HOME}/git/framagit.org/public/dotfiles/tmux"
-# inputs[zshrc]="${HOME}/git/framagit.org/public/dotfiles/shell"
-inputs[nixos]="${HOME}/git/framagit.org/public/dotfiles/nixos"
-# Programs
-# inputs["dotgit-sync"]="${HOME}/git/framagit.org/public/programs/dotgit-sync/"
+source "${SCRIPTPATH}/local_inputs.sh"
 
 init_logger() {
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
