@@ -2,8 +2,6 @@
 Check dotgit-sync Update:
   image: alpine:latest
   stage: pre-ci
-  needs:
-  - Lint All Commit Since Default Branch
   variables:
     DOTGIT_BRANCH: chore/dotgit-sync-template-update
     GIT_USER_NAME: Dotgit Sync [bot]
@@ -69,8 +67,6 @@ Check dotgit-sync Update:
         "${DOTGIT_BRANCH}"
     fi
   rules:
-  - if: $CI_PIPELINE_SOURCE == "schedule" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
-  - if: $CI_PIPELINE_SOURCE == "trigger" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   - if: $CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   - when: never
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
