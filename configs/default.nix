@@ -67,7 +67,6 @@
     };
   };
 
->>>>>>> 873f0fa (✨ Add config account default.nix)
   mergeUserWithDefaults = hostname: userCfgs:
   # Must do accounts after merge of presets is done
     builtins.mapAttrs (
