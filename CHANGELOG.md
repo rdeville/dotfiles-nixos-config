@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.2 (2024-08-18)
+
+### 🩹 Patch
+
+  * 🐛(hm/flavors/glab): Update config to set chmod 0600 (!36) by Romain Deville ([`40a8519`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/40a851997ae583192a9988459c564d0ca96c882a))
+  * 🐛(hm/flavors/glab): Update config to set chmod 0600 by Romain Deville ([`b7b5099`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b7b5099f7d87c8f43e72680558a25fedf3aaeb75)) 🔏
+
 ## v0.13.1 (2024-08-18)
 
 ### 🩹 Patch
 
   * 🐛(hm/flavors/glab): Update xdgConfig folder path (!35) by Romain Deville ([`6887b8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6887b8bcaeaabbe364da117a4db18da181ba9bd2))
   * 🐛(hm/flavors/glab): Update xdgConfig folder path by Romain Deville ([`a52b3ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a52b3ad53c8d83dc4ad63768cf66778926ec8d9f)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.13.1 (NO-CI) by Python Semantic Release [bot] ([`4aa73d0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4aa73d03a0157bfb852f64e42c86a03cfe140aef))
 
 ## v0.13.0 (2024-08-17)
 
@@ -107,17 +118,6 @@
 
 ## v0.8.4 (2024-07-25)
 
-### 🩹 Patch
-
-  * 🔧(hm/preset/gui): Update redshift config (!26) by Romain Deville ([`16489d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/16489d40de8f3107998ceb1a3e2d7bc9d66948ce))
-  * 🔧(hm/preset/gui): Update redshift config by Romain Deville ([`03251a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/03251a65b4e1b54ac755f714db9e5255ad27e95c)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.8.4 (NO-CI) by Python Semantic Release [bot] ([`77ea199`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/77ea19928a3bfad5bf0c899912204e7b64ececdb))
-
-## v0.8.3 (2024-07-23)
-
-### 🔊 Others
-
-  * 🔖 v0.8.3 (NO-CI) by Python Semantic Release [bot] ([`f379dc6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f379dc6f5d934f4b390d47b3782abb0088e05968))
