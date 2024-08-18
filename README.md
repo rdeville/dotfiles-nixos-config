@@ -34,7 +34,8 @@
 [changelog_badge]: https://img.shields.io/badge/Changelog-Python%20Semantic%20Release-yellow
 [changelog_badge_url]: https://github.com/python-semantic-release/python-semantic-release
 
-> Repository storing configuration for my computer and users used with NixOS and
+Repository storing configuration for my computer and users used with NixOS and
+Home-Manager
 
 ---
 <!-- BEGIN DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
