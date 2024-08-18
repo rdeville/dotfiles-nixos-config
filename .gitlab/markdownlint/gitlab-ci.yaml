@@ -6,7 +6,6 @@ Lint Markdown:
   - apk add --update --no-cache git nodejs npm
   - npm install markdownlint-cli
   script:
-  - npx markdownlint
   - npx markdownlint-cli ./
   rules:
   - if: $CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
