@@ -1,5 +1,6 @@
 # BEGIN DOTGIT-SYNC BLOCK MANAGED
-nixos-data - Repository storing configuration for my computer and users used with NixOS and Home-Manager
+Nixos Config Data - Repository storing configuration for my computer and users used with NixOS and
+Home-Manager
 
 Copyright © 2024 Romain Deville
 

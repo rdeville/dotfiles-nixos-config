@@ -1,10 +1,9 @@
-# BEGIN DOTGIT-SYNC BLOCK MANAGED
 #!/usr/bin/env bash
 
 # shellcheck disable=SC2034
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1 ; pwd -P )"
 SCRIPTNAME="$(basename "$0")"
-SCRIPT_LOG="${SCRIPTPATH}/${SCRIPTNAME}.log"
+set -e
 
 init_logger(){
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
@@ -17,7 +16,7 @@ init_logger(){
   if ! [[ -f "${log_file}" ]] \
     || { [[ -f "${log_file}" ]] && [[ "${time}" -gt "${delai}" ]]; }
   then
-    if ping -q -c 1 -W 1 framagit.org &> /dev/null
+    if ping -q -c 1 framagit.org &> /dev/null
     then
       # shellcheck disable=SC1090
       source <(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)
@@ -35,17 +34,28 @@ init_logger(){
 }
 
 main(){
-  # TODO Change below substitution if need
-  local DEBUG_LEVEL="${DEVBOX_DEBUG_LEVEL:-INFO}"
+  export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
   init_logger
 
-  _log "INFO" "devbox: Install pre-commit hooks"
-  pre-commit install -f >> "${SCRIPT_LOG}"
-  yq '.repos[].hooks[].stages[]' .pre-commit-config.yaml \
-    | xargs -I type pre-commit install -f -t type >> "${SCRIPT_LOG}"
+  if [[ $(uname) != "Darwin" ]]; then
+    _log "WARNING" "This script is for Darwin (MacOS), nothing to do."
+    return 0
+  fi
+
+  if ! command -q choose &>/dev/null; then
+    _log "ERROR" "This script required \`choose\` to be installed."
+    _log "ERROR" "See: **https://github.com/chipsenkbeil/choose**"
+    return 1
+  fi
+
+  app="$($(which ls) /Applications | grep '.app' | sed -e "s/.app//g" )"
+  app="${app}\n$($(which ls) /Applications/Antidote | grep '.app' | sed -e "s/.app//g" )"
+  app="${app}\n$($(which ls) /System/Applications | grep '.app' | sed -e "s/.app//g" )"
+  choice=$(echo -e "${app}" \
+    | choose -f 'FiraCode Nerd Font Mono' -c 4caf50 -b 1b5e20 -s 20)
+
+  open -na "${choice}.app"
+  return 0
 }
 
-main "$@"
-
-# vim: ft=sh
-# END DOTGIT-SYNC BLOCK MANAGED
+main

@@ -1,0 +1,74 @@
+#!/usr/bin/env bash
+# """TODO
+# """
+
+# shellcheck disable=SC2034
+SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1 ; pwd -P )"
+SCRIPTNAME="$(basename "$0")"
+
+init_logger(){
+  if ping -q -c 1 framagit.org &> /dev/null
+  then
+    # shellcheck disable=SC1090
+    source <(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)
+  else
+    echo -e "\e[1;31m[ERROR]\e[0m\e[31m $0: Not able to ping \e[1;31mframagit.org\e[0m"
+    echo -e "\e[1;31m[ERROR]\e[0m\e[31m $0: Script will now exit\e[0m"
+    exit 1
+  fi
+}
+
+check_dir(){
+  local dir=$1
+  if ! [[ -d "${dir}" ]]
+  then
+    _log "INFO" "Create directory **${dir}**"
+    mkdir -p "${dir}"
+  fi
+}
+
+export_all(){
+  _log "INFO" "Exporting all GPG key for **${mail}** to ${export_dir}"
+  gpg \
+    --export-secret-keys \
+    --armor "${mail}" \
+    > "${export_dir}${mail}.master_private_key.asc"
+  gpg \
+    --export-secret-subkeys \
+    --armor "${mail}" \
+    > "${export_dir}${mail}.subkeys_private.asc"
+  gpg \
+    --export \
+    --armor "${mail}" \
+    > "${export_dir}${mail}.public_keys.asc"
+  gpg \
+    --gen-revoke \
+    --armor "${mail}" \
+    > "${export_dir}${mail}.revocation_certficiate.asc"
+}
+
+main(){
+  local DEBUG_LEVEL="${DEBUG_LEVEL:-"INFO"}"
+  init_logger
+
+  local mail=$1
+  if [[ -z "${mail}" ]]
+  then
+    _log "ERROR" "${SCRIPTNAME}: No mail adress provided"
+    exit 1
+  fi
+
+  if ! gpg -K | grep "${mail}"
+  then
+    _log "ERROR" "${SCRIPTNAME}: No mail ${mail} found in GPG keyring"
+    exit 1
+  fi
+
+  local export_dir="/tmp/export_gpg/"
+  check_dir "${export_dir}"
+  export_all
+}
+
+main "$@"
+
+# vim: ft=sh

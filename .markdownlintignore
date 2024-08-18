@@ -1,6 +1,6 @@
-README.md
 # BEGIN DOTGIT-SYNC BLOCK MANAGED
 # Put outside BLOCK files to be ignored by markdownlint
+README.md
 node_modules
 .venv
 .devbox

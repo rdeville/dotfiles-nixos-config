@@ -49,9 +49,9 @@ prerelease = true
 # BEGIN DOTGIT-SYNC BLOCK EXCLUDED SEMANTIC_CUSTOM_AUTHOR
 env = "SEMANTIC_RELEASE_AUTHOR"
 default = "Python Semantic Release [bot] <code+bot.release@romaindeville.fr>"
+# END DOTGIT-SYNC BLOCK EXCLUDED SEMANTIC_CUSTOM_AUTHOR
 
 [semantic_release.remote]
-# END DOTGIT-SYNC BLOCK EXCLUDED SEMANTIC_CUSTOM_AUTHOR
 # BEGIN DOTGIT-SYNC BLOCK EXCLUDED SEMANTIC_CUSTOM_REMOTE
 name = "origin"
 type = "gitlab"
