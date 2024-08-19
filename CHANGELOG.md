@@ -1,12 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.3 (2024-08-19)
+
+### 🩹 Patch
+
+  * 📌(hm/presets/common): Bump SHA256 for file LS_COLORS (!38) by Romain Deville ([`278827f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/278827facd51001708e73379675f6e30cfe563ce))
+  * 📌(hm/presets/common): Bump SHA256 for file LS_COLORS by Romain Deville ([`17c9092`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/17c9092d9a40bf3fcde8190036e421fea47cb8b1)) 🔏
+
+### 🔊 Others
+
+  * 💚 Fix CI from DGS (!37) by Romain Deville ([`d76f175`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d76f1753e0cda785485d941677dd946721ad5364))
+  * 💚 Fix CI from DGS by Romain Deville ([`72bed7d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72bed7dbd9437ffbdf2ef0da9e481ffa7e09fc9a)) 🔏
+
 ## v0.13.2 (2024-08-18)
 
 ### 🩹 Patch
 
   * 🐛(hm/flavors/glab): Update config to set chmod 0600 (!36) by Romain Deville ([`40a8519`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/40a851997ae583192a9988459c564d0ca96c882a))
   * 🐛(hm/flavors/glab): Update config to set chmod 0600 by Romain Deville ([`b7b5099`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b7b5099f7d87c8f43e72680558a25fedf3aaeb75)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.13.2 (NO-CI) by Python Semantic Release [bot] ([`565ab81`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/565ab811e8cf006a99bcf6568528d64041a75d00))
 
 ## v0.13.1 (2024-08-18)
 
@@ -81,7 +97,6 @@
   * 🎨 Run nix fmt on repos by Romain Deville ([`c9fb6d5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c9fb6d5d5f1461ffdd8feb397e055a84a5be521b)) 🔏
   * 🎨(lib/accounts): Remove useless codes by Romain Deville ([`ee67927`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ee67927682a2dfba0fc7e76d33900309ba4c821a)) 🔏
   * 🔖 v0.10.0 (NO-CI) by Python Semantic Release [bot] ([`c91fc55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c91fc55537fdb67389ec4805286363f4ef76ae85))
-  * 🔥(hm/preset/main): Remove SSH hosts config by Romain Deville ([`bc1934b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bc1934b7ba054d90419960dba17247d53f9a4c7b)) 🔏
 
 ## v0.9.1 (2024-08-12)
 
@@ -99,25 +114,7 @@
 ### ✨ Minor
 
   * ✨(hm/flavors): Add vscode flavors (!28) by Romain Deville ([`36d0d62`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36d0d62a2b8b94c501f68048b1ded1cc54c6141d))
-  * ✨(hm/flavors): Add vscode flavors by Romain Deville ([`a7f7d55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a7f7d55a644eef1eb0e03d416350289db15cd765)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.9.0 (NO-CI) by Python Semantic Release [bot] ([`14309bc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/14309bcb814a53bbbd98e523c13fe9fe0e03f19b))
-
-## v0.8.5 (2024-07-27)
-
-### 🩹 Patch
-
-  * 🐛(hm/preset/common): Fix breaking change in fastfetch (!27) by Romain Deville ([`9485471`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9485471de084d0b4252054451c323e34003d3423))
-  * 🐛(hm/preset/common): Fix breaking change in fastfetch by Romain Deville ([`8aa43b3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8aa43b3323dd4b8a19477383ee1a328762967ede)) 🔏
-
-### 🔊 Others
-
-  * 🔖 v0.8.5 (NO-CI) by Python Semantic Release [bot] ([`023ec00`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/023ec006bbb60114308fa01dcd455a2f7ad41788))
-
-## v0.8.4 (2024-07-25)
-
-### 🔊 Others
-
-  * 🔖 v0.8.4 (NO-CI) by Python Semantic Release [bot] ([`77ea199`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/77ea19928a3bfad5bf0c899912204e7b64ececdb))
