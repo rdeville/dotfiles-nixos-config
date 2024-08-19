@@ -24,7 +24,7 @@ for commit in "${COMMITS[@]}"; do
 	msg="${commit%,*}"
 	files="${commit#*,}"
 	# shellcheck disable=2086
-	git add ${files}
+	git add -f ${files}
 	if ! git commit -m "${msg}"; then
     git commit -m "${msg}"
 	fi
