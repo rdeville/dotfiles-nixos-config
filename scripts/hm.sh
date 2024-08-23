@@ -75,10 +75,16 @@ main(){
 
   if [[ "${action}" == "update" ]]
   then
-    _log "INFO" "Update current flakes before build :"
+    _log "INFO" "Update current flakes before build"
     _log "DEBUG" "${cmd//  /}"
     nix flake update
     action="build"
+  elif [[ "${action}" == "upgrade" ]]
+  then
+    _log "INFO" "Update current flakes before switch"
+    _log "DEBUG" "${cmd//  /}"
+    nix flake update
+    action="switch"
   fi
 
   cmd+=" ${action} \
