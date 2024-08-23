@@ -194,11 +194,11 @@
     "awesome": {
       "flake": false,
       "locked": {
-        "lastModified": 1723984054,
-        "narHash": "sha256-9QPr7bYJw6J3uhkYwhqyBZFmDnzcd/W5Gc3Wr7b+cYc=",
+        "lastModified": 1724178500,
+        "narHash": "sha256-at6Bh02z3frjVY/K7mhOFBiiaNQtW3umur+HO415UnE=",
         "owner": "awesomeWM",
         "repo": "awesome",
-        "rev": "b9d8305639432cc16171e6fe54e6afabb7b6fc1e",
+        "rev": "67f5e7feca3c775faf98f34411ef8f65084868e7",
         "type": "github"
       },
       "original": {
@@ -323,11 +323,11 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1724070736,
-        "narHash": "sha256-iXZYKklAUc8d+iD3PkYRuQzmLML8KaWSGDaqimdxKbI=",
+        "lastModified": 1724251323,
+        "narHash": "sha256-js7AO7k0quRcHb+e/qy2TFZw00yy1oGLhUw182SJLjo=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "da16bbe0c929db112ae9e57a67705396e36d0a27",
+        "rev": "5340ef87de79a5e23414e6707cc90009e97745d5",
         "type": "github"
       },
       "original": {
@@ -433,11 +433,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724016275,
-        "narHash": "sha256-WJnNbE2vSnyHPiqP8Le6uvA+4yzmA3siHhCiNRai0K4=",
+        "lastModified": 1724326538,
+        "narHash": "sha256-62dsqa5Eo2Shp6VcMng+ZS42C4clVb5KUGntwLHyQ38=",
         "ref": "refs/heads/main",
-        "rev": "c1e6d72f099b34881d55244987f08d627748f2a8",
-        "revCount": 145,
+        "rev": "9f444bb1273622339d31887a66836ddd7e14266b",
+        "revCount": 148,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/direnv.git"
       },
@@ -1021,11 +1021,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1723986931,
-        "narHash": "sha256-Fy+KEvDQ+Hc8lJAV3t6leXhZJ2ncU5/esxkgt3b8DEY=",
+        "lastModified": 1724412708,
+        "narHash": "sha256-tLr1k+UZLVumyqXRU8E5lBtLjsvHSy8e2NiamfkjpYg=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "2598861031b78aadb4da7269df7ca9ddfc3e1671",
+        "rev": "b18f3ebc4029c22d437e3424014c8597a8b459a0",
         "type": "github"
       },
       "original": {
@@ -1068,11 +1068,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1724018558,
-        "narHash": "sha256-pvdVNPGWIj697IYimt7JNvp5YOiGbt+mKbTsKeAk+hw=",
+        "lastModified": 1724365268,
+        "narHash": "sha256-Rdjs6ICbnWDuKGmWgUIFagfZkcyanZnt50oWc4Ru+xo=",
         "ref": "refs/heads/main",
-        "rev": "dbfff9ec1fe7d0599bc136bb0186086d7f8b49ad",
-        "revCount": 128,
+        "rev": "0a1dbe71c0471802bbb6cde320d92b85f401e1e2",
+        "revCount": 132,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/neovim.git"
       },
@@ -1483,11 +1483,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1723991338,
-        "narHash": "sha256-Grh5PF0+gootJfOJFenTTxDTYPidA3V28dqJ/WV7iis=",
+        "lastModified": 1724224976,
+        "narHash": "sha256-Z/ELQhrSd7bMzTO8r7NZgi9g5emh+aRKoCdaAv5fiO0=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8a3354191c0d7144db9756a74755672387b702ba",
+        "rev": "c374d94f1536013ca8e92341b540eba4c22f9c62",
         "type": "github"
       },
       "original": {
@@ -1562,11 +1562,11 @@
     },
     "nixpkgs_6": {
       "locked": {
-        "lastModified": 1723938990,
-        "narHash": "sha256-9tUadhnZQbWIiYVXH8ncfGXGvkNq3Hag4RCBEMUk7MI=",
+        "lastModified": 1724316499,
+        "narHash": "sha256-Qb9MhKBUTCfWg/wqqaxt89Xfi6qTD3XpTzQ9eXi3JmE=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "c42fcfbdfeae23e68fc520f9182dde9f38ad1890",
+        "rev": "797f7dc49e0bc7fab4b57c021cdf68f595e47841",
         "type": "github"
       },
       "original": {
