@@ -27,7 +27,7 @@
       url = "github:cachix/devenv";
     };
     alejandra = {
-      url = "github:kamadorueda/alejandra/3.0.0";
+      url = "github:kamadorueda/alejandra";
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
@@ -84,6 +84,16 @@
     };
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
   };
+    # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
+    allConfigs = import ./configs {
+      mkLib = inputs.nixos.homeManagerModules.accountLib;
+      inherit inputs;
+    };
+
+    hmLib = inputs.nixos.homeManagerModules.hmLib {inherit (inputs.nixos) inputs;};
+    nixosLib = inputs.nixos.homeManagerModules.nixosLib {inherit (inputs.nixos) inputs;};
+    # mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
+    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
 
   outputs = inputs @ {self, ...}: let
     pkgsForSystem = system:
@@ -101,17 +111,6 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
-    # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
-    allConfigs = import ./configs {
-      mkLib = inputs.nixos.homeManagerModules.accountLib;
-      inherit inputs;
-    };
-
-    hmLib = inputs.nixos.homeManagerModules.hmLib {inherit (inputs.nixos) inputs;};
-    nixosLib = inputs.nixos.homeManagerModules.nixosLib {inherit (inputs.nixos) inputs;};
-    # mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
-    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
-
   in
     inputs.utils.lib.eachSystem allSystems (
       system: let
