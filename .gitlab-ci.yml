@@ -6,15 +6,16 @@
 # https://docs.gitlab.com/ee/ci/yaml/README.html#workflow
 workflow:
   rules:
-      # Force pipelines when called from upstream CI
-    - if: $CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
       # Do not run CI when commit title have following chars anywhere
       # WIP, NO-CI or 🚧 (gitmoji for "work in progress", aka :construction:)
     - if: $CI_COMMIT_MESSAGE =~ /(wip|WIP|NO-CI|🚧|:construction:)/
       when: never
     - if: $CI_MERGE_REQUEST_TITLE =~ /^(D|d)raft:/
       when: never
-    - when: always
+      # Allow pipelines from any source on default branch
+    - if: $CI_PIPELINE_SOURCE =~ /(merge_request_event|parent_pipeline)/
+    - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+    - when: never
 
 variables:
   # Set CI Feature Flag
