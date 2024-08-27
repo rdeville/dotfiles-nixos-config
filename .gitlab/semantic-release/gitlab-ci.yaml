@@ -22,6 +22,8 @@ Generate Changelog:
       == $CI_DEFAULT_BRANCH
   - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   - when: never
+  - if: $CI_PIPELINE_SOURCE =~ /(parent_pipeline|pipeline)/
+    when: never
 Tag and Release:
   image: alpine:latest
   stage: release
@@ -36,4 +38,6 @@ Tag and Release:
     when: never
   - if: $CI_PIPELINE_SOURCE == "push" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   - when: never
+  - if: $CI_PIPELINE_SOURCE =~ /(parent_pipeline|pipeline)/
+    when: never
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
