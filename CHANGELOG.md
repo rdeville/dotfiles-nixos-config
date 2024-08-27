@@ -1,12 +1,29 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.5 (2024-08-27)
+
+### 🩹 Patch
+
+  * ⬆️ Update templated files from dotgit-sync (!41) by Romain Deville ([`b10bbce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b10bbce299984874d56ae5d7c4e94fa0484cc7f4))
+  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`a4b5300`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a4b5300575ac1db427dbb071600e3598ee85a73a))
+
+### 🔊 Others
+
+  * 👷 Update Gitlab CI from DGS template by Romain Deville ([`876cfa0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/876cfa03b003bd439045da182ffb2eb96db57112)) 🔏
+  * 💚 Fix CI from DGS Template (!40) by Romain Deville ([`0110fd3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0110fd3aa12b5b8f487af1efa42c8106867e3f7c))
+  * 💚 Fix CI from DGS Template by Romain Deville ([`448ff04`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/448ff0435100fbb1e144dddf80d97129a2cc1580)) 🔏
+
 ## v0.13.4 (2024-08-24)
 
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!39) by Romain Deville ([`67717da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/67717da99cd4d073233b0334a656fd6c748a2b33))
   * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`5337b00`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5337b005fabecb5f0ede9d368df5fa683f398145))
+
+### 🔊 Others
+
+  * 🔖 v0.13.4 (NO-CI) by Python Semantic Release [bot] ([`dedde37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dedde37ee36f11dd2d0c3e6513a6334c1cb1a2e3))
 
 ## v0.13.3 (2024-08-19)
 
@@ -91,22 +108,6 @@
 
 ## v0.10.0 (2024-08-15)
 
-### ✨ Minor
-
-  * ✨ Reactivate redshift, upgrade khard config, clean and format (!30) by Romain Deville ([`31e690b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/31e690bd57250f0ed26859ee012193ca8b1e0567))
-  * ✨(hm/presets/gui): Reactivate redshift by Romain Deville ([`41d68e7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/41d68e7e825eac790a9e204324cdeb6c095fe28f)) 🔏
-
 ### 🔊 Others
 
-  * 🎨 Run nix fmt on repos by Romain Deville ([`c9fb6d5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c9fb6d5d5f1461ffdd8feb397e055a84a5be521b)) 🔏
   * 🔖 v0.10.0 (NO-CI) by Python Semantic Release [bot] ([`c91fc55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c91fc55537fdb67389ec4805286363f4ef76ae85))
-
-## v0.9.1 (2024-08-12)
-
-### 🩹 Patch
-
-  * ⬆️(hm/presets/common): Update SHA for LS_COLORS repos (!29) by Romain Deville ([`a318d5a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a318d5a13ec9c48b5d124703b824b03011668b56))
-
-### 🔊 Others
-
-  * 🔖 v0.9.1 (NO-CI) by Python Semantic Release [bot] ([`b5d1b76`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b5d1b768ddaa8a83ed80afad14cb233a451b68c4))
