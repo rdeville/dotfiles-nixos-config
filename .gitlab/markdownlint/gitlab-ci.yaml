@@ -11,4 +11,6 @@ Lint Markdown:
   - if: $CI_PIPELINE_SOURCE == "pipeline" && $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
     when: never
   - when: always
+  - if: $CI_PIPELINE_SOURCE =~ /(parent_pipeline|pipeline)/
+    when: never
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
