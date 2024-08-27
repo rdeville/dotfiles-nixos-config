@@ -1,12 +1,33 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.0 (2024-08-27)
+
+### ✨ Minor
+
+  * ✨(scripts/hm): Add `upgrade` options to hm scripts (update and switch) by Romain Deville ([`b4b7ebb`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b4b7ebb638643b412bc98ae98285c38172973b7d)) 🔏
+
+### 🩹 Patch
+
+  * ✏️(scripts): Update default local_inputs.sh values by Romain Deville ([`284b55f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/284b55fa39fea1116df419c882036dc95aa39b6b)) 🔏
+  * 🐛 Improve dgs_commit script to only add .envrc (!7) by Romain Deville ([`6e37e06`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6e37e068bc8661c72404a3094d0d0414d811e64a))
+  * 🐛 Update dgs_commit script to only add .envrc by Romain Deville ([`6a0d09a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6a0d09a61500dcb0b9a561fc258faa1ded82808b)) 🔏
+  * 📌 Update flake.lock by Romain Deville ([`b18309a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b18309a62e33c79cde13038451502aba14b0776d)) 🔏
+
+### 🔊 Others
+
+  * 💚 Fix CI from DGS Template by Romain Deville ([`3ad81fe`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3ad81fe15cb3a2342917c9d4c1c480fd69465574)) 🔏
+
 ## v0.1.4 (2024-08-23)
 
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!6) by Romain Deville ([`d752348`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/d752348d893b82798c2b4d11d836662972b6f81b))
   * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`87d9acd`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/87d9acd7f7e4114cd37fc418bfc90f0e5171a10f))
+
+### 🔊 Others
+
+  * 🔖 v0.1.4 (NO-CI) by Python Semantic Release [bot] ([`03aa0a0`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/03aa0a05b051dda192c9652dd87ac018151f0b63))
 
 ## v0.1.3 (2024-08-19)
 
@@ -70,13 +91,9 @@
 
 ### 🔊 Others
 
-  * 👷 Add Gitlab CI Build System by Romain Deville ([`13323fd`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/13323fd84154041b01fff6a58c2389b352a7912a)) 🔏
-  * 👷 Add Gitlab CI Build System by Romain Deville ([`13871f9`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/13871f9d8c48ec20ffc6a0e471a3a957b4f8a962)) 🔏
   * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`482bcee`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/482bceeefbb196f5d16b8791915c066e14f48a3c))
   * 🔨 Add flake.nix and flake.lock by Romain Deville ([`df6343f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/df6343fe0a613f18bdf3454bf60c94e98a51adce)) 🔏
-  * 🔨 Add scripts tools by Romain Deville ([`2b5b57f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/2b5b57f67a6e2112ae6226a96df1e9731346c28d)) 🔏
   * 🔨 Add flake.nix and flake.lock by Romain Deville ([`e4bdf16`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e4bdf1603af888fbc5bcad4c1cb97349c18cddae)) 🔏
-  * 🔨 Add scripts tools by Romain Deville ([`5b28c19`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/5b28c192c51795466a2c73a47962678c8aa4fa4b)) 🔏
 
 ## v0.0.0 (2024-08-18)
 
