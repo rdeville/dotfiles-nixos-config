@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.1 (2024-08-27)
+
+### 🩹 Patch
+
+  * ⬆️ Update templated files from dotgit-sync (!8) by Romain Deville ([`6b79bd6`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6b79bd61f9d83af9bfbd700079382b82ce764e5d))
+  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`863451a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/863451a7f97f6590ee3a89704be016cf544e2ff1))
+
+### 🔊 Others
+
+  * 👷 Update Gitlab CI from DGS template by Romain Deville ([`56ada5f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/56ada5f7cc140a4c0555517ba0e30a13a953b85a)) 🔏
+
 ## v0.2.0 (2024-08-27)
 
 ### ✨ Minor
@@ -17,6 +28,7 @@
 ### 🔊 Others
 
   * 💚 Fix CI from DGS Template by Romain Deville ([`3ad81fe`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3ad81fe15cb3a2342917c9d4c1c480fd69465574)) 🔏
+  * 🔖 v0.2.0 (NO-CI) by Python Semantic Release [bot] ([`e4f8617`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e4f861724d087052d5d989d07a887b93d4be5692))
 
 ## v0.1.4 (2024-08-23)
 
@@ -78,16 +90,12 @@
   * ✨ Add config secret rey rdeville by Romain Deville ([`dbab7b0`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/dbab7b059a0aa1c0e2500a18e987727c20073a63)) 🔏
   * ✨ Add config account default.nix by Romain Deville ([`9b4425b`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/9b4425bb64b07ea2b1c80063260545d45ebc5d9f)) 🔏
   * ✨ Add config accounts rdeville by Romain Deville ([`6b7a72c`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6b7a72ce3c0883d2bcc1333dc52dd5bfa48225da)) 🔏
-  * ✨ Add config host default by Romain Deville ([`06c4944`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/06c4944dcda1bd238fc3074f42df50bc3b7522b1)) 🔏
-  * ✨ Add config host rey by Romain Deville ([`46fb5e5`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/46fb5e57bd3e7187fd76cf9dc25d84b4185ff1e2)) 🔏
   * ✨ Initialise repo and add host configuration (!1) by Romain Deville ([`3f6f353`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3f6f3538f2afcb2c2c5b6c525cf2d43308d0c6ed))
   * ✨ Add config default.nix by Romain Deville ([`83dce2d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/83dce2dd4ea4ffdb7f30ae6fb23f0ceff8d7bd8f)) 🔏
   * ✨ Add config vms by Romain Deville ([`f314bf2`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/f314bf2a0a6919b4e27afca68318028215a3c900)) 🔏
   * ✨ Add config secret rey rdeville by Romain Deville ([`d571817`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/d571817fc090d110dfef56a10e60531a716a99b3)) 🔏
   * ✨ Add config account default.nix by Romain Deville ([`1ef3de3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/1ef3de3f1181c22a6dbcd784af40bca2afc988a3)) 🔏
   * ✨ Add config accounts rdeville by Romain Deville ([`4ef6b5a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/4ef6b5a3d63d2c9625d758c54288e74ade9f37fd)) 🔏
-  * ✨ Add config host default by Romain Deville ([`e29c62d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e29c62de95e853c6bd0b464f85921ab66f7e3802)) 🔏
-  * ✨ Add config host rey by Romain Deville ([`ed78691`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ed78691dc03f7da09afeda68432b02175352a3b9)) 🔏
 
 ### 🔊 Others
 
