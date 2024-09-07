@@ -10,7 +10,6 @@
       smartmontools # Disk Health
       usbutils # Manage USB
       xdg-utils # Environment integration
-      zsh # Shell Emulator
       dbus
       devenv
       tig # Text Iterface Git

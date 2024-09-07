@@ -9,7 +9,6 @@
       git # Version Control
       htop # Process Manager
       killall # Process Killer
-      zsh # Shell Emulator
       bc # Bash Calculator
     ];
   };

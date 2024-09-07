@@ -1,10 +1,10 @@
 {pkgs, ...}: {
   home = {
     packages = with pkgs; [
-      hollywood
+      alejandra
       discord
-      whatsapp-for-linux
       signal-desktop
+      whatsapp-for-linux
     ];
   };
 }

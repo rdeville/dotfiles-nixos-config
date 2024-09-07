@@ -382,7 +382,7 @@
       };
       delta = {
         # DETLA CONFIG (Git Pager config when using git diff)
-        enable = false;
+        enable = true;
         options = {
           dark = true;
           line-numbers = true;
