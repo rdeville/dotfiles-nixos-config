@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.0 (2024-09-07)
+
+### ✨ Minor
+
+  * ✨ Update packages list installed (!42) by Romain Deville ([`f9f6466`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9f646690f218d5aa0b1414aa14bf909d4a20604))
+  * ✨(hm/presets/gui): Add arandr to pkgs by Romain Deville ([`65224d3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65224d3c2bbb0eb81076880bcc996eb24eb783a6)) 🔏
+  * ✨(hm/presets/main): Add alejandra to pkgs by Romain Deville ([`b7326f0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b7326f0a734a4694e4f871858ca1bba73dc89b9c)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`f336346`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f3363460c15d0465219e55717f7c0788f44605d6)) 🔏
+  * 🚩(hm/presets/minimal): Enable delta as git diff pager by Romain Deville ([`5594c11`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5594c115de3e090485196bfa494b74202db82139)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/presets/common): Remove zsh from package list by Romain Deville ([`c533dab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c533dab394ea9eb411453a337b8d8e0ead66df5a)) 🔏
+
 ## v0.13.5 (2024-08-27)
 
 ### 🩹 Patch
@@ -13,6 +30,7 @@
   * 👷 Update Gitlab CI from DGS template by Romain Deville ([`876cfa0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/876cfa03b003bd439045da182ffb2eb96db57112)) 🔏
   * 💚 Fix CI from DGS Template (!40) by Romain Deville ([`0110fd3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0110fd3aa12b5b8f487af1efa42c8106867e3f7c))
   * 💚 Fix CI from DGS Template by Romain Deville ([`448ff04`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/448ff0435100fbb1e144dddf80d97129a2cc1580)) 🔏
+  * 🔖 v0.13.5 (NO-CI) by Python Semantic Release [bot] ([`36f3603`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36f360386c372618a476b0a2b5563da61e6546ff))
 
 ## v0.13.4 (2024-08-24)
 
@@ -97,17 +115,6 @@
 
 ## v0.11.0 (2024-08-17)
 
-### ✨ Minor
-
-  * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken (!31) by Romain Deville ([`85a48d2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/85a48d2879bc2dd0ad7b0638532b1d5b1a64b11a))
-  * ✨(hm/presets/minimal): Add difftastic/delta switch &#39;cos delta build broken by Romain Deville ([`2a7f226`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a7f2260817fc3dae1957ab5e08c4d76a0301b97)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.11.0 (NO-CI) by Python Semantic Release [bot] ([`9266799`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92667992328a3e6f44d614f57ac7c38c63dc9dc0))
-
-## v0.10.0 (2024-08-15)
-
-### 🔊 Others
-
-  * 🔖 v0.10.0 (NO-CI) by Python Semantic Release [bot] ([`c91fc55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c91fc55537fdb67389ec4805286363f4ef76ae85))
