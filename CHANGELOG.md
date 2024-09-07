@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.1 (2024-09-07)
+
+### 🩹 Patch
+
+  * 🔧(hm/presets/common): Update mrconfig (!43) by Romain Deville ([`25dada6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25dada6f8b0da57f06674a740245092889f94168))
+  * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`9039b19`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9039b19019086983f099f3a74fb5ee44584265ed)) 🔏
+
 ## v0.14.0 (2024-09-07)
 
 ### ✨ Minor
@@ -16,6 +23,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.14.0 (NO-CI) by Python Semantic Release [bot] ([`43493f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/43493f51df0a1a7988bdbfe16f52cdd81b6b3797))
   * 🔥(hm/presets/common): Remove zsh from package list by Romain Deville ([`c533dab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c533dab394ea9eb411453a337b8d8e0ead66df5a)) 🔏
 
 ## v0.13.5 (2024-08-27)
@@ -104,17 +112,6 @@
 
 ## v0.12.0 (2024-08-17)
 
-### ✨ Minor
-
-  * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config (!32) by Romain Deville ([`9aec0a2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9aec0a20d9891b1dd777602d04aca78130ff1d8d))
-  * ✨(hm/presets/minimal): Add tmux pkgs and tmuxp with config by Romain Deville ([`a8ed045`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a8ed045fc8ffebb3d0de5114a26b55cc49bb47d7)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.12.0 (NO-CI) by Python Semantic Release [bot] ([`42e7d8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/42e7d8ca12d80a089802afea4a7978d682977e06))
-
-## v0.11.0 (2024-08-17)
-
-### 🔊 Others
-
-  * 🔖 v0.11.0 (NO-CI) by Python Semantic Release [bot] ([`9266799`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92667992328a3e6f44d614f57ac7c38c63dc9dc0))
