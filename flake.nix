@@ -84,6 +84,11 @@
     };
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
   };
+  outputs = inputs @ {self, ...}: let
+    pkgsForSystem = system:
+      import inputs.nixpkgs {
+        inherit system;
+      };
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
     allConfigs = import ./configs {
       mkLib = inputs.nixos.homeManagerModules.accountLib;
@@ -94,13 +99,6 @@
     nixosLib = inputs.nixos.homeManagerModules.nixosLib {inherit (inputs.nixos) inputs;};
     # mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
-
-  outputs = inputs @ {self, ...}: let
-    pkgsForSystem = system:
-      import inputs.nixpkgs {
-        inherit system;
-      };
-
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
