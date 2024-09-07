@@ -8,16 +8,18 @@ lib =
     source "${file}"
   done
 
-pull          = mr_update "$@"
-update        = mr_update "$@"
-push          = mr_push "$@"
-status        = mr_status "$@"
-setup_mirror  = mr_setup_mirror "$@"
-publis        = mr_publish "$@"
-remote        = git remote -v "$@"
-branch        = git branch "$@"
-glab          = glab "$@"
-git           = git "$@"
+pull         = mr_update "$@"
+update       = mr_update "$@"
+push         = mr_push "$@"
+status       = mr_status "$@"
+setup_mirror = mr_setup_mirror "$@"
+publis       = mr_publish "$@"
+remote       = git remote -v "$@"
+branch       = git branch "$@"
+glab         = glab "$@"
+gh           = gh "$@"
+git          = git "$@"
+cmd          = "$@"
 
 # Teach mr how to `mr gc` in git repos.
 git_gc = git gc "$@"
