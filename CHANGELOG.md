@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.2 (2024-09-08)
+
+### 🩹 Patch
+
+  * 🐛(hm/prestets/common): Fix mrconfig file (!44) by Romain Deville ([`7f1d0b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f1d0b71b97ca928cb179ea73f9e3f9aa832003c))
+  * 🐛(hm/prestets/common): Fix mrconfig file by Romain Deville ([`7248c87`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7248c87203e964fb71754e596ea8c493865ec2cc)) 🔏
+
 ## v0.14.1 (2024-09-07)
 
 ### 🩹 Patch
 
   * 🔧(hm/presets/common): Update mrconfig (!43) by Romain Deville ([`25dada6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25dada6f8b0da57f06674a740245092889f94168))
   * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`9039b19`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9039b19019086983f099f3a74fb5ee44584265ed)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.14.1 (NO-CI) by Python Semantic Release [bot] ([`3a04236`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3a0423664054b51159c44b3a149c6b662b841f45))
 
 ## v0.14.0 (2024-09-07)
 
@@ -91,8 +102,6 @@
 ### ✨ Minor
 
   * ✨(hm/flavors): Add gh and glab CLI flavors (!34) by Romain Deville ([`ec0b561`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ec0b5612ef2ffbd0a4f660c93f13653fe43534ee))
-  * ✨(hm/flavors/glab): Add glab flavors by Romain Deville ([`8b0259f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8b0259f42fcc89ebde3a9c7faa7eccce027e65f3)) 🔏
-  * ✨(hm/flavors/gh): Add gh flavors by Romain Deville ([`f934bc9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f934bc926ff22b438b82e35515ce7b47456a5b84)) 🔏
 
 ### 🔊 Others
 
@@ -101,17 +110,6 @@
 
 ## v0.12.1 (2024-08-17)
 
-### 🩹 Patch
-
-  * 🐛(hm/presets/minimal): Fix tmuxp config (!33) by Romain Deville ([`b3c0873`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b3c08730c604ce394ca2ff75b5a88f8860bf3b2e))
-  * 🐛(hm/presets/minimal): Fix tmuxp config by Romain Deville ([`4152a2d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4152a2dab4dd99696eb9558b8ba7f7e8b027714c)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.12.1 (NO-CI) by Python Semantic Release [bot] ([`6b32d6d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b32d6db729096a3824e5a3e0e52d7cedf396587))
-
-## v0.12.0 (2024-08-17)
-
-### 🔊 Others
-
-  * 🔖 v0.12.0 (NO-CI) by Python Semantic Release [bot] ([`42e7d8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/42e7d8ca12d80a089802afea4a7978d682977e06))
