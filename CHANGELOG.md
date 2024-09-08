@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.3 (2024-09-08)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock (!45) by Romain Deville ([`cc5748d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cc5748d5bdc681601d43179069eddeb00fa55cdf))
+  * ⬆️ Update flake.lock by Romain Deville ([`8e5bde7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8e5bde72bf467a7e9d5003140cb89a204360f972)) 🔏
+
 ## v0.14.2 (2024-09-08)
 
 ### 🩹 Patch
 
   * 🐛(hm/prestets/common): Fix mrconfig file (!44) by Romain Deville ([`7f1d0b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f1d0b71b97ca928cb179ea73f9e3f9aa832003c))
   * 🐛(hm/prestets/common): Fix mrconfig file by Romain Deville ([`7248c87`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7248c87203e964fb71754e596ea8c493865ec2cc)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.14.2 (NO-CI) by Python Semantic Release [bot] ([`1a8edbe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1a8edbec1309e8963a7eb00bcd38ee8081be7316))
 
 ## v0.14.1 (2024-09-07)
 
@@ -99,17 +110,6 @@
 
 ## v0.13.0 (2024-08-17)
 
-### ✨ Minor
-
-  * ✨(hm/flavors): Add gh and glab CLI flavors (!34) by Romain Deville ([`ec0b561`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ec0b5612ef2ffbd0a4f660c93f13653fe43534ee))
-
 ### 🔊 Others
 
-  * 🎨(hm/presets): Run nix fmt by Romain Deville ([`e16479c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e16479cc1efa64ff64f912a179dfcb209feea477)) 🔏
   * 🔖 v0.13.0 (NO-CI) by Python Semantic Release [bot] ([`f7990fa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7990fa5d1be58986c9260f8b5edeb1f5e731cea))
-
-## v0.12.1 (2024-08-17)
-
-### 🔊 Others
-
-  * 🔖 v0.12.1 (NO-CI) by Python Semantic Release [bot] ([`6b32d6d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b32d6db729096a3824e5a3e0e52d7cedf396587))
