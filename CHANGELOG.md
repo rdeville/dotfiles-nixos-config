@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.1 (2024-09-09)
+
+### 🩹 Patch
+
+  * 🐛(hm/flavors): Fix terraform settings (!47) by Romain Deville ([`7f667df`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f667dfdd2aed7c89b0d830c09dc25d031f5bab8))
+  * 🐛(hm/flavors): Fix terraform settings by Romain Deville ([`1e14228`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1e14228b7e31e4a36e272271e24caa489138b9c1)) 🔏
+
 ## v0.15.0 (2024-09-09)
 
 ### ✨ Minor
@@ -10,6 +17,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.15.0 (NO-CI) by Python Semantic Release [bot] ([`a0a95be`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a0a95be69e75d1dfa135dd6d894fd2ac4b3cb6d3))
   * 🔥(hm/presets/main): Remove XDG terraformrc by Romain Deville ([`c4aa7a1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4aa7a14f254fdc694495a7fc3805f64a9ba5ca2)) 🔏
 
 ## v0.14.3 (2024-09-08)
@@ -103,17 +111,6 @@
 
 ## v0.13.2 (2024-08-18)
 
-### 🩹 Patch
-
-  * 🐛(hm/flavors/glab): Update config to set chmod 0600 (!36) by Romain Deville ([`40a8519`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/40a851997ae583192a9988459c564d0ca96c882a))
-  * 🐛(hm/flavors/glab): Update config to set chmod 0600 by Romain Deville ([`b7b5099`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b7b5099f7d87c8f43e72680558a25fedf3aaeb75)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.13.2 (NO-CI) by Python Semantic Release [bot] ([`565ab81`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/565ab811e8cf006a99bcf6568528d64041a75d00))
-
-## v0.13.1 (2024-08-18)
-
-### 🔊 Others
-
-  * 🔖 v0.13.1 (NO-CI) by Python Semantic Release [bot] ([`4aa73d0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4aa73d03a0157bfb852f64e42c86a03cfe140aef))
