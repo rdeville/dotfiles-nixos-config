@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.4 (2024-09-09)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`1ad2db3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/1ad2db371fcd97b8e1e685f0aa35fb69acdabde5)) 🔏
+  * 🔧(cfg/hosts/rey): Enable TF flavors for @rdeville (!11) by Romain Deville ([`a162a54`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/a162a54100544d0fa45e0c5522e76c96dff00410))
+  * 🔧(cfg/hosts/rey): Enable TF flavors for @rdeville by Romain Deville ([`b3712f7`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b3712f7e3bddce2094a824fce223343176578ba5)) 🔏
+
 ## v0.2.3 (2024-09-09)
 
 ### 🩹 Patch
@@ -13,6 +21,10 @@
   * ✏️(config/hosts/rey): Format file by Romain Deville ([`6523c4e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6523c4e0bcf0692573efae077c482bfbb7bf0b7d)) 🔏
   * ⬆️ Update flake.lock by Romain Deville ([`5884369`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/58843693fb704e43ed331da213a488ba1fefd1fb)) 🔏
   * ⬆️ Update flake.lock by Romain Deville ([`b15e063`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b15e063da3980c7c885be3848a0d60186a4fc2c1)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.2.3 (NO-CI) by Python Semantic Release [bot] ([`051a584`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/051a584e8085866baef424e2625093a4e03591fe))
 
 ## v0.2.2 (2024-09-07)
 
@@ -110,18 +122,8 @@
 
   * ✨ First version of my private NixOS/HM Config (!2) by Romain Deville ([`34e2b74`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/34e2b746af6a243d91d118eb11983c00274a3eef))
   * ✨(hm): Add HM default.nix by Romain Deville ([`838e427`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/838e4273f07221bf1bb92e4857d3134fa6a6ad57)) 🔏
-  * ✨(hm/presets/main): Add SSH host config by Romain Deville ([`b11ef5e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b11ef5efd308b0932083974844ef078815943062)) 🔏
-  * ✨(hm/flavors/bin): Add bin flavors to setup my scripts by Romain Deville ([`7a26ac9`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/7a26ac9985dfbc57b567e7a2d871e7c9222eb3b6)) 🔏
   * ✨ Initialise repo and add host configuration (!1) by Romain Deville ([`3f6f353`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3f6f3538f2afcb2c2c5b6c525cf2d43308d0c6ed))
-  * ✨ Add config default.nix by Romain Deville ([`83dce2d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/83dce2dd4ea4ffdb7f30ae6fb23f0ceff8d7bd8f)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`482bcee`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/482bceeefbb196f5d16b8791915c066e14f48a3c))
-  * 🔨 Add flake.nix and flake.lock by Romain Deville ([`e4bdf16`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e4bdf1603af888fbc5bcad4c1cb97349c18cddae)) 🔏
-
-## v0.0.0 (2024-08-18)
-
-### 🔊 Others
-
-  * 🎉 Initial Commit by Romain Deville ([`1312109`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/1312109f5250423f42d18dfa0805e4df872a2758)) 🔏
