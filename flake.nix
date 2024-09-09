@@ -48,39 +48,58 @@
         utils.follows = "utils";
         home-manager.follows = "home-manager";
         nixpkgs-unstable.follows = "nixpkgs-unstable";
+        alejandra.follows = "alejandra";
       };
     };
     # My personal dotfiles flakes
     awesomerc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/awesome.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     direnvrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/direnv.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     neovimrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/neovim.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     tmuxrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/tmux.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     zshrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/shell.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     # My programs I want on my computer
     dotgit-sync = {
       url = "git+https://framagit.org/rdeville-public/programs/dotgit-sync.git";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.utils.follows = "utils";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        utils.follows = "utils";
+        alejandra.follows = "alejandra";
+      };
     };
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
   };
@@ -128,15 +147,15 @@
         };
       }
     )
-  // {
-    # TOOLING
-    # ========================================================================
-    # Formatter for your nix files, available through 'nix fmt'
-    # Other options beside 'alejandra' include 'nixpkgs-fmt'
-    formatter = forAllSystems (
-      system:
-        inputs.alejandra.defaultPackage.${system}
-    );
+    // {
+      # TOOLING
+      # ========================================================================
+      # Formatter for your nix files, available through 'nix fmt'
+      # Other options beside 'alejandra' include 'nixpkgs-fmt'
+      formatter = forAllSystems (
+        system:
+          inputs.alejandra.defaultPackage.${system}
+      );
 
       # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
       # CONFIGURATION
@@ -166,6 +185,6 @@
         hmLib.mkHomeConfiguration value)
       (hmLib.mkHomeConfigs allConfigs);
       # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
-  };
+    };
 }
 # END DOTGIT-SYNC BLOCK MANAGED
