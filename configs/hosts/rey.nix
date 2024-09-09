@@ -64,18 +64,21 @@ in {
           bluetooth = {
             enable = true;
           };
+          gh = {
+            enable = true;
+          };
+          glab = {
+            enable = true;
+          };
           spotify-player = {
             enable = true;
             client_id = "5ac4a3019524480dbd73b7bf729cc832";
             audio_backend = "pulseaudio";
           };
+          terraform = {
+            enable = true;
+          };
           vscode = {
-            enable = true;
-          };
-          gh = {
-            enable = true;
-          };
-          glab = {
             enable = true;
           };
         };
