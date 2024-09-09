@@ -1,6 +1,6 @@
 {
   userCfg,
-pkgs,
+  pkgs,
   lib,
   ...
 }: let
