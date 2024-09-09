@@ -9,16 +9,15 @@
         ]
       },
       "locked": {
-        "lastModified": 1660592437,
-        "narHash": "sha256-xFumnivtVwu5fFBOrTxrv6fv3geHKF04RGP23EsDVaI=",
+        "lastModified": 1719514321,
+        "narHash": "sha256-ys1nJdZ8zB8JlpUbQmnj0hZalg03bEPgQdZN30DhETE=",
         "owner": "kamadorueda",
         "repo": "alejandra",
-        "rev": "e7eac49074b70814b542fee987af2987dd0520b5",
+        "rev": "d7552fef2ccf1bbf0d36b27f6fddb19073f205b7",
         "type": "github"
       },
       "original": {
         "owner": "kamadorueda",
-        "ref": "3.0.0",
         "repo": "alejandra",
         "type": "github"
       }
