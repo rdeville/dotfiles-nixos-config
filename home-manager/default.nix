@@ -1,4 +1,8 @@
-{userCfg, mkLib,...}: let
+{
+  userCfg,
+  mkLib,
+  ...
+}: let
   main =
     if userCfg.presets.main
     then [./presets/main]
