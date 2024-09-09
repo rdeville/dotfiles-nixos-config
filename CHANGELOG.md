@@ -1,12 +1,27 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.0 (2024-09-09)
+
+### ✨ Minor
+
+  * ✨ HM add flavor terraform (!46) by Romain Deville ([`ff41a7e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff41a7e5ccdd5775c93754d4c0071124d91708c3))
+  * ✨(hm/flavors): Add terraform flavors by Romain Deville ([`9868739`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9868739bfc813ce2a4071f5d6f1a83b00c536066)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/presets/main): Remove XDG terraformrc by Romain Deville ([`c4aa7a1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4aa7a14f254fdc694495a7fc3805f64a9ba5ca2)) 🔏
+
 ## v0.14.3 (2024-09-08)
 
 ### 🩹 Patch
 
   * ⬆️ Update flake.lock (!45) by Romain Deville ([`cc5748d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cc5748d5bdc681601d43179069eddeb00fa55cdf))
   * ⬆️ Update flake.lock by Romain Deville ([`8e5bde7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8e5bde72bf467a7e9d5003140cb89a204360f972)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.14.3 (NO-CI) by Python Semantic Release [bot] ([`b541701`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b5417011abd5aaec297dc8a43017b4f13d079d2e))
 
 ## v0.14.2 (2024-09-08)
 
@@ -99,17 +114,6 @@
 
 ## v0.13.1 (2024-08-18)
 
-### 🩹 Patch
-
-  * 🐛(hm/flavors/glab): Update xdgConfig folder path (!35) by Romain Deville ([`6887b8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6887b8bcaeaabbe364da117a4db18da181ba9bd2))
-  * 🐛(hm/flavors/glab): Update xdgConfig folder path by Romain Deville ([`a52b3ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a52b3ad53c8d83dc4ad63768cf66778926ec8d9f)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.13.1 (NO-CI) by Python Semantic Release [bot] ([`4aa73d0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4aa73d03a0157bfb852f64e42c86a03cfe140aef))
-
-## v0.13.0 (2024-08-17)
-
-### 🔊 Others
-
-  * 🔖 v0.13.0 (NO-CI) by Python Semantic Release [bot] ([`f7990fa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7990fa5d1be58986c9260f8b5edeb1f5e731cea))
