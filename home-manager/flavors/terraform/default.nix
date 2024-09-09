@@ -25,12 +25,6 @@ in {
       ];
     };
 
-    nix = {
-      settings = {
-        allowUnfree = true;
-      };
-    };
-
     xdg = {
       configFile = {
         "terraform/terraformrc" = {
