@@ -1,12 +1,29 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.3 (2024-09-09)
+
+### 🩹 Patch
+
+  * ✏️ Format most files &amp; update lock (!10) by Romain Deville ([`ad885ef`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ad885ef58c0e4df0d690796eb47a382b9101c6da))
+  * ✏️ Format devenv.nix by Romain Deville ([`570a7a1`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/570a7a1088fd6eed2ba2689a43d292a9f96c1cf5)) 🔏
+  * ✏️(hm/flavors): Format nix files by Romain Deville ([`264763b`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/264763bbe2e70fbcd902fa4c6fef40068875eb49)) 🔏
+  * ✏️(hm): Format default.nix by Romain Deville ([`ae0b778`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ae0b778363c72762f329e58a820266e98db1bb73)) 🔏
+  * ✏️ Format flake.nix by Romain Deville ([`730f6e0`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/730f6e09fd87af3367a9f895eb5f19a7df05021d)) 🔏
+  * ✏️(config/hosts/rey): Format file by Romain Deville ([`6523c4e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6523c4e0bcf0692573efae077c482bfbb7bf0b7d)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`5884369`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/58843693fb704e43ed331da213a488ba1fefd1fb)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`b15e063`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b15e063da3980c7c885be3848a0d60186a4fc2c1)) 🔏
+
 ## v0.2.2 (2024-09-07)
 
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!9) by Romain Deville ([`b7b5ff3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b7b5ff36f6ab5ba2216ec6df5a58167db86ff29c))
   * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`875196d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/875196d0bd15e9c1c0c878932dc7bc05d0f40850))
+
+### 🔊 Others
+
+  * 🔖 v0.2.2 (NO-CI) by Python Semantic Release [bot] ([`60629ec`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/60629ecb8d053ebed30b8bfcecac17bd111673c1))
 
 ## v0.2.1 (2024-08-27)
 
@@ -95,16 +112,12 @@
   * ✨(hm): Add HM default.nix by Romain Deville ([`838e427`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/838e4273f07221bf1bb92e4857d3134fa6a6ad57)) 🔏
   * ✨(hm/presets/main): Add SSH host config by Romain Deville ([`b11ef5e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b11ef5efd308b0932083974844ef078815943062)) 🔏
   * ✨(hm/flavors/bin): Add bin flavors to setup my scripts by Romain Deville ([`7a26ac9`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/7a26ac9985dfbc57b567e7a2d871e7c9222eb3b6)) 🔏
-  * ✨ Add config secret rey rdeville by Romain Deville ([`dbab7b0`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/dbab7b059a0aa1c0e2500a18e987727c20073a63)) 🔏
   * ✨ Initialise repo and add host configuration (!1) by Romain Deville ([`3f6f353`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3f6f3538f2afcb2c2c5b6c525cf2d43308d0c6ed))
   * ✨ Add config default.nix by Romain Deville ([`83dce2d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/83dce2dd4ea4ffdb7f30ae6fb23f0ceff8d7bd8f)) 🔏
-  * ✨ Add config vms by Romain Deville ([`f314bf2`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/f314bf2a0a6919b4e27afca68318028215a3c900)) 🔏
-  * ✨ Add config secret rey rdeville by Romain Deville ([`d571817`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/d571817fc090d110dfef56a10e60531a716a99b3)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`482bcee`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/482bceeefbb196f5d16b8791915c066e14f48a3c))
-  * 🔨 Add flake.nix and flake.lock by Romain Deville ([`df6343f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/df6343fe0a613f18bdf3454bf60c94e98a51adce)) 🔏
   * 🔨 Add flake.nix and flake.lock by Romain Deville ([`e4bdf16`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e4bdf1603af888fbc5bcad4c1cb97349c18cddae)) 🔏
 
 ## v0.0.0 (2024-08-18)
