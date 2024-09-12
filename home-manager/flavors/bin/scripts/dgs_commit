@@ -14,6 +14,7 @@ COMMITS=(
   "🔧 Add commitlint config from DGS template,.commitlintrc.ts"
   "🔧 Add markdownlint config from DGS template,.markdownlint.jsonc .markdownlintignore"
   "🔧 Add semantic release config from DGS template,.release/ releaserc.toml"
+  "🔧 Add terraform-docs config from DGS template,.terraform-docs.yml"
   "👷 Add Gitlab CI from DGS template,.gitlab-ci.yml .gitlab/"
   "🔨 Add devbox config from DGS template,devbox.* devbox/"
 )
@@ -29,7 +30,7 @@ for commit in "${COMMITS[@]}"; do
 	fi
 done
 
-git add .envrc
+git add -f .envrc
 msg="🔨 Add .envrc from DGS template"
 if ! git commit -m "${msg}"; then
   git commit -m "${msg}"
