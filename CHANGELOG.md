@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.6 (2024-09-12)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock (!13) by Romain Deville ([`839bb32`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/839bb3210b2004b4ff389283898bfee9402a5a80))
+  * ⬆️ Update flake.lock by Romain Deville ([`6b9c7b6`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6b9c7b6ecb1f482b5016124180b21b92fe9a92e8)) 🔏
+
 ## v0.2.5 (2024-09-12)
 
 ### 🩹 Patch
 
   * ⚡️ Improve dgs_commit script with tf-docs config (!12) by Romain Deville ([`16a3819`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/16a381941d9026ab8b7192ea6ae818c4dd1cb1b3))
   * ⚡️ Improve dgs_commit script with tf-docs config by Romain Deville ([`c672b33`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/c672b33afbb7a42db3099d731fee3be11c4fad66)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.2.5 (NO-CI) by Python Semantic Release [bot] ([`69f2073`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/69f2073ad7c631fc14b1c5009f04ae5d7c67f857))
 
 ## v0.2.4 (2024-09-09)
 
@@ -107,26 +118,13 @@
 
   * ⚡️ Improve scripts and update config from DGS (!4) by Romain Deville ([`82cd728`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/82cd728824e46277ae243c9a906dc4cd9b007cd6))
   * ⚡️(scripts): Improve scripts allowing to build locally by Romain Deville ([`eee9b1f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/eee9b1f3d10b0da26524a8c243d22881c664450c)) 🔏
-  * 📦️ Update flake.* from DGS by Romain Deville ([`e416036`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e416036403c90b24e2d11dc011aa7cf7c755cf61)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.1.2 (NO-CI) by Python Semantic Release [bot] ([`e7d6762`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e7d67621f5685a40e845f7303dc094e643ad9618))
-  * 🔨 Update devenv from DGS by Romain Deville ([`680d926`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/680d926e0f26751df59f1080d226e4e29bb9861b)) 🔏
 
 ## v0.1.1 (2024-08-18)
-
-### 🩹 Patch
-
-  * ✏️ Fix typos in configs/default.nix (!3) by Romain Deville ([`522349e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/522349e597d7ecf3202e94834878f3e0e793c2ed))
-  * ✏️ Fix typos in configs/default.nix by Romain Deville ([`c58343f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/c58343f9bd58147355b74ee896b6e6ecdb820c6f)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.1.1 (NO-CI) by Python Semantic Release [bot] ([`8b77934`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/8b77934e22e7684ad93b2d7684de05055a3cdd6a))
-
-## v0.1.0 (2024-08-18)
-
-### 🔊 Others
-
-  * 🔖 v0.1.0 (NO-CI) by Python Semantic Release [bot] ([`482bcee`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/482bceeefbb196f5d16b8791915c066e14f48a3c))
