@@ -96,11 +96,8 @@ main() {
     cmd+=" -k '${KEEPASS_KEYFILE}'"
   fi
 
-  if [[ -n "${KEEPASS_YUBIKEY}" && ! -f "${KEEPASS_YUBIKEY}" ]]; then
-    _log "ERROR" "File specified with variable **\`KEEPASS_YUBIKEY\`** must exists to continue !"
-    return 2
-  else
-    cmd+=" -y '${KEEPASS_YUBIKEY}'"
+  if [[ -n "${KEEPASS_YUBIKEY}" ]]; then
+    cmd+=" -y '${KEEPASS_YUBIKEY}:$(ykman list -s | head -1)'"
   fi
 
   if [[ "${action}" =~ (exit|quit|close|open) ]]; then
