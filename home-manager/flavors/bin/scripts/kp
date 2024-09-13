@@ -19,7 +19,7 @@
 #   | :---------------: | :------------------------------------------------------------- |
 #   | `KEEPASS_DB`      | Path to a keepass database, that must be unlocked by a keyfile |
 #   | `KEEPASS_KEYFILE` | Path to a keyfile unlocking the keepass database               |
-#
+#   | `KEEPASS_YUBIKEY` | Yubikey slot to use                                            |
 #
 #   `keepassxc-cli` is the command line interface for the KeePassXC password
 #   manager. It provides the abil‐ ity to query and modify the entries of a
@@ -69,16 +69,15 @@ main() {
   # Compute the command to execute and execute it
   local cmd="keepassxc-cli ${action} --no-password"
 
-
   # Remove action from arguments
   shift
 
   # Ensure required variables are set and action is valid
   if [[ -z ${KEEPASS_DB} ]]; then
-    _log "ERROR" "Variable **\`KEEPASS_KEYFILE\`** must be set to continue !"
+    _log "ERROR" "Variable **\`KEEPASS_KEYFILE\`** must be set to continue!"
     return 1
   elif [[ -n "${KEEPASS_DB}" && ! -f "${KEEPASS_DB}" ]]; then
-    _log "ERROR" "File specified with variable **\`KEEPASS_DB\`** must exists to continue !"
+    _log "ERROR" "File specified with variable **\`KEEPASS_DB\`** must exists to continue!"
     return 2
   fi
 
@@ -89,15 +88,22 @@ main() {
     return 1
   fi
 
-  if [[ -n "${KEEPASS_KEYFILE}" && ! -f "${KEEPASS_KEYFILE}" ]]; then
-    _log "ERROR" "File specified with variable **\`KEEPASS_KEYFILE\`** must exists to continue !"
-    return 2
-  else
-    cmd+=" -k '${KEEPASS_KEYFILE}'"
+  if [[ -n "${KEEPASS_KEYFILE}" ]]; then
+    if ! [[ -f "${KEEPASS_KEYFILE}" ]]; then
+      _log "ERROR" "File specified with variable **\`KEEPASS_KEYFILE\`** must exists to continue!"
+      return 2
+    else
+      cmd+=" -k '${KEEPASS_KEYFILE}'"
+    fi
   fi
 
   if [[ -n "${KEEPASS_YUBIKEY}" ]]; then
-    cmd+=" -y '${KEEPASS_YUBIKEY}:$(ykman list -s | head -1)'"
+    if [[ "$(ykman list -s | head -n1 | wc -l)" -eq 0 ]]; then
+      _log "ERROR" "Yubikey Slot specified but not Yubikey plugged!"
+      return 2
+    else
+      cmd+=" -y '${KEEPASS_YUBIKEY}:$(ykman list -s | head -1)'"
+    fi
   fi
 
   if [[ "${action}" =~ (exit|quit|close|open) ]]; then
@@ -107,6 +113,7 @@ main() {
 
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
+  _log "INFO" "$cmd"
   val=$(eval "${cmd}")
 
   # If output of command is empty
