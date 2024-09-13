@@ -113,7 +113,6 @@ main() {
 
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
-  _log "INFO" "$cmd"
   val=$(eval "${cmd}")
 
   # If output of command is empty
