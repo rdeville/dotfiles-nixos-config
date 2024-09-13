@@ -1,12 +1,29 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.7 (2024-09-13)
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/bin): Improve kp script for yubikey (!15) by Romain Deville ([`4822dbf`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/4822dbfa763c2f51aba0d1a71e1c4e42c8afb169))
+  * ⚡️(hm/flavors/bin): Improve kp script for yubikey management by Romain Deville ([`f6275cd`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/f6275cdbe23dd5a442b0440ee9ddd1de9b658710)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`35fa37d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/35fa37d21871d4e703a86476fe7111169a1f2fa7)) 🔏
+
+### 🔊 Others
+
+  * 🎨 Improve Yubikey management assuming single key is plugged (!14) by Romain Deville ([`b9e6cdf`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b9e6cdfa872efb3f2ce563603a1d592027e612ac))
+  * 🎨 Improve Yubikey management assuming single key is plugged by Romain Deville ([`9ad45d3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/9ad45d3939e99c8e95bc60414a042e5428be0df4)) 🔏
+
 ## v0.2.6 (2024-09-12)
 
 ### 🩹 Patch
 
   * ⬆️ Update flake.lock (!13) by Romain Deville ([`839bb32`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/839bb3210b2004b4ff389283898bfee9402a5a80))
   * ⬆️ Update flake.lock by Romain Deville ([`6b9c7b6`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6b9c7b6ecb1f482b5016124180b21b92fe9a92e8)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.2.6 (NO-CI) by Python Semantic Release [bot] ([`406d04c`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/406d04cb8d4acd25c4eb9e6ea1f05e54517a42b2))
 
 ## v0.2.5 (2024-09-12)
 
@@ -73,10 +90,6 @@
 
 ## v0.2.0 (2024-08-27)
 
-### ✨ Minor
-
-  * ✨(scripts/hm): Add `upgrade` options to hm scripts (update and switch) by Romain Deville ([`b4b7ebb`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b4b7ebb638643b412bc98ae98285c38172973b7d)) 🔏
-
 ### 🩹 Patch
 
   * ✏️(scripts): Update default local_inputs.sh values by Romain Deville ([`284b55f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/284b55fa39fea1116df419c882036dc95aa39b6b)) 🔏
@@ -105,26 +118,7 @@
 ### 🩹 Patch
 
   * 🐛 Fix bugs in script dgs_commit (!5) by Romain Deville ([`eda92aa`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/eda92aa0b5a2c90641407d6fd1cbf2cf83468ed0))
-  * 🐛(hm/flavors/bin): Update scripts dgs_commit by Romain Deville ([`f587ccb`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/f587ccb6e0918fffe12db82d0c14afa9537ef8bf)) 🔏
-  * 📌 Update flake.lock by Romain Deville ([`92da424`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/92da424ddd41f5cf52c774fc8fd2e7c280313bf3)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.1.3 (NO-CI) by Python Semantic Release [bot] ([`78474d8`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/78474d8b6ee435321823f5848fd933ee2953cad3))
-
-## v0.1.2 (2024-08-18)
-
-### 🩹 Patch
-
-  * ⚡️ Improve scripts and update config from DGS (!4) by Romain Deville ([`82cd728`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/82cd728824e46277ae243c9a906dc4cd9b007cd6))
-  * ⚡️(scripts): Improve scripts allowing to build locally by Romain Deville ([`eee9b1f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/eee9b1f3d10b0da26524a8c243d22881c664450c)) 🔏
-
-### 🔊 Others
-
-  * 🔖 v0.1.2 (NO-CI) by Python Semantic Release [bot] ([`e7d6762`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e7d67621f5685a40e845f7303dc094e643ad9618))
-
-## v0.1.1 (2024-08-18)
-
-### 🔊 Others
-
-  * 🔖 v0.1.1 (NO-CI) by Python Semantic Release [bot] ([`8b77934`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/8b77934e22e7684ad93b2d7684de05055a3cdd6a))
