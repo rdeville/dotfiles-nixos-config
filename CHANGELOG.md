@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.8 (2024-09-13)
+
+### 🩹 Patch
+
+  * 🐛(hm/flavors/bin): Remove sensible log output (!16) by Romain Deville ([`83cd890`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/83cd89054d7b0e9908968411566a227e4f59c176))
+  * 🐛(hm/flavors/bin): Remove sensible log output by Romain Deville ([`99b65a8`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/99b65a8912c43680694c92015547bc29876e2d64)) 🔏
+
 ## v0.2.7 (2024-09-13)
 
 ### 🩹 Patch
@@ -13,6 +20,7 @@
 
   * 🎨 Improve Yubikey management assuming single key is plugged (!14) by Romain Deville ([`b9e6cdf`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b9e6cdfa872efb3f2ce563603a1d592027e612ac))
   * 🎨 Improve Yubikey management assuming single key is plugged by Romain Deville ([`9ad45d3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/9ad45d3939e99c8e95bc60414a042e5428be0df4)) 🔏
+  * 🔖 v0.2.7 (NO-CI) by Python Semantic Release [bot] ([`6211e15`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6211e159a600ca4c00d3069f6a78f1d84160e076))
 
 ## v0.2.6 (2024-09-12)
 
@@ -92,10 +100,8 @@
 
 ### 🩹 Patch
 
-  * ✏️(scripts): Update default local_inputs.sh values by Romain Deville ([`284b55f`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/284b55fa39fea1116df419c882036dc95aa39b6b)) 🔏
   * 🐛 Improve dgs_commit script to only add .envrc (!7) by Romain Deville ([`6e37e06`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6e37e068bc8661c72404a3094d0d0414d811e64a))
   * 🐛 Update dgs_commit script to only add .envrc by Romain Deville ([`6a0d09a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6a0d09a61500dcb0b9a561fc258faa1ded82808b)) 🔏
-  * 📌 Update flake.lock by Romain Deville ([`b18309a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b18309a62e33c79cde13038451502aba14b0776d)) 🔏
 
 ### 🔊 Others
 
@@ -107,18 +113,7 @@
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!6) by Romain Deville ([`d752348`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/d752348d893b82798c2b4d11d836662972b6f81b))
-  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`87d9acd`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/87d9acd7f7e4114cd37fc418bfc90f0e5171a10f))
 
 ### 🔊 Others
 
   * 🔖 v0.1.4 (NO-CI) by Python Semantic Release [bot] ([`03aa0a0`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/03aa0a05b051dda192c9652dd87ac018151f0b63))
-
-## v0.1.3 (2024-08-19)
-
-### 🩹 Patch
-
-  * 🐛 Fix bugs in script dgs_commit (!5) by Romain Deville ([`eda92aa`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/eda92aa0b5a2c90641407d6fd1cbf2cf83468ed0))
-
-### 🔊 Others
-
-  * 🔖 v0.1.3 (NO-CI) by Python Semantic Release [bot] ([`78474d8`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/78474d8b6ee435321823f5848fd933ee2953cad3))
