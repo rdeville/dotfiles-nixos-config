@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.2 (2024-09-14)
+
+### 🩹 Patch
+
+  * 🐛(hm/presets/minimal): Fix HM upgrade script service and add notif (!48) by Romain Deville ([`2b3959c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2b3959cae30233139d4ef41dc1ef473c094f72a1))
+  * 🐛(hm/presets/minimal): Fix HM upgrade script service and add notif by Romain Deville ([`34938da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/34938dade61e66013778927f4d8b00893ad7692b)) 🔏
+
 ## v0.15.1 (2024-09-09)
 
 ### 🩹 Patch
 
   * 🐛(hm/flavors): Fix terraform settings (!47) by Romain Deville ([`7f667df`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f667dfdd2aed7c89b0d830c09dc25d031f5bab8))
   * 🐛(hm/flavors): Fix terraform settings by Romain Deville ([`1e14228`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1e14228b7e31e4a36e272271e24caa489138b9c1)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.1 (NO-CI) by Python Semantic Release [bot] ([`3f0dc24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f0dc243ad7e286e87a6b7ae4d98488357844caa))
 
 ## v0.15.0 (2024-09-09)
 
@@ -101,16 +112,7 @@
 ### 🩹 Patch
 
   * 📌(hm/presets/common): Bump SHA256 for file LS_COLORS (!38) by Romain Deville ([`278827f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/278827facd51001708e73379675f6e30cfe563ce))
-  * 📌(hm/presets/common): Bump SHA256 for file LS_COLORS by Romain Deville ([`17c9092`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/17c9092d9a40bf3fcde8190036e421fea47cb8b1)) 🔏
 
 ### 🔊 Others
 
-  * 💚 Fix CI from DGS (!37) by Romain Deville ([`d76f175`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d76f1753e0cda785485d941677dd946721ad5364))
-  * 💚 Fix CI from DGS by Romain Deville ([`72bed7d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72bed7dbd9437ffbdf2ef0da9e481ffa7e09fc9a)) 🔏
   * 🔖 v0.13.3 (NO-CI) by Python Semantic Release [bot] ([`8df2740`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8df2740612c15a72c53dd7835e54f92f9db1be46))
-
-## v0.13.2 (2024-08-18)
-
-### 🔊 Others
-
-  * 🔖 v0.13.2 (NO-CI) by Python Semantic Release [bot] ([`565ab81`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/565ab811e8cf006a99bcf6568528d64041a75d00))
