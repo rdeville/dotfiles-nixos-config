@@ -1016,11 +1016,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725917470,
-        "narHash": "sha256-Ils8D7aSHRirFPP8tvpiykInEXIF1X/FfQOxyul63bQ=",
+        "lastModified": 1726319725,
+        "narHash": "sha256-Wtlhd9YEk3d3YGZzUV3rRGNRMDlh5zD4x0jMSpck998=",
         "ref": "refs/heads/main",
-        "rev": "3f0dc243ad7e286e87a6b7ae4d98488357844caa",
-        "revCount": 196,
+        "rev": "9693de94f242b13ff26488d5e6c7ad6163310bdf",
+        "revCount": 199,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
