@@ -98,12 +98,7 @@ main() {
   fi
 
   if [[ -n "${KEEPASS_YUBIKEY}" ]]; then
-    if [[ "$(ykman list -s | head -n1 | wc -l)" -eq 0 ]]; then
-      _log "ERROR" "Yubikey Slot specified but not Yubikey plugged!"
-      return 2
-    else
-      cmd+=" -y '${KEEPASS_YUBIKEY}:$(ykman list -s | head -1)'"
-    fi
+    cmd+=" -y '${KEEPASS_YUBIKEY}'"
   fi
 
   if [[ "${action}" =~ (exit|quit|close|open) ]]; then
@@ -113,15 +108,34 @@ main() {
 
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
-  val=$(eval "${cmd}")
+  local limit=$(($(date +%s) + 5))
+  local found=false
+  while [[ "$(date +%s)" -lt "${limit}" ]] && [[ "${found}" == "false" ]]; do
+    {
+      IFS=$'\n' read -r -d '' STDERR
+      IFS=$'\n' read -r -d '' STDOUT
+    } < <((printf '\0%s\0' "$(eval "${cmd}")" 1>&2) 2>&1)
+    # shellcheck disable=SC2181
+    if [[ -n "${STDERR}" ]]; then
+      echo "$(date): ${STDERR}" >>/tmp/kp.log
+      sleep 1
+    else
+      found=true
+    fi
+  done
+
+  if [[ "${found}" == "false" ]]; then
+    _log "ERROR" "Unable to access to DB, see /tmp/kp.log"
+    return 4
+  fi
 
   # If output of command is empty
-  if [[ -z "${val}" ]]; then
+  if [[ -z "${STDOUT}" ]]; then
     _log "INFO" "Output of following command is empty:"
     _log "INFO" "  \`${cmd}\`"
     return 4
   fi
-  echo "${val}"
+  echo "${STDOUT}"
   return 0
 }
 
