@@ -17,6 +17,8 @@
       fzf # Fuzzy Finder
       ripgrep # Perl Grep
       xclip # Copy to clipboard
+      diffutils # Command showing diff
+      colordiff # Better diff output
 
       # File Management
       p7zip # Zip Encryption

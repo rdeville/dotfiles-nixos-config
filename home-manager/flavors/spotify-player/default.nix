@@ -5,7 +5,12 @@
   lib,
   ...
 }: let
-  cfg = config.spotify-player // userCfg.flavors.spotify-player;
+  cfg =
+    if userCfg.flavors ? spotify-player
+    then config.spotify-player // userCfg.flavors.spotify-player
+    else {
+      enable = false;
+    };
 in {
   options = {
     spotify-player = {
