@@ -1,12 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.3 (2024-09-28)
+
+### 🩹 Patch
+
+  * 🔧(hm): Improve flavors and update common preset (!49) by Romain Deville ([`65b6094`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65b609493cfc81c7de30ea95dd745ed246cf7b9b))
+  * 🔧(hm/presets/common): Add diffutils and colordiff packages by Romain Deville ([`0e11459`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0e11459a4787c340338fba559e0eb09612c18a19)) 🔏
+  * 🔧(hm/flavors): Improve all flavors with default enabled false by Romain Deville ([`d891707`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d8917076fc7fc45cc6e0cd6fce4ac4a169208036)) 🔏
+
 ## v0.15.2 (2024-09-14)
 
 ### 🩹 Patch
 
   * 🐛(hm/presets/minimal): Fix HM upgrade script service and add notif (!48) by Romain Deville ([`2b3959c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2b3959cae30233139d4ef41dc1ef473c094f72a1))
   * 🐛(hm/presets/minimal): Fix HM upgrade script service and add notif by Romain Deville ([`34938da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/34938dade61e66013778927f4d8b00893ad7692b)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.2 (NO-CI) by Python Semantic Release [bot] ([`9693de9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9693de94f242b13ff26488d5e6c7ad6163310bdf))
 
 ## v0.15.1 (2024-09-09)
 
@@ -101,18 +113,7 @@
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!39) by Romain Deville ([`67717da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/67717da99cd4d073233b0334a656fd6c748a2b33))
-  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`5337b00`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5337b005fabecb5f0ede9d368df5fa683f398145))
 
 ### 🔊 Others
 
   * 🔖 v0.13.4 (NO-CI) by Python Semantic Release [bot] ([`dedde37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dedde37ee36f11dd2d0c3e6513a6334c1cb1a2e3))
-
-## v0.13.3 (2024-08-19)
-
-### 🩹 Patch
-
-  * 📌(hm/presets/common): Bump SHA256 for file LS_COLORS (!38) by Romain Deville ([`278827f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/278827facd51001708e73379675f6e30cfe563ce))
-
-### 🔊 Others
-
-  * 🔖 v0.13.3 (NO-CI) by Python Semantic Release [bot] ([`8df2740`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8df2740612c15a72c53dd7835e54f92f9db1be46))
