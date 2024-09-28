@@ -5,7 +5,12 @@
   lib,
   ...
 }: let
-  moduleCfg = userCfg.flavors.bluetooth;
+  moduleCfg =
+    if userCfg.flavors ? bluetooth
+    then userCfg.flavors.bluetooth
+    else {
+      enable = false;
+    };
 in {
   options = {
     bluetooth = {

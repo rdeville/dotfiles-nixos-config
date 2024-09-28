@@ -5,7 +5,12 @@
   lib,
   ...
 }: let
-  moduleCfg = userCfg.flavors.gh;
+  moduleCfg =
+    if userCfg.flavors ? gh
+    then userCfg.flavors.gh
+    else {
+      enable = false;
+    };
 in {
   options = {
     gh = {

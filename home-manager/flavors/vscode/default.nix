@@ -5,7 +5,12 @@
   lib,
   ...
 }: let
-  cfg = config.vscode // userCfg.flavors.vscode;
+  cfg =
+    if userCfg.flavors ? vscode
+    then config.vscode // userCfg.flavors.vscode
+    else {
+      enable = false;
+    };
 in {
   options = {
     vscode = {
