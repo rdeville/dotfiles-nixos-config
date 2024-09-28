@@ -17,7 +17,7 @@ init_logger() {
       source <(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)
       echo "${curr_time}" >"${last_download_file}"
     else
-      echo -e "\033[1;33m[WARNING]\033[0;33m Unable to get last logger version, will use \`echo\`.\033[0m" &>2
+      echo -e "\033[1;33m[WARNING]\033[0;33m Unable to get last logger version, will use \`echo\`.\033[0m" >&2
       _log() {
         echo "$@"
       }
