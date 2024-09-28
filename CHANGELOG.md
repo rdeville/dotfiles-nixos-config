@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.4 (2024-09-28)
+
+### 🩹 Patch
+
+  * 🐛(hm/presets/common): Fix mr log wrong redirection (!50) by Romain Deville ([`e7da10e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e7da10ee5be9d2a95ec66c194e0e0c69e0ce6426))
+  * 🐛(hm/presets/common): Fix mr log wrong redirection by Romain Deville ([`c78b3c8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c78b3c885956365e447502bef479ab9061a117f7)) 🔏
+
 ## v0.15.3 (2024-09-28)
 
 ### 🩹 Patch
@@ -8,6 +15,10 @@
   * 🔧(hm): Improve flavors and update common preset (!49) by Romain Deville ([`65b6094`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65b609493cfc81c7de30ea95dd745ed246cf7b9b))
   * 🔧(hm/presets/common): Add diffutils and colordiff packages by Romain Deville ([`0e11459`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0e11459a4787c340338fba559e0eb09612c18a19)) 🔏
   * 🔧(hm/flavors): Improve all flavors with default enabled false by Romain Deville ([`d891707`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d8917076fc7fc45cc6e0cd6fce4ac4a169208036)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.3 (NO-CI) by Python Semantic Release [bot] ([`6bc26e8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6bc26e87b9d1fcdb03cafeefe50fd7c9af71bfc3))
 
 ## v0.15.2 (2024-09-14)
 
@@ -87,33 +98,19 @@
 ### 🩹 Patch
 
   * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`f336346`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f3363460c15d0465219e55717f7c0788f44605d6)) 🔏
-  * 🚩(hm/presets/minimal): Enable delta as git diff pager by Romain Deville ([`5594c11`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5594c115de3e090485196bfa494b74202db82139)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.14.0 (NO-CI) by Python Semantic Release [bot] ([`43493f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/43493f51df0a1a7988bdbfe16f52cdd81b6b3797))
-  * 🔥(hm/presets/common): Remove zsh from package list by Romain Deville ([`c533dab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c533dab394ea9eb411453a337b8d8e0ead66df5a)) 🔏
 
 ## v0.13.5 (2024-08-27)
 
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!41) by Romain Deville ([`b10bbce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b10bbce299984874d56ae5d7c4e94fa0484cc7f4))
-  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`a4b5300`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a4b5300575ac1db427dbb071600e3598ee85a73a))
 
 ### 🔊 Others
 
   * 👷 Update Gitlab CI from DGS template by Romain Deville ([`876cfa0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/876cfa03b003bd439045da182ffb2eb96db57112)) 🔏
   * 💚 Fix CI from DGS Template (!40) by Romain Deville ([`0110fd3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0110fd3aa12b5b8f487af1efa42c8106867e3f7c))
-  * 💚 Fix CI from DGS Template by Romain Deville ([`448ff04`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/448ff0435100fbb1e144dddf80d97129a2cc1580)) 🔏
   * 🔖 v0.13.5 (NO-CI) by Python Semantic Release [bot] ([`36f3603`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36f360386c372618a476b0a2b5563da61e6546ff))
-
-## v0.13.4 (2024-08-24)
-
-### 🩹 Patch
-
-  * ⬆️ Update templated files from dotgit-sync (!39) by Romain Deville ([`67717da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/67717da99cd4d073233b0334a656fd6c748a2b33))
-
-### 🔊 Others
-
-  * 🔖 v0.13.4 (NO-CI) by Python Semantic Release [bot] ([`dedde37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dedde37ee36f11dd2d0c3e6513a6334c1cb1a2e3))
