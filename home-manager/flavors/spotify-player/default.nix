@@ -21,9 +21,12 @@ in {
         example = "pulseaudio";
         default = "rodio";
       };
-      cliend_id = {
+      client_id_command = {
         type = lib.types.uniq lib.types.str;
-        description = "Personal client ID to use for the player (required)";
+        description = ''
+          Command to get Personal client ID to use for the player.
+          If you use nix-sops, this could be "cat /path/to/secrets/filename";
+        '';
         example = "abcdefgh123456789";
       };
     };
@@ -38,7 +41,7 @@ in {
         };
         settings = {
           theme = "dracula";
-          client_id = cfg.client_id;
+          client_id_command = lib.mkIf (cfg ? client_id_command) cfg.client_id_command;
           client_port = 8080;
           playback_format = "
             {track} • {artists}
