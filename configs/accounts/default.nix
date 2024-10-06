@@ -3,34 +3,57 @@
   userCfg,
   ...
 }: let
-  userAccounts =
-    builtins.foldl' (
-      acc: elem:
-        acc
-        ++ [
-          (
-            import elem {
-              inherit userCfg mkLib;
-            }
-          )
-        ]
-    )
-    []
-    (mkLib.mkImportDir ./${userCfg.username});
-  accounts = builtins.listToAttrs (builtins.map (
+  tuiAccounts = {
+    email = {
+      thunderbird.enabled = false;
+      primary = false;
+    };
+    calendar = {
+      khal.enabled = true;
+      vdirsyncer.enabled = true;
+      primary = false;
+    };
+    contact = {
+      khard.enabled = true;
+      vdirsyncer.enabled = true;
+      primary = false;
+    };
+  };
+
+  guiAccounts = {
+    email = {
+      thunderbird.enabled = true;
+    };
+    calendar = {
+      khal.enabled = false;
+      vdirsyncer.enabled = false;
+    };
+    contact = {
+      khard.enabled = false;
+      vdirsyncer.enabled = false;
+    };
+  };
+
+  userAccounts = builtins.concatLists (
+    builtins.map (
       account:
-        account
-        // {
-          name = mkLib.mkSlugEmail account.name;
+        import ./${account} {
+          inherit userCfg mkLib tuiAccounts guiAccounts;
         }
     )
-    (builtins.filter (account: (
+    userCfg.accounts
+  );
+
+  accounts = builtins.listToAttrs (
+    builtins.filter (
+      account: (
         builtins.any (
-          userAccounts:
-            userAccounts == account.name
+          userAccounts: userAccounts == account.value.address
         )
         userCfg.accounts
-      ))
-      userAccounts));
+      )
+    )
+    userAccounts
+  );
 in
   accounts
