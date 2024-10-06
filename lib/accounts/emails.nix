@@ -51,7 +51,10 @@
   #   # neomutt.virtualMailboxes
   # };
   thunderbird = {
-    enable = true;
+    enable =
+      if userAccount.email ? thunderbird && userAccount.email.thunderbird ? enabled
+      then userAccount.email.thunderbird.enabled
+      else false;
     # settings
     # perIdentitySettings
     profiles = [cfg.username];

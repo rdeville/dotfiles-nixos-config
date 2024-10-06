@@ -1,7 +1,16 @@
 {userAccount, ...}: {
-  primary = userAccount.calendar.primary;
+  primary =
+    builtins.trace (builtins.toJSON userAccount)
+    (
+      if userAccount.calendar ? primary
+      then userAccount.calendar.primary
+      else false
+    );
   khal = {
-    enable = true;
+    enable =
+      if userAccount.calendar ? khal && userAccount.calendar.khal ? enabled
+      then userAccount.calendar.khal.enabled
+      else false;
     addresses = [userAccount.email.address] ++ userAccount.email.aliases;
     priority =
       if userAccount.calendar.primary
@@ -20,7 +29,10 @@
     userName = userAccount.calendar.userName;
   };
   vdirsyncer = {
-    enable = true;
+    enable =
+      if userAccount.calendar ? vdirsyncer && userAccount.calendar.vdirsyncer ? enabled
+      then userAccount.calendar.vdirsyncer.enabled
+      else false;
     collections = ["from a" "from b"];
     conflictResolution = ["b wins"];
     metadata = ["displayname" "color"];
