@@ -1,13 +1,6 @@
 {config, ...}: let
-  khalCalendarAccounts = builtins.filter (account:
-    account.khal.enable) (
+  khalCalendarAccounts = builtins.filter (account: account.khal.enable) (
     builtins.attrValues config.accounts.calendar.accounts
-  );
-  khalPrimaryAccount = builtins.head (
-    builtins.filter (account:
-      account.khal.enable && account.primary) (
-      builtins.attrValues config.accounts.calendar.accounts
-    )
   );
 in {
   programs = {

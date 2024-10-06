@@ -1,6 +1,5 @@
 {config, ...}: let
-  khardContactsAccounts = builtins.filter (account:
-    account.khard.enable) (
+  khardContactsAccounts = builtins.filter (account: account.khard.enable) (
     builtins.attrValues config.accounts.contact.accounts
   );
 in {
