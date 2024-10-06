@@ -1,12 +1,33 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.2.11 (2024-10-06)
+
+### 🩹 Patch
+
+  * ⚡️ Refacto accounts and improve management and secrets (!19) by Romain Deville ([`5ae7386`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/5ae738682a4760d4a49485f37aff7cc677a56cb8))
+  * ⚡️(hm/flavors): Make bin optional with boolean by Romain Deville ([`809a5e6`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/809a5e68d5dfe99a80eeadd4e4b871990a4e422e)) 🔏
+  * ⚡️(cfg): Update default config lib method by Romain Deville ([`4ef7958`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/4ef7958c46cc33c491bf6dd94903d8c8e1f93593)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`0fe4b59`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/0fe4b59222703af79c87e11f01d824771066c4ec)) 🔏
+  * 🔧(cfg/hosts): Update hosts rey and add anakin by Romain Deville ([`2bc38ac`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/2bc38acb54de8b6c3d9a1469cf849e5d9e59d909)) 🔏
+  * 🔧 Update .sops.yaml config by Romain Deville ([`9f1e3a8`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/9f1e3a82fcdb3a4a5c62c22378eec88044461821)) 🔏
+
+### 🔊 Others
+
+  * ♻️(cfg/accounts): Update accounts management and secrets by Romain Deville ([`e5dded3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/e5dded36efc6b0d04565a389295ab898e4167f92)) 🔏
+  * 🎨(modules): Update HM module by Romain Deville ([`7a9e293`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/7a9e293f57f2b3188f67276b166489e5313c5002)) 🔏
+  * 🔥(cfg/secrets): Remove old secrets structure by Romain Deville ([`34c2e6e`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/34c2e6e7217d6eed5f759a59a7efde3b0e643387)) 🔏
+
 ## v0.2.10 (2024-09-14)
 
 ### 🩹 Patch
 
   * ⬆️ Update flake.lock (!18) by Romain Deville ([`65710f9`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/65710f9dd1a7d98d259179eb980ee1af41e504df))
   * ⬆️ Update flake.lock by Romain Deville ([`edc625d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/edc625d77dd1d688c67cadfa58a8a6af86cd9fdf)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.2.10 (NO-CI) by Python Semantic Release [bot] ([`3cf2c15`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/3cf2c15abcd71b50de2ef530878eeaa95ee42e91))
 
 ## v0.2.9 (2024-09-14)
 
@@ -85,8 +106,6 @@
 
   * ✏️ Format most files &amp; update lock (!10) by Romain Deville ([`ad885ef`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ad885ef58c0e4df0d690796eb47a382b9101c6da))
   * ✏️ Format devenv.nix by Romain Deville ([`570a7a1`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/570a7a1088fd6eed2ba2689a43d292a9f96c1cf5)) 🔏
-  * ✏️(hm/flavors): Format nix files by Romain Deville ([`264763b`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/264763bbe2e70fbcd902fa4c6fef40068875eb49)) 🔏
-  * ✏️(hm): Format default.nix by Romain Deville ([`ae0b778`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/ae0b778363c72762f329e58a820266e98db1bb73)) 🔏
   * ⬆️ Update flake.lock by Romain Deville ([`5884369`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/58843693fb704e43ed331da213a488ba1fefd1fb)) 🔏
 
 ### 🔊 Others
@@ -98,18 +117,7 @@
 ### 🩹 Patch
 
   * ⬆️ Update templated files from dotgit-sync (!9) by Romain Deville ([`b7b5ff3`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/b7b5ff36f6ab5ba2216ec6df5a58167db86ff29c))
-  * ⬆️ Update templated files from dotgit-sync by Dotgit Sync [bot] ([`875196d`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/875196d0bd15e9c1c0c878932dc7bc05d0f40850))
 
 ### 🔊 Others
 
   * 🔖 v0.2.2 (NO-CI) by Python Semantic Release [bot] ([`60629ec`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/60629ecb8d053ebed30b8bfcecac17bd111673c1))
-
-## v0.2.1 (2024-08-27)
-
-### 🩹 Patch
-
-  * ⬆️ Update templated files from dotgit-sync (!8) by Romain Deville ([`6b79bd6`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/6b79bd61f9d83af9bfbd700079382b82ce764e5d))
-
-### 🔊 Others
-
-  * 🔖 v0.2.1 (NO-CI) by Python Semantic Release [bot] ([`34ebe3a`](https://framagit.org/rdeville-private/dotfiles/nixos-data/-/commit/34ebe3acd5edd7352c7587503796de750d490d15))
