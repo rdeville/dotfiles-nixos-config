@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.6 (2024-10-06)
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/spotify): Fix typos and add client_id_command option (!52) by Romain Deville ([`e131a95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e131a95040e3bbc1cb9b3ebd4f683b5c89f345f6))
+  * ⚡️(hm/flavors/spotify): Fix typos and add client_id_command option by Romain Deville ([`d4b53a0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d4b53a0a56df01108ec46f8c3f70ac64a9d119e7)) 🔏
+
 ## v0.15.5 (2024-10-06)
 
 ### 🩹 Patch
@@ -10,6 +17,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.15.5 (NO-CI) by Python Semantic Release [bot] ([`a9c3c4d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a9c3c4d9042ccba5959e3e74b108cd49f5c8e8d5))
   * 🔥(hm/presets/main): Remove sops usage in vdirsyncer by Romain Deville ([`f171238`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f171238d55bcd08e564bdd2c0e64279159a9d762)) 🔏
 
 ## v0.15.4 (2024-09-28)
@@ -104,20 +112,6 @@
 
 ## v0.14.0 (2024-09-07)
 
-### ✨ Minor
-
-  * ✨ Update packages list installed (!42) by Romain Deville ([`f9f6466`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9f646690f218d5aa0b1414aa14bf909d4a20604))
-
-### 🩹 Patch
-
-  * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`f336346`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f3363460c15d0465219e55717f7c0788f44605d6)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.14.0 (NO-CI) by Python Semantic Release [bot] ([`43493f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/43493f51df0a1a7988bdbfe16f52cdd81b6b3797))
-
-## v0.13.5 (2024-08-27)
-
-### 🔊 Others
-
-  * 🔖 v0.13.5 (NO-CI) by Python Semantic Release [bot] ([`36f3603`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36f360386c372618a476b0a2b5563da61e6546ff))
