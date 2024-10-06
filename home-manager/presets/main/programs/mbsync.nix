@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   mbsyncAccounts = builtins.filter (account: account.mbsync.enable) (
     builtins.attrValues config.accounts.email.accounts
   );

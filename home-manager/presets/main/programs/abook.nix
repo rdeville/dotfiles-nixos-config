@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}: let
+{config, ...}: let
   abook = builtins.attrValues config.accounts.contact.accounts;
 in {
   programs = {

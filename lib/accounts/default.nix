@@ -37,7 +37,7 @@ let
     else [];
 
   mkEmailCfg = cfg: userAccount:
-    if builtins.hasAttr "email" userAccount
+    if userAccount ? email
     then
       userAccount.email
       // (
@@ -51,7 +51,7 @@ let
     else {};
 
   mkCalendarCfg = cfg: userAccount:
-    if builtins.hasAttr "calendar" userAccount
+    if userAccount ? calendar
     then
       import ./calendars.nix {
         inherit
@@ -62,7 +62,7 @@ let
     else {};
 
   mkContactCfg = cfg: userAccount:
-    if builtins.hasAttr "contact" userAccount
+    if userAccount ? contact
     then
       import ./contacts.nix {
         inherit
