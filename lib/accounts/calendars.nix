@@ -1,11 +1,7 @@
 {userAccount, ...}: {
-  primary =
-    builtins.trace (builtins.toJSON userAccount)
-    (
-      if userAccount.calendar ? primary
+  primary = if userAccount.calendar ? primary
       then userAccount.calendar.primary
-      else false
-    );
+      else false;
   khal = {
     enable =
       if userAccount.calendar ? khal && userAccount.calendar.khal ? enabled
