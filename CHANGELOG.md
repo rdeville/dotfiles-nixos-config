@@ -1,12 +1,27 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.5 (2024-10-06)
+
+### 🩹 Patch
+
+  * ⚡️(hm): Improve sops usage to be more generic (!51) by Romain Deville ([`590143c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/590143c72f66f56a0e70fce1580a80fc18daa77b))
+  * ⚡️(hm): Make userCfg sops usage more generic by Romain Deville ([`b56b2d2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b56b2d279dcfe067cfbfd23b34f0d65efd5bc372)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/presets/main): Remove sops usage in vdirsyncer by Romain Deville ([`f171238`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f171238d55bcd08e564bdd2c0e64279159a9d762)) 🔏
+
 ## v0.15.4 (2024-09-28)
 
 ### 🩹 Patch
 
   * 🐛(hm/presets/common): Fix mr log wrong redirection (!50) by Romain Deville ([`e7da10e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e7da10ee5be9d2a95ec66c194e0e0c69e0ce6426))
   * 🐛(hm/presets/common): Fix mr log wrong redirection by Romain Deville ([`c78b3c8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c78b3c885956365e447502bef479ab9061a117f7)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.4 (NO-CI) by Python Semantic Release [bot] ([`2a66a2c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a66a2c2cecdcc695a8938ebac40910335af7293))
 
 ## v0.15.3 (2024-09-28)
 
@@ -92,8 +107,6 @@
 ### ✨ Minor
 
   * ✨ Update packages list installed (!42) by Romain Deville ([`f9f6466`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9f646690f218d5aa0b1414aa14bf909d4a20604))
-  * ✨(hm/presets/gui): Add arandr to pkgs by Romain Deville ([`65224d3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/65224d3c2bbb0eb81076880bcc996eb24eb783a6)) 🔏
-  * ✨(hm/presets/main): Add alejandra to pkgs by Romain Deville ([`b7326f0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b7326f0a734a4694e4f871858ca1bba73dc89b9c)) 🔏
 
 ### 🩹 Patch
 
@@ -105,12 +118,6 @@
 
 ## v0.13.5 (2024-08-27)
 
-### 🩹 Patch
-
-  * ⬆️ Update templated files from dotgit-sync (!41) by Romain Deville ([`b10bbce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b10bbce299984874d56ae5d7c4e94fa0484cc7f4))
-
 ### 🔊 Others
 
-  * 👷 Update Gitlab CI from DGS template by Romain Deville ([`876cfa0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/876cfa03b003bd439045da182ffb2eb96db57112)) 🔏
-  * 💚 Fix CI from DGS Template (!40) by Romain Deville ([`0110fd3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0110fd3aa12b5b8f487af1efa42c8106867e3f7c))
   * 🔖 v0.13.5 (NO-CI) by Python Semantic Release [bot] ([`36f3603`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36f360386c372618a476b0a2b5563da61e6546ff))
