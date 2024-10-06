@@ -1,6 +1,7 @@
 {
   userCfg,
   pkgs,
+  config,
   ...
 }: let
   main =
@@ -38,22 +39,7 @@ in {
     };
   };
 
-  sops =
-    pkgs.lib.mkIf (
-      userCfg.sops.enable && userCfg.sops ? defaultSopsFile
-    ) {
-      age = {
-        # This is using an age key that is expected to already be in the
-        # filesystem
-        # In my case, this key is written by a direnv method when I log in but
-        # you can specify it in your user configuration.
-        keyFile =
-          if (builtins.hasAttr "keyFile" userCfg.sops)
-          then userCfg.sops.keyFile
-          else "/tmp/age/age-${userCfg.username}@${userCfg.hostname}";
-      };
-      defaultSopsFile = userCfg.sops.defaultSopsFile;
-    };
+  sops = pkgs.lib.mkIf (userCfg ? sops) userCfg.sops;
 
   accounts = {
     email = {
