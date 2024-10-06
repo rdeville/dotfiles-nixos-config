@@ -1,12 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.7 (2024-10-06)
+
+### 🩹 Patch
+
+  * ⚡️ Accounts related improvements (lib, presets) (!53) by Romain Deville ([`d1dad22`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1dad22775998f96e0e88ba37d1b41eb9787060a))
+  * ⚡️(lib/accounts): Improve libs to chose what to enable by Romain Deville ([`3666df8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3666df84add383c821baa39b35dc2c32be24852d)) 🔏
+  * 🐛(hm/presets/main): Fix vdirsyncer to consider calendar and contact by Romain Deville ([`fef5575`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fef55751d6e718510c02ed0e1c03018df2c96867)) 🔏
+
 ## v0.15.6 (2024-10-06)
 
 ### 🩹 Patch
 
   * ⚡️(hm/flavors/spotify): Fix typos and add client_id_command option (!52) by Romain Deville ([`e131a95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e131a95040e3bbc1cb9b3ebd4f683b5c89f345f6))
   * ⚡️(hm/flavors/spotify): Fix typos and add client_id_command option by Romain Deville ([`d4b53a0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d4b53a0a56df01108ec46f8c3f70ac64a9d119e7)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.6 (NO-CI) by Python Semantic Release [bot] ([`f4dbaa4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f4dbaa4e95467694b3276a2e7972104c761667ae))
 
 ## v0.15.5 (2024-10-06)
 
@@ -101,17 +113,6 @@
 
 ## v0.14.1 (2024-09-07)
 
-### 🩹 Patch
-
-  * 🔧(hm/presets/common): Update mrconfig (!43) by Romain Deville ([`25dada6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/25dada6f8b0da57f06674a740245092889f94168))
-  * 🔧(hm/presets/common): Update mrconfig by Romain Deville ([`9039b19`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9039b19019086983f099f3a74fb5ee44584265ed)) 🔏
-
 ### 🔊 Others
 
   * 🔖 v0.14.1 (NO-CI) by Python Semantic Release [bot] ([`3a04236`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3a0423664054b51159c44b3a149c6b662b841f45))
-
-## v0.14.0 (2024-09-07)
-
-### 🔊 Others
-
-  * 🔖 v0.14.0 (NO-CI) by Python Semantic Release [bot] ([`43493f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/43493f51df0a1a7988bdbfe16f52cdd81b6b3797))
