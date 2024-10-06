@@ -67,6 +67,17 @@
     };
   };
 
+  extraConfig = {
+    # My custom dotfiles
+    awesomerc.enable = true;
+    direnvrc.enable = true;
+    neovimrc.enable = true;
+    tmuxrc.enable = true;
+    zshrc.enable = true;
+    # My custom programs
+    dotgit-sync.enable = true;
+  };
+
   mergeUserWithDefaults = hostname: userCfgs:
   # Must do accounts after merge of presets is done
     builtins.mapAttrs (
@@ -83,14 +94,11 @@
         hostname = hostname;
         username = username;
         presets =
-          defaults.presets
-          // (
-            if (userCfg ? presets)
-            then userCfg.presets
-            else
-              {}
-              // userCfg
-          );
+          if (userCfg ? presets)
+          then
+            defaults.presets
+            // userCfg.presets
+          else defaults.presets;
         accounts =
           if userCfg ? accounts
           then userCfg.accounts
@@ -105,8 +113,8 @@
           else git;
         config =
           if userCfg ? extraConfig
-          then userCfg.extraConfig
-          else {};
+          then extraConfig // userCfg.extraConfig
+          else extraConfig;
       })
     userCfgs);
 
@@ -122,7 +130,34 @@
         }
     )
     hostCfgs;
+
+  mkListDirs = inode:
+    builtins.map (elem: elem.name) (
+      builtins.filter (inode: inode.value == "directory") (
+        builtins.map (key: {
+          name = key;
+          value = builtins.getAttr key (builtins.readDir inode);
+        })
+        (builtins.attrNames (builtins.readDir inode))
+      )
+    );
+
+  mkAccountsSecrets = accounts:
+    builtins.listToAttrs (
+      builtins.map (item: {
+        name = "accounts/${builtins.replaceStrings ["_at_"] ["@"] item}";
+        value = {
+          sopsFile = ./accounts/${item}/credentials.enc.yaml;
+        };
+      })
+      accounts
+    );
+
+  lib = {
+    mkListDirs = mkListDirs;
+    mkAccountsSecrets = mkAccountsSecrets;
+  };
 in {
-  hosts = mergeHostWithDefaults (import ./hosts {inherit inputs;});
+  hosts = mergeHostWithDefaults (import ./hosts {inherit inputs lib;});
   vms = mergeHostWithDefaults (import ./vms {inherit inputs;});
 }

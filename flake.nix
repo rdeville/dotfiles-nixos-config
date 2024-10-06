@@ -181,7 +181,7 @@
       # HOME MANAGER
       # ------------------------------------------------------------------------
       # Build Home-Manager Config from ./config.nix
-      homeConfigurations = builtins.mapAttrs (name: value:
+      homeConfigurations = builtins.mapAttrs (_: value:
         hmLib.mkHomeConfiguration value)
       (hmLib.mkHomeConfigs allConfigs);
       # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM

@@ -1,10 +1,14 @@
 {
   userCfg,
-  pkgs,
   lib,
   ...
 }: let
-  moduleCfg = userCfg.flavors.bin;
+  moduleCfg =
+    if userCfg.flavors ? bin
+    then userCfg.flavors.bin
+    else {
+      enable = false;
+    };
 in {
   options = {
     bin = {
