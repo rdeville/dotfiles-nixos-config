@@ -9,13 +9,11 @@
       enable = true;
       package = mkLib.nixGLWrap pkgs.kitty userCfg;
       keybindings = {
-        "alt+shift+t" = "new_tab";
-        "alt+shift+s" = "select_tab";
-        "alt+shift+q" = "close_window";
-        "alt+shift+h" = "previous_tab";
-        "alt+shift+l" = "next_tab";
-        "alt+ctrl+shift+h" = "move_tab_backward";
-        "alt+ctrl+shift+l" = "move_tab_forward";
+        "ctrl+shift+t" = "new_tab";
+        "ctrl+shift+s" = "select_tab";
+        "ctrl+shift+q" = "close_window";
+        "ctrl+shift+h" = "previous_tab";
+        "ctrl+shift+l" = "next_tab";
       };
       font = {
         name = "FiraCode Nerd Fonts Mono";
