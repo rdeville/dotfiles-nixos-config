@@ -36,8 +36,8 @@
 
   userAccounts = builtins.concatLists (
     builtins.map (
-      account:
-        import ./${account} {
+      address:
+        import ./${address} {
           inherit userCfg mkLib tuiAccounts guiAccounts;
         }
     )

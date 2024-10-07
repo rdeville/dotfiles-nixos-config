@@ -144,10 +144,10 @@
 
   mkAccountsSecrets = accounts:
     builtins.listToAttrs (
-      builtins.map (item: {
-        name = "accounts/${builtins.replaceStrings ["_at_"] ["@"] item}";
+      builtins.map (address: {
+        name = "accounts/${address}";
         value = {
-          sopsFile = ./accounts/${item}/credentials.enc.yaml;
+          sopsFile = ./accounts/${address}/credentials.enc.yaml;
         };
       })
       accounts
