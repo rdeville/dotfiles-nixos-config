@@ -4,8 +4,8 @@
   ...
 }: let
   accounts = [
-    "contact_at_romaindeville.fr"
-    "contact_at_romaindeville.ovh"
+    "contact@romaindeville.fr"
+    "contact@romaindeville.ovh"
   ];
 in {
   home-manager = {
