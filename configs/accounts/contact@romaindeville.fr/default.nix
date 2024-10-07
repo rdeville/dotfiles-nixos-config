@@ -7,7 +7,7 @@
 }: let
   domain = "romaindeville.fr";
   address = "contact@${domain}";
-  slugAddress = "contact_at_${domain}";
+  slugAddress = builtins.replaceStrings ["@" "."] ["_at_" "_"] address;
   userName = "rdeville";
   passwordCommand =
     if userCfg.username == "root"
@@ -33,7 +33,7 @@ in [
   {
     name = displayName;
     value = {
-      address = slugAddress;
+      inherit address;
       email =
         if user ? email
         then user.email // guiAccounts.email
@@ -51,7 +51,7 @@ in [
   {
     name = slugAddress;
     value = {
-      address = slugAddress;
+      inherit address;
       email =
         if user ? email
         then user.email // tuiAccounts.email
