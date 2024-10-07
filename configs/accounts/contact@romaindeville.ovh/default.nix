@@ -11,8 +11,8 @@
   userName = "rdeville";
   passwordCommand =
     if userCfg.username == "root"
-    then ["cat" "/root/.config/sops-nix/secrets/${address}"]
-    else ["cat" "/home/${userCfg.username}/.config/sops-nix/secrets/${address}"];
+    then ["cat" "/root/.config/sops-nix/secrets/accounts/${address}"]
+    else ["cat" "/home/${userCfg.username}/.config/sops-nix/secrets/accounts/${address}"];
   displayName = "📘 Romain Deville";
   user = {
     email = {
