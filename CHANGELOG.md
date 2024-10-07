@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.8 (2024-10-07)
+
+### 🩹 Patch
+
+  * 🔧(hm/presets/gui): Update kitty shortcut to avoid tmux conflict (!55) by Romain Deville ([`3b23c45`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3b23c45e90c52133161385de05349d279e6d574a))
+  * 🔧(hm/presets/gui): Update kitty shortcut to avoid tmux conflict by Romain Deville ([`17fdc6d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/17fdc6dbc3349c2f4ac7002f520b8328c0f0f5d9)) 🔏
+
+### 🔊 Others
+
+  * 🔇(lib/accounts): Remove useless trace (!54) by Romain Deville ([`b0cf135`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b0cf135c31555a20cc7f9055588f802524212e84))
+  * 🔇(lib/accounts): Remove useless trace by Romain Deville ([`2462554`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2462554c2c4acffc7e93c6bbb01b20ea4ae8fd0e)) 🔏
+
 ## v0.15.7 (2024-10-06)
 
 ### 🩹 Patch
@@ -8,6 +20,10 @@
   * ⚡️ Accounts related improvements (lib, presets) (!53) by Romain Deville ([`d1dad22`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1dad22775998f96e0e88ba37d1b41eb9787060a))
   * ⚡️(lib/accounts): Improve libs to chose what to enable by Romain Deville ([`3666df8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3666df84add383c821baa39b35dc2c32be24852d)) 🔏
   * 🐛(hm/presets/main): Fix vdirsyncer to consider calendar and contact by Romain Deville ([`fef5575`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fef55751d6e718510c02ed0e1c03018df2c96867)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.15.7 (NO-CI) by Python Semantic Release [bot] ([`1ad3e1d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1ad3e1ddc0deff0644f143d761930e438eb25753))
 
 ## v0.15.6 (2024-10-06)
 
@@ -94,25 +110,7 @@
 ### 🩹 Patch
 
   * ⬆️ Update flake.lock (!45) by Romain Deville ([`cc5748d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cc5748d5bdc681601d43179069eddeb00fa55cdf))
-  * ⬆️ Update flake.lock by Romain Deville ([`8e5bde7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8e5bde72bf467a7e9d5003140cb89a204360f972)) 🔏
 
 ### 🔊 Others
 
   * 🔖 v0.14.3 (NO-CI) by Python Semantic Release [bot] ([`b541701`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b5417011abd5aaec297dc8a43017b4f13d079d2e))
-
-## v0.14.2 (2024-09-08)
-
-### 🩹 Patch
-
-  * 🐛(hm/prestets/common): Fix mrconfig file (!44) by Romain Deville ([`7f1d0b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f1d0b71b97ca928cb179ea73f9e3f9aa832003c))
-  * 🐛(hm/prestets/common): Fix mrconfig file by Romain Deville ([`7248c87`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7248c87203e964fb71754e596ea8c493865ec2cc)) 🔏
-
-### 🔊 Others
-
-  * 🔖 v0.14.2 (NO-CI) by Python Semantic Release [bot] ([`1a8edbe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1a8edbec1309e8963a7eb00bcd38ee8081be7316))
-
-## v0.14.1 (2024-09-07)
-
-### 🔊 Others
-
-  * 🔖 v0.14.1 (NO-CI) by Python Semantic Release [bot] ([`3a04236`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3a0423664054b51159c44b3a149c6b662b841f45))
