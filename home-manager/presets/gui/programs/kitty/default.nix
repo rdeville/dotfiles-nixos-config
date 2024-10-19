@@ -95,8 +95,7 @@
           # White
           color7 = "#E0E0E0";
           color15 = "#FAFAFA";
-        }
-        // (import ./hosts/${userCfg.hostname}.nix);
+        };
     };
   };
 }
