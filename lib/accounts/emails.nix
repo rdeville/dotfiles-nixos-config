@@ -1,6 +1,6 @@
 {
-  cfg,
-  userAccount,
+  userCfg,
+  accountCfg,
   ...
 }: {
   # inherit (userAccount)
@@ -52,11 +52,11 @@
   # };
   thunderbird = {
     enable =
-      if userAccount.email ? thunderbird && userAccount.email.thunderbird ? enabled
-      then userAccount.email.thunderbird.enabled
+      if accountCfg.email ? thunderbird && accountCfg.email.thunderbird ? enabled
+      then accountCfg.email.thunderbird.enabled
       else false;
     # settings
     # perIdentitySettings
-    profiles = [cfg.username];
+    profiles = [userCfg.username];
   };
 }
