@@ -1,9 +1,7 @@
 {
   userCfg,
-  mkLib,
   pkgs,
   config,
-  lib,
   ...
 }: {
   programs = {

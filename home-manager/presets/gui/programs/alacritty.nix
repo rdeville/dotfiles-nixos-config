@@ -1,13 +1,9 @@
-{
-  mkLib,
-  userCfg,
-  pkgs,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     alacritty = {
-      enable = true;
-      package = mkLib.nixGLWrap pkgs.alacritty userCfg;
+      enable = false;
+      # package = mkLib.nixGLWrap pkgs.alacritty userCfg;
+      package = pkgs.alacritty;
       settings = {
         window = {
           opacity = 0.75;

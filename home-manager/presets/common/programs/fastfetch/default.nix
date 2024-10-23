@@ -1,13 +1,8 @@
-{
-  userCfg,
-  pkgs,
-  mkLib,
-  ...
-}: {
+{pkgs, ...}: {
   programs = {
     fastfetch = {
       enable = true;
-      package = mkLib.nixGLWrap pkgs.fastfetch userCfg;
+      package = pkgs.fastfetch;
       settings = {
         "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/main/doc/json_schema.json";
         general = {
