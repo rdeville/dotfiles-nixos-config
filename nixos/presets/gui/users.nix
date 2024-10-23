@@ -1,16 +1,16 @@
-{cfg, ...}: {
+{hostCfg, ...}: {
   users = {
     users = builtins.listToAttrs (
-      builtins.map (username: {
-        name = "${username}";
+      builtins.map (user: {
+        name = "${user}";
         value = {
-          isNormalUser = true;
           extraGroups = [
             "video"
+            "audio"
             "camera"
           ];
         };
-      }) (builtins.attrNames cfg.users)
+      }) (builtins.attrNames hostCfg.users)
     );
   };
 }

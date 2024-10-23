@@ -36,15 +36,15 @@ let
       ) (builtins.attrNames (builtins.readDir dir))
     else [];
 
-  mkEmailCfg = cfg: userAccount:
-    if userAccount ? email
+  mkEmailCfg = userCfg: accountCfg:
+    if accountCfg ? email
     then
-      userAccount.email
+      accountCfg.email
       // (
         import ./emails.nix {
           inherit
-            cfg
-            userAccount
+            userCfg
+            accountCfg
             ;
         }
       )

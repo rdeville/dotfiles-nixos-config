@@ -78,7 +78,7 @@ userCfg: pkgs: let
 in {
   rdeville-perso = {
     id = 0;
-    isDefault = !userCfg.presets.work;
+    isDefault = ! userCfg.presets ? work ? enable;
     name = "rdeville-perso";
     userContent = "";
     settings = settings // {};
@@ -89,7 +89,7 @@ in {
   };
   rdeville-pro = {
     id = 1;
-    isDefault = userCfg.presets.work;
+    isDefault = userCfg.presets ? work ? enable;
     name = "rdeville-pro";
     userContent = "";
     settings = settings // {};

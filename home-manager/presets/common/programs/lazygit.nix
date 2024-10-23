@@ -1,11 +1,6 @@
-{
-  userCfg,
-  colors,
-  mkLib,
-  pkgs,
-  config,
-  ...
-}: {
+{config, ...}: let
+  colors = import ../../../../colors;
+in {
   programs = {
     lazygit = {
       enable = true;

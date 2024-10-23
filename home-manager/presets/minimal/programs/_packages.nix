@@ -10,6 +10,9 @@
       htop # Process Manager
       killall # Process Killer
       bc # Bash Calculator
+      gcc # C++ compiler
+      sops # Encryption tools
+      age # Encryption tools
     ];
   };
 }

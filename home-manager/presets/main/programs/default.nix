@@ -1,5 +1,5 @@
 {inputs, ...}: let
-  mkLib = import ../../../../../lib/default.nix {inherit inputs;};
+  mkLib = import ../../../../lib/default.nix {inherit inputs;};
 
   imports = builtins.map (item: ./${item}) ((builtins.filter (
       item:

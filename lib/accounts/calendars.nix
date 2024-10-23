@@ -1,7 +1,8 @@
 {userAccount, ...}: {
-  primary = if userAccount.calendar ? primary
-      then userAccount.calendar.primary
-      else false;
+  primary =
+    if userAccount.calendar ? primary
+    then userAccount.calendar.primary
+    else false;
   khal = {
     enable =
       if userAccount.calendar ? khal && userAccount.calendar.khal ? enabled

@@ -1,12 +1,12 @@
-{hostCfg, ...}: let
+{userCfg, ...}: let
   presets = builtins.filter (item: item.value.enable) (builtins.foldl' (acc: elem:
     [
       {
         name = elem;
-        value = hostCfg.presets.${elem};
+        value = userCfg.presets.${elem};
       }
     ]
-    ++ acc) [] (builtins.attrNames hostCfg.presets));
+    ++ acc) [] (builtins.attrNames userCfg.presets));
 
   imports = (
     builtins.foldl' (

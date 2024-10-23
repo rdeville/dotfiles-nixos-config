@@ -18,10 +18,34 @@
       ) (builtins.attrNames (builtins.readDir dir))
     else [];
 
+  mkListDirs = inode:
+    builtins.map (elem: elem.name) (
+      builtins.filter (inode: inode.value == "directory") (
+        builtins.map (key: {
+          name = key;
+          value = builtins.getAttr key (builtins.readDir inode);
+        })
+        (builtins.attrNames (builtins.readDir inode))
+      )
+    );
+
+  mkListFiles = inode:
+    builtins.map (elem: elem.name) (
+      builtins.filter (inode: inode.value == "regular") (
+        builtins.map (key: {
+          name = key;
+          value = builtins.getAttr key (builtins.readDir inode);
+        })
+        (builtins.attrNames (builtins.readDir inode))
+      )
+    );
+
   lib = {
     inherit
       mkDebug
       mkImportDir
+      mkListDirs
+      mkListFiles
       pkgsForSystem
       ;
   };

@@ -1,9 +1,9 @@
 {
   userCfg,
   lib,
-  colors,
   ...
 }: let
+  colors = import ../../../../../colors;
   black = "${colors.material-all.black}";
   sep = {
     left = "";
