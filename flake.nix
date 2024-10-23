@@ -52,6 +52,10 @@
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    awesome = {
+      url = "github:awesomeWM/awesome/master";
+      flake = false;
+    };
   };
 
   nixConfig = {
@@ -60,12 +64,7 @@
   };
 
   outputs = inputs @ {self, ...}: let
-    # hmLib = import ./lib/hm.nix {inherit inputs;};
     mkLib = import ./lib {inherit inputs;};
-    nixosLib = import ./lib/nixos.nix {inherit inputs;};
-
-    # All my hosts with users configs
-    allConfigs = import ./configs {mkLib = import ./lib/accounts;};
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -108,39 +107,18 @@
           inputs.alejandra.defaultPackage.${system}
       );
 
-      # CONFIGURATION
-      # ========================================================================
-      # NIXOS
-      # ------------------------------------------------------------------------
-      # Bulid NixOS config from ./config.nix
-      # nixosConfigurations = builtins.mapAttrs (name: value:
-      #   nixosLib.mkNixOS)
-      # allConfigs.hosts;
-
-      # # VMs I use to test NixOS configs
-      # # Build NixOS VMs using nixos-shell, see nixvm.sh to deploy
-      nixos-shellConfigurations = builtins.mapAttrs (name: value:
-        nixosLib.mkNixOS (nixosLib.mkNixVMs-nixos-shell value))
-      allConfigs.vms;
-
-      # # Build NixOS VMs using microvm, see nixvm.sh to deploy
-      microvmConfigurations = builtins.mapAttrs (name: value:
-        nixosLib.mkNixOS (nixosLib.mkNixVMs-microvm value))
-      allConfigs.vms;
-
-      # HOME MANAGER
-      # ------------------------------------------------------------------------
-      # Build Home-Manager Config from ./config.nix
-      # homeConfigurations = builtins.mapAttrs (name: value:
-      #     hmLib.mkHomeConfiguration value)
-      #     (hmLib.mkHomeConfigs allConfigs);
-
       homeManagerModules = {
-        accountLib = import ./lib/accounts;
+        accountsLib = import ./lib/accounts;
         hmLib = import ./lib/hm.nix;
-        nixosLib = import ./lib/nixos.nix;
         mkLib = import ./lib/default.nix;
+        presets = import ./home-manager/presets;
+        flavors = import ./home-manager/flavors;
       };
       # homeManagerModule = self.homeManagerModules.hm;
+      #
+      nixosModules = {
+        presets = import ./nixos/presets;
+        flavors = import ./nixos/flavors;
+      };
     };
 }
