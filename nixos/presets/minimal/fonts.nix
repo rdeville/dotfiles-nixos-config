@@ -8,7 +8,6 @@
     jetbrains-mono
     # Icons
     font-awesome
-    # MS
     # Nerdfont Icons override
     (nerdfonts.override {fonts = ["FiraCode"];})
   ];

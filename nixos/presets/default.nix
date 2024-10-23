@@ -15,5 +15,5 @@
     ) [] (builtins.attrNames (builtins.listToAttrs presets))
   );
 in {
-  imports = imports;
+  inherit imports;
 }

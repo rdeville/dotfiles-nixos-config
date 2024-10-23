@@ -1,14 +1,14 @@
 {
   pkgs,
-  cfg,
+  hostCfg,
   ...
 }: {
   environment = {
     # Environment Variables
     variables = {
-      TERMINAL = "${cfg.terminal}";
-      EDITOR = "${cfg.editor}";
-      VISUAL = "${cfg.editor}";
+      TERMINAL = "${hostCfg.terminal}";
+      EDITOR = "${hostCfg.editor}";
+      VISUAL = "${hostCfg.editor}";
     };
 
     # System-Wide Packages
@@ -20,13 +20,21 @@
       git # Version Control
       killall # Process Killer
       lshw # Hardware Config
-      nix-tree # Browse Nix Store
       pciutils # Manage PCI
       smartmontools # Disk Health
       usbutils # Manage USB
       curl # Retriever
       xdg-utils # Environment integration
       neovim # Text Editor
+      tmux # Terminal multiplexer
+      jq # json manipulation tool
+
+      # NixOS CLI related packages
+      nix-tree # Browse Nix Store
+      nh # Wrapper above nixos-rebuild or home-manager
+      home-manager # Home manage
+      devbox # Isolated development tools
+      direnv # Automated development tools
 
       # File Management
       p7zip # Zip Encryption
