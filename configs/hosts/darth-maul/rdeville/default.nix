@@ -62,6 +62,7 @@ in {
     dotgit-sync.enable = true;
   };
 
+
   localPresets = {};
   # localPresets = {
   #   main.enable = true;
@@ -109,22 +110,4 @@ in {
       };
     };
   };
-
-  # modules = [
-  #   (
-  #     {
-  #       config,
-  #       pkgs,
-  #       ...
-  #     }: {
-  #       programs = {
-  #         spotify-player = {
-  #           settings = {
-  #             client_id_command = pkgs.lib.mkForce "${pkgs.coreutils}/bin/cat ${config.sops.secrets.spotify-client-id.path}";
-  #           };
-  #         };
-  #       };
-  #     }
-  #   )
-  # ];
 }

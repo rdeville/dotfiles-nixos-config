@@ -1,5 +1,5 @@
 {
-  mkLib,
+  accountsLib,
   userCfg,
   tuiAccounts,
   guiAccounts,
@@ -17,8 +17,8 @@
   user = {
     email = {
       realName = "Romain Deville";
-      imap = mkLib.mkImap domain "SSL/TLS";
-      smtp = mkLib.mkSmtp domain "STARTTLS";
+      imap = accountsLib.mkImap domain "SSL/TLS";
+      smtp = accountsLib.mkSmtp domain "STARTTLS";
       passwordCommand = builtins.toString passwordCommand;
       aliases = [];
       inherit
@@ -28,7 +28,7 @@
     };
     calendar = {
       url = "https://cloud.romaindeville.ovh/remote.php/dav/calendars/rdeville/";
-      primary = userCfg.presets.main && !userCfg.presets.work;
+      primary = true; # userCfg.presets.main.enable; #  && !userCfg.presets ? work ? enable;
       defaultCalendar = "🤖 Personal";
       inherit
         userName
@@ -38,7 +38,7 @@
     };
     contact = {
       url = "https://cloud.romaindeville.ovh/remote.php/dav/addressbooks/users/rdeville/contacts/";
-      primary = userCfg.presets.main && !userCfg.presets.work;
+      primary = true; # userCfg.presets.main.enable; # && !userCfg.presets ? work ? enable;
       inherit
         userName
         address

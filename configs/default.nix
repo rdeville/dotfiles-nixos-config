@@ -1,6 +1,7 @@
 {
   mkLib,
   inputs,
+  config,
   ...
 }: let
   defaults = {
@@ -32,40 +33,6 @@
     ../modules/home-manager.nix
     ../home-manager/default.nix
   ];
-
-  git = {
-    perso = {
-      condition = "gitdir:/";
-      contents = {
-        commit = {
-          gpgSign = true;
-        };
-        credential = {
-          "https://framagit.org" = {
-            username = "rdeville";
-          };
-          "https://github.com" = {
-            username = "rdeville";
-          };
-          "https://gitlab.com" = {
-            username = "rdeville";
-          };
-        };
-        push = {
-          gpgSign = "if-asked";
-        };
-        tag = {
-          forceSignAnnotated = true;
-          gpgSign = true;
-        };
-        user = {
-          name = "Romain Deville";
-          email = "code@romaindeville.fr";
-          signingKey = "0x700E80E57C25C99A";
-        };
-      };
-    };
-  };
 
   extraConfig = {
     # My custom dotfiles
@@ -159,5 +126,4 @@
   };
 in {
   hosts = mergeHostWithDefaults (import ./hosts {inherit inputs lib;});
-  vms = mergeHostWithDefaults (import ./vms {inherit inputs;});
 }

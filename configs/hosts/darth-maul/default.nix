@@ -33,6 +33,7 @@ in {
 
   flavors = {
     ssh.enable = true;
+    steam.enable = true;
   };
 
   presets = {
