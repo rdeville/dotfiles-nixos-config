@@ -4,8 +4,8 @@
   ...
 }: let
   moduleCfg =
-    if userCfg.flavors ? bin
-    then userCfg.flavors.bin
+    if userCfg.localFlavors ? bin
+    then userCfg.localFlavors.bin
     else {
       enable = false;
     };
