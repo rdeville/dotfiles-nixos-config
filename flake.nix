@@ -5,7 +5,7 @@
   inputs = {
     # Stable Nix Packages
     nixpkgs = {
-      url = "github:nixos/nixpkgs/nixos-24.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     # Home Manager, manage your Home from nix
     home-manager = {
