@@ -17,5 +17,6 @@ xrandr \
   --output DP4 \
     --off \
   --output VIRTUAL1 \
-  --off\
+  --off
+
 echo 'awesome.restart()' | awesome-client > /dev/null 2>&1
