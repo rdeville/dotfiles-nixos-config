@@ -1,9 +1,9 @@
-{pkgs, ...}: {
+{userCfg, ...}: {
   programs = {
     thunderbird = {
       enable = true;
       profiles = {
-        rdeville = {
+        "${userCfg.username}"= {
           isDefault = true;
           userChrome = builtins.readFile ./chrome/userChrome.css;
           withExternalGnupg = true;

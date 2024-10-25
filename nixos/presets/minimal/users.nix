@@ -19,7 +19,8 @@ in {
       builtins.map (user: {
         name = "${user}";
         value = {
-          isNormalUser = true;
+          shell = lib.mkForce pkgs.zsh;
+          isNormalUser = if "${user}" == "root" then false else true;
           extraGroups = extraGroups users.${user};
         };
       }) (builtins.attrNames users)
