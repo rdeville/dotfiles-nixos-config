@@ -36,14 +36,19 @@ main(){
   export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
   init_logger
 
-
-  local profile="-c ${USER}@${HOST}"
+  local profile="-H ${HOST}"
   local action="build"
   local local_inputs_file="$1"
   shift
 
   # shellcheck source=./local_inputs.sh
   source "${local_inputs_file}"
+
+  if [[ -n "$1" ]]
+  then
+    action="$1"
+    shift
+  fi
 
   while getopts "dip:" opt
   do
@@ -56,7 +61,7 @@ main(){
         options+=" --impure"
         ;;
       p) # profile
-        profile="-c ${OPTARG}"
+        profile="-H ${OPTARG}"
         shift
         ;;
       *)
@@ -67,25 +72,17 @@ main(){
   done
   shift $((OPTIND-1))
 
-  if [[ -n "$1" ]]
-  then
-    action="$1"
-    shift
-  fi
-
-
-
   # shellcheck disable=2154
   for input in "${!inputs[@]}"; do
     options+="--override-input ${input} ${inputs[$input]} "
   done
 
 
-  cmd+="nh home ${action} ${profile} . -- \
+  cmd+="nh os ${action} ${profile} . -- \
     --extra-experimental-features \"nix-command flakes\" \
     ${options}"
 
-  _log "INFO" "Running **nh home ${action}** for **${profile/-c /}** with command : "
+  _log "INFO" "Running **nh os ${action}** for **${profile/-H /}** with command : "
   _log "INFO" "${cmd//  /}"
   eval "${cmd}"
 }
