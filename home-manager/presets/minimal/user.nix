@@ -3,8 +3,8 @@
     username = userCfg.username;
 
     homeDirectory =
-      if "homeDirectory" ? userCfg
-      then userCfg.homeDirectory
+      if userCfg ? home
+      then userCfg.home
       else "/home/${userCfg.username}";
 
     preferXdgDirectories = true;
