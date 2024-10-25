@@ -20,7 +20,6 @@ in {
         name = "${user}";
         value = {
           shell = lib.mkForce pkgs.zsh;
-          home = if user ? home then user.home else "/home/${user}";
           isNormalUser = if "${user}" == "root" then false else true;
           extraGroups = extraGroups users.${user};
         };
