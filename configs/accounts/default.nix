@@ -1,5 +1,4 @@
 {
-  mkLib,
   accountsLib,
   accounts,
   userCfg,
@@ -40,7 +39,7 @@
     builtins.map (
       address:
         import ./${address} {
-          inherit mkLib accountsLib userCfg tuiAccounts guiAccounts;
+          inherit accountsLib userCfg tuiAccounts guiAccounts;
         }
     )
     accounts
