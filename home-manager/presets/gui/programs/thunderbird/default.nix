@@ -3,7 +3,7 @@
     thunderbird = {
       enable = true;
       profiles = {
-        "${userCfg.username}"= {
+        "${userCfg.username}" = {
           isDefault = true;
           userChrome = builtins.readFile ./chrome/userChrome.css;
           withExternalGnupg = true;

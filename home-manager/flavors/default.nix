@@ -1,19 +1,14 @@
 {userCfg, ...}: let
-  flavors = builtins.filter (item: item.value.enable) (builtins.foldl' (acc: elem:
-    [
-      {
-        name = elem;
-        value = userCfg.flavors.${elem};
-      }
-    ]
-    ++ acc) [] (builtins.attrNames userCfg.flavors));
+  userFlavors =
+    if userCfg ? flavors
+    then userCfg.flavors
+    else {};
 
-  imports = (
-    builtins.foldl' (
-      acc: elem:
-        [./${elem}] ++ acc
-    ) [] (builtins.attrNames (builtins.listToAttrs flavors))
-  );
+  flavors = builtins.filter (
+    item: userFlavors.${item}.enable
+  ) (builtins.attrNames userFlavors);
+
+  imports = builtins.map (elem: ./${elem}) flavors;
 in {
   imports = imports;
 }

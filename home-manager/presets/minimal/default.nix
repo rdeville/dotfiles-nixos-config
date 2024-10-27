@@ -31,7 +31,10 @@ in {
     };
   };
 
-  sops = pkgs.lib.mkIf (userCfg ? sops) userCfg.sops;
+  sops =
+    if (userCfg ? sops)
+    then userCfg.sops
+    else {};
 
   accounts = {
     email = {
@@ -39,21 +42,33 @@ in {
       accounts =
         builtins.mapAttrs
         (_: value: accountsLib.mkEmailCfg userCfg value)
-        userCfg.accounts;
+        (
+          if userCfg ? accounts
+          then userCfg.accounts
+          else {}
+        );
     };
     calendar = {
       basePath = ".local/share/calendars";
       accounts =
         builtins.mapAttrs
         (_: value: accountsLib.mkCalendarCfg userCfg value)
-        userCfg.accounts;
+        (
+          if userCfg ? accounts
+          then userCfg.accounts
+          else {}
+        );
     };
     contact = {
       basePath = ".local/share/contacts";
       accounts =
         builtins.mapAttrs
         (_: value: accountsLib.mkContactCfg userCfg value)
-        userCfg.accounts;
+        (
+          if userCfg ? accounts
+          then userCfg.accounts
+          else {}
+        );
     };
   };
 }
