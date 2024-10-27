@@ -1,4 +1,6 @@
 {
+  # Uncomment if needed to import other files or folder
+  # mkLib,
   userCfg,
   lib,
   ...
@@ -9,7 +11,16 @@
     else {
       enable = false;
     };
+  # Uncomment if needed to import other files or folder
+  # imports = builtins.map (item: ./${item}) ((builtins.filter (
+  #     item:
+  #       item != "default.nix"
+  #   ) (mkLib.mkListFiles ./.))
+  #   ++ (mkLib.mkListDirs ./.));
 in {
+  # Uncomment if needed to import other files or folder
+  # imports = lib.mkIf moduleCfg.enable imports;
+
   options = {
     bin = {
       enable = lib.mkEnableOption "Install my custom script bin";
