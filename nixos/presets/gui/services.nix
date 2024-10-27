@@ -32,6 +32,33 @@
       lua = pkgs.luajit;
       gtk3Support = true;
     };
+
+  awesomeEnable =
+    if
+      presetCfg
+      ? windowManager
+      && presetCfg.windowManager ? awesome
+      && presetCfg.windowManager.awesome ? enable
+    then presetCfg.windowManager.awesome.enable
+    else false;
+
+  hyprlandEnable =
+    if
+      presetCfg
+      ? windowManager
+      && presetCfg.windowManager ? hyprland
+      && presetCfg.windowManager.hyprland ? enable
+    then presetCfg.windowManager.hyprland.enable
+    else false;
+
+  gdmEnable =
+    if
+      presetCfg
+      ? windowManager
+      && presetCfg.displayManager ? gdm
+      && presetCfg.displayManager.gdm ? enable
+    then presetCfg.displayManager.gdm.enable
+    else false;
 in {
   services = {
     xserver = {
@@ -46,20 +73,20 @@ in {
 
       displayManager = {
         defaultSession =
-          if (presetCfg ? windowManager && presetCfg.windowManager ? awesome)
+          if awesomeEnable
           then "none+awesome"
-          else if (presetCfg ? windowManager && presetCfg.windowManager ? hyprland)
+          else if hyprlandEnable
           then "hyprland"
           else null;
-        gdm = lib.mkIf (presetCfg ? displayManager && presetCfg.displayManager ? gdm) {
-          enable = true;
-          wayland = lib.mkIf (presetCfg ? windowManager && presetCfg.windowManager ? hyprland) true;
+        gdm ={
+          enable = gdmEnable;
+          wayland = hyprlandEnable ;
         };
       };
 
       windowManager = {
         awesome = {
-          enable = lib.mkIf (presetCfg ? windowManager && presetCfg.windowManager ? awesome) true;
+          enable = awesomeEnable;
           luaModules = with pkgs.luaPackages; [
             luarocks # is the package manager for Lua modules
             pkgs.luajitPackages.lgi
@@ -71,8 +98,8 @@ in {
   };
 
   programs = {
-    hyprland = lib.mkIf (presetCfg ? windowManager && presetCfg.windowManager ? hyprland) {
-      enable = true;
+    hyprland = {
+      enable = hyprlandEnable ;
     };
   };
 
@@ -83,6 +110,6 @@ in {
       kitty
       pcmanfm
     ]
-    ++ [(lib.mkIf (presetCfg ? windowManager && presetCfg.windowManager ? awesome) rofi)]
-    ++ [(lib.mkIf (presetCfg ? windowManager && presetCfg.windowManager ? hyprland) wofi)];
+    ++ [(lib.mkIf awesomeEnable rofi)]
+    ++ [(lib.mkIf hyprlandEnable wofi)];
 }

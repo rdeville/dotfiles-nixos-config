@@ -20,7 +20,10 @@ in {
         name = "${user}";
         value = {
           shell = lib.mkForce pkgs.zsh;
-          isNormalUser = if "${user}" == "root" then false else true;
+          isNormalUser =
+            if "${user}" == "root"
+            then false
+            else true;
           extraGroups = extraGroups users.${user};
         };
       }) (builtins.attrNames users)
