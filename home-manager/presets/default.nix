@@ -1,19 +1,14 @@
 {userCfg, ...}: let
-  localPresets = builtins.filter (item: item.value.enable) (builtins.foldl' (acc: elem:
-    [
-      {
-        name = elem;
-        value = userCfg.localPresets.${elem};
-      }
-    ]
-    ++ acc) [] (builtins.attrNames userCfg.localPresets));
+  userPresets =
+    if userCfg ? localPresets
+    then userCfg.localPresets
+    else {};
 
-  imports = (
-    builtins.foldl' (
-      acc: elem:
-        [./${elem}] ++ acc
-    ) [] (builtins.attrNames (builtins.listToAttrs localPresets))
-  );
+  presets = builtins.filter (
+    item: userPresets.${item}.enable
+  ) (builtins.attrNames userPresets);
+
+  imports = builtins.map (elem: ./${elem}) presets;
 in {
   imports = imports;
 }
