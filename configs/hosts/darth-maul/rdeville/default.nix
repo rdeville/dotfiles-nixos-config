@@ -1,12 +1,14 @@
 {
-  inputs,
   accountsLib,
-  userCfg,
+  hostname,
+  username,
   ...
 }: let
-  mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
-
   default = import ../../default.nix;
+
+  defaultHostCfg = import ../default.hostCfg.nix {inherit hostname;};
+
+  userCfg = defaultHostCfg.mkDefaultUserCfg username;
 
   accounts = [
     "contact@romaindeville.fr"
@@ -31,6 +33,8 @@
   extraConfig =
     default.hmExtraConfig
     // {
+      # My custom dotfiles
+      awesomerc.enable = true;
       # My custom programs
       dotgit-sync.enable = true;
     };
@@ -40,7 +44,7 @@
   };
 in {
   inherit (userCfg) stateVersion username hostname;
-  inherit presets flavors git extraConfig;
+  inherit presets flavors extraConfig git;
 
   sudo = true;
 
@@ -70,24 +74,14 @@ in {
       // {
         inherit presets;
       };
-    inherit mkLib accountsLib accounts;
+    inherit accountsLib accounts;
   };
 
-  # modules = [
-  #   (
-  #     {
-  #       config,
-  #       pkgs,
-  #       ...
-  #     }: {
-  #       programs = {
-  #         spotify-player = {
-  #           settings = {
-  #             client_id_command = pkgs.lib.mkForce "${pkgs.coreutils}/bin/cat ${config.sops.secrets.spotify-client-id.path}";
-  #           };
-  #         };
-  #       };
-  #     }
-  #   )
-  # ];
+  localFlavors = {
+    bin.enable = true;
+  };
+
+  initialPassword = username;
+  isNormalUser = true;
+  extraGroupts = ["wheel"];
 }

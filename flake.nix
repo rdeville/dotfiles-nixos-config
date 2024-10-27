@@ -6,6 +6,7 @@
     Repository storing configuration for my computer and users used with NixOS and
     Home-Manager
   '';
+
   # Devenv Cachix
   nixConfig = {
     extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
@@ -15,8 +16,8 @@
   inputs = {
     # Stable Nix Packages
     nixpkgs = {
-      url = "nixpkgs/nixos-24.05";
-      # url = "github:nixos/nixpkgs/nixos-unstable";
+      # url = "github:nixos/nixpkgs/nixos-24.05";
+      url = "github:nixos/nixpkgs/nixos-unstable";
     };
     # Flake Utils Lib
     utils = {
@@ -31,25 +32,40 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
+    # Nix secret managed using sops
+    sops-nix = {
+      url = "github:Mic92/sops-nix/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # Home Manager, manage your Home from nix
     home-manager = {
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
+      # url = "github:nix-community/home-manager/release-24.05";
       url = "github:nix-community/home-manager";
+      # inputs.nixpkgs.follows = "nixpkgs-unstable";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     # Unstable Nix Packages
-    nixpkgs-unstable = {
-      url = "github:nixos/nixpkgs/nixos-unstable";
-    };
+    # nixpkgs-unstable = {
+    #   url = "github:nixos/nixpkgs/nixos-unstable";
+    # };
     # NixOS /HM Config
     nixos = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
+      # url = "/home/rdeville/git/framagit.org/public/dotfiles/nixos/";
       inputs = {
-        nixpkgs.follows = "nixpkgs-unstable";
-        utils.follows = "utils";
-        home-manager.follows = "home-manager";
-        nixpkgs-unstable.follows = "nixpkgs-unstable";
         alejandra.follows = "alejandra";
+        awesome.follows = "awesome";
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        # nixpkgs-unstable.follows = "nixpkgs";
+        sops-nix.follows = "sops-nix";
+        utils.follows = "utils";
       };
+    };
+
+    awesome = {
+      url = "github:awesomeWM/awesome";
+      flake = false;
     };
     # My personal dotfiles flakes
     awesomerc = {
@@ -109,18 +125,83 @@
         inherit system;
       };
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
-    allConfigs = import ./configs {
-      mkLib = inputs.nixos.homeManagerModules.accountLib;
-      inherit inputs;
-    };
-
+    #
+    # Some libs
+    mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
+    accountsLib = inputs.nixos.homeManagerModules.accountsLib;
     hmLib = inputs.nixos.homeManagerModules.hmLib {inherit (inputs.nixos) inputs;};
-    nixosLib = inputs.nixos.homeManagerModules.nixosLib {inherit (inputs.nixos) inputs;};
-    # mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
-    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
+
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
+
+    mkHostConfig = hostname:
+      import ./configs/hosts/${hostname} {
+        inherit inputs mkLib hmLib accountsLib hostname;
+      };
+
+    hmConfig = builtins.listToAttrs (builtins.concatLists (builtins.map (
+      host: let
+        hostCfg = mkHostConfig host;
+      in
+        builtins.map (
+          user: {
+            name = "${user}@${host}";
+            value = {
+              pkgs = pkgsForSystem hostCfg.system;
+              modules = [
+                # External Modules
+                inputs.nixos.inputs.sops-nix.homeManagerModules.sops
+                # Internal Modules
+                inputs.nixos.homeManagerModules.presets
+                inputs.nixos.homeManagerModules.flavors
+                # Personnal home-manager packaged dotfiles
+                inputs.awesomerc.homeManagerModules.awesomerc
+                inputs.direnvrc.homeManagerModules.direnvrc
+                inputs.neovimrc.homeManagerModules.neovimrc
+                inputs.tmuxrc.homeManagerModules.tmuxrc
+                inputs.zshrc.homeManagerModules.shellrc
+                # Personnal packaged programs
+                inputs.dotgit-sync.homeManagerModules.dotgit-sync
+                # Local Modules
+                ./home-manager/flavors
+                ./home-manager/presets
+                ./modules/home-manager.nix
+              ];
+              extraSpecialArgs = {
+                userCfg = hostCfg.users.${user};
+                inherit mkLib;
+              };
+            };
+          }
+        )
+        (mkLib.mkListDirs ./configs/hosts/${host})
+    ) (mkLib.mkListDirs ./configs/hosts)));
+
+    nixosConfig = builtins.foldl' (acc: elem:
+      {
+        "${elem}" = {
+          specialArgs = {
+            hostCfg = mkHostConfig elem;
+            inherit inputs;
+          };
+          modules = [
+            ./configs/hosts/${elem}/configuration.nix
+            ./configs/hosts/${elem}/hardware-configuration.nix
+            inputs.nixos.nixosModules.presets
+            inputs.nixos.nixosModules.flavors
+            inputs.home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                # users = hmModule (mkHostConfig elem);
+              };
+            }
+          ];
+        };
+      }
+      // acc) {} (mkLib.mkListDirs ./configs/hosts);
 
     allSystems = [
       "x86_64-linux"
@@ -128,11 +209,12 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
+    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
   in
     inputs.utils.lib.eachSystem allSystems (
       system: let
         pkgs = pkgsForSystem system;
-      in rec {
+      in {
         packages = {
           devenv-up = self.devShells.${system}.default.config.procfileScript;
         };
@@ -162,28 +244,21 @@
       # ========================================================================
       # NIXOS
       # ------------------------------------------------------------------------
-      # Bulid NixOS config from ./config.nix
-      nixosConfigurations = builtins.mapAttrs (name: value:
-        nixosLib.mkNixOS)
-      allConfigs.hosts;
-
-      # VMs I use to test NixOS configs
-      # Build NixOS VMs using nixos-shell, see nixvm.sh to deploy
-      nixos-shellConfigurations = builtins.mapAttrs (name: value:
-        nixosLib.mkNixOS (inputs.nixosLib.mkNixVMs-nixos-shell value))
-      allConfigs.vms;
-
-      # Build NixOS VMs using microvm, see nixvm.sh to deploy
-      microvmConfigurations = builtins.mapAttrs (name: value:
-        nixosLib.mkNixOS (inputs.nixosLib.mkNixVMs-microvm value))
-      allConfigs.vms;
+      nixosConfigurations =
+        builtins.mapAttrs (
+          _: value:
+            inputs.nixpkgs.lib.nixosSystem value
+        )
+        nixosConfig;
 
       # HOME MANAGER
       # ------------------------------------------------------------------------
-      # Build Home-Manager Config from ./config.nix
-      homeConfigurations = builtins.mapAttrs (_: value:
-        hmLib.mkHomeConfiguration value)
-      (hmLib.mkHomeConfigs allConfigs);
+      homeConfigurations =
+        builtins.mapAttrs (
+          _: value:
+            inputs.home-manager.lib.homeManagerConfiguration value
+        )
+        hmConfig;
       # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
     };
 }

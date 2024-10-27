@@ -7,7 +7,8 @@
   ...
 }: let
   hm = ./scripts/hm.sh;
-  nixvm = ./scripts/nixvm.sh;
+  os = ./scripts/nixos.sh;
+  inputs = ./scripts/local_inputs.sh;
 in {
   packages = with pkgs; [
     sops
@@ -18,13 +19,13 @@ in {
     hm = {
       description = "Script acting as alias to Home-Manager";
       exec = ''
-        ${hm} "$@"
+        ${hm} "${inputs}" "$@"
       '';
     };
-    nixvm = {
-      description = "Script allowing to run VM with nixos-shell or microvm";
+    os = {
+      description = "Script acting as alias to NixOS";
       exec = ''
-        ${nixvm}
+        ${os} "${inputs}" "$@"
       '';
     };
   };

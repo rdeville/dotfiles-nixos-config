@@ -1,6 +1,6 @@
 {
-  mkLib,
   userCfg,
+  accountsLib,
   tuiAccounts,
   guiAccounts,
   ...
@@ -13,13 +13,13 @@
     if userCfg.username == "root"
     then ["cat" "/root/.config/sops-nix/secrets/accounts/${address}"]
     else ["cat" "/home/${userCfg.username}/.config/sops-nix/secrets/accounts/${address}"];
-  primary = userCfg.presets.main && !userCfg.presets.work;
+  primary = true; # userCfg.presets.main.enable; #  && !userCfg.presets ? work ? enable;
   displayName = "📗 Romain Deville";
   user = {
     email = {
       realName = "Romain Deville";
-      imap = mkLib.mkImap domain "SSL/TLS";
-      smtp = mkLib.mkSmtp domain "STARTTLS";
+      imap = accountsLib.mkImap domain "SSL/TLS";
+      smtp = accountsLib.mkSmtp domain "STARTTLS";
       aliases = [];
       passwordCommand = builtins.toString passwordCommand;
       inherit

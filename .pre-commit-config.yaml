@@ -20,16 +20,16 @@ repos:
   rev: v8.18.1
   hooks:
   - id: gitleaks
-- repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
-  rev: v9.14.0
-  hooks:
-  - id: commitlint
-    additional_dependencies:
-    - gitmojis
-    stages:
-    - commit-msg
-- repo: https://github.com/igorshubovych/markdownlint-cli
-  rev: v0.41.0
-  hooks:
-  - id: markdownlint
+# - repo: https://github.com/alessandrojcm/commitlint-pre-commit-hook
+#   rev: v9.14.0
+#   hooks:
+#   - id: commitlint
+#     additional_dependencies:
+#     - gitmojis
+#     stages:
+#     - commit-msg
+# - repo: https://github.com/igorshubovych/markdownlint-cli
+#   rev: v0.41.0
+#   hooks:
+#   - id: markdownlint
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED

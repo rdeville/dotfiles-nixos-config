@@ -1,5 +1,13 @@
-{userCfg, ...}: let
+{
+  hostname,
+  username,
+  ...
+}: let
   default = import ../../default.nix;
+
+  defaultHostCfg = import ../default.hostCfg.nix {inherit hostname;};
+
+  userCfg = defaultHostCfg.mkDefaultUserCfg username;
 
   presets =
     default.hmPresets

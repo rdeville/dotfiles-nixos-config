@@ -1,5 +1,6 @@
 {
-  mkLib,
+  accountsLib,
+  accounts,
   userCfg,
   ...
 }: let
@@ -38,22 +39,10 @@
     builtins.map (
       address:
         import ./${address} {
-          inherit userCfg mkLib tuiAccounts guiAccounts;
+          inherit accountsLib userCfg tuiAccounts guiAccounts;
         }
     )
-    userCfg.accounts
-  );
-
-  accounts = builtins.listToAttrs (
-    builtins.filter (
-      account: (
-        builtins.any (
-          userAccounts: userAccounts == account.value.address
-        )
-        userCfg.accounts
-      )
-    )
-    userAccounts
+    accounts
   );
 in
-  accounts
+  builtins.listToAttrs userAccounts

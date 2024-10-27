@@ -11,6 +11,7 @@
     name = "darth-maul";
     hostname = "romaindeville.fr";
   };
+
   mkConfig = server: user: {
     hostname = server.hostname;
     identitiesOnly = true;
