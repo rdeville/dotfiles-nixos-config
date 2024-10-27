@@ -1,53 +1,65 @@
 {
-  config,
-  lib,
-  ...
-}: let
-  cfg = config.hostCfg;
-in {
-  options = {
-    hostCfg = {
-      hostName = lib.mkOption {
-        type = lib.types.string;
-      };
+  stateVersion = "24.05";
 
-      terminal = lib.mkOption {
-        type = lib.types.string;
-        default = "kitty";
-      };
+  osPresets = {
+    minimal = {
+      enable = true;
+    };
+  };
 
-      editor = lib.mkOption {
-        type = lib.types.string;
-        default = "nvim";
-      };
+  osFlavors = {};
 
-      presets = lib.mkOption {
-        type = lib.types.attrs;
-        default = {};
-        example = {
-          presetName = {
-            enable = true;
+  hmPresets = {
+    minimal = {
+      enable = true;
+    };
+  };
+
+  hmFlavors = {};
+
+  hmExtraConfig = {
+    # My custom dotfiles
+    direnvrc.enable = true;
+    neovimrc.enable = true;
+    tmuxrc.enable = true;
+    zshrc.enable = true;
+  };
+
+  git = {
+    perso = {
+      condition = "gitdir:/";
+      contents = {
+        commit = {
+          gpgSign = true;
+        };
+        credential = {
+          "https://framagit.org" = {
+            username = "rdeville";
+          };
+          "https://github.com" = {
+            username = "rdeville";
+          };
+          "https://gitlab.com" = {
+            username = "rdeville";
           };
         };
-        description = ''
-          Attrset where key is the name of the preset and value is the config
-          passed to the preset
-        '';
+        push = {
+          gpgSign = "if-asked";
+        };
+        tag = {
+          forceSignAnnotated = true;
+          gpgSign = true;
+        };
+        user = {
+          name = "Romain Deville";
+          email = "code@romaindeville.fr";
+          signingKey = "0x700E80E57C25C99A";
+        };
       };
     };
   };
 
-  config = {
-    hostCfg = {
-      terminal = cfg.terminal;
-      editor = cfg.editor;
-      presets =
-        {
-          minimal = {
-            enable = true;
-          };
-        }
-        // cfg.presets;
-    };
-  };
+  editor = "nvim";
+  terminal = "kitty";
+  keyMap = "fr";
 }

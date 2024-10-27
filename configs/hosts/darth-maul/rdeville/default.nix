@@ -1,24 +1,50 @@
 {
-  inputs,
   accountsLib,
-  userCfg,
+  hostname,
+  username,
   ...
 }: let
-  mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
+  default = import ../../default.nix;
+
+  defaultHostCfg = import ../default.hostCfg.nix {inherit hostname;};
+
+  userCfg = defaultHostCfg.mkDefaultUserCfg username;
+
   accounts = [
     "contact@romaindeville.fr"
     "contact@romaindeville.ovh"
   ];
 
-  presets = {
-    minimal.enable = true;
-    common.enable = true;
-    main.enable = true;
-    gui.enable = true;
+  presets =
+    default.hmPresets
+    // {
+      common.enable = true;
+      main.enable = true;
+      gui.enable = true;
+    };
+
+  flavors =
+    default.hmFlavors
+    // {
+      gh.enable = true;
+      glab.enable = true;
+    };
+
+  extraConfig =
+    default.hmExtraConfig
+    // {
+      # My custom dotfiles
+      awesomerc.enable = true;
+      # My custom programs
+      dotgit-sync.enable = true;
+    };
+
+  git = {
+    perso = default.git.perso;
   };
 in {
   inherit (userCfg) stateVersion username hostname;
-  inherit presets;
+  inherit presets flavors extraConfig git;
 
   sudo = true;
 
@@ -48,66 +74,14 @@ in {
       // {
         inherit presets;
       };
-    inherit mkLib accountsLib accounts;
+    inherit accountsLib accounts;
   };
-
-  extraConfig = {
-    # My custom dotfiles
-    awesomerc.enable = true;
-    direnvrc.enable = true;
-    neovimrc.enable = true;
-    tmuxrc.enable = true;
-    zshrc.enable = true;
-    # My custom programs
-    dotgit-sync.enable = true;
-  };
-
-
-  localPresets = {};
-  # localPresets = {
-  #   main.enable = true;
-  # };
 
   localFlavors = {
     bin.enable = true;
   };
 
-  flavors = {
-    gh.enable = true;
-    glab.enable = true;
-  };
-
-  git = {
-    perso = {
-      condition = "gitdir:/";
-      contents = {
-        commit = {
-          gpgSign = true;
-        };
-        credential = {
-          "https://framagit.org" = {
-            username = "rdeville";
-          };
-          "https://github.com" = {
-            username = "rdeville";
-          };
-          "https://gitlab.com" = {
-            username = "rdeville";
-          };
-        };
-        push = {
-          gpgSign = "if-asked";
-        };
-        tag = {
-          forceSignAnnotated = true;
-          gpgSign = true;
-        };
-        user = {
-          name = "Romain Deville";
-          email = "code@romaindeville.fr";
-          signingKey = "0x700E80E57C25C99A";
-        };
-      };
-    };
-  };
+  initialPassword = username;
+  isNormalUser = true;
+  extraGroupts = ["wheel"];
 }

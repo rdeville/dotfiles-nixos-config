@@ -1,60 +1,55 @@
 {
   inputs,
-  hostName,
+  hostname,
   mkLib,
   accountsLib,
   ...
 }: let
-  system = "x86_64-linux";
-  stateVersion = "24.05";
+  default = import ../default.nix;
 
-  userCfg = inode: {
-    inherit system stateVersion;
-    username = inode;
-    hostname = hostName;
-  };
+  defaultHostCfg = import ./default.hostCfg.nix {inherit hostname;};
+
+  flavors =
+    default.osFlavors
+    // {
+      ssh.enable = true;
+      steam.enable = true;
+    };
+
+  presets =
+    default.osPresets
+    // {
+      main = {
+        enable = false;
+      };
+
+      gui = {
+        enable = true;
+        displayManager = {
+          gdm.enable = true;
+        };
+        windowManager = {
+          awesome = {
+            enable = true;
+          };
+          hyprland = {
+            enable = true;
+          };
+        };
+      };
+    };
 in {
-  inherit system stateVersion;
-
-  editor = "nvim";
-  terminal = "kitty";
-  keyMap = "fr";
+  inherit (default) editor terminal keyMap stateVersion;
+  inherit (defaultHostCfg) hostname system;
+  inherit flavors presets;
 
   users = builtins.listToAttrs (
-    builtins.map (inode: {
-      name = inode;
-      value = import ./${inode} {
-        userCfg = userCfg inode;
-        inherit inputs mkLib accountsLib;
+    builtins.map (username: {
+      name = username;
+      value = import ./${username} {
+        inherit inputs accountsLib hostname username;
       };
     })
     (mkLib.mkListDirs ./.)
   );
-
-  flavors = {
-    ssh.enable = true;
-  };
-
-  presets = {
-    minimal = {
-      enable = true;
-    };
-
-    main = {
-      enable = false;
-    };
-
-    gui = {
-      enable = true;
-      displayManager = {
-        gdm.enable = true;
-      };
-      windowManager = {
-        awesome = {};
-        hyprland = {};
-      };
-    };
-  };
-
-  inherit hostName;
 }

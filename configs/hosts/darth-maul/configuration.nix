@@ -1,6 +1,5 @@
 {
   hostCfg,
-  pkgs,
   lib,
   ...
 }: {
@@ -20,9 +19,9 @@
       # systemd-boot = {
       #   enable = true;
       # };
-      efi = {
-        canTouchEfiVariables = true;
-      };
+      # efi = {
+      #   canTouchEfiVariables = true;
+      # };
       grub = {
         enable = true;
         device = "nodev";
@@ -42,26 +41,11 @@
   };
 
   networking = {
-    hostName = hostCfg.hostName;
+    hostName = hostCfg.hostname;
   };
 
   console = {
     font = lib.mkDefault "Lat2-Terminus16";
     keyMap = lib.mkDefault "fr";
-  };
-
-  users = {
-    defaultUserShell = pkgs.zsh;
-    users = {
-      rdeville = {
-        initialPassword = "password";
-        isNormalUser = true;
-        # Enable ‘sudo’ for the user.
-        extraGroups = ["wheel"];
-        packages = with pkgs; [
-          keepassxc
-        ];
-      };
-    };
   };
 }
