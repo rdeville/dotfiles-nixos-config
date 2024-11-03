@@ -1,8 +1,4 @@
-{
-  userCfg,
-  ...
-}:
- {
+{userCfg, ...}: {
   programs = {
     ssh = {
       enable = true;

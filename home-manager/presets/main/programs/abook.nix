@@ -1,4 +1,9 @@
-{userCfg, config, lib, ...}: let
+{
+  userCfg,
+  config,
+  lib,
+  ...
+}: let
   abook = builtins.attrValues config.accounts.contact.accounts;
 in {
   programs = {
