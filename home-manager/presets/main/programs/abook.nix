@@ -1,9 +1,9 @@
-{config, ...}: let
+{userCfg, config, lib, ...}: let
   abook = builtins.attrValues config.accounts.contact.accounts;
 in {
   programs = {
     abook = {
-      enable = abook != [];
+      enable = (! userCfg.isDarwin) && abook != [];
       extraConfig = ''
         # Abook configuration file
         #

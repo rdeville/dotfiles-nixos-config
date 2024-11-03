@@ -78,9 +78,9 @@ in {
           else if hyprlandEnable
           then "hyprland"
           else null;
-        gdm ={
+        gdm = {
           enable = gdmEnable;
-          wayland = hyprlandEnable ;
+          wayland = hyprlandEnable;
         };
       };
 
@@ -99,7 +99,7 @@ in {
 
   programs = {
     hyprland = {
-      enable = hyprlandEnable ;
+      enable = hyprlandEnable;
     };
   };
 

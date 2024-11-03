@@ -39,15 +39,12 @@
         (builtins.attrNames (builtins.readDir inode))
       )
     );
-
-  lib = {
-    inherit
-      mkDebug
-      mkImportDir
-      mkListDirs
-      mkListFiles
-      pkgsForSystem
-      ;
-  };
-in
-  lib
+in {
+  inherit
+    mkDebug
+    mkImportDir
+    mkListDirs
+    mkListFiles
+    pkgsForSystem
+    ;
+}

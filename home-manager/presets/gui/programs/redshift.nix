@@ -1,5 +1,10 @@
-{pkgs, ...}: {
-  services = {
+{
+  userCfg,
+  pkgs,
+  lib,
+  ...
+}: {
+  services = lib.mkIf (! userCfg.isDarwin) {
     redshift = {
       enable = true;
       package = with pkgs; redshift;

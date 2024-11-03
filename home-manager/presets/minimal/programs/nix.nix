@@ -1,8 +1,4 @@
-{
-  pkgs,
-  nixpkgs,
-  ...
-}: {
+{pkgs, ...}: {
   # Nix Package Manager Settings
   nix = {
     # Garbage Collection

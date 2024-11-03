@@ -1,6 +1,7 @@
 {
-  pkgs,
   hostCfg,
+  userCfg,
+  pkgs,
   ...
 }: {
   environment = {
