@@ -1,4 +1,9 @@
-{userCfg, ...}: {
+{
+  userCfg,
+  lib,
+  ...
+}:
+lib.mkIf (! userCfg.isDarwin) {
   programs = {
     thunderbird = {
       enable = true;

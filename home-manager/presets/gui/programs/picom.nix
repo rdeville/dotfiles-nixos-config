@@ -1,8 +1,9 @@
 {
-  config,
-  pkgs,
+  userCfg,
+  lib,
   ...
-}: {
+}:
+lib.mkIf (! userCfg.isDarwin) {
   services = {
     picom = {
       enable = true;

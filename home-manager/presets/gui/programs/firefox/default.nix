@@ -1,8 +1,10 @@
 {
   userCfg,
   pkgs,
+  lib,
   ...
-}: {
+}:
+lib.mkIf (! userCfg.isDarwin) {
   programs = {
     firefox = {
       enable = true;

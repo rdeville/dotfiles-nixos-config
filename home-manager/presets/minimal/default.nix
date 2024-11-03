@@ -1,7 +1,6 @@
 {
   inputs,
   userCfg,
-  pkgs,
   ...
 }: let
   mkLib = import ../../../lib/default.nix {inherit inputs;};
