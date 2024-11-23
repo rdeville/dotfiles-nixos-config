@@ -1,14 +1,16 @@
 {
+  inputs,
   accountsLib,
+  system,
   hostname,
   username,
   ...
 }: let
-  default = import ../../default.nix;
+  default = import ../../default.nix {
+    inherit inputs accountsLib system hostname;
+  };
 
-  defaultHostCfg = import ../default.hostCfg.nix {inherit hostname;};
-
-  userCfg = defaultHostCfg.mkDefaultUserCfg username;
+  userCfg = default.mkDefaultUserCfg username;
 
   accounts = [
     "contact@romaindeville.fr"
@@ -26,6 +28,7 @@
   flavors =
     default.hmFlavors
     // {
+      bluetooth.enable = true;
       gh.enable = true;
       glab.enable = true;
     };
@@ -43,7 +46,7 @@
     perso = default.git.perso;
   };
 in {
-  inherit (userCfg) stateVersion username hostname;
+  inherit (userCfg) stateVersion username hostname system isDarwin wrapGL;
   inherit presets flavors extraConfig git;
 
   sudo = true;

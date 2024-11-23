@@ -1,9 +1,8 @@
 {userCfg, ...}: let
   userFlavors =
-      if userCfg ? localFlavors
-      then userCfg.localFlavors
-      else {}
-    ;
+    if userCfg ? localFlavors
+    then userCfg.localFlavors
+    else {};
 
   flavors = builtins.filter (
     item: userFlavors.${item}.enable

@@ -1,5 +1,32 @@
 {
+  inputs,
+  accountsLib,
+  system,
+  hostname,
+  ...
+}: let
   stateVersion = "24.05";
+  isDarwin = false;
+  wrapGL = false;
+in {
+  mkDefaultUserCfg = username: {
+    inherit system hostname username;
+    inherit stateVersion isDarwin wrapGL;
+  };
+
+  mkNixosUser = users: (
+    builtins.listToAttrs (
+      builtins.map (username: {
+        name = username;
+        value = import ./${hostname}/${username} {
+          inherit inputs accountsLib system hostname username;
+        };
+      })
+      users
+    )
+  );
+
+  inherit stateVersion isDarwin;
 
   osPresets = {
     minimal = {
@@ -62,4 +89,18 @@
   editor = "nvim";
   terminal = "kitty";
   keyMap = "fr";
+
+  nix = {
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+    };
+  };
+
+  console = {
+    font = "Lat2-Terminus16";
+    keyMap = "fr";
+  };
 }

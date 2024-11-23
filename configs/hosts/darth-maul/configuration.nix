@@ -1,5 +1,6 @@
 {
   hostCfg,
+  config,
   lib,
   ...
 }: {
@@ -16,27 +17,18 @@
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
-      # systemd-boot = {
-      #   enable = true;
-      # };
-      # efi = {
-      #   canTouchEfiVariables = true;
-      # };
-      grub = {
+      systemd-boot = {
         enable = true;
-        device = "nodev";
-        useOSProber = true;
-        efiSupport = true;
       };
-    };
-  };
-
-  nix = {
-    settings = {
-      experimental-features = lib.mkDefault [
-        "nix-command"
-        "flakes"
-      ];
+      efi = {
+        canTouchEfiVariables = true;
+      };
+      # grub = {
+      #   enable = true;
+      #   device = "nodev";
+      #   useOSProber = true;
+      #   efiSupport = true;
+      # };
     };
   };
 
@@ -44,8 +36,29 @@
     hostName = hostCfg.hostname;
   };
 
-  console = {
-    font = lib.mkDefault "Lat2-Terminus16";
-    keyMap = lib.mkDefault "fr";
+  services = {
+    xserver = {
+      videoDrivers = ["nvidia"];
+    };
+  };
+
+  hardware = {
+    bluetooth = {
+      enable = true;
+      powerOnBoot = true;
+    };
+    opengl = {
+      enable = true;
+    };
+    nvidia = {
+      # modesettings.enable = true;
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      open = false;
+      nvidiaSettings = true;
+      package = config.boot.kernelPackages.nvidiaPackages.stable;
+    };
   };
 }
