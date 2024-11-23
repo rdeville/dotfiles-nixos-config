@@ -1,12 +1,16 @@
 {
   inputs,
   accountsLib,
-  userCfg,
+  system,
+  hostname,
+  username,
   ...
 }: let
-  mkLib = inputs.nixos.homeManagerModules.mkLib {inherit (inputs.nixos) inputs;};
+  default = import ../../default.nix {
+    inherit inputs accountsLib system hostname;
+  };
 
-  default = import ../../default.nix;
+  userCfg = default.mkDefaultUserCfg username;
 
   accounts = [
     "contact@romaindeville.fr"
@@ -31,6 +35,8 @@
   extraConfig =
     default.hmExtraConfig
     // {
+      # My custom dotfiles
+      awesomerc.enable = true;
       # My custom programs
       dotgit-sync.enable = true;
     };
@@ -38,9 +44,21 @@
   git = {
     perso = default.git.perso;
   };
+
+  programs = {
+    kitty = {
+      settings = {
+        font_size = "12.0";
+        active_tab_foreground = "#212121";
+        active_tab_background = "#388E3C";
+      };
+    };
+  };
 in {
-  inherit (userCfg) stateVersion username hostname;
-  inherit presets flavors git extraConfig;
+  inherit (userCfg) stateVersion username hostname system isDarwin;
+  inherit presets flavors extraConfig git programs;
+
+  wrapGL = true;
 
   sudo = true;
 
@@ -70,8 +88,16 @@ in {
       // {
         inherit presets;
       };
-    inherit mkLib accountsLib accounts;
+    inherit accountsLib accounts;
   };
+
+  localFlavors = {
+    bin.enable = true;
+  };
+
+  initialPassword = username;
+  isNormalUser = true;
+  extraGroupts = ["wheel"];
 
   # modules = [
   #   (

@@ -1,13 +1,15 @@
 {
   inputs,
+  accountsLib,
   hostname,
   mkLib,
-  accountsLib,
   ...
 }: let
-  default = import ../default.nix;
+  default = import ../default.nix {
+    inherit inputs accountsLib system hostname;
+  };
 
-  defaultHostCfg = import ./default.hostCfg.nix {inherit hostname;};
+  system = "x86_64-linux";
 
   flavors =
     default.osFlavors
@@ -40,16 +42,7 @@
     };
 in {
   inherit (default) editor terminal keyMap stateVersion;
-  inherit (defaultHostCfg) hostname system;
-  inherit flavors presets;
+  inherit hostname system flavors presets;
 
-  users = builtins.listToAttrs (
-    builtins.map (username: {
-      name = username;
-      value = import ./${username} {
-        inherit inputs accountsLib hostname username;
-      };
-    })
-    (mkLib.mkListDirs ./.)
-  );
+  users = default.mkNixosUser (mkLib.mkListDirs ./.);
 }

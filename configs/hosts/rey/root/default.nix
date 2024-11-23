@@ -1,5 +1,12 @@
-{userCfg, ...}: let
+{
+  system,
+  hostname,
+  username,
+  ...
+}: let
   default = import ../../default.nix;
+
+  userCfg = default.mkDefaultUserCfg system hostname username;
 
   presets =
     default.hmPresets
@@ -26,7 +33,7 @@
     perso = default.git.perso;
   };
 in {
-  inherit (userCfg) stateVersion username hostname;
+  inherit (userCfg) stateVersion username hostname system isDarwin wrapGL;
   inherit presets flavors extraConfig git;
 
   sudo = true;
