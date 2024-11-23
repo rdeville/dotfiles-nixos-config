@@ -1,6 +1,5 @@
 {
   hostCfg,
-  userCfg,
   pkgs,
   ...
 }: {
