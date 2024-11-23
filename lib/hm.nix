@@ -1,7 +1,5 @@
 {inputs, ...}: let
   home-manager = inputs.home-manager;
-  nixpkgs = inputs.nixpkgs;
-  nixgl = inputs.nixgl;
   sops-nix = inputs.sops-nix;
   colors = import ../colors;
 
@@ -63,21 +61,6 @@
       };
     };
 
-  nixGLWrap = pkg: cfg: let
-    pkgs = pkgsForSystem cfg.system;
-  in
-    pkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
-      mkdir $out
-      ln -s ${pkg}/* $out
-      rm $out/bin
-      mkdir $out/bin
-      for bin in ${pkg}/bin/*; do
-       wrapped_bin=$out/bin/$(basename $bin)
-       echo "exec ${pkgs.lib.getExe' pkgs.nixgl.auto.nixGLDefault "nixGL"} $bin \"\$@\"" > $wrapped_bin
-      chmod +x $wrapped_bin
-      done
-    '';
-
   lib = {
     inherit
       mkDebug
@@ -86,7 +69,6 @@
       mkHomeConfiguration
       mkRepos
       pkgsForSystem
-      nixGLWrap
       ;
   };
 in
