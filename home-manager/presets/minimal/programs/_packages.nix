@@ -13,6 +13,7 @@
       gcc # C++ compiler
       sops # Encryption tools
       age # Encryption tools
+      nh # nixos-rebuild & home-manager wrapper
     ];
   };
 }
