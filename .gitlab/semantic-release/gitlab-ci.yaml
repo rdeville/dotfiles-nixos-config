@@ -11,8 +11,8 @@ Generate Changelog:
   - pip3 install python-semantic-release
   - export PYTHONPATH=${PWD}/.release
   script:
-  - git fetch
-  - git switch ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:-$CI_COMMIT_BRANCH}
+  - git fetch --all
+  - git checkout ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:-$CI_COMMIT_BRANCH}
   - semantic-release -c releaserc.toml changelog
   - cat CHANGELOG.md
   rules:
@@ -27,9 +27,8 @@ Tag and Release:
   stage: release
   before_script: *id001
   script:
-  - git fetch
-  - git switch "${CI_DEFAULT_BRANCH}"
-  - git pull --rebase
+  - git fetch --all
+  - git checkout "${CI_DEFAULT_BRANCH}"
   - git remote set-url origin "https://gitlab-ci-token:${DOTGIT_SYNC_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}"
   - semantic-release -c releaserc.toml version
   rules:

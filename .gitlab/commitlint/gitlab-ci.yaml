@@ -7,8 +7,6 @@ Lint All Commit Since Default Branch:
   - npm install @commitlint/cli gitmojis
   script:
   - git fetch --all
-  - git checkout "${CI_DEFAULT_BRANCH}"
-  - git switch "${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:-$CI_COMMIT_BRANCH}"
   - npx commitlint --from "${CI_DEFAULT_BRANCH}" --to "${CI_COMMIT_BRANCH}"
   rules:
   - if: $CI_PIPELINE_SOURCE =~ /(parent_pipeline|pipeline)/
