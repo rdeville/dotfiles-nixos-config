@@ -29,6 +29,7 @@ Tag and Release:
   script:
   - git fetch
   - git switch "${CI_DEFAULT_BRANCH}"
+  - git pull
   - git remote set-url origin "https://gitlab-ci-token:${DOTGIT_SYNC_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}"
   - semantic-release -c releaserc.toml version
   rules:
