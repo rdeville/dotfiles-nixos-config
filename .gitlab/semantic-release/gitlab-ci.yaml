@@ -13,6 +13,7 @@ Generate Changelog:
   script:
   - git fetch --all
   - git checkout ${CI_MERGE_REQUEST_SOURCE_BRANCH_NAME:-$CI_COMMIT_BRANCH}
+  - git pull
   - semantic-release -c releaserc.toml changelog
   - cat CHANGELOG.md
   rules:
@@ -29,6 +30,7 @@ Tag and Release:
   script:
   - git fetch --all
   - git checkout "${CI_DEFAULT_BRANCH}"
+  - git pull
   - git remote set-url origin "https://gitlab-ci-token:${DOTGIT_SYNC_TOKEN}@${CI_SERVER_HOST}/${CI_PROJECT_PATH}"
   - semantic-release -c releaserc.toml version
   rules:
