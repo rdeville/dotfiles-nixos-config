@@ -51,8 +51,6 @@ Check dotgit-sync Update:
       git push \
         --force \
         -o merge_request.create \
-        -o merge_request.label=ci \
-        -o merge_request.label=enhancement \
         -o merge_request.title="${COMMIT_MESSAGE}" \
         --set-upstream origin \
         "${DOTGIT_BRANCH}"
