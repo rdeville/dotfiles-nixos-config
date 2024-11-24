@@ -69,7 +69,7 @@
     };
     # My personal dotfiles flakes
     awesomerc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/awesome.git";
+      url = "git+https://framagit.org/rdeville-public/dotfiles/awesomewm.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
         utils.follows = "utils";

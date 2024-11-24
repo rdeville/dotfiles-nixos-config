@@ -31,6 +31,8 @@
       bluetooth.enable = true;
       gh.enable = true;
       glab.enable = true;
+      nextcloud-client.enable = true;
+      container.enable = true;
     };
 
   extraConfig =
@@ -45,9 +47,19 @@
   git = {
     perso = default.git.perso;
   };
+
+  programs = {
+    kitty = {
+      settings = {
+        font_size = "12.0";
+        active_tab_foreground = "#212121";
+        active_tab_background = "#388E3C";
+      };
+    };
+  };
 in {
   inherit (userCfg) stateVersion username hostname system isDarwin wrapGL;
-  inherit presets flavors extraConfig git;
+  inherit presets flavors extraConfig git programs;
 
   sudo = true;
 

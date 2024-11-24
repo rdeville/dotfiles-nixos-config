@@ -9,11 +9,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730773997,
-        "narHash": "sha256-nOo970Pm12BK1DH7hfS800i8mg5h8me1IxokGUKMgb8=",
+        "lastModified": 1732419807,
+        "narHash": "sha256-fxWG4fSgViAfBCYNr8V9w8uWfBpdXWT41ssNQGoHYck=",
         "owner": "kamadorueda",
         "repo": "alejandra",
-        "rev": "264e23546663a5676a77174cab31340a81aa2cc0",
+        "rev": "04fe4d17dc488744879008f9a8e5cb9affefa2ec",
         "type": "github"
       },
       "original": {
@@ -70,17 +70,17 @@
         ]
       },
       "locked": {
-        "lastModified": 1725788083,
-        "narHash": "sha256-qJa5ssQdFeWL4kVD5GYkC9uKy6GkZnnALsoYGe/be/Y=",
+        "lastModified": 1732375195,
+        "narHash": "sha256-u6V/JNYNEm5BpJJegDwqvP6aY8MATHsyyZybhThzDJk=",
         "ref": "refs/heads/main",
-        "rev": "607c9169587f5cbee671ce0eedb3e56c837d54b4",
-        "revCount": 130,
+        "rev": "e76cb6a459fcc30512c4d2e927758233d58b1614",
+        "revCount": 133,
         "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/awesome.git"
+        "url": "https://framagit.org/rdeville-public/dotfiles/awesomewm.git"
       },
       "original": {
         "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/awesome.git"
+        "url": "https://framagit.org/rdeville-public/dotfiles/awesomewm.git"
       }
     },
     "bling": {
@@ -209,11 +209,11 @@
         "nixpkgs": "nixpkgs_3"
       },
       "locked": {
-        "lastModified": 1732298876,
-        "narHash": "sha256-WXlcDNMaMJeI4JO4VfQM2ZZCBJBds7j7N04tS9UjiYU=",
+        "lastModified": 1732372847,
+        "narHash": "sha256-TeQSs2Dd2tXBgeBsoJpdJOySG0qKZAnsTHqZ+9dGQX4=",
         "owner": "cachix",
         "repo": "devenv",
-        "rev": "741e23a22f3dc9e53075be3eaa795ea9ed6f5129",
+        "rev": "5203d46c94236cdad41f538f7a898cd97f3261b6",
         "type": "github"
       },
       "original": {
@@ -358,11 +358,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1725792049,
-        "narHash": "sha256-+8ubO+lDquCBfaRi5EUufI+IYuOgR+7J2XZncZa7bvo=",
+        "lastModified": 1732388296,
+        "narHash": "sha256-coaILFyTEklaMfKPx4qiMosJ5CcUtvUoMTfslNfeafQ=",
         "ref": "refs/heads/main",
-        "rev": "f7ff64c112c507378cfc72cb7351da36d6f37c42",
-        "revCount": 225,
+        "rev": "b59e0608ba4cba67673fa169d9ef1559fe521eb3",
+        "revCount": 228,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/programs/dotgit-sync.git"
       },
@@ -666,11 +666,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1732303962,
-        "narHash": "sha256-5Umjb5AdtxV5jSJd5jxoCckh5mlg+FBQDsyAilu637g=",
+        "lastModified": 1732420764,
+        "narHash": "sha256-u6JOOVlnGe8fMekW0BgaHuuZwbJp4ixQaMA5BEvRoDA=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8cf9cb2ee78aa129e5b8220135a511a2be254c0c",
+        "rev": "67cd4814a247fd0fe97171acb90659f7e304bcb8",
         "type": "github"
       },
       "original": {
@@ -980,11 +980,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1730654201,
-        "narHash": "sha256-GlGIGrvv3jSQvKcq76F7ygjFx09MA9PKPvMbORUzDnk=",
+        "lastModified": 1732439569,
+        "narHash": "sha256-lWavxfqV0gFv57+Fhs9xoc/HYA7rNdJX7VCd/yLxsCg=",
         "ref": "refs/heads/main",
-        "rev": "743e84df58bbcaf87e127647e5ac5b01bdfc53e9",
-        "revCount": 260,
+        "rev": "2cdfbcd8a1beab24c5ded3d60f3c57eaa12bf2d0",
+        "revCount": 267,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
