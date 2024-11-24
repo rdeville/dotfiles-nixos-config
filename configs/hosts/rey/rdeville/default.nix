@@ -48,7 +48,7 @@
   programs = {
     kitty = {
       settings = {
-        font_size = "12.0";
+        font_size = "10.0";
         active_tab_foreground = "#212121";
         active_tab_background = "#388E3C";
       };
