@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.17.0 (2024-11-27)
+
+### ✨ Minor
+
+  * ✨(hm/flavors): Add latex flavors with tehliveMedium pkgs (!68) by Romain Deville ([`3da4edf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3da4edf4248e3b6c979263d73fe7cff1c0aa9357))
+  * ✨(hm/flavors): Add latex flavors with tehliveMedium pkgs by Romain Deville ([`c3b6ea8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3b6ea8f0201b70e4a931a5aa3146622d040cd98)) 🔏
+
 ## v0.16.0 (2024-11-27)
 
 ### ✨ Minor
@@ -52,6 +59,7 @@
   * ♻️(hm/flavors): Refacto import flavors by Romain Deville ([`2fbd538`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2fbd538c07e7e7f68535d4e6451b449fdf978949)) 🔏
   * 🎨 Run alejandra formatter by Romain Deville ([`7aa3c32`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7aa3c326133ce4444cbaa6d3871f3bdb16e2492a))
   * 🏗️(lib): Move nixGLWrap functions from lib/hm to lib/default by Romain Deville ([`b882afe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b882afedd1a94e392ca046052147c01aac0158a1)) 🔏
+  * 🔖 v0.16.0 (NO-CI) by Python Semantic Release [bot] ([`8f094b5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8f094b59e98a68db5ff1670aa5e758f28ffcfed1))
   * 🔥(hm): Remove now useless default for HM by Romain Deville ([`59c6582`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/59c6582f1c7fc30b9e3a7d21807f68b28ae02559)) 🔏
   * 🔥(nixos/hosts): Remove test hosts configuration by Romain Deville ([`ced044c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ced044c54587204c428c359be06ab50b27d7e2f6)) 🔏
   * 🔥(nixos/vms): Remove VMs configuration by Romain Deville ([`9ab5f7e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9ab5f7e2bfcda7001fb139fca9256df8bd83fd73)) 🔏
