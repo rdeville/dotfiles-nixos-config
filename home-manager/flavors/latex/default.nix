@@ -1,6 +1,5 @@
 {
   userCfg,
-  config,
   pkgs,
   lib,
   ...
@@ -21,7 +20,7 @@ in {
   config = lib.mkIf moduleCfg.enable {
     home = {
       packages = with pkgs; [
-        texliveMedium
+        texliveFull
       ];
     };
   };
