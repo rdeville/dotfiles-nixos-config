@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.17.1 (2024-11-27)
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/latex): Update from texliveMedium to texliveFull pkgs (!69) by Romain Deville ([`dca7114`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dca71143ff05d529f6490040fb3ba8b00bdfa03c))
+  * ⚡️(hm/flavors/latex): Update from texliveMedium to texliveFull pkgs by Romain Deville ([`20adec2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/20adec20e8a2756179ae78ccfba8563c5971378a))
+
 ## v0.17.0 (2024-11-27)
 
 ### ✨ Minor
 
   * ✨(hm/flavors): Add latex flavors with tehliveMedium pkgs (!68) by Romain Deville ([`3da4edf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3da4edf4248e3b6c979263d73fe7cff1c0aa9357))
   * ✨(hm/flavors): Add latex flavors with tehliveMedium pkgs by Romain Deville ([`c3b6ea8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3b6ea8f0201b70e4a931a5aa3146622d040cd98)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.17.0 (NO-CI) by Python Semantic Release [bot] ([`e56c1d9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e56c1d9f8e6b667c771017a0cf319ee6fa1c73b7))
 
 ## v0.16.0 (2024-11-27)
 
