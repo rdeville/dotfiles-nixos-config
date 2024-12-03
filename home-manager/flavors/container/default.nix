@@ -21,7 +21,7 @@ in {
         description = ''
           Object describing containers to run with podman
           See https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/containers.nix
-          '';
+        '';
         default = {};
       };
 
@@ -30,7 +30,7 @@ in {
         description = ''
           Object describing networks to run with podman
           See https://github.com/nix-community/home-manager/blob/master/modules/services/podman-linux/networks.nix
-          '';
+        '';
         default = {};
       };
     };

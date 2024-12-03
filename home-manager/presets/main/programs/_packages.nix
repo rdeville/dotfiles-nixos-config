@@ -13,7 +13,9 @@ in {
       [
         alejandra
         discord
+        ghostscript
         signal-desktop
+        colmena
       ]
       ++ (
         if userCfg.isDarwin
