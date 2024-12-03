@@ -1,12 +1,32 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.18.0 (2024-12-03)
+
+### ✨ Minor
+
+  * ✨ Add new flavors, upgrade to 24.11 and minor fixes (!70) by Romain Deville ([`ffc1d4b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ffc1d4b0368531d827fb9df1532759e3ccb10357))
+  * ✨(os/flavors): Add k3s flavor by Romain Deville ([`41084ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/41084ad9a1b817fc49de2a85951431f2fcd06b5f)) 🔏
+  * ✨(hm/presets): Update pkgs list for gui and main presets by Romain Deville ([`4c09c50`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4c09c504ee836023f3701a9cda967557d4f9ca36)) 🔏
+
+### 🩹 Patch
+
+  * ✏️(hm/flavors/container): format flavors by Romain Deville ([`9a1ecdf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9a1ecdfd076a4f26d574dada9dd30b319d6ae373)) 🔏
+
+### 🔊 Others
+
+  * 🚀 Upgrade config release of 24.11 by Romain Deville ([`8fa0738`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8fa07382b14da6c3a91dc9bb0e0923d9037390c5)) 🔏
+
 ## v0.17.1 (2024-11-27)
 
 ### 🩹 Patch
 
   * ⚡️(hm/flavors/latex): Update from texliveMedium to texliveFull pkgs (!69) by Romain Deville ([`dca7114`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dca71143ff05d529f6490040fb3ba8b00bdfa03c))
   * ⚡️(hm/flavors/latex): Update from texliveMedium to texliveFull pkgs by Romain Deville ([`20adec2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/20adec20e8a2756179ae78ccfba8563c5971378a))
+
+### 🔊 Others
+
+  * 🔖 v0.17.1 (NO-CI) by Python Semantic Release [bot] ([`131cf11`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/131cf118cd04c7d3985e3a4b5536f5ceef612651))
 
 ## v0.17.0 (2024-11-27)
 
