@@ -13,7 +13,7 @@
     };
     font = {
       name = "FiraCode";
-      package = with pkgs; (nerdfonts.override {fonts = ["FiraCode"];});
+      package = with pkgs; nerd-fonts.fira-code;
       size = 10;
     };
     theme = {

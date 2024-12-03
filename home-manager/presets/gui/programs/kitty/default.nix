@@ -20,7 +20,7 @@
       };
       font = {
         name = "FiraCode Nerd Fonts Mono";
-        package = with pkgs; (nerdfonts.override {fonts = ["FiraCode"];});
+        package = with pkgs; nerd-fonts.fira-code;
       };
       settings =
         {

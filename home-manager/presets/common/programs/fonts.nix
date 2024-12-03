@@ -8,8 +8,8 @@
       noto-fonts-color-emoji
       # Icons
       font-awesome
-      # Nerdfont Icons override
-      (nerdfonts.override {fonts = ["FiraCode"];})
+      # Nerdfont Icons
+      nerd-fonts.fira-code
     ];
   };
   fonts = {
