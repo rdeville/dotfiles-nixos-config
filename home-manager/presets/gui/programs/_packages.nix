@@ -4,6 +4,7 @@
   ...
 }: let
   linuxPkgs = with pkgs; [
+    arandr
     keepassxc
   ];
   darwinPkgs = [];
@@ -11,7 +12,7 @@ in {
   home = {
     packages = with pkgs;
       [
-        arandr
+        vlc
       ]
       ++ (
         if userCfg.isDarwin
