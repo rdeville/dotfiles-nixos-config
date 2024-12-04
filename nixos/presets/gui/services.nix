@@ -59,6 +59,16 @@
       && presetCfg.displayManager.gdm ? enable
     then presetCfg.displayManager.gdm.enable
     else false;
+
+  # Terminal Display Manager, see https://github.com/fairyglade/ly
+  lyEnable =
+    if
+      presetCfg
+      ? windowManager
+      && presetCfg.displayManager ? ly
+      && presetCfg.displayManager.ly ? enable
+    then presetCfg.displayManager.ly.enable
+    else false;
 in {
   services = {
     xserver = {
@@ -72,12 +82,6 @@ in {
       };
 
       displayManager = {
-        defaultSession =
-          if awesomeEnable
-          then "none+awesome"
-          else if hyprlandEnable
-          then "hyprland"
-          else null;
         gdm = {
           enable = gdmEnable;
           wayland = hyprlandEnable;
@@ -93,6 +97,18 @@ in {
           ];
           package = awesome;
         };
+      };
+    };
+
+    displayManager = {
+      defaultSession =
+        if awesomeEnable
+        then "none+awesome"
+        else if hyprlandEnable
+        then "hyprland"
+        else null;
+      ly = {
+        enable = lyEnable;
       };
     };
   };
