@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.19.0 (2024-12-04)
+
+### ✨ Minor
+
+  * ✨(os/presets/gui): add ly desktop manager (!71) by Romain Deville ([`eae304d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eae304d634f77c900960109a87cc7b63bc713776))
+  * ✨(os/presets/gui): add ly desktop manager by Romain Deville ([`cddd418`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cddd4182f4a062d55f1734c204c8179b0564802a)) 🔏
+
 ## v0.18.0 (2024-12-03)
 
 ### ✨ Minor
@@ -15,6 +22,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.18.0 (NO-CI) by Python Semantic Release [bot] ([`2871b63`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2871b6319f3df0b9d9523bbfc3bbddd9c9bdfde8))
   * 🚀 Upgrade config release of 24.11 by Romain Deville ([`8fa0738`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8fa07382b14da6c3a91dc9bb0e0923d9037390c5)) 🔏
 
 ## v0.17.1 (2024-11-27)
