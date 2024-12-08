@@ -11,6 +11,12 @@
     };
   };
 
+  home = {
+    packages = with pkgs; [
+      libnotify
+    ];
+  };
+
   systemd = {
     user = {
       services = lib.mkIf (! userCfg.isDarwin) {
@@ -26,6 +32,9 @@
               (
                 toString
                 (pkgs.writeShellScript "home-manager-auto-upgrade" ''
+                  #!/usr/bin/env bash
+                  PATH="${pkgs.nix}/bin''${PATH:+:$PATH}"
+                  echo $PATH
                   notify(){
                     local title="HM Auto Upgrade"
                     local level="normal"
@@ -35,27 +44,31 @@
                       title+=" Failed"
                       level="critical"
                     fi
-                    notify-send -u "''${level}" "''${title}" "$1"
+                    ${pkgs.libnotify}/bin/notify-send -u "''${level}" "''${title}" "$1"
                   }
 
-                  notify "Update Nix's channels"
-                  if ! ${pkgs.nix}/bin/nix-channel --update; then
-                    notify "Failed to update Nix's channels!" 1
-                  fi
+                  main(){
+                    notify "Update Nix's channels"
+                    if ! ${pkgs.nix}/bin/nix-channel --update; then
+                      notify "Failed to update Nix's channels!" 1
+                    fi
 
-                  notify "Build Home Manager"
-                  if ! $HOME/.nix-profile/bin/home-manager build --impure; then
-                    notify "Failed to Build Home Manager Config!" 1
-                    return 1
-                  fi
+                    notify "Build Home Manager"
+                    if ! $HOME/.nix-profile/bin/home-manager build --impure; then
+                      notify "Failed to Build Home Manager Config!" 1
+                      exit 1
+                    fi
 
-                  notify "Switch Home Manager"
-                  if ! $HOME/.nix-profile/bin/home-manager switch --impure; then
-                    notify "Failed to Switch Home Manager Config!" 1
-                    return 1
-                  fi
+                    notify "Switch Home Manager"
+                    if ! $HOME/.nix-profile/bin/home-manager switch --impure; then
+                      notify "Failed to Switch Home Manager Config!" 1
+                      exit 1
+                    fi
 
-                  notify "Switch Success" 0
+                    notify "Switch Success" 0
+                  }
+
+                  main "$@"
                 '')
               );
           };
