@@ -47,7 +47,7 @@
       enable = true;
       powerOnBoot = true;
     };
-    opengl = {
+    graphics = {
       enable = true;
     };
     nvidia = {
