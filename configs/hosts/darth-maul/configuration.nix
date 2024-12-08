@@ -1,7 +1,6 @@
 {
   hostCfg,
   config,
-  lib,
   ...
 }: {
   # For more information, see `man configuration.nix` or
