@@ -5,7 +5,7 @@
   hostname,
   ...
 }: let
-  stateVersion = "24.05";
+  stateVersion = "24.11";
   isDarwin = false;
   wrapGL = false;
 in {

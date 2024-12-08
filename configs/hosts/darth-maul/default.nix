@@ -16,6 +16,7 @@
     // {
       ssh.enable = true;
       steam.enable = true;
+      k3s.enable = true;
     };
 
   presets =
@@ -28,7 +29,8 @@
       gui = {
         enable = true;
         displayManager = {
-          gdm.enable = true;
+          gdm.enable = false;
+          ly.enable = true;
         };
         windowManager = {
           awesome = {

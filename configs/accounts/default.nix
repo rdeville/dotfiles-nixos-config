@@ -1,9 +1,15 @@
 {
+  inputs,
   accountsLib,
   accounts,
   userCfg,
+  system,
   ...
 }: let
+  pkgs = import inputs.nixpkgs {
+    inherit system;
+  };
+
   tuiAccounts = {
     email = {
       thunderbird.enabled = false;
@@ -39,7 +45,7 @@
     builtins.map (
       address:
         import ./${address} {
-          inherit accountsLib userCfg tuiAccounts guiAccounts;
+          inherit accountsLib userCfg tuiAccounts guiAccounts pkgs;
         }
     )
     accounts

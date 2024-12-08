@@ -27,6 +27,9 @@ Tag and Release:
   image: alpine:latest
   stage: release
   before_script: *id001
+  variables:
+    GIT_STRATEGY: "clone"
+    GIT_DEPTH: 0
   script:
   - git fetch --all
   - git checkout "${CI_DEFAULT_BRANCH}"

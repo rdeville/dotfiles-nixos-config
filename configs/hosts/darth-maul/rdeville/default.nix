@@ -33,6 +33,7 @@
       glab.enable = true;
       nextcloud-client.enable = true;
       container.enable = true;
+      latex.enable = true;
     };
 
   extraConfig =
@@ -89,7 +90,7 @@ in {
       // {
         inherit presets;
       };
-    inherit accountsLib accounts;
+    inherit inputs accountsLib accounts system;
   };
 
   localFlavors = {

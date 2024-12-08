@@ -1,7 +1,6 @@
 {
   hostCfg,
   config,
-  lib,
   ...
 }: {
   # For more information, see `man configuration.nix` or
@@ -47,7 +46,7 @@
       enable = true;
       powerOnBoot = true;
     };
-    opengl = {
+    graphics = {
       enable = true;
     };
     nvidia = {
