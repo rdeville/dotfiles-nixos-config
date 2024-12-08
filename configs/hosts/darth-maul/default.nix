@@ -28,7 +28,8 @@
       gui = {
         enable = true;
         displayManager = {
-          gdm.enable = true;
+          gdm.enable = false;
+          ly.enable = true;
         };
         windowManager = {
           awesome = {

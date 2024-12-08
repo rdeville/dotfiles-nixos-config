@@ -33,6 +33,7 @@
       glab.enable = true;
       nextcloud-client.enable = true;
       container.enable = true;
+      latex.enable = true;
     };
 
   extraConfig =
