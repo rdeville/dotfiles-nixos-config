@@ -89,7 +89,7 @@ in {
       // {
         inherit presets;
       };
-    inherit accountsLib accounts;
+    inherit inputs accountsLib accounts system;
   };
 
   localFlavors = {

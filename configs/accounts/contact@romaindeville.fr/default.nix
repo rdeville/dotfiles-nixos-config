@@ -3,6 +3,7 @@
   accountsLib,
   tuiAccounts,
   guiAccounts,
+  pkgs,
   ...
 }: let
   domain = "romaindeville.fr";
@@ -11,8 +12,8 @@
   userName = "rdeville";
   passwordCommand =
     if userCfg.username == "root"
-    then ["cat" "/root/.config/sops-nix/secrets/accounts/${address}"]
-    else ["cat" "/home/${userCfg.username}/.config/sops-nix/secrets/accounts/${address}"];
+    then ["${pkgs.coreutils}/bin/cat" "/root/.config/sops-nix/secrets/accounts/${address}"]
+    else ["${pkgs.coreutils}/bin/cat" "/home/${userCfg.username}/.config/sops-nix/secrets/accounts/${address}"];
   primary = true; # userCfg.presets.main.enable; #  && !userCfg.presets ? work ? enable;
   displayName = "📗 Romain Deville";
   user = {
