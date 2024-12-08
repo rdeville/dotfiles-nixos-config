@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.3.2 (2024-12-08)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`dcd1693`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/dcd16939ade5c9eb9651bcbae629e269de63a444)) 🔏
+  * ⬆️ Upgrade to configuration to 24.11 by Romain Deville ([`8cc28a9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8cc28a9d7d6e12f3c1c045d170799f93d9e0ba8d)) 🔏
+  * 🐛(configs): Fix accounts pkgs configuration by Romain Deville ([`62bc7d9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/62bc7d977cf65d1636602a5387a697c08002308d)) 🔏
+  * 🔧(config/hosts/darth-maul): Enable nixos k3s flavor by Romain Deville ([`5e71e63`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5e71e63a44c2b6a74f7042db4c80ce3bb13f7543)) 🔏
+  * 🔧(configs/hosts/darth-maul): Add nixos and hm flavors by Romain Deville ([`40972a4`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/40972a45aa6efc28d558ba17d74dcf28e8bebce7)) 🔏
+
+### 🔊 Others
+
+  * 🎨(configs/hosts/darth-maul): Remove useless module input by Romain Deville ([`e2b73ab`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e2b73ab8e1d69d6c5d33dca51a173f66df70d3d3)) 🔏
+  * 💚 fix commitlint CI by Romain Deville ([`a47173a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a47173a47dbfc3e2fef0e4a24068cf31d5282001)) 🔏
+  * 💚 Update semantic release git strategy and depth by Romain Deville ([`547a659`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/547a659c201652a33e6ffa34ac893f105d8ff8ab)) 🔏
+  * 🔀 Fix commitlint CI (!30) by Romain Deville ([`da0e0ea`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/da0e0ea901b03604724dca2d36553a74ea24cf2c))
+  * 🔀 Fix accounts, update flavors (!29) by Romain Deville ([`eb80b21`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/eb80b21a32c9832a691234a15f0f97933141fab3))
+
 ## v0.3.1 (2024-11-24)
 
 ### 🩹 Patch
@@ -14,6 +32,7 @@
 
   * 💚 Fix Semantic Release CI by Romain Deville ([`636acae`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/636acaecd339cdaf886056841f51249bb3630889)) 🔏
   * 💚 Fix commitlint and semantic-release CI by Romain Deville ([`6c636ce`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/6c636ceb9f39461836549c60eccbb169cf5daba5)) 🔏
+  * 🔖 v0.3.1 (NO-CI) by Python Semantic Release [bot] ([`5eccadf`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5eccadfe489a798f7560507aae14a7634304c781))
 
 ## v0.3.0 (2024-11-24)
 
