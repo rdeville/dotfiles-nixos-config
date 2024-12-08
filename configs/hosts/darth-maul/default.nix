@@ -16,6 +16,7 @@
     // {
       ssh.enable = true;
       steam.enable = true;
+      k3s.enable = true;
     };
 
   presets =
