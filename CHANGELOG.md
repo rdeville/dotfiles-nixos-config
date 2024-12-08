@@ -1,12 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.19.1 (2024-12-08)
+
+### 🩹 Patch
+
+  * 🐛(hm/presets/minimal): fix HM auto upgrade service (!72) by Romain Deville ([`8617743`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/861774327dc9951660357bc55c2b0b05b5e3ac8b))
+  * 🐛(hm/presets/minimal): fix HM auto upgrade service by Romain Deville ([`20190f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/20190f55f4d95a9f690f613a5f68de87f8395fb8))
+
 ## v0.19.0 (2024-12-04)
 
 ### ✨ Minor
 
   * ✨(os/presets/gui): add ly desktop manager (!71) by Romain Deville ([`eae304d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eae304d634f77c900960109a87cc7b63bc713776))
   * ✨(os/presets/gui): add ly desktop manager by Romain Deville ([`cddd418`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cddd4182f4a062d55f1734c204c8179b0564802a)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.19.0 (NO-CI) by Python Semantic Release [bot] ([`14c5cf3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/14c5cf32f65e3ef42085eb57f93cdf2d9796011f))
 
 ## v0.18.0 (2024-12-03)
 
