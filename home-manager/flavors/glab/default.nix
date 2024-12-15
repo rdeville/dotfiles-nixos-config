@@ -32,11 +32,8 @@ in {
         "glab-cli/HMInit_config.yml" = {
           enable = with pkgs; builtins.elem glab config.home.packages;
           text = pkgs.lib.generators.toYAML {} {
-            # What protocol to use when performing git operations. Supported values: ssh, https
             git_protocol = "ssh";
-            # Set your desired markdown renderer style. Available options are [dark, liglabt, notty] or set a custom style. Refer to https://github.com/charmbracelet/glamour#styles
             glamour_style = "dark";
-            # Allow glab to automatically check for updates and notify you when there are new updates
             check_update = "false";
           };
           onChange = ''

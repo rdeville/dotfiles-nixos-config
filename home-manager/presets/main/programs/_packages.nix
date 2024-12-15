@@ -3,19 +3,17 @@
   userCfg,
   ...
 }: let
-  linuxPkgs = with pkgs; [
-    whatsapp-for-linux
-  ];
+  linuxPkgs = [ ];
   darwinPkgs = [];
 in {
   home = {
     packages = with pkgs;
       [
         alejandra
-        discord
-        ghostscript
-        signal-desktop
+        age
         colmena
+        comma
+        ghostscript
       ]
       ++ (
         if userCfg.isDarwin
