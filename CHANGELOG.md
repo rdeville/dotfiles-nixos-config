@@ -1,12 +1,35 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.20.0 (2024-12-15)
+
+### ✨ Minor
+
+  * ✨(hm): Update presets and add new flavors (!73) by Romain Deville ([`5363f8d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5363f8d3d3140beb7bf910eccfa4af6a3a0c723d))
+  * ✨(hm/flavors): Add terragrunt flavor by Romain Deville ([`c55e95c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c55e95c7b6c80a90691dfaa1c0c6ed334d983590)) 🔏
+  * ✨(hm/flavors): Add hm opentofu flavor by Romain Deville ([`b8afa23`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b8afa23a11526fff8fa82b1bc6e3a1e2a7dac0bc)) 🔏
+  * ✨(hm/flavors): Add hm whatsapp flavor by Romain Deville ([`6ad860b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6ad860b440c01e0eb095c4ab46d6e05c7296566a)) 🔏
+  * ✨(hm/flavors): Add hm k8s-client flavor by Romain Deville ([`1bc138f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1bc138ff1e3767318feb6abfdd1fec0f5f3ce69d)) 🔏
+  * ✨(hm/flavors): Add hm discord flavor by Romain Deville ([`245872e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/245872e794e19f4c15112d1211c4dc2ed6ab6481)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm/presets/main): Update pkgs presets by Romain Deville ([`52b87c0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/52b87c0ba6a83be36f2fa71715bd9310d8467d0e)) 🔏
+
+### 🔊 Others
+
+  * 💡(hm/flavors/glab): Remove useless comment by Romain Deville ([`0295dc8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0295dc89eaaafb56e0b9c4ca5db82d93d8a93c0b)) 🔏
+
 ## v0.19.1 (2024-12-08)
 
 ### 🩹 Patch
 
   * 🐛(hm/presets/minimal): fix HM auto upgrade service (!72) by Romain Deville ([`8617743`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/861774327dc9951660357bc55c2b0b05b5e3ac8b))
   * 🐛(hm/presets/minimal): fix HM auto upgrade service by Romain Deville ([`20190f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/20190f55f4d95a9f690f613a5f68de87f8395fb8))
+
+### 🔊 Others
+
+  * 🔖 v0.19.1 (NO-CI) by Python Semantic Release [bot] ([`c7e0bf7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c7e0bf7b72e3574701e01f4f5b4506156836e689))
 
 ## v0.19.0 (2024-12-04)
 
