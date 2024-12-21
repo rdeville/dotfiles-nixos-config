@@ -1,11 +1,4 @@
 {pkgs, ...}: {
-  # Nix Package Manager Settings
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
-    };
-  };
-
   # Nix Settings
   nix = {
     # Garbage Collection
