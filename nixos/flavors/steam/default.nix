@@ -1,20 +1,18 @@
 {
-  hostCfg,
   config,
-  pkgs,
   lib,
   ...
 }: let
-  cfg =
-    if hostCfg.flavors ? steam
-    then config.steam // hostCfg.flavors.steam
-    else {
-      enable = false;
-    };
+  name = "steam";
+  cfg = config.os.flavors.${name};
 in {
   options = {
-    steam = {
-      enable = lib.mkEnableOption "Install steam Related Packages";
+    os = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install steam Related Packages";
+        };
+      };
     };
   };
 
