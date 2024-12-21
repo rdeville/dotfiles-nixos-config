@@ -1,18 +1,18 @@
-let
-  # HOME-MANAGER ACCOUNTS RELATED FUNCTIONS
-  # ============================================================================
-  mkDebug = data: builtins.trace (builtins.toJSON data);
-  mkSlugEmail = email: builtins.replaceStrings ["@" "."] ["_at_" "_"] email;
+lib: let
   mkImap = domain: conn_type:
     if conn_type == "SSL/TLS"
     then {
       port = 993;
-      tls = {enable = true;};
+      tls = {
+        enable = true;
+      };
       host = domain;
     }
     else {
       port = 143;
-      tls = {useStartTls = true;};
+      tls = {
+        useStartTls = true;
+      };
       host = domain;
     };
 
@@ -23,18 +23,14 @@ let
       else 587;
     tls =
       if conn_type == "SSL/TLS"
-      then {enable = true;}
-      else {useStartTls = true;};
+      then {
+        enable = true;
+      }
+      else {
+        useStartTls = true;
+      };
     host = domain;
   };
-
-  mkImportDir = dir:
-    if builtins.pathExists dir
-    then
-      builtins.map (
-        file: "${dir}/${file}"
-      ) (builtins.attrNames (builtins.readDir dir))
-    else [];
 
   mkEmailCfg = userCfg: accountCfg:
     if accountCfg ? email
@@ -74,11 +70,8 @@ let
 
   lib = {
     inherit
-      mkDebug
-      mkSlugEmail
       mkImap
       mkSmtp
-      mkImportDir
       mkEmailCfg
       mkCalendarCfg
       mkContactCfg
