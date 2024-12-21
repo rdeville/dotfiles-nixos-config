@@ -1,73 +1,38 @@
 {
-  inputs,
-  userCfg,
+  config,
+  lib,
+  hm,
   ...
 }: let
-  mkLib = import ../../../lib/default.nix {inherit inputs;};
-  accountsLib = import ../../../lib/accounts;
-
-  imports = builtins.map (item: ./${item}) ((builtins.filter (
-      item:
-        item != "default.nix"
-    ) (mkLib.mkListFiles ./.))
-    ++ (mkLib.mkListDirs ./.));
+  name = "minimal";
+  cfg = config.hm.presets.${name};
 in {
-  imports = imports;
+  imports =
+    if hm ? presets.${name}.enable && hm.presets.${name}.enable
+    then builtins.map (item: ./${item}) (lib.importDir ./.)
+    else [];
 
-  home = {
-    stateVersion = userCfg.stateVersion;
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfree = true;
+  options = {
+    hm = {
+      presets = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager presets.";
+        };
+      };
     };
   };
 
-  systemd = {
-    user = {
-      startServices = "sd-switch";
+  config = lib.mkIf cfg.enable {
+    nixpkgs = {
+      config = {
+        allowUnfree = true;
+      };
     };
-  };
 
-  sops =
-    if (userCfg ? sops)
-    then userCfg.sops
-    else {};
-
-  accounts = {
-    email = {
-      maildirBasePath = ".local/share/mails";
-      accounts =
-        builtins.mapAttrs
-        (_: value: accountsLib.mkEmailCfg userCfg value)
-        (
-          if userCfg ? accounts
-          then userCfg.accounts
-          else {}
-        );
-    };
-    calendar = {
-      basePath = ".local/share/calendars";
-      accounts =
-        builtins.mapAttrs
-        (_: value: accountsLib.mkCalendarCfg userCfg value)
-        (
-          if userCfg ? accounts
-          then userCfg.accounts
-          else {}
-        );
-    };
-    contact = {
-      basePath = ".local/share/contacts";
-      accounts =
-        builtins.mapAttrs
-        (_: value: accountsLib.mkContactCfg userCfg value)
-        (
-          if userCfg ? accounts
-          then userCfg.accounts
-          else {}
-        );
+    systemd = {
+      user = {
+        startServices = "sd-switch";
+      };
     };
   };
 }

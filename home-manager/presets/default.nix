@@ -1,14 +1,12 @@
-{userCfg, ...}: let
-  userPresets =
-    if userCfg ? presets
-    then userCfg.presets
-    else {};
+{lib, ...}: {
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
-  presets = builtins.filter (
-    item: userPresets.${item}.enable
-  ) (builtins.attrNames userPresets);
-
-  imports = builtins.map (elem: ./${elem}) presets;
-in {
-  imports = imports;
+  options = {
+    hm = {
+      presets = lib.mkOption {
+        type = lib.types.submodule {};
+        default = {};
+      };
+    };
+  };
 }

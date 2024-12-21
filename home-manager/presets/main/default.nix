@@ -1,11 +1,26 @@
-{inputs, ...}: let
-  mkLib = import ../../../lib/default.nix {inherit inputs;};
-
-  imports = builtins.map (item: ./${item}) ((builtins.filter (
-      item:
-        item != "default.nix"
-    ) (mkLib.mkListFiles ./.))
-    ++ (mkLib.mkListDirs ./.));
+{
+  config,
+  lib,
+  hm,
+  ...
+}: let
+  name = "main";
+  cfg = config.hm.presets.${name};
 in {
-  imports = imports;
+  imports =
+    if hm ? presets.${name}.enable && hm.presets.${name}.enable
+    then builtins.map (item: ./${item}) (lib.importDir ./.)
+    else [];
+
+  options = {
+    hm = {
+      presets = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager presets.";
+        };
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {};
 }

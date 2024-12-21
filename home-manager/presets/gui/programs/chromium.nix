@@ -1,9 +1,9 @@
 {
-  userCfg,
+  config,
   lib,
   ...
 }:
-lib.mkIf (! userCfg.isDarwin) {
+lib.mkIf (! config.hm.isDarwin) {
   programs = {
     chromium = {
       enable = true;

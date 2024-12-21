@@ -7,7 +7,9 @@
       frequency = "weekly";
       options = "--delete-older-than 7d";
     };
+
     package = pkgs.nixVersions.latest;
+
     settings = {
       accept-flake-config = true;
       cores = 0;

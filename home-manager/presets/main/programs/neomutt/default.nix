@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  cfg,
-  ...
-}: let
+{config, ...}: let
   neomuttAccounts = builtins.filter (account: account.neomutt.enable) (
     builtins.attrValues config.accounts.email.accounts
   );

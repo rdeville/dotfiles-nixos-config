@@ -1,16 +1,18 @@
 {
-  userCfg,
-  pkgs,
+  config,
   lib,
   ...
-}:
-lib.mkIf (! userCfg.isDarwin) {
-  programs = {
-    firefox = {
-      enable = true;
-      # See list of policies https://mozilla.github.io/policy-templates/
-      policies = import ./policies.nix;
-      profiles = import ./profiles.nix userCfg pkgs;
+}: {
+  imports = [
+    ./profiles.nix
+  ];
+
+  config = lib.mkIf (! config.hm.isDarwin) {
+    programs = {
+      firefox = {
+        enable = true;
+        policies = import ./policies.nix;
+      };
     };
   };
 }

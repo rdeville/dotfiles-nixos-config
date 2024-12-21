@@ -1,5 +1,5 @@
 {
-  userCfg,
+  config,
   lib,
   pkgs,
   ...
@@ -19,7 +19,7 @@
 
   systemd = {
     user = {
-      services = lib.mkIf (! userCfg.isDarwin) {
+      services = lib.mkIf (! config.hm.isDarwin) {
         home-manager-auto-upgrade = {
           Service = {
             Environment = [
@@ -80,7 +80,7 @@
   services = {
     home-manager = {
       autoUpgrade = {
-        enable = ! userCfg.isDarwin;
+        enable = ! config.hm.isDarwin;
         # Daily at 12:00
         frequency = "*-*-* 12:00";
       };

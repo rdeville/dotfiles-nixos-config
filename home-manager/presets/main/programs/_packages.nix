@@ -1,10 +1,11 @@
 {
+  config,
   pkgs,
-  userCfg,
   ...
 }: let
-  linuxPkgs = [ ];
+  linuxPkgs = [];
   darwinPkgs = [];
+  cfg = config.hm;
 in {
   home = {
     packages = with pkgs;
@@ -16,7 +17,7 @@ in {
         ghostscript
       ]
       ++ (
-        if userCfg.isDarwin
+        if cfg.isDarwin
         then darwinPkgs
         else linuxPkgs
       );

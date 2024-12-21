@@ -1,10 +1,10 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }: {
-  services = lib.mkIf (! userCfg.isDarwin) {
+  services = lib.mkIf (! config.hm.isDarwin) {
     redshift = {
       enable = true;
       package = with pkgs; redshift;

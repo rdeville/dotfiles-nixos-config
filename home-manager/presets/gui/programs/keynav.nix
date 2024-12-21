@@ -1,10 +1,10 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }:
-lib.mkIf (! userCfg.isDarwin) {
+lib.mkIf (! config.hm.isDarwin) {
   home = {
     packages = with pkgs; [
       keynav
