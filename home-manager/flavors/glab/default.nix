@@ -1,24 +1,23 @@
 {
-  userCfg,
   config,
   pkgs,
   lib,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? glab
-    then userCfg.flavors.glab
-    else {
-      enable = false;
-    };
+  name = "glab";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    glab = {
-      enable = lib.mkEnableOption "Install glab (GitLab CLI) Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install glab (GitLab CLI) Related Packages";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         glab

@@ -1,23 +1,23 @@
 {
-  userCfg,
+  config,
   lib,
   pkgs,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? terragrunt
-    then userCfg.flavors.terragrunt
-    else {
-      enable = false;
-    };
+  name = "terragrunt";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    terragrunt = {
-      enable = lib.mkEnableOption "Install terragrunt Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         terragrunt

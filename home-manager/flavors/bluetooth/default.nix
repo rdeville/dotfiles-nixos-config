@@ -1,24 +1,23 @@
 {
-  userCfg,
   config,
-  pkgs,
   lib,
+  pkgs,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? bluetooth
-    then userCfg.flavors.bluetooth
-    else {
-      enable = false;
-    };
+  name = "bluetooth";
+  cfg = config.hm.flavors.bluetooth;
 in {
   options = {
-    bluetooth = {
-      enable = lib.mkEnableOption "Install Bluetooth Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install Bluetooth Related Packages";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         bluetuith

@@ -1,14 +1,12 @@
-{userCfg, ...}: let
-  userFlavors =
-    if userCfg ? flavors
-    then userCfg.flavors
-    else {};
+{lib, ...}: {
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
-  flavors = builtins.filter (
-    item: userFlavors.${item}.enable
-  ) (builtins.attrNames userFlavors);
-
-  imports = builtins.map (elem: ./${elem}) flavors;
-in {
-  imports = imports;
+  options = {
+    hm = {
+      flavors = lib.mkOption {
+        type = lib.types.submodule {};
+        default = {};
+      };
+    };
+  };
 }

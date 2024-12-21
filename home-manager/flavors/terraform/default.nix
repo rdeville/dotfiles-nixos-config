@@ -1,24 +1,23 @@
 {
-  userCfg,
   config,
   lib,
   pkgs,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? terraform
-    then userCfg.flavors.terraform
-    else {
-      enable = false;
-    };
+  name = "terraform";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    terraform = {
-      enable = lib.mkEnableOption "Install Terraform Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         terraform

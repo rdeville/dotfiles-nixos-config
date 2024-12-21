@@ -1,24 +1,23 @@
 {
-  userCfg,
   config,
   pkgs,
   lib,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? gh
-    then userCfg.flavors.gh
-    else {
-      enable = false;
-    };
+  name = "gh";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    gh = {
-      enable = lib.mkEnableOption "Install gh (GitHub CLI) Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install gh (GitHub CLI) Related Packages";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         gh

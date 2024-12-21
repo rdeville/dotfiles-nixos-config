@@ -1,20 +1,19 @@
 {
-  userCfg,
   config,
   pkgs,
   lib,
   ...
 }: let
-  cfg =
-    if userCfg.flavors ? vscode
-    then config.vscode // userCfg.flavors.vscode
-    else {
-      enable = false;
-    };
+  name = "vscode";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    vscode = {
-      enable = lib.mkEnableOption "Install VSCode Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 

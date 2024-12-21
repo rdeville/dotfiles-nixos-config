@@ -1,23 +1,23 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? signal
-    then userCfg.flavors.signal
-    else {
-      enable = false;
-    };
+  name = "signal";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    signal = {
-      enable = lib.mkEnableOption "Install Signal Desktop Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         signal-desktop

@@ -1,24 +1,23 @@
 {
-  userCfg,
   config,
   lib,
   pkgs,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? opentofu
-    then userCfg.flavors.opentofu
-    else {
-      enable = false;
-    };
+  name = "opentofu";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    opentofu = {
-      enable = lib.mkEnableOption "Install opentofu Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         opentofu
