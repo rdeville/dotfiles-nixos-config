@@ -64,11 +64,31 @@
   };
 
   outputs = inputs @ {self, ...}: let
-    mkLib = import ./lib {inherit inputs;};
+    mkLib = nixpkgs: context:
+      nixpkgs.lib.extend
+      (final: prev:
+        (
+          import ./lib/default.nix inputs final
+        )
+        // (
+          if inputs ? ${context}.lib
+          then inputs.${context}.lib
+          else {}
+        ));
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
+
+    pkgsForSystem = system:
+      import inputs.nixpkgs {
+        inherit system;
+        overlays = [inputs.nixgl.overlay];
+        config = {
+          allowUnfree = true;
+        };
+      };
+
 
     allSystems = [
       "x86_64-linux"
@@ -108,17 +128,13 @@
       );
 
       homeManagerModules = {
-        accountsLib = import ./lib/accounts;
-        hmLib = import ./lib/hm.nix;
-        mkLib = import ./lib/default.nix;
-        presets = import ./home-manager/presets;
-        flavors = import ./home-manager/flavors;
+        hm = import ./home-manager;
       };
-      # homeManagerModule = self.homeManagerModules.hm;
-      #
+      homeManagerModule = self.homeManagerModules.hm;
+
       nixosModules = {
-        presets = import ./nixos/presets;
-        flavors = import ./nixos/flavors;
+        os = import ./nixos;
       };
+      nixosModule = self.nixosModules.os;
     };
 }
