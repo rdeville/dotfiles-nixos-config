@@ -8,7 +8,7 @@
 }: let
   hm = ./scripts/hm.sh;
   os = ./scripts/nixos.sh;
-  inputs = ./scripts/local_inputs.sh;
+  fmt = ./scripts/fmt.sh;
 in {
   packages = with pkgs; [
     sops
@@ -19,13 +19,19 @@ in {
     hm = {
       description = "Script acting as alias to Home-Manager";
       exec = ''
-        ${hm} "${inputs}" "$@"
+        ${hm} "$@"
       '';
     };
     os = {
       description = "Script acting as alias to NixOS";
       exec = ''
-        ${os} "${inputs}" "$@"
+        ${os} "$@"
+      '';
+    };
+    format = {
+      description = "Nix format current directory";
+      exec = ''
+        ${fmt} "$@"
       '';
     };
   };
