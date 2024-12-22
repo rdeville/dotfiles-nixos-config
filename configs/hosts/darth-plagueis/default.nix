@@ -2,8 +2,8 @@
   os = {
     hostname = "darth-plagueis";
     system = "x86_64-linux";
-    isGui = true;
-    isMain = true;
+    isGui = false;
+    isMain = false;
 
     # TODO: Update below
     # users = default.mkNixosUser (mkLib.mkListDirs ./.);
