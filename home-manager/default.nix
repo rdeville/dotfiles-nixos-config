@@ -86,15 +86,15 @@ in {
 
     accounts = {
       calendar = {
-        basePath = "${config.xdg.dataHome}/calendar";
+        basePath = "${config.xdg.dataHome}/calendars";
         accounts = mkAccount "calendar";
       };
       contact = {
-        basePath = "${config.xdg.dataHome}/contact";
+        basePath = "${config.xdg.dataHome}/contacts";
         accounts = mkAccount "contact";
       };
       email = {
-        maildirBasePath = "${config.xdg.dataHome}/mail";
+        maildirBasePath = "${config.xdg.dataHome}/mails";
         accounts = mkAccount "email";
       };
     };
