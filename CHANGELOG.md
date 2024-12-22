@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.4.2 (2024-12-22)
+
+### 🩹 Patch
+
+  * 🐛 Fix flake.nix allowing multihost HM config by Romain Deville ([`e59128d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e59128dfe81f42c9ec1caad1e223584a963b51c9)) 🔏
+  * 🔧(configs/hosts): Update hosts configuration (!33) by Romain Deville ([`9a4c453`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9a4c45384676c78ba5b4815b9079c92ab39fb596))
+  * 🔧(configs/hosts/rey): Update rey configuration to new structure by Romain Deville ([`ab54cfc`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ab54cfc510caa3cb7a46d85d65ece791118a2437)) 🔏
+  * 🔧(configs/hosts/darth-plagueis): Update hosts configuration by Romain Deville ([`bc4551d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bc4551d9ab690ad63fc2627d8e6f0cee5a45700d)) 🔏
+
 ## v0.4.1 (2024-12-22)
 
 ### 🩹 Patch
@@ -8,6 +17,10 @@
   * 🐛(hm): Fix accounts configurations (!32) by Romain Deville ([`29cad67`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/29cad67b3f78e093a7c23076abf3aa51b27947df))
   * 🐛(hm): Fix accounts basePath configurations by Romain Deville ([`f44ef33`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f44ef3303eaa4bceda470811b7d20a59c9fe2d44)) 🔏
   * 🔧(configs/accounts): Fix configs accounts by Romain Deville ([`200ba12`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/200ba12f4ed4044fce7fc7fc4cb9c886959b07d0)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.4.1 (NO-CI) by Python Semantic Release [bot] ([`b0ee916`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b0ee9167869ce50d26fdaff7027f3ce797a0f637))
 
 ## v0.4.0 (2024-12-22)
 
