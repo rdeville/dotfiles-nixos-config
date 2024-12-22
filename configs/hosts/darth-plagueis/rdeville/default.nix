@@ -1,13 +1,21 @@
-{...}: let
+{
+  pkgs,
+  lib,
+  ...
+}: let
   os = (import ../default.nix {}).os;
 
-  username = "root";
+  username = "rdeville";
 in {
   extraConfig = {};
 
   hm = {
     inherit username;
     inherit (os) isGui isMain hostname;
+    userAccounts = [
+      "contact@romaindeville.fr"
+      "contact@romaindeville.ovh"
+    ];
     presets = {
       common = {
         enable = true;
@@ -49,6 +57,24 @@ in {
         };
       };
       main = {
+        enable = true;
+      };
+    };
+
+    flavors = {
+      terragrunt = {
+        enable = true;
+      };
+      terraform = {
+        enable = false;
+      };
+      podman = {
+        enable = true;
+      };
+      opentofu = {
+        enable = true;
+      };
+      kubernetes-client = {
         enable = true;
       };
     };

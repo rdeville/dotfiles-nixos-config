@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+unset inputs
 declare -A inputs
 
 # Dotfiles

@@ -1,45 +1,56 @@
-{
-  system,
-  hostname,
-  username,
-  ...
-}: let
-  default = import ../../default.nix;
+{...}: let
+  os = (import ../default.nix {}).os;
 
-  userCfg = default.mkDefaultUserCfg system hostname username;
-
-  presets =
-    default.hmPresets
-    // {
-      common.enable = true;
-      main.enable = true;
-    };
-
-  flavors =
-    default.hmFlavors
-    // {
-      gh.enable = true;
-      glab.enable = true;
-    };
-
-  extraConfig =
-    default.hmExtraConfig
-    // {
-      # My custom programs
-      dotgit-sync.enable = true;
-    };
-
-  git = {
-    perso = default.git.perso;
-  };
+  username = "root";
 in {
-  inherit (userCfg) stateVersion username hostname system isDarwin wrapGL;
-  inherit presets flavors extraConfig git;
+  extraConfig = {};
 
-  sudo = true;
-  home = "/root";
-
-  localFlavors = {
-    bin.enable = true;
+  hm = {
+    inherit username;
+    inherit (os) isGui isMain hostname;
+    presets = {
+      common = {
+        enable = true;
+      };
+      minimal = {
+        enable = true;
+        git = {
+          perso = {
+            condition = "gitdir:/";
+            contents = {
+              commit = {
+                gpgSign = true;
+              };
+              credential = {
+                "https://framagit.org" = {
+                  inherit username;
+                };
+                "https://github.com" = {
+                  inherit username;
+                };
+                "https://gitlab.com" = {
+                  inherit username;
+                };
+              };
+              push = {
+                gpgSign = "if-asked";
+              };
+              tag = {
+                forceSignAnnotated = true;
+                gpgSign = true;
+              };
+              user = {
+                name = "Romain Deville";
+                email = "code@romaindeville.fr";
+                signingKey = "0x700E80E57C25C99A";
+              };
+            };
+          };
+        };
+      };
+      main = {
+        enable = true;
+      };
+    };
   };
 }

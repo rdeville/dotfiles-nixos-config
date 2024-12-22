@@ -1,0 +1,30 @@
+spotify-client-id: ENC[AES256_GCM,data:1A2TPC+ZaBbsrnMl5kuNMoJulI2jsFsN85wleLmMBb0=,iv:sFO/IUo6VLC0vgQUg4yYEpWs8VX75wNa/O2StToy0Mc=,tag:BUn3U53A10IXqvvd0PeeNg==,type:str]
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBhd1RUbnlxbXNIdVNjcDl1
+            SVI1eTVEd251OHlDazVGM2gwQ2ErN3BHUXpjCmxySEZpaTYyQXJMNTloMWc5L25u
+            UVphNEtQTjR5am1kZTgvOW9zQk1wbEUKLS0tIFRjS1llTUNQaEpZbzIwaFc4aTI0
+            Z0lQekJlRFpLYlJIREE1U0luM0lweUkKu+odHDe/eK0NhSupFTu1q8x0h58DK/GW
+            JNgvhL/NHK3AJT/0Ttj3zUqx/pmeglDVndfS8C4k6q7CmQP9lnLqVQ==
+            -----END AGE ENCRYPTED FILE-----
+        - recipient: age1hyzjxh89pjdfpuu9dz5wkk8t2zq8renv0kwqjlxcnrm5zze9udtsyu2knl
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBIQi80TituUUdyK1dKc3JB
+            N1VGK0ZaOUJoL1dWMEdXa0VtaXhiMzBEcTJNCkF6U2YwRW1MQkJlTTlqTzZoSHNp
+            K2pJZzh6eHVJNzErNWZ1dXp2SVlCa2MKLS0tIDFBaEpUdS9JdlV1VDBjZzlCQ2pC
+            T3VqTXA3N2FQTGFKMWk4dFJiKzZPUVEKp6XRF57an9hUOrsf2l+pX3eHgbQHcIIJ
+            E04D3jQGlo6Q4g1egjHvp+WOmbgdCT8mhmoJsEFPsOsWzersl3S4Vw==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2024-10-06T11:58:14Z"
+    mac: ENC[AES256_GCM,data:hE96OHgYOfDfXarp745XPNylhJMrX7XoGwq8ee6viiSdki7HujM+jxTV8JYCedXkTpbc3YIJ2h/yAGPiHgBHIXmF95YnDrJq0rGqhl7liIU/f6pL7O04xxRlgh0RK/cjVAp0IzFVxAWj/zAbaPRE1+v/tcrUHdPK8Y+vmoxKY8s=,iv:V8Bq87CBqSJGpI67kP4C5jLalXY5AT6sFi+4AHYf16w=,tag:qm0PTewt/j8ZSsU6v1Vj5Q==,type:str]
+    pgp: []
+    unencrypted_suffix: _unencrypted
+    version: 3.8.1

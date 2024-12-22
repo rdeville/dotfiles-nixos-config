@@ -1,26 +1,25 @@
 {
-  accountsLib,
-  userCfg,
-  tuiAccounts,
-  guiAccounts,
+  config,
   pkgs,
+  lib,
   ...
 }: let
   domain = "romaindeville.ovh";
   address = "contact@${domain}";
   slugAddress = builtins.replaceStrings ["@" "."] ["_at_" "_"] address;
   userName = "rdeville";
-  passwordCommand =
-    if userCfg.username == "root"
-    then ["${pkgs.coreutils}/bin/cat" "/root/.config/sops-nix/secrets/accounts/${address}"]
-    else ["${pkgs.coreutils}/bin/cat" "/home/${userCfg.username}/.config/sops-nix/secrets/accounts/${address}"];
+  passwordCommand = [
+    "${pkgs.coreutils}/bin/cat"
+    "${config.hm.homeDirectory}.config/sops-nix/secrets/accounts/${address}"
+  ];
   displayName = "📘 Romain Deville";
   user = {
     email = {
       realName = "Romain Deville";
-      imap = accountsLib.mkImap domain "SSL/TLS";
-      smtp = accountsLib.mkSmtp domain "STARTTLS";
+      imap = lib.mkImap domain "SSL/TLS";
+      smtp = lib.mkSmtp domain "STARTTLS";
       passwordCommand = builtins.toString passwordCommand;
+      primary = false;
       aliases = [];
       inherit
         address
@@ -47,41 +46,9 @@
         ;
     };
   };
-in [
-  {
-    name = displayName;
-    value = {
-      inherit address;
-      email =
-        if user ? email
-        then user.email // guiAccounts.email
-        else {};
-      calendar =
-        if user ? calendar
-        then user.calendar // guiAccounts.calendar
-        else {};
-      contact =
-        if user ? contact
-        then user.contact // guiAccounts.contact
-        else {};
-    };
-  }
-  {
-    name = slugAddress;
-    value = {
-      inherit address;
-      email =
-        if user ? email
-        then user.email // tuiAccounts.email
-        else {};
-      calendar =
-        if user ? calendar
-        then user.calendar // tuiAccounts.calendar
-        else {};
-      contact =
-        if user ? contact
-        then user.contact // tuiAccounts.contact
-        else {};
-    };
-  }
-]
+in {
+  inherit slugAddress displayName;
+  calendar = user.calendar;
+  email = user.email;
+  contact = user.contact;
+}

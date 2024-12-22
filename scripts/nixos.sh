@@ -38,17 +38,17 @@ main(){
 
   local profile="-H ${HOST}"
   local action="build"
-  local local_inputs_file="$1"
-  shift
+  local local_inputs_file
+
+  local_inputs_file="$(git rev-parse --show-toplevel)/scripts/local_inputs.sh"
+
+  if [[ -f "$1" ]]; then
+    local_inputs_file="$1"
+    shift
+  fi
 
   # shellcheck source=./local_inputs.sh
   source "${local_inputs_file}"
-
-  if [[ -n "$1" ]]
-  then
-    action="$1"
-    shift
-  fi
 
   while getopts "dip:" opt
   do
@@ -71,6 +71,12 @@ main(){
     esac
   done
   shift $((OPTIND-1))
+
+  if [[ -n "$1" ]]
+  then
+    action="$1"
+    shift
+  fi
 
   # shellcheck disable=2154
   for input in "${!inputs[@]}"; do
