@@ -1,48 +1,47 @@
-{
-  inputs,
-  accountsLib,
-  hostname,
-  mkLib,
-  ...
-}: let
-  default = import ../default.nix {
-    inherit inputs accountsLib system hostname;
-  };
+{...}: {
+  os = {
+    hostname = "rey";
+    system = "x86_64-linux";
+    isGui = true;
+    isMain = true;
 
-  system = "x86_64-linux";
-
-  flavors =
-    default.osFlavors
-    // {
-      ssh.enable = true;
-      steam.enable = true;
+    # TODO: Update below
+    # users = default.mkNixosUser (mkLib.mkListDirs ./.);
+    users = {
+      rdeville = {
+        isSudo = true;
+      };
+      root = {};
     };
 
-  presets =
-    default.osPresets
-    // {
-      main = {
+    flavors = {
+      display-manager = {
+        enable = true;
+        ly = {
+          enable = true;
+        };
+      };
+      window-manager = {
+        enable = true;
+        awesome = {
+          enable = true;
+        };
+        hyprland = {
+          enable = true;
+        };
+      };
+      k3s = {
         enable = false;
       };
-
-      gui = {
+      printing = {
+        enable = false;
+      };
+      ssh-server = {
         enable = true;
-        displayManager = {
-          gdm.enable = true;
-        };
-        windowManager = {
-          awesome = {
-            enable = true;
-          };
-          hyprland = {
-            enable = true;
-          };
-        };
+      };
+      steam = {
+        enable = true;
       };
     };
-in {
-  inherit (default) editor terminal keyMap stateVersion;
-  inherit hostname system flavors presets;
-
-  users = default.mkNixosUser (mkLib.mkListDirs ./.);
+  };
 }
