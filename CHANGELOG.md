@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.4.1 (2024-12-22)
+
+### 🩹 Patch
+
+  * 🐛(hm): Fix accounts configurations (!32) by Romain Deville ([`29cad67`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/29cad67b3f78e093a7c23076abf3aa51b27947df))
+  * 🐛(hm): Fix accounts basePath configurations by Romain Deville ([`f44ef33`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f44ef3303eaa4bceda470811b7d20a59c9fe2d44)) 🔏
+  * 🔧(configs/accounts): Fix configs accounts by Romain Deville ([`200ba12`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/200ba12f4ed4044fce7fc7fc4cb9c886959b07d0)) 🔏
+
 ## v0.4.0 (2024-12-22)
 
 ### ✨ Minor
@@ -23,6 +31,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.4.0 (NO-CI) by Python Semantic Release [bot] ([`fd2ce35`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/fd2ce3544fcb4960c2d51b52f3d00af90790755c))
   * 🔥(configs/hosts): Remove now useless default hosts config by Romain Deville ([`ff6c338`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ff6c338fa6710b83a0df8cede79203723da5fa84)) 🔏
   * 🔥(hm/presets): Remove hm presets not used anymore by Romain Deville ([`cb6bceb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/cb6bceb9225e2feb582aabd12eb0412c51bead97)) 🔏
   * 🔥 Remove now useless modules/home-manager by Romain Deville ([`65f797d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/65f797d2303b98c0576dce23d65980b1da154e34)) 🔏
