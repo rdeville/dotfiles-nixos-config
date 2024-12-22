@@ -1,6 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.21.0 (2024-12-22)
+
+### ✨ Minor
+
+  * ✨ Upgrade features to be nix modules (!75) by Romain Deville ([`cb70857`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cb70857849bef9710fcdd1d7923ddc97568be6c5))
+  * ✨ Update flake.nix by Romain Deville ([`05e0c28`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/05e0c285efa46dcc02893a2aad301d91bdb3bf05)) 🔏
+  * ✨(nixos/flavors): Upgrade flavors to be nix modules by Romain Deville ([`d11b2f9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d11b2f9a98ed60e8973e465fc1a4fae3230e5a47)) 🔏
+  * ✨(nixos): Upgrade nixos to be a nix module and remove presets by Romain Deville ([`e4855bc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e4855bcdbc9f3036ff88b98cb6540dacce32a858)) 🔏
+  * ✨(hm): Make hm a module for home-manager by Romain Deville ([`e65819e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e65819efd2c1304227e61e74e1aef4e198352e2d)) 🔏
+  * ✨(hm/flavors): Upgrade flavors to be nix modules by Romain Deville ([`81f5823`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/81f5823e25aea2c121c3db42d483d873f0fba342)) 🔏
+  * ✨(hm/presets): Upgrade presets to be nix module by Romain Deville ([`4417765`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4417765e14e4601ed6f57e56cdf77b41a3b4ceeb)) 🔏
+  * ✨(lib): Upgrade libs to work with new modules by Romain Deville ([`482ffe6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/482ffe65033b4460917fd752b75bc59aaf1ae329)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`8917b19`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8917b19aeead627c6b5b6438b651f0bd77ec21a4)) 🔏
+  * 🔧(flake): Upgrade flake.nix to new module structure by Romain Deville ([`ed9970d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ed9970dccbb4eed5e7289add9511bcd64eb65dd1)) 🔏
+
+### 🔊 Others
+
+  * 🔥(lib): Remove now useless accounts libs by Romain Deville ([`0378ff1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0378ff158b988f1c07d03053f1840bafa67721ae)) 🔏
+
 ## v0.20.0 (2024-12-15)
 
 ### ✨ Minor
@@ -19,6 +41,7 @@
 ### 🔊 Others
 
   * 💡(hm/flavors/glab): Remove useless comment by Romain Deville ([`0295dc8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0295dc89eaaafb56e0b9c4ca5db82d93d8a93c0b)) 🔏
+  * 🔖 v0.20.0 (NO-CI) by Python Semantic Release [bot] ([`845b702`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/845b702fa1826e132c3826e385fc64909e98246b))
 
 ## v0.19.1 (2024-12-08)
 
