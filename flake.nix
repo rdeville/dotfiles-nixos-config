@@ -249,7 +249,7 @@
                       })
                     ];
                     extraSpecialArgs = let
-                      cfg = import ./configs/hosts/darth-maul/rdeville {
+                      cfg = import ./configs/hosts/${host}/rdeville {
                         inherit lib pkgs;
                       };
                     in {
