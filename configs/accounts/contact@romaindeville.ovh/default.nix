@@ -8,9 +8,10 @@
   address = "contact@${domain}";
   slugAddress = builtins.replaceStrings ["@" "."] ["_at_" "_"] address;
   userName = "rdeville";
+  secretPath = "accounts/${address}";
   passwordCommand = [
     "${pkgs.coreutils}/bin/cat"
-    "${config.hm.homeDirectory}.config/sops-nix/secrets/accounts/${address}"
+    "${config.hm.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
   ];
   displayName = "📘 Romain Deville";
   user = {
@@ -51,4 +52,9 @@ in {
   calendar = user.calendar;
   email = user.email;
   contact = user.contact;
+  sops = {
+    ${secretPath} = {
+      sopsFile = ./credentials.enc.yaml;
+    };
+  };
 }

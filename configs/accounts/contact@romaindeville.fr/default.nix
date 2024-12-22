@@ -11,7 +11,7 @@
   secretPath = "accounts/${address}";
   passwordCommand = [
     "${pkgs.coreutils}/bin/cat"
-    "${config.hm.homeDirectory}.config/sops-nix/secrets/${secretPath}"
+    "${config.hm.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
   ];
   primary = config.hm.isMain && ! config.hm.isWork;
   displayName = "📗 Romain Deville";
