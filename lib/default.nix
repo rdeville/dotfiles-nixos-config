@@ -1,4 +1,6 @@
-{inputs, ...}: let
+inputs: lib: let
+  debug = data: builtins.trace (builtins.toJSON data);
+
   pkgsForSystem = system:
     import inputs.nixpkgs {
       inherit system;
@@ -8,17 +10,20 @@
       };
     };
 
-  mkDebug = data: builtins.trace (builtins.toJSON data);
+  nixGLWrap = pkg: nixpkgs:
+    nixpkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
+      mkdir $out
+      ln -s ${pkg}/* $out
+      rm $out/bin
+      mkdir $out/bin
+      for bin in ${pkg}/bin/*; do
+       wrapped_bin=$out/bin/$(basename $bin)
+       echo "exec ${nixpkgs.lib.getExe' nixpkgs.nixgl.auto.nixGLDefault "nixGL"} $bin \"\$@\"" > $wrapped_bin
+      chmod +x $wrapped_bin
+      done
+    '';
 
-  mkImportDir = dir:
-    if builtins.pathExists dir
-    then
-      builtins.map (
-        file: "${dir}/${file}"
-      ) (builtins.attrNames (builtins.readDir dir))
-    else [];
-
-  mkListDirs = inode:
+  listDirs = inode:
     builtins.map (elem: elem.name) (
       builtins.filter (inode: inode.value == "directory") (
         builtins.map (key: {
@@ -29,7 +34,7 @@
       )
     );
 
-  mkListFiles = inode:
+  listFiles = inode:
     builtins.map (elem: elem.name) (
       builtins.filter (inode: inode.value == "regular") (
         builtins.map (key: {
@@ -40,26 +45,17 @@
       )
     );
 
-  nixGLWrap = pkg: cfg: let
-    pkgs = pkgsForSystem cfg.system;
-  in
-    pkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
-      mkdir $out
-      ln -s ${pkg}/* $out
-      rm $out/bin
-      mkdir $out/bin
-      for bin in ${pkg}/bin/*; do
-       wrapped_bin=$out/bin/$(basename $bin)
-       echo "exec ${pkgs.lib.getExe' pkgs.nixgl.auto.nixGLDefault "nixGL"} $bin \"\$@\"" > $wrapped_bin
-      chmod +x $wrapped_bin
-      done
-    '';
+  listInodes = inode: (listFiles inode) ++ (listDirs inode);
+
+  importDir = inode: (builtins.filter (
+    item: (item != "default.nix")
+  ) (listInodes inode));
 in {
   inherit
-    mkDebug
-    mkImportDir
-    mkListDirs
-    mkListFiles
+    debug
+    importDir
+    listDirs
+    listFiles
     nixGLWrap
     pkgsForSystem
     ;

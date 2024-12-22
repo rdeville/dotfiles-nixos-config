@@ -1,20 +1,19 @@
 {
-  userCfg,
   config,
   pkgs,
   lib,
   ...
 }: let
-  cfg =
-    if userCfg.flavors ? nextcloud-client
-    then config.nextcloud-client // userCfg.flavors.nextcloud-client
-    else {
-      enable = false;
-    };
+  name = "nextcloud-client";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    nextcloud-client = {
-      enable = lib.mkEnableOption "Install nextcloud-client Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 

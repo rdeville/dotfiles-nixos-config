@@ -1,33 +1,33 @@
 {
-  userCfg,
   config,
   pkgs,
   lib,
   ...
 }: let
-  cfg =
-    if userCfg.flavors ? spotify-player
-    then config.spotify-player // userCfg.flavors.spotify-player
-    else {
-      enable = false;
-    };
+  name = "spotify-player";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    spotify-player = {
-      enable = lib.mkEnableOption "Install Spotify-Player Related Packages";
-      audio_backend = lib.mkOption {
-        type = lib.types.uniq lib.types.str;
-        description = "Audio backend to use (default: rodio)";
-        example = "pulseaudio";
-        default = "rodio";
-      };
-      client_id_command = {
-        type = lib.types.uniq lib.types.str;
-        description = ''
-          Command to get Personal client ID to use for the player.
-          If you use nix-sops, this could be "cat /path/to/secrets/filename";
-        '';
-        example = "abcdefgh123456789";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+          audio_backend = lib.mkOption {
+            type = lib.types.uniq lib.types.str;
+            description = "Audio backend to use (default: rodio)";
+            example = "pulseaudio";
+            default = "rodio";
+          };
+          client_id_command = lib.mkOption {
+            type = lib.types.uniq lib.types.str;
+            description = ''
+              Command to get Personal client ID to use for the player.
+              If you use nix-sops, this could be "cat /path/to/secrets/filename";
+            '';
+            example = "abcdefgh123456789";
+            default = "";
+          };
+        };
       };
     };
   };
@@ -41,7 +41,7 @@ in {
         };
         settings = {
           theme = "dracula";
-          client_id_command = lib.mkIf (cfg ? client_id_command) cfg.client_id_command;
+          client_id_command = cfg.client_id_command;
           client_port = 8080;
           playback_format = "
             {track} • {artists}
@@ -59,9 +59,9 @@ in {
           notify_streaming_only = true;
           enable_streaming = "Always";
           enable_cover_image_cache = false;
-          default_device = userCfg.hostname;
+          default_device = config.hm.hostname;
           device = {
-            name = userCfg.hostname;
+            name = config.hm.hostname;
             backend = cfg.audio_backend;
             device_type = "speaker";
             volume = 100;

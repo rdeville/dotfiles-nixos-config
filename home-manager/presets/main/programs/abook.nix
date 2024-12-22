@@ -1,14 +1,11 @@
-{
-  userCfg,
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
+  cfg = config.hm;
+
   abook = builtins.attrValues config.accounts.contact.accounts;
 in {
   programs = {
     abook = {
-      enable = (! userCfg.isDarwin) && abook != [];
+      enable = (! cfg.isDarwin) && abook != [];
       extraConfig = ''
         # Abook configuration file
         #

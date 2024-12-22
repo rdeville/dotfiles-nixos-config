@@ -1,11 +1,10 @@
 {
   config,
   pkgs,
-  userCfg,
   ...
 }: {
   gtk = {
-    enable = ! userCfg.isDarwin;
+    enable = ! config.hm.isDarwin;
     cursorTheme = {
       name = "Vimix-cursors";
       package = with pkgs; vimix-cursors;

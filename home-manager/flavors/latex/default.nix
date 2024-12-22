@@ -1,23 +1,23 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? latex
-    then userCfg.flavors.latex
-    else {
-      enable = false;
-    };
+  name = "latex";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    latex = {
-      enable = lib.mkEnableOption "Install latex Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
         texliveFull

@@ -1,14 +1,14 @@
 {
-  userCfg,
+  config,
   lib,
   ...
 }:
-lib.mkIf (! userCfg.isDarwin) {
+lib.mkIf (! config.hm.isDarwin) {
   programs = {
     thunderbird = {
       enable = true;
       profiles = {
-        "${userCfg.username}" = {
+        "${config.hm.username}" = {
           isDefault = true;
           userChrome = builtins.readFile ./chrome/userChrome.css;
           withExternalGnupg = true;

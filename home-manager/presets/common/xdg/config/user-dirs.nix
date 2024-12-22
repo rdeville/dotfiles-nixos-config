@@ -1,10 +1,9 @@
 {
-  userCfg,
   config,
   lib,
   ...
 }:
-lib.mkIf (! userCfg.isDarwin) {
+lib.mkIf (! config.hm.isDarwin) {
   xdg = {
     configFile = {
       "user-dirs.locale" = {

@@ -1,19 +1,19 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }: let
-  cfg =
-    if userCfg.flavors ? kubernetes-client
-    then userCfg.flavors.kubernetes-client
-    else {
-      enable = false;
-    };
+  name = "kubernetes-client";
+  cfg = config.hm.flavors.${name};
 in {
   options = {
-    kubernetes-client = {
-      enable = lib.mkEnableOption "Install kubernetes Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install kubernetes Related Packages";
+        };
+      };
     };
   };
 

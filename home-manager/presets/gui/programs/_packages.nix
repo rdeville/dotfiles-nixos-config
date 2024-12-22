@@ -1,5 +1,5 @@
 {
-  userCfg,
+  config,
   pkgs,
   ...
 }: let
@@ -15,7 +15,7 @@ in {
         vlc
       ]
       ++ (
-        if userCfg.isDarwin
+        if config.hm.isDarwin
         then darwinPkgs
         else linuxPkgs
       );

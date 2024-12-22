@@ -11,18 +11,20 @@
       )
     );
 in {
-  programs = {
-    vdirsyncer = {
-      enable = vdirsyncerAccounts != [];
+  config = {
+    programs = {
+      vdirsyncer = {
+        enable = vdirsyncerAccounts != [];
+      };
     };
-  };
 
-  services = {
-    vdirsyncer = {
-      enable = vdirsyncerAccounts != [];
-      # Every 15 minutes
-      frequency = "*:0/15";
-      verbosity = "DEBUG";
+    services = {
+      vdirsyncer = {
+        enable = vdirsyncerAccounts != [];
+        # Every 15 minutes
+        frequency = "*:0/15";
+        verbosity = "DEBUG";
+      };
     };
   };
 }

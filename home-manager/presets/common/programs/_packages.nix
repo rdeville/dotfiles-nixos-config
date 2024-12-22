@@ -1,6 +1,6 @@
 {
+  config,
   pkgs,
-  userCfg,
   ...
 }: let
   linuxPkgs = with pkgs; [
@@ -51,7 +51,7 @@ in {
         age
       ]
       ++ (
-        if userCfg.isDarwin
+        if config.hm.isDarwin
         then darwinPkgs
         else linuxPkgs
       );

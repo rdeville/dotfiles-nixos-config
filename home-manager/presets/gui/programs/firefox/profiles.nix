@@ -1,4 +1,9 @@
-userCfg: pkgs: let
+{
+  config,
+  pkgs,
+  lib,
+  ...
+}: let
   nixIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
   hidden = {
     metaData = {
@@ -76,26 +81,34 @@ userCfg: pkgs: let
   };
   userChrome = builtins.readFile ./chrome/userChrome.css;
 in {
-  rdeville-perso = {
-    id = 0;
-    isDefault = ! userCfg.presets ? work ? enable;
-    name = "rdeville-perso";
-    userContent = "";
-    settings = settings // {};
-    inherit
-      search
-      userChrome
-      ;
-  };
-  rdeville-pro = {
-    id = 1;
-    isDefault = userCfg.presets ? work ? enable;
-    name = "rdeville-pro";
-    userContent = "";
-    settings = settings // {};
-    inherit
-      search
-      userChrome
-      ;
+  config = lib.mkIf (! config.hm.isDarwin) {
+    programs = {
+      firefox = {
+        profiles = {
+          rdeville-perso = {
+            id = 0;
+            isDefault = ! config.hm.isWork;
+            name = "rdeville-perso";
+            userContent = "";
+            settings = settings // {};
+            inherit
+              search
+              userChrome
+              ;
+          };
+          rdeville-pro = {
+            id = 1;
+            isDefault = config.hm.isWork;
+            name = "rdeville-pro";
+            userContent = "";
+            settings = settings // {};
+            inherit
+              search
+              userChrome
+              ;
+          };
+        };
+      };
+    };
   };
 }

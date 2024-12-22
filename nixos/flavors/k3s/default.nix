@@ -1,23 +1,27 @@
 {
   config,
-  hostCfg,
   lib,
   ...
 }: let
-  cfg = config.k3s // hostCfg.flavors.k3s;
+  name = "k3s";
+  cfg = config.os.flavors.${name};
 in {
   options = {
-    k3s = {
-      enable = lib.mkEnableOption "Install k3s Related Packages";
-      role = lib.mkOption {
-        type = lib.types.enum [
-          "server"
-          "agent"
-          "local"
-        ];
-        default = "local";
-        example = "server";
-        description = "Set the role of the node";
+    os = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install k3s Related Packages";
+          role = lib.mkOption {
+            type = lib.types.enum [
+              "server"
+              "agent"
+              "local"
+            ];
+            default = "local";
+            example = "server";
+            description = "Set the role of the node";
+          };
+        };
       };
     };
   };
@@ -39,7 +43,10 @@ in {
     services = {
       k3s = {
         enable = true;
-        role = if cfg.role == "local" then "server" else cfg.role;
+        role =
+          if cfg.role == "local"
+          then "server"
+          else cfg.role;
         extraFlags = toString [
           # "--debug" # Optionally add additional args to k3s
         ];

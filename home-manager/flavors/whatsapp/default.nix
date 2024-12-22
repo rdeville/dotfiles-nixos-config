@@ -1,15 +1,12 @@
 {
-  userCfg,
+  config,
   pkgs,
   lib,
   ...
 }: let
-  moduleCfg =
-    if userCfg.flavors ? whatsapp
-    then userCfg.flavors.whatsapp
-    else {
-      enable = false;
-    };
+  name = "whatsapp";
+
+  cfg = config.hm.flavors.${name};
 
   linuxPkgs = with pkgs; [
     whatsapp-for-linux
@@ -17,15 +14,19 @@
   darwinPkgs = [];
 in {
   options = {
-    whatsapp = {
-      enable = lib.mkEnableOption "Install whatsapp (GitLab CLI) Related Packages";
+    hm = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+        };
+      };
     };
   };
 
-  config = lib.mkIf moduleCfg.enable {
+  config = lib.mkIf cfg.enable {
     home = {
       packages = (
-        if userCfg.isDarwin
+        if config.hm.isDarwin
         then darwinPkgs
         else linuxPkgs
       );

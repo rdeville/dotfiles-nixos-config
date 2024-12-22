@@ -5,7 +5,7 @@
       extraConfig = builtins.readFile (
         builtins.fetchurl {
           url = "https://raw.githubusercontent.com/trapd00r/LS_COLORS/master/LS_COLORS";
-          sha256 = "0frxj9l5x1a4w5l80vr48sdjc0hzzq0sh16pb8v0dya1i6k6mgq7";
+          sha256 = "1a4x93cmn4g4yzjvl5scah9pmzbqk1m71gfdnpbc6p2csg8yy8fi";
         }
       );
     };
