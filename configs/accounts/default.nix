@@ -1,54 +1,58 @@
-{
-  inputs,
-  accountsLib,
-  accounts,
-  userCfg,
-  system,
-  ...
-}: let
-  pkgs = import inputs.nixpkgs {
-    inherit system;
+let
+  tuiSoft = primary: {
+    email = {
+      thunderbird = {
+        enable = false;
+      };
+      inherit primary;
+    };
+    calendar = {
+      khal = {
+        enable = true;
+      };
+      vdirsyncer = {
+        enable = true;
+      };
+      inherit primary;
+    };
+    contact = {
+      khard = {
+        enable = true;
+      };
+      vdirsyncer = {
+        enable = true;
+      };
+    };
   };
 
-  tuiAccounts = {
+  guiSoft = {
     email = {
-      thunderbird.enabled = false;
+      thunderbird = {
+        enable = true;
+      };
       primary = false;
     };
     calendar = {
-      khal.enabled = true;
-      vdirsyncer.enabled = true;
+      khal = {
+        enable = true;
+      };
+      vdirsyncer = {
+        enable = true;
+      };
       primary = false;
     };
     contact = {
-      khard.enabled = true;
-      vdirsyncer.enabled = true;
-      primary = false;
+      khard = {
+        enable = true;
+      };
+      vdirsyncer = {
+        enable = true;
+      };
     };
   };
-
-  guiAccounts = {
-    email = {
-      thunderbird.enabled = true;
-    };
-    calendar = {
-      khal.enabled = false;
-      vdirsyncer.enabled = false;
-    };
-    contact = {
-      khard.enabled = false;
-      vdirsyncer.enabled = false;
-    };
-  };
-
-  userAccounts = builtins.concatLists (
-    builtins.map (
-      address:
-        import ./${address} {
-          inherit accountsLib userCfg tuiAccounts guiAccounts pkgs;
-        }
-    )
-    accounts
-  );
-in
-  builtins.listToAttrs userAccounts
+in {
+  inherit
+    tuiSoft
+    guiSoft
+    ;
+}
