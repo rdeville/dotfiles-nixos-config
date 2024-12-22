@@ -9,6 +9,7 @@ let
     calendar = {
       khal = {
         enable = true;
+        type = "discover";
       };
       vdirsyncer = {
         enable = true;
@@ -34,19 +35,19 @@ let
     };
     calendar = {
       khal = {
-        enable = true;
+        enable = false;
       };
       vdirsyncer = {
-        enable = true;
+        enable = false;
       };
       primary = false;
     };
     contact = {
       khard = {
-        enable = true;
+        enable = false;
       };
       vdirsyncer = {
-        enable = true;
+        enable = false;
       };
     };
   };
