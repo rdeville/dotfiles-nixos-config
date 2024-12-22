@@ -80,16 +80,6 @@
     # pass to it, with each system as an argument
     forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
 
-    pkgsForSystem = system:
-      import inputs.nixpkgs {
-        inherit system;
-        overlays = [inputs.nixgl.overlay];
-        config = {
-          allowUnfree = true;
-        };
-      };
-
-
     allSystems = [
       "x86_64-linux"
       "aarch64-linux"
@@ -129,11 +119,13 @@
 
       homeManagerModules = {
         hm = import ./home-manager;
+        lib = mkLib inputs.nixpkgs "home-manager";
       };
       homeManagerModule = self.homeManagerModules.hm;
 
       nixosModules = {
         os = import ./nixos;
+        lib = mkLib inputs.nixpkgs "nixos";
       };
       nixosModule = self.nixosModules.os;
     };
