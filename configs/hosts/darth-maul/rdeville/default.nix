@@ -1,103 +1,151 @@
 {
-  inputs,
-  accountsLib,
-  system,
-  hostname,
-  username,
+  pkgs,
+  lib,
   ...
 }: let
-  default = import ../../default.nix {
-    inherit inputs accountsLib system hostname;
-  };
+  os = (import ../default.nix {}).os;
 
-  userCfg = default.mkDefaultUserCfg username;
-
-  accounts = [
-    "contact@romaindeville.fr"
-    "contact@romaindeville.ovh"
-  ];
-
-  presets =
-    default.hmPresets
-    // {
-      common.enable = true;
-      main.enable = true;
-      gui.enable = true;
-    };
-
-  flavors =
-    default.hmFlavors
-    // {
-      bluetooth.enable = true;
-      gh.enable = true;
-      glab.enable = true;
-      nextcloud-client.enable = true;
-      container.enable = true;
-      latex.enable = true;
-    };
-
-  extraConfig =
-    default.hmExtraConfig
-    // {
-      # My custom dotfiles
-      awesomerc.enable = true;
-      # My custom programs
-      dotgit-sync.enable = true;
-    };
-
-  git = {
-    perso = default.git.perso;
-  };
-
-  programs = {
-    kitty = {
-      settings = {
-        font_size = "12.0";
-        active_tab_foreground = "#212121";
-        active_tab_background = "#388E3C";
-      };
-    };
-  };
+  username = "rdeville";
 in {
-  inherit (userCfg) stateVersion username hostname system isDarwin wrapGL;
-  inherit presets flavors extraConfig git programs;
-
-  sudo = true;
-
-  sops = {
-    age = {
-      keyFile = "/home/rdeville/.cache/.age.key";
+  extraConfig = {
+    sops = {
+      age = {
+        keyFile = "/home/rdeville/.cache/.age.key";
+      };
+      defaultSopsFile = ./rdeville.enc.yaml;
+      secrets = {
+        "spotify-client-id" = {
+          sopsFile = ./rdeville.enc.yaml;
+        };
+      };
     };
-    defaultSopsFile = ./rdeville.enc.yaml;
-    secrets =
-      builtins.listToAttrs (
-        builtins.map (address: {
-          name = "accounts/${address}";
-          value = {
-            sopsFile = ../../../accounts/${address}/credentials.enc.yaml;
+  };
+
+  hm = {
+    inherit username;
+    inherit (os) isGui isMain hostname;
+    userAccounts = [
+      "contact@romaindeville.fr"
+      "contact@romaindeville.ovh"
+    ];
+    presets = {
+      common = {
+        enable = true;
+      };
+      gui = {
+        enable = true;
+      };
+      minimal = {
+        enable = true;
+        git = {
+          perso = {
+            condition = "gitdir:/";
+            contents = {
+              commit = {
+                gpgSign = true;
+              };
+              credential = {
+                "https://framagit.org" = {
+                  inherit username;
+                };
+                "https://github.com" = {
+                  inherit username;
+                };
+                "https://gitlab.com" = {
+                  inherit username;
+                };
+              };
+              push = {
+                gpgSign = "if-asked";
+              };
+              tag = {
+                forceSignAnnotated = true;
+                gpgSign = true;
+              };
+              user = {
+                name = "Romain Deville";
+                email = "code@romaindeville.fr";
+                signingKey = "0x700E80E57C25C99A";
+              };
+            };
           };
-        })
-        accounts
-      )
-      // {
-        "spotify-client-id" = {};
+        };
       };
-  };
-
-  accounts = import ../../../accounts/default.nix {
-    userCfg =
-      userCfg
-      // {
-        inherit presets;
+      main = {
+        enable = true;
       };
-    inherit inputs accountsLib accounts system;
-  };
+    };
 
-  localFlavors = {
-    bin.enable = true;
+    flavors = {
+      whatsapp = {
+        enable = true;
+      };
+      terragrunt = {
+        enable = true;
+      };
+      terraform = {
+        enable = false;
+      };
+      ssh-client = {
+        enable = true;
+        hosts = {
+          "darth-vader" = {
+            domain = "romaindeville.fr";
+            users = {
+              "rdeville" = ../../../pubkeys/rdeville-darth-vader.pub;
+            };
+          };
+          "darth-plagueis" = {
+            domain = "romaindeville.ovh";
+            users = {
+              "rdeville" = ../../../pubkeys/rdeville-darth-plagueis.pub;
+            };
+          };
+          "darth-maul" = {
+            domain = "darth-maul.local";
+            users = {
+              "rdeville" = ../../../pubkeys/rdeville-darth-maul.pub;
+            };
+          };
+        };
+      };
+      spotify-player = {
+        enable = true;
+        client_id_command = lib.strings.concatStrings [
+          "${pkgs.coreutils}/bin/cat"
+          "/home/rdeville/.config/sops-nix/secrets/spotify-client-id"
+        ];
+      };
+      signal = {
+        enable = true;
+      };
+      podman = {
+        enable = true;
+      };
+      opentofu = {
+        enable = true;
+      };
+      nextcloud-client = {
+        enable = true;
+      };
+      latex = {
+        enable = true;
+      };
+      kubernetes-client = {
+        enable = true;
+      };
+      glab = {
+        enable = true;
+      };
+      gh = {
+        enable = true;
+      };
+      discord = {
+        enable = true;
+      };
+      bluetooth = {
+        enable = true;
+      };
+    };
   };
-
-  initialPassword = username;
-  isNormalUser = true;
-  extraGroupts = ["wheel"];
 }

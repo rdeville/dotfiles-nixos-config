@@ -3,16 +3,6 @@
   config,
   ...
 }: {
-  # For more information, see `man configuration.nix` or
-  # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
-  system = {
-    stateVersion = hostCfg.stateVersion;
-  };
-
-  nixpkgs = {
-    hostPlatform = hostCfg.system;
-  };
-
   # Use the systemd-boot EFI boot loader.
   boot = {
     loader = {
@@ -29,10 +19,6 @@
       #   efiSupport = true;
       # };
     };
-  };
-
-  networking = {
-    hostName = hostCfg.hostname;
   };
 
   services = {
