@@ -1,6 +1,35 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.4.0 (2024-12-22)
+
+### ✨ Minor
+
+  * ✨ Upgrade config to use public nixos using modules (!31) by Romain Deville ([`7825107`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7825107b051d455eba34903a1220be5612515a47))
+  * ✨ Upgrade flake.nix to new module structure by Romain Deville ([`98bc017`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/98bc017a361528d9873b36acfaa25ea5100e05c0)) 🔏
+  * ✨(configs/hosts/darth-plagueis): Add darth-plagueis host and users config by Romain Deville ([`7065bcb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7065bcbe034788f50c73d11d7bc66eaccfb3af21)) 🔏
+  * ✨(nixos): Add default nixos configuraiton by Romain Deville ([`294b225`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/294b225afab47883122e7484a67b7a571fda9eff)) 🔏
+  * ✨(hm): Add hm default configuration and use modules by Romain Deville ([`9534950`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/953495017417e4890de0854d4613b8801148bd52)) 🔏
+  * ✨(hm/flavors): Upgrade flavors to use modules by Romain Deville ([`3e13c5a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3e13c5aa1aa4fca8d26b68f194ed30db31ea26d6)) 🔏
+  * ✨(lib): Add lib, mainly  related to hm accounts configuration by Romain Deville ([`a86886a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a86886af86942fc93c93752415ef9b34eb0a3351)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`183b478`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/183b478039d824582e34e20483a3ae4cfda2a7e8)) 🔏
+  * 🔧(configs/hosts/rey): Upgrade rey config to use module by Romain Deville ([`19b69d6`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/19b69d63803a851a0c60dfc20f25d18d068fae21)) 🔏
+  * 🔧(configs/hosts/darth-maul): Upgrade darth-maul to use new modules by Romain Deville ([`045ca53`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/045ca53ecac866247067957db541eaff42fc07db)) 🔏
+  * 🔧(configs/accounts): Update email/contact/calendar accounts config by Romain Deville ([`5165985`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/516598508400dd01c0d624acec5c56390262c4f0)) 🔏
+  * 🔧(configs/pubkeys): Add some public SSH keys by Romain Deville ([`251761e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/251761ea5cfe735edf52d8f66aea7f31abbdb1a5)) 🔏
+
+### 🔊 Others
+
+  * 🔥(configs/hosts): Remove now useless default hosts config by Romain Deville ([`ff6c338`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ff6c338fa6710b83a0df8cede79203723da5fa84)) 🔏
+  * 🔥(hm/presets): Remove hm presets not used anymore by Romain Deville ([`cb6bceb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/cb6bceb9225e2feb582aabd12eb0412c51bead97)) 🔏
+  * 🔥 Remove now useless modules/home-manager by Romain Deville ([`65f797d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/65f797d2303b98c0576dce23d65980b1da154e34)) 🔏
+  * 🔨 Update devenv.nix with new script by Romain Deville ([`e1938ee`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e1938ee884e00a8d2a6ef06ab0967cc6f17d0217)) 🔏
+  * 🔨 Update devenv scripts by Romain Deville ([`bfbccf2`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bfbccf216e6b6057694f868a5fc2c30ce8171785)) 🔏
+  * 🚚(hm): Move flavors/bin to assets/scripts by Romain Deville ([`5fa6a3b`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5fa6a3b1bf9cf01ff5a7d798ff84eaf9374252b8)) 🔏
+
 ## v0.3.2 (2024-12-08)
 
 ### 🩹 Patch
@@ -18,6 +47,7 @@
   * 💚 Update semantic release git strategy and depth by Romain Deville ([`547a659`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/547a659c201652a33e6ffa34ac893f105d8ff8ab)) 🔏
   * 🔀 Fix commitlint CI (!30) by Romain Deville ([`da0e0ea`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/da0e0ea901b03604724dca2d36553a74ea24cf2c))
   * 🔀 Fix accounts, update flavors (!29) by Romain Deville ([`eb80b21`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/eb80b21a32c9832a691234a15f0f97933141fab3))
+  * 🔖 v0.3.2 (NO-CI) by Python Semantic Release [bot] ([`7ea92dd`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7ea92dd9bd28056c77131aa21716e946bcf8bdab))
 
 ## v0.3.1 (2024-11-24)
 
