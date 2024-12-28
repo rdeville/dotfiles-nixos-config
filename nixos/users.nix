@@ -53,21 +53,23 @@ in {
       inherit (cfg) defaultUserShell;
       mutableUsers = true;
       users =
-        builtins.mapAttrs (name: user: {
-          shell = pkgs.${user.shell};
-          isNormalUser = name != "root";
-          extraGroups =
-            defaultGroup
-            ++ (sudoGroup user);
-        }
-      ) cfg.users;
+        builtins.mapAttrs (
+          name: user: {
+            shell = pkgs.${user.shell};
+            isNormalUser = name != "root";
+            extraGroups =
+              defaultGroup
+              ++ (sudoGroup user);
+          }
+        )
+        cfg.users;
     };
 
     programs = builtins.listToAttrs (
-      builtins.map (name: let
+      builtins.map (
+        name: let
           shell = cfg.users.${name}.shell;
-        in
-        {
+        in {
           name = shell;
           value = {
             enable = true;
