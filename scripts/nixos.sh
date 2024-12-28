@@ -1,10 +1,8 @@
 #!/usr/bin/env bash
-# """TODO
-# """
+set -e
 
 # shellcheck disable=SC2034
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1 ; pwd -P )"
-SCRIPTNAME="$(basename "$0")"
 
 init_logger(){
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
@@ -34,42 +32,27 @@ init_logger(){
   fi
 }
 
-check_dir(){
-  local dir="$1"
-  if ! [[ -d "${dir}" ]]
-  then
-    _log "INFO" "Create directory ${dir}"
-    mkdir -p "${dir}"
-  fi
-}
-
-DATA=(
-  "c1-r2-g0"
-  "c2-r4-g0"
-  "c4-r8-g0"
-  "c1-r2-g1"
-  "c2-r4-g1"
-  "c4-r8-g1"
-)
-
 main(){
   export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
   init_logger
-  # TODO Change below substitution if need
-  local DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
-  local options=""
-  local answer
-  local idx
-  local vm_configs
-  local all_configs
-  local module
-  local cmd
 
-  cd "${SCRIPTPATH}" || exit 1
-  check_dir "/tmp/nixos-shell"
+  local profile="-H ${HOST}"
+  local action="build"
+  local local_inputs_file
 
-  while getopts 'dim:' opt
+  local_inputs_file="$(git rev-parse --show-toplevel)/scripts/local_inputs.sh"
+
+  if [[ -f "$1" ]]; then
+    local_inputs_file="$1"
+    shift
+  fi
+
+  # shellcheck source=./local_inputs.sh
+  source "${local_inputs_file}"
+
+  while getopts "dip:" opt
   do
+    _log "DEBUG" "Process args : ${opt}"
     case ${opt} in
       d) # debug
         options+=" --show-trace"
@@ -77,52 +60,37 @@ main(){
       i) # impure
         options+=" --impure"
         ;;
-
-      m)
-        module="${OPTARG}"
+      p) # profile
+        profile="-H ${OPTARG}"
+        shift
         ;;
       *)
         _log "ERROR" "Unsupported argument : ${opt} ${OPTARG}"
+        exit 1
         ;;
     esac
   done
-  shift $((OPTIND - 1))
+  shift $((OPTIND-1))
 
-  module="${module:-"nixos-shell"}"
-
-  idx=0
-  for iConf in "${DATA[@]}"
-  do
-    vm_configs+="\n  - **${idx}**: ${iConf}"
-    idx=$((idx + 1))
-  done
-
-  if [[ $# -lt 1 ]]
+  if [[ -n "$1" ]]
   then
-    msg="Which flavor to use ? [Default: **0**]${vm_configs}"
-    _log "INFO" "${msg}"
-    read -r answer
-    answer=${answer:-0}
-  else
-    answer=$1
+    action="$1"
     shift
   fi
-  config="${DATA[$answer]}"
 
-  cmd="nix run"
-  if [[ "${module}" == "nixos-shell" ]]
-  then
-    cmd+=" .#nixos-shellConfigurations.${config}.config.system.build.nixos-shell"
-  elif [[ "${module}" == "microvm" ]]
-  then
-    cmd+=" .#microvmConfigurations.${config}.config.microvm.declaredRunner"
-  fi
-  cmd+=" ${options} $*"
-  _log "INFO" "Starting VM with **${module}** and flavor **${config}**"
-  _log "DEBUG" "${cmd}"
+  # shellcheck disable=2154
+  for input in "${!inputs[@]}"; do
+    options+="--override-input ${input} ${inputs[$input]} "
+  done
+
+
+  cmd+="nh os ${action} ${profile} . -- \
+    --extra-experimental-features \"nix-command flakes\" \
+    ${options}"
+
+  _log "INFO" "Running **nh os ${action}** for **${profile/-H /}** with command : "
+  _log "INFO" "${cmd//  /}"
   eval "${cmd}"
 }
 
 main "$@"
-
-# vim: ft=sh
