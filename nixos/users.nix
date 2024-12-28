@@ -4,64 +4,78 @@
   pkgs,
   ...
 }: let
-  cfg = config.os;
+  cfg = config.os.users;
 
   defaultGroup = [
     "networkmanager"
   ];
-  guiGroup = [
-    "video"
-    "audio"
-    "camera"
-  ];
-  sudoGroup = [
-    "wheel"
-  ];
+  sudoGroup = user:
+    if user.isSudo
+    then [
+      "wheel"
+    ]
+    else [];
 in {
   options = {
     os = {
-      users = lib.mkOption {
-        description = "Configure NixOS users.";
-        default = {};
-        type = lib.types.attrsOf (
-          lib.types.submodule (
-            {name, ...}: {
+      users = {
+        defaultUserShell = lib.mkOption {
+          type = lib.types.package;
+          description = "The default shell all users.";
+          default = pkgs.zsh;
+        };
+        users = lib.mkOption {
+          description = "Configure NixOS users.";
+          default = {};
+          type = lib.types.attrsOf (
+            lib.types.submodule {
               options = {
                 isSudo = lib.mkOption {
                   type = lib.types.bool;
                   description = "Set to true if the user can be sudo.";
                   default = false;
                 };
+                shell = lib.mkOption {
+                  type = lib.types.str;
+                  description = "The shell for the user.";
+                  default = "zsh";
+                };
               };
             }
-          )
-        );
+          );
+        };
       };
     };
   };
 
   config = {
     users = {
-      defaultUserShell = pkgs.zsh;
+      inherit (cfg) defaultUserShell;
       mutableUsers = true;
       users =
-        builtins.mapAttrs (name: userCfg: {
-          shell = pkgs.zsh;
-          isNormalUser = name != "root";
-          extraGroups =
-            defaultGroup
-            ++ (
-              if cfg.isGui
-              then guiGroup
-              else []
-            )
-            ++ (
-              if userCfg.isSudo
-              then sudoGroup
-              else []
-            );
-        })
+        builtins.mapAttrs (
+          name: user: {
+            shell = pkgs.${user.shell};
+            isNormalUser = name != "root";
+            extraGroups =
+              defaultGroup
+              ++ (sudoGroup user);
+          }
+        )
         cfg.users;
     };
+
+    programs = builtins.listToAttrs (
+      builtins.map (
+        name: let
+          shell = cfg.users.${name}.shell;
+        in {
+          name = shell;
+          value = {
+            enable = true;
+          };
+        }
+      ) (builtins.attrNames cfg.users)
+    );
   };
 }

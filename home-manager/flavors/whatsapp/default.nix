@@ -4,8 +4,7 @@
   lib,
   ...
 }: let
-  name = "whatsapp";
-
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
   linuxPkgs = with pkgs; [

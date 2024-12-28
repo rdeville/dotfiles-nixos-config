@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  name = "terraform";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 in {
   options = {
@@ -29,7 +29,7 @@ in {
         "terraform/terraformrc" = {
           enable = with pkgs; builtins.elem terraform config.home.packages;
           text = ''
-            plugin_cache_dir = "$HOME/.cache/terraform/plugins"
+            plugin_cache_dir = "${config.xdg.cacheHome}/terraform/plugins"
           '';
         };
       };

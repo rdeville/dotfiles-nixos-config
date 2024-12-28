@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   cfg = config.hm;
@@ -87,21 +88,69 @@ in {
           EDITOR = "nvim";
         };
       };
+
+      nixpkgs = {
+        allowUnfree = lib.mkOption {
+          type = lib.types.bool;
+          description = "If true, allow installation of unfree packages.";
+          default = false;
+        };
+      };
     };
   };
 
   config = {
     home = {
-      stateVersion = cfg.stateVersion;
-
-      username = cfg.username;
-
-      homeDirectory = cfg.homeDirectory;
-
-      sessionPath = cfg.sessionPath;
-      sessionVariables = cfg.sessionVariables;
+      inherit
+        (cfg)
+        stateVersion
+        username
+        homeDirectory
+        sessionPath
+        sessionVariables
+        ;
 
       preferXdgDirectories = true;
+    };
+
+    nixpkgs = {
+      config = {
+        inherit (cfg.nixpkgs) allowUnfree;
+      };
+    };
+
+    nix = {
+      gc = {
+        automatic = true;
+        frequency = "weekly";
+        options = "--delete-older-than 7d";
+      };
+
+      package = pkgs.nixVersions.latest;
+
+      settings = {
+        accept-flake-config = true;
+        auto-optimise-store = true;
+        extra-experimental-features = [
+          "flakes"
+          "nix-command"
+          "auto-allocate-uids"
+        ];
+        keep-outputs = true;
+        keep-derivations = true;
+        show-trace = true;
+        trusted-users = [
+          "root"
+          "@wheel"
+          "@sudo"
+        ];
+      };
+    };
+
+    systemd = {
+      user = {
+        startServices = "sd-switch";
+      };
     };
   };
 }

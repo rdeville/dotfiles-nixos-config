@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  name = "ssh-server";
+  name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
 in {
   options = {

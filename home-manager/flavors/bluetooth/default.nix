@@ -4,8 +4,8 @@
   pkgs,
   ...
 }: let
-  name = "bluetooth";
-  cfg = config.hm.flavors.bluetooth;
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
 in {
   options = {
     hm = {

@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  name = "display-manager";
+  name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
 in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
@@ -18,6 +18,9 @@ in {
           };
           ly = {
             enable = lib.mkEnableOption "Install ly as display manager.";
+            settings =
+              lib.mkOption {
+              };
           };
         };
       };
@@ -29,14 +32,13 @@ in {
       xserver = {
         displayManager = {
           gdm = {
-            enable = cfg.gdm.enable;
-            # wayland = hyprlandEnable;
+            inherit (cfg.gdm) enable;
           };
         };
       };
       displayManager = {
         ly = {
-          enable = cfg.ly.enable;
+          inherit (cfg.ly) enable settings;
         };
       };
     };

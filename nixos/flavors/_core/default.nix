@@ -1,0 +1,67 @@
+{
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  name = "core";
+  cfg = config.os.flavors.${name};
+in {
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+
+  options = {
+    os = {
+      flavors = {
+        ${name} = {
+          enable = lib.mkDefaultEnabledOption "Install ${name} NixOS flavors.";
+        };
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    documentation = {
+      nixos = {
+        includeAllModules = true;
+      };
+    };
+
+    fonts = {
+      packages = with pkgs; [
+        # NixOS
+        carlito
+        vegur
+        source-code-pro
+        jetbrains-mono
+        # Icons
+        font-awesome
+        # Nerdfont Icons
+        nerd-fonts.fira-code
+      ];
+    };
+
+    environment = {
+      variables = {
+        EDITOR = "nvim";
+        VISUAL = "nvim";
+      };
+
+      # System-Wide Packages
+      systemPackages = with pkgs; [
+        # Terminal
+        btop # Resource Manager
+        htop # Process Manager
+        coreutils # GNU Utilities
+        killall # Process Killer
+        lshw # Hardware Config
+        pciutils # Manage PCI
+        usbutils # Manage USB
+
+        # NixOS CLI related packages
+        nix-tree # Browse Nix Store
+        nh # Wrapper above nixos-rebuild or home-manager
+        home-manager # Home manager
+      ];
+    };
+  };
+}
