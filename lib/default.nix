@@ -1,27 +1,9 @@
 inputs: lib: let
   debug = data: builtins.trace (builtins.toJSON data);
 
-  pkgsForSystem = system:
-    import inputs.nixpkgs {
-      inherit system;
-      overlays = [inputs.nixgl.overlay];
-      config = {
-        allowUnfree = true;
-      };
-    };
-
-  nixGLWrap = pkg: nixpkgs:
-    nixpkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
-      mkdir $out
-      ln -s ${pkg}/* $out
-      rm $out/bin
-      mkdir $out/bin
-      for bin in ${pkg}/bin/*; do
-       wrapped_bin=$out/bin/$(basename $bin)
-       echo "exec ${nixpkgs.lib.getExe' nixpkgs.nixgl.auto.nixGLDefault "nixGL"} $bin \"\$@\"" > $wrapped_bin
-      chmod +x $wrapped_bin
-      done
-    '';
+  importDir = inode: (builtins.filter (
+    item: (item != "default.nix")
+  ) (listInodes inode));
 
   listDirs = inode:
     builtins.map (elem: elem.name) (
@@ -47,15 +29,38 @@ inputs: lib: let
 
   listInodes = inode: (listFiles inode) ++ (listDirs inode);
 
-  importDir = inode: (builtins.filter (
-    item: (item != "default.nix")
-  ) (listInodes inode));
+  mkDefaultEnabledOption = description:
+    lib.mkOption {
+      inherit description;
+      type = lib.types.bool;
+      default = true;
+    };
+
+  nixGLWrap = pkg: nixpkgs:
+    nixpkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
+      mkdir $out
+      ln -s ${pkg}/* $out
+      rm $out/bin
+      mkdir $out/bin
+      for bin in ${pkg}/bin/*; do
+       wrapped_bin=$out/bin/$(basename $bin)
+       echo "exec ${nixpkgs.lib.getExe' nixpkgs.nixgl.auto.nixGLDefault "nixGL"} $bin \"\$@\"" > $wrapped_bin
+      chmod +x $wrapped_bin
+      done
+    '';
+
+  pkgsForSystem = system:
+    import inputs.nixpkgs {
+      inherit system;
+      overlays = [inputs.nixgl.overlay];
+    };
 in {
   inherit
     debug
     importDir
     listDirs
     listFiles
+    mkDefaultEnabledOption
     nixGLWrap
     pkgsForSystem
     ;
