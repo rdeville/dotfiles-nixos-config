@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  name = "gh";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 in {
   options = {

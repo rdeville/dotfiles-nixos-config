@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  name = "spotify-player";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 in {
   options = {

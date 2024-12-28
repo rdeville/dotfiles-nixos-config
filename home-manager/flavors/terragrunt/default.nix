@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  name = "terragrunt";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 in {
   options = {

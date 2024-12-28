@@ -4,7 +4,7 @@
   lib,
   ...
 }: let
-  name = "discord";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 in {
   options = {
@@ -18,6 +18,15 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    nixpkgs = {
+      config = {
+        allowUnfreePredicate = pkg:
+          builtins.elem (lib.getName pkg) [
+            "discord"
+          ];
+      };
+    };
+
     home = {
       packages = with pkgs; [
         discord
