@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   os,
   ...
 }: let
@@ -10,6 +11,7 @@ in {
 
   options = {
     os = {
+      # BASE CONFIGURATION
       stateVersion = lib.mkOption {
         type = lib.types.str;
         description = "Version of HM to follow";
@@ -22,33 +24,64 @@ in {
         default = "x86-64_linux";
       };
 
-      hostname = lib.mkOption {
+      hostName = lib.mkOption {
         type = lib.types.str;
         description = "Hostname where config will be applied.";
       };
 
+      # OTHER CONFIGURATION
       allowUnfree = lib.mkOption {
         type = lib.types.bool;
         description = "If true, allow installation of unfree packages.";
         default = false;
       };
 
-      keyMap = lib.mkOption {
-        type = lib.types.either lib.types.str lib.types.path;
-        description = "The keyboard mapping table for the virtual consoles.";
-        default = "fr";
+      timeZone = lib.mkOption {
+        type = lib.types.str;
+        description = "The timezone of the host.";
+        default = "Europe/Paris";
       };
 
-      isGui = lib.mkOption {
-        type = lib.types.bool;
-        description = "If true, setup GUI environnement.";
-        default = false;
+      defaultLocale = lib.mkOption {
+        type = lib.types.str;
+        description = "i18n local default value.";
+        default = "en_US.UTF-8";
       };
 
+      extraLocaleSettings = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        description = "i18n extra local values, like LC_MONETARY.";
+        default = {
+          LC_MONETARY = "fr_FR.UTF-8";
+        };
+      };
+
+      # BOOLEAN TO PARAMETERIZE SOME FLAVORS
       isMain = lib.mkOption {
         type = lib.types.bool;
         description = "If true, setup Main environnement.";
         default = false;
+      };
+
+      isGui = lib.mkOption {
+        type = lib.types.bool;
+        readOnly = true;
+        description = "If true, setup GUI environnement.";
+        default = cfg.flavors.windows-manager.enable || false;
+      };
+
+      console = {
+        keyMap = lib.mkOption {
+          type = lib.types.either lib.types.str lib.types.path;
+          description = "The keyboard mapping table for the virtual consoles.";
+          default = "fr";
+        };
+
+        font = lib.mkOption {
+          type = lib.types.either lib.types.str lib.types.path;
+          description = "The font to use in the console.";
+          default = "Lat2-Terminus16";
+        };
       };
     };
   };
@@ -56,67 +89,75 @@ in {
   config = {
     inherit os;
 
-    # For more information, see `man configuration.nix` or
-    # https://nixos.org/manual/nixos/stable/options#opt-system.stateVersion .
+    # NIXOS BASE CONFIGURATION
     system = {
-      stateVersion = config.os.stateVersion;
+      inherit (cfg) stateVersion;
+    };
+
+    networking = {
+      inherit (cfg) hostName;
+    };
+
+    nix = {
+      gc = {
+        automatic = true;
+        dates = "weekly";
+        options = "--delete-older-than 7d";
+      };
+
+      package = pkgs.nixVersions.latest;
+
+      settings = {
+        accept-flake-config = true;
+        auto-optimise-store = true;
+        extra-experimental-features = [
+          "flakes"
+          "nix-command"
+          "auto-allocate-uids"
+        ];
+        keep-outputs = true;
+        keep-derivations = true;
+        show-trace = true;
+        trusted-users = [
+          "root"
+          "@wheel"
+          "@sudo"
+        ];
+      };
     };
 
     nixpkgs = {
       config = {
-        allowUnfree = cfg.allowUnfree;
+        inherit (cfg) allowUnfree;
       };
-    };
-
-    documentation = {
-      nixos = {
-        includeAllModules = true;
-      };
-    };
-
-    networking = {
-      hostName = cfg.hostname;
     };
 
     console = {
-      font = "Lat2-Terminus16";
-      keyMap = cfg.keyMap;
+      inherit (cfg.console) keyMap font;
     };
 
-    services = {
-      xserver = lib.mkIf cfg.isGui {
-        # Enable the X11 windowing system.
-        enable = true;
-        # Configure keymap in X11
-        xkb = {
-          layout = cfg.keyMap;
-          options = "caps:escape";
-        };
-      };
-    };
-
-    # Locale configuration
     i18n = {
-      defaultLocale = "en_US.UTF-8";
-      extraLocaleSettings = {
-        LC_MONETARY = "fr_FR.UTF-8";
-      };
+      inherit (cfg) defaultLocale extraLocaleSettings;
     };
 
-    # Timezone
     time = {
-      timeZone = "Europe/Paris";
+      inherit (cfg) timeZone;
     };
 
-    programs = {
-      gnupg.agent = {
+    security = {
+      rtkit = {
         enable = true;
       };
-      ssh = {
-        startAgent = true;
-      };
-      zsh = {
+      polkit = {
         enable = true;
+      };
+      sudo = {
+        enable = true;
+        execWheelOnly = true;
+        extraConfig = ''
+          # Ask for root password when doing sudo
+          Defaults rootpw
+        '';
       };
     };
   };

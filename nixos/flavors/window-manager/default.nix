@@ -5,7 +5,7 @@
   pkgs,
   ...
 }: let
-  name = "window-manager";
+  name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
 
   awesomePkg = let
@@ -39,6 +39,26 @@ in {
 
   options = {
     os = {
+      users = {
+        users = lib.mkOption {
+          type = lib.types.attrsOf (
+            lib.types.submodule ({name, ...}: {
+              options = {
+                enableGui = lib.mkOption {
+                  type = lib.types.bool;
+                  description = ''
+                    Set to true to add user to graphics related *NIX groups
+                  '';
+                  default =
+                    if name != "root"
+                    then true
+                    else false;
+                };
+              };
+            })
+          );
+        };
+      };
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
@@ -54,6 +74,18 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    users = {
+      users =
+        builtins.mapAttrs (name: user: {
+          extraGroups = [
+            "video"
+            "audio"
+            "camera"
+          ];
+        })
+        config.os.users.users;
+    };
+
     services = {
       xserver = {
         displayManager = {
