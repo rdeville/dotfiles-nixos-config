@@ -1,6 +1,29 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.22.0 (2024-12-28)
+
+### ✨ Minor
+
+  * ✨(hm): Update default HM installation by Romain Deville ([`68a2819`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/68a28192f4bd5df3cbd79fa1c92824a89917dd37)) 🔏
+  * ✨(hm/flavors): Add audio flavors by Romain Deville ([`8cccb7d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8cccb7d805b9bfa27990171c74e5c690f4787472)) 🔏
+  * ✨(hm/flavors): Move presets into new &#34;meta&#34; flavors𝅍 by Romain Deville ([`24c8c0c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/24c8c0c5faddea715122c1d170ca13274f6c7215)) 🔏
+  * ✨(lib): Add mkDefaultEnabledOptions function in lib by Romain Deville ([`5f448f3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5f448f31d0419ca0373668bf965a127defdbf3c5)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Remove presets for flavors modules, fix some pkgs config (!76) by Romain Deville ([`9a245a7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9a245a7e6eab869fc7c902c006df1c95bc815446))
+  * ⚡️(hm/flavors): Make all flavors more generalized by Romain Deville ([`9293e57`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9293e57bdb0e77926e9d358498610bb6050de83b)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`a3ea896`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a3ea8960f6786340eca6ef3619071d71865c426b)) 🔏
+  * ⬆️ Update devenv.lock by Romain Deville ([`fc74764`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fc74764c92fba495ae6c424b48274e26d6d39f5d)) 🔏
+
+### 🔊 Others
+
+  * ♻️(nixos): Generalize flavors and make same more customizable by Romain Deville ([`40fc693`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/40fc6932c74ce3e98eda9d26e3cb67066639dff2)) 🔏
+  * 🎨(nixos): Format nixos users module by Romain Deville ([`35f6893`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/35f6893b0f2e3a026f89e6cde3ade34796d07e92)) 🔏
+  * 🔨 Update devenv.nix scripts references by Romain Deville ([`481d297`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/481d297375f25922c740c34f98aaff0e8ac91168)) 🔏
+  * 🔨(scripts): Update scripts {os,hm,fmt}.sh by Romain Deville ([`11b8e4e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11b8e4ee077d5e2ad5f18a281350d13ee2735378)) 🔏
+
 ## v0.21.0 (2024-12-22)
 
 ### ✨ Minor
@@ -21,6 +44,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.21.0 (NO-CI) by Python Semantic Release [bot] ([`9c39650`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9c39650fcb588b8afef3e7b154d1179168bd5a85))
   * 🔥(lib): Remove now useless accounts libs by Romain Deville ([`0378ff1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0378ff158b988f1c07d03053f1840bafa67721ae)) 🔏
 
 ## v0.20.0 (2024-12-15)
