@@ -1,17 +1,17 @@
 {...}: {
   os = {
-    hostname = "darth-maul";
+    hostName = "darth-maul";
     system = "x86_64-linux";
     isGui = true;
     isMain = true;
 
-    # TODO: Update below
-    # users = default.mkNixosUser (mkLib.mkListDirs ./.);
     users = {
-      rdeville = {
-        isSudo = true;
+      users = {
+        rdeville = {
+          isSudo = true;
+        };
+        root = {};
       };
-      root = {};
     };
 
     flavors = {

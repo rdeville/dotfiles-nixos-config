@@ -5,8 +5,6 @@
     isGui = true;
     isMain = true;
 
-    # TODO: Update below
-    # users = default.mkNixosUser (mkLib.mkListDirs ./.);
     users = {
       rdeville = {
         isSudo = true;

@@ -1,67 +1,33 @@
-{
-  pkgs,
-  lib,
-  ...
-}: let
-  os = (import ../default.nix {}).os;
+{...}: let
+  username = builtins.baseNameOf ./.;
 
-  username = "rdeville";
+  os = (import ../default.nix {}).os;
+  default = import ../../default.nix {inherit username;};
+  isGui =
+    if os ? isGui
+    then os.isGui
+    else false;
+  isMain =
+    if os ? isMain
+    then os.isMain
+    else false;
 in {
   extraConfig = {};
 
   hm = {
-    inherit username;
-    inherit (os) isGui isMain hostname;
-    userAccounts = [
-      "contact@romaindeville.fr"
-      "contact@romaindeville.ovh"
-    ];
-    presets = {
-      common = {
-        enable = true;
-      };
-      minimal = {
-        enable = true;
-        git = {
-          perso = {
-            condition = "gitdir:/";
-            contents = {
-              commit = {
-                gpgSign = true;
-              };
-              credential = {
-                "https://framagit.org" = {
-                  inherit username;
-                };
-                "https://github.com" = {
-                  inherit username;
-                };
-                "https://gitlab.com" = {
-                  inherit username;
-                };
-              };
-              push = {
-                gpgSign = "if-asked";
-              };
-              tag = {
-                forceSignAnnotated = true;
-                gpgSign = true;
-              };
-              user = {
-                name = "Romain Deville";
-                email = "code@romaindeville.fr";
-                signingKey = "0x700E80E57C25C99A";
-              };
+    inherit username isGui isMain;
+    inherit (os) hostname;
+
+    flavors = {
+      core = default.flavors._core // {
+        starship = {
+          modules = {
+            sudo = {
+              disable = true;
             };
           };
         };
       };
-      main = {
-        enable = true;
-      };
-    };
-
-    flavors = {
       terragrunt = {
         enable = true;
       };

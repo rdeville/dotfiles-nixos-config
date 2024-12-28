@@ -3,9 +3,18 @@
   lib,
   ...
 }: let
-  os = (import ../default.nix {}).os;
+  username = builtins.baseNameOf ./.;
 
-  username = "rdeville";
+  os = (import ../default.nix {}).os;
+  default = import ../../default.nix {inherit username;};
+  isGui =
+    if os ? isGui
+    then os.isGui
+    else false;
+  isMain =
+    if os ? isMain
+    then os.isMain
+    else false;
 in {
   extraConfig = {
     sops = {
@@ -22,69 +31,61 @@ in {
   };
 
   hm = {
-    inherit username;
-    inherit (os) isGui isMain hostname;
+    inherit username isGui isMain;
+    inherit (os) hostname;
+    wrapGL = true;
     userAccounts = [
       "contact@romaindeville.fr"
       "contact@romaindeville.ovh"
     ];
-    presets = {
-      common = {
-        enable = true;
-      };
-      gui = {
-        enable = true;
-      };
-      minimal = {
-        enable = true;
-        git = {
-          perso = {
-            condition = "gitdir:/";
-            contents = {
-              commit = {
-                gpgSign = true;
-              };
-              credential = {
-                "https://framagit.org" = {
-                  inherit username;
-                };
-                "https://github.com" = {
-                  inherit username;
-                };
-                "https://gitlab.com" = {
-                  inherit username;
-                };
-              };
-              push = {
-                gpgSign = "if-asked";
-              };
-              tag = {
-                forceSignAnnotated = true;
-                gpgSign = true;
-              };
-              user = {
-                name = "Romain Deville";
-                email = "code@romaindeville.fr";
-                signingKey = "0x700E80E57C25C99A";
-              };
-            };
-          };
-        };
-      };
-      main = {
-        enable = true;
-      };
-    };
 
     flavors = {
-      whatsapp = {
+      inherit (default.flavors) _core;
+      _accounts = {
+        enable = isMain;
+      };
+      _gui = {
+        enable = isGui;
+      };
+      audio = {
         enable = true;
       };
-      terragrunt = {
+      bluetooth = {
         enable = true;
       };
-      terraform = {
-        enable = false;
+      discord = {
+        enable = true;
+      };
+      gh = {
+        enable = true;
+      };
+      glab = {
+        enable = true;
+      };
+      kubernetes-client = {
+        enable = true;
+      };
+      latex = {
+        enable = true;
+      };
+      nextcloud-client = {
+        enable = true;
+      };
+      opentofu = {
+        enable = true;
+      };
+      podman = {
+        enable = true;
+      };
+      signal = {
+        enable = true;
+      };
+      spotify-player = {
+        enable = true;
+        client_id_command = lib.strings.concatStrings [
+          "${pkgs.coreutils}/bin/cat"
+          "/home/rdeville/.config/sops-nix/secrets/spotify-client-id"
+        ];
       };
       ssh-client = {
         enable = true;
@@ -109,41 +110,13 @@ in {
           };
         };
       };
-      spotify-player = {
-        enable = true;
-        client_id_command = lib.strings.concatStrings [
-          "${pkgs.coreutils}/bin/cat"
-          "/home/rdeville/.config/sops-nix/secrets/spotify-client-id"
-        ];
+      terraform = {
+        enable = false;
       };
-      signal = {
+      terragrunt = {
         enable = true;
       };
-      podman = {
-        enable = true;
-      };
-      opentofu = {
-        enable = true;
-      };
-      nextcloud-client = {
-        enable = true;
-      };
-      latex = {
-        enable = true;
-      };
-      kubernetes-client = {
-        enable = true;
-      };
-      glab = {
-        enable = true;
-      };
-      gh = {
-        enable = true;
-      };
-      discord = {
-        enable = true;
-      };
-      bluetooth = {
+      whatsapp = {
         enable = true;
       };
     };
