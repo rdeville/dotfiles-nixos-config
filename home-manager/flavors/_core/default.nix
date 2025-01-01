@@ -35,6 +35,7 @@ in {
       packages = with pkgs;
         [
           age # Encryption tools
+          alejandra # Nix Formatter
           bash # Shell Emulator
           bmon # Process and Ressource Manager
           btop # Resource Manager
@@ -52,7 +53,6 @@ in {
           htop # Process Manager
           jq # json manipulation tool
           killall # Process Killer
-          lshw # Hardware Config
           neovim # Text Editor
           pciutils # Manage PCI
           p7zip # Zip Encryption
@@ -63,7 +63,6 @@ in {
           tig # Text Iterface Git
           tmux # Terminal multiplexer
           tree # Show folder as tree
-          usbutils # Manage USB
           unzip # Zip Files
           xclip # Copy to clipboard
           xdg-utils # Environment integration
@@ -71,7 +70,6 @@ in {
 
           # NixOS CLI related packages
           nix-tree # Browse Nix Store
-          nh # Wrapper above nixos-rebuild or home-manager
           nvd # Diff build for flakes/nix
         ]
         ++ (
@@ -107,6 +105,17 @@ in {
       };
       lsd = {
         enable = true;
+      };
+      nh = {
+        enable = true;
+        clean = {
+          enable = false;
+          dates = "weekly";
+          extraArgs = builtins.concatStringsSep " " [
+            "--keep 5"
+            "--keep-since 3d"
+          ];
+        };
       };
       thefuck = {
         enable = true;
