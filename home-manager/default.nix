@@ -99,23 +99,23 @@ in {
       };
     };
 
-    awesomerc = {
-      enable = config.hm.presets.gui.enable;
-    };
     direnvrc = {
-      enable = true;
+      enable = config.hm.flavors._core.enable;
     };
     neovimrc = {
-      enable = true;
+      enable = config.hm.flavors._core.enable;
     };
     tmuxrc = {
-      enable = true;
+      enable = config.hm.flavors._core.enable;
     };
     zshrc = {
-      enable = true;
+      enable = config.hm.flavors._core.enable;
     };
     dotgit-sync = {
-      enable = config.hm.presets.main.enable;
+      enable = config.hm.flavors._core.enable;
+    };
+    awesomerc = {
+      enable = config.hm.flavors._gui.enable;
     };
   };
 }
