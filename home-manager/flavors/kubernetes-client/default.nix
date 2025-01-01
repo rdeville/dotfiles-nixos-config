@@ -31,11 +31,25 @@ in {
         sops
         stern
       ];
+      sessionVariables = {
+        # KUBECOLOR_CONFIG = "${config.xdg.configHome}/kube/kubecolor.yaml";
+        KUBECONFIG = "${config.xdg.configHome}/kube/kubeconfig.yaml";
+      };
     };
 
     programs = {
       k9s = {
         enable = true;
+      };
+      kubecolor = {
+        enable = true;
+        enableAlias = true;
+        settings = {
+          kubectl = lib.getExe pkgs.kubectl;
+          preset = "dark";
+          paging = "auto";
+          objFreshThreshold = "4h";
+        };
       };
     };
   };
