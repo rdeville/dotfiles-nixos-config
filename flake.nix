@@ -106,10 +106,6 @@
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
   };
   outputs = inputs @ {self, ...}: let
-    pkgsForSystem = system:
-      import inputs.nixpkgs {
-        inherit system;
-      };
     # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -125,7 +121,7 @@
   in
     inputs.utils.lib.eachSystem allSystems (
       system: let
-        pkgs = pkgsForSystem system;
+        pkgs = inputs.nixos.homeManagerModules.lib.pkgsForSystem system;
       in {
         packages = {
           devenv-up = self.devShells.${system}.default.config.procfileScript;
@@ -216,7 +212,7 @@
           builtins.concatLists (builtins.map (
             host: let
               pkgs =
-                pkgsForSystem
+                inputs.nixos.homeManagerModules.lib.pkgsForSystem
                 (
                   import ./configs/hosts/${host} {}
                 )

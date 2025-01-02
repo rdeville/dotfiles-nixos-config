@@ -3,7 +3,7 @@
   lib,
   ...
 }: let
-  name = "ssh-client";
+  name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
   mkIdentityFile = hostname: user: let
