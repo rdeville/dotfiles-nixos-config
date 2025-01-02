@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.0 (2025-01-02)
+
+### ✨ Minor
+
+  * ✨ Fix configs due to modules in main nixos (!34) by Romain Deville ([`d39ac72`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d39ac72f514eb80a2545f3d98255b07d0f5205a9))
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/ssh-client): Make flavor a nix module by Romain Deville ([`7974744`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/79747443786b9353706326e7b7fa98022fb57a18)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`a2a4360`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a2a4360fbdd210717e778515f388d2fa4899356a)) 🔏
+  * 👽️(configs): Update all configs after public nixos upgrade by Romain Deville ([`ac43c18`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ac43c18830d715a3e819083e1f1a0722e0d2d266)) 🔏
+  * 🔧(hm): Update default HM based on _core flavor by Romain Deville ([`c5c6eb8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c5c6eb8095a431a9cf51f92c37eeae01c253ed32)) 🔏
+
+### 🔊 Others
+
+  * 🎨 Rework format of devenv.nix by Romain Deville ([`ae27bd7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ae27bd76eadf2b89256995410479186542741358)) 🔏
+  * 🎨 Improve flake.nix configuration by Romain Deville ([`7f6a3fe`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7f6a3feb4afe3e9849cdff90b69fbd95682e7fb6)) 🔏
+
 ## v0.4.2 (2024-12-22)
 
 ### 🩹 Patch
@@ -9,6 +27,10 @@
   * 🔧(configs/hosts): Update hosts configuration (!33) by Romain Deville ([`9a4c453`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9a4c45384676c78ba5b4815b9079c92ab39fb596))
   * 🔧(configs/hosts/rey): Update rey configuration to new structure by Romain Deville ([`ab54cfc`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ab54cfc510caa3cb7a46d85d65ece791118a2437)) 🔏
   * 🔧(configs/hosts/darth-plagueis): Update hosts configuration by Romain Deville ([`bc4551d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bc4551d9ab690ad63fc2627d8e6f0cee5a45700d)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.4.2 (NO-CI) by Python Semantic Release [bot] ([`5d4db01`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5d4db013da715a07d5b34f63cafc0cebe2073738))
 
 ## v0.4.1 (2024-12-22)
 
