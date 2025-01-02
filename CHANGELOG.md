@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.23.0 (2025-01-02)
+
+### ✨ Minor
+
+  * ✨(hm/flavors): Add gcloud flavors, improve starship in _core (!77) by Romain Deville ([`7cea25e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7cea25e16f2d2c5485f7cc0dae5f8724009c63d2))
+  * ✨(hm/flavors): Add gcloud flavors by Romain Deville ([`9e3c126`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9e3c126e7b85a65ec77506eb6e7b82b0d55ff4cc)) 🔏
+  * ✨(hm/flavors/_core): Make starship configuration being module by Romain Deville ([`fc87968`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fc87968ff38274f6ea648372187ece6930b136ef)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/k8s-client): Add kubecolor pkgs and config by Romain Deville ([`475175c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/475175c3b78b32d3ed4ebab7172a496bbcd485e9)) 🔏
+  * ✏️(devenv): Fix devenv.nix typo by Romain Deville ([`1fe1b59`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1fe1b59f201d91d2c4854863acd758558a1869d2)) 🔏
+
 ## v0.22.0 (2024-12-28)
 
 ### ✨ Minor
@@ -21,6 +34,7 @@
 
   * ♻️(nixos): Generalize flavors and make same more customizable by Romain Deville ([`40fc693`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/40fc6932c74ce3e98eda9d26e3cb67066639dff2)) 🔏
   * 🎨(nixos): Format nixos users module by Romain Deville ([`35f6893`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/35f6893b0f2e3a026f89e6cde3ade34796d07e92)) 🔏
+  * 🔖 v0.22.0 (NO-CI) by Python Semantic Release [bot] ([`491a11a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/491a11a40af2c454aae4ed806dc053cc76765242))
   * 🔨 Update devenv.nix scripts references by Romain Deville ([`481d297`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/481d297375f25922c740c34f98aaff0e8ac91168)) 🔏
   * 🔨(scripts): Update scripts {os,hm,fmt}.sh by Romain Deville ([`11b8e4e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11b8e4ee077d5e2ad5f18a281350d13ee2735378)) 🔏
 
