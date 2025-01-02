@@ -1,7 +1,7 @@
 # BEGIN DOTGIT-SYNC BLOCK MANAGED
 {
-  pkgs ? import <nixpkgs>,
   config,
+  pkgs ? import <nixpkgs>,
   lib,
   # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_DEVENV_CUSTOM
   ...

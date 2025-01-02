@@ -5,6 +5,22 @@
 }: let
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name}.git;
+
+  colors = (import ../../../colors/default.nix).material-all;
+
+  green = colors.green_500;
+  light_green = colors.light_green_500;
+  lime = colors.lime_500;
+  yellow = colors.yellow_500;
+  amber = colors.amber_500;
+  orange = colors.orange_500;
+  deep_orange = colors.deep_orange_500;
+  red = colors.red_500;
+  purple = colors.purple_500;
+  deep_purple = colors.deep_purple_500;
+  cyan = colors.cyan_500;
+  light_blue = colors.light_blue_500;
+  indigo = colors.indigo_500;
 in {
   options = {
     hm = {
@@ -137,76 +153,76 @@ in {
           color = {
             blame = {
               highlightRecent = builtins.concatStringsSep "," [
-                "#4CAF50"
-                "12 month ago, #8BC34A"
-                "9 month ago, #CDDC39"
-                "6 month ago, #FFEB3B"
-                "3 month ago, #FFC107"
-                "1 month ago, #FF9800"
-                "2 week ago, #FF5722"
-                "1 week ago, #F44336"
+                "${green}"
+                "12 month ago, ${light_green}"
+                "9 month ago, ${lime}"
+                "6 month ago, ${yellow}"
+                "3 month ago, ${amber}"
+                "1 month ago, ${orange}"
+                "2 week ago, ${deep_orange}"
+                "1 week ago, ${red}"
               ];
-              repeatedLines = "#00BCD4";
+              repeatedLines = "${cyan}";
             };
 
             branch = {
-              current = "#00BCD4";
-              local = "#4CAF50";
-              remote = "#FFEB3B";
-              upstream = "#F44336";
+              current = "${cyan}";
+              local = "${green}";
+              remote = "${yellow}";
+              upstream = "${red}";
             };
 
             decorate = {
-              branch = "#4CAF50";
-              remoteBranch = "#FFEB3B";
-              tag = "#9C27B0 bold";
-              stash = "#673AB7 bold";
-              HEAD = "#03A9F4";
+              branch = "${green}";
+              remoteBranch = "${yellow}";
+              tag = "${purple} bold";
+              stash = "${deep_purple} bold";
+              HEAD = "${light_blue}";
             };
 
             grep = {
               context = "dim";
-              filename = "#673AB7";
-              function = "#FFEB3B";
-              lineNumber = "#8BC34A";
-              column = "#3F51B5";
-              match = "#F44336";
+              filename = "${deep_purple}";
+              function = "${yellow}";
+              lineNumber = "${light_green}";
+              column = "${indigo}";
+              match = "${red}";
               selected = "normal";
               separator = "dim";
             };
 
             interactive = {
-              prompt = "#8BC34A bold";
-              header = "#FFEB3B";
-              hint = "#00BCD4 dim";
-              error = "#F44336 bold";
+              prompt = "${light_green} bold";
+              header = "${yellow}";
+              hint = "${cyan} dim";
+              error = "${red} bold";
             };
 
             push = {
-              error = "#F44336 bold";
+              error = "${red} bold";
             };
 
             remote = {
-              hint = "#00BCD4 dim";
-              success = "#4CAF50";
-              warning = "#FFEB3B";
-              error = "#F44336";
+              hint = "${cyan} dim";
+              success = "${green}";
+              warning = "${yellow}";
+              error = "${red}";
             };
 
             status = {
-              header = "#00BCD4 dim";
-              added = "#8BC34A bold";
-              changed = "#FFEB3B bold";
-              untracked = "#F44336 bold";
-              nobranch = "#F44336";
-              branch = "#00BCD4";
-              localBranch = "#4CAF50";
-              remoteBranch = "#FFEB3B";
-              unmerged = "#F44336";
+              header = "${cyan} dim";
+              added = "${light_green} bold";
+              changed = "${yellow} bold";
+              untracked = "${red} bold";
+              nobranch = "${red}";
+              branch = "${cyan}";
+              localBranch = "${green}";
+              remoteBranch = "${yellow}";
+              unmerged = "${red}";
             };
 
             transport = {
-              rejected = "#F44336";
+              rejected = "${red}";
             };
           };
           # COLUMN CONFIGURATION
@@ -217,23 +233,23 @@ in {
           # PRETTY CONFIG
           pretty = {
             customfuller = builtins.concatStringsSep "" [
-              "%C(#FFEB3B)commit %H %Creset%C(#9C27B0 bold)%d%Creset%n"
-              "%C(dim)Author:%Creset\t%C(#4CAF50)%an <%ae>%Creset %C(#F44336)%G?%n"
-              "%C(dim)Date:%Creset  \t%C(#03A9F4 dim)%cr%Creset%n"
+              "%C(${yellow})commit %H %Creset%C(${purple} bold)%d%Creset%n"
+              "%C(dim)Author:%Creset\t%C(${green})%an <%ae>%Creset %C(${red})%G?%n"
+              "%C(dim)Date:%Creset  \t%C(${light_blue} dim)%cr%Creset%n"
               "%C(dim)Title:%Creset \t%s%n"
               "%+b%Creset"
             ];
             customoneline = builtins.concatStringsSep "" [
-              "%C(#FFEB3B)%h%Creset%Creset "
-              "%Creset%C(#03A9F4 dim)%cr%Creset\t"
-              "%Creset%C(#4CAF50)[%an]%Creset\t"
-              "%Creset%s%C(#9C27B0 bold)%d"
+              "%C(${yellow})%h%Creset%Creset "
+              "%Creset%C(${light_blue} dim)%cr%Creset\t"
+              "%Creset%C(${green})[%an]%Creset\t"
+              "%Creset%s%C(${purple} bold)%d"
             ];
             customgraph = builtins.concatStringsSep "" [
-              "\t%C(#FFEB3B)%h%Creset%Creset "
-              "%Creset%C(#03A9F4 dim)%cr%Creset\t"
-              "%Creset%C(#4CAF50)[%an]%Creset\t"
-              "%Creset%s%C(#9C27B0 bold)%d"
+              "\t%C(${yellow})%h%Creset%Creset "
+              "%Creset%C(${light_blue} dim)%cr%Creset\t"
+              "%Creset%C(${green})[%an]%Creset\t"
+              "%Creset%s%C(${purple} bold)%d"
             ];
           };
         };
