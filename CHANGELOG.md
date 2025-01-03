@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.23.1 (2025-01-03)
+
+### 🩹 Patch
+
+  * 🔧(hm/flavors): Add hclfmt and tf-docs to tf related flavors (!78) by Romain Deville ([`dd696b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dd696b7580d2fba1187c6638397823759f7eae59))
+  * 🔧(hm/flavors): Add hclfmt and tf-docs to tf related flavors by Romain Deville ([`2afdcaf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2afdcaf609f1de13c9816a166930b92ce36c612d)) 🔏
+
 ## v0.23.0 (2025-01-02)
 
 ### ✨ Minor
@@ -13,6 +20,10 @@
 
   * ⚡️(hm/flavors/k8s-client): Add kubecolor pkgs and config by Romain Deville ([`475175c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/475175c3b78b32d3ed4ebab7172a496bbcd485e9)) 🔏
   * ✏️(devenv): Fix devenv.nix typo by Romain Deville ([`1fe1b59`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1fe1b59f201d91d2c4854863acd758558a1869d2)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.23.0 (NO-CI) by Python Semantic Release [bot] ([`7ed3307`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ed3307767c9e0bef549071c7871f403aa02b2dd))
 
 ## v0.22.0 (2024-12-28)
 
