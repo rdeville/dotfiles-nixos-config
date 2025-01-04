@@ -16,7 +16,7 @@ in {
 
   hm = {
     inherit username isGui isMain;
-    inherit (os) hostname;
+    inherit (os) hostName;
     flavors = {
       inherit (default.flavors) _core;
     };

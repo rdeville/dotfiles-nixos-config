@@ -1,4 +1,38 @@
-{...}: {
+{...}: let
+  sshKeyPaths = [
+    "/etc/ssh/ssh_host_ed25519_key"
+  ];
+  users = {
+    rdeville = {
+      isSudo = true;
+      openssh = {
+        authorizedKeys = {
+          keyFiles = [
+            ../../pubkeys/rdeville-darth-maul.pub
+          ];
+        };
+      };
+    };
+    root = {};
+  };
+  secrets =
+    builtins.listToAttrs (builtins.map (user: {
+      name = "users/${user}/password";
+      value = {
+        neededForUsers = true;
+      };
+    }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
+in {
+  extraConfig = {
+    sops = {
+      inherit secrets;
+      age = {
+        inherit sshKeyPaths;
+      };
+      defaultSopsFile = ./darth-maul.enc.yaml;
+    };
+  };
+
   os = {
     hostName = "darth-maul";
     system = "x86_64-linux";
@@ -6,15 +40,15 @@
     isMain = true;
 
     users = {
-      users = {
-        rdeville = {
-          isSudo = true;
-        };
-        root = {};
-      };
+      inherit users;
     };
 
     flavors = {
+      _core = {
+        nix-ld = {
+          enable = true;
+        };
+      };
       display-manager = {
         enable = true;
         ly = {
@@ -29,12 +63,6 @@
         hyprland = {
           enable = true;
         };
-      };
-      k3s = {
-        enable = false;
-      };
-      printing = {
-        enable = false;
       };
       ssh-server = {
         enable = true;

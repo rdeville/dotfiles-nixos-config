@@ -14,7 +14,7 @@
     "${config.hm.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
   ];
   primary = config.hm.isMain && ! config.hm.isWork;
-  displayName = "📗 Romain Deville";
+  displayName = "📗 Romain Deville (Vader)";
   user = {
     email = {
       realName = "Romain Deville";

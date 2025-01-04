@@ -27,35 +27,37 @@
     extraModulePackages = [];
   };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/af13631d-9bb6-4fe1-baf0-ffdc3dbea0f3";
-    fsType = "ext4";
-  };
+  fileSystems = lib.mkDefault {
+    "/" = {
+      device = "/dev/disk/by-uuid/af13631d-9bb6-4fe1-baf0-ffdc3dbea0f3";
+      fsType = "ext4";
+    };
 
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/00B9-BB0C";
-    fsType = "vfat";
-    options = ["fmask=0022" "dmask=0022"];
-  };
+    "/boot" = {
+      device = "/dev/disk/by-uuid/00B9-BB0C";
+      fsType = "vfat";
+      options = ["fmask=0022" "dmask=0022"];
+    };
 
-  fileSystems."/var/lib" = {
-    device = "/dev/disk/by-uuid/d6c5cea2-a138-4036-8bcc-a21bb8cb2d23";
-    fsType = "ext4";
-  };
+    "/var/lib" = {
+      device = "/dev/disk/by-uuid/d6c5cea2-a138-4036-8bcc-a21bb8cb2d23";
+      fsType = "ext4";
+    };
 
-  fileSystems."/var/log" = {
-    device = "/dev/disk/by-uuid/c5d5b7e0-f28a-46ac-92af-805faf329eb1";
-    fsType = "ext4";
-  };
+    "/var/log" = {
+      device = "/dev/disk/by-uuid/c5d5b7e0-f28a-46ac-92af-805faf329eb1";
+      fsType = "ext4";
+    };
 
-  fileSystems."/nix" = {
-    device = "/dev/disk/by-uuid/f7d08dab-6552-44de-9cff-ed28dff4fe8b";
-    fsType = "ext4";
-  };
+    "/nix" = {
+      device = "/dev/disk/by-uuid/f7d08dab-6552-44de-9cff-ed28dff4fe8b";
+      fsType = "ext4";
+    };
 
-  fileSystems."/home" = {
-    device = "/dev/disk/by-uuid/a14c2870-8025-4518-bb00-92b6b2e09958";
-    fsType = "ext4";
+    "/home" = {
+      device = "/dev/disk/by-uuid/a14c2870-8025-4518-bb00-92b6b2e09958";
+      fsType = "ext4";
+    };
   };
 
   swapDevices = [];

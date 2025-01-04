@@ -1,6 +1,6 @@
 {...}: {
   os = {
-    hostname = "rey";
+    hostName = "rey";
     system = "x86_64-linux";
     isGui = true;
     isMain = true;
@@ -27,12 +27,6 @@
         hyprland = {
           enable = true;
         };
-      };
-      k3s = {
-        enable = false;
-      };
-      printing = {
-        enable = false;
       };
       ssh-server = {
         enable = true;

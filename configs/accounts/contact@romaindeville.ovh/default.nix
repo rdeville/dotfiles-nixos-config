@@ -13,7 +13,7 @@
     "${pkgs.coreutils}/bin/cat"
     "${config.hm.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
   ];
-  displayName = "📘 Romain Deville";
+  displayName = "📘 Romain Deville (Plagueis)";
   user = {
     email = {
       realName = "Romain Deville";
