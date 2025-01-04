@@ -1,12 +1,33 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.24.0 (2025-01-04)
+
+### ✨ Minor
+
+  * ✨ Add new HM flavors and fix some typos (!79) by Romain Deville ([`2464fdc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2464fdcf377c3e9454f4c800b0bf4e504ca9fbb6))
+  * ✨(hm/flavor): Add inkscape flavor by Romain Deville ([`336cbe4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/336cbe4066431499baa790571fd3189fe867f7e1)) 🔏
+  * ✨(hm/flavors): Add gimp flavor by Romain Deville ([`55628c0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/55628c0183096c92e61d88b5810973b36e42dfa9)) 🔏
+
+### 🩹 Patch
+
+  * ✏️(nixos/flavors): Fix nixos options to be more homogenous by Romain Deville ([`49219d0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/49219d063ba0cb0f9461523fa0dfceba0cbb3f03)) 🔏
+  * ✏️(hm/flavors): Fix flavors options to be homogeneous by Romain Deville ([`444265e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/444265e0575fa1d20620e65b8ff63257bef11bb5)) 🔏
+
+### 🔊 Others
+
+  * 🔥 Remove now useless setup.sh by Romain Deville ([`9d29959`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d29959b8ae1074e2945bd1e66ea5bc1d3b6e24e)) 🔏
+
 ## v0.23.1 (2025-01-03)
 
 ### 🩹 Patch
 
   * 🔧(hm/flavors): Add hclfmt and tf-docs to tf related flavors (!78) by Romain Deville ([`dd696b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dd696b7580d2fba1187c6638397823759f7eae59))
   * 🔧(hm/flavors): Add hclfmt and tf-docs to tf related flavors by Romain Deville ([`2afdcaf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2afdcaf609f1de13c9816a166930b92ce36c612d)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.23.1 (NO-CI) by Python Semantic Release [bot] ([`6924a8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6924a8bcb8123fc2406bb88d8d1e67cc79c4ac0b))
 
 ## v0.23.0 (2025-01-02)
 
