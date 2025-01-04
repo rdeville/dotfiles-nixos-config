@@ -168,12 +168,14 @@ in {
               description = "Module configuration to setup for fastfetch.";
               default = modules;
             };
+
             logo = {
               source = lib.mkOption {
                 type = lib.types.nullOr lib.types.path;
                 default = null;
                 description = "Path to the logo to use in fastfetch";
               };
+
               color = lib.mkOption {
                 type = lib.types.attrsOf lib.types.str;
                 default = {};

@@ -16,7 +16,7 @@ in {
         default = "x86-64_linux";
       };
 
-      hostname = lib.mkOption {
+      hostName = lib.mkOption {
         type = lib.types.str;
         description = "Hostname where config will be applied.";
       };
@@ -84,7 +84,7 @@ in {
         type = lib.types.attrsOf lib.types.str;
         description = "Set user session variables.";
         default = {
-          HOST = cfg.hostname;
+          HOST = cfg.hostName;
           EDITOR = "nvim";
         };
       };

@@ -11,7 +11,9 @@ in {
     right = bg: "[](fg:${bg} bg:prev_bg)";
   };
 
-  mkGetSarshipModuleConfig = moduleName: config.hm.flavors.${name}.${subName}.modules.${moduleName};
+  mkGetSarshipModuleConfig = moduleName:
+    config.hm.flavors.${name}.${subName}.modules.${moduleName};
+
   mkSetStarshipModuleOptions = moduleName: options: {
     hm = {
       flavors = {

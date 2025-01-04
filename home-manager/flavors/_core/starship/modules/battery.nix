@@ -13,26 +13,31 @@
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
       default = "right";
     };
+
     full_symbol = lib.mkOption {
       type = lib.types.str;
       description = "The symbol shown when the battery is full.";
       default = " 󱊣";
     };
+
     unknown_symbol = lib.mkOption {
       type = lib.types.str;
       description = "The symbol shown when the battery state is unknown.";
       default = " 󰂑";
     };
+
     empty_symbol = lib.mkOption {
       type = lib.types.str;
       description = "The symbol shown when the battery state is empty.";
       default = " 󰂎";
     };
+
     format = lib.mkOption {
       type = lib.types.str;
       description = "The format for the module.";
@@ -41,6 +46,7 @@ in {
         "[ $symbol $percentage ]($style)"
       ];
     };
+
     display = lib.mkOption {
       type = lib.types.listOf (lib.types.submodule {
         options = {
@@ -48,14 +54,17 @@ in {
             type = lib.types.int;
             default = 25;
           };
+
           style = lib.mkOption {
             type = lib.types.str;
             default = "bg:${bg} fg:${fg} bold";
           };
+
           charging_symbol = lib.mkOption {
             type = lib.types.str;
             default = "󱐥󰂎";
           };
+
           discharging_symbol = lib.mkOption {
             type = lib.types.str;
             default = " 󰂎";

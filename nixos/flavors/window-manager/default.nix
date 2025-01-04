@@ -59,12 +59,15 @@ in {
           );
         };
       };
+
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
+
           awesome = {
             enable = lib.mkEnableOption "Install awesome window manager";
           };
+
           hyprland = {
             enable = lib.mkEnableOption "Install hyprland window manager";
           };

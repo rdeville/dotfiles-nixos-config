@@ -1,11 +1,9 @@
 {
-  config,
   lib,
   hm,
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name};
 in {
   imports =
     if hm ? flavors.${name}.enable && hm.flavors.${name}.enable
@@ -16,7 +14,7 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install ${name} Home-Manager flavors;";
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
         };
       };
     };

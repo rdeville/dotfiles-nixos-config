@@ -13,11 +13,13 @@
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
       default = "left";
     };
+
     contexts = lib.mkOption {
       description = "Customized styles and symbols for specific contexts.";
       default = [];
@@ -27,26 +29,31 @@ in {
             type = lib.types.str;
             description = "Required Regular expression to match current Kubernetes context name.";
           };
+
           user_pattern = lib.mkOption {
             type = lib.types.str;
             description = "Regular expression to match current Kubernetes user name.";
             default = "";
           };
+
           context_alias = lib.mkOption {
             type = lib.types.str;
             description = "Context alias to display instead of the full context name.";
             default = "";
           };
+
           user_alias = lib.mkOption {
             type = lib.types.str;
             description = "User alias to display instead of the full user name.";
             default = "";
           };
+
           style = lib.mkOption {
             type = lib.types.str;
             description = "The style for the module when using this context. If not set, will use module's style.";
             default = "";
           };
+
           symbol = lib.mkOption {
             type = lib.types.str;
             description = "The symbol for the module when using this context. If not set, will use module's symbol.";

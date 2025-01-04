@@ -12,12 +12,14 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+
           audio_backend = lib.mkOption {
             type = lib.types.uniq lib.types.str;
             description = "Audio backend to use (default: rodio)";
             example = "pulseaudio";
             default = "rodio";
           };
+
           client_id_command = lib.mkOption {
             type = lib.types.uniq lib.types.str;
             description = ''
@@ -59,9 +61,9 @@ in {
           notify_streaming_only = true;
           enable_streaming = "Always";
           enable_cover_image_cache = false;
-          default_device = config.hm.hostname;
+          default_device = config.hm.hostName;
           device = {
-            name = config.hm.hostname;
+            name = config.hm.hostName;
             backend = cfg.audio_backend;
             device_type = "speaker";
             volume = 100;

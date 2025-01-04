@@ -20,8 +20,7 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        google-cloud-sdk
-        google-cloud-sql-proxy
+        inkscape
       ];
     };
   };

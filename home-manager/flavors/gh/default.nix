@@ -11,39 +11,50 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install gh (GitHub CLI) Related Packages";
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+
+          gh-dash = {
+            enable = lib.mkDefaultEnabledOption "Install gh-dash package and config";
+
+            settings = lib.mkOption {
+              type = (pkgs.formats.yaml {}).type;
+              default = {};
+              example = lib.literalExpression ''
+                {
+                  prSections = [{
+                    title = "My Pull Requests";
+                    filters = "is:open author:@me";
+                  }];
+                }
+              '';
+              description = ''
+                Configuration written to {file}`$XDG_CONFIG_HOME/gh-dash/config.yml`.
+              '';
+            };
+          };
         };
       };
     };
   };
 
   config = lib.mkIf cfg.enable {
-    home = {
-      packages = with pkgs; [
-        gh
-      ];
-    };
-
-    xdg = {
-      configFile = {
-        "gh/config.yml" = {
-          enable = with pkgs; builtins.elem gh config.home.packages;
-          text = pkgs.lib.generators.toYAML {} {
-            # What protocol to use when performing git operations.
-            # Supported values: ssh, https
-            git_protocol = "ssh";
-            # When to interactively prompt. This is a global config that cannot be
-            # overridden by hostname. Supported values: enabled, disabled
-            prompt = "enabled";
-            # A pager program to send command output to, e.g. "less". Set the value to
-            # "cat" to disable the pager.
-            pager = with pkgs;
-              if builtins.elem bat config.home.packages
-              then "bat"
-              else "cat";
-          };
+    programs = {
+      gh = {
+        inherit (cfg) enable;
+        settings = {
+          git_protocol = "ssh";
+          # When to interactively prompt. This is a global config that cannot be
+          # overridden by hostname. Supported values: enabled, disabled
+          prompt = "enabled";
+          # A pager program to send command output to, e.g. "less". Set the value to
+          # "cat" to disable the pager.
+          pager = with pkgs;
+            if builtins.elem bat config.home.packages
+            then "bat"
+            else "cat";
         };
       };
+      inherit (cfg) gh-dash;
     };
   };
 }

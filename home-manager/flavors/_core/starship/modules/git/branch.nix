@@ -10,10 +10,10 @@
   bg = mkLib.colors.brown_500;
   fg = mkLib.colors.light_blue_300;
   fg_remote = mkLib.colors.light_blue_800;
-  black = mkLib.colors.black;
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
