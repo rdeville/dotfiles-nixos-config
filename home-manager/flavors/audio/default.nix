@@ -16,7 +16,7 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install audio configuration";
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
         };
       };
     };

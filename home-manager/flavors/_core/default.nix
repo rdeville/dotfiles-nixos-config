@@ -24,7 +24,7 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkDefaultEnabledOption "Install ${name} Home-Manager flavors.";
+          enable = lib.mkDefaultEnabledOption "Install ${name} Home-Manager flavor.";
         };
       };
     };

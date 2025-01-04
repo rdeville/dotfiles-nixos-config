@@ -13,6 +13,7 @@
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
@@ -35,6 +36,10 @@ in {
               command = "echo ''";
               # module will be shown if the command returns a 0 status code.
               when = true;
+              # If true, the module will only be shown in paths containing a
+              # (git) repository. This option alone is not sufficient display
+              # condition in absence of other options.
+              require_repo = true;
               # Ignore global command_timeout setting and keep running external commands, no matter how long they take.
               ignore_timeout = false;
               style = "fg:${fg} bg:${bg}";

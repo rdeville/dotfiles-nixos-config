@@ -11,7 +11,7 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install kubernetes Related Packages";
+          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
         };
       };
     };

@@ -13,6 +13,7 @@
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
@@ -42,8 +43,10 @@ in {
               style = "bg:${bg} fg:${fg}";
               # The format for the module.
               format = lib.concatStrings [
+                "("
                 (sep bg)
                 "[ $symbol$env_value ]($style)"
+                ")"
               ];
             };
           };

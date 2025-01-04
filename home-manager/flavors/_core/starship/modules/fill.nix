@@ -11,6 +11,7 @@
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
+
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
