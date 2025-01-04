@@ -67,7 +67,7 @@ in {
         type = lib.types.bool;
         readOnly = true;
         description = "If true, setup GUI environnement.";
-        default = cfg.flavors.windows-manager.enable || false;
+        default = cfg.flavors.window-manager.enable || false;
       };
 
       console = {

@@ -11,6 +11,7 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install k3s Related Packages";
+
           role = lib.mkOption {
             type = lib.types.enum [
               "server"

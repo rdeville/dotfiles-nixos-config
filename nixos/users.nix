@@ -24,6 +24,7 @@ in {
           description = "The default shell all users.";
           default = pkgs.zsh;
         };
+
         users = lib.mkOption {
           description = "Configure NixOS users.";
           default = {};
@@ -35,6 +36,7 @@ in {
                   description = "Set to true if the user can be sudo.";
                   default = false;
                 };
+
                 shell = lib.mkOption {
                   type = lib.types.str;
                   description = "The shell for the user.";

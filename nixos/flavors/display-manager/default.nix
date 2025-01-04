@@ -13,14 +13,21 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
+
           gdm = {
             enable = lib.mkEnableOption "Install gdm as display manager.";
           };
+
           ly = {
             enable = lib.mkEnableOption "Install ly as display manager.";
-            settings =
-              lib.mkOption {
+
+            settings = lib.mkOption {
+              type = lib.types.attrs;
+              description = "Settings for ly display manager.";
+              default = {
+                animation = "matrix";
               };
+            };
           };
         };
       };
