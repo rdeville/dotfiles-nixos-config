@@ -117,6 +117,10 @@ in {
           ];
         };
       };
+      # Allow to use .pre-commit
+      nix-ld = {
+        enable = true;
+      };
       thefuck = {
         enable = true;
       };
