@@ -4,7 +4,7 @@
   pkgs,
   ...
 }: let
-  name = "core";
+  name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
 in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
@@ -14,6 +14,12 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkDefaultEnabledOption "Install ${name} NixOS flavors.";
+
+          nix-ld = {
+            enable = lib.mkDefaultEnabledOption ''
+              Install nix-ld to use \"dynamic shared library\"
+            '';
+          };
         };
       };
     };
@@ -62,6 +68,11 @@ in {
         nh # Wrapper above nixos-rebuild or home-manager
         home-manager # Home manager
       ];
+    };
+
+    programs = {
+      # Allow to use .pre-commit
+      inherit (cfg) nix-ld;
     };
   };
 }

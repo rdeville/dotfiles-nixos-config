@@ -1,6 +1,5 @@
 {
   config,
-  pkgs,
   lib,
   ...
 }: let
@@ -12,6 +11,11 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+          pkgs = lib.mkOption {
+            type = lib.types.listOf lib.types.package;
+            description = "List of nixpkgs to install.";
+            default = [];
+          };
         };
       };
     };
@@ -19,10 +23,7 @@ in {
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        google-cloud-sdk
-        google-cloud-sql-proxy
-      ];
+      packages = cfg.pkgs;
     };
   };
 }
