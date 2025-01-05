@@ -71,6 +71,7 @@ in {
           # NixOS CLI related packages
           nix-tree # Browse Nix Store
           nvd # Diff build for flakes/nix
+          colmena # Stateless NixOS deployment tool
         ]
         ++ (
           if config.hm.isDarwin
@@ -117,8 +118,12 @@ in {
           ];
         };
       };
-      # Allow to use .pre-commit
-      nix-ld = {
+      nix-index-database = {
+        comma = {
+          enable = true;
+        };
+      };
+      nix-index = {
         enable = true;
       };
       thefuck = {
