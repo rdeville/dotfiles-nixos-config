@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.25.0 (2025-01-05)
+
+### ✨ Minor
+
+  * ✨(hm/flavors): Update _core and latex flavors with new packages (!80) by Romain Deville ([`10547ee`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/10547eee9aee5ce2efddd18df8c31fe95d7322ea))
+  * ✨(hm/flavors/_core): Enable nix-ld to use .pre-commit by Romain Deville ([`ffc2f37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ffc2f37eb5b7149da7fcc56345bf7b02e48be470)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/latex): Add ghostcript package installed with flavor by Romain Deville ([`268268f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/268268f975b3e49d466194e50f2b5cdedaa20ee2)) 🔏
+
 ## v0.24.0 (2025-01-04)
 
 ### ✨ Minor
@@ -16,6 +27,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.24.0 (NO-CI) by Python Semantic Release [bot] ([`276a43e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/276a43e5dc8efe69f5a663a21a44464c2d09d941))
   * 🔥 Remove now useless setup.sh by Romain Deville ([`9d29959`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d29959b8ae1074e2945bd1e66ea5bc1d3b6e24e)) 🔏
 
 ## v0.23.1 (2025-01-03)
