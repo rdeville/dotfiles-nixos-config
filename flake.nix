@@ -3,51 +3,40 @@
   description = "My NixOS and Home Manager configuration";
 
   inputs = {
-    # Stable Nix Packages
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    # Home Manager, manage your Home from nix
     home-manager = {
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-    # Unstable Nix Packages
     nixpkgs-unstable = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    # Hardware Specific configuration
     nixos-hardware = {
       url = "github:nixos/nixos-hardware/master";
     };
-    # NixOS Small VM with nixos-shell
     nixos-shell = {
       url = "github:Mic92/nixos-shell";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # NixOS MicroVMs
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Flake Utils Lib
     utils = {
       url = "github:numtide/flake-utils";
     };
-    # OpenGL Wrapper
     nixgl = {
       url = "github:nix-community/nixGL";
     };
-    # Nix secret managed using sops
     sops-nix = {
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    # Devenv to automate development environment combined with direnv
     devenv = {
       url = "github:cachix/devenv";
     };
-    # Nix formatter
     alejandra = {
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -55,6 +44,14 @@
     awesome = {
       url = "github:awesomeWM/awesome/master";
       flake = false;
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
