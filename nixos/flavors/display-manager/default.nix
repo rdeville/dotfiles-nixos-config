@@ -29,6 +29,19 @@ in {
               };
             };
           };
+
+          xkb = {
+            layout = lib.mkOption {
+              type = lib.types.str;
+              description = "Layout to apply with x11.";
+              default = config.os.console.keyMap;
+            };
+            options = lib.mkOption {
+              type = lib.types.str;
+              description = "X keyboard option to apply.";
+              default = "caps:escape";
+            };
+          };
         };
       };
     };
@@ -37,6 +50,8 @@ in {
   config = lib.mkIf cfg.enable {
     services = {
       xserver = {
+        inherit (cfg) xkb;
+        enable = true;
         displayManager = {
           gdm = {
             inherit (cfg.gdm) enable;
