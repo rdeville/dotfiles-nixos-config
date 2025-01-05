@@ -26,11 +26,11 @@ in {
         };
         dedicatedServer = {
           # Open ports in the firewall for Source Dedicated Server
-          openFirewall = true;
+          openFirewall = false;
         };
         localNetworkGameTransfers = {
           # Open ports in the firewall for Steam Local Network Game Transfers
-          openFirewall = true;
+          openFirewall = false;
         };
       };
     };
