@@ -1,6 +1,27 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.26.0 (2025-01-05)
+
+### ✨ Minor
+
+  * ✨ Improve some os/hm flavors and fix bug (!81) by Romain Deville ([`9263073`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92630737b0ad6b2fe1101c7a132a9678ccc2505b))
+  * ✨(os/users): Update users new options (authorizedKey,password,mutableUsers) by Romain Deville ([`fd6771b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fd6771bbd688fa050db5072c0ec874de16fb6aa3)) 🔏
+  * ✨(os/flavors/_core): Add nix-ld options and rename flavor by Romain Deville ([`eb68e39`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eb68e3948c6534777e1bf75a0b578a873d0a43bd)) 🔏
+  * ✨(hm/flavors): Add _packages flavors to install simple pkgs without config by Romain Deville ([`701a76c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/701a76c145fe43b372f5a042789285b1e928a369)) 🔏
+  * ✨(hm/flavors/_core): Add nix-index-database, comma and colmena by Romain Deville ([`2af6d9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2af6d9d19ffd370a39b6729fda8708424da736d4)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`634a820`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/634a820e7f2e4fd4e879e5c283d871fa01ece1bb)) 🔏
+  * 🐛(os/flavors/dm): Update xkb and xserver config when activating dm by Romain Deville ([`ea77f04`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ea77f040cacc1a472c9884b94b982eca036b2633)) 🔏
+  * 🔧(flake): Add nix-index-db and colmena to inputs by Romain Deville ([`a2f0321`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a2f0321f75eb918ffc9955711dfd0b34bbd17357)) 🔏
+  * 🔧(os/flavors/steam): Update firewall configuration by Romain Deville ([`0723344`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/072334411c8157b190dee0fe62cf55e7ac488da9)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/flavors): Remove flavors that only install pkgs by Romain Deville ([`f921464`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9214640ef19849e129e780f799d1fbe44205e5e)) 🔏
+
 ## v0.25.0 (2025-01-05)
 
 ### ✨ Minor
@@ -11,6 +32,10 @@
 ### 🩹 Patch
 
   * ⚡️(hm/flavors/latex): Add ghostcript package installed with flavor by Romain Deville ([`268268f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/268268f975b3e49d466194e50f2b5cdedaa20ee2)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.25.0 (NO-CI) by Python Semantic Release [bot] ([`0a80ca1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0a80ca1f953dc160b231b87c11c0f4d98703a3d0))
 
 ## v0.24.0 (2025-01-04)
 
