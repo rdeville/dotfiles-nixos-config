@@ -42,6 +42,30 @@ in {
                   description = "The shell for the user.";
                   default = "zsh";
                 };
+
+                mutableUsers = lib.mkOption {
+                  type = lib.types.bool;
+                  description = "Set is users are mutables.";
+                  default = false;
+                };
+
+                openssh = {
+                  authorizedKeys = {
+                    keyFiles = lib.mkOption {
+                      type = lib.types.listOf lib.types.path;
+                      description = ''
+                        Keyfiles to authorized keys to connect to this user
+                      '';
+                      default = [];
+                    };
+                  };
+                };
+
+                hashedPasswordFile = lib.mkOption {
+                  type = lib.types.nullOr lib.types.path;
+                  description = "Path to file storing user hashedPasswordFile";
+                  default = null;
+                };
               };
             }
           );
@@ -52,13 +76,21 @@ in {
 
   config = {
     users = {
-      inherit (cfg) defaultUserShell;
-      mutableUsers = true;
+      inherit (cfg)
+        defaultUserShell
+        mutableUsers;
       users =
         builtins.mapAttrs (
           name: user: {
+            inherit (user) openssh;
             shell = pkgs.${user.shell};
             isNormalUser = name != "root";
+            hashedPasswordFile =
+              if user.hashedPasswordFile != null
+              then user.hashedPasswordFile
+              else if config ? sops.secrets."users/${name}/password".path
+              then config.sops.secrets."users/${name}/password".path
+              else user.hashedPasswordFile;
             extraGroups =
               defaultGroup
               ++ (sudoGroup user);
