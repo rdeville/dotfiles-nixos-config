@@ -21,8 +21,6 @@ in {
     home = {
       packages = with pkgs; [
         opentofu
-        hclfmt
-        terraform-docs
       ];
     };
 

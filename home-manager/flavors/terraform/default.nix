@@ -21,8 +21,6 @@ in {
     home = {
       packages = with pkgs; [
         terraform
-        hclfmt
-        terraform-docs
       ];
     };
 
