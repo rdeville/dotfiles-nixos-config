@@ -25,6 +25,12 @@ in {
           default = pkgs.zsh;
         };
 
+        mutableUsers = lib.mkOption {
+          type = lib.types.bool;
+          description = "Set is users are mutables.";
+          default = false;
+        };
+
         users = lib.mkOption {
           description = "Configure NixOS users.";
           default = {};
@@ -41,12 +47,6 @@ in {
                   type = lib.types.str;
                   description = "The shell for the user.";
                   default = "zsh";
-                };
-
-                mutableUsers = lib.mkOption {
-                  type = lib.types.bool;
-                  description = "Set is users are mutables.";
-                  default = false;
                 };
 
                 openssh = {
