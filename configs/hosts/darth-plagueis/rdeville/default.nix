@@ -1,4 +1,4 @@
-{...}: let
+{pkgs, ...}: let
   username = builtins.baseNameOf ./.;
 
   os = (import ../default.nix {}).os;
@@ -16,23 +16,27 @@ in {
 
   hm = {
     inherit username isGui isMain;
-    inherit (os) hostname;
+    inherit (os) hostName;
 
     flavors = {
-      core = default.flavors._core // {
-        starship = {
-          modules = {
-            sudo = {
-              disable = true;
+      _core =
+        default.flavors._core
+        // {
+          starship = {
+            modules = {
+              sudo = {
+                disable = true;
+              };
             };
           };
         };
-      };
-      terragrunt = {
+      _packages = {
         enable = true;
-      };
-      terraform = {
-        enable = false;
+        pkgs = with pkgs; [
+          hclfmt
+          terraform-docs
+          terragrunt
+        ];
       };
       podman = {
         enable = true;

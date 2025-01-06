@@ -1,18 +1,14 @@
 {
-  config,
+  extraConfig,
   lib,
   os,
   ...
 }: {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
-  config = {
-    inherit os;
-
-    nixpkgs = {
-      config = {
-        allowUnfree = true;
-      };
+  config =
+    extraConfig
+    // {
+      inherit os;
     };
-  };
 }

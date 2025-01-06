@@ -15,16 +15,18 @@
     if os ? isMain
     then os.isMain
     else false;
+  keyFile = "/home/rdeville/.cache/.age.key";
 in {
   extraConfig = {
     sops = {
       age = {
-        keyFile = "/home/rdeville/.cache/.age.key";
+        inherit keyFile;
       };
       defaultSopsFile = ./rdeville.enc.yaml;
       secrets = {
-        "spotify-client-id" = {
-          sopsFile = ./rdeville.enc.yaml;
+        "spotify-client-id" = {};
+        "age-key" = {
+          path = keyFile;
         };
       };
     };
@@ -32,8 +34,8 @@ in {
 
   hm = {
     inherit username isGui isMain;
-    inherit (os) hostname;
-    wrapGL = true;
+    inherit (os) hostName;
+    wrapGL = false;
     userAccounts = [
       "contact@romaindeville.fr"
       "contact@romaindeville.ovh"
@@ -46,6 +48,24 @@ in {
       };
       _gui = {
         enable = isGui;
+      };
+      _packages = {
+        enable = true;
+        pkgs = with pkgs; [
+          pcmanfm
+          inkscape
+          hclfmt
+          libreoffice
+          gimp
+          ghostscript
+          google-cloud-sdk
+          google-cloud-sql-proxy
+          signal-desktop
+          texliveFull
+          terraform-docs
+          terragrunt
+          whatsapp-for-linux
+        ];
       };
       audio = {
         enable = true;
@@ -65,9 +85,6 @@ in {
       kubernetes-client = {
         enable = true;
       };
-      latex = {
-        enable = true;
-      };
       nextcloud-client = {
         enable = true;
       };
@@ -75,9 +92,6 @@ in {
         enable = true;
       };
       podman = {
-        enable = true;
-      };
-      signal = {
         enable = true;
       };
       spotify-player = {
@@ -112,12 +126,6 @@ in {
       };
       terraform = {
         enable = false;
-      };
-      terragrunt = {
-        enable = true;
-      };
-      whatsapp = {
-        enable = true;
       };
     };
   };

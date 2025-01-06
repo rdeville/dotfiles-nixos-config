@@ -1,11 +1,26 @@
-{config, ...}: {
+{
+  config,
+  pkgs,
+  lib,
+  os,
+  ...
+}: let
+  steamUnfree =
+    if os.flavors.steam.enable
+    then [
+      "steam"
+      "steam-unwrapped"
+    ]
+    else [];
+in {
   # Use the systemd-boot EFI boot loader.
   boot = {
+    kernelPackages = pkgs.linuxPackages_latest;
     loader = {
       systemd-boot = {
         enable = true;
       };
-      efi = {
+      efi = lib.mkDefault {
         canTouchEfiVariables = true;
       };
       # grub = {
@@ -23,6 +38,21 @@
     };
   };
 
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) (
+          [
+            "nvidia-x11"
+            "nvidia-settings"
+          ]
+          ++ steamUnfree
+        );
+    };
+  };
+
+  virtualisation.libvirtd.enable = true;
+
   hardware = {
     bluetooth = {
       enable = true;
@@ -39,7 +69,7 @@
       };
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.stable;
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
     };
   };
 }

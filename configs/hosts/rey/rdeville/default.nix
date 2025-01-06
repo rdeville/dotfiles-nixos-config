@@ -32,7 +32,7 @@ in {
 
   hm = {
     inherit username isGui isMain;
-    inherit (os) hostname;
+    inherit (os) hostName;
     wrapGL = true;
     userAccounts = [
       "contact@romaindeville.fr"
@@ -46,6 +46,23 @@ in {
       };
       _gui = {
         enable = isGui;
+      };
+      _packages = {
+        enable = true;
+        pkgs = with pkgs; [
+          inkscape
+          hclfmt
+          libreoffice
+          gimp
+          ghostscript
+          google-cloud-sdk
+          google-cloud-sql-proxy
+          signal-desktop
+          texliveFull
+          terraform-docs
+          terragrunt
+          whatsapp-for-linux
+        ];
       };
       audio = {
         enable = true;
@@ -65,9 +82,6 @@ in {
       kubernetes-client = {
         enable = true;
       };
-      latex = {
-        enable = true;
-      };
       nextcloud-client = {
         enable = true;
       };
@@ -75,9 +89,6 @@ in {
         enable = true;
       };
       podman = {
-        enable = true;
-      };
-      signal = {
         enable = true;
       };
       spotify-player = {
@@ -112,12 +123,6 @@ in {
       };
       terraform = {
         enable = false;
-      };
-      terragrunt = {
-        enable = true;
-      };
-      whatsapp = {
-        enable = true;
       };
     };
   };

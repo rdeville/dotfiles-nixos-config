@@ -46,7 +46,17 @@
         nixpkgs.follows = "nixpkgs";
         sops-nix.follows = "sops-nix";
         utils.follows = "utils";
+        colmena.follows = "colmena";
+        nix-index-database.follows = "nix-index-database";
       };
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    colmena = {
+      url = "github:zhaofengli/colmena";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     awesome = {
       url = "github:awesomeWM/awesome";
@@ -167,11 +177,15 @@
           {
             "${elem}" = inputs.nixpkgs.lib.nixosSystem {
               modules = [
+                # Local Modules
                 ./nixos
                 ./configs/hosts/${elem}/configuration.nix
                 ./configs/hosts/${elem}/hardware-configuration.nix
+                # External Modules
                 inputs.nixos.nixosModules.os
+                inputs.nixos.inputs.sops-nix.nixosModules.sops
                 inputs.home-manager.nixosModules.home-manager
+                # Hack to inject config
                 {
                   home-manager = {
                     useGlobalPkgs = true;
@@ -187,11 +201,11 @@
                 }
               ];
               specialArgs = let
-                config = import ./configs/hosts/${elem} {};
+                config = import ./configs/hosts/${elem} {inherit lib;};
               in {
                 inherit inputs;
                 inherit (inputs.nixos.homeManagerModules) lib;
-                inherit (config) os;
+                inherit (config) os extraConfig;
               };
             };
           }
@@ -225,8 +239,11 @@
                   value = inputs.home-manager.lib.homeManagerConfiguration {
                     inherit pkgs;
                     modules = [
+                      # Local Modules
+                      ./home-manager
                       # External Modules
                       inputs.nixos.inputs.sops-nix.homeManagerModules.sops
+                      inputs.nixos.inputs.nix-index-database.hmModules.nix-index
                       # Internal Modules
                       inputs.nixos.homeManagerModules.hm
                       # Personnal home-manager packaged dotfiles
@@ -237,8 +254,6 @@
                       inputs.zshrc.homeManagerModules.shellrc
                       # Personnal packaged programs
                       inputs.dotgit-sync.homeManagerModules.dotgit-sync
-                      # Local Modules
-                      ./home-manager
                       # Hack to inject config
                       ({extraConfig, ...}: {
                         config = extraConfig;
