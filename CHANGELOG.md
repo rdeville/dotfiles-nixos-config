@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.5.1 (2025-01-06)
+
+### 🩹 Patch
+
+  * ⚡️(os): Improve nixos/default.nix by Romain Deville ([`15a82a0`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/15a82a0db98b261ff1472c34de6d6e59b8fc248e)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`7e2c1bb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7e2c1bb444a68c9f1cceff4c06fe3e990d516f07)) 🔏
+  * 🔧 Mainly update host config and setup user password (!35) by Romain Deville ([`5442d6b`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5442d6b76b6d8a0ed37ea1e342a40f549ead0e29))
+  * 🔧(flake): Update Update input, add nix-index by Romain Deville ([`f23fed0`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f23fed0e6e1f1429ac30b1728d4e142c41aa5e67)) 🔏
+  * 🔧(configs): Update config and add users password by Romain Deville ([`ef81d8e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ef81d8e5f6db1decad960e0c9c4de559c98d18a1)) 🔏
+
+### 🔊 Others
+
+  * 🔐 Update .sops.yaml with some keys by Romain Deville ([`b9ad5a8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b9ad5a83b0e99e49fcbe211586c998310b9ac46b)) 🔏
+
 ## v0.5.0 (2025-01-02)
 
 ### ✨ Minor
@@ -18,6 +32,7 @@
 
   * 🎨 Rework format of devenv.nix by Romain Deville ([`ae27bd7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ae27bd76eadf2b89256995410479186542741358)) 🔏
   * 🎨 Improve flake.nix configuration by Romain Deville ([`7f6a3fe`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7f6a3feb4afe3e9849cdff90b69fbd95682e7fb6)) 🔏
+  * 🔖 v0.5.0 (NO-CI) by Python Semantic Release [bot] ([`0f10e88`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/0f10e88008223b70f61b3b8611dee0082cce64ff))
 
 ## v0.4.2 (2024-12-22)
 
