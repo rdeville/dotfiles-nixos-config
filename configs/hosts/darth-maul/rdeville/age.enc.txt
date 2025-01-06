@@ -1,0 +1,28 @@
+{
+	"data": "ENC[AES256_GCM,data:l7guHrZdPzQoKDQgQwLDZJbMamj6+zniAi/DZ7UyXtiqFkSDO9DxxAnNfrjHuhOT4mUCf0I3V/n6CppZTWG/+HN2CT9UCZjU8xoGdvO/GI9KNZoqgTYaaBPfAk5PmHdCIFmnV2FtTKZDYigwaj6KmS4+4PoLJ/TfIHNCUaDEKwXip2YTY8OoqpLRIe4KZZTywtaGVW/C4lKzWlBz4XI+7juI6sTO65aVM5s7woNvZ5NQrQGXQjDI9mttiH/H,iv:/0lO1BFTCaUnbN3ZDCCr/zRPsVKZovargsDqiFnpSE8=,tag:F9oC3TXkPyXoll11WSNKNQ==,type:str]",
+	"sops": {
+		"kms": null,
+		"gcp_kms": null,
+		"azure_kv": null,
+		"hc_vault": null,
+		"age": [
+			{
+				"recipient": "age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBRZ3d1SUtBZTY0M0hPSmZI\nc1NkWTZaL3hWaUNRSVNtcVM0eE9ZOVRKc2tnCjFmMWJjRFN4cm4xWWY2UlRXbWcr\ndG9DUFFoNE55bEg3TDNOTTdXbXI3Q3MKLS0tIFo3VDNxSXcvaFFkWlFwOVV0TnV5\nUTJkOEVYNVplZVR3c3hzUGIzZEtrak0KuBgm4VvRkPk9stLcEaqQk28RgvnDyMDg\nzcu4R/TA4zIS8oPbQCh/N4dtOHR84U71SEnhxO9ZeEV2TNYygX8wiw==\n-----END AGE ENCRYPTED FILE-----\n"
+			},
+			{
+				"recipient": "age1f6yc0z336wkj0ac0qhak2u2t5wqaksf8hpgxvn2mtas26hwk5gasx0th2l",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBsaXpiSEN4SmsyVDVIaW11\nQWdPUkd4MTlTS3BiYzM1NXA3WXBLbGVhR204Ck9OR2RuVHJSTWFJOWZyditmU3BH\nUEdiZkkrNWZnYis3Nm5DT0xkd2FvMzgKLS0tIE5LdDBKbUhmZjdPWnpFcERmRjUw\nNDg4cWg2Z0JJbTVpdWZGN0J5ZEIyZ0UKphHNOhjU2Irz5zBybnFjbjoCjUofxUnl\nFCg9UM+e0tM/CUnRl9Enieo/SWhpEi0Ql0TjGX66vGZoz8bcfy9MDw==\n-----END AGE ENCRYPTED FILE-----\n"
+			},
+			{
+				"recipient": "age17um38qhvjkseq3vly7hfuetut5af2nc9va8l2004vgyfkn3sdy8sszkqv0",
+				"enc": "-----BEGIN AGE ENCRYPTED FILE-----\nYWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3Q0tSenpIckhoaE5jTTdT\nSGt4aFBxdWlwZjJwVDUvTWs4cWRNS3VXcFJJCk5ySnNWVUg4RXBIZit2WnpqTzVt\nTmR4Smxock14dGdQUWJHc2ZIWGswcWcKLS0tIFJYd1JCemNZaXRURlQwMlAya1cv\nWFRMZW5mUWYwUDFzTHdXOHJYZjRLMHMKrYt9+rZdOiXes2GiuJu4pB1Hc5fWTfCf\nL4DeHL+N6D8nq31pqK//lYYMU3x29fp6C+E2TapqGMdvwQzKJQ7TEg==\n-----END AGE ENCRYPTED FILE-----\n"
+			}
+		],
+		"lastmodified": "2025-01-13T00:09:32Z",
+		"mac": "ENC[AES256_GCM,data:MaQWragfsZVchEZu8YlgmbomsT9c3I44OOW2qJYG9W8FF6jXzBLnh/F43bwiO21si0KnbuEBT+ax60drU+Y81cUB826IKJlb8D3u/QbDDM2uWCcTND7fHAbk68ipAz0j7YrIyOmQ6oQ8I2yDQ3RlpN9X6n41XK6mKWtKwzW+lY8=,iv:Fn5PrmR3IIpPqjEyri1qF0mBPiZvytwRvZ0XwheNE6o=,tag:DUildynJWN2aLLtT62O/Xg==,type:str]",
+		"pgp": null,
+		"unencrypted_suffix": "_unencrypted",
+		"version": "3.9.2"
+	}
+}

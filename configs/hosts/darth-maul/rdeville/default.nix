@@ -17,18 +17,23 @@
     else false;
   keyFile = "/home/rdeville/.cache/.age.key";
 in {
-  extraConfig = {
-    sops = {
-      age = {
-        inherit keyFile;
-      };
-      defaultSopsFile = ./rdeville.enc.yaml;
-      secrets = {
-        "spotify-client-id" = {};
-        "age-key" = {
-          path = keyFile;
-        };
-      };
+  sops = {
+    age = {
+      inherit keyFile;
+    };
+    defaultSopsFile = ./secrets.enc.yaml;
+    secrets = {
+      "spotify-client-id" = {};
+    };
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "nvidia-x11"
+          "discord"
+        ];
     };
   };
 

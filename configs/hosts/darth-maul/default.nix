@@ -1,4 +1,4 @@
-{...}: let
+{lib, ...}: let
   sshKeyPaths = [
     "/etc/ssh/ssh_host_ed25519_key"
   ];
@@ -23,13 +23,24 @@
       };
     }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
 in {
-  extraConfig = {
-    sops = {
-      inherit secrets;
-      age = {
-        inherit sshKeyPaths;
-      };
-      defaultSopsFile = ./darth-maul.enc.yaml;
+  sops = {
+    inherit secrets;
+    age = {
+      inherit sshKeyPaths;
+    };
+    defaultSopsFile = ./secrets.enc.yaml;
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "discord"
+          "nvidia-settings"
+          "nvidia-x11"
+          "steam"
+          "steam-unwrapped"
+        ];
     };
   };
 
