@@ -1,8 +1,11 @@
-{config, ...}: let
+{config, lib, ...}: let
+  name = builtins.baseNameOf ../.;
+  cfg = config.hm.flavors.${name};
+
   neomuttAccounts = builtins.filter (account: account.neomutt.enable) (
     builtins.attrValues config.accounts.email.accounts
   );
-in {
+in lib.mkIf cfg.enable {
   # Let Home Manager install and manage itself.
   programs = {
     neomutt = {

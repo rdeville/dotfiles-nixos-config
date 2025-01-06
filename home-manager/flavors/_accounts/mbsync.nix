@@ -1,8 +1,11 @@
-{config, ...}: let
+{config, lib, ...}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+
   mbsyncAccounts = builtins.filter (account: account.mbsync.enable) (
     builtins.attrValues config.accounts.email.accounts
   );
-in {
+in lib.mkIf cfg.enable {
   programs = {
     mbsync = {
       enable = mbsyncAccounts != [];

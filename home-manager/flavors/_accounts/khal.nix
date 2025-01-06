@@ -1,8 +1,11 @@
-{config, ...}: let
+{config, lib, ...}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+
   khalCalendarAccounts = builtins.filter (account: account.khal.enable) (
     builtins.attrValues config.accounts.calendar.accounts
   );
-in {
+in lib.mkIf cfg.enable  {
   programs = {
     khal = {
       enable = khalCalendarAccounts != [];

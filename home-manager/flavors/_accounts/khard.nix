@@ -1,8 +1,11 @@
-{config, ...}: let
+{config, lib, ...}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+
   khardContactsAccounts = builtins.filter (account: account.khard.enable) (
     builtins.attrValues config.accounts.contact.accounts
   );
-in {
+in lib.mkIf cfg.enable {
   programs = {
     khard = {
       enable = khardContactsAccounts != [];

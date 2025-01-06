@@ -1,14 +1,10 @@
 {
   lib,
-  hm,
   ...
 }: let
   name = builtins.baseNameOf ./.;
 in {
-  imports =
-    if hm ? flavors.${name}.enable && hm.flavors.${name}.enable
-    then builtins.map (item: ./${item}) (lib.importDir ./.)
-    else [];
+  imports =builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
     hm = {
