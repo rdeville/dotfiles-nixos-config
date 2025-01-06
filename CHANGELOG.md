@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.26.1 (2025-01-06)
+
+### 🩹 Patch
+
+  * 🐛(nixos/users): Fix mutableUsers config for nixos users (!82) by Romain Deville ([`901f2c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/901f2c96b7bb7d1386644eb5d6e4d54f15340226))
+  * 🐛(nixos/users): Fix mutableUsers config for nixos users by Romain Deville ([`ed1457c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ed1457ceecbdfbe7cc29fb653c6e1966b95faa69)) 🔏
+
 ## v0.26.0 (2025-01-05)
 
 ### ✨ Minor
@@ -20,6 +27,7 @@
 
 ### 🔊 Others
 
+  * 🔖 v0.26.0 (NO-CI) by Python Semantic Release [bot] ([`34bb9e7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/34bb9e73b1a1d2a0c926fa2b1eb3e803d5e6a951))
   * 🔥(hm/flavors): Remove flavors that only install pkgs by Romain Deville ([`f921464`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9214640ef19849e129e780f799d1fbe44205e5e)) 🔏
 
 ## v0.25.0 (2025-01-05)
