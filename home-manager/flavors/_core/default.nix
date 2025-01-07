@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  hm,
   ...
 }: let
   name = builtins.baseNameOf ./.;
@@ -14,11 +13,7 @@
   ];
   darwinPkgs = [];
 in {
-  imports =
-    # Enable is true by default, so condition is inversed for special args.
-    if (! hm ? flavors.${name}.enable) || (hm ? flavors.${name}.enable && hm.flavors.${name}.enable)
-    then builtins.map (item: ./${item}) (lib.importDir ./.)
-    else [];
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
     hm = {

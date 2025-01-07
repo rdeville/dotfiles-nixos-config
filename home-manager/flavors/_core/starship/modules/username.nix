@@ -37,10 +37,17 @@ in {
             # Always shows the username module.
             show_always = true;
             # Translate system usernames to something else
-            aliases = {
-              "${config.hm.username}" = "me";
-              "root" = "GOD";
-            };
+            aliases =
+              {
+                "root" = "GOD";
+              }
+              // (
+                if config.hm.username != "root"
+                then {
+                  "${config.hm.username}" = "me";
+                }
+                else {}
+              );
 
             # The style used when the user is root/admin.
             style_root = "${em} bg:${bg} fg:${fg_root}";

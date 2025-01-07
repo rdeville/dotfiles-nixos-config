@@ -5,7 +5,7 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name}.fastfetch;
+  cfg = config.hm.flavors.${name};
 
   modules = [
     {
@@ -188,14 +188,14 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     programs = {
       fastfetch = {
         enable = true;
         package = pkgs.fastfetch;
         settings = {
           "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/main/doc/json_schema.json";
-          inherit (cfg) modules logo;
+          inherit (cfg.fastfetch) modules logo;
           general = {
             multithreading = true;
             thread = true;
