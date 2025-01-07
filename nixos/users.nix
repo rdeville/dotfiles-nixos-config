@@ -61,10 +61,31 @@ in {
                   };
                 };
 
+                password = lib.mkOption {
+                  type = lib.types.nullOr lib.types.str;
+                  description = ''
+                    Text clear password of the user.
+                    Do not use it on production, mainly for Bootable USB creation
+                  '';
+                  default = null;
+                };
+
+                hashedPassword = lib.mkOption {
+                  type = lib.types.nullOr lib.types.str;
+                  description = "Hashed string of the user password";
+                  default = null;
+                };
+
                 hashedPasswordFile = lib.mkOption {
                   type = lib.types.nullOr lib.types.path;
                   description = "Path to file storing user hashedPasswordFile";
                   default = null;
+                };
+
+                hm = lib.mkOption {
+                  type = lib.types.attrs;
+                  description = "Attrset that store HM object.";
+                  default = {};
                 };
               };
             }
@@ -76,13 +97,20 @@ in {
 
   config = {
     users = {
-      inherit (cfg)
+      inherit
+        (cfg)
         defaultUserShell
-        mutableUsers;
+        mutableUsers
+        ;
       users =
         builtins.mapAttrs (
           name: user: {
-            inherit (user) openssh;
+            inherit
+              (user)
+              openssh
+              password
+              hashedPassword
+              ;
             shell = pkgs.${user.shell};
             isNormalUser = name != "root";
             hashedPasswordFile =
@@ -90,7 +118,7 @@ in {
               then user.hashedPasswordFile
               else if config ? sops.secrets."users/${name}/password".path
               then config.sops.secrets."users/${name}/password".path
-              else user.hashedPasswordFile;
+              else null;
             extraGroups =
               defaultGroup
               ++ (sudoGroup user);

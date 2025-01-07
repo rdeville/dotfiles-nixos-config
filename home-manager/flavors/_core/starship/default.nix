@@ -99,7 +99,7 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     programs = {
       starship = {
         enable = cfg.starship.enable;

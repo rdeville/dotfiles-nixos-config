@@ -4,7 +4,7 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name}.git;
+  cfg = config.hm.flavors.${name};
 
   colors = (import ../../../colors/default.nix).material-all;
 
@@ -36,19 +36,19 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     programs = {
       git = {
         enable = true;
         includes =
           builtins.map (profile: let
-            val = cfg."${profile}";
+            val = cfg.git."${profile}";
           in {
             condition = val.condition;
             contents = val.contents;
             contentSuffix = "${profile}.gitconfig";
           })
-          (builtins.attrNames cfg);
+          (builtins.attrNames cfg.git);
         extraConfig = {
           # GIT-* COMMAND CONFIG
           # ==============================================================================

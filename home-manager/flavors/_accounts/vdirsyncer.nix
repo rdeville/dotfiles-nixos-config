@@ -1,4 +1,11 @@
-{config, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+
   vdirsyncerAccounts =
     (
       builtins.filter (account: account.vdirsyncer.enable) (
@@ -10,8 +17,8 @@
         builtins.attrValues config.accounts.contact.accounts
       )
     );
-in {
-  config = {
+in
+  lib.mkIf cfg.enable {
     programs = {
       vdirsyncer = {
         enable = vdirsyncerAccounts != [];
@@ -26,5 +33,4 @@ in {
         verbosity = "DEBUG";
       };
     };
-  };
-}
+  }

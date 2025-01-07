@@ -20,7 +20,7 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     xdg = lib.mkIf (! config.hm.isDarwin) {
       configFile = {
         "user-dirs.locale" = {

@@ -1,9 +1,13 @@
 {
   config,
+  lib,
   pkgs,
   ...
-}: {
-  config = {
+}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+in
+  lib.mkIf cfg.enable {
     programs = {
       gpg = {
         homedir = "${config.xdg.dataHome}/gnupg";
@@ -19,5 +23,4 @@
         pinentryPackage = pkgs.pinentry-tty;
       };
     };
-  };
-}
+  }

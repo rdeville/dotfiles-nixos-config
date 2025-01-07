@@ -10,7 +10,9 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install ${name} Home-Manager flavor.";
+          enable = lib.mkDefaultEnabledOption ''
+            Install ${name} Home-Manager flavor.
+          '';
           pkgs = lib.mkOption {
             type = lib.types.listOf lib.types.package;
             description = "List of nixpkgs to install.";
