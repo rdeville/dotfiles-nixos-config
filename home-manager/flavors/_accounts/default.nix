@@ -1,10 +1,7 @@
-{
-  lib,
-  ...
-}: let
+{lib, ...}: let
   name = builtins.baseNameOf ./.;
 in {
-  imports =builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
     hm = {
