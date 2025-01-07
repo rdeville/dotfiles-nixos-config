@@ -38,7 +38,9 @@ in {
         default =
           if cfg.isDarwin
           then "/Users/${cfg.username}"
-          else "/home/${cfg.username}";
+          else if cfg.username != "root"
+          then "/home/${cfg.username}"
+          else "/${cfg.username}";
       };
 
       wrapGL = lib.mkOption {
@@ -126,7 +128,7 @@ in {
         options = "--delete-older-than 7d";
       };
 
-      package = pkgs.nixVersions.latest;
+      package = lib.mkDefault pkgs.nixVersions.latest;
 
       settings = {
         accept-flake-config = true;
