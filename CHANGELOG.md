@@ -1,12 +1,32 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.27.0 (2025-01-07)
+
+### ✨ Minor
+
+  * ✨ Rework flavors to manage HM integration into Nixos Configuration (!83) by Romain Deville ([`c362677`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3626770bed0e976fee82b9085e8e98d96ef4eee))
+  * ✨(nixos/users): Add users options to manage HM by Romain Deville ([`9b68187`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9b6818703ee32f2328b13a344e33ea4777abbcbb)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm/flavors/_gui): Rework flavors to use HM in NixosConfigurations by Romain Deville ([`e3e4221`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e3e422106d56c51bd9b39210694d60c2adbc00da)) 🔏
+  * ⚡️(hm/flavors/_core): Rework flavors to use HM in NixosConfigurations by Romain Deville ([`f46a098`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f46a09883acb073c025b5d9d120eacdfe33da733)) 🔏
+  * ⚡️(hm/flavors/_accounts): Rework flavors to use HM in NixosConfigurations by Romain Deville ([`a50d609`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a50d609af6d4dc3763834b13387448f7409009df)) 🔏
+  * ⚡️(hm/flavors/_accounts): Update flavors to use HM in nixosConfigurations by Romain Deville ([`68943b3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/68943b38b578fa56e310c0732023d9d420207ffe)) 🔏
+  * 🐛(hm): Fix default options for HM module by Romain Deville ([`ecf2235`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ecf22357aeed107c1267b3679e24c06605bd94ba)) 🔏
+  * 🔧(hm/flavors/_pkgs): Enable the flavors by default by Romain Deville ([`9b01cfa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9b01cfac9cc5575e47e74ca8eaf69c00b73209f8)) 🔏
+
 ## v0.26.1 (2025-01-06)
 
 ### 🩹 Patch
 
   * 🐛(nixos/users): Fix mutableUsers config for nixos users (!82) by Romain Deville ([`901f2c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/901f2c96b7bb7d1386644eb5d6e4d54f15340226))
   * 🐛(nixos/users): Fix mutableUsers config for nixos users by Romain Deville ([`ed1457c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ed1457ceecbdfbe7cc29fb653c6e1966b95faa69)) 🔏
+
+### 🔊 Others
+
+  * 🔖 v0.26.1 (NO-CI) by Python Semantic Release [bot] ([`2e8be9b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2e8be9bba6623298af31c1f16b9e48e4b85492f7))
 
 ## v0.26.0 (2025-01-05)
 
