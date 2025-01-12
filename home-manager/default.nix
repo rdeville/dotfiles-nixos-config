@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  hm,
   ...
 }: let
   cfg = config.hm;
@@ -78,8 +77,6 @@ in {
   };
 
   config = {
-    inherit hm;
-
     sops = {
       secrets = mkAccountSops;
     };
