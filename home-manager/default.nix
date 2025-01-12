@@ -9,93 +9,101 @@ in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
-    hm = {
-      system = lib.mkOption {
-        type = lib.types.str;
-        description = "Arch system where config will be applied.";
-        default = "x86-64_linux";
-      };
+    hm = lib.mkOption {
+      description = ''
+        My custom `hm` module to setup Nix Home-Manager using my own flavors
+      '';
+      default = {};
+      type = lib.types.submodule {
+        options = {
+          hostName = lib.mkOption {
+            type = lib.types.str;
+            description = "Hostname where config will be applied.";
+          };
 
-      hostName = lib.mkOption {
-        type = lib.types.str;
-        description = "Hostname where config will be applied.";
-      };
+          stateVersion = lib.mkOption {
+            type = lib.types.str;
+            description = "Version of HM to follow";
+            default = "24.11";
+          };
 
-      username = lib.mkOption {
-        type = lib.types.str;
-        description = "Username to apply.";
-      };
+          system = lib.mkOption {
+            type = lib.types.str;
+            description = "Arch system where config will be applied.";
+            default = "x86-64_linux";
+          };
 
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-        description = "Version of HM to follow";
-        default = "24.11";
-      };
+          username = lib.mkOption {
+            type = lib.types.str;
+            description = "Username to apply.";
+          };
 
-      homeDirectory = lib.mkOption {
-        type = lib.types.str;
-        description = "Path to the home directory.";
-        default =
-          if cfg.isDarwin
-          then "/Users/${cfg.username}"
-          else if cfg.username != "root"
-          then "/home/${cfg.username}"
-          else "/${cfg.username}";
-      };
+          homeDirectory = lib.mkOption {
+            type = lib.types.str;
+            description = "Path to the home directory.";
+            default =
+              if cfg.isDarwin
+              then "/Users/${cfg.username}"
+              else if cfg.username != "root"
+              then "/home/${cfg.username}"
+              else "/${cfg.username}";
+          };
 
-      wrapGL = lib.mkOption {
-        type = lib.types.bool;
-        description = "Boolean, set to true to specify OS is darwin.";
-        default = false;
-      };
+          wrapGL = lib.mkOption {
+            type = lib.types.bool;
+            description = "Boolean, set to true to specify OS is darwin.";
+            default = false;
+          };
 
-      isDarwin = lib.mkOption {
-        type = lib.types.bool;
-        description = "Boolean, set to true to specify OS is darwin.";
-        default = false;
-      };
+          isDarwin = lib.mkOption {
+            type = lib.types.bool;
+            description = "Boolean, set to true to specify OS is darwin.";
+            default = false;
+          };
 
-      isWork = lib.mkOption {
-        type = lib.types.bool;
-        description = "Boolean, set to true to host is my professional computer.";
-        default = false;
-      };
+          isWork = lib.mkOption {
+            type = lib.types.bool;
+            description = "Boolean, set to true to host is my professional computer.";
+            default = false;
+          };
 
-      isGui = lib.mkOption {
-        type = lib.types.bool;
-        description = "If true, setup GUI environnement.";
-        default = false;
-      };
+          isGui = lib.mkOption {
+            type = lib.types.bool;
+            description = "If true, setup GUI environnement.";
+            default = false;
+          };
 
-      isMain = lib.mkOption {
-        type = lib.types.bool;
-        description = "If true, setup Main environnement.";
-        default = false;
-      };
+          isMain = lib.mkOption {
+            type = lib.types.bool;
+            description = "If true, setup Main environnement.";
+            default = false;
+          };
 
-      sessionPath = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        description = "Set user session path";
-        default = [
-          "$HOME/.local/share/bin"
-          "$HOME/.local/bin"
-        ];
-      };
+          sessionPath = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            description = "Set user session path";
+            default = [
+              "$HOME/.local/share/bin"
+              "$HOME/.local/bin"
+            ];
+          };
 
-      sessionVariables = lib.mkOption {
-        type = lib.types.attrsOf lib.types.str;
-        description = "Set user session variables.";
-        default = {
-          HOST = cfg.hostName;
-          EDITOR = "nvim";
-        };
-      };
+          sessionVariables = lib.mkOption {
+            type = lib.types.attrsOf lib.types.str;
+            description = "Set user session variables.";
+            default = {
+              HOST = cfg.hostName;
+              EDITOR = "nvim";
+            };
+          };
 
-      nixpkgs = {
-        allowUnfree = lib.mkOption {
-          type = lib.types.bool;
-          description = "If true, allow installation of unfree packages.";
-          default = false;
+          nixpkgs = {
+            allowUnfree = lib.mkOption {
+              type = lib.types.bool;
+              description = "If true, allow installation of unfree packages.";
+              default = false;
+            };
+          };
         };
       };
     };

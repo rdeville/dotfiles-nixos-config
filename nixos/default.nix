@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  os,
   ...
 }: let
   cfg = config.os;
@@ -10,85 +9,91 @@ in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
-    os = {
-      # BASE CONFIGURATION
-      stateVersion = lib.mkOption {
-        type = lib.types.str;
-        description = "Version of HM to follow";
-        default = "24.11";
-      };
+    os = lib.mkOption {
+      description = ''
+        My custom `os` module to setup NixOS using my own flavors
+      '';
+      default = {};
+      type = lib.types.submodule {
+        options = {
+          # BASE CONFIGURATION
+          hostName = lib.mkOption {
+            type = lib.types.str;
+            description = "Hostname where config will be applied.";
+          };
 
-      system = lib.mkOption {
-        type = lib.types.str;
-        description = "Arch system where config will be applied.";
-        default = "x86-64_linux";
-      };
+          stateVersion = lib.mkOption {
+            type = lib.types.str;
+            description = "Version of HM to follow";
+            default = "24.11";
+          };
 
-      hostName = lib.mkOption {
-        type = lib.types.str;
-        description = "Hostname where config will be applied.";
-      };
+          system = lib.mkOption {
+            type = lib.types.str;
+            description = "Arch system where config will be applied.";
+            default = "x86-64_linux";
+          };
 
-      # OTHER CONFIGURATION
-      allowUnfree = lib.mkOption {
-        type = lib.types.bool;
-        description = "If true, allow installation of unfree packages.";
-        default = false;
-      };
+          # OTHER CONFIGURATION
+          allowUnfree = lib.mkOption {
+            type = lib.types.bool;
+            description = "If true, allow installation of unfree packages.";
+            default = false;
+          };
 
-      timeZone = lib.mkOption {
-        type = lib.types.str;
-        description = "The timezone of the host.";
-        default = "Europe/Paris";
-      };
+          timeZone = lib.mkOption {
+            type = lib.types.str;
+            description = "The timezone of the host.";
+            default = "Europe/Paris";
+          };
 
-      defaultLocale = lib.mkOption {
-        type = lib.types.str;
-        description = "i18n local default value.";
-        default = "en_US.UTF-8";
-      };
+          defaultLocale = lib.mkOption {
+            type = lib.types.str;
+            description = "i18n local default value.";
+            default = "en_US.UTF-8";
+          };
 
-      extraLocaleSettings = lib.mkOption {
-        type = lib.types.attrsOf lib.types.str;
-        description = "i18n extra local values, like LC_MONETARY.";
-        default = {
-          LC_MONETARY = "fr_FR.UTF-8";
-        };
-      };
+          extraLocaleSettings = lib.mkOption {
+            type = lib.types.attrsOf lib.types.str;
+            description = "i18n extra local values, like LC_MONETARY.";
+            default = {
+              LC_MONETARY = "fr_FR.UTF-8";
+            };
+          };
 
-      # BOOLEAN TO PARAMETERIZE SOME FLAVORS
-      isMain = lib.mkOption {
-        type = lib.types.bool;
-        description = "If true, setup Main environnement.";
-        default = false;
-      };
+          # BOOLEAN TO PARAMETERIZE SOME FLAVORS
+          isMain = lib.mkOption {
+            type = lib.types.bool;
+            description = "If true, setup Main environnement.";
+            default = false;
+          };
 
-      isGui = lib.mkOption {
-        type = lib.types.bool;
-        readOnly = true;
-        description = "If true, setup GUI environnement.";
-        default = cfg.flavors.window-manager.enable || false;
-      };
+          isGui = lib.mkOption {
+            type = lib.types.bool;
+            readOnly = true;
+            description = "If true, setup GUI environnement.";
+            default = cfg.flavors.window-manager.enable || false;
+          };
 
-      console = {
-        keyMap = lib.mkOption {
-          type = lib.types.either lib.types.str lib.types.path;
-          description = "The keyboard mapping table for the virtual consoles.";
-          default = "fr";
-        };
+          console = {
+            keyMap = lib.mkOption {
+              type = lib.types.either lib.types.str lib.types.path;
+              description = "The keyboard mapping table for the virtual consoles.";
+              default = "fr";
+            };
 
-        font = lib.mkOption {
-          type = lib.types.either lib.types.str lib.types.path;
-          description = "The font to use in the console.";
-          default = "Lat2-Terminus16";
+            font = lib.mkOption {
+              type = lib.types.either lib.types.str lib.types.path;
+              description = "The font to use in the console.";
+              default = "Lat2-Terminus16";
+            };
+          };
         };
       };
     };
   };
 
   config = {
-    inherit os;
-
     # NIXOS BASE CONFIGURATION
     system = {
       inherit (cfg) stateVersion;
