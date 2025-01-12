@@ -127,6 +127,14 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
+
+    lib =
+      inputs.nixos.homeManagerModules.lib.extend
+      (
+        final: prev: (
+          import ./lib/default.nix final
+        )
+      );
     # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
   in
     inputs.utils.lib.eachSystem allSystems (
@@ -158,121 +166,15 @@
       );
 
       # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
-
-      # CONFIGURATION
       # ========================================================================
 
       # NIXOS
       # ------------------------------------------------------------------------
-      nixosConfigurations = let
-        lib =
-          inputs.nixos.homeManagerModules.lib.extend
-          (
-            final: prev: (
-              import ./lib/default.nix final
-            )
-          );
-      in
-        builtins.foldl' (acc: elem:
-          {
-            "${elem}" = inputs.nixpkgs.lib.nixosSystem {
-              modules = [
-                # Local Modules
-                ./nixos
-                ./configs/hosts/${elem}/configuration.nix
-                ./configs/hosts/${elem}/hardware-configuration.nix
-                # External Modules
-                inputs.nixos.nixosModules.os
-                inputs.nixos.inputs.sops-nix.nixosModules.sops
-                inputs.home-manager.nixosModules.home-manager
-                # Hack to inject config
-                {
-                  home-manager = {
-                    useGlobalPkgs = true;
-                    useUserPackages = true;
-                    # users = {
-                    #   ${username} = {...}:{
-                    #     imports = [
-                    #       ./home-manager
-                    #     ];
-                    #   };
-                    # };
-                  };
-                }
-              ];
-              specialArgs = let
-                config = import ./configs/hosts/${elem} {inherit lib;};
-              in {
-                inherit inputs;
-                inherit (inputs.nixos.homeManagerModules) lib;
-                inherit (config) os extraConfig;
-              };
-            };
-          }
-          // acc) {} (lib.listDirs ./configs/hosts);
+      nixosConfigurations = import ./nixos.nix {inherit inputs lib;};
 
       # HOME MANAGER
       # ------------------------------------------------------------------------
-      homeConfigurations = let
-        lib =
-          inputs.nixos.homeManagerModules.lib.extend
-          (
-            final: prev: (
-              import ./lib/default.nix final
-            )
-          );
-      in
-        builtins.listToAttrs (
-          builtins.concatLists (builtins.map (
-            host: let
-              pkgs =
-                inputs.nixos.homeManagerModules.lib.pkgsForSystem
-                (
-                  import ./configs/hosts/${host} {}
-                )
-                .os
-                .system;
-            in
-              builtins.map (
-                user: {
-                  name = "${user}@${host}";
-                  value = inputs.home-manager.lib.homeManagerConfiguration {
-                    inherit pkgs;
-                    modules = [
-                      # Local Modules
-                      ./home-manager
-                      # External Modules
-                      inputs.nixos.inputs.sops-nix.homeManagerModules.sops
-                      inputs.nixos.inputs.nix-index-database.hmModules.nix-index
-                      # Internal Modules
-                      inputs.nixos.homeManagerModules.hm
-                      # Personnal home-manager packaged dotfiles
-                      inputs.awesomerc.homeManagerModules.awesomerc
-                      inputs.direnvrc.homeManagerModules.direnvrc
-                      inputs.neovimrc.homeManagerModules.neovimrc
-                      inputs.tmuxrc.homeManagerModules.tmuxrc
-                      inputs.zshrc.homeManagerModules.shellrc
-                      # Personnal packaged programs
-                      inputs.dotgit-sync.homeManagerModules.dotgit-sync
-                      # Hack to inject config
-                      ({extraConfig, ...}: {
-                        config = extraConfig;
-                      })
-                    ];
-                    extraSpecialArgs = let
-                      cfg = import ./configs/hosts/${host}/rdeville {
-                        inherit lib pkgs;
-                      };
-                    in {
-                      inherit inputs lib;
-                      inherit (cfg) hm extraConfig;
-                    };
-                  };
-                }
-              )
-              (lib.listDirs ./configs/hosts/${host})
-          ) (lib.listDirs ./configs/hosts))
-        );
+      homeConfigurations = import ./home-manager.nix {inherit inputs lib;};
 
       # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
     };
