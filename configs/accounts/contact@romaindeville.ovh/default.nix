@@ -54,7 +54,7 @@ in {
   contact = user.contact;
   sops = {
     ${secretPath} = {
-      sopsFile = ./credentials.enc.yaml;
+      sopsFile = ./secrets.enc.yaml;
     };
   };
 }
