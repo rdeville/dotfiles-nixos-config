@@ -58,6 +58,7 @@ in {
           google-cloud-sdk
           google-cloud-sql-proxy
           signal-desktop
+          ssh-to-age
           texliveFull
           terraform-docs
           terragrunt
