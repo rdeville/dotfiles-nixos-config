@@ -21,10 +21,10 @@ in {
       age = {
         keyFile = "/home/rdeville/.cache/.age.key";
       };
-      defaultSopsFile = ./rdeville.enc.yaml;
+      defaultSopsFile = ./secrets.enc.yaml;
       secrets = {
         "spotify-client-id" = {
-          sopsFile = ./rdeville.enc.yaml;
+          sopsFile = ./secrets.enc.yaml;
         };
       };
     };
