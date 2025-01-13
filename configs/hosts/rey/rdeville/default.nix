@@ -5,35 +5,34 @@
 }: let
   username = builtins.baseNameOf ./.;
 
-  os = (import ../default.nix {}).os;
+  base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  isGui =
-    if os ? isGui
-    then os.isGui
-    else false;
-  isMain =
-    if os ? isMain
-    then os.isMain
-    else false;
+  keyFile = "/home/rdeville/.cache/.age.key";
 in {
-  extraConfig = {
-    sops = {
-      age = {
-        keyFile = "/home/rdeville/.cache/.age.key";
-      };
-      defaultSopsFile = ./secrets.enc.yaml;
-      secrets = {
-        "spotify-client-id" = {
-          sopsFile = ./secrets.enc.yaml;
-        };
-      };
+  sops = {
+    age = {
+      inherit keyFile;
+    };
+    defaultSopsFile = ./secrets.enc.yaml;
+    secrets = {
+      "spotify-client-id" = {};
+    };
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "nvidia-x11"
+          "discord"
+        ];
     };
   };
 
   hm = {
-    inherit username isGui isMain;
-    inherit (os) hostName;
-    wrapGL = true;
+    inherit username;
+    inherit (base) hostName system isGui isMain;
+    wrapGL = false;
     userAccounts = [
       "contact@romaindeville.fr"
       "contact@romaindeville.ovh"
@@ -42,14 +41,15 @@ in {
     flavors = {
       inherit (default.flavors) _core;
       _accounts = {
-        enable = isMain;
+        enable = base.isMain;
       };
       _gui = {
-        enable = isGui;
+        enable = base.isGui;
       };
       _packages = {
         enable = true;
         pkgs = with pkgs; [
+          discord
           inkscape
           hclfmt
           libreoffice
@@ -68,9 +68,6 @@ in {
         enable = true;
       };
       bluetooth = {
-        enable = true;
-      };
-      discord = {
         enable = true;
       };
       gh = {
