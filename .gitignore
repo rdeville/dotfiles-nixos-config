@@ -1,4 +1,5 @@
 # Project Specific
+*.qcow2
 .devenv
 .direnv
 .devbox
