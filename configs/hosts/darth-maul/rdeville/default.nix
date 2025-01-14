@@ -62,6 +62,7 @@ in {
           texliveFull
           terraform-docs
           terragrunt
+          viddy
           whatsapp-for-linux
         ];
       };
