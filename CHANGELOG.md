@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.6.2 (2025-01-14)
+
+### 🩹 Patch
+
+  * 🐛(cfg/hosts/darth-maul): Add config as param to rdeville user (!38) by Romain Deville ([`d24baa9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d24baa948a4e0f2c1bef58d3ff0246e6e0e95423))
+  * 🐛(cfg/hosts/darth-maul): Add config as param to rdeville user by Romain Deville ([`8e1c5f3`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8e1c5f31ae000d68f102d553cc6fa3cdc3008d56)) 🔏
+  * 🔧(cfg/hosts/darth-maul): Add yubikey-manager pkgs to user rdeville by Romain Deville ([`0644179`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/064417934102a3270e2fee45eef0ee806f28516a)) 🔏
+
+### 🔊 Others
+
+  * 🔨(scripts): Remove `nix fmt .` from hm.sh and nixos.sh by Romain Deville ([`2352848`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2352848fcf40bd93559bb48ecfa74002ab3e71be)) 🔏
+  * 🔨(scripts): Restore local_inputs.sh to empty table by Romain Deville ([`d6c5b5e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d6c5b5ea469c9753f10f955db218902a9bb260cc)) 🔏
+
 ## v0.6.1 (2025-01-14)
 
 ### 🩹 Patch
