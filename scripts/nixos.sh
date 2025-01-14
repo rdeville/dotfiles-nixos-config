@@ -62,11 +62,6 @@ main(){
     --extra-experimental-features \"nix-command flakes\" \
     ${options}"
 
-  cmd_fmt="nix fmt ."
-
-  _log "INFO" "Formatting files with command:"
-  _log "INFO" "${cmd_fmt}"
-  eval "${cmd_fmt}"
   _log "INFO" "Running **nh os ${action}** for **${profile/-H /}** with command : "
   _log "INFO" "${cmd//  /}"
   eval "${cmd}"
