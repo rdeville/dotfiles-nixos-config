@@ -1,6 +1,10 @@
 keys:
     # Personnal Superuser
   - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
+    # FBLP-181
+  - &hm-romaindeville-FBLP-181 age1uxgqmys32n6h5xm8stqp8hfj349slq9cy3dl9slj3aa6tpu5ssqsqu32ps
+    # Palpatine
+  - &hm-romaindeville-palpatine age13lhtkcjfq3ahsjp26zcgwvtvns64z3kt6fkutkl8pleff2zu9dysztvfc0
     # Darth-maul
   - &os-darth-maul age1f6yc0z336wkj0ac0qhak2u2t5wqaksf8hpgxvn2mtas26hwk5gasx0th2l
   - &hm-rdeville-darth-maul age17um38qhvjkseq3vly7hfuetut5af2nc9va8l2004vgyfkn3sdy8sszkqv0
@@ -44,6 +48,18 @@ creation_rules:
       - age:
         - *rdeville
         - *os-rey
+    # FBLP-181
+  - path_regex: FBLP-181\/romaindeville\/.*\.enc\.(yaml|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-romaindeville-FBLP-181
+    # Palpatine
+  - path_regex: palpatine\/romaindeville\/.*\.enc\.(yaml|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-romaindeville-palpatine
     # Accounts contact@romaindeville.fr
   - path_regex: accounts\/contact_at_romaindeville.fr.\/*\.enc\.yaml$
     key_groups:
