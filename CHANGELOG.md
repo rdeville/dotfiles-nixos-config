@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.6.1 (2025-01-14)
+
+### 🩹 Patch
+
+  * 🍱(cfg/assets/fastfetch): Add dougs.txt ascii logo by Romain Deville ([`17d5ea3`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/17d5ea3f271db5c380e453c0c0f7371ab77d6e6e)) 🔏
+  * 🐛(cfg/hosts/rey): Fix user rdeville spotify client_id_command by Romain Deville ([`7a663fa`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7a663fa85d117840b1a8174aa817b633c47dee69)) 🔏
+  * 🐛(cfg/hosts/darth-maul): Fix user rdeville spotify client_id_command by Romain Deville ([`04c0e46`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/04c0e46237e7464d47c1978201c7440be9590731)) 🔏
+  * 🔧 Mainly add workstation config, fix minor bugs (!37) by Romain Deville ([`7d32dda`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7d32dda77fd8b2bbe19e3d264a1391106f096abb))
+  * 🔧(cfg/hosts/FBLP-181): Add user rdeville HM configuration by Romain Deville ([`db1085c`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/db1085c003453f7e67c5a83281d3e158afb7205a)) 🔏
+  * 🔧(cfg/hosts): Add FBLP-181 OS configuration (pro workstation) by Romain Deville ([`57f4fb7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/57f4fb74c91cf95a7a13f940e7a4fffc74b593d3)) 🔏
+  * 🔧(cfg/hosts/palpatine): Add user rdeville configuration by Romain Deville ([`f716b60`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f716b604782a172696f6b7990d189ecef07e454f)) 🔏
+  * 🔧(cfg/hosts): Add Palpatine OS minimal configuration by Romain Deville ([`35b4c12`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/35b4c12d2c2d554e9111607d4ce4be5fc974436d)) 🔏
+  * 🔧(sops): Update sops public keys and rules by Romain Deville ([`16fd077`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/16fd0772e2428e5266d6e91c4909f1cf6108e3e2)) 🔏
+
+### 🔊 Others
+
+  * 🎨(scripts/sops.sh): Improve output when using `sops.sh -u` by Romain Deville ([`6213182`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/62131823f2e71a8db55ff776015c378782b00e69)) 🔏
+  * 🔐(cfg/hosts/FBLP-181): Update user romaindeville secrets by Romain Deville ([`34e9eb4`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/34e9eb4475380c32bae3d2ff81c36e15acc46880)) 🔏
+  * 🔐(cfg/hosts/palpatine): Update user romaindeville secrets by Romain Deville ([`33cec51`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/33cec51ae24f98fbb32cb5925f160713ca873b64)) 🔏
+
 ## v0.6.0 (2025-01-14)
 
 ### ✨ Minor
