@@ -11,7 +11,7 @@
   secretPath = "accounts/${address}";
   passwordCommand = [
     "${pkgs.coreutils}/bin/cat"
-    "${config.hm.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
+    "${config.home.homeDirectory}/.config/sops-nix/secrets/${secretPath}"
   ];
   displayName = "📘 Romain Deville (Plagueis)";
   user = {
@@ -54,7 +54,7 @@ in {
   contact = user.contact;
   sops = {
     ${secretPath} = {
-      sopsFile = ./credentials.enc.yaml;
+      sopsFile = ./secrets.enc.yaml;
     };
   };
 }

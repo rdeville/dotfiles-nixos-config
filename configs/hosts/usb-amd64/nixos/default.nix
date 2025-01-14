@@ -10,6 +10,9 @@ in {
 
     flavors = {
       inherit (default.flavors) _core;
+      _gui = {
+        enable = base.isGui;
+      };
     };
   };
 }

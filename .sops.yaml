@@ -1,39 +1,58 @@
 keys:
-    # Personnal Superuser Age Key
+    # Personnal Superuser
   - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
-    # Rey Hosts Age Keys
-  - &hm-rdeville-rey age1x74gl6dq9mlj7hka0qe4cykhf749wjzax5cc97leumvvhllu09cs6h44n5
-    # Darth Maul Hosts Age Keys
-  - &os-darth-maul age1esh2u2a2vkehvs6327nv373mmvk2va8dn3rv2e8v33pe5aadzsdqnetvr9
-  - &hm-rdeville-darth-maul age1hyzjxh89pjdfpuu9dz5wkk8t2zq8renv0kwqjlxcnrm5zze9udtsyu2knl
+    # Darth-maul
+  - &os-darth-maul age1f6yc0z336wkj0ac0qhak2u2t5wqaksf8hpgxvn2mtas26hwk5gasx0th2l
+  - &hm-rdeville-darth-maul age17um38qhvjkseq3vly7hfuetut5af2nc9va8l2004vgyfkn3sdy8sszkqv0
+    # Darth-plagueis
+  - &os-darth-plagueis age19n566w0tfu8uzuz0pr44ff4jyt5nq3l4l0l3gedwxmelvvz8ldrq5y99sk
+  - &hm-rdeville-darth-plagueis age1fv9wshc62xc8qcxcavt0550uwakggsur0qp737nyyy0wyqlqw59s9fmlgw
+    # Rey
+  - &os-rey age1xvyjy75jzuyvsaw5wxsexsjnnq24m50kdhezu8etn3x5j32cxq7sjr4aes
+  - &hm-rdeville-rey age1sg8swpg9vugyh4fuqlm2dmp9macsges4ehu3swn6evmudjpkaq8q239r53
 creation_rules:
-    # Darth-Maul OS
-  - path_regex: darth-maul\/.*\.enc\.(yaml|json|env|ini)$
-    key_groups:
-      - age:
-        - *rdeville
-        - *os-darth-maul
-    # Darth-Maul HM
-  - path_regex: darth-maul\/(rdeville|test)\/.*\.enc\.(yaml|json|env|ini)$
+    # Darth-Maul
+  - path_regex: darth-maul\/rdeville\/.*\.enc\.(yaml|txt)$
     key_groups:
       - age:
         - *rdeville
         - *hm-rdeville-darth-maul
-    # Rey hosts accounts
-  - path_regex: rey\/.*\.enc\.(yaml|json|env|ini)$
+  - path_regex: darth-maul\/.*\.enc\.(yaml|asc)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-darth-maul
+    # Darth-Plagueis
+  - path_regex: darth-plagueis\/rdeville\/.*\.enc\.(yaml|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-rdeville-darth-plagueis
+  - path_regex: darth-plagueis\/.*\.enc\.(yaml|asc)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-darth-plagueis
+    # Rey
+  - path_regex: rey\/rdeville\/.*\.enc\.(yaml|txt)$
     key_groups:
       - age:
         - *rdeville
         - *hm-rdeville-rey
+  - path_regex: rey\/.*\.enc\.(yaml|asc)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-rey
     # Accounts contact@romaindeville.fr
-  - path_regex: accounts\/contact_at_romaindeville.fr.\/*\.enc\.(yaml|json|env|ini)$
+  - path_regex: accounts\/contact_at_romaindeville.fr.\/*\.enc\.yaml$
     key_groups:
       - age:
         - *rdeville
         - *hm-rdeville-rey
         - *hm-rdeville-darth-maul
     # Accounts contact@romaindeville.ovh
-  - path_regex: accounts\/contact_at_romaindeville.ovh\/.*\.enc\.(yaml|json|env|ini)$
+  - path_regex: accounts\/contact_at_romaindeville.ovh\/.*\.enc\.yaml$
     key_groups:
       - age:
         - *rdeville

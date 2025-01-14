@@ -5,36 +5,33 @@
 }: let
   username = builtins.baseNameOf ./.;
 
-  os = (import ../default.nix {}).os;
+  base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  isGui =
-    if os ? isGui
-    then os.isGui
-    else false;
-  isMain =
-    if os ? isMain
-    then os.isMain
-    else false;
   keyFile = "/home/rdeville/.cache/.age.key";
 in {
-  extraConfig = {
-    sops = {
-      age = {
-        inherit keyFile;
-      };
-      defaultSopsFile = ./rdeville.enc.yaml;
-      secrets = {
-        "spotify-client-id" = {};
-        "age-key" = {
-          path = keyFile;
-        };
-      };
+  sops = {
+    age = {
+      inherit keyFile;
+    };
+    defaultSopsFile = ./secrets.enc.yaml;
+    secrets = {
+      "spotify-client-id" = {};
+    };
+  };
+
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "nvidia-x11"
+          "discord"
+        ];
     };
   };
 
   hm = {
-    inherit username isGui isMain;
-    inherit (os) hostName;
+    inherit username;
+    inherit (base) hostName system isGui isMain;
     wrapGL = false;
     userAccounts = [
       "contact@romaindeville.fr"
@@ -44,15 +41,15 @@ in {
     flavors = {
       inherit (default.flavors) _core;
       _accounts = {
-        enable = isMain;
+        enable = base.isMain;
       };
       _gui = {
-        enable = isGui;
+        enable = base.isGui;
       };
       _packages = {
         enable = true;
         pkgs = with pkgs; [
-          pcmanfm
+          discord
           inkscape
           hclfmt
           libreoffice
@@ -61,9 +58,11 @@ in {
           google-cloud-sdk
           google-cloud-sql-proxy
           signal-desktop
+          ssh-to-age
           texliveFull
           terraform-docs
           terragrunt
+          viddy
           whatsapp-for-linux
         ];
       };
@@ -71,9 +70,6 @@ in {
         enable = true;
       };
       bluetooth = {
-        enable = true;
-      };
-      discord = {
         enable = true;
       };
       gh = {

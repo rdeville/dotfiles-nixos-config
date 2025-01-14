@@ -1,22 +1,13 @@
 {...}: let
   username = builtins.baseNameOf ./.;
 
-  os = (import ../default.nix {}).os;
+  base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  isGui =
-    if os ? isGui
-    then os.isGui
-    else false;
-  isMain =
-    if os ? isMain
-    then os.isMain
-    else false;
 in {
-  extraConfig = {};
-
   hm = {
-    inherit username isGui isMain;
-    inherit (os) hostName;
+    inherit username;
+    inherit (base) hostName system isGui isMain;
+
     flavors = {
       inherit (default.flavors) _core;
     };

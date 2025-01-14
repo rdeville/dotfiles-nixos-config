@@ -7,9 +7,11 @@ in {
   hm = {
     inherit username;
     inherit (base) hostName system isGui isMain;
-
     flavors = {
       inherit (default.flavors) _core;
+      _gui = {
+        enable = base.isGui;
+      };
     };
   };
 }
