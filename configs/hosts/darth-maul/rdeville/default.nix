@@ -92,9 +92,9 @@ in {
       };
       spotify-player = {
         enable = true;
-        client_id_command = lib.strings.concatStrings [
+        client_id_command = lib.strings.concatStringsSep " " [
           "${pkgs.coreutils}/bin/cat"
-          "/home/rdeville/.config/sops-nix/secrets/spotify-client-id"
+          "${config.xdg.configHome}/sops-nix/secrets/spotify-client-id"
         ];
       };
       ssh-client = {

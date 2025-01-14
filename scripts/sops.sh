@@ -99,9 +99,9 @@ update() {
     if [[ -d ${host} ]]; then
       hostname=$(basename "${host}")
       private="${host}/${ssh}"
+      echo "    # ${hostname^}"
 
       if [[ -f ${private} ]] && grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
-        echo "    # ${hostname^}"
         anchor="&os-${hostname}"
         pub=$(sops -d "${private}" | ssh-to-age)
         echo "  - ${anchor} ${pub}"
