@@ -63,9 +63,11 @@ main() {
     ${options}"
 
   cmd_fmt="nix fmt ."
+
   _log "INFO" "Formatting files with command:"
   _log "INFO" "${cmd_fmt}"
   eval "${cmd_fmt}"
+
   _log "INFO" "Running **nh home ${action}** for **${profile/-c /}** with command : "
   _log "INFO" "${cmd//  /}"
   eval "${cmd}"
