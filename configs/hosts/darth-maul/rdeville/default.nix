@@ -65,6 +65,7 @@ in {
           terragrunt
           viddy
           whatsapp-for-linux
+          yubikey-manager.out
         ];
       };
       audio = {
