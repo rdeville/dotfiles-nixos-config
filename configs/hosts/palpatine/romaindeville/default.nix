@@ -16,19 +16,19 @@ in {
 
   sops = {
     age = {
-      keyFile = "/home/rdeville/.cache/.age.key";
+      inherit keyFile;
     };
     defaultSopsFile = ./rdeville.enc.yaml;
     secrets = {
       "spotify-client-id" = {
-        sopsFile = ./rdeville.enc.yaml;
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
       };
     };
   };
 
   hm = {
     inherit username;
-    inherit (base) hostName system isGui isMain isDarwin;
+    inherit (base) hostName system isGui isMain isDarwin isWork;
 
     nixpkgs = {
       allowUnfree = true;
