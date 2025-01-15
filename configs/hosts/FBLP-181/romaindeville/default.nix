@@ -8,7 +8,7 @@
 
   base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  keyFile = "/home/rdeville/.cache/.age.key";
+  keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   awesomerc = {
     enable = lib.mkForce false;
@@ -20,13 +20,15 @@ in {
     };
     defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
-      "spotify-client-id" = {};
+      "spotify-client-id" = {
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+      };
     };
   };
 
   hm = {
     inherit username;
-    inherit (base) hostName system isGui isMain isDarwin;
+    inherit (base) hostName system isGui isMain isDarwin isWork;
 
     nixpkgs = {
       allowUnfree = true;

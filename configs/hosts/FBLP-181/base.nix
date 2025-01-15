@@ -4,4 +4,5 @@
   isGui = true;
   isMain = true;
   isDarwin = true;
+  isWork = true;
 }
