@@ -1,6 +1,22 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.28.1 (2025-01-15)
+
+### 🩹 Patch
+
+  * ⬆️ Update config from DGS (!86) by Romain Deville ([`b4d3dd8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b4d3dd85056ebb14f7fc726ce5c164ccdbe5a1f3))
+  * 🔧 Add dotgit sync configuration by Romain Deville ([`bbc4a0d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bbc4a0d88fd1e7d927addfe484aea192be8d04a9)) 🔏
+  * 🔧(pre-commit): Update pre-commit from DGS by Romain Deville ([`beeb337`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/beeb337ca38039a63a5f3284b80b79e9440e6516)) 🔏
+
+### 🔊 Others
+
+  * 📄 Update licenses from DGS by Romain Deville ([`4fbccc6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4fbccc6920f7720e2858a595fa8b2aabb23a701e)) 🔏
+  * 📝 Add CONTRIBUTING.md from DGS by Romain Deville ([`9d827c4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d827c4fe6267e04c77e032795437da77fea6527)) 🔏
+  * 📝 Add CODE_OF_CONDUCT from DGS by Romain Deville ([`7091cf5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7091cf5e8f022a970e5f2a7945eee635916cb393)) 🔏
+  * 📝 Update README from DGS by Romain Deville ([`5fbfdb6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5fbfdb61050e52841337534dd2443b2f77e56e0b)) 🔏
+  * 🔨 Add .envrc from DGS template by Romain Deville ([`9f0cbf8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9f0cbf8991ea3f351bb4e06da2e7af1e7c0fbded)) 🔏
+
 ## v0.28.0 (2025-01-15)
 
 ### ✨ Minor
