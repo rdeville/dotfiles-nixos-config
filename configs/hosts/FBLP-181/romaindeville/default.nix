@@ -34,6 +34,22 @@ in {
       allowUnfree = true;
     };
 
+    home = {
+      packages = with pkgs; [
+        viddy
+        kind
+        ghostscript
+        (google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ])
+        google-cloud-sql-proxy
+        ssh-to-age
+        terragrunt
+        vaultwarden
+        yubikey-manager.out
+      ];
+    };
+
     flavors = {
       _core =
         default.flavors._core
@@ -76,22 +92,7 @@ in {
       _gui = {
         enable = base.isGui;
       };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          viddy
-          kind
-          ghostscript
-          (google-cloud-sdk.withExtraComponents [
-            google-cloud-sdk.components.gke-gcloud-auth-plugin
-          ])
-          google-cloud-sql-proxy
-          ssh-to-age
-          terragrunt
-          vaultwarden
-          yubikey-manager.out
-        ];
-      };
+
       gh = {
         enable = true;
       };

@@ -32,6 +32,24 @@ in {
     };
   };
 
+  home = {
+    packages = with pkgs; [
+      discord
+      inkscape
+      hclfmt
+      libreoffice
+      gimp
+      ghostscript
+      google-cloud-sdk
+      google-cloud-sql-proxy
+      signal-desktop
+      texliveFull
+      terraform-docs
+      terragrunt
+      whatsapp-for-linux
+    ];
+  };
+
   hm = {
     inherit username;
     inherit (base) hostName system isGui isMain;
@@ -48,24 +66,6 @@ in {
       };
       _gui = {
         enable = base.isGui;
-      };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          discord
-          inkscape
-          hclfmt
-          libreoffice
-          gimp
-          ghostscript
-          google-cloud-sdk
-          google-cloud-sql-proxy
-          signal-desktop
-          texliveFull
-          terraform-docs
-          terragrunt
-          whatsapp-for-linux
-        ];
       };
       audio = {
         enable = true;

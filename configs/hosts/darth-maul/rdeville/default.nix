@@ -32,6 +32,34 @@ in {
     };
   };
 
+  home = {
+    shellAliases = {
+      docker = "sudo docker";
+    };
+    packages = with pkgs; [
+      discord
+      inkscape
+      hclfmt
+      libreoffice
+      gimp
+      ghostscript
+      (
+        google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ]
+      )
+      google-cloud-sql-proxy
+      signal-desktop
+      ssh-to-age
+      texliveFull
+      terraform-docs
+      terragrunt
+      viddy
+      whatsapp-for-linux
+      yubikey-manager.out
+    ];
+  };
+
   hm = {
     inherit username;
     inherit (base) hostName system isGui isMain;
@@ -48,27 +76,6 @@ in {
       };
       _gui = {
         enable = base.isGui;
-      };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          discord
-          inkscape
-          hclfmt
-          libreoffice
-          gimp
-          ghostscript
-          google-cloud-sdk
-          google-cloud-sql-proxy
-          signal-desktop
-          ssh-to-age
-          texliveFull
-          terraform-docs
-          terragrunt
-          viddy
-          whatsapp-for-linux
-          yubikey-manager.out
-        ];
       };
       audio = {
         enable = true;
