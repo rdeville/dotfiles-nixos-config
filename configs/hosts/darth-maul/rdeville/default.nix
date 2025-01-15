@@ -8,7 +8,7 @@
 
   base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  keyFile = "/home/rdeville/.cache/.age.key";
+  keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   sops = {
     age = {
@@ -16,7 +16,9 @@ in {
     };
     defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
-      "spotify-client-id" = {};
+      "spotify-client-id" = {
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+      };
     };
   };
 
@@ -33,7 +35,7 @@ in {
   hm = {
     inherit username;
     inherit (base) hostName system isGui isMain;
-    wrapGL = false;
+
     userAccounts = [
       "contact@romaindeville.fr"
       "contact@romaindeville.ovh"

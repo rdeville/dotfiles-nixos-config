@@ -4,30 +4,26 @@
   pkgs,
   ...
 }: let
-  sshKeyPaths = [
-    "/etc/ssh/ssh_host_ed25519_key"
-  ];
+  osBase = import ../base.nix;
+  base = import ./base.nix;
+
   users = {
     rdeville = {
       isSudo = true;
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../../pubkeys/rdeville-darth-maul.pub
-          ];
-        };
-      };
+      inherit (osBase.users) openssh;
+
     };
-    root = {};
+    root = {
+      inherit (osBase.users) openssh;
+    };
   };
+
   secrets = builtins.listToAttrs (builtins.map (user: {
     name = "users/${user}/password";
     value = {
       neededForUsers = true;
     };
   }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
-
-  base = import ./base.nix;
 in {
   imports = [
     ./hardware-configuration.nix
@@ -98,7 +94,7 @@ in {
   sops = {
     inherit secrets;
     age = {
-      inherit sshKeyPaths;
+      inherit (osBase.sops) keyFile;
     };
     defaultSopsFile = ./secrets.enc.yaml;
   };
