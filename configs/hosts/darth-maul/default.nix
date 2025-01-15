@@ -11,7 +11,6 @@
     rdeville = {
       isSudo = true;
       inherit (osBase.users) openssh;
-
     };
     root = {
       inherit (osBase.users) openssh;
@@ -71,11 +70,6 @@ in {
   };
 
   hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-
     graphics = {
       enable = true;
     };
@@ -113,7 +107,7 @@ in {
   };
 
   os = {
-    inherit (base) hostName isGui isMain system;
+    inherit (base) hostName system isGui isMain;
 
     users = {
       inherit users;
@@ -142,6 +136,10 @@ in {
         hyprland = {
           enable = true;
         };
+      };
+
+      docker = {
+        enable = true;
       };
 
       ssh-server = {
