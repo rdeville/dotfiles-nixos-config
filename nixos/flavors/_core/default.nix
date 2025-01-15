@@ -39,6 +39,7 @@ in {
         vegur
         source-code-pro
         jetbrains-mono
+        noto-fonts-color-emoji
         # Icons
         font-awesome
         # Nerdfont Icons
@@ -62,6 +63,7 @@ in {
         lshw # Hardware Config
         pciutils # Manage PCI
         usbutils # Manage USB
+        viddy # A better watcher
 
         # NixOS CLI related packages
         nix-tree # Browse Nix Store
