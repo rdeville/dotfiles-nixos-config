@@ -88,9 +88,6 @@ in {
       opentofu = {
         enable = true;
       };
-      podman = {
-        enable = true;
-      };
       spotify-player = {
         enable = true;
         client_id_command = lib.strings.concatStringsSep " " [
