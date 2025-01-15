@@ -1,6 +1,22 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.28.0 (2025-01-15)
+
+### ✨ Minor
+
+  * ✨ Rework _core flavors, add docker and remove _package (!85) by Romain Deville ([`0562738`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0562738e8cedfe444e92a3ff248a37dc5e06c996))
+  * ✨(os/flavors/docker): Add docker OS flavors by Romain Deville ([`570447d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/570447d6e03d7a7968ad98b6e0959a39b115eb4d)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`ecd8db4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ecd8db4969784285b09551a5cdf4e31369da94d2)) 🔏
+  * 🔧(os/flavors/_core): Add font and system pkgs by Romain Deville ([`ade15a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ade15a6740c8e7f1b4b26fe5db91f67d6062548e)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/flavors): Remove redundant _package flavors by Romain Deville ([`35a974b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/35a974b0971693edf0e0fbd2d434d414c1ea3392)) 🔏
+
 ## v0.27.1 (2025-01-12)
 
 ### 🩹 Patch
