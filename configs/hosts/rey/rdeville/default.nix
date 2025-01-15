@@ -16,7 +16,9 @@ in {
     };
     defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
-      "spotify-client-id" = {};
+      "spotify-client-id" = {
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+      };
     };
   };
 
