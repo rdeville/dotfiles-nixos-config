@@ -1,6 +1,55 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.7.0 (2025-01-16)
+
+### ✨ Minor
+
+  * ✨ Add sets of script and configuration to ease key/secrets rotations (!39) by Romain Deville ([`c3a4cab`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c3a4cab9d04609de492ecbb549495a01ed0d1220))
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`7d9e97d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7d9e97d222c9af14f9a8da34693cc92775e97e38)) 🔏
+  * 👽️(configs): Remove use of hm.flavors._packages with home.packages by Romain Deville ([`8a23516`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8a23516892b9d8de7326c29801416e5cd98c9257)) 🔏
+  * 🔒️(common_secrets): Add spotify common secrets by Romain Deville ([`4fbf216`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/4fbf2162227f1f84df976436e14429f4130bd639)) 🔏
+  * 🔧(cfg/host/rey): Update OS rey config by Romain Deville ([`7784dcb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7784dcb543369cbb3a054f208eddbf0b499572a2)) 🔏
+  * 🔧(cfg/host/darth-maul): Update OS darth-maul config by Romain Deville ([`5dd1644`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5dd1644b22eb23cb6c095e1158e95d578108d186)) 🔏
+  * 🔧(cfg/host/rey): Update OS rey config by Romain Deville ([`c054ddb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c054ddbe95646c449a653c52f34b178b2ed23e73)) 🔏
+  * 🔧(cfg/host/palpatine): Update OS palpatine config by Romain Deville ([`bce2782`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bce2782aeeac345dedcbda03a8b78396f7cb3cce)) 🔏
+  * 🔧(cfg/host/FBLP-181): Update OS FBLP-181 config by Romain Deville ([`d2cab0a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d2cab0aaf68a96adc57ee1e2d2b3a7c8b42cec66)) 🔏
+  * 🔧(cfg/host/darth-maul): Update OS darth-maul config by Romain Deville ([`287ae99`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/287ae99007858a10dd6e4a615a80ab53a6336c55)) 🔏
+  * 🔧(cfg/hosts): Add base.nix for all hosts by Romain Deville ([`fae54f7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/fae54f788b60b410706b8cf947914bf212cc9f99)) 🔏
+  * 🔧(sops): Update .sops.yaml config by Romain Deville ([`2a44da6`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2a44da6bf8c8dc396e4dd792821a4b67564f20a2)) 🔏
+
+### 🔊 Others
+
+  * 🔐(cfg/accounts): Update contact@romaindeville.ovh secrets by Romain Deville ([`dd2382e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/dd2382edf2ceff8847ecc1a38da540c28eb248d4)) 🔏
+  * 🔐(cfg/accounts): Update contact@romaindeville.fr secrets by Romain Deville ([`e501d12`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e501d12416977a12a496b8d92c693dbd4e8cf986)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update HM nixos@usb-amd64 keys by Romain Deville ([`a8f3eb1`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a8f3eb1191bbdae86751b14f43439aa0fcd2d36b)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update OS usb-amd64 secrets by Romain Deville ([`5b3b61c`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5b3b61c3973ff02a4c7db022cfd4a93ef660143a)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update OS usb-amd64 keys by Romain Deville ([`10cce07`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/10cce078ae44f28e00e97f428b3b99569affde05)) 🔏
+  * 🔐(cfg/host/rey): Update HM rdeville@rey keys by Romain Deville ([`9fdbd47`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9fdbd479b4c81551899db3b9019b108f319cbb5e)) 🔏
+  * 🔐(cfg/host/rey): Update OS rey secrets by Romain Deville ([`b907e50`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b907e5001b6954a02ef9c878070cb3e7d35f6430)) 🔏
+  * 🔐(cfg/host/rey): Update OS rey keys by Romain Deville ([`061a960`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/061a960b0e2e7310a3ebaf1b88d0b6edbffaa472)) 🔏
+  * 🔐(cfg/host/palpatine): Update HM romaindeville@palpatine keys by Romain Deville ([`10b2987`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/10b29875a81d56a5d925d0b1c6ea9cc98e53c2c1)) 🔏
+  * 🔐(cfg/host/palpatine): Update OS palpatine secrets by Romain Deville ([`3f308ce`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3f308cef0a59c4cc0616672450e0dceed63282fe)) 🔏
+  * 🔐(cfg/host/palpatine): Update OS palpatine keys by Romain Deville ([`a3b08c8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a3b08c8def195362d013cb6203e9e76257bd18e9)) 🔏
+  * 🔐(cfg/host/FBLP-181): Update HM romaindeville@FBLP-181 keys by Romain Deville ([`9ac6436`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9ac643610f7f44181e3578edad5f1a770f52f55e)) 🔏
+  * 🔐(cfg/host/FBLP-181): Update OS FBLP-181 secrets by Romain Deville ([`59d2f06`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/59d2f06a933c13f1a3977a8ddc7e6c8bb4dcc054)) 🔏
+  * 🔐(cfg/host/FBLP-181): Update OS FBLP-181 keys by Romain Deville ([`3feb0c5`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3feb0c525af0b72ea128cf755d2d290816dfdd0e)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update HM rdeville@darth-plagueis keys by Romain Deville ([`d3ac0ce`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d3ac0cea6960ef6f849cc40a0cfa4b1758462c1c)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update OS darth-plagueis secrets by Romain Deville ([`7ceb8b0`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7ceb8b0493886b77a41eedc043a78f6349d7422a)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update OS darth-plagueis keys by Romain Deville ([`9890c97`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9890c97db74e352ced7c4ba6efc84b795836ba9d)) 🔏
+  * 🔐(cfg/host/darth-maul): Update HM rdeville@darth-maul keys by Romain Deville ([`95e1954`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/95e19541893c8ec2d36b977181f410ca831a5001)) 🔏
+  * 🔐(cfg/host/darth-maul): Update OS darth-maul secrets by Romain Deville ([`725ce08`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/725ce08ac26800eb7361cf09e6b4013c4d130e74)) 🔏
+  * 🔐(cfg/host/darth-maul): Update OS darth-maul keys by Romain Deville ([`84bf451`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/84bf4519c3bccc134fbb39c005b9479c1dbbf031)) 🔏
+  * 🔥(lib): Remove useless code in default.nix by Romain Deville ([`92f2ba7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/92f2ba7ab1d220255d3f1bfa7ddb900f8f793a2f)) 🔏
+  * 🔨(scripts): Add commit.sh to to batch commit update of hosts by Romain Deville ([`f1e09c9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f1e09c95a6b1536305194ed7965c66a28c746b89)) 🔏
+  * 🔨(scripts): Improve sops.sh script by Romain Deville ([`0598891`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/05988913d961986e41684a955f290c8a5c8f297a)) 🔏
+  * 🔨(scripts): Improve keys.sh script by Romain Deville ([`81be55b`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/81be55bcb5f9d0940ee630dd93aea592a683e298)) 🔏
+  * 🔨(devbox): Update devbox.json and init_hook scripts location by Romain Deville ([`edb1781`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/edb1781d1143a67245167b91bd7670bcc49b5c0c)) 🔏
+  * 🔨(direnv): Update .envrc with .envrc.local.post by Romain Deville ([`a252eb2`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a252eb2f29ee7dfc9ceaa80b34ce9c328ce65bed)) 🔏
+
 ## v0.6.2 (2025-01-14)
 
 ### 🩹 Patch
