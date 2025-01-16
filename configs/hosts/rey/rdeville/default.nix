@@ -16,7 +16,9 @@ in {
     };
     defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
-      "spotify-client-id" = {};
+      "spotify-client-id" = {
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+      };
     };
   };
 
@@ -28,6 +30,24 @@ in {
           "discord"
         ];
     };
+  };
+
+  home = {
+    packages = with pkgs; [
+      discord
+      inkscape
+      hclfmt
+      libreoffice
+      gimp
+      ghostscript
+      google-cloud-sdk
+      google-cloud-sql-proxy
+      signal-desktop
+      texliveFull
+      terraform-docs
+      terragrunt
+      whatsapp-for-linux
+    ];
   };
 
   hm = {
@@ -46,24 +66,6 @@ in {
       };
       _gui = {
         enable = base.isGui;
-      };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          discord
-          inkscape
-          hclfmt
-          libreoffice
-          gimp
-          ghostscript
-          google-cloud-sdk
-          google-cloud-sql-proxy
-          signal-desktop
-          texliveFull
-          terraform-docs
-          terragrunt
-          whatsapp-for-linux
-        ];
       };
       audio = {
         enable = true;
@@ -84,9 +86,6 @@ in {
         enable = true;
       };
       opentofu = {
-        enable = true;
-      };
-      podman = {
         enable = true;
       };
       spotify-player = {

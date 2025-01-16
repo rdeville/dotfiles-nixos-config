@@ -8,7 +8,7 @@
 
   base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  keyFile = "/home/rdeville/.cache/.age.key";
+  keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   awesomerc = {
     enable = lib.mkForce false;
@@ -20,16 +20,34 @@ in {
     };
     defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
-      "spotify-client-id" = {};
+      "spotify-client-id" = {
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+      };
     };
   };
 
   hm = {
     inherit username;
-    inherit (base) hostName system isGui isMain isDarwin;
+    inherit (base) hostName system isGui isMain isDarwin isWork;
 
     nixpkgs = {
       allowUnfree = true;
+    };
+
+    home = {
+      packages = with pkgs; [
+        viddy
+        kind
+        ghostscript
+        (google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ])
+        google-cloud-sql-proxy
+        ssh-to-age
+        terragrunt
+        vaultwarden
+        yubikey-manager.out
+      ];
     };
 
     flavors = {
@@ -74,22 +92,7 @@ in {
       _gui = {
         enable = base.isGui;
       };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          viddy
-          kind
-          ghostscript
-          (google-cloud-sdk.withExtraComponents [
-            google-cloud-sdk.components.gke-gcloud-auth-plugin
-          ])
-          google-cloud-sql-proxy
-          ssh-to-age
-          terragrunt
-          vaultwarden
-          yubikey-manager.out
-        ];
-      };
+
       gh = {
         enable = true;
       };

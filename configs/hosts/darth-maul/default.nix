@@ -4,30 +4,25 @@
   pkgs,
   ...
 }: let
-  sshKeyPaths = [
-    "/etc/ssh/ssh_host_ed25519_key"
-  ];
+  osBase = import ../base.nix;
+  base = import ./base.nix;
+
   users = {
     rdeville = {
       isSudo = true;
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../../pubkeys/rdeville-darth-maul.pub
-          ];
-        };
-      };
+      inherit (osBase.users) openssh;
     };
-    root = {};
+    root = {
+      inherit (osBase.users) openssh;
+    };
   };
+
   secrets = builtins.listToAttrs (builtins.map (user: {
     name = "users/${user}/password";
     value = {
       neededForUsers = true;
     };
   }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
-
-  base = import ./base.nix;
 in {
   imports = [
     ./hardware-configuration.nix
@@ -75,11 +70,6 @@ in {
   };
 
   hardware = {
-    bluetooth = {
-      enable = true;
-      powerOnBoot = true;
-    };
-
     graphics = {
       enable = true;
     };
@@ -98,7 +88,7 @@ in {
   sops = {
     inherit secrets;
     age = {
-      inherit sshKeyPaths;
+      inherit (osBase.sops) keyFile;
     };
     defaultSopsFile = ./secrets.enc.yaml;
   };
@@ -117,7 +107,7 @@ in {
   };
 
   os = {
-    inherit (base) hostName isGui isMain system;
+    inherit (base) hostName system isGui isMain;
 
     users = {
       inherit users;
@@ -146,6 +136,10 @@ in {
         hyprland = {
           enable = true;
         };
+      };
+
+      docker = {
+        enable = true;
       };
 
       ssh-server = {

@@ -1,6 +1,4 @@
 lib: let
-  default = import ../configs/accounts;
-
   mkImap = domain: conn_type: {
     port =
       if conn_type == "SSL/TLS"

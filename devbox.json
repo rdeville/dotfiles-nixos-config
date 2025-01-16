@@ -6,7 +6,7 @@
   },
   "shell": {
     "init_hook": [
-      "./devbox/init_hook/pre-commit.sh"
+      "./.devbox/init_hook/pre-commit.sh"
     ]
   }
 }

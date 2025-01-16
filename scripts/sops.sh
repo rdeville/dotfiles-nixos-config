@@ -92,19 +92,22 @@ commit() {
   done
 }
 
-update() {
+update_keys() {
   age="age.enc.txt"
-  ssh="ssh_host_ed25519_key.pub.enc.asc"
+
+  echo "    # Personnal Superuser"
+  echo "  - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9"
+
   for host in "${repo_dir}/configs/hosts/"*; do
     if [[ -d ${host} ]]; then
       hostname=$(basename "${host}")
-      private="${host}/${ssh}"
+      private="${host}/${age}"
       echo "    # ${hostname^}"
 
       if [[ -f ${private} ]] && grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
         anchor="&os-${hostname}"
-        pub=$(sops -d "${private}" | ssh-to-age)
-        echo "  - ${anchor} ${pub}"
+        pub="$(sops -d "${private}" | grep "public key: " | cut -d ":" -f 2)"
+        echo "  - ${anchor}${pub}"
       fi
 
       for user in "${host}/"*; do
@@ -122,6 +125,102 @@ update() {
   done
 }
 
+_show_path_regex() {
+  local dir=${1}
+  local anchor=${2}
+  local comment=${3}
+  local type="${4:-dir}"
+
+
+  if [[ "${type}" == "file" ]];  then
+    echo "  - path_regex: ${dir}$"
+  elif [[ -n "${dir}" ]]; then
+    echo "  - path_regex: ${dir}/.*\.enc\.(yaml|json|asc|txt)$"
+  else
+    echo "  - path_regex: .*\.enc\.(yaml|json|asc|txt)$"
+  fi
+  if [[ -n "${comment}" ]]; then
+    echo "    # ${comment^}"
+  fi
+  echo "    key_groups:"
+  echo "      - age:"
+  echo "        - *rdeville"
+  if [[ -n "${anchor}" ]]; then
+    echo "        - *${anchor}"
+  fi
+}
+
+update_hosts_rules() {
+  for host in "${repo_dir}/configs/hosts/"*; do
+    if [[ -d ${host} ]]; then
+      hostname=$(basename "${host}")
+      private="${host}/${age}"
+      comment=""
+
+      for user in "${host}/"*; do
+        if [[ -d "${user}" ]]; then
+          username=$(basename "${user}")
+          anchor="hm-${username}-${hostname}"
+          if [[ -z "${comment}" ]]; then
+            comment="${hostname^}"
+          fi
+          _show_path_regex "${hostname}/${username}" "${anchor}" "${comment}"
+        fi
+      done
+
+      anchor="os-${hostname}"
+      _show_path_regex "${hostname}" "${anchor}"
+    fi
+  done
+}
+
+update_accounts_rules() {
+  for account_path in "${repo_dir}/configs/accounts/"*; do
+    if [[ -d "${account_path}" ]]; then
+      account=$(basename "${account_path}")
+      occurrences=$(grep -lr -E "${account}" "${repo_dir}/configs/hosts")
+
+      _show_path_regex  "${account}" "" "${account}"
+      for file in ${occurrences}; do
+        user_path=$(dirname "${file}")
+        user=$(basename "${user_path}")
+        host_path=$(dirname "${user_path}")
+        host=$(basename "${host_path}")
+        echo "        - *hm-${user}-${host}"
+      done
+    fi
+  done
+}
+
+update_common_secrets_rules() {
+  dir="common_secrets"
+  for secret in "${repo_dir}/${dir}/"*; do
+    secret="${dir}/$(basename "${secret}")"
+    occurrences=$(grep -lr -E "${secret}" "${repo_dir}/configs/hosts")
+
+    _show_path_regex  "${secret}" "" "" "file"
+    for file in ${occurrences}; do
+      user_path=$(dirname "${file}")
+      user=$(basename "${user_path}")
+      host_path=$(dirname "${user_path}")
+      host=$(basename "${host_path}")
+      echo "        - *hm-${user}-${host}"
+    done
+  done
+}
+
+update() {
+  echo "keys:"
+  update_keys
+
+  echo "creation_rules":
+  update_hosts_rules
+  update_accounts_rules
+  update_common_secrets_rules
+
+  _show_path_regex "" "" "Default encryption rules"
+}
+
 main() {
   export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
   init_logger
@@ -137,7 +236,7 @@ main() {
       '.creation_rules.[] as $item ireduce ([]; . += ($item.path_regex | sub("\\\/","/"))) | join("|")' \
       "${repo_dir}/.sops.yaml"
   )
-  secret_files=$(git ls-files | grep -E "${secret_regexp}")
+  secret_files=$(find "${repo_dir}" -type f -print | grep -E "${secret_regexp}")
 
   if [[ $# == 0 ]]; then
     _log "ERROR" "Script one of the following param : "

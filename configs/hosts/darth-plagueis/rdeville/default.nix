@@ -14,6 +14,14 @@
 in {
   extraConfig = {};
 
+  home = {
+    packages = with pkgs; [
+      hclfmt
+      terraform-docs
+      terragrunt
+    ];
+  };
+
   hm = {
     inherit username isGui isMain;
     inherit (os) hostName;
@@ -30,17 +38,6 @@ in {
             };
           };
         };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          hclfmt
-          terraform-docs
-          terragrunt
-        ];
-      };
-      podman = {
-        enable = true;
-      };
       opentofu = {
         enable = true;
       };
