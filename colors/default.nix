@@ -1,6 +1,3 @@
-let
-  colors = {
-    material-all = import ./material-all.nix;
-  };
-in
-  colors
+{
+  material-all = import ./material-all.nix;
+}

@@ -2,7 +2,7 @@
   name = builtins.baseNameOf ../.;
   subName = builtins.baseNameOf ./.;
 
-  colors = (import ../../../../colors).material-all;
+  colors = (import ../../../../colors).material-all.hex;
 in {
   inherit colors;
 

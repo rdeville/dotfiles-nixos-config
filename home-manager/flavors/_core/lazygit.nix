@@ -6,7 +6,7 @@
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
-  colors = import ../../../colors;
+  clr = (import ../../../colors).material-all.hex;
 in
   lib.mkIf cfg.enable {
     programs = {
@@ -17,40 +17,40 @@ in
             mouseEvent = false;
             theme = {
               activeBorderColor = [
-                colors.material-all.green_700
+                clr.green_700
               ];
               inactiveBorderColor = [
-                colors.material-all.grey_700
+                clr.grey_700
               ];
               searchingActiveBorderColor = [
-                colors.material-all.cyan_800
+                clr.cyan_800
                 "bold"
               ];
               optionsTextColor = [
-                colors.material-all.blue_500
+                clr.blue_500
                 "bold"
               ];
               selectedLineBgColor = [
-                colors.material-all.grey_800
+                clr.grey_800
               ];
               inactiveViewSelectedLineBgColor = [
-                colors.material-all.black
+                clr.black
               ];
               cherryPickedCommitFgColor = [
-                colors.material-all.blue_500
+                clr.blue_500
               ];
               cherryPickedCommitBgColor = [
-                colors.material-all.cyan_500
+                clr.cyan_500
               ];
               # Foreground color of marked base commit (for rebase)
               markedBaseCommitFgColor = [
-                colors.material-all.yellow_500
+                clr.yellow_500
               ];
               unstagedChangesColor = [
-                colors.material-all.red_500
+                clr.red_500
               ];
               defaultFgColor = [
-                colors.material-all.white
+                clr.white
               ];
               nerdFontsVersion = "3";
               showDivergenceFromBaseBranch = "arrowAndNumber";
