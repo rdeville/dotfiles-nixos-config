@@ -124,10 +124,5 @@ in {
         enable = cfg.hyprland.enable;
       };
     };
-
-    # List packages installed in system profile. To search, run:
-    environment.systemPackages = with pkgs;
-      [(lib.mkIf cfg.awesome.enable rofi)]
-      ++ [(lib.mkIf cfg.hyprland.enable wofi)];
   };
 }

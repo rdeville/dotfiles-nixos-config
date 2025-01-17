@@ -84,30 +84,34 @@ in {
   config = lib.mkIf (! config.hm.isDarwin) {
     programs = {
       firefox = {
-        profiles = {
-          rdeville-perso = {
-            id = 0;
-            isDefault = ! config.hm.isWork;
-            name = "rdeville-perso";
-            userContent = "";
-            settings = settings // {};
-            inherit
-              search
-              userChrome
-              ;
+        profiles =
+          if config.hm.isWork
+          then {
+            pro = {
+              id = 1;
+              isDefault = config.hm.isWork;
+              name = "pro";
+              userContent = "";
+              settings = settings // {};
+              inherit
+                search
+                userChrome
+                ;
+            };
+          }
+          else {
+            perso = {
+              id = 0;
+              isDefault = ! config.hm.isWork;
+              name = "perso";
+              userContent = "";
+              settings = settings // {};
+              inherit
+                search
+                userChrome
+                ;
+            };
           };
-          rdeville-pro = {
-            id = 1;
-            isDefault = config.hm.isWork;
-            name = "rdeville-pro";
-            userContent = "";
-            settings = settings // {};
-            inherit
-              search
-              userChrome
-              ;
-          };
-        };
       };
     };
   };

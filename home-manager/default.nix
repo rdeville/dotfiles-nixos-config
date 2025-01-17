@@ -67,18 +67,6 @@ in {
             default = false;
           };
 
-          isGui = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, setup GUI environnement.";
-            default = false;
-          };
-
-          isMain = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, setup Main environnement.";
-            default = false;
-          };
-
           sessionPath = lib.mkOption {
             type = lib.types.listOf lib.types.str;
             description = "Set user session path";
