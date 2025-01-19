@@ -2,7 +2,10 @@
   config,
   pkgs,
   ...
-}: {
+}: let
+  name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+in {
   gtk = {
     enable = ! config.hm.isDarwin;
     cursorTheme = {
@@ -11,8 +14,8 @@
       size = 0;
     };
     font = {
-      name = "FiraCode";
-      package = with pkgs; nerd-fonts.fira-code;
+      name = cfg.font.name;
+      package = cfg.font.pkgs;
       size = 10;
     };
     theme = {
