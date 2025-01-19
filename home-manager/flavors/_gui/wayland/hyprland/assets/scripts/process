@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+soft_error() {
+  notify-send "Hyprland Process" "Unsupported soft:'${soft}'"
+}
+
+action_error() {
+  notify-send "Hyprland Process" "Unsupported action:${action} for soft:'${soft}'"
+}
+
+is_service_active() {
+  if [[ $(systemctl is-active --user "${service_name}.service") == "active" ]]; then
+    return 0
+  else
+    return 1
+  fi
+}
+
+waybar_toggle() {
+  local service_name="waybar"
+
+  if is_service_active "${service_name}"; then
+    systemctl stop --user "${service_name}.service"
+    notify-send "Waybard Stopped"
+  else
+    systemctl start --user "${service_name}.service"
+    notify-send "Waybard Started"
+  fi
+}
+
+waybar_reload() {
+  systemctl restart --user waybar.service
+  notify-send "Waybard reloaded"
+}
+
+hyprland_reload() {
+  hyprctl reload
+  waybar_reload
+  notify-send "Hyprland Reloaded"
+}
+
+main() {
+  local soft="${1}"
+  local action="${2}"
+
+  case "${soft}" in
+  waybar)
+    case "${action}" in
+    reload|toggle) "waybar_${action}" ;;
+    *) action_error ;;
+    esac
+    ;;
+  hyprland)
+    case "${action}" in
+    reload) "hyprland_${action}" ;;
+    *) action_error ;;
+    esac
+    ;;
+  *)
+    soft_error
+    ;;
+  esac
+}
+
+main "$@"
