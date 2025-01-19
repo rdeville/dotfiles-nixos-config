@@ -89,6 +89,16 @@ in {
         config.os.users.users;
     };
 
+    environment = {
+      plasma6 = {
+        excludePackages = with pkgs.kdePackages; [
+          plasma-browser-integration
+          konsole
+          oxygen
+        ];
+      };
+    };
+
     services = {
       xserver = {
         displayManager = {
@@ -106,6 +116,12 @@ in {
             ];
             package = awesomePkg;
           };
+        };
+      };
+
+      desktopManager = {
+        plasma6 = {
+          enable = true;
         };
       };
 
