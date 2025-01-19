@@ -1,6 +1,34 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.0 (2025-01-19)
+
+### ✨ Minor
+
+  * ✨ Add Hyprland (and friends) and KDE, minor refacto (!87) by Romain Deville ([`b23eb4b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b23eb4b33cbaae81d62dd0f15dc073359fe9f892))
+  * ✨(os/flavors/wm): Add enabled KDE Plasme DE by Romain Deville ([`f7dbc09`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7dbc09f5f529bc256c8626c2cd636c48e4ec3ad)) 🔏
+  * ✨(hm/flavors/_gui/wayland): Add wayland config by Romain Deville ([`956be55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/956be55b0e876d5f7d8c95934927f637a550a5f6)) 🔏
+  * ✨(hm/flavors/_gui/wayland): Add wayland.hyprland config by Romain Deville ([`9cdcf06`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9cdcf06c7478333365879ced9aafcdd921be7ddf)) 🔏
+  * ✨(hm/flavors/_gui/wayland): Add wayland.wl-kbptr config by Romain Deville ([`4fde5cd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4fde5cdc8268e8f9b3371c17fdc145454e753490)) 🔏
+  * ✨(hm/flavors/_gui/wayland): Add wayland.waybar config by Romain Deville ([`95bbcf2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/95bbcf2180ffdb25e72a8ed6d8d56d30c42c0dc4)) 🔏
+  * ✨(hm/flavors/_gui/wayland): Add wayland.rofi config by Romain Deville ([`9d54325`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d543258d8811ed8c4ba32431780959497b2ccd2)) 🔏
+  * ✨(lib): Add new function to libs by Romain Deville ([`415d8d6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/415d8d6a6a4d7acb6d5f45aca3d4623025d4d922)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Update usage of colors according to new module structure by Romain Deville ([`88d7a8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/88d7a8c68c93cf2c03ba109464053486c1e90a1c)) 🔏
+  * ⚡️(colors): Move colors to a module by Romain Deville ([`97cb678`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/97cb678f6bf9b2f79c3dbe47e769a949fe9479ef)) 🔏
+  * ➕(flake): Add hyprland (and friends) as inputs by Romain Deville ([`4cdab12`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4cdab12b559e314e522373aa0c60acdebfe652c9)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`9af93ce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9af93ce691b5a2f1f343b9788506aaa37e746e2b)) 🔏
+  * 🏷️(hm/flavors/_gui): Add font options to flavors gui by Romain Deville ([`9fe6ba3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9fe6ba36cd463fe78655b48ebaf60722d894d312)) 🔏
+  * 🏷️(clr): Update material-all colors structure by Romain Deville ([`c4eb358`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4eb358b738379ce463d712441bc6c1b9cdeac71)) 🔏
+  * 🐛(hm/flavors/_core): Update core font name by Romain Deville ([`5f5a539`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5f5a5391721fcaf287b5c79127b5f4422a2a8a06)) 🔏
+  * 📦️(hm/flavors/_gui): Add kolourpaints pkgs by Romain Deville ([`f7513d1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7513d15dfc1c75d8c5a19049ebeb56648b01bb0)) 🔏
+
+### 🔊 Others
+
+  * ♻️ Remove usess options and update firefox profile management by Romain Deville ([`e46178b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e46178b6ecd8cac7fffbd60a17dc0426d2fb4916)) 🔏
+
 ## v0.28.1 (2025-01-15)
 
 ### 🩹 Patch
