@@ -43,7 +43,6 @@ in {
           extraConfig = ''
             # wl-kbptr
             # ----------------------------------------------------
-            bind=$mod,a,exec,wl-kbptr
             # Cursor submap (similar to the Mouse mode in Sway)
             submap=cursor
 
@@ -76,7 +75,7 @@ in {
 
             # Entrypoint
             # If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective cals
-            bind=$mod,g,exec,hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor
+            bind=$mod,a,exec,hyprctl keyword cursor:inactive_timeout 0; hyprctl keyword cursor:hide_on_key_press false; hyprctl dispatch submap cursor
           '';
         };
       };
@@ -104,7 +103,7 @@ in {
             # red_A200 = "${clr.red_A200}";
 
             [mode_tile]
-            label_color=${clr.grey_300}90
+            label_color=${clr.grey_300}B0
             label_select_color=${clr.light_green_A400}ff
             unselectable_bg_color=${clr.grey_700}00
             selectable_bg_color=${clr.light_green_800}20
