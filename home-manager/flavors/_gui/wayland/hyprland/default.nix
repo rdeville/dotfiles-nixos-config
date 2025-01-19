@@ -32,15 +32,7 @@ in {
                   List of Hyprland default plugins to use.
                   Can either be packages or absolute plugin paths.
                 '';
-                default = [
-                  # FIX: Manage to install plugins.
-                  # REMARK: hycov is currently (2025-01-17) broken
-                  # hy3
-                  # hycov
-                  # hyprspace
-                  # hyprexpo
-                  # hyprsplit
-                ];
+                default = [];
               };
 
               extraSettings = lib.mkOption {
@@ -107,6 +99,8 @@ in {
         packages = with pkgs; [
           kitty
           hyprpolkitagent
+          pipewire
+          wireplumber
         ];
       };
 
@@ -127,15 +121,22 @@ in {
               systemd
               ;
 
+            xwayland = {
+              enable = true;
+            };
+
             plugins = cfg.plugins;
 
             extraConfig =
               ''
-                exec-once = "$terminal"
-                exec-once = "keepassxc"
-                exec-once = systemctl --user start hyprpolkitagent
+                exec-once=$terminal
+                exec-once=keepassxc
+                exec-once=systemctl --user start hyprpolkitagent
+                exec-once=systemctl --user start xdg-desktop-portal-hyprland
+                exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
               ''
               + cfg.extraConfig;
+
             settings =
               {
                 "$terminal" = "kitty";
@@ -196,7 +197,6 @@ in {
                 # d -> has description, will allow you to write a description for your bind.
                 # p -> bypasses the app's requests to inhibit keybinds.
                 bind = [
-                  # "$mod, $tab, exec, hyprswitch gui --mod-key $mod --key $tab --max-switch-offset 9 --hide-active-window-border"
                   "$mod $ctrl, Q, exec, $menu -show power-menu -modi 'power-menu:rofi-power-menu --confirm=shutdown/reboot'"
                   "$mod $shift, Q, exec, hyprlock"
                   "$mod $shift, R, exec, ${config.xdg.configHome}/${scriptPath}/process hyprland reload"
@@ -208,8 +208,6 @@ in {
                   # Window management
                   "$mod, M, fullscreen, 1"
                   "$mod, F, togglefloating,"
-                  # Cycle recent workspaces
-                  "$mod, $tab, workspace,previous"
                   # Move focus
                   "$mod, h, movefocus, l"
                   "$mod, l, movefocus, r"
@@ -290,7 +288,7 @@ in {
                 ];
 
                 animations = {
-                  enabled = false;
+                  enabled = true;
                 };
               }
               // cfg.extraSettings;
