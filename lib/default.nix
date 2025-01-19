@@ -36,6 +36,12 @@ inputs: lib: let
       default = true;
     };
 
+  mkDependEnabledOption = description: default:
+    lib.mkOption {
+      inherit description default;
+      type = lib.types.bool;
+    };
+
   nixGLWrap = pkg: nixpkgs:
     nixpkgs.runCommand "${pkg.name}-nixgl-wrapper" {} ''
       mkdir $out
@@ -61,6 +67,7 @@ in {
     listDirs
     listFiles
     mkDefaultEnabledOption
+    mkDependEnabledOption
     nixGLWrap
     pkgsForSystem
     ;
