@@ -45,6 +45,24 @@
       url = "github:awesomeWM/awesome/master";
       flake = false;
     };
+    hyprswitch = {
+      url = "github:h3rmt/hyprswitch/release";
+    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    # };
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    warpd = {
+      url = "github:rvaiya/warpd";
+      flake = false;
+    };
+    rofi-themes = {
+      url = "github:adi1090x/rofi";
+      flake = false;
+    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";

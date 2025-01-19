@@ -5,6 +5,7 @@
 }: let
   linuxPkgs = with pkgs; [
     arandr
+    kolourpaint
   ];
   darwinPkgs = [];
 in {

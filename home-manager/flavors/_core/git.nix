@@ -6,21 +6,21 @@
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
-  colors = (import ../../../colors/default.nix).material-all;
+  clr = config.colors.material.hex;
 
-  green = colors.green_500;
-  light_green = colors.light_green_500;
-  lime = colors.lime_500;
-  yellow = colors.yellow_500;
-  amber = colors.amber_500;
-  orange = colors.orange_500;
-  deep_orange = colors.deep_orange_500;
-  red = colors.red_500;
-  purple = colors.purple_500;
-  deep_purple = colors.deep_purple_500;
-  cyan = colors.cyan_500;
-  light_blue = colors.light_blue_500;
-  indigo = colors.indigo_500;
+  green = clr.green_500;
+  light_green = clr.light_green_500;
+  lime = clr.lime_500;
+  yellow = clr.yellow_500;
+  amber = clr.amber_500;
+  orange = clr.orange_500;
+  deep_orange = clr.deep_orange_500;
+  red = clr.red_500;
+  purple = clr.purple_500;
+  deep_purple = clr.deep_purple_500;
+  cyan = clr.cyan_500;
+  light_blue = clr.light_blue_500;
+  indigo = clr.indigo_500;
 in {
   options = {
     hm = {

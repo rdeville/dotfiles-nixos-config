@@ -6,7 +6,11 @@
 }: let
   cfg = config.hm;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports =
+    builtins.map (item: ./${item}) (lib.importDir ./.)
+    ++ [
+      ../modules
+    ];
 
   options = {
     hm = lib.mkOption {
@@ -64,18 +68,6 @@ in {
           isWork = lib.mkOption {
             type = lib.types.bool;
             description = "Boolean, set to true to host is my professional computer.";
-            default = false;
-          };
-
-          isGui = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, setup GUI environnement.";
-            default = false;
-          };
-
-          isMain = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, setup Main environnement.";
             default = false;
           };
 

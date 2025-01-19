@@ -3,7 +3,10 @@
   lib,
   pkgs,
   ...
-}: {
+}: let
+  name = builtins.baseNameOf ../.;
+  cfg = config.hm.flavors.${name};
+in {
   programs = {
     kitty = {
       enable = true;
@@ -19,8 +22,8 @@
         "ctrl+shift+l" = "next_tab";
       };
       font = {
-        name = "FiraCode Nerd Fonts Mono";
-        package = with pkgs; nerd-fonts.fira-code;
+        name = cfg.font.name;
+        package = cfg.font.pkgs;
       };
       settings = {
         # Kitty Configuration File

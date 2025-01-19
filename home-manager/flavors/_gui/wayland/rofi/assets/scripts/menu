@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# shellcheck disable=SC2034
+SCRIPTPATH="$(
+  cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
+  pwd -P
+)"
+SCRIPTNAME="$(basename "$0")"
+set -e
+
+notify() {
+  local urgency="$1"
+  local title="$2"
+  local msg="$3"
+  local icon="$4"
+  notify-send \
+    -u "${urgency}" \
+    -i "${icon}" \
+    "${title}" "${msg}" &
+}
+
+check_requirement() {
+  # Must have xclip installed to even show menu.
+  if ! command -v "$1" >/dev/null; then
+    notify \
+      "critical" \
+      "Missing Requirement" \
+      "'xclip' command not found, please install it"
+    exit 1
+  fi
+}
+
+main() {
+  local filename="$1"
+
+  chosen=$(grep -v "#" -h "${SCRIPTPATH}/${filename}.txt" | rofi -dmenu)
+
+  [[ -n "${chosen}" ]] || exit
+
+  chosen=${chosen// */}
+  if [[ -z "${WAYLAND_DISPLAY}" ]];
+  then
+    check_requirement "xclip"
+    echo "${chosen}" | tr -d '\n' | xclip -selection clipboard
+  else
+    check_requirement "wl-clip"
+    echo "${chosen}" | tr -d '\n' | wl-clip -selection clipboard
+  fi
+  notify "low" "Rofi Unicode" "Gitmoji: ${chosen}\nCopied to clipboard." &
+}
+
+main "$@"

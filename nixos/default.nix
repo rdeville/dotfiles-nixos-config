@@ -6,7 +6,11 @@
 }: let
   cfg = config.os;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports =
+    builtins.map (item: ./${item}) (lib.importDir ./.)
+    ++ [
+      ../modules
+    ];
 
   options = {
     os = lib.mkOption {
@@ -62,19 +66,6 @@ in {
           };
 
           # BOOLEAN TO PARAMETERIZE SOME FLAVORS
-          isMain = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, setup Main environnement.";
-            default = false;
-          };
-
-          isGui = lib.mkOption {
-            type = lib.types.bool;
-            readOnly = true;
-            description = "If true, setup GUI environnement.";
-            default = cfg.flavors.window-manager.enable || false;
-          };
-
           console = {
             keyMap = lib.mkOption {
               type = lib.types.either lib.types.str lib.types.path;

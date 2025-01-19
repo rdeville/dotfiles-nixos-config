@@ -1,0 +1,42 @@
+#!/nix/store/5mh7kaj2fyv8mk4sfq1brwxgc02884wi-bash-5.2p37/bin/bash
+
+SCRIPTPATH="$(
+  cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
+  pwd -P
+)"
+
+update_nerdfont() {
+  local url="https://raw.githubusercontent.com/8bitmcu/NerdFont-Cheat-Sheet/refs/heads/main/nerdfont.txt"
+  local out="${SCRIPTPATH}/nerdfont.txt"
+
+  curl --silent --compressed "${url}" > "${out}"
+}
+
+update_emoji() {
+  local version='16.0'
+  local url="https://www.unicode.org/Public/emoji/${version}/emoji-test.txt"
+  local out="${SCRIPTPATH}/emoji.txt"
+
+  curl --silent --compressed "${url}" |
+    sed -nE 's/^.+fully-qualified\s+#\s(\S+) E[0-9.]+ / \1 /p' |
+    sed -e "s/^ //g" >"${out}"
+}
+
+update_gitmoji() {
+  local url="https://raw.githubusercontent.com/carloscuesta/gitmoji/master/packages/gitmojis/src/gitmojis.json"
+  local out="${SCRIPTPATH}/gitmoji.txt"
+  curl --silent --compressed "${url}" |
+    jq '.gitmojis[] | .emoji + " " + .code + " " + .description ' |
+    sed 's/"//g' | tr '[:upper:]' '[:lower:]' >"${out}"
+}
+
+main() {
+  echo "Updating Unicode"
+  update_emoji
+  echo "Updating Gitmoji"
+  update_gitmoji
+  echo "Updating NerdFont Icons"
+  update_nerdfont
+}
+
+main "$@"

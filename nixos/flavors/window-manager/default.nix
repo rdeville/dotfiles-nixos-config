@@ -89,6 +89,16 @@ in {
         config.os.users.users;
     };
 
+    environment = {
+      plasma6 = {
+        excludePackages = with pkgs.kdePackages; [
+          plasma-browser-integration
+          konsole
+          oxygen
+        ];
+      };
+    };
+
     services = {
       xserver = {
         displayManager = {
@@ -109,6 +119,12 @@ in {
         };
       };
 
+      desktopManager = {
+        plasma6 = {
+          enable = true;
+        };
+      };
+
       displayManager = {
         defaultSession =
           if cfg.awesome.enable
@@ -124,10 +140,5 @@ in {
         enable = cfg.hyprland.enable;
       };
     };
-
-    # List packages installed in system profile. To search, run:
-    environment.systemPackages = with pkgs;
-      [(lib.mkIf cfg.awesome.enable rofi)]
-      ++ [(lib.mkIf cfg.hyprland.enable wofi)];
   };
 }
