@@ -38,31 +38,52 @@
     };
     # My Personal Public NixOS /HM Config
     nixos = {
+      # url = "git+file:///home/rdeville/git/framagit.org/private/dotfiles/nixos-config";
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
         alejandra.follows = "alejandra";
         awesome.follows = "awesome";
         home-manager.follows = "home-manager";
+        hyprswitch.follows = "hyprswitch";
+        # hyprland.follows = "hyprland";
+        # hyprspace.follows = "hyprspace";
         nixpkgs.follows = "nixpkgs";
+        nix-index-database.follows = "nix-index-database";
+        rofi-themes.follows = "rofi-themes";
         sops-nix.follows = "sops-nix";
         utils.follows = "utils";
-        colmena.follows = "colmena";
-        nix-index-database.follows = "nix-index-database";
       };
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    colmena = {
-      url = "github:zhaofengli/colmena";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     awesome = {
       url = "github:awesomeWM/awesome";
       flake = false;
     };
-
+    hyprswitch = {
+      url = "github:h3rmt/hyprswitch/release";
+    };
+    # hyprland = {
+    #   url = "github:hyprwm/Hyprland";
+    # };
+    # hyprland-plugins = {
+    #   url = "github:hyprwm/hyprland-plugins";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    # hyprspace = {
+    #   url = "github:KZDKM/Hyprspace";
+    #   inputs.hyprland.follows = "hyprland";
+    # };
+    warpd = {
+      url = "github:rvaiya/warpd";
+      flake = false;
+    };
+    rofi-themes = {
+      url = "github:newmanls/rofi-themes-collection";
+      flake = false;
+    };
     # My personal dotfiles flakes
     awesomerc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/awesomewm.git";
