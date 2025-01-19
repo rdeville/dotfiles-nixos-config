@@ -6,7 +6,7 @@
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
-  clr = (import ../../../colors).material-all.hex;
+  clr = config.colors.material.hex;
 in
   lib.mkIf cfg.enable {
     programs = {

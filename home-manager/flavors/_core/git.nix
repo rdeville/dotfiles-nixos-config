@@ -6,7 +6,7 @@
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
 
-  clr = (import ../../../colors/default.nix).material-all.hex;
+  clr = config.colors.material.hex;
 
   green = clr.green_500;
   light_green = clr.light_green_500;

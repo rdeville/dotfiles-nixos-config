@@ -6,7 +6,11 @@
 }: let
   cfg = config.os;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports =
+    builtins.map (item: ./${item}) (lib.importDir ./.)
+    ++ [
+      ../modules
+    ];
 
   options = {
     os = lib.mkOption {

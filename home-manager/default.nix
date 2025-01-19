@@ -6,7 +6,11 @@
 }: let
   cfg = config.hm;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports =
+    builtins.map (item: ./${item}) (lib.importDir ./.)
+    ++ [
+      ../modules
+    ];
 
   options = {
     hm = lib.mkOption {
