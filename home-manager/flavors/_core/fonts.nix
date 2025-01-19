@@ -29,9 +29,9 @@ in
             "noto-fonts-color-emoji"
             "font-awesome"
           ];
-          monospace = ["FiraCode"];
-          sansSerif = ["FiraCode"];
-          serif = ["FiraCode"];
+          monospace = ["FiraCode Nerd Font"];
+          sansSerif = ["FiraCode Nerd Font"];
+          serif = ["FiraCode Nerd Font"];
         };
       };
     };
