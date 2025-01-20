@@ -2,7 +2,6 @@
   inputs,
   config,
   lib,
-  pkgs,
   ...
 }: let
   name = builtins.baseNameOf ../../.;
@@ -41,12 +40,12 @@ in {
           extraConfig = ''
             # hyprswitch
             # ----------------------------------------------------
-            # exec-once = "hyprswitch init --show-title --size-factor 5.5 --workspaces-per-row 5 &"
+            exec-once=hyprswitch init --show-title --size-factor 5.5 --workspaces-per-row 5 &
 
-            # Cursor submap (similar to the Mouse mode in Sway)
-            submap = hyprswitch
+            # submap, a custom mode for hyprswitch
+            submap=hyprswitch
 
-            submap = reset
+            submap=reset
 
             # Entrypoint
             # If you do not use cursor timeout or cursor:hide_on_key_press, you can delete its respective cals
