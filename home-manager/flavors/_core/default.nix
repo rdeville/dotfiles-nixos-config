@@ -78,6 +78,11 @@ in {
     programs = {
       atuin = {
         enable = true;
+        settings = {
+          invert = true;
+          keymap_mode = "vim-insert";
+          enter_accept = true;
+        };
         # flags = [
         #   "--disable-up-arrow"
         # ];

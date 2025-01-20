@@ -7,6 +7,7 @@ in {
     ./hyprlock
     ./hyprswitch
     ./hyprexpo
+    ./hyprspace
     ./rofi
     ./waybar
     ./wl-kbptr

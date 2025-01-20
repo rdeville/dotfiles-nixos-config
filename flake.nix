@@ -48,13 +48,6 @@
     hyprswitch = {
       url = "github:h3rmt/hyprswitch/release";
     };
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    # };
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
     warpd = {
       url = "github:rvaiya/warpd";
       flake = false;

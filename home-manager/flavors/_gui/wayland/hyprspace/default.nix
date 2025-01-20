@@ -32,26 +32,12 @@ in {
       windowManager = {
         hyprland = {
           plugins = [
-            pkgs.hyprlandPlugins.hyprexpo
+            pkgs.hyprlandPlugins.hyprspace
           ];
-
-          extraConfig = ''
-            plugin {
-              hyprexpo {
-                columns = 3
-                gap_size = 5
-                bg_col = rgb(111111)
-                # [center/first] [workspace] e.g. first 1 or center m+1
-                workspace_method = center current
-
-                enable_gesture = false
-              }
-            }
-          '';
 
           settings = {
             bind = [
-              "$mod, space, hyprexpo:expo, toggle"
+              "$mod $shift, E, overview:toggle"
             ];
           };
         };
