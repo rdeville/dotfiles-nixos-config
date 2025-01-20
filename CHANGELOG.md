@@ -1,6 +1,25 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.30.0 (2025-01-20)
+
+### ✨ Minor
+
+  * ✨(hm/_gui/wayland): Add wayland.hyprspace and fix screen sharing (!88) by Romain Deville ([`efcb081`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/efcb081feec6b36b889ae1af0f1467292cd1dd5f))
+  * ✨(hm/_gui/wayland): Add wayland.hyprspace config by Romain Deville ([`f401840`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f401840e8f33f5f17694804074936297a7cb0a7e)) 🔏
+
+### 🩹 Patch
+
+  * ➕ Update flake.nix by Romain Deville ([`94bbf9a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/94bbf9a4d25fcb9ef23a67f01368bf8000886b73)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`b2d87fc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b2d87fc38eb41685489b4f16bc135268ccf78982)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`85e404e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/85e404e0b938dcf7591c85e038b92a0de54d2f79)) 🔏
+  * 🔧(hm/_gui/wayland): Update wayland config by Romain Deville ([`c3b1bcb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3b1bcb424ca86ae9dad792e3782a95842629a6a)) 🔏
+  * 🔧(hm/_gui/wayland): Update wayland.hyprswitch config by Romain Deville ([`510a988`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/510a988f60bcb6bc4be4dde7084214b39dc63f00)) 🔏
+  * 🔧(hm/_gui/wayland): Update wayland.hyprexpo config by Romain Deville ([`c4367bf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c4367bfeec3d611785f85aaf6a42f291302fa337)) 🔏
+  * 🔧(hm/_gui/wayland): Update wayland.hyprland config by Romain Deville ([`70cba21`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/70cba210efd0b2ce3c3da0fe60a45e776a32095d)) 🔏
+  * 🔧(hm/_gui/wayland): Update wayland.wl-kbptr config by Romain Deville ([`6ab8d8e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6ab8d8e2047e7d82fc2f26b644bd92582b6e7735)) 🔏
+  * 🔧(hm/_core): Update atuin config by Romain Deville ([`2f33730`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2f33730d55cbef408dd84a5b3414739d24cacfba)) 🔏
+
 ## v0.29.0 (2025-01-19)
 
 ### ✨ Minor
