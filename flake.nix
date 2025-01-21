@@ -77,12 +77,23 @@
       "x86_64-darwin"
       "aarch64-darwin"
     ];
+
+    # Function to manage Home Manager modules list for nixosConfigurations and
+    # homeManageConfigurations both at once
+    hmModules = user: [
+      # Local Modules
+      ./machines/dev/${user}
+      ./home-manager
+      # External Modules
+      inputs.sops-nix.homeManagerModules.sops
+      inputs.nix-index-database.hmModules.nix-index
+    ];
   in
     inputs.utils.lib.eachSystem allSystems (
       system: let
-        pkgs = mkLib.pkgsForSystem system;
+        pkgs = mkLib inputs.nixpkgs system;
       in {
-        legacyPackages = mkLib.pkgsForSystem system;
+        legacyPackages = pkgs;
 
         packages = {
           devenv-up = self.devShells.${system}.default.config.procfileScript;
@@ -119,5 +130,83 @@
         lib = mkLib inputs.nixpkgs "nixos";
       };
       nixosModule = self.nixosModules.os;
+
+      # NixOS Configurations
+      # ------------------------------------------------------------------------
+      nixosConfigurations = let
+        lib = mkLib inputs.nixpkgs "nixos";
+      in {
+        # Developpement machine configuration to test public build and show an
+        # example of configuration
+        dev = inputs.nixpkgs.lib.nixosSystem {
+          modules = [
+            # Machine configuration.nix using my `os` and `hm` modules and
+            # setting up some machine specific configurations (such as
+            # hardware-config)
+            ./machines/dev
+            # External Modules
+            inputs.sops-nix.nixosModules.sops
+            inputs.home-manager.nixosModules.home-manager
+            # Internal Modules
+            self.nixosModules.os
+
+            ({
+              inputs,
+              config,
+              lib,
+              ...
+            }: {
+              config = {
+                home-manager = {
+                  useGlobalPkgs = true;
+                  useUserPackages = true;
+                  extraSpecialArgs = {
+                    # Here the magic happens with inputs into home-manager
+                    inherit inputs;
+                  };
+                  # Auto configure HM users in NixOS using directory structure :
+                  # `machines/<hostName>/<userName>`
+                  users = builtins.foldl' (acc: user:
+                    {
+                      # Here is the magic to manage both HM/Nixos in a clean
+                      # homogeneous way
+                      "${user}" = {...}: {
+                        imports = hmModules user;
+                      };
+                    }
+                    // acc) {} (lib.listDirs ./machines/dev);
+                };
+              };
+            })
+          ];
+          specialArgs = {
+            inherit inputs lib;
+          };
+        };
+      };
+      # Home Manager Configurations
+      # ------------------------------------------------------------------------
+      homeConfigurations = let
+        lib = mkLib inputs.nixpkgs "home-manager";
+      in
+        # Auto configure HM users using directory structure :
+        # `machines/<hostName>/<userName>`
+        builtins.foldl' (acc: user:
+          {
+            "${user}@dev" = let
+              system = (import ./machines/dev/base.nix).system;
+            in
+              inputs.home-manager.lib.homeManagerConfiguration {
+                # inherit pkgs;
+                pkgs = lib.pkgsForSystem system;
+                # Here is the magic to manage both HM/Nixos in a clean
+                # homogeneous way
+                modules = hmModules user;
+                extraSpecialArgs = {
+                  inherit inputs lib;
+                };
+              };
+          }
+          // acc) {} (lib.listDirs ./machines/dev);
     };
 }
