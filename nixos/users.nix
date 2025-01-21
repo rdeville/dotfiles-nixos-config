@@ -61,6 +61,12 @@ in {
                   };
                 };
 
+                extraGroups = lib.mkOption {
+                  type = lib.types.listOf lib.types.str;
+                  description = "List of extra group for the user";
+                  default = [];
+                };
+
                 password = lib.mkOption {
                   type = lib.types.nullOr lib.types.str;
                   description = ''
@@ -121,6 +127,7 @@ in {
               else null;
             extraGroups =
               defaultGroup
+              ++ user.extraGroups
               ++ (sudoGroup user);
           }
         )
