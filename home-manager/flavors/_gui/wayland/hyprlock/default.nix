@@ -89,7 +89,7 @@ in {
             inner_color = "rgba(0,0,0,0)";
             capslock_color = "rgba(186, 104, 200,0.5)";
             fade_on_empty = true;
-            font_family = "FiraCode";
+            font_family = "FiraCode Nerd Font";
             hide_input = true;
             position = "0, -410";
             halign = "center";
