@@ -6,7 +6,7 @@
 in {
   hm = {
     inherit username;
-    inherit (base) hostName system isGui isMain;
+    inherit (base) hostName system isMain;
 
     flavors = {
       inherit (default.flavors) _core;
