@@ -20,11 +20,18 @@ in {
     };
     theme = {
       name = "Qogir-Manjaro-Dark";
-      package = with pkgs; qogir-theme;
+      package = (pkgs.qogir-theme.override {
+        themeVariants = ["manjaro"];
+        colorVariants = ["dark"];
+        tweaks = ["square"];
+      });
     };
     iconTheme = {
       name = "Qogir-manjaro";
-      package = with pkgs; qogir-icon-theme;
+      package = (pkgs.qogir-icon-theme.override {
+        themeVariants = ["manjaro"];
+        colorVariants = ["dark"];
+      });
     };
     gtk2 = {
       configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
