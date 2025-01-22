@@ -34,7 +34,7 @@
             {
               name = account.displayName;
               value =
-                if cfg.isGui
+                if cfg.flavors._gui.enable
                 then
                   (
                     lib.mkImportCfg type account.${type} config.hm
@@ -61,10 +61,14 @@
       )
       accounts));
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./flavors
+    ./assets
+  ];
 
   options = {
     hm = {
+      isMain = lib.mkEnableOption "Define HM is for a main computer.";
       userAccounts = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = "List of user accounts in config/accounts folder.";
