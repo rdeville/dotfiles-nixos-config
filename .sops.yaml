@@ -9,6 +9,10 @@ keys:
   - &os-darth-plagueis age1wcc9qfkk3alxjuf3p5u5yfguxrdqltu2gss96tx90wmg2te9vykqdqasm3
   - &hm-rdeville-darth-plagueis age1fv9wshc62xc8qcxcavt0550uwakggsur0qp737nyyy0wyqlqw59s9fmlgw
   - &hm-root-darth-plagueis age1sxgexrse6zhtneey6s70rvuwy5zm6yltuasm7gjupstsr5s73vvqs858z2
+    # Dev
+  - &os-dev age1hk5a9lka69hm50gmafzjfd9rkyarmu2m64v0e6t9vspn2ttfu4aqdmatc7
+  - &hm-nixos-dev age15vdy2vlpfn9dr4uhaygyfr5ng7geqqmv38aa98l67mhzw2k69v9qq9rglz
+  - &hm-root-dev age13c5qr96srpn27m8ct5g2jymgnfa6ks5xyc8mypqmsfd9m37u7cls3dlhaw
     # FBLP-181
   - &os-FBLP-181 age1fuuuq5x54ermwumqyz2elwd3aqtvgqyhedzxu2p39zz2va32fc3sul45y0
   - &hm-romaindeville-FBLP-181 age1uxgqmys32n6h5xm8stqp8hfj349slq9cy3dl9slj3aa6tpu5ssqsqu32ps
@@ -58,6 +62,23 @@ creation_rules:
       - age:
         - *rdeville
         - *os-darth-plagueis
+  - path_regex: dev/nixos/.*\.enc\.(yaml|json|asc|txt)$
+    # Dev
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-nixos-dev
+  - path_regex: dev/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Dev
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-root-dev
+  - path_regex: dev/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-dev
   - path_regex: FBLP-181/romaindeville/.*\.enc\.(yaml|json|asc|txt)$
     # FBLP-181
     key_groups:
