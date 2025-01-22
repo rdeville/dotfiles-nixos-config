@@ -1,6 +1,25 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.31.0 (2025-01-22)
+
+### ✨ Minor
+
+  * ✨(flake): Update flake.nix with dev vm as example (!89) by Romain Deville ([`8b91279`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8b91279a1b4cd9afe355cf6e17821e154977d905))
+
+### 🩹 Patch
+
+  * ✏️(hm/_gui/wayland): Fix font family name in wayland.hyprlock by Romain Deville ([`4d219a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4d219a60c3c6c066d6344b583fb707a199ba9011)) 🔏
+  * ➖(flake): Remove inputs not used anymore by Romain Deville ([`4ab9097`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4ab90979bc84d07bda73694ac7c420c76a563bf1)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`f79e042`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f79e04267739cf175f446af2170e2f1c5974be95)) 🔏
+  * 🏷️(os/users): Add extraGroups options to os.users.users.&lt;name&gt; by Romain Deville ([`bfea4ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bfea4add007e174af486f87b2d9b65c2711de2a0)) 🔏
+  * 🐛(hm/_gui): Fix qogir theme with manjaro dark varians by Romain Deville ([`d607f05`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d607f058d23e52c60b34ac3c88850971872f8313)) 🔏
+  * 🔧(machines): Add dev machine example to use as dev VM by Romain Deville ([`6993296`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6993296a788097150b1f18d9d4eeedc726f27718)) 🔏
+
+### 🔊 Others
+
+  * 🔨(flake): Update flake.nix with nixos and hm configuration example by Romain Deville ([`6fa7ff2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6fa7ff2da3749d1e11f16ea01d767367b8e700aa)) 🔏
+
 ## v0.30.0 (2025-01-20)
 
 ### ✨ Minor
