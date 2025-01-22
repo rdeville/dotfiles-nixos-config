@@ -11,6 +11,9 @@
     rdeville = {
       isSudo = true;
       inherit (osBase.users) openssh;
+      extraGroups = [
+        "ydotool"
+      ];
     };
     root = {
       inherit (osBase.users) openssh;
@@ -107,7 +110,7 @@ in {
   };
 
   os = {
-    inherit (base) hostName system isGui isMain;
+    inherit (base) hostName system;
 
     users = {
       inherit users;
