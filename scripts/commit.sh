@@ -22,14 +22,41 @@ usage() {
   _log "INFO" "Usage: ./commit ${ACTIONS} (HOSTNAME|all) [USERNAME|all] [HOST_DIR]"
 }
 
+_has_git_diff() {
+  for path in $commit_path; do
+    if [[ $(git diff -- "${path}" | wc -l) -gt 0 ]]; then
+      return
+    fi
+  done
+  return 1
+}
+
+_git_commit() {
+  for path in ${commit_path}; do
+    pre-commit run --files "${path}" &>>"${log_file}"
+    git add "${path}" &>>"${log_file}"
+  done
+  if ! git commit -m "${msg}" &>>"${log_file}"; then
+    # git restore --staged "$(git rev-parse --show-toplevel)"
+    return 1
+  fi
+}
+
 _commit() {
-  if [[ $(git diff -- "${commit_path}" | wc -l) -gt 0 ]]; then
+  if _has_git_diff; then
     _log "INFO" "Commit ${action} **${host}${user}**"
 
     local lvl=${1} # HM or OS
     local msg="${gitmoji}(cfg/host/${host}): Update ${lvl} ${host}${user} ${action}"
 
-    git commit "${commit_path}" -m "${msg}"
+    echo "INFO Commit ${action} **${host}${user}**" >>"${log_file}"
+    if ! _git_commit; then
+      _log "ERROR" "An error occured with commit of **${host}${user}**"
+      _log "ERROR" "See ./${log_file/"${PWD}/"/} for more details"
+    fi
+  else
+    _log "DEBUG" "Nothig to commit for ${action} **${host}${user}**"
+    _log "DEBUG" "${commit_path}"
   fi
 }
 
@@ -83,6 +110,8 @@ process_user() {
 }
 
 process_users() {
+  local old_arg_user="${arg_user}"
+
   if [[ "${arg_user}" == "none" ]]; then
     return
   elif [[ "${arg_user}" == "all" ]]; then
@@ -97,6 +126,8 @@ process_users() {
     abs_path+="/${arg_user}"
     process_user
   fi
+
+  arg_user="${old_arg_user}"
 }
 
 process_host() {
@@ -113,7 +144,6 @@ process_host() {
 
 process_hosts() {
   if [[ -z "${arg_host}" ]] || [[ "${arg_host}" == "all" ]]; then
-  echo "${action}"
     for host in "${abs_path}"/*; do
       if [[ -d "${host}" ]]; then
         abs_path="${host}"
@@ -123,7 +153,6 @@ process_hosts() {
       fi
     done
   else
-    echo "qslkdjfmqlksjdf"
     host="${arg_host}"
     abs_path+="/${arg_host_dir:-"${arg_host}"}"
     arg_user=${arg_user:-"all"}
@@ -177,6 +206,13 @@ main() {
     exit 1
   fi
 
+  local log_file="${SCRIPTPATH}/commit.log"
+  cat <<EOM >>"${log_file}"
+=========================================================
+$(date) - Running ${SCRIPTPATH}/$0
+---------------------------------------------------------
+
+EOM
 
   process_hosts
 }

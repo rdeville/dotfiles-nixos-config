@@ -32,6 +32,16 @@ in {
     };
   };
 
+  xdg = {
+    configFile = {
+      "discord/settings.json" = {
+        text = builtins.toJSON {
+          SKIP_HOST_UPDATE = true;
+        };
+      };
+    };
+  };
+
   home = {
     shellAliases = {
       docker = "sudo docker";
@@ -62,7 +72,7 @@ in {
 
   hm = {
     inherit username;
-    inherit (base) hostName system isGui isMain;
+    inherit (base) hostName system isMain;
 
     userAccounts = [
       "contact@romaindeville.fr"

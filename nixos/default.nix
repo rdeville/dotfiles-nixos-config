@@ -1,43 +1,28 @@
 {
-  config,
   inputs,
+  config,
   lib,
   ...
-}: {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
-
+}: let
+  cfg = config.os;
+in {
   config = {
     home-manager = {
       useGlobalPkgs = true;
       useUserPackages = true;
-      users = builtins.listToAttrs (
-        builtins.map (
-          user: {
-            name = "${user}";
-            value = {
-              imports = [
-                # Local Modules
-                ../configs/hosts/${config.os.hostName}/${user}
-                ../home-manager
-                # External Modules
-                inputs.nixos.inputs.sops-nix.homeManagerModules.sops
-                inputs.nixos.inputs.nix-index-database.hmModules.nix-index
-                # Internal Modules
-                inputs.nixos.homeManagerModules.hm
-                # Personnal home-manager packaged dotfiles
-                inputs.awesomerc.homeManagerModules.awesomerc
-                inputs.direnvrc.homeManagerModules.direnvrc
-                inputs.neovimrc.homeManagerModules.neovimrc
-                inputs.tmuxrc.homeManagerModules.tmuxrc
-                inputs.zshrc.homeManagerModules.shellrc
-                # Personnal packaged programs
-                inputs.dotgit-sync.homeManagerModules.dotgit-sync
-              ];
-            };
-          }
-        )
-        (lib.listDirs ../configs/hosts/${config.os.hostName})
-      );
+      extraSpecialArgs = {
+        # Here the magic happens with inputs into home-manager
+        inherit inputs;
+      };
+      users = builtins.foldl' (acc: user:
+        {
+          # Here is the magic to manage both HM/Nixos in a clean homogeneous way
+          "${user}" = import ../home-manager/_modules.nix {
+            host = cfg.hostName;
+            inherit inputs user;
+          };
+        }
+        // acc) {} (lib.listDirs ../configs/hosts/${cfg.hostName});
     };
   };
 }

@@ -5,18 +5,13 @@
   ...
 }: let
   base = import ./base.nix;
+  osBase = import ../base.nix;
 
   users = {
     nixos = {
       isSudo = true;
       password = "nixos";
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../../pubkeys/nixos-bootable-usb.pub
-          ];
-        };
-      };
+      inherit (osBase.users) openssh;
     };
     root = {
       password = "root";
@@ -79,6 +74,9 @@ in {
       window-manager = {
         enable = base.isGui;
         awesome = {
+          enable = true;
+        };
+        hyprland = {
           enable = true;
         };
       };

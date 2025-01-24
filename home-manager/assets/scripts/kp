@@ -108,9 +108,10 @@ main() {
 
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
-  local limit=$(($(date +%s) + 5))
+  local timeout=5
   local found=false
-  while [[ "$(date +%s)" -lt "${limit}" ]] && [[ "${found}" == "false" ]]; do
+  while [[ "$(date +%s)" -lt $(($(date +%s) + timeout)) ]] && [[ "${found}" == "false" ]]; do
+    # Execute command and store STDOUT and STDERR
     {
       IFS=$'\n' read -r -d '' STDERR
       IFS=$'\n' read -r -d '' STDOUT
@@ -131,8 +132,7 @@ main() {
 
   # If output of command is empty
   if [[ -z "${STDOUT}" ]]; then
-    _log "INFO" "Output of following command is empty:"
-    _log "INFO" "  \`${cmd}\`"
+    _log "INFO" "Output of \`$*\` is empty."
     return 4
   fi
   echo "${STDOUT}"
