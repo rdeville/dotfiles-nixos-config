@@ -6,14 +6,14 @@
 }: let
   name = builtins.baseNameOf ./.;
 
-  cfg = config.hm.flavors.${name}.redshift;
+  cfg = config.hm.flavors.${name}.gammastep;
 in {
   options = {
     hm = {
       flavors = {
         ${name} = {
-          redshift = {
-            enable = lib.mkEnableOption "Enable redshift installation.";
+          gammastep = {
+            enable = lib.mkEnableOption "Enable gammastep installation.";
           };
         };
       };
@@ -21,9 +21,9 @@ in {
   };
   config = {
     services = {
-      redshift = {
+      gammastep = {
         enable = ! config.hm.isDarwin && cfg.enable;
-        package = with pkgs; redshift;
+        package = with pkgs; gammastep;
         dawnTime = "6:30-8:00";
         duskTime = "22:00-23:30";
         provider = "manual";
@@ -33,10 +33,10 @@ in {
         };
         tray = true;
         settings = {
-          # Global settings for redshift
-          redshift = {
+          # Global settings for gammastep
+          gammastep = {
             # Set the day and night screen temperatures
-            # Disable the smooth fade between temperatures when Redshift starts and stops.
+            # Disable the smooth fade between temperatures when gammastep starts and stops.
             fade = 1;
             # Set the screen brightness for day and nigh
             brightness-day = 1.0;
