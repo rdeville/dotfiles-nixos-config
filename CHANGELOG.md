@@ -1,6 +1,54 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.8.0 (2025-01-24)
+
+### ✨ Minor
+
+  * ✨ Add hyprland module to darth-maul and dev machine (!40) by Romain Deville ([`16f9947`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/16f994720660ce5f1014da67048c68000f342a93))
+
+### 🩹 Patch
+
+  * ⚡️(scripts): Improve scripts behaviour and logging by Romain Deville ([`2083be3`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2083be30153e627734e811790c5551497fb182b5)) 🔏
+  * ➕ Update flake.nix by Romain Deville ([`99c2533`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/99c253324e9d70a43b659e602a501adf88dc15a4)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`ce3db4d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ce3db4da0bcac550b646b7f4ea1887b7e3d02ca6)) 🔏
+  * 🐛(cfg/hosts/darth-maul): Use nvidia stable instead of latest by Romain Deville ([`74a2d19`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/74a2d19b4407b064a6e88eb5b7ef2807d800e12c)) 🔏
+  * 🔧(cfg/hosts/darth-maul): Deactivate discord autoupdate with config by Romain Deville ([`ced89e8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ced89e8fcd11016334cc10112a7729aca0c66c28)) 🔏
+  * 🔧(sops): Add dev machine with user to .sops.yaml by Romain Deville ([`b662cd0`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b662cd0d1440e5b49d1dde9c946cb8567d3505b5)) 🔏
+  * 🔧(cfg/host/usb-amd64): Update OS usb-amd64 config by Romain Deville ([`e464831`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e46483154b8648f7453ccdf9d4b53dc36e9a45ce)) 🔏
+  * 🔧(cfg/host/dev): Update OS dev config by Romain Deville ([`894e717`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/894e71757082f57d1758347e054692a7a4260a0d)) 🔏
+  * 🔧(cfg/host/dev): Update HM dev:root config by Romain Deville ([`2e1342d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2e1342d8b0c1ec3d3b58d3d668175d5a1a5f8d4d)) 🔏
+  * 🔧(cfg/host/dev): Update HM dev:nixos config by Romain Deville ([`d26f846`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d26f8468eb14bc8cdc242accc4e5c95862363041)) 🔏
+  * 🔧(cfg/host/darth-maul): Update OS darth-maul config by Romain Deville ([`e3713af`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e3713afbb258925641572bf088c5e8c38f61096a)) 🔏
+  * 🔧(cfg/host/darth-maul): Update HM darth-maul:root config by Romain Deville ([`7a84702`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7a847028794002fb52fbe69a8de12c5d733ab17f)) 🔏
+  * 🔧(cfg/host/darth-maul): Update HM darth-maul:rdeville config by Romain Deville ([`0574a08`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/0574a0829e1a4a564717169a8bd50a442f37f594)) 🔏
+
+### 🔊 Others
+
+  * ♻️ Refacto way HM modules are managed with nixosConfiguration by Romain Deville ([`482431d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/482431d75699afdc09715041cb45c24d63816433)) 🔏
+  * 🔐(common): Rotate spotify.enc.yaml by Romain Deville ([`15cc6dc`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/15cc6dc89a9c2be318661b6277a5cb0c8178593b)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update OS age &amp; ssh usb-amd64 key by Romain Deville ([`8139373`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/813937301a901998d3949735b5d33bcad93ced26)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update HM age &amp; ssh usb-amd64:root key by Romain Deville ([`4c423de`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/4c423de90b589dca34d1323cbc9999adcf76d809)) 🔏
+  * 🔐(cfg/host/usb-amd64): Update HM age &amp; ssh usb-amd64:nixos key by Romain Deville ([`362eebd`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/362eebd67a60a4acef2a6aa6070087721dfcb1ea)) 🔏
+  * 🔐(cfg/host/rey): Update OS rey secret by Romain Deville ([`c0b3fc0`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c0b3fc08f47a448f0a91dc601c707e795e1de46f)) 🔏
+  * 🔐(cfg/host/rey): Update OS age &amp; ssh rey key by Romain Deville ([`f0a070c`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f0a070ca1f11f180ae16da4edf1a82a03b70e942)) 🔏
+  * 🔐(cfg/host/rey): Update HM age &amp; ssh rey:root key by Romain Deville ([`88359a3`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/88359a3ad04b0029553945265d2ecac78bbe8e0d)) 🔏
+  * 🔐(cfg/host/rey): Update HM age &amp; ssh rey:rdeville key by Romain Deville ([`97646a9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/97646a9bec173b31274efdb7ed33ac982c95e303)) 🔏
+  * 🔐(cfg/host/palpatine): Update OS age &amp; ssh palpatine key by Romain Deville ([`8ba21a1`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8ba21a19470d0438405121ac2c22043cfb8f2e14)) 🔏
+  * 🔐(cfg/host/palpatine): Update HM age &amp; ssh palpatine:romaindeville key by Romain Deville ([`f065b89`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f065b8999b1154c10804e115e66589fc9e91a9ee)) 🔏
+  * 🔐(cfg/host/FBLP-181): Update OS age &amp; ssh FBLP-181 key by Romain Deville ([`854b047`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/854b047e5af10677a455e6644550ccf36c2df00f)) 🔏
+  * 🔐(cfg/host/FBLP-181): Update HM age &amp; ssh FBLP-181:romaindeville key by Romain Deville ([`ba630fa`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ba630faf7d6a205cdf29bb12beac096465e64a55)) 🔏
+  * 🔐(cfg/host/dev): Update OS age &amp; ssh dev key by Romain Deville ([`92cb3d5`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/92cb3d5f561873de9c710e8c1f2ccc97397172ea)) 🔏
+  * 🔐(cfg/host/dev): Update HM age &amp; ssh dev:root key by Romain Deville ([`d86008e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d86008ea522d39a6c91915b8f8b16e47c58a6728)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update OS age &amp; ssh darth-plagueis key by Romain Deville ([`5e97f65`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5e97f65c838bcbb7dbe75fb7159d34089d6396de)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update HM age &amp; ssh darth-plagueis:root key by Romain Deville ([`3ba7cf8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3ba7cf8bd3dd73bace179ac4577b1ddf7e0ca016)) 🔏
+  * 🔐(cfg/host/darth-plagueis): Update HM age &amp; ssh darth-plagueis:rdeville key by Romain Deville ([`b730c70`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b730c70621da3e243b2b32ae4a0db0c609d3a5e0)) 🔏
+  * 🔐(cfg/host/darth-maul): Update OS darth-maul secret by Romain Deville ([`f358000`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f358000dc9ed67df2422801665ddb91207435a92)) 🔏
+  * 🔐(cfg/host/darth-maul): Update OS age &amp; ssh darth-maul key by Romain Deville ([`8ebbed8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8ebbed86ad87c40e2d157377b049dd40c234d455)) 🔏
+  * 🔐(cfg/host/darth-maul): Update HM age &amp; ssh darth-maul:root key by Romain Deville ([`627bb47`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/627bb471871ae72e0ecaaa599fae63a7bf7192a9)) 🔏
+  * 🔐(cfg/host/darth-maul): Update HM age &amp; ssh darth-maul:rdeville key by Romain Deville ([`05e0379`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/05e0379ed61f6a4246ba5d0ab6bf00686ef7ba5f)) 🔏
+  * 🔥(direnv): Remove call to source .envrc.local.post() by Romain Deville ([`6d908ff`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/6d908ff176703c6691313ca31b38e53732abea73)) 🔏
+
 ## v0.7.0 (2025-01-16)
 
 ### ✨ Minor
