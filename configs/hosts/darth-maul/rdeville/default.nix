@@ -32,6 +32,16 @@ in {
     };
   };
 
+  xdg = {
+    configFile = {
+      "discord/settings.json" = {
+        text = builtins.toJSON {
+          SKIP_HOST_UPDATE = true;
+        };
+      };
+    };
+  };
+
   home = {
     shellAliases = {
       docker = "sudo docker";
