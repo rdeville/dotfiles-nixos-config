@@ -6,12 +6,12 @@
 }: let
   cfg = config.hm;
 
-  accountSoft = import ../configs/accounts;
+  accountSoft = import ../accounts;
 
   accounts =
     builtins.map (
       item:
-        import ../configs/accounts/${item} {
+        import ../accounts/${item} {
           inherit lib pkgs config;
         }
     )

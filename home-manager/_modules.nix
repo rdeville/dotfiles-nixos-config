@@ -6,7 +6,7 @@
 }: {
   imports = [
     # Local Modules
-    ../configs/hosts/${host}/${user}
+    ../machines/${host}/${user}
     ../home-manager
     # External Modules
     inputs.nixos.inputs.sops-nix.homeManagerModules.sops
