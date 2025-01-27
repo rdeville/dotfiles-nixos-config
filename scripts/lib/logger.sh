@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -e
 
 init_logger() {
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
