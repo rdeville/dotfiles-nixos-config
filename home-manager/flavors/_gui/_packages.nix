@@ -6,6 +6,7 @@
   linuxPkgs = with pkgs; [
     arandr
     kolourpaint
+    vlc
   ];
   darwinPkgs = [];
 in {
@@ -13,7 +14,6 @@ in {
     packages = with pkgs;
       [
         keepassxc
-        vlc
       ]
       ++ (
         if config.hm.isDarwin
