@@ -22,7 +22,11 @@ in {
             inherit inputs user;
           };
         }
-        // acc) {} (lib.listDirs ../configs/hosts/${cfg.hostName});
+        // acc) {} (
+        builtins.filter (host: (
+          host != "keys" && host != "assets"
+        )) (lib.listDirs ../machines/${cfg.hostName})
+      );
     };
   };
 }

@@ -8,7 +8,7 @@ builtins.foldl' (acc: host:
       "${host}" = inputs.nixpkgs.lib.nixosSystem {
         modules = [
           # Local Modules
-          ./configs/hosts/${host}
+          ./machines/${host}
           ./nixos
           # External Modules
           inputs.nixos.inputs.sops-nix.nixosModules.sops
@@ -21,4 +21,8 @@ builtins.foldl' (acc: host:
         };
       };
     }
-    // acc) {} (lib.listDirs ./configs/hosts)
+    // acc) {} (
+  builtins.filter (host: (
+    host != "keys" && host != "assets"
+  )) (lib.listDirs ./machines)
+)
