@@ -5,8 +5,8 @@
   lib,
   ...
 }: let
-  name = builtins.baseNameOf ../.;
-  subname = builtins.baseNameOf ./.;
+  name = builtins.baseNameOf ../../.;
+  subname = builtins.baseNameOf ../.;
   subsubname = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name}.${subname}.${subsubname};
 in {
