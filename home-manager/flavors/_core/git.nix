@@ -4,7 +4,8 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name};
+  subname = "git";
+  cfg = config.hm.flavors.${name}.${subname};
 
   clr = config.colors.material.hex;
 
@@ -26,10 +27,18 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          git = lib.mkOption {
-            type = lib.types.attrsOf lib.types.attrs;
-            default = {};
-            description = "Configuration to include for git.";
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
+
+            profiles = lib.mkOption {
+              type = lib.types.attrsOf lib.types.attrs;
+              default = {};
+              description = "Configuration to include for git.";
+            };
           };
         };
       };
@@ -42,13 +51,13 @@ in {
         enable = true;
         includes =
           builtins.map (profile: let
-            val = cfg.git."${profile}";
+            val = cfg.profiles."${profile}";
           in {
             condition = val.condition;
             contents = val.contents;
             contentSuffix = "${profile}.gitconfig";
           })
-          (builtins.attrNames cfg.git);
+          (builtins.attrNames cfg.profiles);
         extraConfig = {
           # GIT-* COMMAND CONFIG
           # ==============================================================================

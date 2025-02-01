@@ -4,7 +4,8 @@
   ...
 }: let
   name = builtins.baseNameOf ../.;
-  cfg = config.hm.flavors.${name};
+  subname = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   imports = [
     ./modules
@@ -14,8 +15,12 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          starship = {
-            enable = lib.mkDefaultEnabledOption "Set to true to enable starship";
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
 
             scan_timeout = lib.mkOption {
               type = lib.types.int;
@@ -102,11 +107,11 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       starship = {
-        enable = cfg.starship.enable;
+        inherit (cfg) enable;
         # See list of policies https://mozilla.github.io/policy-templates/
         settings = {
           inherit
-            (cfg.starship)
+            (cfg)
             scan_timeout
             command_timeout
             add_newline

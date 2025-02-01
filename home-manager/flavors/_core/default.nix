@@ -79,7 +79,7 @@ in {
       atuin = {
         enable = true;
         settings = {
-          invert = true;
+          invert = false;
           keymap_mode = "vim-insert";
           enter_accept = true;
         };

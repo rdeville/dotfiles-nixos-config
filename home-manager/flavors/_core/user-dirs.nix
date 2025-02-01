@@ -4,16 +4,25 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name};
+  subname = "locale";
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   options = {
     hm = {
       flavors = {
         ${name} = {
-          locale = lib.mkOption {
-            type = lib.types.str;
-            description = "User Dirs locale i18n configuration.";
-            default = "en_US";
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
+
+            text = lib.mkOption {
+              type = lib.types.str;
+              description = "User Dirs locale i18n configuration.";
+              default = "en_US";
+            };
           };
         };
       };
@@ -24,7 +33,7 @@ in {
     xdg = lib.mkIf (! config.hm.isDarwin) {
       configFile = {
         "user-dirs.locale" = {
-          text = cfg.locale;
+          inherit (cfg) text;
         };
       };
 
