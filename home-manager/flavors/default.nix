@@ -5,6 +5,7 @@
     hm = {
       flavors = lib.mkOption {
         type = lib.types.submodule {};
+        description = "Install Home-Manager flavors.";
         default = {};
       };
     };
