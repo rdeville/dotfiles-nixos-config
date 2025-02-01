@@ -87,12 +87,6 @@ in {
                   description = "Path to file storing user hashedPasswordFile";
                   default = null;
                 };
-
-                hm = lib.mkOption {
-                  type = lib.types.attrs;
-                  description = "Attrset that store HM object.";
-                  default = {};
-                };
               };
             }
           );
