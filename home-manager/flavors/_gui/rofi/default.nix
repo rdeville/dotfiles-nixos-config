@@ -5,19 +5,20 @@
   lib,
   ...
 }: let
-  name = builtins.baseNameOf ../../.;
-  subname = builtins.baseNameOf ../.;
-  subsubname = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name}.${subname}.${subsubname};
+  name = builtins.baseNameOf ../.;
+  subname = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   options = {
     hm = {
       flavors = {
         ${name} = {
           ${subname} = {
-            ${subsubname} = {
-              enable = lib.mkDefaultEnabledOption "Install ${name} Home-Manager flavor.";
-            };
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
           };
         };
       };
@@ -56,7 +57,7 @@ in {
           (cfg)
           enable
           ;
-        terminal = "${pkgs.kitty}/bin/kitty";
+        terminal = "kitty";
       };
     };
   };
