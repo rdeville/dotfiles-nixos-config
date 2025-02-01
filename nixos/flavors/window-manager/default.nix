@@ -39,27 +39,6 @@ in {
 
   options = {
     os = {
-      users = {
-        users = lib.mkOption {
-          type = lib.types.attrsOf (
-            lib.types.submodule ({name, ...}: {
-              options = {
-                enableGui = lib.mkOption {
-                  type = lib.types.bool;
-                  description = ''
-                    Set to true to add user to graphics related *NIX groups
-                  '';
-                  default =
-                    if name != "root"
-                    then true
-                    else false;
-                };
-              };
-            })
-          );
-        };
-      };
-
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
@@ -80,11 +59,14 @@ in {
     users = {
       users =
         builtins.mapAttrs (name: user: {
-          extraGroups = [
-            "video"
-            "audio"
-            "camera"
-          ];
+          extraGroups =
+            if name != "root"
+            then [
+              "video"
+              "audio"
+              "camera"
+            ]
+            else [];
         })
         config.os.users.users;
     };
