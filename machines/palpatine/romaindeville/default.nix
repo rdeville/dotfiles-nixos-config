@@ -41,22 +41,24 @@ in {
           git = {
             # TODO: @rdeville: Update path below in function of the company
             # repo structure
-            # pro = {
-            #   condition = "gitdir:${config.home.homeDirectory}./git";
-            #   contents = {
-            #     commit = {
-            #       gpgSign = false;
-            #     };
-            #     push = {
-            #       gpgSign = "if-asked";
-            #     };
-            #     tag = {
-            #       forceSignAnnotated = true;
-            #       gpgSign = false;
-            #     };
-            #     user = {
-            #       name = "Romain Deville";
-            #       email = "CHANGE@ME.tld";
+            # profiles = {
+            #   pro = {
+            #     condition = "gitdir:${config.home.homeDirectory}./git";
+            #     contents = {
+            #       commit = {
+            #         gpgSign = false;
+            #       };
+            #       push = {
+            #         gpgSign = "if-asked";
+            #       };
+            #       tag = {
+            #         forceSignAnnotated = true;
+            #         gpgSign = false;
+            #       };
+            #       user = {
+            #         name = "Romain Deville";
+            #         email = "CHANGE@ME.tld";
+            #       };
             #     };
             #   };
             # };
