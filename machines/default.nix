@@ -12,34 +12,36 @@
         };
       };
       git = {
-        perso = {
-          condition = "gitdir:/";
-          contents = {
-            commit = {
-              gpgSign = true;
-            };
-            credential = {
-              "https://framagit.org" = {
-                inherit username;
+        profiles = {
+          perso = {
+            condition = "gitdir:/";
+            contents = {
+              commit = {
+                gpgSign = true;
               };
-              "https://github.com" = {
-                inherit username;
+              credential = {
+                "https://framagit.org" = {
+                  inherit username;
+                };
+                "https://github.com" = {
+                  inherit username;
+                };
+                "https://gitlab.com" = {
+                  inherit username;
+                };
               };
-              "https://gitlab.com" = {
-                inherit username;
+              push = {
+                gpgSign = "if-asked";
               };
-            };
-            push = {
-              gpgSign = "if-asked";
-            };
-            tag = {
-              forceSignAnnotated = true;
-              gpgSign = true;
-            };
-            user = {
-              name = "Romain Deville";
-              email = "code@romaindeville.fr";
-              signingKey = "0x700E80E57C25C99A";
+              tag = {
+                forceSignAnnotated = true;
+                gpgSign = true;
+              };
+              user = {
+                name = "Romain Deville";
+                email = "code@romaindeville.fr";
+                signingKey = "0x700E80E57C25C99A";
+              };
             };
           };
         };
