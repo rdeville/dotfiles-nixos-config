@@ -5,6 +5,7 @@
 SCRIPTPATH="$( cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1 ; pwd -P )"
 SCRIPTNAME="$(basename "$0")"
 SCRIPT_LOG="${SCRIPTPATH}/${SCRIPTNAME}.log"
+REPO_DIR=$(git rev-parse --show-toplevel)
 
 init_logger(){
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
@@ -41,7 +42,7 @@ main(){
 
   _log "INFO" "devbox: Install pre-commit hooks"
   pre-commit install -f >> "${SCRIPT_LOG}"
-  yq '.repos[].hooks[].stages[]' .pre-commit-config.yaml \
+  yq '.repos[].hooks[].stages[]' "${REPO_DIR}/.pre-commit-config.yaml" \
     | xargs -I type pre-commit install -f -t type >> "${SCRIPT_LOG}"
 }
 
