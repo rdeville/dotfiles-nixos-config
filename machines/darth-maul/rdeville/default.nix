@@ -26,7 +26,6 @@ in {
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "nvidia-x11"
           "discord"
         ];
     };
@@ -86,6 +85,14 @@ in {
       };
       _gui = {
         enable = base.isGui;
+        wayland = {
+          hyprspace = {
+            enable = false;
+          };
+          hyprexpo = {
+            enable = false;
+          };
+        };
       };
       audio = {
         enable = true;
