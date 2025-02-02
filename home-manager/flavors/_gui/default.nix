@@ -1,9 +1,18 @@
 {
+  config,
   lib,
   pkgs,
   ...
 }: let
   name = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name};
+
+  linuxPkgs = with pkgs; [
+    arandr
+    kolourpaint
+    vlc
+  ];
+  darwinPkgs = [];
 in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
@@ -31,6 +40,20 @@ in {
           };
         };
       };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    home = {
+      packages = with pkgs;
+        [
+          keepassxc
+        ]
+        ++ (
+          if config.hm.isDarwin
+          then darwinPkgs
+          else linuxPkgs
+        );
     };
   };
 }

@@ -1,41 +1,31 @@
-# BEGIN DOTGIT-SYNC BLOCK MANAGED
 {
   config,
   pkgs ? import <nixpkgs>,
   lib,
-  # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_DEVENV_CUSTOM
   ...
 }: let
-  hm = ./scripts/hm.sh;
-  os = ./scripts/nixos.sh;
-  fmt = ./scripts/fmt.sh;
+  scriptsDetails = {
+    hm = "Manage Home-Manager config";
+    iso = "Manage NixOS ISO config";
+    os = "Manage NixOS config";
+    vm = "Manage NixOS VMs config";
+  };
+
+  scripts = builtins.foldl' (acc: elem:
+    {
+      "${elem}" = {
+        description = scriptsDetails.${elem};
+        exec = ''${./scripts/${elem}.sh} "$@"'';
+      };
+    }
+    // acc) {} (builtins.attrNames scriptsDetails);
 in {
   packages = with pkgs; [
     sops
     alejandra
   ];
 
-  scripts = {
-    hm = {
-      description = "Script acting as alias to Home-Manager";
-      exec = ''
-        ${hm} "$@"
-      '';
-    };
-    os = {
-      description = "Script acting as alias to NixOS";
-      exec = ''
-        ${os} "$@"
-      '';
-    };
-    format = {
-      description = "Nix format current directory";
-      exec = ''
-        ${fmt} "$@"
-      '';
-    };
-  };
-  # END DOTGIT-SYNC BLOCK EXCLUDED NIX_DEVENV_CUSTOM
+  inherit scripts;
 
   enterShell = ''
     CYAN="\033[36m"
@@ -54,4 +44,3 @@ in {
     disableHint = true;
   };
 }
-# END DOTGIT-SYNC BLOCK MANAGED

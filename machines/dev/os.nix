@@ -19,9 +19,7 @@ in {
 
     flavors = {
       _core = {
-        nix-ld = {
-          enable = true;
-        };
+        enable = true;
       };
       display-manager = {
         enable = base.isGui;

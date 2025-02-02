@@ -10,7 +10,7 @@ in {
     os = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install k3s Related Packages";
+          enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
 
           role = lib.mkOption {
             type = lib.types.enum [

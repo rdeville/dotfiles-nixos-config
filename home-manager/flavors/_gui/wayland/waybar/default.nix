@@ -6,8 +6,6 @@
   name = builtins.baseNameOf ../../.;
   subname = builtins.baseNameOf ../.;
   subsubname = builtins.baseNameOf ./.;
-  cfgFlavor = config.hm.flavors.${name};
-  cfgModule = cfgFlavor.${subname}.enable;
   cfg = config.hm.flavors.${name}.${subname}.${subsubname};
 in {
   imports = [
@@ -20,9 +18,15 @@ in {
         ${name} = {
           ${subname} = {
             ${subsubname} = {
-              enable = lib.mkDependEnabledOption ''
-                Install ${name}.${subname}.${subsubname} Home-Manager flavor.''
-              cfgModule;
+              enable =
+                lib.mkDependEnabledOption ''
+                  Install ${name}.${subname}.${subsubname} Home-Manager flavor.
+                ''
+                (
+                  config.hm.flavors.${name}.enable
+                  && config.hm.flavors.${name}.${subname}.enable
+                  && config.hm.flavors.${name}.${subname}.hyprland.enable
+                );
 
               systemd = {
                 enable = lib.mkDefaultEnabledOption ''

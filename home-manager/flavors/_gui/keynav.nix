@@ -3,17 +3,38 @@
   pkgs,
   lib,
   ...
-}:
-lib.mkIf (! config.hm.isDarwin) {
-  home = {
-    packages = with pkgs; [
-      keynav
-    ];
+}: let
+  name = builtins.baseNameOf ./.;
+  subname = "keynav";
+  cfg = config.hm.flavors.${name}.${subname};
+in {
+  options = {
+    hm = {
+      flavors = {
+        ${name} = {
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
+          };
+        };
+      };
+    };
   };
 
-  services = {
-    keynav = {
-      enable = true;
+  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
+    home = {
+      packages = with pkgs; [
+        keynav
+      ];
+    };
+
+    services = {
+      keynav = {
+        enable = true;
+      };
     };
   };
 }

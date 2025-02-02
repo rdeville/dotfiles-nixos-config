@@ -5,7 +5,8 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name};
+  subname = "fastfetch";
+  cfg = config.hm.flavors.${name}.${subname};
 
   modules = [
     {
@@ -162,7 +163,13 @@ in {
     hm = {
       flavors = {
         ${name} = {
-          fastfetch = {
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
+
             modules = lib.mkOption {
               type = lib.types.listOf lib.types.attrs;
               description = "Module configuration to setup for fastfetch.";
@@ -195,7 +202,7 @@ in {
         package = pkgs.fastfetch;
         settings = {
           "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/main/doc/json_schema.json";
-          inherit (cfg.fastfetch) modules logo;
+          inherit (cfg) modules logo;
           general = {
             multithreading = true;
             thread = true;

@@ -1,11 +1,13 @@
 #!/usr/bin/env bash
-set -e
 
 # shellcheck disable=SC2034
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
   pwd -P
 )"
+SCRIPTNAME="$(basename "$0")"
+SCRIPT_LOG="${SCRIPTPATH}/${SCRIPTNAME}.log"
+REPO_DIR=$(git rev-parse --show-toplevel)
 
 init_logger() {
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
@@ -17,7 +19,7 @@ init_logger() {
 
   if ! [[ -f "${log_file}" ]] ||
     { [[ -f "${log_file}" ]] && [[ "${time}" -gt "${delai}" ]]; }; then
-    if ping -q -c 1 framagit.org &>/dev/null; then
+    if ping -q -c 1 -W 1 framagit.org &>/dev/null; then
       # shellcheck disable=SC1090
       source <(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)
       echo "${curr_time}" >"${last_download_file}"
@@ -34,22 +36,20 @@ init_logger() {
 }
 
 main() {
-  export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
+  # TODO Change below substitution if need
+  local DEBUG_LEVEL="${DEVBOX_DEBUG_LEVEL:-INFO}"
   init_logger
 
-  local path
-  local cmd="nix fmt "
-
-  path="$(git rev-parse --show-toplevel)"
-
-  if [[ -f "$1" ]]; then
-    path=$1
-    _log "INFO" "Nix format file ${path}"
-  else
-    _log "INFO" "Nix format dir ${path}"
-  fi
-
-  eval "${cmd} ${path}"
+  CYAN="\033[36m"
+  RESET="\033[0m"
+  echo -e "$CYAN"
+  echo -e "Helper scripts you can run to make your development richer:\n"
+  for file in "${REPO_DIR}"/.devbox/nix/profile/default/bin/*; do
+    if [[ -f "${file}" ]] && grep -q 'bin/bash$' "${file}"; then
+      echo -e "$(basename "${file}")\t$(grep "DESCRIPTION:" "${file}" | cut -d ':' -f 2)"
+    fi
+  done
+  echo -e "$RESET"
 }
 
 main "$@"

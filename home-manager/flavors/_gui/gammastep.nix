@@ -5,24 +5,29 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-
-  cfg = config.hm.flavors.${name}.gammastep;
+  subname = "gammastep";
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   options = {
     hm = {
       flavors = {
         ${name} = {
-          gammastep = {
-            enable = lib.mkEnableOption "Enable gammastep installation.";
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
           };
         };
       };
     };
   };
-  config = {
+
+  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
     services = {
       gammastep = {
-        enable = ! config.hm.isDarwin && cfg.enable;
+        enable = true;
         package = with pkgs; gammastep;
         dawnTime = "6:30-8:00";
         duskTime = "22:00-23:30";

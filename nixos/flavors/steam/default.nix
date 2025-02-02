@@ -10,7 +10,7 @@ in {
     os = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnableOption "Install steam Related Packages";
+          enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
         };
       };
     };

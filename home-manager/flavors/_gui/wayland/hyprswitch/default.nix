@@ -15,11 +15,15 @@ in {
         ${name} = {
           ${subname} = {
             ${subsubname} = {
-              enable = lib.mkOption {
-                type = lib.types.bool;
-                description = "Install ${name} Home-Manager flavor.";
-                default = config.hm.flavors.${name}.${subname}.enable;
-              };
+              enable =
+                lib.mkDependEnabledOption ''
+                  Install ${name}.${subname}.${subsubname} Home-Manager flavor.
+                ''
+                (
+                  config.hm.flavors.${name}.enable
+                  && config.hm.flavors.${name}.${subname}.enable
+                  && config.hm.flavors.${name}.${subname}.hyprland.enable
+                );
             };
           };
         };

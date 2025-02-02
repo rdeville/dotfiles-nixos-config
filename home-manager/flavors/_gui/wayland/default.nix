@@ -1,26 +1,23 @@
-{lib, ...}: let
+{
+  config,
+  lib,
+  ...
+}: let
   name = builtins.baseNameOf ../.;
   subname = builtins.baseNameOf ./.;
 in {
-  imports = [
-    ./hyprland
-    ./hyprlock
-    ./hyprswitch
-    ./hyprexpo
-    ./hyprspace
-    ./rofi
-    ./waybar
-    ./wl-kbptr
-  ];
+  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
 
   options = {
     hm = {
       flavors = {
         ${name} = {
           ${subname} = {
-            enable = lib.mkDefaultEnabledOption ''
-              Install ${name}.${subname} Home-Manager flavor.
-            '';
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
           };
         };
       };

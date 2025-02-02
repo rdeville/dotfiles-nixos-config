@@ -1,6 +1,7 @@
 {config, ...}: let
   name = builtins.baseNameOf ../.;
-  subName = builtins.baseNameOf ./.;
+  subname = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name}.${subname};
 
   colors = config.colors.material.hex;
 in {
@@ -12,13 +13,13 @@ in {
   };
 
   mkGetSarshipModuleConfig = moduleName:
-    config.hm.flavors.${name}.${subName}.modules.${moduleName};
+    cfg.modules.${moduleName};
 
   mkSetStarshipModuleOptions = moduleName: options: {
     hm = {
       flavors = {
         ${name} = {
-          ${subName} = {
+          ${subname} = {
             modules = {
               ${moduleName} = options;
             };

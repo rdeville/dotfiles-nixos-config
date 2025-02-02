@@ -7,9 +7,7 @@
   name = builtins.baseNameOf ../../.;
   subname = builtins.baseNameOf ../.;
   subsubname = builtins.baseNameOf ./.;
-  cfgFlavor = config.hm.flavors.${name};
-  cfgModule = cfgFlavor.${subname};
-  cfg = cfgModule.${subsubname};
+  cfg = config.hm.flavors.${name}.${subname}.${subsubname};
   clr = config.colors.material;
 in {
   imports = [
@@ -22,9 +20,14 @@ in {
         ${name} = {
           ${subname} = {
             ${subsubname} = {
-              enable = lib.mkDependEnabledOption ''
-                Install ${name}.${subname}.${subsubname} Home-Manager flavor.''
-              cfgModule.enable;
+              enable =
+                lib.mkDependEnabledOption ''
+                  Install ${name}.${subname}.${subsubname} Home-Manager flavor.
+                ''
+                (
+                  config.hm.flavors.${name}.enable
+                  && config.hm.flavors.${name}.${subname}.enable
+                );
 
               plugins = lib.mkOption {
                 type = with lib.types; listOf (either package path);

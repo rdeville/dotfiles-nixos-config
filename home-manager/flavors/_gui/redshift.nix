@@ -5,24 +5,27 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-
-  cfg = config.hm.flavors.${name}.redshift;
+  subname = "redshift";
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   options = {
     hm = {
       flavors = {
         ${name} = {
-          redshift = {
-            enable = lib.mkEnableOption "Enable redshift installation.";
+          ${subname} = {
+            enable = lib.mkEnableOption ''
+              Install ${name}.${subname} Home-Manager flavor.
+            '';
           };
         };
       };
     };
   };
-  config = {
+
+  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
     services = {
       redshift = {
-        enable = ! config.hm.isDarwin && cfg.enable;
+        enable = true;
         package = with pkgs; redshift;
         dawnTime = "6:30-8:00";
         duskTime = "22:00-23:30";

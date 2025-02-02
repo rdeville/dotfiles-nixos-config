@@ -4,13 +4,30 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  cfg = config.hm.flavors.${name};
+  subname = "khard";
+  cfg = config.hm.flavors.${name}.${subname};
 
   khardContactsAccounts = builtins.filter (account: account.khard.enable) (
     builtins.attrValues config.accounts.contact.accounts
   );
-in
-  lib.mkIf cfg.enable {
+in {
+  options = {
+    hm = {
+      flavors = {
+        ${name} = {
+          ${subname} = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name}.${subname} Home-Manager flavor.
+              ''
+              config.hm.flavors.${name}.enable;
+          };
+        };
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
     programs = {
       khard = {
         enable = khardContactsAccounts != [];
@@ -64,4 +81,5 @@ in
         };
       };
     };
-  }
+  };
+}
