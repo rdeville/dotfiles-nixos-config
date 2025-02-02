@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
-#shellcheck disable=SC2034
+# shellcheck disable=SC2034
 
-# DESCRIPTION: Wraper to manage Home-Manager config
+# DESCRIPTION: Wraper to manage NixOS config
 
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
@@ -11,12 +11,11 @@ SCRIPTPATH="$(
 REPO_DIR=$(git rev-parse --show-toplevel)
 MACHINE_PATH="${REPO_DIR}/machines"
 
-NAME="iso"
-DESC="Wrapper to ease Home-Manager configuration (build, switch, etc)"
-LEVEL="user"
+NAME="os"
+DESC="Wrapper to ease NixOS configuration (build, switch, etc)"
+LEVEL="host"
 DEFAULT_ACTION="build"
 DEFAULT_HOST="$(hostname)"
-DEFAULT_USER="$(whoami)"
 
 declare -A OPTIONS
 OPTIONS["v"]="--show-trace "
@@ -32,23 +31,23 @@ _compute_cmd() {
     --extra-experimental-features nix-command"
   compute_override_inputs
 
-  cmd="nh home ${action} -c ${user}@${host} ${REPO_DIR}/. -- ${cmd_options} ${*}"
+  cmd="nh os ${action} -H ${host} ${REPO_DIR}/. -- ${cmd_options}"
 }
 
-build_user() {
+build_host() {
   local cmd=""
 
-  _compute_cmd "${@}"
-  _log "INFO" "Running **nh home ${action}** for **${user}@${host}** with command : "
+  _compute_cmd
+  _log "INFO" "Running **nh home ${action}** for **${host}** with command : "
   _log "INFO" "${cmd//"${REPO_DIR}/"/}"
   eval "${cmd}"
 }
 
-switch_user() {
+switch_host() {
   local cmd=""
 
-  _compute_cmd "${@}"
-  _log "INFO" "Running **nh home ${action}** for **${user}@${host}** with command : "
+  _compute_cmd
+  _log "INFO" "Running **nh home ${action}** for **${host}** with command : "
   _log "INFO" "${cmd//"${REPO_DIR}/"/}"
   eval "${cmd}"
 }
@@ -63,25 +62,20 @@ main() {
   shift $((OPTIND - 1))
 
   local action="${1}"
-  if [[ -n "${action}" ]];
-    then shift;
+  if [[ -n "${action}" ]]; then
+    shift
   fi
-  action=$(check_option_valid "action" "${action}" "ACTIONS" "${DEFAULT_ACTION}")
+  action=$(check_option_valid "action" "${action}" "ACTIONS" "build")
 
   local host=${1}
+
   if [[ -n ${host} ]]; then
     shift
   fi
-  check_host "${DEFAULT_HOST}"
-
-  local user=${1}
-  if [[ -n ${user} ]]; then
-    shift
-  fi
-  check_user "${DEFAULT_USER}"
+  check_host "$(hostname)"
 
   local cmd=""
-  process_hosts "$@"
+  process_hosts
 }
 
 main "$@"

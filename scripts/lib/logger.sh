@@ -1,11 +1,4 @@
 #!/usr/bin/env bash
-set -e
-
-# shellcheck disable=SC2034
-SCRIPTPATH="$(
-  cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
-  pwd -P
-)"
 
 init_logger() {
   local log_file="${XDG_CACHE_HOME:-${HOME}/.cache}/snippets/_log.sh"
@@ -32,24 +25,3 @@ init_logger() {
     source <(cat "${log_file}")
   fi
 }
-
-main() {
-  export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
-  init_logger
-
-  local path
-  local cmd="nix fmt "
-
-  path="$(git rev-parse --show-toplevel)"
-
-  if [[ -f "$1" ]]; then
-    path=$1
-    _log "INFO" "Nix format file ${path}"
-  else
-    _log "INFO" "Nix format dir ${path}"
-  fi
-
-  eval "${cmd} ${path}"
-}
-
-main "$@"
