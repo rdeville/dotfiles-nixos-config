@@ -3,6 +3,12 @@
 
   base = import ../base.nix;
 in {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   hm = {
     inherit username;
     inherit (base) hostName system;
@@ -11,42 +17,65 @@ in {
       _core = {
         enable = true;
       };
+
       _gui = {
-        enable = base.isGui;
+        enable = true;
+        wayland = {
+          enable = true;
+          hyprspace = {
+            enable = false;
+          };
+        };
       };
+
       audio = {
-        enable = false;
+        enable = true;
       };
+
       bluetooth = {
-        enable = false;
+        enable = true;
       };
+
       gh = {
-        enable = false;
+        enable = true;
       };
+
       glab = {
-        enable = false;
+        enable = true;
       };
+
       kubernetes-client = {
-        enable = false;
+        enable = true;
       };
+
       nextcloud-client = {
+        enable = true;
+      };
+
+      ollama = {
         enable = false;
       };
+
       opentofu = {
-        enable = false;
+        enable = true;
       };
+
       podman = {
-        enable = false;
+        enable = true;
       };
+
       spotify-player = {
-        enable = false;
+        enable = true;
       };
+
       ssh-client = {
-        enable = false;
+        enable = true;
       };
+
       terraform = {
-        enable = false;
+        enable = true;
       };
+
       vscode = {
         enable = false;
       };

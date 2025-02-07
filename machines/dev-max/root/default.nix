@@ -3,6 +3,12 @@
 
   base = import ../base.nix;
 in {
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   hm = {
     inherit username;
     inherit (base) hostName system;
