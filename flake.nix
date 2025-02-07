@@ -6,9 +6,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    utils = {
-      url = "github:numtide/flake-utils";
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -90,7 +87,7 @@
       }
     );
 
-    # MODULES
+    # HOME MANAGER MODULES
     # ========================================================================
     homeManagerModules = {
       hm = import ./home-manager;
@@ -155,8 +152,9 @@
         };
       };
     };
-    # Home Manager Configurations
-    # ------------------------------------------------------------------------
+
+    # HOME MANAGER CONFIGURATIONS
+    # ========================================================================
     homeConfigurations = let
       lib = mkLib inputs.nixpkgs "home-manager";
     in
