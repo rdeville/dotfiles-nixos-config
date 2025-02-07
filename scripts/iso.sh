@@ -27,7 +27,7 @@ ACTIONS["start"]="Start NixOS ISO image"
 ACTIONS["mount"]="Mount NixOS ISO image to /tmp/iso/<host>"
 
 _compute_cmd() {
-  cmd_options+=""
+  local cmd_options=""
   compute_override_inputs "$@"
 
   cmd="nom build \\
@@ -104,7 +104,6 @@ main() {
   source "${REPO_DIR}/scripts/lib/main.sh"
   init_logger
 
-  local cmd_options
   parse_args "$@"
   shift $((OPTIND - 1))
 

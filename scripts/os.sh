@@ -26,19 +26,20 @@ ACTIONS["build"]="Build specified home-manager config"
 ACTIONS["switch"]="Switch specified home-manager config"
 
 _compute_cmd() {
-  cmd_options+="\\
-    --extra-experimental-features flakes \\
-    --extra-experimental-features nix-command"
+  local cmd_options="\\
+  --extra-experimental-features flakes \\
+  --extra-experimental-features nix-command"
+
   compute_override_inputs
 
-  cmd="nh os ${action} -H ${host} ${REPO_DIR}/. -- ${cmd_options}"
+  cmd="nh os ${action} -H ${host} ${REPO_DIR}/. -- ${cli_cmd_options} ${cmd_options}"
 }
 
 build_host() {
   local cmd=""
 
   _compute_cmd
-  _log "INFO" "Running **nh home ${action}** for **${host}** with command : "
+  _log "INFO" "Running **nh os ${action}** for **${host}** with command : "
   _log "INFO" "${cmd//"${REPO_DIR}/"/}"
   eval "${cmd}"
 }
@@ -47,7 +48,7 @@ switch_host() {
   local cmd=""
 
   _compute_cmd
-  _log "INFO" "Running **nh home ${action}** for **${host}** with command : "
+  _log "INFO" "Running **nh os ${action}** for **${host}** with command : "
   _log "INFO" "${cmd//"${REPO_DIR}/"/}"
   eval "${cmd}"
 }
@@ -57,7 +58,8 @@ main() {
   source "${REPO_DIR}/scripts/lib/main.sh"
   init_logger
 
-  local cmd_options
+  local cli_cmd_options=""
+
   parse_args "$@"
   shift $((OPTIND - 1))
 
@@ -67,14 +69,12 @@ main() {
   fi
   action=$(check_option_valid "action" "${action}" "ACTIONS" "build")
 
-  local host=${1}
-
+  local host="${1:-"${DEFAULT_HOST}"}"
   if [[ -n ${host} ]]; then
     shift
   fi
-  check_host "$(hostname)"
+  check_host "${host}"
 
-  local cmd=""
   process_hosts
 }
 

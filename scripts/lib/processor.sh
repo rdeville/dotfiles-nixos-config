@@ -26,6 +26,7 @@ process_users() {
 }
 
 process_host() {
+
   process_users "$@"
 
   if type "${action}_host" &>/dev/null; then

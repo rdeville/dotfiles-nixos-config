@@ -39,29 +39,22 @@ check_option_valid() {
 }
 
 check_host() {
-  local default="${1:-"none"}"
+  local host="${1:-"none"}"
 
-  if [[ -z "${host}" ]]; then
-    host=${default}
-  else
-    if ! [[ "${host}" =~ ^(none|all)$ ]] && ! [[ -d "${MACHINE_PATH}/${host}" ]]; then
-      _log "ERROR" "Machine **${host}** does not exists in machines/"
-      exit 1
-    fi
-    shift
+  if ! [[ "${host}" =~ ^(none|all)$ ]] &&
+    ! [[ -d "${MACHINE_PATH}/${host}" ]]; then
+    _log "ERROR" "Machine **${host}** does not exists in **${MACHINE_PATH//"${REPO_DIR}/"/}/"
+    exit 1
   fi
 }
 
 check_user() {
-  local default="${1:"none"}"
+  local user="${1:"none"}"
 
-  if [[ -n "${user}" ]] && ! [[ "${user}" =~ ^(none|all)$ ]]; then
-    if ! [[ -d "${MACHINE_PATH}/${host}/${user}" ]]; then
-      _log "ERROR" "User **${user}@${host}** does not exists in machines/${host}/"
-      exit 1
-    fi
-    shift
-  else
-    user="${default}"
+  if ! [[ "${host}" =~ ^(none|all)$ ]] &&
+    ! [[ "${user}" =~ ^(none|all)$ ]] &&
+    ! [[ -d "${MACHINE_PATH}/${host}/${user}" ]]; then
+    _log "ERROR" "User **${user}@${host}** does not exists in machines/${host}/"
+    exit 1
   fi
 }

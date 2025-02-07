@@ -26,7 +26,7 @@ compute_override_inputs() {
     # shellcheck disable=2154
     for input in "${!inputs[@]}"; do
       cmd_options+=" \\
-    --override-input ${input} ${inputs[$input]} "
+      --override-input ${input} ${inputs[$input]} "
     done
   fi
 }
