@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.33.0 (2025-02-08)
+
+### ✨ Minor
+
+  * ✨(hm/_core): Add zsh plugin you-should-use (!94) by Romain Deville ([`459e5ff`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/459e5ff9d7f0b31475bee54c51669586ca6c967a))
+  * ✨(hm/_core): Add zsh plugin you-should-use by Romain Deville ([`52d5d94`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/52d5d94034ed7a4e59cdddf0d9ca5c79b765e972)) 🔏
+
 ## v0.32.0 (2025-02-08)
 
 ### ✨ Minor
