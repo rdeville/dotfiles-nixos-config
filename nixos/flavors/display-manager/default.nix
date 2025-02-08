@@ -47,7 +47,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (! config.os.isDarwin && cfg.enable) {
     services = {
       xserver = {
         inherit (cfg) xkb;

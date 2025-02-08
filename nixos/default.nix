@@ -6,11 +6,11 @@
 }: let
   cfg = config.os;
 in {
-  imports =
-    builtins.map (item: ./${item}) (lib.importDir ./.)
-    ++ [
-      ../modules
-    ];
+  imports = [
+    ../modules
+    ./flavors
+    ./users.nix
+  ];
 
   options = {
     os = lib.mkOption {
@@ -65,7 +65,6 @@ in {
             };
           };
 
-          # BOOLEAN TO PARAMETERIZE SOME FLAVORS
           console = {
             keyMap = lib.mkOption {
               type = lib.types.either lib.types.str lib.types.path;
@@ -78,6 +77,13 @@ in {
               description = "The font to use in the console.";
               default = "Lat2-Terminus16";
             };
+          };
+
+          # BOOLEAN TO PARAMETERIZE SOME FLAVORS
+          isDarwin = lib.mkOption {
+            type = lib.types.bool;
+            description = "Boolean, set to true to specify OS is darwin.";
+            default = false;
           };
         };
       };

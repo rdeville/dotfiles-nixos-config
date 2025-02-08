@@ -27,9 +27,9 @@ ACTIONS["build"]="Build specified home-manager config"
 ACTIONS["switch"]="Switch specified home-manager config"
 
 _compute_cmd() {
-  cmd_options+="\\
-    --extra-experimental-features flakes \\
-    --extra-experimental-features nix-command"
+  local cmd_options="\\
+  --extra-experimental-features flakes \\
+  --extra-experimental-features nix-command"
   compute_override_inputs
 
   cmd="nh home ${action} -c ${user}@${host} ${REPO_DIR}/. -- ${cmd_options} ${*}"
@@ -58,7 +58,6 @@ main() {
   source "${REPO_DIR}/scripts/lib/main.sh"
   init_logger
 
-  local cmd_options
   parse_args "$@"
   shift $((OPTIND - 1))
 
@@ -68,17 +67,19 @@ main() {
   fi
   action=$(check_option_valid "action" "${action}" "ACTIONS" "${DEFAULT_ACTION}")
 
-  local host=${1}
+  local host=${1:-"${DEFAULT_HOST}"}
   if [[ -n ${host} ]]; then
     shift
   fi
-  check_host "${DEFAULT_HOST}"
+  check_host "${host}"
 
-  local user=${1}
+  local user=${1:-"${DEFAULT_USER}"}
+  local tmp_user=${user}
   if [[ -n ${user} ]]; then
     shift
   fi
-  check_user "${DEFAULT_USER}"
+  check_user "${user}"
+  user="${tmp_user}"
 
   local cmd=""
   process_hosts "$@"

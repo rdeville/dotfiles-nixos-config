@@ -20,36 +20,52 @@ in {
     flavors = {
       _core = {
         enable = true;
+        nix-ld = {
+          enable = true;
+        };
       };
+
       display-manager = {
-        enable = base.isGui;
+        enable = true;
+        gdm = {
+          enable = false;
+        };
         ly = {
-          enable = base.isGui;
+          enable = true;
         };
       };
+
       docker = {
-        enable = false;
+        enable = true;
       };
+
       k3s = {
-        enable = false;
+        enable = true;
       };
+
       printing = {
-        enable = false;
+        enable = true;
       };
-      window-manager = {
-        enable = base.isGui;
-        awesome = {
-          enable = base.isGui;
-        };
-        hyprland = {
-          enable = base.isGui;
-        };
-      };
+
       ssh-server = {
         enable = true;
       };
+
       steam = {
-        enable = false;
+        enable = true;
+      };
+
+      window-manager = {
+        enable = true;
+        awesome = {
+          enable = true;
+        };
+        hyprland = {
+          enable = true;
+        };
+        plasma = {
+          enable = true;
+        };
       };
     };
   };

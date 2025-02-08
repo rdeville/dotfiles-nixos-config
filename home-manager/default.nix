@@ -107,11 +107,13 @@ in {
         (cfg)
         stateVersion
         username
-        homeDirectory
         sessionPath
         sessionVariables
         ;
 
+      # Required to force to avoid conflict with
+      # (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+      homeDirectory = lib.mkForce cfg.homeDirectory;
       preferXdgDirectories = true;
     };
 

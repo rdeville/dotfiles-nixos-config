@@ -50,12 +50,16 @@ in {
           hyprland = {
             enable = lib.mkEnableOption "Install hyprland window manager";
           };
+
+          plasma = {
+            enable = lib.mkEnableOption "Install hyprland window manager";
+          };
         };
       };
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (! config.os.isDarwin && cfg.enable) {
     users = {
       users =
         builtins.mapAttrs (name: user: {
@@ -72,7 +76,7 @@ in {
     };
 
     environment = {
-      plasma6 = {
+      plasma6 = lib.mkIf cfg.plasma.enable {
         excludePackages = with pkgs.kdePackages; [
           plasma-browser-integration
           konsole
@@ -85,7 +89,7 @@ in {
       xserver = {
         displayManager = {
           gdm = {
-            wayland = cfg.hyprland.enable;
+            wayland = cfg.hyprland.enable || cfg.plasma.enable;
           };
         };
 
@@ -103,17 +107,12 @@ in {
 
       desktopManager = {
         plasma6 = {
-          enable = true;
+          enable = cfg.plasma.enable;
         };
       };
 
       displayManager = {
-        defaultSession =
-          if cfg.awesome.enable
-          then "none+awesome"
-          else if cfg.hyprland.enable
-          then "hyprland"
-          else null;
+        defaultSession = "hyprland";
       };
     };
 

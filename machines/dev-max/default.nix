@@ -1,7 +1,6 @@
 {
   lib,
   modulesPath,
-  pkgs,
   ...
 }: let
   base = import ./base.nix;
@@ -19,25 +18,30 @@ in {
 
   nixpkgs = {
     hostPlatform = base.system;
+    config = {
+      allowUnfree = true;
+    };
   };
 
   boot = {
-    # Let us live dangerously with the latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
+    # If we want to live dangerously with the latest kernel
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # Enable SSH in the boot process
   systemd = {
     services = {
       sshd = {
-        wantedBy = pkgs.lib.mkForce ["multi-user.target"];
+        wantedBy = [
+          "multi-user.target"
+        ];
       };
     };
   };
 
   hardware = {
     graphics = {
-      enable = base.isGui;
+      enable = true;
     };
   };
 }

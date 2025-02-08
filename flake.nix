@@ -6,9 +6,6 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    utils = {
-      url = "github:numtide/flake-utils";
-    };
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -59,9 +56,9 @@
 
     # Function to manage Home Manager modules list for nixosConfigurations and
     # homeManageConfigurations both at once
-    hmModules = user: [
+    hmModules = hostname: user: [
       # Local Modules
-      ./machines/dev/${user}
+      ./machines/${hostname}/${user}
       ./home-manager
       # External Modules
       inputs.sops-nix.homeManagerModules.sops
@@ -90,7 +87,7 @@
       }
     );
 
-    # MODULES
+    # HOME MANAGER MODULES
     # ========================================================================
     homeManagerModules = {
       hm = import ./home-manager;
@@ -98,6 +95,8 @@
     };
     homeManagerModule = self.homeManagerModules.hm;
 
+    # NIXOS MODULES
+    # ========================================================================
     nixosModules = {
       os = import ./nixos;
       lib = mkLib inputs.nixpkgs "nixos";
@@ -108,76 +107,102 @@
     # ========================================================================
     nixosConfigurations = let
       lib = mkLib inputs.nixpkgs "nixos";
-    in {
-      # Developpement machine configuration to test public build and show an
-      # example of configuration
-      dev = inputs.nixpkgs.lib.nixosSystem {
-        modules = [
-          # Machine configuration.nix using my `os` and `hm` modules and
-          # setting up some machine specific configurations (such as
-          # hardware-config)
-          ./machines/dev
-          # External Modules
-          inputs.home-manager.nixosModules.home-manager
-          # Internal Modules
-          self.nixosModules.os
-          ({
-            inputs,
-            config,
-            lib,
-            ...
-          }: {
-            config = {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = {
-                  # Here the magic happens passing inputs into home-manager
-                  inherit inputs;
-                };
-                # Auto configure HM users in NixOS using directory structure :
-                # `machines/<hostName>/<userName>`
-                users = builtins.foldl' (acc: user:
-                  {
-                    # Here is the magic to manage both HM/Nixos in a clean
-                    # homogeneous way
-                    "${user}" = {...}: {
-                      imports = hmModules user;
+    in
+      builtins.foldl' (acc: host:
+        {
+          "${host}" = inputs.nixpkgs.lib.nixosSystem {
+            modules = [
+              # Local Modules
+              ./machines/${host}
+              # External Modules
+              inputs.home-manager.nixosModules.home-manager
+              # Internal Modules
+              self.nixosModules.os
+              (
+                {
+                  inputs,
+                  config,
+                  lib,
+                  ...
+                }: {
+                  config = {
+                    home-manager = {
+                      useGlobalPkgs = true;
+                      useUserPackages = true;
+                      extraSpecialArgs = {
+                        # Here the magic happens with inputs into home-manager
+                        inherit inputs;
+                      };
+                      users = builtins.foldl' (acc: user:
+                        {
+                          # Here is the magic to manage both HM/Nixos in a clean homogeneous way
+                          "${user}" = {...}: {
+                            imports = hmModules host user;
+                          };
+                        }
+                        // acc) {} (
+                        builtins.filter (host: (
+                          host != "keys" && host != "assets"
+                        )) (lib.listDirs ./machines/${host})
+                      );
                     };
-                  }
-                  // acc) {} (lib.listDirs ./machines/dev);
-              };
+                  };
+                }
+              )
+            ];
+            specialArgs = {
+              inherit inputs lib;
             };
-          })
-        ];
-        specialArgs = {
-          inherit inputs lib;
-        };
-      };
-    };
-    # Home Manager Configurations
+          };
+        }
+        // acc) {} (builtins.filter (host: (
+        # I usually store :
+        # * Host SSH/AGE keys in machines/${host}/keys
+        # * Host assets in machines/${host}/keys
+        host != "keys" && host != "assets"
+      )) (lib.listDirs ./machines));
+
+    # HOME MANAGER
     # ------------------------------------------------------------------------
     homeConfigurations = let
       lib = mkLib inputs.nixpkgs "home-manager";
     in
-      # Auto configure HM users using directory structure :
-      # `machines/<hostName>/<userName>`
-      builtins.foldl' (acc: user:
-        {
-          "${user}@dev" = let
-            system = (import ./machines/dev/base.nix).system;
-          in
-            inputs.home-manager.lib.homeManagerConfiguration {
-              # inherit pkgs;
-              pkgs = lib.pkgsForSystem system;
-              # Here is the magic to manage both HM/Nixos in a clean
-              # homogeneous way
-              modules = hmModules user;
-              extraSpecialArgs = {
-                inherit inputs lib;
-              };
-            };
-        }
-        // acc) {} (lib.listDirs ./machines/dev);
+      builtins.foldl' (
+        accHost: host: let
+          pkgs =
+            self.homeManagerModules.lib.pkgsForSystem
+            (import ./machines/${host}/base.nix).system;
+        in
+          (
+            builtins.foldl' (accUser: user:
+              {
+                "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
+                  inherit pkgs;
+                  modules = hmModules host user;
+                  extraSpecialArgs = {
+                    inherit inputs lib;
+                  };
+                };
+              }
+              // accUser)
+            {}
+            (builtins.filter (user: (
+              # I usually store :
+              # * Host SSH/AGE keys in machines/${host}/${user}/keys
+              # * Host assets in machines/${host}/${user}/keys
+              user != "keys" && user != "assets"
+            )) (lib.listDirs ./machines/${host}))
+          )
+          // accHost
+      )
+      {}
+      (
+        builtins.filter (host: (
+          # I usually store :
+          # * Host SSH/AGE keys in machines/${host}/keys
+          # * Host assets in machines/${host}/keys
+          host != "keys" && host != "assets"
+        )) (lib.listDirs ./machines)
+      );
   };
 }

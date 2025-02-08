@@ -61,6 +61,7 @@ in {
           unzip # Zip Files
           xclip # Copy to clipboard
           xdg-utils # Environment integration
+          viddy # A better watcher
           zip # Zip
 
           # NixOS CLI related packages

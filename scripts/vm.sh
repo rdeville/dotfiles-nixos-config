@@ -26,6 +26,8 @@ ACTIONS["build"]="Build specified NixOS VM"
 ACTIONS["start"]="Start specified NixOS VM"
 
 _compute_cmd() {
+  local cmd_options
+
   compute_override_inputs
 
   cmd="nixos-rebuild build-vm --flake .#${host}${cmd_options} ${*}|& nom"
@@ -80,7 +82,6 @@ main() {
   source "${REPO_DIR}/scripts/lib/main.sh"
   init_logger
 
-  local cmd_options
   parse_args "$@"
   shift $((OPTIND - 1))
 
