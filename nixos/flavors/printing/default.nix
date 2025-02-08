@@ -25,7 +25,7 @@ in {
             "scanner"
           ];
         })
-        config.os.users;
+        config.os.users.users;
     };
 
     services = {
