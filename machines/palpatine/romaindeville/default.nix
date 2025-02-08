@@ -10,6 +10,10 @@
   default = import ../../default.nix {inherit username;};
   keyFile = "/home/rdeville/.cache/.age.key";
 in {
+  imports = [
+    ./hm.nix
+  ];
+
   awesomerc = {
     enable = lib.mkForce false;
   };
@@ -26,82 +30,10 @@ in {
     };
   };
 
-  hm = {
-    inherit username;
-    inherit (base) hostName system isGui isMain isDarwin isWork;
-
-    nixpkgs = {
-      allowUnfree = true;
-    };
-
-    flavors = {
-      _core =
-        default.flavors._core
-        // {
-          git = {
-            # TODO: @rdeville: Update path below in function of the company
-            # repo structure
-            # profiles = {
-            #   pro = {
-            #     condition = "gitdir:${config.home.homeDirectory}./git";
-            #     contents = {
-            #       commit = {
-            #         gpgSign = false;
-            #       };
-            #       push = {
-            #         gpgSign = "if-asked";
-            #       };
-            #       tag = {
-            #         forceSignAnnotated = true;
-            #         gpgSign = false;
-            #       };
-            #       user = {
-            #         name = "Romain Deville";
-            #         email = "CHANGE@ME.tld";
-            #       };
-            #     };
-            #   };
-            # };
-          };
-        };
-      _accounts = {
-        enable = base.isMain;
-      };
-      _gui = {
-        enable = base.isGui;
-      };
-      _packages = {
-        enable = true;
-        pkgs = with pkgs; [
-          viddy
-          hclfmt
-          terragrunt
-        ];
-      };
-      # TODO: @rdeville: Update below activated flavors in function of needed
-      # tools on my professional workstation
-      gh = {
-        enable = false;
-      };
-      glab = {
-        enable = false;
-      };
-      kubernetes-client = {
-        enable = true;
-      };
-      spotify-player = {
-        enable = true;
-        client_id_command = lib.strings.concatStringsSep " " [
-          "${pkgs.coreutils}/bin/cat"
-          "${config.xdg.configHome}/sops-nix/secrets/spotify-client-id"
-        ];
-      };
-      ssh-client = {
-        enable = true;
-      };
-      terraform = {
-        enable = true;
-      };
-    };
+  home = {
+    packages = with pkgs; [
+      hclfmt
+      terragrunt
+    ];
   };
 }

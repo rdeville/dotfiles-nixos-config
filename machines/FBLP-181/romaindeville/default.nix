@@ -5,11 +5,12 @@
   ...
 }: let
   username = builtins.baseNameOf ./.;
-
-  base = import ../base.nix;
-  default = import ../../default.nix {inherit username;};
   keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
+  imports = [
+    ./hm.nix
+  ];
+
   awesomerc = {
     enable = lib.mkForce false;
   };
@@ -26,92 +27,25 @@ in {
     };
   };
 
-  hm = {
-    inherit username;
-    inherit (base) hostName system isGui isMain isDarwin isWork;
-
-    nixpkgs = {
+  nixpkgs = {
+    config = {
       allowUnfree = true;
     };
+  };
 
-    home = {
-      packages = with pkgs; [
-        viddy
-        kind
-        ghostscript
-        (google-cloud-sdk.withExtraComponents [
-          google-cloud-sdk.components.gke-gcloud-auth-plugin
-        ])
-        google-cloud-sql-proxy
-        ssh-to-age
-        terragrunt
-        vaultwarden
-        yubikey-manager.out
-      ];
-    };
-
-    flavors = {
-      _core =
-        default.flavors._core
-        // {
-          git =
-            default.flavors._core.git
-            // {
-              pro = {
-                condition = "gitdir:/Users/romaindeville/git/github.com/dougs-compta/";
-                contents = {
-                  commit = {
-                    gpgSign = false;
-                  };
-                  push = {
-                    gpgSign = "if-asked";
-                  };
-                  tag = {
-                    forceSignAnnotated = true;
-                    gpgSign = false;
-                  };
-                  user = {
-                    name = "Romain Deville";
-                    email = "romain.deville@dougs.fr";
-                  };
-                };
-              };
-            };
-          fastfetch = {
-            logo = {
-              source = ../../assets/fastfetch_logos/dougs.txt;
-              color = {
-                "1" = "light_blue";
-              };
-            };
-          };
-        };
-      _accounts = {
-        enable = base.isMain;
-      };
-      _gui = {
-        enable = base.isGui;
-      };
-
-      gh = {
-        enable = true;
-      };
-      kubernetes-client = {
-        enable = true;
-      };
-      spotify-player = {
-        enable = true;
-        client_id_command = lib.strings.concatStringsSep " " [
-          "${pkgs.coreutils}/bin/cat"
-          "${config.xdg.configHome}/sops-nix/secrets/spotify-client-id"
-        ];
-      };
-      ssh-client = {
-        enable = true;
-      };
-      terraform = {
-        enable = true;
-      };
-    };
+  home = {
+    packages = with pkgs; [
+      viddy
+      kind
+      ghostscript
+      (google-cloud-sdk.withExtraComponents [
+        google-cloud-sdk.components.gke-gcloud-auth-plugin
+      ])
+      google-cloud-sql-proxy
+      ssh-to-age
+      terragrunt
+      vaultwarden
+      yubikey-manager.out
+    ];
   };
 }

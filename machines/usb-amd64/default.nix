@@ -5,21 +5,10 @@
   ...
 }: let
   base = import ./base.nix;
-  osBase = import ../base.nix;
-
-  users = {
-    nixos = {
-      isSudo = true;
-      password = "nixos";
-      inherit (osBase.users) openssh;
-    };
-    root = {
-      password = "root";
-    };
-  };
 in {
   imports = [
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    ./os.nix
   ];
 
   networking = {
@@ -28,10 +17,6 @@ in {
 
   nixpkgs = {
     hostPlatform = base.system;
-  };
-
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
   };
 
   isoImage = {
@@ -50,39 +35,6 @@ in {
   hardware = {
     graphics = {
       enable = base.isGui;
-    };
-  };
-
-  os = {
-    inherit (base) hostName isGui isMain system;
-    users = {
-      inherit users;
-    };
-
-    flavors = {
-      _core = {
-        nix-ld = {
-          enable = true;
-        };
-      };
-      display-manager = {
-        enable = base.isGui;
-        ly = {
-          enable = true;
-        };
-      };
-      window-manager = {
-        enable = base.isGui;
-        awesome = {
-          enable = true;
-        };
-        hyprland = {
-          enable = true;
-        };
-      };
-      ssh-server = {
-        enable = true;
-      };
     };
   };
 }

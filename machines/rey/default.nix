@@ -1,50 +1,26 @@
 {
   config,
   lib,
+  modulesPath,
   pkgs,
   ...
 }: let
-  sshKeyPaths = [
-    "/etc/ssh/ssh_host_ed25519_key"
-  ];
-  users = {
-    rdeville = {
-      isSudo = true;
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../../pubkeys/rdeville-darth-maul.pub
-          ];
-        };
-      };
-    };
-    root = {};
-  };
-  secrets = builtins.listToAttrs (builtins.map (user: {
-    name = "users/${user}/password";
-    value = {
-      neededForUsers = true;
-    };
-  }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
-
   base = import ./base.nix;
 in {
   imports = [
-    # ./hardware-configuration.nix
+    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    ./os.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
   boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
     loader = {
-      # systemd-boot = {
-      #   enable = true;
-      # };
       efi = lib.mkDefault {
         canTouchEfiVariables = true;
       };
       grub = {
-        enable = true;
+        enable = lib.mkForce true;
         device = "nodev";
         useOSProber = true;
         efiSupport = true;
@@ -57,12 +33,15 @@ in {
   };
 
   nixpkgs = {
-    hostPlatform = lib.mkDefault "x86_64-linux";
-  };
-
-  services = {
-    xserver = {
-      videoDrivers = ["nvidia"];
+    hostPlatform = base.system;
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "discord"
+          "steam"
+          "steam-unwrapped"
+          "terraform"
+        ];
     };
   };
 
@@ -77,75 +56,9 @@ in {
       enable = true;
       powerOnBoot = true;
     };
+
     graphics = {
-      enable = true;
-    };
-    nvidia = {
-      # modesettings.enable = true;
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-    };
-  };
-  sops = {
-    inherit secrets;
-    age = {
-      inherit sshKeyPaths;
-    };
-    defaultSopsFile = ./secrets.enc.yaml;
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-          "nvidia-settings"
-          "nvidia-x11"
-          "steam"
-          "steam-unwrapped"
-        ];
-    };
-  };
-
-  os = {
-    inherit (base) hostName isGui isMain system;
-
-    users = {
-      inherit users;
-    };
-
-    flavors = {
-      _core = {
-        nix-ld = {
-          enable = true;
-        };
-      };
-      display-manager = {
-        enable = true;
-        ly = {
-          enable = true;
-        };
-      };
-      window-manager = {
-        enable = true;
-        awesome = {
-          enable = true;
-        };
-        hyprland = {
-          enable = true;
-        };
-      };
-      ssh-server = {
-        enable = true;
-      };
-      steam = {
-        enable = true;
-      };
+      enable = base.isGui;
     };
   };
 }

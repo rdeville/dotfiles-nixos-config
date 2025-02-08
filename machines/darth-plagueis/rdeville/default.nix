@@ -1,19 +1,12 @@
-{pkgs, ...}: let
+{
+  lib,
+  pkgs,
+  ...
+}: let
   username = builtins.baseNameOf ./.;
-
-  os = (import ../default.nix {}).os;
+  base = import ../base.nix;
   default = import ../../default.nix {inherit username;};
-  isGui =
-    if os ? isGui
-    then os.isGui
-    else false;
-  isMain =
-    if os ? isMain
-    then os.isMain
-    else false;
 in {
-  extraConfig = {};
-
   home = {
     packages = with pkgs; [
       hclfmt
@@ -23,24 +16,16 @@ in {
   };
 
   hm = {
-    inherit username isGui isMain;
-    inherit (os) hostName;
+    inherit username;
+    inherit (base) hostName system isMain;
 
     flavors = {
-      _core =
-        default.flavors._core
-        // {
-          starship = {
-            modules = {
-              sudo = {
-                disable = true;
-              };
-            };
-          };
-        };
+      inherit (default.flavors) _core;
+
       opentofu = {
         enable = true;
       };
+
       kubernetes-client = {
         enable = true;
       };

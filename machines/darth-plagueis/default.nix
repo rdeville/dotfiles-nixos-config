@@ -1,26 +1,57 @@
-{...}: {
-  os = {
-    hostName = "darth-plagueis";
-    system = "x86_64-linux";
-    isGui = false;
-    isMain = false;
+{
+  lib,
+  modulesPath,
+  pkgs,
+  ...
+}: let
+  base = import ./base.nix;
+in {
+  imports = [
+    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    ./os.nix
+  ];
 
-    users = {
-      rdeville = {
-        isSudo = true;
+  # Use the systemd-boot EFI boot loader.
+  boot = {
+    # kernelPackages = pkgs.linuxPackages_latest;
+    loader = {
+      efi = lib.mkDefault {
+        canTouchEfiVariables = true;
       };
-      root = {};
+
+      grub = {
+        enable = lib.mkForce true;
+        device = "nodev";
+        useOSProber = true;
+        efiSupport = true;
+      };
     };
+  };
 
-    flavors = {
-      _core = {
-        nix-ld = {
-          enable = true;
-        };
+  networking = {
+    useDHCP = lib.mkDefault true;
+  };
+
+  nixpkgs = {
+    hostPlatform = base.system;
+  };
+
+  isoImage = {
+    squashfsCompression = "gzip -Xcompression-level 1";
+  };
+
+  # Enable SSH in the boot process.
+  systemd = {
+    services = {
+      sshd = {
+        wantedBy = pkgs.lib.mkForce ["multi-user.target"];
       };
-      ssh-server = {
-        enable = true;
-      };
+    };
+  };
+
+  hardware = {
+    graphics = {
+      enable = base.isGui;
     };
   };
 }

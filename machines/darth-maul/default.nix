@@ -1,34 +1,14 @@
 {
-  config,
   lib,
   pkgs,
   ...
 }: let
-  osBase = import ../base.nix;
   base = import ./base.nix;
-
-  users = {
-    rdeville = {
-      isSudo = true;
-      inherit (osBase.users) openssh;
-      extraGroups = [
-        "ydotool"
-      ];
-    };
-    root = {
-      inherit (osBase.users) openssh;
-    };
-  };
-
-  secrets = builtins.listToAttrs (builtins.map (user: {
-    name = "users/${user}/password";
-    value = {
-      neededForUsers = true;
-    };
-  }) (builtins.filter (user: user != "test") (builtins.attrNames users)));
 in {
   imports = [
+    # (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
     ./hardware-configuration.nix
+    ./os.nix
   ];
 
   # Use the systemd-boot EFI boot loader.
@@ -44,7 +24,7 @@ in {
       };
 
       # grub = {
-      #   enable = true;
+      #   enable = lib.mkForce true;
       #   device = "nodev";
       #   useOSProber = true;
       #   efiSupport = true;
@@ -58,6 +38,16 @@ in {
 
   nixpkgs = {
     hostPlatform = base.system;
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "discord"
+          "nvidia-settings"
+          "nvidia-x11"
+          "steam"
+          "steam-unwrapped"
+        ];
+    };
   };
 
   services = {
@@ -84,74 +74,7 @@ in {
       };
       open = false;
       nvidiaSettings = true;
-      package = config.boot.kernelPackages.nvidiaPackages.latest;
-    };
-  };
-
-  sops = {
-    inherit secrets;
-    age = {
-      inherit (osBase.sops) keyFile;
-    };
-    defaultSopsFile = ./secrets.enc.yaml;
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-          "nvidia-settings"
-          "nvidia-x11"
-          "steam"
-          "steam-unwrapped"
-        ];
-    };
-  };
-
-  os = {
-    inherit (base) hostName system;
-
-    users = {
-      inherit users;
-    };
-
-    flavors = {
-      _core = {
-        nix-ld = {
-          enable = true;
-        };
-      };
-
-      display-manager = {
-        enable = true;
-        ly = {
-          enable = true;
-        };
-      };
-
-      window-manager = {
-        enable = true;
-        awesome = {
-          enable = true;
-        };
-
-        hyprland = {
-          enable = true;
-        };
-      };
-
-      docker = {
-        enable = true;
-      };
-
-      ssh-server = {
-        enable = true;
-      };
-
-      steam = {
-        enable = true;
-      };
+      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     };
   };
 }
