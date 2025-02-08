@@ -45,13 +45,13 @@ in {
           tweaks = ["square"];
         };
       };
-      iconTheme = {
-        name = "Qogir-manjaro";
-        package = pkgs.qogir-icon-theme.override {
-          themeVariants = ["manjaro"];
-          colorVariants = ["dark"];
-        };
-      };
+      # iconTheme = {
+      #   name = "Qogir-manjaro";
+      #   package = pkgs.qogir-icon-theme.override {
+      #     themeVariants = ["manjaro"];
+      #     colorVariants = ["dark"];
+      #   };
+      # };
       gtk2 = {
         configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
       };
