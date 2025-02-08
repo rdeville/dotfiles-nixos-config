@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   name = builtins.baseNameOf ./.;
@@ -37,6 +38,18 @@ in {
             "main"
           ];
         };
+        plugins = [
+          {
+            file = "you-should-use.plugin.zsh";
+            name = "you-should-use";
+            src = pkgs.fetchFromGitHub {
+              owner = "MichaelAquilina";
+              repo = "zsh-you-should-use";
+              rev = "master";
+              sha256 = "XbTZpyUIpALsVezqnIfz7sV26hMi8z+2dW0mL2QbVIE=";
+            };
+          }
+        ];
         dotDir = ".cache/zsh";
         profileExtra = ''
           ZPROFILE_CUSTOM="$HOME/.config/zsh/profile"
