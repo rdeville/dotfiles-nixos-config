@@ -1,7 +1,44 @@
-{...}: let
+{
+  lib,
+  modulesPath,
+  pkgs,
+  ...
+}: let
   base = import ./base.nix;
 in {
-  os = {
-    inherit (base) hostName system isGui isMain isDarwin isWork;
+  imports = [
+    (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
+    ./os.nix
+  ];
+
+  networking = {
+    useDHCP = lib.mkDefault true;
+  };
+
+  nixpkgs = {
+    hostPlatform = base.system;
+    config = {
+      allowUnfree = true;
+    };
+  };
+
+  boot = {
+    # Let us live dangerously with the latest kernel
+    # kernelPackages = pkgs.linuxPackages_latest;
+  };
+
+  # Enable SSH in the boot process
+  systemd = {
+    services = {
+      sshd = {
+        wantedBy = pkgs.lib.mkForce ["multi-user.target"];
+      };
+    };
+  };
+
+  hardware = {
+    graphics = {
+      enable = base.isGui;
+    };
   };
 }

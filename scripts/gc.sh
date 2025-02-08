@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 #shellcheck disable=SC2034
 
+# DESCRIPTION: Wraper to bulk commit machines config
+
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
   pwd -P

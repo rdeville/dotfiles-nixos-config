@@ -2,11 +2,14 @@
   "$schema": "https://raw.githubusercontent.com/jetpack-io/devbox/main/.schema/devbox.schema.json",
   "packages": {
     "pre-commit": "3.7.1",
-    "yq-go": "4.44.1"
+    "yq-go": "4.44.1",
+    "path:../../../public/dotfiles/nixos/.#default": "",
+    "path:.#default": ""
   },
   "shell": {
     "init_hook": [
-      "./.devbox/init_hook/pre-commit.sh"
+      "./.devbox/init_hook/pre-commit.sh",
+      "./.devbox/init_hook/show_scripts.sh"
     ]
   }
 }

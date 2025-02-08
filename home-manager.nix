@@ -10,7 +10,7 @@ builtins.listToAttrs (
         pkgs =
           inputs.nixos.homeManagerModules.lib.pkgsForSystem
           (
-            import ./machins/${host}/base.nix
+            import ./machines/${host}/base.nix
           )
           .system;
       in
@@ -21,7 +21,7 @@ builtins.listToAttrs (
               inherit pkgs;
               modules = [
                 (import ./home-manager/_modules.nix {
-                  inherit inputs host user;
+                  inherit inputs host user lib;
                 })
               ];
               extraSpecialArgs = {

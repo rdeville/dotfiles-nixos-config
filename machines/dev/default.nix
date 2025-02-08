@@ -23,7 +23,7 @@ in {
 
   boot = {
     # Let us live dangerously with the latest kernel
-    kernelPackages = pkgs.linuxPackages_latest;
+    # kernelPackages = pkgs.linuxPackages_latest;
   };
 
   # Enable SSH in the boot process

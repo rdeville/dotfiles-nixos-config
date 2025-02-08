@@ -11,42 +11,60 @@ in {
       _core = {
         enable = true;
       };
+
       _gui = {
         enable = base.isGui;
+        wayland = {
+          hyprspace = {
+            enable = false;
+          };
+        };
       };
+
       audio = {
         enable = false;
       };
+
       bluetooth = {
         enable = false;
       };
+
       gh = {
         enable = false;
       };
+
       glab = {
         enable = false;
       };
+
       kubernetes-client = {
         enable = false;
       };
+
       nextcloud-client = {
         enable = false;
       };
+
       opentofu = {
         enable = false;
       };
+
       podman = {
         enable = false;
       };
+
       spotify-player = {
         enable = false;
       };
+
       ssh-client = {
         enable = false;
       };
+
       terraform = {
         enable = false;
       };
+
       vscode = {
         enable = false;
       };

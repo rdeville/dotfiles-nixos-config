@@ -1,4 +1,3 @@
-# BEGIN DOTGIT-SYNC BLOCK MANAGED
 {
   description = ''
     Flake for Nixos Config Data
@@ -7,122 +6,87 @@
     Home-Manager
   '';
 
-  # Devenv Cachix
-  nixConfig = {
-    extra-trusted-public-keys = "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw=";
-    extra-substituters = "https://devenv.cachix.org";
-  };
-
   inputs = {
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
-    utils = {
-      url = "github:numtide/flake-utils";
-    };
-    devenv = {
-      url = "github:cachix/devenv";
-    };
-    alejandra = {
-      url = "github:kamadorueda/alejandra";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-    # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     home-manager = {
       url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    nixgl = {
+      url = "github:nix-community/nixGL";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     # My Personal Public NixOS /HM Config
     nixos = {
-      # url = "git+file:///home/rdeville/git/framagit.org/private/dotfiles/nixos-config";
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
-        alejandra.follows = "alejandra";
         awesome.follows = "awesome";
         home-manager.follows = "home-manager";
         hyprswitch.follows = "hyprswitch";
-        # hyprland.follows = "hyprland";
-        # hyprspace.follows = "hyprspace";
+        nixgl.follows = "nixgl";
         nixpkgs.follows = "nixpkgs";
         nix-index-database.follows = "nix-index-database";
-        rofi-themes.follows = "rofi-themes";
         sops-nix.follows = "sops-nix";
-        utils.follows = "utils";
       };
     };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     awesome = {
-      url = "github:awesomeWM/awesome";
+      url = "github:awesomeWM/awesome/master";
       flake = false;
     };
     hyprswitch = {
       url = "github:h3rmt/hyprswitch/release";
-    };
-    # hyprland = {
-    #   url = "github:hyprwm/Hyprland";
-    # };
-    # hyprland-plugins = {
-    #   url = "github:hyprwm/hyprland-plugins";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-    # hyprspace = {
-    #   url = "github:KZDKM/Hyprspace";
-    #   inputs.hyprland.follows = "hyprland";
-    # };
-    warpd = {
-      url = "github:rvaiya/warpd";
-      flake = false;
-    };
-    rofi-themes = {
-      url = "github:newmanls/rofi-themes-collection";
-      flake = false;
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     # My personal dotfiles flakes
     awesomerc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/awesomewm.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
+        awesome.follows = "awesome";
       };
     };
     direnvrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/direnv.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
       };
     };
     neovimrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/neovim.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
       };
     };
     tmuxrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/tmux.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
       };
     };
     zshrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/shell.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
       };
     };
     # My programs I want on my computer
@@ -130,14 +94,10 @@
       url = "git+https://framagit.org/rdeville-public/programs/dotgit-sync.git";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        utils.follows = "utils";
-        alejandra.follows = "alejandra";
       };
     };
-    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_INPUT
   };
   outputs = inputs @ {self, ...}: let
-    # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
     forAllSystems = inputs.nixpkgs.lib.genAttrs allSystems;
@@ -156,48 +116,35 @@
           import ./lib/default.nix final
         )
       );
-    # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_CUSTOM_VARS
-  in
-    inputs.utils.lib.eachSystem allSystems (
+  in {
+    # TOOLING
+    # ========================================================================
+    # Formatter for your nix files, available through 'nix fmt'
+    # Other options beside 'alejandra' include 'nixpkgs-fmt'
+    formatter = forAllSystems (
       system: let
-        pkgs = inputs.nixos.homeManagerModules.lib.pkgsForSystem system;
+        pkgs = inputs.nixos.nixosModules.lib.pkgsForSystem system;
+      in
+        pkgs.alejandra
+    );
+
+    # PACKAGES
+    # ========================================================================
+    packages = forAllSystems (
+      system: let
+        pkgs = inputs.nixos.nixosModules.lib.pkgsForSystem system;
       in {
-        packages = {
-          devenv-up = self.devShells.${system}.default.config.procfileScript;
-        };
-
-        devShells = {
-          default = inputs.devenv.lib.mkShell {
-            inherit inputs pkgs;
-            modules = [
-              ./devenv.nix
-            ];
-          };
-        };
+        default = import ./scripts {inherit pkgs;};
+        scripts = import ./scripts {inherit pkgs;};
       }
-    )
-    // {
-      # TOOLING
-      # ========================================================================
-      # Formatter for your nix files, available through 'nix fmt'
-      # Other options beside 'alejandra' include 'nixpkgs-fmt'
-      formatter = forAllSystems (
-        system:
-          inputs.alejandra.defaultPackage.${system}
-      );
+    );
 
-      # BEGIN DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
-      # ========================================================================
+    # NIXOS
+    # ------------------------------------------------------------------------
+    nixosConfigurations = import ./nixos.nix {inherit inputs lib;};
 
-      # NIXOS
-      # ------------------------------------------------------------------------
-      nixosConfigurations = import ./nixos.nix {inherit inputs lib;};
-
-      # HOME MANAGER
-      # ------------------------------------------------------------------------
-      homeConfigurations = import ./home-manager.nix {inherit inputs lib;};
-
-      # END DOTGIT-SYNC BLOCK EXCLUDED NIX_FLAKE_OUTPUTS_CUSTOM
-    };
+    # HOME MANAGER
+    # ------------------------------------------------------------------------
+    homeConfigurations = import ./home-manager.nix {inherit inputs lib;};
+  };
 }
-# END DOTGIT-SYNC BLOCK MANAGED

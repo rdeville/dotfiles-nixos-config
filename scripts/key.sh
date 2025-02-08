@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
+# DESCRIPTION: Wraper to manage my private key
+#
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
   pwd -P

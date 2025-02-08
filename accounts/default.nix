@@ -8,7 +8,7 @@ let
     };
     calendar = {
       khal = {
-        enable = true;
+        enable = false;
         type = "discover";
       };
       vdirsyncer = {
