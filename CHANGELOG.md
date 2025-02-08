@@ -1,6 +1,40 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.0 (2025-02-08)
+
+### ✨ Minor
+
+  * ✨ Add new tooling scripts and refacto configuration folderk (!41) by Romain Deville ([`8cc8a70`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8cc8a709a5825d40fc5f7628759842c24f465e25))
+
+### 🩹 Patch
+
+  * ✏️(hm): Fix typo in home-manager.nix by Romain Deville ([`aa88d17`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/aa88d172fdcdc034ac5337b4743966bc4f951731)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`2be3e2d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2be3e2d2d8502b980898d94d06fb566557138767)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`03d2b19`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/03d2b195df0125fe4b5cf92f1bef9d9850b510b1)) 🔏
+  * 🍱(assets): Restore fastfetch logo by Romain Deville ([`b7e7de4`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b7e7de4e62b4f29a7352bf65cb8573085db93483)) 🔏
+  * 👽️(hosts): Update default git profiles due to new module structure by Romain Deville ([`5b09b89`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5b09b89023df867cfab0b57c0cc4ca844981bf03)) 🔏
+  * 👽️(hosts/palpatine): Update git commented profiles due to new module structure by Romain Deville ([`bc166a6`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bc166a605ad4561de2924d3311d0f792c168d4bd)) 🔏
+  * 🔧 Update hosts config and scripts management (!42) by Romain Deville ([`cfbb836`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/cfbb836ee725f22c3f83695b0d3307a8d2635a9d))
+  * 🔧(accounts): Deactivate khal since build fail by Romain Deville ([`3a7cdaa`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3a7cdaab628052216173bc483126cef3cb8b6472)) 🔏
+  * 🔧(machines): Upgrade all machines to new config, now able to build all by Romain Deville ([`89910ad`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/89910adbdd2c175fa488c1632e84c8f7d0b027d3)) 🔏
+  * 🔧(darth-maul/rdeville): Add luarocks and go pkgs by Romain Deville ([`0330fbe`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/0330fbe2c40bf9e023b38b02e246c5703f642047)) 🔏
+  * 🔧(hm/darth-maul/rdeville): Deactivate hyprspace &amp; hyprexpo since unable to build by Romain Deville ([`d1c1691`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/d1c16913ef3b3c8657d181e0542e1e15a0b38a76)) 🔏
+  * 🔧(host/darth-maul): Remove useless comment by Romain Deville ([`f397913`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f3979131be3854c14f3de947145720a9ed9b6e7b)) 🔏
+
+### 🔊 Others
+
+  * ♻️ Update imports path due to new structure by Romain Deville ([`8e5efba`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8e5efbadf20bd123270c891afb0aadc0b54c111a)) 🔏
+  * 🔥 Remove useless code and useless flakes inputs by Romain Deville ([`4e4e8c8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/4e4e8c8ad6f8bf278727214d3a12eb0f0d327a9b)) 🔏
+  * 🔥(pubkeys): Remove now useless old public keys by Romain Deville ([`74662c4`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/74662c45325d01a8a2289cf714a97253daf603ab)) 🔏
+  * 🔨(devbox): Drop devenv support to only use devbox with local scripts by Romain Deville ([`15ca325`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/15ca3253dbd286e4e7330379abf39f8bcf36bfe8)) 🔏
+  * 🔨(scripts): Remove script now in my nixos flake and package them by Romain Deville ([`7be20e7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/7be20e799dae9a9e0e9b9b1ea748d1d6a3893637)) 🔏
+  * 🔨(devenv): Integrate new scripts to devenv by Romain Deville ([`9aa6d29`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9aa6d29288417c5b401a2f0164793b8c77602e60)) 🔏
+  * 🔨(scripts): Refacto and normalize scripts with a &#34;fake&#34; CLI by Romain Deville ([`95e079a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/95e079a108bba3599fce8dde8e0e3c65df60aa35)) 🔏
+  * 🚚(assets): Flatten configs/assets to assets by Romain Deville ([`3028254`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3028254d2b5ef24c7d35d6e1fba68aa043e7b2c8)) 🔏
+  * 🚚(accounts): Flatten configs/accounts to accounts by Romain Deville ([`feea41b`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/feea41b56348d0f3ff9c48de0d33f349252123ea)) 🔏
+  * 🚚(hosts): Move configs/hosts to machines to flatten structure by Romain Deville ([`bf58f63`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/bf58f63caf9a2f93cc0fd2661076df7fd15530ba)) 🔏
+
 ## v0.8.0 (2025-01-24)
 
 ### ✨ Minor
