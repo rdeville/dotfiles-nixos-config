@@ -1,6 +1,50 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.0 (2025-02-08)
+
+### ✨ Minor
+
+  * ✨ Update flavors to better handle darwin, minor scripts fixes (!93) by Romain Deville ([`50c9f1d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/50c9f1d39bf7cec9f0810afc1860c67e2deea35e))
+  * ✨(os): Add isDarwin boolean for flavors by Romain Deville ([`bd03cb7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bd03cb78d2ddb821797b606119bcfd30bddf7f7b)) 🔏
+  * ✨(hm/ollama): Add basic ollama flavors by Romain Deville ([`c3c9c8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3c9c8cdb4b01d0bcc7c1b964dc9908225923df8)) 🔏
+  * ✨(hm/_gui): Add gammastep as my new &#34;redshift&#34; like with wayland support (!90) by Romain Deville ([`c720c62`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c720c626d09789c903cc5c3aa6131796280645a5))
+  * ✨(hm/_gui): Add gammastep as my new &#34;redshift&#34; like with wayland support by Romain Deville ([`08f0d3f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/08f0d3f44ac5c3a9fad310a15b2f4b7df99fd9b6)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(os/display-manager): Deactivate display manager if OS isDarwin by Romain Deville ([`333f75c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/333f75cfadfbdb91f1d8a7894fd600ca84f3356f)) 🔏
+  * ⚡️(os/window-manager): Deactivate flavor if OS isDarwin by Romain Deville ([`b67b70b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b67b70b205801f8f7bb99df8445befdbb4029e16)) 🔏
+  * ⚡️(hm): Force hm.homeDirectory value by Romain Deville ([`8a11e9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8a11e9dd99b7ad66f0237880086a599ec011f9f3)) 🔏
+  * ⚡️ Rework most flavors to be full module and refacto scriptsk (!92) by Romain Deville ([`f1e7cce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f1e7ccedd7637e096bf25d29eb38cb7de75d10b2))
+  * ➖ Update flake.nix by Romain Deville ([`0f4f029`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0f4f0293a9f2da8b95d323b96bca6ab885605f28)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`951d8da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/951d8dadf61a4c8b1cfb564183fd4c0e065239ee)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`de050be`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/de050be69aeb4a672e836b665392c63d9e8df62e)) 🔏
+  * 🐛(os/printing): Fix users usage to update userGroup by Romain Deville ([`07c5bee`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/07c5bee8c999fbe073b440b245a96c4cc1d0f147)) 🔏
+  * 🐛(hm/_gui): Deactivate wayland if OS isDarwin by Romain Deville ([`4afd3fb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4afd3fb36d7ed4058adf69980f9b3281402d3f83)) 🔏
+  * 🐛(hm/_gui): Fix minor issues for rofi and vlc pkgs set to linux only (!91) by Romain Deville ([`f7bb15d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7bb15d70fff69b83af8496b5f8a2b6ed3152fd4))
+  * 🐛(hm/_gui/wayland): Fix rofi submodule options name based on path by Romain Deville ([`7bd834d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7bd834d0180f4e6d0d91299d72cfd32148d31348)) 🔏
+  * 🐛(hm/_gui): Move vlc pkgs to linux dedicated pkgs by Romain Deville ([`e041235`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e0412359a3d6b6ede6bc63c150c9d2bafc7942c0)) 🔏
+  * 👽️(hm/_gui): Deactivate gtk iconTheme Qogir-manjaro as build fail by Romain Deville ([`7980844`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/798084480888fca3ce72706e54b41c9faa54af6e)) 🔏
+  * 📦️(hm/_core): Add viddy to core pkgs by Romain Deville ([`ba63a86`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ba63a86feb0f76d23bb700fa09f9e4cb07ac97ad)) 🔏
+  * 🔧(flake.nix): Update flake.nix to support new dev-min and dev-max machines by Romain Deville ([`a166699`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a1666994f4cdcb5912ed65f8ee16492933f014ca)) 🔏
+  * 🔧(machines): Move machine dev to dev-min and dev-max by Romain Deville ([`130bebf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/130bebf138f58d74ac3900b63422dead64bd1465)) 🔏
+  * 🔧(hm/_gui): Change redshift to activable module (disabled by default) by Romain Deville ([`221cea1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/221cea16374dc269031dff1ee166ccb0f25182e5)) 🔏
+
+### 🔊 Others
+
+  * 🎨(os): Update flavors description and remove useless options by Romain Deville ([`1c45cfa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1c45cfab50fdfca4527d6492076485dadeb0cd14)) 🔏
+  * 🎨(hm): Update HM flavors option description by Romain Deville ([`edd1fc0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/edd1fc09dd477e17d1c6b5ae5abe0ea6b82bba96)) 🔏
+  * 🎨(hm/_gui): Upgrade flavors such that everything is activable module by Romain Deville ([`8303207`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/830320752730a889370fa5fbb85c1280b57b8145)) 🔏
+  * 🎨(hm/_core): Upgrade flavors such that everything is activable module by Romain Deville ([`5844f09`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5844f09e41cb4fdc7abb1c8ccab3fbd2b987075b)) 🔏
+  * 🎨(hm/_accounts): Upgrade flavors such that everything is activable module by Romain Deville ([`f05ac37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f05ac3751cfb8c3295626c7e22b4b82b332baa84)) 🔏
+  * 🔥 Remove useless code and useless flakes inputs by Romain Deville ([`03ca665`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/03ca66501e24d5a8caaecfd59af14ae933c58c8c)) 🔏
+  * 🔥(os/users): Remove useless options by Romain Deville ([`0e8fa2d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0e8fa2d1f251d79da6bab5b5b0ff43b9a5bc6da6)) 🔏
+  * 🔨(scripts): Fix minor bugs and typos on scripts by Romain Deville ([`856c388`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/856c38807cb60155e27dd016abb416939d6cb4da)) 🔏
+  * 🔨(devbox): Drop devenv to only use devbox by Romain Deville ([`21e055f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/21e055f954b4877e73674117d0f1c6a03aa12b42)) 🔏
+  * 🔨(scripts): Update scripts with new CLI framework and within a nix pkgs by Romain Deville ([`fd979d4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fd979d4681e7f208d357b93e2f3d32f555e9124a)) 🔏
+  * 🔨(machines): Update config for dev machine by Romain Deville ([`eb5f9ff`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eb5f9ff226230d6ac2486529806af89948e4e27e)) 🔏
+
 ## v0.31.0 (2025-01-22)
 
 ### ✨ Minor
