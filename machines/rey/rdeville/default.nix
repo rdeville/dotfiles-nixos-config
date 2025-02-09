@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -34,19 +33,24 @@ in {
 
   home = {
     packages = with pkgs; [
-      discord
       inkscape
       hclfmt
       libreoffice
       gimp
       ghostscript
-      google-cloud-sdk
+      (
+        google-cloud-sdk.withExtraComponents [
+          google-cloud-sdk.components.gke-gcloud-auth-plugin
+        ]
+      )
       google-cloud-sql-proxy
       signal-desktop
+      ssh-to-age
       texliveFull
       terraform-docs
       terragrunt
       whatsapp-for-linux
+      yubikey-manager
     ];
   };
 }
