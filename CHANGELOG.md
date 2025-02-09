@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.1 (2025-02-09)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`57cf4e7`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/57cf4e74d526398035f956c40980dcbbac4b22c9)) 🔏
+  * 🔧(machines): Enable terraform and switch to discord flavors (!43) by Romain Deville ([`5e40cfb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/5e40cfbb3b5cadd0c3fdbe3b0727366cfdc15c98))
+  * 🔧(machines/rey): Enable terraform and discord flavors by Romain Deville ([`c628698`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c628698924759fe9ccfe051d1c891f492508b3a4)) 🔏
+  * 🔧(machines/darth-maul): Enable discord and terraform flavors by Romain Deville ([`9065f88`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9065f886c01038811e46bc993fa6ed923aae5401)) 🔏
+
 ## v0.9.0 (2025-02-08)
 
 ### ✨ Minor
