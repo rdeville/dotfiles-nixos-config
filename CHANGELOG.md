@@ -1,6 +1,12 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.2 (2025-02-09)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`a996acb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a996acba27e88e59a66b7b2f2ecd39711cb34397)) 🔏
+
 ## v0.9.1 (2025-02-09)
 
 ### 🩹 Patch
