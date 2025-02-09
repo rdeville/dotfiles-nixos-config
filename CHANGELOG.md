@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.34.0 (2025-02-09)
+
+### ✨ Minor
+
+  * ✨(hm): Add HM discord flavor (!96) by Romain Deville ([`b601f30`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b601f309113074dc849d61e5dc8ea5e398533f8e))
+  * ✨(hm): Add HM discord flavor by Romain Deville ([`defbaf2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/defbaf2ce38c30b80947cb46a54713cf67040beb)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`f80f9eb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f80f9eb050ecbdf665669eb2bacafc29b31a3727)) 🔏
+  * 🔧(machines): Update machines config with new flavor by Romain Deville ([`57d4c49`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/57d4c49eb400d108f1711faae2cf2691f56594a2)) 🔏
+
 ## v0.33.0 (2025-02-08)
 
 ### ✨ Minor
