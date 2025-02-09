@@ -42,6 +42,10 @@ in {
         enable = true;
       };
 
+      discord = {
+        enable = true;
+      };
+
       gh = {
         enable = true;
       };
@@ -89,7 +93,7 @@ in {
       };
 
       terraform = {
-        enable = false;
+        enable = true;
       };
     };
   };

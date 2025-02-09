@@ -46,6 +46,7 @@ in {
           "nvidia-x11"
           "steam"
           "steam-unwrapped"
+          "terraform"
         ];
     };
   };
