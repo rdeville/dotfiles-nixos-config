@@ -27,17 +27,8 @@ in {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
           "discord"
+          "terraform"
         ];
-    };
-  };
-
-  xdg = {
-    configFile = {
-      "discord/settings.json" = {
-        text = builtins.toJSON {
-          SKIP_HOST_UPDATE = true;
-        };
-      };
     };
   };
 
@@ -47,14 +38,11 @@ in {
     };
 
     packages = with pkgs; [
-      discord
       inkscape
       hclfmt
       libreoffice
-      luarocks-nix
       gimp
       ghostscript
-      go
       (
         google-cloud-sdk.withExtraComponents [
           google-cloud-sdk.components.gke-gcloud-auth-plugin
@@ -66,9 +54,8 @@ in {
       texliveFull
       terraform-docs
       terragrunt
-      viddy
       whatsapp-for-linux
-      yubikey-manager.out
+      yubikey-manager
     ];
   };
 }

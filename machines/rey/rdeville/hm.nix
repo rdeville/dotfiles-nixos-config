@@ -42,6 +42,10 @@ in {
         enable = true;
       };
 
+      discord = {
+        enable = true;
+      };
+
       gh = {
         enable = true;
       };
