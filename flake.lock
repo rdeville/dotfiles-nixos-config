@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739108030,
-        "narHash": "sha256-6QjzcMHFnfAA1zahEoMW4a+0g49uXO/bA9zJVjRPqtk=",
+        "lastModified": 1739110752,
+        "narHash": "sha256-YYPdiex+5zkRyGGlliGSvgjLb1+8REvzHLe+q2dcJzs=",
         "ref": "refs/heads/main",
-        "rev": "c79a62454db8bf69dcdfb7f0345b9f08803bd920",
-        "revCount": 241,
+        "rev": "54720308597b98205acca675fc6c054775f14d75",
+        "revCount": 244,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/neovim.git"
       },
