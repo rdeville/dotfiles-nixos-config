@@ -33,6 +33,10 @@ in {
         enable = false;
       };
 
+      discord = {
+        enable = false;
+      };
+
       gh = {
         enable = false;
       };
