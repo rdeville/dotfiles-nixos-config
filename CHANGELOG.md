@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.9.3 (2025-02-11)
+
+### 🩹 Patch
+
+  * 🐛(machines/FBLP-181): Fix machines darwin support (!44) by Romain Deville ([`170ef59`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/170ef59b047f29873ccb1b082f4b7ef169797f07))
+  * 🐛(machines/FBLP-181): Fix machines darwin support by Romain Deville ([`c606b7a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c606b7a1ac8214e7142c4f063cdb496c7f77f7c6)) 🔏
+
 ## v0.9.2 (2025-02-09)
 
 ### 🩹 Patch
