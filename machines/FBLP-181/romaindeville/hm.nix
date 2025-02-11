@@ -22,10 +22,8 @@ in {
       _core =
         default.flavors._core
         // {
-          git =
-            default.flavors._core.git
-            // {
-              profiles = {
+          git = {
+              profiles = default.flavors._core.git.profiles // {
                 pro = {
                   condition = "gitdir:${config.home.homeDirectory}/git/github.com/dougs-compta/";
                   contents = {
