@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.34.1 (2025-02-11)
+
+### 🩹 Patch
+
+  * 🐛(hm): Fix HM darwin support (!97) by Romain Deville ([`bf6ddd2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bf6ddd270366e59b1d594d5a73a77c83436b427e))
+  * 🐛(hm): Fix HM darwin support by Romain Deville ([`9c109d2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9c109d23ddba87eea562bc1454f01258205bd2a6)) 🔏
+
 ## v0.34.0 (2025-02-09)
 
 ### ✨ Minor
