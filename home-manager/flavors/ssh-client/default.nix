@@ -95,7 +95,7 @@ in {
 
     services = {
       ssh-agent = {
-        enable = cfg.enable;
+        enable = cfg.enable && ! config.hm.isDarwin;
       };
     };
 

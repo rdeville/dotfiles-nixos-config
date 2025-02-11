@@ -18,7 +18,7 @@ in {
               lib.mkDependEnabledOption ''
                 Install ${name}.${subname} Home-Manager flavor.
               ''
-              config.hm.flavors.${name}.enable;
+              (config.hm.flavors.${name}.enable && ! config.hm.isDarwin);
           };
         };
       };
