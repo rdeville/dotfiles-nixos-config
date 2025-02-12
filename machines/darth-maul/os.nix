@@ -57,10 +57,10 @@ in {
           enable = true;
         };
         hyprland = {
-          enable = true;
+          enable = false;
         };
         plasma = {
-          enable = true;
+          enable = false;
         };
       };
 
