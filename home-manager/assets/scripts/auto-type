@@ -1,0 +1,132 @@
+#!/usr/bin/env bash
+
+TITLE="Auto Type"
+
+notify() {
+  notify-send \
+    -u "${urgency}" \
+    "$TITLE" \
+    "$1"
+}
+
+err() {
+  local urgency="critical"
+  notify "$1"
+}
+
+log() {
+  local urgency="normal"
+  notify "$1"
+}
+
+action() {
+  cat <<EOM
+  username:username:enter
+  password:password:enter
+  basic:username:tab:password:enter
+  ttotp:username:tab:password:enter:5:totp:enter
+  etotp:username:enter:password:enter:5:totp:enter
+EOM
+}
+
+# ydotool key help
+# Syntax: <keycode>:<pressed>
+# Where :
+# - "XX:1" for pressed means the key is down
+# - then "XX":0 means the key is released
+# Ex:
+# * 28:1 28:0                               => Press and release Enter
+# * 29:1 56:1 59:1 59:0 56:0 29:0           => Press CTRL+ALT+F1 and release all
+# * 42:1 38:1 38:0 24:1 24:0 38:1 38:0 42:0 => Type "LOL" pressing SHIFT
+tab() {
+  ydotool key 15:1 15:0
+}
+
+enter() {
+  ydotool key 28:1 28:0
+}
+
+totp() {
+  kp show "${entry}" -t
+}
+
+attribute() {
+  kp show "${entry}" -a "${cmd}"
+}
+
+_paste() {
+  local data
+  data="$("$1")"
+
+  if [[ -n "${DISPLAY}" ]]; then
+    echo -n "${data}" | xclip -selection clipboard
+  else
+    echo -n "${data}" | wl-copy
+  fi
+
+  # 29:1 47:1 47:0 29:0 => CTRL+V
+  ydotool key 29:1 47:1 47:0 29:0
+}
+
+_has_command() {
+  local command="$1"
+  if ! command -v "${command}" &>/dev/null; then
+    err "Binary \`${command}\` does not exists.\nEnsure package is installed."
+  fi
+}
+
+auto-type() {
+  IFS=':' read -r -a cmds <<<"${actions}"
+  # Loop over actions removing first item which is the name of the action
+  for cmd in "${cmds[@]:1}"; do
+    case "${cmd}" in
+    [0-9]*)
+      sleep "${cmd}"
+      ;;
+    "tab" | "enter")
+      "${cmd}"
+      ;;
+    *)
+      if type "${cmd}" &>/dev/null; then
+        _paste "${cmd}"
+      else
+        _paste "attribute"
+      fi
+      ;;
+    esac
+  done
+}
+
+main() {
+  local zshrc_local="${HOME}/.zshrc.local"
+  local entry
+  local actions
+
+  if [[ -f "${zshrc_local}" ]]; then
+    # shellcheck disable=SC1090
+    source "${zshrc_local}"
+  fi
+
+  _has_command "ydotool"
+  if [[ -n "${DISPLAY}" ]]; then
+    _has_command "xclip"
+  else
+    _has_command "wl-copy"
+  fi
+
+  entry=$(kp ls -Rf | rofi -dmenu)
+  if [[ -z "${entry}" ]]; then
+    log "No entry selected"
+    return
+  fi
+
+  actions=$(action | rofi -dmenu)
+  if [[ -z "${actions}" ]]; then
+    log "No actions selected"
+    return
+  fi
+
+  auto-type
+}
+
+main "$@"
