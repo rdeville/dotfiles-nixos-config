@@ -32,6 +32,22 @@ in {
     };
   };
 
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+
+    nvidia = {
+      powerManagement = {
+        enable = false;
+        finegrained = false;
+      };
+      open = false;
+      nvidiaSettings = true;
+      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
+    };
+  };
+
   networking = {
     useDHCP = true;
   };
@@ -51,6 +67,17 @@ in {
     };
   };
 
+  programs = {
+    dconf = {
+      enable = true;
+    };
+
+    ydotool = {
+      enable = true;
+      group = "ydotool";
+    };
+  };
+
   services = {
     xserver = {
       videoDrivers = ["nvidia"];
@@ -60,22 +87,6 @@ in {
   virtualisation = {
     libvirtd = {
       enable = true;
-    };
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-    };
-
-    nvidia = {
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     };
   };
 }
