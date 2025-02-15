@@ -28,6 +28,13 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos-facter-modules = {
+      url = "github:numtide/nixos-facter-modules";
+    };
     # My Personal Public NixOS /HM Config
     nixos = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
