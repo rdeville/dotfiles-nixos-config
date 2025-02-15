@@ -34,6 +34,14 @@ in {
               ''
               config.hm.flavors.${name}.enable;
 
+            signing = {
+              format = lib.mkOption {
+                type = lib.types.str;
+                description = "Format to use to Sign commit";
+                default = "openpgp";
+              };
+            };
+
             profiles = lib.mkOption {
               type = lib.types.attrsOf lib.types.attrs;
               default = {};
@@ -49,6 +57,7 @@ in {
     programs = {
       git = {
         enable = true;
+
         includes =
           builtins.map (profile: let
             val = cfg.profiles."${profile}";
@@ -58,6 +67,11 @@ in {
             contentSuffix = "${profile}.gitconfig";
           })
           (builtins.attrNames cfg.profiles);
+
+        signing = {
+          inherit (cfg.signing) format;
+        };
+
         extraConfig = {
           # GIT-* COMMAND CONFIG
           # ==============================================================================
@@ -69,19 +83,23 @@ in {
             commentChar = "#";
             whitespace = "fix,blank-at-eol,blank-at-eof,space-before-tab,trailing-space,cr-at-eol,-indent-with-non-tab";
           };
+
           # https://git-scm.com/docs/git-blame
           blame = {
             coloring = "highlightRecent";
             showEmail = true;
           };
+
           # https://git-scm.com/docs/git-checkout
           checkout = {
             defaultRemote = "origin";
           };
+
           # https://git-scm.com/docs/gitcredentials
           credential = {
             helper = "cache --timeout 432000";
           };
+
           # https://git-scm.com/docs/git-diff
           diff = {
             submodule = "diff";
@@ -89,10 +107,12 @@ in {
             colorMoved = true;
             colorMovedWS = "no";
           };
+
           # https://git-scm.com/docs/git-difftool
           difftool = {
             prompt = false;
           };
+
           # https://git-scm.com/docs/git-fetch
           fetch = {
             recurseSubmodules = "on-demand";
@@ -100,6 +120,7 @@ in {
             pruneTags = true;
             parallel = 0;
           };
+
           # https://git-scm.com/docs/git-grep
           grep = {
             lineNumber = true;
@@ -108,37 +129,45 @@ in {
             threads = 2;
             fallbackToNoIndex = true;
           };
+
           # https://git-scm.com/docs/git-help
           help = {
             browser = "firefox";
           };
+
           # https://www.git-scm.com/docs/git-init
           init = {
             defaultBranch = "main";
           };
+
           # https://git-scm.com/docs/git-merge
           merge = {
             tool = "nvim -d";
           };
+
           # https://git-scm.com/docs/git-mergetool
           mergetool = {
             prompt = true;
           };
+
           # https://git-scm.com/docs/git-push
           push = {
             autoSetupRemote = true;
             default = "current";
             followTags = true;
           };
+
           # https://git-scm.com/docs/git-rebase
           rebase = {
             stat = true;
             autoStash = true;
           };
+
           # https://git-scm.com/docs/git-remote
           remote = {
             pushDefault = "origin";
           };
+
           # https://git-scm.com/docs/git-status
           status = {
             relativePaths = true;
@@ -147,15 +176,18 @@ in {
             showUntrackedFiles = "all";
             submoduleSummary = true;
           };
+
           # https://git-scm.com/docs/git-stash
           stash = {
             showPatch = true;
           };
+
           # https://git-scm.com/docs/git-submodule
           submodule = {
             recurse = true;
             fetchJobs = 2;
           };
+
           # CONFIG UNDEPENDANT TO GIT-* COMMAND
           # ==============================================================================
           # COLOR CONFIGURATION
@@ -234,11 +266,13 @@ in {
               rejected = "${red}";
             };
           };
+
           # COLUMN CONFIGURATION
           column = {
             ui = "auto column nodense";
             status = "plain";
           };
+
           # PRETTY CONFIG
           pretty = {
             customfuller = builtins.concatStringsSep "" [
@@ -262,6 +296,7 @@ in {
             ];
           };
         };
+
         aliases = {
           # Apply patch to files and/or index
           ap = "apply";
@@ -417,6 +452,7 @@ in {
           # git change-commits GIT_COMMITTER_NAME "old name" "new name"
           change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch --env-filter \"if [ \\\"$\{VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;}; f ";
         };
+
         delta = {
           # DETLA CONFIG (Git Pager config when using git diff)
           enable = true;
@@ -429,6 +465,7 @@ in {
             minus-style = "syntax #340001";
           };
         };
+
         difftastic = {
           # DETLA CONFIG (Git Pager config when using git diff)
           enable = ! config.programs.git.delta.enable;
