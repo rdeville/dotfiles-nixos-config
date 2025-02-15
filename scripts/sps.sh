@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-# DESCRIPTION: Wraper to manage sops configuration
-#
+# DESCRIPTION: Wrapper to manage sops configuration
+
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
   pwd -P
@@ -25,7 +25,7 @@ ACTIONS["write"]="Write the updated .sops.yaml config"
 update_keys() {
   age="age.enc.txt"
 
-  echo "    # Personnal Superuser"
+  echo "    # Personal Superuser"
   echo "  - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9"
 
   for host in "${MACHINE_PATH}/"*; do
@@ -175,7 +175,7 @@ main() {
   if [[ -n "${action}" ]]; then
     shift
   fi
-  action=$(check_option_valid "action" "${action}" "ACTIONS" "${DEFAULT_ACION}")
+  action=$(check_option_valid "action" "${action}" "ACTIONS" "${DEFAULT_ACTION}")
 
   "${action}"
 }

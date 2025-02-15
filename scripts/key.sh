@@ -81,11 +81,16 @@ _rotate_key() {
       ;;
     ssh)
       mv "${filepath}.pub" "${filepath}.pub.bak"
+      local comment="${host}"
+      if [[ -n "${user}" ]]; then
+        comment="${user}@${host}"
+      fi
 
       _log "INFO" "Generating **${host}${user//*/:&}** ${algo^^} private key"
-      ssh-keygen -q -C "${user}@${host}" -N "" -t "${type}" -b 4096 -f "${filepath}"
+      ssh-keygen -q -C "${comment}" -N "" -t "${type}" -b 4096 -f "${filepath}"
       mv "${filepath}" "${encfile}"
       chmod 0600 "${encfile}"
+      chmod 0600 "${filepath}.pub"
       encrypt "${encfile}"
       ;;
   esac
@@ -114,6 +119,40 @@ _generate_key() {
   esac
 }
 
+# Key management related method
+_compute_key_path() {
+  local path=$1
+  case ${type} in
+  age)
+    filepath="${path}/age.enc.txt"
+    encfile="${filepath}"
+    algo="age"
+    ;;
+  user)
+    type="ed25519"
+    # shellcheck disable=SC2154
+    filepath=${path}/${user}-${host}
+    encfile="${filepath}.enc.asc"
+    algo="ssh"
+    ;;
+  rsa)
+    filepath="${path}/ssh_host_rsa_key"
+    encfile="${filepath}.enc.asc"
+    algo="ssh"
+    ;;
+  ed25519)
+    filepath=${path}/ssh_host_ed25519_key
+    encfile="${filepath}.enc.asc"
+    # shellcheck disable=SC2034
+    algo="ssh"
+    ;;
+  *)
+    _log "ERROR" "Wrong type for the private key type: type=${type}"
+    return 1
+    ;;
+  esac
+}
+
 _process_key() {
   local host=$1
   local user=$2
@@ -121,7 +160,7 @@ _process_key() {
   local encfile
   local algo
 
-  compute_key_path "${path}"
+  _compute_key_path "${path}"
   "_${action}_key"
 }
 
