@@ -11,6 +11,10 @@ in {
     ./os.nix
   ];
 
+  facter = {
+    reportPath = ./facter.json;
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -39,7 +43,7 @@ in {
 
     nvidia = {
       powerManagement = {
-        enable = false;
+        enable = true;
         finegrained = false;
       };
       open = false;
