@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.34.2 (2025-02-15)
+
+### 🩹 Patch
+
+  * 👽️(_core/git): Update git config after HM update (!98) by Romain Deville ([`8cf9d2a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8cf9d2a5664cedbb6cb85e5e3966ec130f6ecb7e))
+  * 👽️(_core/git): Update git config after HM update by Romain Deville ([`c1ca05e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c1ca05efc93d41bb687d526f9325f31a9e695795)) 🔏
+
 ## v0.34.1 (2025-02-11)
 
 ### 🩹 Patch
