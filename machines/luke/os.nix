@@ -10,9 +10,6 @@
         "ydotool"
       ];
     };
-    root = {
-      inherit (osBase.users) openssh;
-    };
   };
 
   secrets = builtins.listToAttrs (builtins.map (user: {
@@ -39,9 +36,7 @@ in {
 
     flavors = {
       _core = {
-        nix-ld = {
-          enable = true;
-        };
+        enable = true;
       };
 
       display-manager = {
@@ -57,22 +52,14 @@ in {
           enable = true;
         };
         hyprland = {
-          enable = false;
+          enable = true;
         };
         plasma = {
-          enable = false;
+          enable = true;
         };
-      };
-
-      docker = {
-        enable = true;
       };
 
       ssh-server = {
-        enable = true;
-      };
-
-      steam = {
         enable = true;
       };
     };

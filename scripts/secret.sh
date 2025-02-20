@@ -64,6 +64,10 @@ _process() {
     regexp+="${user}/"
   fi
 
+  if [[ "${type}" == "all" ]]; then
+    return
+  fi
+
   case "${type}" in
   key)
     regexp+="${type}.*\.enc\.(asc|txt)$"
@@ -148,7 +152,7 @@ main() {
   if [[ -n "${action}" ]]; then
     shift
   fi
-  action=$(check_option_valid "action" "${action}" "ACTIONS" "build")
+  action=$(check_option_valid "action" "${action}" "ACTIONS" "")
 
   local host=${1}
   if [[ -n ${host} ]]; then

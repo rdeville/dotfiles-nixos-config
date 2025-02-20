@@ -11,6 +11,10 @@ in {
     ./os.nix
   ];
 
+  facter = {
+    reportPath = ./facter.json;
+  };
+
   # Use the systemd-boot EFI boot loader.
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
@@ -29,6 +33,22 @@ in {
       #   useOSProber = true;
       #   efiSupport = true;
       # };
+    };
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+
+    nvidia = {
+      powerManagement = {
+        enable = true;
+        finegrained = false;
+      };
+      open = false;
+      nvidiaSettings = true;
+      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     };
   };
 
@@ -51,6 +71,17 @@ in {
     };
   };
 
+  programs = {
+    dconf = {
+      enable = true;
+    };
+
+    ydotool = {
+      enable = true;
+      group = "ydotool";
+    };
+  };
+
   services = {
     xserver = {
       videoDrivers = ["nvidia"];
@@ -60,22 +91,6 @@ in {
   virtualisation = {
     libvirtd = {
       enable = true;
-    };
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-    };
-
-    nvidia = {
-      powerManagement = {
-        enable = false;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
     };
   };
 }

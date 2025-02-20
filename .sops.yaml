@@ -1,5 +1,5 @@
 keys:
-    # Personnal Superuser
+    # Personal Superuser
   - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
     # Darth-maul
   - &os-darth-maul age1f5er6rxrgppzw6wes94qjxun2v22xkjzkczhyd86879dxae9qvfsmp9xjl
@@ -16,6 +16,10 @@ keys:
     # FBLP-181
   - &os-FBLP-181 age1fuuuq5x54ermwumqyz2elwd3aqtvgqyhedzxu2p39zz2va32fc3sul45y0
   - &hm-romaindeville-FBLP-181 age1uxgqmys32n6h5xm8stqp8hfj349slq9cy3dl9slj3aa6tpu5ssqsqu32ps
+    # Luke
+  - &os-luke age1fzh7dxg8j48cc0rlhtlm5de9l8x88urhecs5umxf69gxd7ry6f2q90e0me
+  - &hm-rdeville-luke age1au0meks5j9unwhfa992ajj4k8xxzhf4kfs9tr32mwdst64c85q8s58cznj
+  - &hm-root-luke age1z8uuk4au4e3xs6qmsdvtn9gn6xx7qy6nxs8f244ez35ghkrfkgzsnq9uva
     # Palpatine
   - &os-palpatine age1f8c90sspf24st3t455m079nssvy9tcdumm57ane9cydzk3dgyf0qefss42
   - &hm-romaindeville-palpatine age13lhtkcjfq3ahsjp26zcgwvtvns64z3kt6fkutkl8pleff2zu9dysztvfc0
@@ -90,6 +94,23 @@ creation_rules:
       - age:
         - *rdeville
         - *os-FBLP-181
+  - path_regex: luke/rdeville/.*\.enc\.(yaml|json|asc|txt)$
+    # Luke
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-rdeville-luke
+  - path_regex: luke/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Luke
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-root-luke
+  - path_regex: luke/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-luke
   - path_regex: palpatine/romaindeville/.*\.enc\.(yaml|json|asc|txt)$
     # Palpatine
     key_groups:
@@ -135,20 +156,6 @@ creation_rules:
       - age:
         - *rdeville
         - *os-usb-amd64
-  - path_regex: contact@romaindeville.fr/.*\.enc\.(yaml|json|asc|txt)$
-    # Contact@romaindeville.fr
-    key_groups:
-      - age:
-        - *rdeville
-        - *hm-rdeville-rey
-        - *hm-rdeville-darth-maul
-  - path_regex: contact@romaindeville.ovh/.*\.enc\.(yaml|json|asc|txt)$
-    # Contact@romaindeville.ovh
-    key_groups:
-      - age:
-        - *rdeville
-        - *hm-rdeville-rey
-        - *hm-rdeville-darth-maul
   - path_regex: common_secrets/spotify.enc.yaml$
     key_groups:
       - age:

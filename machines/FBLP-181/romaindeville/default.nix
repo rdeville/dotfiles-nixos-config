@@ -4,7 +4,6 @@
   lib,
   ...
 }: let
-  username = builtins.baseNameOf ./.;
   keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   imports = [
@@ -30,6 +29,14 @@ in {
   nixpkgs = {
     config = {
       allowUnfree = true;
+    };
+  };
+
+  programs = {
+    kitty = {
+      settings = {
+        macos_option_as_alt = "left";
+      };
     };
   };
 

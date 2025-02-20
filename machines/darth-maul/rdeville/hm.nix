@@ -27,7 +27,7 @@ in {
       _gui = {
         enable = base.isGui;
         wayland = {
-          enable = true;
+          enable = false;
           hyprspace = {
             enable = false;
           };
