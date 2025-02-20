@@ -1,6 +1,30 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.10.0 (2025-02-20)
+
+### ✨ Minor
+
+  * ✨(machines): Add luke machines NixOS and HM Configurations by Romain Deville ([`b0b5080`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b0b5080b90996adcea7b28e53cefc64949a42a8a)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm/scripts): Add my auto-type script based on ydotool by Romain Deville ([`c9e0fd8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c9e0fd8f673a45ed99c9b02ffc9e764d7ee45957)) 🔏
+  * ⚡️(os): Add use of facter for NixOS by Romain Deville ([`6d39eb8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/6d39eb84d7e769610ec77893f29d9216c6b01696)) 🔏
+  * ➕ Update flake.nix by Romain Deville ([`b16d267`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b16d267d5a80303a15463580447d171336a6e6fe)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`2d21a39`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/2d21a39925ec9a916c79bec460b594ebda6b8f80)) 🔏
+  * 🔧 Mainly update darth-maul config and add luke config (!45) by Romain Deville ([`51e6b04`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/51e6b04a921a7e29c9f2d535724e5277f6d8a3cb))
+  * 🔧(sops): Add luke machine with user to .sops.yaml by Romain Deville ([`634d851`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/634d85185265bdf7d0eb022f14caae0c490eae16)) 🔏
+  * 🔧(machines/darth-maul): Update to use facter by Romain Deville ([`470bf37`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/470bf37fdea3c6aca6fc226398f21dea5e5bdaab)) 🔏
+  * 🔧(machines/darth-maul): Add dconf and ydotool to OS configuration by Romain Deville ([`9a9246d`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9a9246d53780f042ca5ef91cf328953520299170)) 🔏
+  * 🔧(machines/darth-maul): Temporary deactivate wayland by Romain Deville ([`4b6eed1`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/4b6eed18603eaef53dae5902e521379e5d5b38fb)) 🔏
+  * 🔧(machins/FBLP-181): Update kitty configuration for MacOS by Romain Deville ([`9b7f26f`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9b7f26fbb5d83c705e9c1e3b6c4adc6a8060cb51)) 🔏
+
+### 🔊 Others
+
+  * 🔨(scripts): Fix dev scripts missing function and typos by Romain Deville ([`e67c345`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e67c345276fad635831a0f4fcc9181a1e1890a31)) 🔏
+  * 🔨(devbox): Add devbox script that show available command wrapper by Romain Deville ([`77546c9`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/77546c9eb1530c10e31e6183a6703e572686350c)) 🔏
+
 ## v0.9.3 (2025-02-11)
 
 ### 🩹 Patch
