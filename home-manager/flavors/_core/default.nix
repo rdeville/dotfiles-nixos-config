@@ -32,7 +32,7 @@ in {
           age # Encryption tools
           alejandra # Nix Formatter
           bash # Shell Emulator
-          bmon # Process and Ressource Manager
+          bmon # Process and Resource Manager
           btop # Resource Manager
           colordiff # Better diff output
           coreutils # GNU Utilities
@@ -41,7 +41,6 @@ in {
           devbox # Isolated development tools
           devenv # Isolated nix development tools
           diffutils # Command showing diff
-          direnv # Automated development tools
           fzf # Fuzzy Finder
           gcc # C++ compiler
           git # Version Control
@@ -55,8 +54,7 @@ in {
           sops # Encryption tools
           ripgrep # Perl Grep
           rsync # Syncer - $ rsync -r dir1/ dir2/
-          tig # Text Iterface Git
-          tmux # Terminal multiplexer
+          tig # Text Interface Git
           tree # Show folder as tree
           unzip # Zip Files
           xclip # Copy to clipboard
@@ -88,6 +86,7 @@ in {
         #   "--disable-up-arrow"
         # ];
       };
+
       bat = {
         enable = true;
         config = {
@@ -96,6 +95,7 @@ in {
           theme = "TwoDark";
         };
       };
+
       dircolors = {
         enable = true;
         extraConfig = builtins.readFile (
@@ -105,9 +105,11 @@ in {
           }
         );
       };
+
       lsd = {
         enable = true;
       };
+
       nh = {
         enable = true;
         clean = {
@@ -119,17 +121,21 @@ in {
           ];
         };
       };
+
       nix-index-database = {
         comma = {
           enable = true;
         };
       };
+
       nix-index = {
         enable = true;
       };
+
       thefuck = {
         enable = true;
       };
+
       zoxide = {
         enable = true;
       };
