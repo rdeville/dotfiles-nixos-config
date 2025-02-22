@@ -1,6 +1,25 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.35.0 (2025-02-22)
+
+### ✨ Minor
+
+  * ✨ Mainly add my zsh config in HM and add OS audio flavor (!99) by Romain Deville ([`130cc61`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/130cc612c437b8eb96f722b3954cfb9268c6f959))
+  * ✨(os/audio): Add new audio flavors with pipewire service by Romain Deville ([`825b511`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/825b511a19dd8e000ad886c3c9edce9ecf62e20f)) 🔏
+  * ✨(hm/terragrunt): Update pkgs and add zsh config by Romain Deville ([`3917520`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/39175206d9cc1621c21fed203bbef9a24159e621)) 🔏
+  * ✨(hm/terraform): Update pkgs and add zsh config by Romain Deville ([`8054ae4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8054ae4878305a7d52fe0337a505347584ddc939)) 🔏
+  * ✨(hm/opentofu): Update pkgs and add zsh config by Romain Deville ([`92bdefd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92bdefd6d7194736d857adbff22050c69c294c40)) 🔏
+  * ✨(hm/latex): Add flavor with pkg and zsh config by Romain Deville ([`cef3050`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cef3050282348c6ee58ced0545b082ec968e4891)) 🔏
+  * ✨(hm/k8s-client): Update flavors with zsh config (alias and abbr) by Romain Deville ([`2a37c9a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a37c9afd6b03ece3256dffd2c99a0f6ca056659)) 🔏
+  * ✨(hm/docker): Add flavors with zsh config (alias and abbr) by Romain Deville ([`b4e3721`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b4e37215bbf5ef1324663819d41f2def3895d957)) 🔏
+  * ✨(hm/_core): Add zsh config in flavors (and subflavors) by Romain Deville ([`b995dd6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b995dd68038d14d89bce4939d42726e59123ec74)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`21f7c3b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/21f7c3b815bf736915f348194389a617faa81a3c)) 🔏
+  * 🔧(hm/audio): Update package installed in flavors by Romain Deville ([`6b63892`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b638923c599c41e4964cb601b9021dbea26e102)) 🔏
+
 ## v0.34.2 (2025-02-15)
 
 ### 🩹 Patch
