@@ -28,7 +28,27 @@ in {
     home = {
       packages = with pkgs; [
         tmuxp # Tmux Manager
+        tmux # Terminal multiplexer
       ];
+    };
+
+    programs = {
+      zsh = {
+        zsh-abbr = {
+          abbreviations = {
+            # Tmux
+            ta = "tmux attach -t";
+            ts = "tmux switch-client -t";
+            tls = "tmux list-sessions";
+            tksv = "tmux kill-server";
+            tkss = "tmux kill-session -t";
+
+            # Tmuxp
+            tl = "tmuxp load -y";
+            tld = "tmuxp load -y \${TMUXP_CONFIG:-default}";
+          };
+        };
+      };
     };
 
     xdg = {

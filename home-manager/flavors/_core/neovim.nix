@@ -38,5 +38,21 @@ in {
         cargo
       ];
     };
+
+    programs = {
+      zsh = {
+        zsh-abbr = {
+          abbreviations = {
+            vim = "nvim";
+	          vimdiff = "nvim -d";
+
+	          v = "nvim";
+	          vd = "nvim -d";
+	          svim = "sudo nvim";
+	          sv = "sudo nvim";
+          };
+        };
+      };
+    };
   };
 }

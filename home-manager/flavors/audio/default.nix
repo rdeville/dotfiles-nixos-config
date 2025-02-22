@@ -10,7 +10,9 @@
   linuxPkgs = with pkgs; [
     pipewire # Audio Server/Control
   ];
-  darwinPkgs = [];
+  darwinPkgs = with pkgs; [
+    pulseaudio # Audio Server/Control
+  ];
 in {
   options = {
     hm = {
@@ -26,13 +28,7 @@ in {
     home = {
       packages = with pkgs;
         [
-          # Audio
-          pulseaudio # Audio Server/Control
-          # TODO: @rdeville Change to another in few month as pulsemixer is not
-          #       maintained anymore, like ncpamixer
           pulsemixer # TUI Audio Control
-          # TODO: @rdeville Get info about pipewire and qpwgraph sometimes
-          # qpwgraph        # Pipewire Graph Manager
         ]
         ++ (
           if config.hm.isDarwin

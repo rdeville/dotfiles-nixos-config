@@ -42,7 +42,7 @@
       type = "battery";
       key = "│ {#32} ";
       # // "format"= "{1}-{2}-{3}-{4}-{5}-{6}-{7}-{8}-{9}-{10}-{11}-{12}";
-      # // Will be availabled in later version
+      # // Will be available in later version
       # // "percent"= {
       # //   "display"= "bar";
       # // }
@@ -51,7 +51,7 @@
       type = "sound";
       key = "│ {#32} ";
       soundType = "all";
-      # // Will be availabled in later version
+      # // Will be available in later version
       # // "percent"= {
       # //   "display"= "bar";
       # // }
