@@ -20,8 +20,35 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
+        hclfmt
         terraform
+        terraform-docs
       ];
+    };
+
+    programs = {
+      zsh = {
+        initExtra = ''
+          autoload -U +X bashcompinit && bashcompinit
+          complete -o nospace -C "$(command -v terraform)" terraform
+        '';
+
+        zsh-abbr = {
+          abbreviations = {
+            tf = "terraform";
+            tfa = "terraform apply";
+            tff = "terraform fmt";
+            tfi = "terraform init";
+            tfo = "terraform output";
+            tfp = "terraform plan";
+            tfv = "terraform validate";
+            tfs = "terraform state";
+            tfssh = "terraform state show";
+            tfsh = "terraform show";
+            tfw = "terraform workspace";
+          };
+        };
+      };
     };
 
     xdg = {
