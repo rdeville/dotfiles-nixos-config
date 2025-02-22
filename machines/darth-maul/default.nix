@@ -61,12 +61,10 @@ in {
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "discord"
           "nvidia-settings"
           "nvidia-x11"
           "steam"
           "steam-unwrapped"
-          "terraform"
         ];
     };
   };

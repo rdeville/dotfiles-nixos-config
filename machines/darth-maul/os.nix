@@ -44,6 +44,10 @@ in {
         };
       };
 
+      audio = {
+        enable = true;
+      };
+
       display-manager = {
         enable = true;
         ly = {
