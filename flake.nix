@@ -127,7 +127,7 @@
                 }: {
                   config = {
                     home-manager = {
-                      useGlobalPkgs = true;
+                      useGlobalPkgs = false;
                       useUserPackages = true;
                       extraSpecialArgs = {
                         # Here the magic happens with inputs into home-manager
