@@ -46,6 +46,7 @@ in {
           git # Version Control
           htop # Process Manager
           jq # json manipulation tool
+          yq-go # yaml manipulation tool
           killall # Process Killer
           neovim # Text Editor
           pciutils # Manage PCI
@@ -59,7 +60,6 @@ in {
           unzip # Zip Files
           xclip # Copy to clipboard
           xdg-utils # Environment integration
-          viddy # A better watcher
           zip # Zip
 
           # NixOS CLI related packages
@@ -85,15 +85,6 @@ in {
         # flags = [
         #   "--disable-up-arrow"
         # ];
-      };
-
-      bat = {
-        enable = true;
-        config = {
-          map-syntax = [];
-          pager = "less -FR";
-          theme = "TwoDark";
-        };
       };
 
       dircolors = {

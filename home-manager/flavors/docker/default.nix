@@ -27,8 +27,8 @@ in {
 
     programs = {
       zsh = {
-        shellAliases = {
-          docker = "sudo docker";
+        localVariables = {
+          DOCKER_HOST = "unix://$XDG_RUNTIME_DIR/docker.sock";
         };
 
         zsh-abbr = {

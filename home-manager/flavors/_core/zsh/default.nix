@@ -39,6 +39,11 @@ in {
           export LC_ALL="en_US.UTF-8"
         '';
 
+        initExtraFirst = ''
+          ABBR_GET_AVAILABLE_ABBREVIATION=1
+          ABBR_LOG_AVAILABLE_ABBREVIATION=1
+        '';
+
         initExtra = ''
           ${(builtins.readFile ./_completion.zsh)}
           ${(builtins.readFile ./_zshrc.zsh)}
@@ -48,8 +53,7 @@ in {
           YQ = "| yq .";
           JQ = "| jq .";
           G = "| grep ";
-          B = "| bat ";
-          C = "| cat ";
+          C = "cat ";
         };
 
         shellAliases = {

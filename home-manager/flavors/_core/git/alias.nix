@@ -7,7 +7,6 @@
   subname = "git";
   cfg = config.hm.flavors.${name}.${subname};
 in {
-
   config = lib.mkIf cfg.enable {
     programs = {
       git = {

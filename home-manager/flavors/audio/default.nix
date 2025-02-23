@@ -36,5 +36,19 @@ in {
           else linuxPkgs
         );
     };
+
+    programs = {
+      zsh = let
+        aliasAbbr = {
+          p = "pulsemixer";
+        };
+      in {
+        shellAliases = aliasAbbr;
+
+        zsh-abbr = {
+          abbreviations = aliasAbbr;
+        };
+      };
+    };
   };
 }
