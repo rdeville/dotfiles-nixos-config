@@ -90,12 +90,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    zshrc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/shell.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     # My programs I want on my computer
     dotgit-sync = {
       url = "git+https://framagit.org/rdeville-public/programs/dotgit-sync.git";
