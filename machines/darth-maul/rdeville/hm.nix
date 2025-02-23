@@ -46,6 +46,10 @@ in {
         enable = true;
       };
 
+      docker = {
+        enable = true;
+      };
+
       gh = {
         enable = true;
       };
@@ -55,6 +59,10 @@ in {
       };
 
       kubernetes-client = {
+        enable = true;
+      };
+
+      latex = {
         enable = true;
       };
 
@@ -93,6 +101,10 @@ in {
       };
 
       terraform = {
+        enable = true;
+      };
+
+      terragrunt = {
         enable = true;
       };
     };

@@ -28,18 +28,14 @@ in {
         builtins.elem (lib.getName pkg) [
           "discord"
           "terraform"
+          "zsh-abbr"
         ];
     };
   };
 
   home = {
-    shellAliases = {
-      docker = "sudo docker";
-    };
-
     packages = with pkgs; [
       inkscape
-      hclfmt
       libreoffice
       gimp
       ghostscript
@@ -51,9 +47,6 @@ in {
       google-cloud-sql-proxy
       signal-desktop
       ssh-to-age
-      texliveFull
-      terraform-docs
-      terragrunt
       whatsapp-for-linux
       yubikey-manager
     ];

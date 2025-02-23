@@ -58,6 +58,10 @@ in {
         enable = true;
       };
 
+      latex = {
+        enable = true;
+      };
+
       nextcloud-client = {
         enable = true;
       };
@@ -93,6 +97,10 @@ in {
       };
 
       terraform = {
+        enable = true;
+      };
+
+      terragrunt = {
         enable = true;
       };
     };
