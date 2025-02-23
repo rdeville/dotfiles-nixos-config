@@ -23,7 +23,9 @@ in {
         default.flavors._core
         // {
           git = {
-              profiles = default.flavors._core.git.profiles // {
+            profiles =
+              default.flavors._core.git.profiles
+              // {
                 pro = {
                   condition = "gitdir:${config.home.homeDirectory}/git/github.com/dougs-compta/";
                   contents = {
@@ -44,7 +46,7 @@ in {
                   };
                 };
               };
-            };
+          };
           fastfetch = {
             logo = {
               source = ../../../assets/fastfetch_logos/dougs.txt;
@@ -84,6 +86,10 @@ in {
       };
 
       terraform = {
+        enable = true;
+      };
+
+      terragrunt = {
         enable = true;
       };
     };
