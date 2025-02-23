@@ -39,6 +39,3 @@ if command -v tmux &>/dev/null &&
     tmux
   fi
 fi
-
-export ABBR_GET_AVAILABLE_ABBREVIATION=1
-export ABBR_LOG_AVAILABLE_ABBREVIATION=1

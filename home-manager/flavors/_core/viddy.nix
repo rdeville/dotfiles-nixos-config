@@ -5,7 +5,7 @@
   ...
 }: let
   name = builtins.baseNameOf ./.;
-  subname = "neovim";
+  subname = "viddy";
   cfg = config.hm.flavors.${name}.${subname};
 in {
   options = {
@@ -27,30 +27,37 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        # LazyVim
-        lua-language-server
-        stylua
-        # Telescope
-        ripgrep
-        # Most LSP need npm
-        nodejs
-        # RustC for some lsp
-        cargo
+        viddy # A better watcher
       ];
     };
 
     programs = {
       zsh = {
-        zsh-abbr = {
-          abbreviations = {
-            vim = "nvim";
-            vimdiff = "nvim -d";
+        shellGlobalAliases = {
+          W = "viddy ";
+        };
 
-            v = "nvim";
-            vd = "nvim -d";
-            svim = "sudo nvim";
-            sv = "sudo nvim";
-          };
+        shellAliases = {
+          viddy = "viddy -D";
+          watch = "viddy";
+        };
+      };
+    };
+
+    xdg = {
+      configFile = {
+        "viddy.toml" = {
+          enable = with pkgs; builtins.elem bluetuith config.home.packages;
+          text = ''
+            [general]
+            no_shell = false
+            shell = "zsh"
+            shell_options = "--login"
+            skip_empty_diffs = false
+            disable_mouse = true
+
+            # vim: ft=toml
+          '';
         };
       };
     };

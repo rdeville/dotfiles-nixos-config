@@ -2,7 +2,7 @@
   config = {
     home = {
       packages = with pkgs; [
-          direnv # Automated development tools
+        direnv # Automated development tools
       ];
     };
 

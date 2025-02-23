@@ -23,7 +23,6 @@
   light_blue = clr.light_blue_500;
   indigo = clr.indigo_500;
 in {
-
   config = lib.mkIf cfg.enable {
     programs = {
       git = {
