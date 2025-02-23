@@ -12,6 +12,11 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavor.";
+          rootless =
+            lib.mkDependEnabledOption ''
+              Install ${name} with rootless support.
+            ''
+            cfg.enable;
           daemon = {
             settings = lib.mkOption {
               type = lib.types.attrs;
@@ -39,14 +44,19 @@ in {
     virtualisation = {
       docker = {
         enable = true;
+
         daemon = {
           inherit (cfg.daemon) settings;
         };
+
         autoPrune = {
           enable = true;
         };
+
         rootless = {
-          enable = true;
+          enable = cfg.rootless;
+          setSocketVariable = true;
+
           daemon = {
             inherit (cfg.daemon) settings;
           };
