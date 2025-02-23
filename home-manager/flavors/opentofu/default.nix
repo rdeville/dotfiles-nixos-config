@@ -51,7 +51,6 @@ in {
       };
     };
 
-
     xdg = {
       configFile = {
         "opentofu/terraformrc" = {
