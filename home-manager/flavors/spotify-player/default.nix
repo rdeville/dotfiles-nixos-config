@@ -73,6 +73,18 @@ in {
           };
         };
       };
+
+      zsh = let
+        aliasAbbr = {
+          spt = "spotify_player";
+        };
+      in {
+        shellAliases = aliasAbbr;
+
+        zsh-abbr = {
+          abbreviations = aliasAbbr;
+        };
+      };
     };
   };
 }
