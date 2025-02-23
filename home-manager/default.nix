@@ -103,18 +103,19 @@ in {
     direnvrc = {
       enable = config.hm.flavors._core.enable;
     };
+
     neovimrc = {
       enable = config.hm.flavors._core.enable;
     };
+
     tmuxrc = {
       enable = config.hm.flavors._core.enable;
     };
-    zshrc = {
-      enable = config.hm.flavors._core.enable;
-    };
+
     dotgit-sync = {
       enable = config.hm.flavors._core.enable;
     };
+
     awesomerc = {
       enable = config.hm.flavors._gui.enable;
     };
