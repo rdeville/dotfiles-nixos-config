@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.10.1 (2025-02-23)
+
+### 🩹 Patch
+
+  * ⬆️(devbox): Update devbox.lock by Romain Deville ([`b9461a2`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/b9461a2a75fe46018e863e3862ce53e3e3f4d376)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`a6f97f8`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a6f97f85dc7c3e5ce62a359ec546f4003e768501)) 🔏
+  * 🔧 Update flavors used in config, remove zshrc from inputs (!46) by Romain Deville ([`592d1fb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/592d1fb9bc474fb2dbfdd33cd8a5798db65f2c9b))
+  * 🔧(nixos/hm): Set useGlobalPkgs to false to let user set nixpkg config by Romain Deville ([`99ef4d1`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/99ef4d16d3636a2d708be7ec30394f679230b54a)) 🔏
+  * 🔧(machines/rey): Add latex and terragrunt HM flavors by Romain Deville ([`a02c68f`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/a02c68f63805f42552b47e62276572ae98ddd0c7)) 🔏
+  * 🔧(machines/FBLP-181): Add terragrunt flavors by Romain Deville ([`e1f5e2a`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/e1f5e2afafd60d6c3593b9ea31b1722c933e8586)) 🔏
+  * 🔧(machines/darth-maul): Update flavors used by Romain Deville ([`9b08007`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/9b080073d5a1bbbeff3ea76ce074875883dd7295)) 🔏
+
+### 🔊 Others
+
+  * 🔥(flake): Remove zshrc from inputs by Romain Deville ([`57a9be2`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/57a9be238dcf3e8e8e59bd96c662251ae5573a36)) 🔏
+  * 🔥(scripts): Remove zshrc inputs from local_inputs by Romain Deville ([`f6a080e`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/f6a080ed77ecf4a2f7a1e7f47635d83b68df1f68)) 🔏
+  * 🔥(hm): Remove use of my zshrc flake by Romain Deville ([`731dc9b`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/731dc9be5c57f1f351d10d7d3a6f014753fcb7a1)) 🔏
+
 ## v0.10.0 (2025-02-20)
 
 ### ✨ Minor
