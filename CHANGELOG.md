@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.35.1 (2025-02-23)
+
+### 🩹 Patch
+
+  * ⚡️ Improve zsh aliases/abbr and improve docker rooless config (!100) by Romain Deville ([`ccfa39b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ccfa39b38d1152d1c1553d57b7bac083d373170f))
+  * ⚡️(hm/terragrunt): Improve zsh aliases and abbr by Romain Deville ([`74a269b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/74a269bce20ed827c7b05a63660375cc7ba873f7)) 🔏
+  * ⚡️(hm/spotify-player): Add zsh aliases and abbr by Romain Deville ([`ead8a17`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ead8a177a68a52d1ea8cc63627146f2027d9b2f5)) 🔏
+  * ⚡️(hm/k8s-client): Improve zsh aliases and abbr by Romain Deville ([`9d9a445`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d9a445eb3b6feae61f3afb2208d910405376017)) 🔏
+  * ⚡️(hm/docker): Set variable to use rootless docker by Romain Deville ([`0378b0f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0378b0f3a82d022acfe77f041dfab5e17eb8a16a)) 🔏
+  * ⚡️(hm/audio): Improve zsh aliases and abbr by Romain Deville ([`a5cff1a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a5cff1a4f0555f9f33b52330e34943df0ae15caf)) 🔏
+  * ⚡️(hm/_core): Improve zsh alias and abbr management by Romain Deville ([`2de0e52`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2de0e522bbcc0891e21c335552e96d357633eab1)) 🔏
+  * ⚡️(os/docker): Improve docker rootless configuration by Romain Deville ([`54314f0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/54314f00d3b54e171e0ca2d59969ef9e4483f0d0)) 🔏
+  * ✏️(hm/opentofu): Fix minor typos by Romain Deville ([`381ebcb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/381ebcb63b024776c33da58c5397dc833c0256d6)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`cced893`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cced893bbcbe27b63275888585058ec72bf91057)) 🔏
+  * 🔧(flake): Unset HM useGlobalPkgs to allow set nixpkgs config by HM user by Romain Deville ([`b121c53`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b121c537a7b3f1a699945195001274a637aafdd2)) 🔏
+
+### 🔊 Others
+
+  * 🔥(os/_core): Remove viddy from OS pkgs by Romain Deville ([`084a263`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/084a2633cc2e67e032956a1877ce85f1ce02baad)) 🔏
+
 ## v0.35.0 (2025-02-22)
 
 ### ✨ Minor
