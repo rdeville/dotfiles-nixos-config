@@ -43,7 +43,7 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        kolourpaint
+        kdePackages.kolourpaint
         grim
         slurp
       ];
