@@ -9,7 +9,7 @@
 
   linuxPkgs = with pkgs; [
     arandr
-    kolourpaint
+    kdePackages.kolourpaint
     vlc
   ];
   darwinPkgs = [];
