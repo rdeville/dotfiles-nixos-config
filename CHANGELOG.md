@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.35.2 (2025-02-26)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade devbox.lock by Romain Deville ([`77cb2c3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/77cb2c386698c5643e11921f13d01850c7df0810)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`0bdbfce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0bdbfce486103f964e9187bd8031849823e1b0de)) 🔏
+  * 👽️(hm/_gui): Update ref to pkgs kolourpaintk (!101) by Romain Deville ([`2227808`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/22278086da91d61cc158dfd7bea9b6a44cad1dd6))
+  * 👽️(hm/_gui): Update kolourpaint pkgs ref by Romain Deville ([`7c62905`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7c6290518993b1b463cba38d7c1833ea2f57cfd1)) 🔏
+
 ## v0.35.1 (2025-02-23)
 
 ### 🩹 Patch
