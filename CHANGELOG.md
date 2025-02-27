@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.11.0 (2025-02-27)
+
+### ✨ Minor
+
+  * ✨(os): Make /tmp cleaned on boot (!47) by Romain Deville ([`1a9c3df`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/1a9c3df1f9358156be6c9468719c2c7448207c47))
+  * ✨(os): Make /tmp cleaned on boot for all OS by Romain Deville ([`8b954b6`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/8b954b615b23e544540aa6a148868d65ecbb5fc6)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`51f9970`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/51f99706337b9ffb95e0798b0387dc65cf696ee1)) 🔏
+
 ## v0.10.1 (2025-02-23)
 
 ### 🩹 Patch
