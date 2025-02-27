@@ -7,6 +7,13 @@
   cfg = config.os;
 in {
   config = {
+    boot = {
+      tmp = {
+        # Clean /tmp on boot
+        cleanOnBoot = true;
+      };
+    };
+
     home-manager = {
       useGlobalPkgs = false;
       useUserPackages = true;
