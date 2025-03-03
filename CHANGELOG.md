@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.35.3 (2025-03-03)
+
+### 🩹 Patch
+
+  * ⚡️(hm/bluetooth): Add darwin support correctly to flavors by Romain Deville ([`e2d7a8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e2d7a8ce93f06866ce9c96986f33017c1d0412a2)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`8f15804`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8f158044f7d64b6e1ec960e0d07b8f3155f3b5ee)) 🔏
+  * 🐛(hm): Fix minor bug for flavors _core and improve darwin support (!102) by Romain Deville ([`924b7d7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/924b7d7f42b601363047c3ff64dc221026dd2bed))
+  * 🐛(hm/_core): Fix wrong boolean activation for viddy.toml by Romain Deville ([`944397a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/944397a4ef52075142d05b64192b322ba78dfef3)) 🔏
+
 ## v0.35.2 (2025-02-26)
 
 ### 🩹 Patch
