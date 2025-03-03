@@ -2,10 +2,17 @@
   config,
   lib,
   pkgs,
+  hm,
   ...
 }: let
   name = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name};
+
+  linuxPkgs = with pkgs; [
+    bluetuith
+  ];
+
+  darwinPkgs = [];
 in {
   options = {
     hm = {
@@ -19,13 +26,14 @@ in {
 
   config = lib.mkIf cfg.enable {
     home = {
-      packages = with pkgs; [
-        bluetuith
-      ];
+      packages =
+        if hm.isDarwin
+        then darwinPkgs
+        else linuxPkgs;
     };
 
     xdg = {
-      configFile = {
+      configFile =  {
         "bluetuith/bluetuith.conf" = {
           enable = with pkgs; builtins.elem bluetuith config.home.packages;
           text = ''

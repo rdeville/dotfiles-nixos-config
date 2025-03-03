@@ -47,7 +47,6 @@ in {
     xdg = {
       configFile = {
         "viddy.toml" = {
-          enable = with pkgs; builtins.elem bluetuith config.home.packages;
           text = ''
             [general]
             no_shell = false
