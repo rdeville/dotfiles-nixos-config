@@ -27,13 +27,13 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages =
-        if hm.isDarwin
+        if config.hm.isDarwin
         then darwinPkgs
         else linuxPkgs;
     };
 
     xdg = {
-      configFile =  {
+      configFile = {
         "bluetuith/bluetuith.conf" = {
           enable = with pkgs; builtins.elem bluetuith config.home.packages;
           text = ''
