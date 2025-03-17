@@ -22,14 +22,15 @@ in {
       packages = with pkgs; [
         age
         kubectl
+        kubectl-explore
         kubectx
         kubernetes-helm
         kubernetes-helmPlugins.helm-diff
         kubernetes-helmPlugins.helm-git
         kubernetes-helmPlugins.helm-secrets
-        kubernetes-helmPlugins.helm-mapkubeapis
         sops
         stern
+        viddy
       ];
     };
 
@@ -38,7 +39,6 @@ in {
         aliasAbbr = {
           h = "helm";
           # This command is used a LOT both below and in daily life
-          k = "kubecolor";
           kn = "kubens";
           kx = "kubectx";
         };
@@ -57,10 +57,10 @@ in {
         };
 
         shellAliases =
-          aliasAbbr
-          // {
+          {
             kubectl = "kubecolor";
-          };
+            k = "kubectl";
+          } // aliasAbbr;
 
         zsh-abbr = {
           abbreviations =
@@ -81,22 +81,24 @@ in {
               kak = "kubectl apply -k";
               # into an interactive terminal on a container
               keti = "kubectl exec -ti";
+              ketirm = "kubectl exec -ti -rm";
               # Shortcuts
               kg = "kubectl get";
               kd = "kubectl describe";
               # Pod management.
               kgp = "kubectl get pods";
-              kgpw = "kgp --watch";
-              kgpwide = "kgp -o wide";
+              kgpw = "viddy kubecolor get pods --force-colors";
+              kgpwide = "kubectl get pods -o wide";
               kdp = "kubectl describe pods";
               # Service management.
               kgs = "kubectl get svc";
-              kgsw = "kgs --watch";
-              kgswide = "kgs -o wide";
+              kgsw = "viddy kubecolor get svc --force-colors";
+              kgswide = "kubectl get svc -o wide";
               kds = "kubectl describe svc";
               # Ingress management
               kgi = "kubectl get ingress";
               kdi = "kubectl describe ingress";
+              kdiwide = "kubectl get ingress -o wide";
               # Namespace management
               kgns = "kubectl get namespaces";
               kdns = "kubectl describe namespace";
@@ -108,21 +110,24 @@ in {
               kdsec = "kubectl describe secret";
               # Deployment management.
               kgd = "kubectl get deployment";
-              kgdw = "kgd --watch";
-              kgdwide = "kgd -o wide";
+              kgdw = "viddy kubectl get deployment --force-colors";
+              kgdwide = "kubectl get deployment -o wide";
               kdd = "kubectl describe deployment";
-              krsd = "kubectl rollout status deployment";
-              krrd = "kubectl rollout restart deployment";
               # Rollout management.
-              kgrs = "kubectl get rs";
+              krsdep = "kubectl rollout status deployment";
+              krrdep = "kubectl rollout restart deployment";
+              krsdae = "kubectl rollout status daemonsets";
+              krrdae = "kubectl rollout restart daemonsets";
+              krssts = "kubectl rollout status sts";
+              krrsts = "kubectl rollout restart sts";
               # Port forwarding
               kpf = "kubectl port-forward";
               # Tools for accessing all information
               kga = "kubectl get all";
               kgaa = "kubectl get all --all-namespaces";
               # Logs
-              kl = "kubectl logs";
-              klf = "kubectl logs -f";
+              kl = "stern";
+              klog = "kubectl logs";
               # Node Management
               kgno = "kubectl get nodes";
               kdno = "kubectl describe node";
