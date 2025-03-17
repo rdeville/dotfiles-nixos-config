@@ -95,7 +95,7 @@
     VirtualReality = {
       Allow = [];
       Block = [];
-      BlockNewRequests = false;
+      BlockNewRequests = true;
       Locked = true;
     };
   };
