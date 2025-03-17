@@ -7,5 +7,11 @@
         source = ./scripts;
       };
     };
+    configFile = {
+      "tmuxp/nixos.yaml" = {
+        enable = true;
+        source = ./tmuxp/nixos.yaml;
+      };
+    };
   };
 }

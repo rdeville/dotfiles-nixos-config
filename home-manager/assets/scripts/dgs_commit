@@ -1,26 +1,29 @@
 #!/usr/bin/env bash
 
-PWD=$(pwd)
-
-COMMITS=(
+ADD=(
   "🔧 Add dotgit sync configuration,.dotgit.yaml"
-  "📄 Update licenses from DGS,LICENSE*"
-  "📝 Update README from DGS,README.md"
-  "📝 Add CODE_OF_CONDUCT from DGS,CODE_OF_CONDUCT.md"
-  "🙈 Update gitignore from DGS,.gitignore"
-  "🔨 Add pre-commit configuration from DGS template,.pre-commit-config.yaml"
+  "📄 Update licenses from DGS template,LICENSE*"
+  "📝 Update README from DGS template,README.md"
+  "📝 Add CODE_OF_CONDUCT from DGS template,CODE_OF_CONDUCT.md"
+  "📝 Add CONTRIBUTING from DGS template,CONTRIBUTING.md"
+  "📝 Add COPYRIGHT from DGS template,COPYRIGHT"
+  "🙈 Update gitignore from DGS template,.gitignore"
   "🔧 Add editorconfig from DGS template,.editorconfig"
   "🔧 Add cspell configuration from DGS template,.cspell/words.txt cspell.json"
   "🔧 Add commitlint config from DGS template,.commitlintrc.ts"
   "🔧 Add markdownlint config from DGS template,.markdownlint.jsonc .markdownlintignore"
   "🔧 Add semantic release config from DGS template,.release/ releaserc.toml"
   "🔧 Add terraform-docs config from DGS template,.terraform-docs.yml"
+  "🔨 Add pre-commit configuration from DGS template,.pre-commit-config.yaml"
   "👷 Add Gitlab CI from DGS template,.gitlab-ci.yml .gitlab/"
-  "🔨 Add devbox config from DGS template,devbox.* devbox/"
 )
 
+ADD_FORCE=(
+  "🔨 Add devbox config from DGS template,devbox.* .devbox/init_hook/*.sh"
+  "🔨 Add .envrc from DGS template,.envrc"
+)
 
-for commit in "${COMMITS[@]}"; do
+for commit in "${ADD[@]}"; do
 	msg="${commit%,*}"
 	files="${commit#*,}"
 	# shellcheck disable=2086
@@ -30,8 +33,12 @@ for commit in "${COMMITS[@]}"; do
 	fi
 done
 
-git add -f .envrc
-msg="🔨 Add .envrc from DGS template"
-if ! git commit -m "${msg}"; then
-  git commit -m "${msg}"
-fi
+for commit in "${ADD_FORCE[@]}"; do
+	msg="${commit%,*}"
+	files="${commit#*,}"
+	# shellcheck disable=2086
+	git add -f ${files}
+	if ! git commit -m "${msg}"; then
+    git commit -m "${msg}"
+	fi
+done
