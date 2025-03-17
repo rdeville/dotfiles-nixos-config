@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.36.0 (2025-03-17)
+
+### ✨ Minor
+
+  * ✨(os/_core): Set DNS server to FDN by Romain Deville ([`9d90fb7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9d90fb70452e7ad789a80bedf99f110623b5a0ab)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`46d4391`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/46d43915f06aec7ff4c67e5acfc39d2595e9777c)) 🔏
+  * 🐛(hm/bluetooth): Fix bug in flavors by Romain Deville ([`f23006e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f23006e57bb98a283f59a28aeeba70253292fb29)) 🔏
+  * 🔧 Fix OIS bluetooth bugs, improve HM flavors (!103) by Romain Deville ([`c821a62`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c821a6280c42062bf8a109138cb928462c3e569a))
+  * 🔧(hm/k8s-client): Update aliases and abbreviations, add k8s-explore pkgs by Romain Deville ([`3ce9330`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3ce9330335ca6c2d0bc1d055cbc5ad59a45694db)) 🔏
+  * 🔧(hm/_gui/firefox): Harden Firefox VR access by Romain Deville ([`5f44278`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5f4427801456ec9e344ea4c214868f17d8e49917)) 🔏
+
 ## v0.35.3 (2025-03-03)
 
 ### 🩹 Patch
