@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.12.0 (2025-03-17)
+
+### ✨ Minor
+
+  * ✨ Add some overlays, update config and refactor methods (!49) by Romain Deville ([`59880cb`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/59880cb3345052d7f37d1cc80cd137c85ea856a6))
+  * ✨(os/overlays): Add OS overlays example by Romain Deville ([`61c04e1`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/61c04e14b3cf85a38293203c4db887e93e5fccb1)) 🔏
+  * ✨(hm/overlays): Add HM overlays by Romain Deville ([`c12b052`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/c12b0528d4d737a013edd0afc9771268d2204adb)) 🔏
+
+### 🩹 Patch
+
+  * ➕(flake): Add overlay input by Romain Deville ([`ec2178c`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/ec2178c9de11622dea5f9749688af452ae5a956d)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`3be3127`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/3be31270dd6ac44b06eedf858e2ed0f5900b21d5)) 🔏
+  * 🔧(machines/darth-maul): Update config (DNS, partition, hyprland, k3s) by Romain Deville ([`524da24`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/524da2413dcd97ddd56b9603894afe7604834b94)) 🔏
+  * 🔧(hm/assets): Add nixos tmuxp config, update dgs_commit scripts by Romain Deville ([`49dd0bf`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/49dd0bf4b3d07e82c5778b32435f3cecb76b29d0)) 🔏
+
+### 🔊 Others
+
+  * ♻️(hm): Refacto Home Manager entrypoint by Romain Deville ([`11380f2`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/11380f23792bf558d048fb11ffc84ebb1c8dbf2b)) 🔏
+  * ♻️(hm/ssh-client): Rework methods to be cleaner by Romain Deville ([`66e2771`](https://framagit.org/rdeville-private/dotfiles/nixos/-/commit/66e2771ce91f7341cc39c1da7e70b1c66cf48202)) 🔏
+
 ## v0.11.1 (2025-03-03)
 
 ### 🩹 Patch
