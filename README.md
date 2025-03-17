@@ -41,37 +41,163 @@ Repository storing my NixOS and Home Manager configurations
 <!-- BEGIN DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
 ## 📌 Prerequisites
 
-TODO
+In order to use this repos, you must either be :
 
-## ⚙️ Install
+* On a [NixOS](https://nixos.org/) system to use NixOS configurations or
+  Home-Manager configurations.
+* On any Linux OS with [Nix](https://nixos.org/download/) installed with
+  [Home-Manager](https://nix-community.github.io/home-manager/).
 
-TODO
+Optionally, to automate the setup of this repository, you can use following
+packages :
+
+* [direnv](https://github.com/direnv/direnv)
+* [devbox](https://www.jetify.com/devbox)
 
 ## 🚀 Usage
 
-TODO
+If using automation, this will automatically allow to access following tooling
+scripts (theses are also in folder `scripts/`):
 
-## Home-Manager Configuration
+* `hm`: wrapper to manage Home-Manager config
+* `iso`: wrapper to manage ISOs config
+* `os`: wrapper to manage NixOS config
+* `vm`: wrapper to manage VMs config
 
-A WIP of my home-manager configuration.
+Those scripts will allow to build/switch configurations/VMs/ISOs for specific
+machines (in `machines/` folder) or user configurations (in case of HM, in
+`machines/*/` folder).
 
-TODO:
+Each scripts provide an help with the `-h` options for more information.
 
-  * home-manager.programs
-    * [ ] [autorandr][autorandr] Auto select monitors config
-    * [ ] [borgmatic][borgmatic] Borg backup configuration
-    * [ ] [gh-dash][gh-dash] GH CLI Dashboards
-    * [ ] [gitui][gitui] Git TUI in Rust
-    * [ ] [calcure][calcure] TUI calendar and task manage
-    * [ ] [taskwarrior][taskwarrior]
-    * [ ] k9s
+For instance:
 
-[autorandr]: https://github.com/phillipberndt/autorandr
-[borgmatic]: https://github.com/borgmatic-collective/borgmatic?tab=readme-ov-file
-[gh-dash]: https://dlvhdr.github.io/gh-dash/
-[gitui]: https://github.com/extrawurst/gitui
-[calcure]: https://github.com/anufrievroman/calcure
-[taskwarrior]: https://github.com/GothenburgBitFactory/taskwarrior
+```bash
+os build -H dev-min
+```
+
+Will build NixOS configuraitons for machines `dev-min` configurations defined in
+folder `machines/dev-min`.
+
+This repository host my public NixOS and Home-Manager configurations. Those
+configurations are assembled through "flavors" that can be activated and
+configured on demande.
+
+It also provide one NixOS module `os` and one Home-Manager module `hm` to
+configure flavors.
+
+### ✨ NixOS Flavors
+
+If you want to use OS flavors, add following lines in your files:
+
+* `flake.nix`
+```nix
+{
+  inputs = {
+    # Replace by the one you use
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    nixos = {
+      url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    [...]
+  }
+
+  outputs = inputs @ {self, ...}: {
+    # NIXOS
+    # ------------------------------------------------------------------------
+    nixosConfigurations = {
+      your-hostname = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+          # NixOS module for this repo
+          inputs.nixos.nixosModules.os
+          # Your other modules here
+          [...]
+          # Finally, your configuration.nix here:
+          ({ ...}: {
+            os = {
+              flavors = {
+                # Deactivate _core flavors which is activated by default
+                _core = {
+                  enable = false;
+                };
+                # Activate k3s flavors
+                k3s = {
+                  enable = true;
+                };
+                # Add other flavors if you want
+              };
+            };
+          })
+        ];
+      };
+    };
+  };
+}
+```
+
+### ✨ Home-Manager Flavors
+
+If you want to use HM flavors, add following lines in your files:
+
+* `flake.nix`
+```nix
+{
+  inputs = {
+    # Replace by the one you use
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos = {
+      url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    [...]
+  }
+
+  outputs = inputs @ {self, ...}: {
+    # HOME MANAGER
+    # ------------------------------------------------------------------------
+    homeConfigurations = {
+      "user@hostname" =inputs.home-manager.lib.homeManagerConfiguration {
+        modules = [
+          # HM module for this repo
+          inputs.nixos.HomeManagerModules.hm
+          # Your other modules here
+          [...]
+          # Finally, your home.nix here:
+          ({ ...}: {
+            hm = {
+              flavors = {
+                # Deactivate _core flavors which is activated by default
+                _core = {
+                  enable = false;
+                };
+                # Activate kubernetes-client flavors
+                kubernetes-client = {
+                  enable = true;
+                };
+                # Add other flavors if you want
+              };
+            };
+          })
+        ];
+      };
+    };
+  };
+}
+```
+
 <!-- END DOTGIT-SYNC BLOCK EXCLUDED CUSTOM_README -->
 ## 🤝 Contributing
 
