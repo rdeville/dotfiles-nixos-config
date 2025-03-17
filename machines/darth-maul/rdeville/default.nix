@@ -29,6 +29,8 @@ in {
           "discord"
           "terraform"
           "zsh-abbr"
+          "vscode"
+          "vscode-extension-ms-vsliveshare-vsliveshare"
         ];
     };
   };

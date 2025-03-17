@@ -27,7 +27,10 @@ in {
       _gui = {
         enable = base.isGui;
         wayland = {
-          enable = false;
+          enable = true;
+          hyprswitch = {
+            enable = false;
+          };
           hyprspace = {
             enable = false;
           };
@@ -105,6 +108,10 @@ in {
       };
 
       terragrunt = {
+        enable = true;
+      };
+
+      vscode = {
         enable = true;
       };
     };

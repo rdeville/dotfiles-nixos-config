@@ -97,6 +97,11 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    # Overlays
+    # cf: https://github.com/NixOS/nixpkgs/pull/389836https://github.com/NixOS/nixpkgs/pull/389836
+    overlay-terragrunt-2025-03-15 = {
+      url = "github:nixos/nixpkgs/303bd8071377433a2d8f76e684ec773d70c5b642";
+    };
   };
   outputs = inputs @ {self, ...}: let
     # This is a function that generates an attribute by calling a function you

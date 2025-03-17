@@ -54,6 +54,11 @@ in {
 
   networking = {
     useDHCP = true;
+    extraHosts = ''
+      192.168.1.10 romaindeville.xyz
+      192.168.1.10 argo.romaindeville.xyz
+      192.168.1.10 grafana.romaindeville.xyz
+    '';
   };
 
   nixpkgs = {
@@ -65,6 +70,8 @@ in {
           "nvidia-x11"
           "steam"
           "steam-unwrapped"
+          # "vscode"
+          # "vscode-extension-ms-vsliveshare-vsliveshare"
         ];
     };
   };

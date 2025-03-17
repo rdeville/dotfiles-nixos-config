@@ -1,0 +1,37 @@
+---
+# Name of the session
+session_name: "${TMUXP_SESSION_NAME}"
+
+# Load session relative to config location (project root).
+start_directory: "${PWD}"
+
+# Run a specific script before tmux start
+# before_script: ./script.sh
+
+# Shell command to run before tmux windows and pane start
+# shell_command_before: command
+
+windows:
+  - window_name: " "
+    focus: True
+    panes:
+      - focus: true
+        shell_command:
+          - vim
+  - window_name: " "
+    start_directory: ~/git/framagit.org/public/dotfiles/nixos/
+    focus: True
+    panes:
+      - focus: true
+        shell_command:
+          - vim
+  - window_name: " "
+    panes:
+      - focus: true
+  - window_name: " "
+    start_directory: ~/git/framagit.org/public/dotfiles/nixos/
+    panes:
+      - focus: true
+  - window_name: " "
+    panes:
+      - focus: true
