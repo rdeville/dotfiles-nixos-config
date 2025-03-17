@@ -16,24 +16,22 @@
   };
 
   file = builtins.listToAttrs (
-    builtins.concatLists (
-      builtins.map (
-        hostname:
-          builtins.map (user: let
-            userCfg = mkIdentityFile hostname user;
-          in {
-            name = userCfg.filepath;
-            value = {
-              enable = true;
-              source = userCfg.pubkey;
-            };
-          }) (builtins.attrNames cfg.hosts.${hostname}.users)
-      ) (builtins.attrNames cfg.hosts)
-    )
+    builtins.concatMap (
+      hostname:
+        builtins.map (user: let
+          userCfg = mkIdentityFile hostname user;
+        in {
+          name = userCfg.filepath;
+          value = {
+            enable = true;
+            source = userCfg.pubkey;
+          };
+        }) (builtins.attrNames cfg.hosts.${hostname}.users)
+    ) (builtins.attrNames cfg.hosts)
   );
 
-  matchBlocks = builtins.listToAttrs (builtins.concatLists (
-    builtins.map (
+  matchBlocks = builtins.listToAttrs (
+    builtins.concatMap (
       hostname:
         builtins.map (
           user: let
@@ -52,7 +50,7 @@
         ) (builtins.attrNames cfg.hosts.${hostname}.users)
     )
     (builtins.attrNames cfg.hosts)
-  ));
+  );
 in {
   options = {
     hm = {
