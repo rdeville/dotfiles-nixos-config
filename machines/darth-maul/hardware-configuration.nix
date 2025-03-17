@@ -58,6 +58,10 @@
       device = "/dev/disk/by-uuid/a14c2870-8025-4518-bb00-92b6b2e09958";
       fsType = "ext4";
     };
+    "/var/lib/k8s-data" = {
+      device = "/dev/disk/by-uuid/07d06b58-1ce5-445c-b4c7-9dfd538ac6f5";
+      fsType = "ext4";
+    };
   };
 
   swapDevices = [];

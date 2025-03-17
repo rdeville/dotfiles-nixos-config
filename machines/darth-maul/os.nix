@@ -61,15 +61,22 @@ in {
           enable = true;
         };
         hyprland = {
-          enable = false;
+          enable = true;
         };
         plasma = {
-          enable = false;
+          enable = true;
         };
       };
 
       docker = {
         enable = true;
+      };
+
+      k3s = {
+        enable = true;
+        extraFlags = [
+          "--default-local-storage-path /var/lib/k8s-data"
+        ];
       };
 
       ssh-server = {
