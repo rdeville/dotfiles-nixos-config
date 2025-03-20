@@ -5,7 +5,8 @@
   ...
 }: {
   imports = [
-    ./overlays
+    # Overlays
+    ../overlays
     # Local Modules
     ../machines/${host}/${user}
     ../home-manager

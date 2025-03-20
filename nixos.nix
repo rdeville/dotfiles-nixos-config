@@ -10,6 +10,8 @@ builtins.foldl' (acc: host:
     {
       "${host}" = inputs.nixpkgs.lib.nixosSystem {
         modules = [
+          # Overlay
+          ./overlays
           # Local Modules
           ./machines/${host}
           ./nixos
