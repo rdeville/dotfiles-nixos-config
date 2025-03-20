@@ -56,27 +56,30 @@
     "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
   };
   search = {
-    default = "DuckDuckGo";
-    privateDefault = "DuckDuckGo";
+    # DuckDuckGo
+    default = "ddg";
+    privateDefault = "ddg";
     engines =
       engines
       // {
-        "DuckDuckGo" = alias "d";
-        "Google" = alias "g";
-        "Wikipedia (en)" = alias "w";
+        # DuckDuckGo
+        "ddg" = alias "d";
+        "google" = alias "g";
+        "wikipedia (en)" = alias "w";
         "Bookmarks" = alias "b";
         "Tabs" = alias "t";
         "History" = alias "h";
-        "Bing" = hidden;
-        "Qwant" = hidden;
+        "bing" = hidden;
+        "qwant" = hidden;
       };
     force = true;
     order = [
-      "DuckDuckGo"
-      "Wikipedia (en)"
+      # DuckDuckGo
+      "ddg"
+      "wikipedia"
       "Nix Packages"
       "Home Manager"
-      "Google"
+      "google"
     ];
   };
   userChrome = builtins.readFile ./chrome/userChrome.css;
