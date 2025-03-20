@@ -21,12 +21,7 @@ in {
             settings = lib.mkOption {
               type = lib.types.attrs;
               description = "Configuration for docker daemon.";
-              default = {
-                settings = {
-                  fixed-cidr = "172.42.0.0/24";
-                  ipv6 = false;
-                };
-              };
+              default = {};
             };
           };
         };
@@ -42,11 +37,16 @@ in {
     };
 
     virtualisation = {
-      docker = {
+      docker = let
+        settings = {
+          fixed-cidr = "172.42.0.0/24";
+          ipv6 = false;
+        };
+      in {
         enable = true;
 
         daemon = {
-          inherit (cfg.daemon) settings;
+          settings = settings // cfg.daemon.settings;
         };
 
         autoPrune = {
@@ -58,7 +58,7 @@ in {
           setSocketVariable = true;
 
           daemon = {
-            inherit (cfg.daemon) settings;
+            settings = settings // cfg.daemon.settings;
           };
         };
       };
