@@ -20,7 +20,7 @@ builtins.listToAttrs (
             inherit pkgs;
             modules = [
               (import ./home-manager/_modules.nix {
-                inherit inputs host user lib;
+                inherit inputs host user;
               })
             ];
             extraSpecialArgs = {
