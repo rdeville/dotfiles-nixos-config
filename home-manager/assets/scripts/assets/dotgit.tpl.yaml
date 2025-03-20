@@ -1,0 +1,80 @@
+---
+# DotGit Sync Configuration
+# ------------------------------------------------------------------------------
+version: v1alpha1
+dotgit:
+  source:
+    git:
+      url: https://framagit.org/rdeville-public/programs/dotgit-sync-templates
+      ref: main
+  yaml:
+    merge: &yaml
+      method: only
+      only:
+        - .pre-commit-config.yaml
+        - gitlab-ci.yaml
+    enforce: *yaml
+  json:
+    merge: &json
+      method: all
+    enforce: *json
+
+# Repos description and template usage configuration
+# ------------------------------------------------------------------------------
+name: TPL:NAME
+slug: TPL:SLUG
+description: |-
+  TPL:DESC
+licenses:
+  date:
+    first_year: "TPL:CURR_YEAR"
+  copyright:
+    Romain Deville: code@romaindeville.fr
+  TPL:LICENSE
+maintainers:
+  Romain Deville: code@romaindeville.fr
+gitignore:
+  templates:
+    - base
+templates:
+  - base
+  - base-ci-gitlab
+  - base-pre-commit
+  - commitlint-pre-commit
+  - gcloud
+  - helm
+  - kubernetes
+  - markdown
+  - markdown-ci-gitlab
+  - markdown-pre-commit
+  - opentofu
+  - opentofu-ci-gitlab
+  - opentofu-pre-commit
+  - python
+  - python-ci-gitlab
+  - sops
+  - terragrunt
+
+
+# Everything below is only used as variables in templates
+# ------------------------------------------------------------------------------
+extra:
+  code_of_conduct:
+    abuse: abuse+code@romaindeville.fr
+  maintainers:
+    Romain Deville:
+      socials:
+        Website:
+          alt: &website https://romaindeville.fr
+          url: *website
+        Github:
+          alt: "@rdeville"
+          url: https://github.com/rdeville
+        Gitlab:
+          alt: "@r.deville"
+          url: https://gitlab.com/r.deville
+        Framagit:
+          alt: "@rdeville"
+          url: https://framagit.org/rdeville
+  repo:
+    url: https://TPL:PATH
