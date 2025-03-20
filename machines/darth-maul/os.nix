@@ -1,4 +1,4 @@
-{...}: let
+{config, ...}: let
   base = import ./base.nix;
   osBase = import ../base.nix;
 
@@ -70,6 +70,7 @@ in {
 
       docker = {
         enable = true;
+        rootless = true;
       };
 
       k3s = {
