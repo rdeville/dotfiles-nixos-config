@@ -14,20 +14,23 @@ dotgit:
         - .pre-commit-config.yaml
         - gitlab-ci.yaml
     enforce: *yaml
+  json:
+    merge: &json
+      method: all
+    enforce: *json
 
 # Repos description and template usage configuration
 # ------------------------------------------------------------------------------
-name: Nixos Config Data
-slug: nixos-data
+name: TPL:NAME
+slug: TPL:SLUG
 description: |-
-  Repository storing configuration for my computer and users used with NixOS and
-  Home-Manager
+  TPL:DESC
 licenses:
   date:
-    first_year: "2024"
+    first_year: "TPL:CURR_YEAR"
   copyright:
     Romain Deville: code@romaindeville.fr
-  primary: COPYRIGHT
+  TPL:LICENSE
 maintainers:
   Romain Deville: code@romaindeville.fr
 gitignore:
@@ -38,9 +41,20 @@ templates:
   - base-ci-gitlab
   - base-pre-commit
   - commitlint-pre-commit
+  - gcloud
+  - helm
+  - kubernetes
   - markdown
-  - markdown-pre-commit
   - markdown-ci-gitlab
+  - markdown-pre-commit
+  - opentofu
+  - opentofu-ci-gitlab
+  - opentofu-pre-commit
+  - python
+  - python-ci-gitlab
+  - sops
+  - terragrunt
+
 
 # Everything below is only used as variables in templates
 # ------------------------------------------------------------------------------
@@ -63,4 +77,4 @@ extra:
           alt: "@rdeville"
           url: https://framagit.org/rdeville
   repo:
-    url: https://framagit.org/rdeville-private/dotfiles/nixos
+    url: https://TPL:PATH

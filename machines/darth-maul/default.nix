@@ -53,12 +53,17 @@ in {
   };
 
   networking = {
+    firewall = {
+      enable = false;
+    };
     useDHCP = true;
-    extraHosts = ''
-      192.168.1.10 romaindeville.xyz
-      192.168.1.10 argo.romaindeville.xyz
-      192.168.1.10 grafana.romaindeville.xyz
-    '';
+    hosts = {
+      "127.0.0.2" = [
+        "romaindeville.xyz"
+        "argo.romaindeville.xyz"
+        "grafana.romaindeville.xyz"
+      ];
+    };
   };
 
   nixpkgs = {

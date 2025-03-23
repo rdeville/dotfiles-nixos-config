@@ -36,6 +36,7 @@
       url = "github:numtide/nixos-facter-modules";
     };
     # My Personal Public NixOS /HM Config
+    # -------------------------------------------------------------------------
     nixos = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
@@ -85,12 +86,20 @@
       };
     };
     tmuxrc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/tmux.git";
+      url = "git+https://framagit.org/rdeville-public/dotfiles/tmux";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    tmuxdata = {
+      # url = "git+ssh://git@framagit.org:/rdeville-private/dotfiles/tmux";
+      url = "/home/rdeville/git/framagit.org/private/dotfiles/tmux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
     };
     # My programs I want on my computer
+    # -------------------------------------------------------------------------
     dotgit-sync = {
       url = "git+https://framagit.org/rdeville-public/programs/dotgit-sync.git";
       inputs = {
@@ -98,10 +107,12 @@
       };
     };
     # Overlays
-    # cf: https://github.com/NixOS/nixpkgs/pull/389836https://github.com/NixOS/nixpkgs/pull/389836
-    overlay-terragrunt-2025-03-15 = {
-      url = "github:nixos/nixpkgs/303bd8071377433a2d8f76e684ec773d70c5b642";
-    };
+    # -------------------------------------------------------------------------
+    # Overlays are dynamically managed based on input name.
+    # cf: https://github.com/NixOS/nixpkgs/pull/XXXXXXXX
+    # overlay-PKG_NAME-YYYY-MM-DD = {
+    #   url = "github:nixos/nixpkgs/abcdef01234567890abcdefg01234567890abcdef";
+    # };
   };
   outputs = inputs @ {self, ...}: let
     # This is a function that generates an attribute by calling a function you
@@ -124,7 +135,7 @@
       );
   in {
     # TOOLING
-    # ========================================================================
+    # ------------------------------------------------------------------------
     # Formatter for your nix files, available through 'nix fmt'
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (
@@ -135,7 +146,7 @@
     );
 
     # PACKAGES
-    # ========================================================================
+    # ------------------------------------------------------------------------
     packages = forAllSystems (
       system: let
         pkgs = inputs.nixos.nixosModules.lib.pkgsForSystem system;

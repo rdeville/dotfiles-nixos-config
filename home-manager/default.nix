@@ -100,15 +100,17 @@ in {
       };
     };
 
+    programs = {
+      tmuxrc = {
+        enable = config.hm.flavors._core.enable;
+      };
+    };
+
     direnvrc = {
       enable = config.hm.flavors._core.enable;
     };
 
     neovimrc = {
-      enable = config.hm.flavors._core.enable;
-    };
-
-    tmuxrc = {
       enable = config.hm.flavors._core.enable;
     };
 

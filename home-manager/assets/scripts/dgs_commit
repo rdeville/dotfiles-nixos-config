@@ -15,11 +15,13 @@ ADD=(
   "🔧 Add semantic release config from DGS template,.release/ releaserc.toml"
   "🔧 Add terraform-docs config from DGS template,.terraform-docs.yml"
   "🔨 Add pre-commit configuration from DGS template,.pre-commit-config.yaml"
+  "🔨 Add pyproject.toml configuration from DGS template,pyproject.toml"
+  "🔨 Add ruff.toml configuration from DGS template,ruff.toml"
   "👷 Add Gitlab CI from DGS template,.gitlab-ci.yml .gitlab/"
 )
 
 ADD_FORCE=(
-  "🔨 Add devbox config from DGS template,devbox.* .devbox/init_hook/*.sh"
+  "🔨 Add devbox config from DGS template,devbox.* .devbox/init_hook/*.sh .devbox/flakes/"
   "🔨 Add .envrc from DGS template,.envrc"
 )
 

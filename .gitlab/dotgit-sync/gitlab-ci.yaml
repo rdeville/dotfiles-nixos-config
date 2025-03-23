@@ -1,4 +1,4 @@
-# BEGIN DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
+# BEGIN DOTGIT-SYNC BLOCK MANAGED YAML_MERGED_ENFORCED
 Check dotgit-sync Update:
   image: alpine:latest
   stage: pre-ci
@@ -67,4 +67,4 @@ Check dotgit-sync Update:
   rules:
   - if: $CI_PIPELINE_SOURCE =~ /(parent_pipeline|pipeline)/
   - when: never
-# END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED
+# END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED_ENFORCED
