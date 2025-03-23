@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.0 (2025-03-23)
+
+### ✨ Minor
+
+  * ✨ Improve k3s flavors to support multi-node, update README (!104) by Romain Deville ([`16ec9ac`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/16ec9ac479a0ff6e013149e7f8c164367730cb15))
+  * ✨(os/k3s): Improve k3s to be multi-nodes by Romain Deville ([`1e8cdd1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1e8cdd1802cb2b819cafbcd4f4a0d66dc2228c96)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(os/docker): Update way settings are handled by Romain Deville ([`ba00efb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ba00efb3f0416b0aba5dcf45b0b006df9061fd92)) 🔏
+  * ⚡️(lib): Add mkDebug and mkWarn method to my lib by Romain Deville ([`82b3b64`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/82b3b64800fafe4f66230eb76a5bdd1130bdac78)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`0755bf4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0755bf4c3902f9e459b38753d44133597b8b1969)) 🔏
+  * 👽️(hm/_gui/firefox): Update config due to HM changes by Romain Deville ([`6bc98c2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6bc98c2779c21568803f85cdff95e02d66008eee)) 🔏
+  * 👽️(hm/vscode): Update flavors due to nixpkgs update in configuration by Romain Deville ([`9aaec2b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9aaec2ba8380f2cad770fff0c2b0ebbfb959294a)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/k8s-client): Format flavor files by Romain Deville ([`c6dee21`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c6dee21f117c665c65c04269ff003f4a46da26c4)) 🔏
+  * 📝 Update README with basic documentation by Romain Deville ([`204e6ce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/204e6ce88221f20b1acb40e9397ebdcfc0422456)) 🔏
+
 ## v0.36.0 (2025-03-17)
 
 ### ✨ Minor
