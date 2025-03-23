@@ -60,7 +60,8 @@ in {
           {
             kubectl = "kubecolor";
             k = "kubectl";
-          } // aliasAbbr;
+          }
+          // aliasAbbr;
 
         zsh-abbr = {
           abbreviations =

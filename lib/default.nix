@@ -1,5 +1,6 @@
 inputs: lib: let
-  debug = data: builtins.trace (builtins.toJSON data);
+  mkDebug = data: builtins.trace (builtins.toJSON data);
+  mkWarn = data: lib.warn (builtins.toJSON data);
 
   importDir = inode: (builtins.filter (
     item: (item != "default.nix")
@@ -62,7 +63,8 @@ inputs: lib: let
     };
 in {
   inherit
-    debug
+    mkDebug
+    mkWarn
     importDir
     listDirs
     listFiles

@@ -21,11 +21,15 @@ in {
     programs = {
       vscode = {
         enable = true;
-        extensions = with pkgs.vscode-extensions; [
-          hashicorp.hcl
-          hashicorp.terraform
-          ms-vsliveshare.vsliveshare
-        ];
+        profiles = {
+          default = {
+            extensions = with pkgs.vscode-extensions; [
+              hashicorp.hcl
+              hashicorp.terraform
+              ms-vsliveshare.vsliveshare
+            ];
+          };
+        };
       };
     };
   };
