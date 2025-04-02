@@ -92,8 +92,7 @@
       };
     };
     tmuxdata = {
-      # url = "git+ssh://git@framagit.org:/rdeville-private/dotfiles/tmux";
-      url = "/home/rdeville/git/framagit.org/private/dotfiles/tmux";
+      url = "git+ssh://git@framagit.org:/rdeville-private/dotfiles/tmux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
