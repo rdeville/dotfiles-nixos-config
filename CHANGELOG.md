@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.13.1 (2025-04-02)
+
+### 🩹 Patch
+
+  * ⚡️(hm/assets): Improve script dgs_commit (!51) by Romain Deville ([`ac33a4e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ac33a4e39e30d80f489cccdbeb6fe23639bd58e9))
+  * ⚡️(hm/assets): Improve script dgs_commit by Romain Deville ([`225c9e8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/225c9e8f27ab40ec5c335e4642fcbf043c18cc62)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`6842ab3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6842ab3f11b58bdcf1b9c3fd72ecc17674a66904)) 🔏
+  * 🔧(flake): Update tmuxdata url to git URL instead of local path by Romain Deville ([`413356e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/413356eea0f678c66c96c5c628e79e71c9d3fccf)) 🔏
+
 ## v0.13.0 (2025-03-24)
 
 ### ✨ Minor
