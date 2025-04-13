@@ -10,14 +10,10 @@
   nameservers = [
     # FDN DNS Resolver
     # https://www.fdn.fr/actions/dns/
-    # ns0.fdn.fr
-    "80.67.169.12"
-    # ns1.fdn.fr
-    "80.67.169.40"
-    # ns0.fdn.fr
-    "2001:910:800::12"
-    # ns1.fdn.fr
-    "2001:910:800::40"
+    "80.67.169.12" # ns0.fdn.fr
+    "80.67.169.40" # ns1.fdn.fr
+    "2001:910:800::12" # ns0.fdn.fr
+    "2001:910:800::40" # ns1.fdn.fr
   ];
 in {
   imports = builtins.map (item: ./${item}) (lib.importDir ./.);

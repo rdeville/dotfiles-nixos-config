@@ -57,7 +57,7 @@ in {
   config = lib.mkIf cfg.enable {
     networking = {
       firewall = {
-        enable = false;
+        enable = true;
         checkReversePath = "loose";
         allowedTCPPorts = [
           # HTTP(s)
@@ -99,13 +99,14 @@ in {
             "--flannel-backend none"
             "--disable-network-policy"
             # # Deactivate kube-proxy since I replace it with Cilium
-            "--disable-kube-proxy"
+            # "--disable-kube-proxy"
+            # Deactivate metrics-server since I'll manage it myself
+            "--disable=metrics-server"
             # Deactivate traefik since I use ingress-nginx
             "--disable=traefik"
-            # Deactivate ServiceLB since I'll use MetalLB
+            # Deactivate ServiceLB since I'll use Cilium
             "--disable=servicelb"
-            # Deactivate CoreDNS integration since I'll maintained deployment
-            # with helm charts
+            # Deactivate CoreDNS integration since I'll manage it myself
             "--disable=coredns"
           ]
           ++ cfg.extraFlags);
