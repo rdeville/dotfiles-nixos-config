@@ -1,6 +1,21 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.1 (2025-04-13)
+
+### 🩹 Patch
+
+  * ⚡️(os): Improve k3s and _core flavors (!105) by Romain Deville ([`69b37d1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/69b37d1235506ffb97037d0b74513c04121c5681))
+  * ⚡️(os/_core): Add IPv6 FDN DNS IPs by Romain Deville ([`cdb95c4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cdb95c439c4a8d28f7b1189f5428ca93ecf46ce2)) 🔏
+  * ⚡️(os/k3s): Re-enable firewall and update default config by Romain Deville ([`cc7e3ec`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cc7e3ec2d40bc64d1f4845f61c3208eb12b27e1f)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`95bcca0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/95bcca0eaaffd1c8fbba977a363f0b2cdbca830f)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/_gui): Remove hyprexpo module since I do not use it by Romain Deville ([`c9dfe67`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c9dfe676c096475905c0242fe995a019d519b8db)) 🔏
+  * 🔥 Remove now useless devenv files by Romain Deville ([`040a5ab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/040a5abd1a3f0f81fa57dff15a890e0945ceed34)) 🔏
+  * 🔨(devbox): Update devbox scripts and config from DGS templates by Romain Deville ([`57b4e57`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/57b4e57218db634f6b8b2a2987da527a41c2cc3e)) 🔏
+
 ## v0.37.0 (2025-03-23)
 
 ### ✨ Minor
