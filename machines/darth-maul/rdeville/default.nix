@@ -1,20 +1,11 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
-  keyFile = "${config.xdg.cacheHome}/.age.key";
-in {
+{lib, ...}: {
   imports = [
-    ./hm.nix
+    ../../_templates/_users/rdeville/server.nix
+    ../../_templates/_users/rdeville/gui.nix
+    ../../_templates/_users/rdeville/main.nix
   ];
 
   sops = {
-    age = {
-      inherit keyFile;
-    };
-    defaultSopsFile = ./secrets.enc.yaml;
     secrets = {
       "spotify-client-id" = {
         sopsFile = ../../../common_secrets/spotify.enc.yaml;
@@ -22,35 +13,11 @@ in {
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-          "terraform"
-          "zsh-abbr"
-          "vscode"
-          "vscode-extension-ms-vsliveshare-vsliveshare"
-        ];
+  hm = {
+    flavors = {
+      vscode = {
+        enable = true;
+      };
     };
-  };
-
-  home = {
-    packages = with pkgs; [
-      inkscape
-      libreoffice
-      gimp
-      ghostscript
-      (
-        google-cloud-sdk.withExtraComponents [
-          google-cloud-sdk.components.gke-gcloud-auth-plugin
-        ]
-      )
-      google-cloud-sql-proxy
-      signal-desktop
-      ssh-to-age
-      whatsapp-for-linux
-      yubikey-manager
-    ];
   };
 }
