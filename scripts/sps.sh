@@ -29,9 +29,9 @@ update_keys() {
   echo "  - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9"
 
   for host in "${MACHINE_PATH}/"*; do
-    if [[ -d ${host} ]] && ! [[ "${host}" =~ (keys|assets)$ ]]; then
+    if [[ -d ${host} ]] && ! [[ "${host}" =~ _.*$ ]]; then
       hostname=$(basename "${host}")
-      private="${host}/keys/${age}"
+      private="${host}/_keys/${age}"
       echo "    # ${hostname^}"
 
       if [[ -f ${private} ]] && grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
@@ -41,12 +41,12 @@ update_keys() {
       fi
 
       for user in "${host}/"*; do
-        private="${user}/keys/${age}"
+        private="${user}/_keys/${age}"
         username=$(basename "${user}")
 
-        if [[ -d "${user}" ]] && ! [[ "${user}" =~ (keys|assets)$ ]] \
-          && [[ -f ${private} ]] \
-          && grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
+        if [[ -d "${user}" ]] && ! [[ "${user}" =~ _.*$ ]] &&
+          [[ -f ${private} ]] &&
+          grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
           anchor="&hm-${username}-${hostname}"
           pub="$(sops -d "${private}" | grep "public key: " | cut -d ":" -f 2)"
           echo "  - ${anchor}${pub}"
@@ -63,8 +63,7 @@ _show_path_regex() {
   local comment=${3}
   local type="${4:-dir}"
 
-
-  if [[ "${type}" == "file" ]];  then
+  if [[ "${type}" == "file" ]]; then
     echo "  - path_regex: ${dir}$"
   elif [[ -n "${dir}" ]]; then
     echo "  - path_regex: ${dir}/.*\.enc\.(yaml|json|asc|txt)$"
@@ -84,24 +83,28 @@ _show_path_regex() {
 
 update_hosts_rules() {
   for host in "${MACHINE_PATH}/"*; do
-    if [[ -d ${host} ]]&& ! [[ "${host}" =~ (keys|assets)$ ]]; then
+    if [[ -d ${host} ]] && ! [[ "${host}" =~ _.*$ ]]; then
       hostname=$(basename "${host}")
       private="${host}/${age}"
       comment=""
 
       for user in "${host}/"*; do
-        if [[ -d "${user}" ]]&& ! [[ "${user}" =~ (keys|assets)$ ]]; then
+        if [[ -d "${user}" ]] && ! [[ "${user}" =~ _.*$ ]]; then
           username=$(basename "${user}")
           anchor="hm-${username}-${hostname}"
           if [[ -z "${comment}" ]]; then
             comment="${hostname^}"
           fi
-          _show_path_regex "${hostname}/${username}" "${anchor}" "${comment}"
+          if [[ -f "${user}/default.nix" ]]; then
+            _show_path_regex "${hostname}/${username}" "${anchor}" "${comment}"
+          fi
         fi
       done
 
       anchor="os-${hostname}"
-      _show_path_regex "${hostname}" "${anchor}"
+      if [[ -f "${host}/default.nix" ]]; then
+        _show_path_regex "${hostname}" "${anchor}"
+      fi
     fi
   done
 }
@@ -112,13 +115,16 @@ update_accounts_rules() {
       account=$(basename "${account_path}")
       occurrences=$(grep -lr -E "${account}" "${MACHINE_PATH}")
 
-      _show_path_regex  "${account}" "" "${account}"
+      _show_path_regex "${account}" "" "${account}"
       for file in ${occurrences}; do
         user_path=$(dirname "${file}")
         user=$(basename "${user_path}")
         host_path=$(dirname "${user_path}")
         host=$(basename "${host_path}")
-        echo "        - *hm-${user}-${host}"
+        if ! [[ "${host}" =~ _.*$ ]] &&
+          ! [[ "${user}" =~ _.*$ ]]; then
+          echo "        - *hm-${user}-${host}"
+        fi
       done
     fi
   done
@@ -130,13 +136,21 @@ update_common_secrets_rules() {
     secret="${dir}/$(basename "${secret}")"
     occurrences=$(grep -lr -E "${secret}" "${MACHINE_PATH}")
 
-    _show_path_regex  "${secret}" "" "" "file"
+    _show_path_regex "${secret}" "" "" "file"
     for file in ${occurrences}; do
       user_path=$(dirname "${file}")
       user=$(basename "${user_path}")
       host_path=$(dirname "${user_path}")
       host=$(basename "${host_path}")
-      echo "        - *hm-${user}-${host}"
+
+      if ! [[ "${host}" =~ _.*$ ]] &&
+        ! [[ "${user}" =~ _.*$ ]]; then
+        if [[ "${host}" == "machines" ]]; then
+          echo "        - *os-${user}"
+        else
+          echo "        - *hm-${user}-${host}"
+        fi
+      fi
     done
   done
 }

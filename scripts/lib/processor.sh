@@ -15,7 +15,9 @@ process_users() {
   elif [[ "${user}" == "all" ]]; then
     for user_path in "${MACHINE_PATH}/${host}"/*; do
       user=$(basename "${user_path}")
-      if [[ -d "${user_path}" ]] && [[ ! "${user}" =~ ^(keys|assets)$ ]]; then
+      # shellcheck disable=SC2034
+      local username=":${user}"
+      if [[ -d "${user_path}" ]] && [[ ! "${user}" =~ _.*$ ]]; then
         process_user
       fi
     done
@@ -28,6 +30,7 @@ process_users() {
 process_host() {
   process_users
 
+  user=""
   if type "${action}_host" &>/dev/null; then
     "${action}_host"
   fi
@@ -38,7 +41,7 @@ process_hosts() {
     return
   elif [[ "${host}" == "all" ]]; then
     for host_path in "${MACHINE_PATH}"/*; do
-      if [[ -d "${host_path}" ]] && [[ ! "${host}" =~ ^(keys|assets)$ ]]; then
+      if [[ -d "${host_path}" ]] && [[ ! "${host}" =~ _.*$ ]]; then
         host=$(basename "${host_path}")
         process_host
       fi

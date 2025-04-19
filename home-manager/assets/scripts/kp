@@ -108,9 +108,10 @@ main() {
 
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
-  local timeout=5
+  local timeout=2
+  local timeoutDate=$(($(date +%s) + timeout))
   local found=false
-  while [[ "$(date +%s)" -lt $(($(date +%s) + timeout)) ]] && [[ "${found}" == "false" ]]; do
+  while [[ "$(date +%s)" -lt ${timeoutDate}  ]] && [[ "${found}" == "false" ]]; do
     # Execute command and store STDOUT and STDERR
     {
       IFS=$'\n' read -r -d '' STDERR
