@@ -129,6 +129,7 @@ in {
     };
 
     nixpkgs = {
+      hostPlatform = cfg.system;
       config = {
         inherit (cfg) allowUnfree;
       };
