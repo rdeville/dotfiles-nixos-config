@@ -20,9 +20,6 @@ in {
     flavors = {
       _core = {
         enable = true;
-        nix-ld = {
-          enable = true;
-        };
       };
 
       display-manager = {
