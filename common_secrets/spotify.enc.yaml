@@ -1,57 +1,52 @@
-spotify-client-id: ENC[AES256_GCM,data:+3N2/DtvwedjbvHuec8/XMG5I1WP5xEoIv1iW+w+NJM=,iv:tmo+ZfhmCyoFbwzHVEsQEQErd596ahwnwOYbUNnttI0=,tag:UbKeoRjuSgHz2bk8WZdQEA==,type:str]
+spotify-client-id: ENC[AES256_GCM,data:/1yv0aTMt3A3ODdIN6klt3r2eMuTyUPZgiK1CblvB5A=,iv:SSv8uSQds1zjvSd0FZJwMiyn1RgB2EUZKVxolCnc8e4=,tag:32J2hoVGz9aj7unpImv7Ew==,type:str]
 sops:
-    kms: []
-    gcp_kms: []
-    azure_kv: []
-    hc_vault: []
     age:
         - recipient: age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBjV0piUHZHa0VBUGRmdTRp
-            RWNBMWNGVGUwdHA2aUl0cUNRUGZ6NTlwZFQ4ClBIaEY2N1BGa1liUnBuc0NaMXkr
-            SlhJb3BXTEtVVm9TQitvclV0c2h3eGsKLS0tIHBEVGd3cnV1cVFkb2Q1aXRTM3NW
-            dzZ4ZXkvb1RDOEJuWk9XYmNlbEwxV0UKttc0prw5xS5qHzvYvHXlAtaewsKKENRG
-            ZWLm5FwaIQVMvig/x8xXMHbuWtHmGP9wk6onXSzkIzz/xCnY4WbeEg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWS2lnWmVGSGM0YzMzS3Uw
+            TGNwcmlLREc3aVYwVE5OWE5TaUFsdDlSK1VRCnduNnFscUVKK1ZLWEp2WE9TK3pF
+            Y3dnaW8yQUtrRFJ5bm43NnFKMGtmVk0KLS0tIElzbVhqL3RXcUFKWlNhMHNKZVVU
+            Ly9hSjA2WU1JSVJOZ09qUXRTL2RsSTAK8mv/e2y/HrXpFqc/7GcjJtoyUgO9JrpY
+            Fi/JlF8MI6Krs19P6Q6kTIMiZDYP/qMvVIcR7tAFhIKvF/v9/qS2Qw==
             -----END AGE ENCRYPTED FILE-----
-        - recipient: age1sg8swpg9vugyh4fuqlm2dmp9macsges4ehu3swn6evmudjpkaq8q239r53
+        - recipient: age1m375ya60xd4gv4wz64jdnqxjeqmgfdugxhaczeq38j4v097vnp7q2mnlsq
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBrVEc5Zk9WM1gvSVlVYUhi
-            cUQzZS9hbUI0RXFkcElLMEJoMndsN3V6UVU4CnZoeWU0Y3dMWngyM01yTXlQdEkz
-            TW44TjdENTRsdEZ5em93WDRFYmdDdXcKLS0tIFV5Y2xxeEtkRXBJdDE2c2JIZXQw
-            aEFDOVJJdkQvUjBmc3pSVGVRSlpUK28K5RFHUWlzAmMxesIKm2jAN0fA7SzASdbS
-            3KyUmDzAbwYMozUS6gMcLwj8xgvAsJENC3bhRCwBoS0GmTfzNXXc/w==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvaUZJekdhdzQwNllWTnFj
+            blAxSHNReG5SUEtJT2VWTjFIYjM4WkJEeFIwCm5TcW0vaEk4WE92WXNaenFqcm5l
+            ZGNuYjZmRkxCV0o0S1p2NW9EYTJNS1kKLS0tIDduTklNdVhoajFKMjV4SWVuZjFX
+            ZVg2VmZ6Qk4rYTBiVm9TaVZvZFhDYVkKx5XSzfKBku1+cyZlBQ3sOiCyg7uyAMMp
+            rz1/Zu1Hf2dpE6xSaiD2gd6m66nvh0n/B5b7M2Ju7+f4YeYaFMBL5g==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age13lhtkcjfq3ahsjp26zcgwvtvns64z3kt6fkutkl8pleff2zu9dysztvfc0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvTXA3K2dkNTg0S1dVcVdG
-            Wm1XNkFFVTExUDZsSjlxWmdNa0pUa1Nha0FvCnVsSjE2bTFaMjI2bi9vUXRHR1pv
-            Slk0R3hydVRybmcyTGhVM0FSM1VlcncKLS0tIEtSaDlwWk5va01uWlZtY2JqYTNr
-            VSs3bmVRdWpwVGcxNlV1NUN4eTJCZGMK7ydsYfFEgONBbmPLKmyugJLTQ3CB9zLI
-            LNvtbQ+gfsG4b/RSurGV0o5sPlaW5yTsJ6FBltD9jM9Dui9zb522IA==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSA1bWxxYk1zMzR4L2wwZ2ZF
+            dXNLMUxWYSsrM2xwZ2ZpaVRydURUUndLN2lFCm5hdnlRNmdkRDlJeVk2N29ucGJU
+            Vlovd00rUERQTm8vVzhUNTFsdDJSeEUKLS0tIElUWlk3ejNOa1RDcHNENzNXWXZk
+            SmlBYVVCaG5DUjBoWUx4ZHNvdnl2RlUKSZqCx7w+52/rZdN3tuST4w4GUMfFoJQL
+            XU3i+a0aTKD9CFFsgODlxIytat5RuZgS8va8OZZo/pD6SNT608Vz+w==
             -----END AGE ENCRYPTED FILE-----
         - recipient: age17um38qhvjkseq3vly7hfuetut5af2nc9va8l2004vgyfkn3sdy8sszkqv0
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBWQ2pCamg4V25Ed3UwWElE
-            QnNNc0JWSzJBMnNmMUdlSnFvaGw3Ym5FVndRCk0zNkNZUktCMGpyVmpuK2x4cGVq
-            SWlXRXZSWGV1cTB4KzAvR1hIMUo4MG8KLS0tIGNsV0NhcFBnUmtsejB1Rk1aakQv
-            Qm01d3gxSlBjaU1YVE1jaVlleWhQUHcKU2QFFYCUxnGIMVicrTUA6njG9n0RM6By
-            qliWbxpXg19DJzh/K50OrXUxLkgHGvAdCmY9xNyID4fW1i4kaz3Qeg==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBvQXdyaXZsZVJKRGw3VGY5
+            VFJVSzlEV1k0MGFVTytGOWhZVFMwaW1KcUJRCnBvMEtGWmNGMUgvelB3NFRacEdp
+            UXlPQlk0Z3czWDYzYTVKamJFQzlVcU0KLS0tIFp6VFo1K3RmQnNlK2h2TlYyMU0x
+            M09zQW5VUXpDM01JYmhxWEpYcndxUDQKaFFunMB0DbKvKSglE5wNVOiBfoeA6ton
+            9kS3xzBpoXIEB3Y1Ve5p6B+quZ2zELWIGCR5kANvuN5NRd+mJKQVXw==
             -----END AGE ENCRYPTED FILE-----
-        - recipient: age1uxgqmys32n6h5xm8stqp8hfj349slq9cy3dl9slj3aa6tpu5ssqsqu32ps
+        - recipient: age1kkfl76jpqhjtgx8zta332t7eun9wa9ly0zdq7mcnpmx24z0lrg7svykn3x
           enc: |
             -----BEGIN AGE ENCRYPTED FILE-----
-            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBKZTgwYmQvNXU4L2s3OUZN
-            UE5LODB4L3FVZ1pXM1AxaGhNRTRIWHJkQlFrClFKNmtBWFZmUVRXeDZyQmFEY3N6
-            bU5XYTlSSlZiaThaNklaaHBzKzlNTlUKLS0tIGVkd0RuZnZrZzVTZlo3TG9FaUI4
-            SVlxcUovanRnVHFhbHFVNFRmWVVVYnMKhX0wrfUjyumgUkhOLV3F7macEPdpXP64
-            xDVE04hxjaVpLdoKZ/02C/EJzrYu/VXedRBigDwQAZjLJ4yqN4MkZw==
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSB3anZ3RXVIaU92NVNoWS9i
+            MVpiWmt6ZGJ3bDM3b2xiK1ZqUDVWMi9ybFVZClhjYWpGYXp1MWFIMEFuSzd0VUFr
+            Zk4zYU9vTWYxQWhIcjB4K1RRR3FKd2sKLS0tIGMrb0pBaTdmbHZncUVDQmJWbkor
+            b0JTV3R6RHdaZ2toL1NqdXJsTk5HQXcKg6oXlR0JzBL5fbt0qYLxTtL2qg6PY4Dg
+            TEnKLRiHlDoiiXfGm5G1dTdl/QurlE91W8+hx+odACSpaAHrKdk6GQ==
             -----END AGE ENCRYPTED FILE-----
-    lastmodified: "2025-01-22T01:05:39Z"
-    mac: ENC[AES256_GCM,data:Rt752uk2xFZVemmd55wdeVP/OdHA7aBBStYZYIasxuSOTNGy70XTOeQCgUCh9qBpgKy3v29GiQudjLMC2cZl+87DbYtjA2yVrsRnjXAYLYoCvTaCVvRgZh6yQVu+K7WlD8JGnlk5i8yJWwSswbMRVjAIsMgAAbWCBvgl4xqb6YA=,iv:dUBukOrahiXEk0WlY3UEq1l3uzmvfrbjUjhfkBIWopE=,tag:hSjJ8rx/eyerBM/yytrBiw==,type:str]
-    pgp: []
+    lastmodified: "2025-04-27T18:41:39Z"
+    mac: ENC[AES256_GCM,data:Chrb677Gv+4dr4DP/JNzuIPMefQFz3a4FNjv7Suy2NrTSZrB4ZV3seoHtCSdeu3gfc9Qxu5Ssh5I546NfcjxtqCemEr+RH9mA2ZiAIRH7mWzihtolw0/hZfKeifqQMu0XvEwhidV0sg15tQoVCoWBsXt02/xsuVJkyFW1dfkHiU=,iv:KcLfzMJdAjtGsG6w93DaChivd/4DNqbv19FlRmwRMLE=,tag:+u0ybK6ABidgI3n4++nl0g==,type:str]
     unencrypted_suffix: _unencrypted
-    version: 3.9.3
+    version: 3.10.1
