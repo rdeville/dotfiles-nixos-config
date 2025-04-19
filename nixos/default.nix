@@ -35,7 +35,7 @@ in {
           system = lib.mkOption {
             type = lib.types.str;
             description = "Arch system where config will be applied.";
-            default = "x86-64_linux";
+            default = "x86_64-linux";
           };
 
           # OTHER CONFIGURATION
