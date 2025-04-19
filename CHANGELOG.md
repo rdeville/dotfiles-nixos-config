@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.3 (2025-04-19)
+
+### 🩹 Patch
+
+  * ✏️(os): Fix default value for system (a.k.a hostPlaform) (!107) by Romain Deville ([`7c9ec41`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7c9ec41fa9b4f51fe0d97d6e924f77f7f98eb0de))
+  * ✏️(os): Fix default value for system (a.k.a hostPlaform) by Romain Deville ([`d9008b4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d9008b4603a0b0e5dd5a2d533718cecdd5df4b9f)) 🔏
+
 ## v0.37.2 (2025-04-19)
 
 ### 🩹 Patch
