@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.2 (2025-04-19)
+
+### 🩹 Patch
+
+  * ⚡️ Mainly improve flavors default options and new options (!106) by Romain Deville ([`c501e64`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c501e64382ac74f7ec71da0b3fb84b5d17591914))
+  * ⚡️(os): Update default nixos configuration by Romain Deville ([`2c92a7f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2c92a7f2841153d23d302c21d0f8ccb4d2543d50)) 🔏
+  * ⚡️(hm): Improve HM by using osConfig by default if set by Romain Deville ([`2397e03`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2397e0392335ae3e1c87f6a4be2a0b531e0eb4be)) 🔏
+  * ⚡️(hm/_core): Disable auto-upgrade if install from NixOS configuration by Romain Deville ([`d1304da`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d1304da84c0879b406d339e6e4925dd3e2436342)) 🔏
+  * ⚡️(os/k3s): Improve k3s behaviour using nftables and new options by Romain Deville ([`b3259e7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b3259e753526e85cfdc483687bd41f4148bd8e5b)) 🔏
+  * 🔧(machine/dev-min): Remove redondant boolean by Romain Deville ([`e4450d8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e4450d8ef58f9d324da1b31c7f86fbe850b98de1)) 🔏
+  * 🔧(os/window-manager): Enable all window-manager by default by Romain Deville ([`3a4a800`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3a4a800d479b2a794148f9773cd526749fe7b943)) 🔏
+  * 🔧(os/display-manager): Set ly as default display-manager by Romain Deville ([`1ab9a96`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1ab9a96dd445b6cc6a8400959a54d8bd9aa35b21)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/ssh-client): Format HM flavor ssh-client by Romain Deville ([`d150c2b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d150c2b4655c49b36699305b091cb005d3e1dc58)) 🔏
+
 ## v0.37.1 (2025-04-13)
 
 ### 🩹 Patch
