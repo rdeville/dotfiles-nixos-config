@@ -1,4 +1,5 @@
 {
+  osConfig,
   config,
   lib,
   pkgs,
@@ -6,12 +7,12 @@
 }: let
   cfg = config.hm;
 
-  accountSoft = import ../accounts;
+  accountSoft = import ./accounts;
 
   accounts =
     builtins.map (
       item:
-        import ../accounts/${item} {
+        import ./accounts/${item} {
           inherit lib pkgs config;
         }
     )
@@ -62,13 +63,29 @@
       accounts));
 in {
   imports = [
-    ./flavors
     ./assets
   ];
 
   options = {
     hm = {
-      isMain = lib.mkEnableOption "Define HM is for a main computer.";
+      isMain = lib.mkOption {
+        type = lib.types.bool;
+        description = "Define HM is for a main computer.";
+        default =
+          if osConfig ? os.isMain
+          then osConfig.os.isMain
+          else false;
+      };
+
+      isGui = lib.mkOption {
+        type = lib.types.bool;
+        description = "Define HM is for a gui computer.";
+        default =
+          if osConfig ? os.isGui
+          then osConfig.os.isGui
+          else false;
+      };
+
       userAccounts = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = "List of user accounts in config/accounts folder.";
