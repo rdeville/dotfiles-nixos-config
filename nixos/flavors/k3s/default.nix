@@ -49,6 +49,24 @@ in {
               "--disable metric-server"
             ];
           };
+
+          clusterInit = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Set to true for the first node.";
+          };
+
+          serverAddr = lib.mkOption {
+            type = lib.types.str;
+            default = "";
+            description = "Address of the first node.";
+          };
+
+          disableAgent = lib.mkOption {
+            type = lib.types.bool;
+            default = false;
+            description = "Only run the control-plane, not the worker.";
+          };
         };
       };
     };
@@ -56,6 +74,9 @@ in {
 
   config = lib.mkIf cfg.enable {
     networking = {
+      nftables = {
+        enable = true;
+      };
       firewall = {
         enable = true;
         checkReversePath = "loose";
@@ -63,19 +84,8 @@ in {
           # HTTP(s)
           80
           443
-          # Kube API
-          6443
-          # Required for Metrics Server using cilium
-          10250
         ];
         allowedUDPPorts = [];
-        # See: https://github.com/cilium/cilium/issues/27900#issuecomment-2572253315
-        trustedInterfaces = [
-          "cilium_net*"
-          "cilium_host*"
-          "cilium_vxlan"
-          "lxc*"
-        ];
       };
     };
 
@@ -99,7 +109,7 @@ in {
             "--flannel-backend none"
             "--disable-network-policy"
             # # Deactivate kube-proxy since I replace it with Cilium
-            # "--disable-kube-proxy"
+            "--disable-kube-proxy"
             # Deactivate metrics-server since I'll manage it myself
             "--disable=metrics-server"
             # Deactivate traefik since I use ingress-nginx
