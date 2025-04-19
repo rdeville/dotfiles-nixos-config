@@ -17,7 +17,7 @@ in {
           forwardAgent = lib.mkOption {
             type = lib.types.bool;
             description = ''
-              Weither to forwardAgent to the server.
+              Whether to forwardAgent to the server.
             '';
             default = false;
           };
@@ -56,7 +56,9 @@ in {
                 host = "hostname";
                 identitiesOnly = true;
                 user = "username";
-                identityFile = "$HOME/.ssh/key";
+                identityFile = [
+                  "$HOME/.ssh/key"
+                ];
               };
             };
             default = {};
@@ -85,11 +87,14 @@ in {
   config = {
     programs = {
       ssh = {
-        enable = cfg.enable;
-        forwardAgent = cfg.forwardAgent;
-        hashKnownHosts = cfg.hashKnownHosts;
-        includes = cfg.includes;
-        matchBlocks = cfg.matchBlocks;
+        inherit
+          (cfg)
+          enable
+          forwardAgent
+          hashKnownHosts
+          includes
+          matchBlocks
+          ;
       };
     };
 
