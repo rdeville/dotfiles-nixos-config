@@ -1,4 +1,5 @@
 {
+  osConfig ? {},
   config,
   lib,
   pkgs,
@@ -40,7 +41,7 @@ in {
 
     systemd = lib.mkIf (! config.hm.isDarwin) {
       user = {
-        services = {
+        services = lib.mkIf (osConfig == {}) {
           home-manager-auto-upgrade = {
             Service = {
               Environment = [
