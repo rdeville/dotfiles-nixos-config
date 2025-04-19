@@ -44,15 +44,18 @@ in {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
 
           awesome = {
-            enable = lib.mkEnableOption "Install awesome window manager";
+            enable = lib.mkDependEnabledOption "Install awesome window manager"
+              config.os.flavors.${name}.enable;
           };
 
           hyprland = {
-            enable = lib.mkEnableOption "Install hyprland window manager";
+            enable = lib.mkDependEnabledOption "Install hyprland window manager"
+              config.os.flavors.${name}.enable;
           };
 
           plasma = {
-            enable = lib.mkEnableOption "Install hyprland window manager";
+            enable = lib.mkDependEnabledOption "Install hyprland window manager"
+              config.os.flavors.${name}.enable;
           };
         };
       };
