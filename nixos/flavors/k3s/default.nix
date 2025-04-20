@@ -107,28 +107,26 @@ in {
           then "server"
           else cfg.role;
 
-        extraFlags = builtins.toString ((
-            if cfg.role == "agent"
-            then []
-            else [
-              # Deactivate flannel related networking since I use Cilium
-              "--flannel-backend none"
-            ]
-          )
-          ++ [
-            "--disable-network-policy"
-            # # Deactivate kube-proxy since I replace it with Cilium
-            "--disable-kube-proxy"
-            # Deactivate metrics-server since I'll manage it myself
-            "--disable=metrics-server"
-            # Deactivate traefik since I use ingress-nginx
-            "--disable=traefik"
-            # Deactivate ServiceLB since I'll use Cilium
-            "--disable=servicelb"
-            # Deactivate CoreDNS integration since I'll manage it myself
-            "--disable=coredns"
-          ]
-          ++ cfg.extraFlags);
+        extraFlags =
+          if cfg.role != "agent"
+          then
+            builtins.toString ([
+                # Deactivate flannel related networking since I use Cilium
+                "--flannel-backend none"
+                "--disable-network-policy"
+                # Deactivate kube-proxy since I replace it with Cilium
+                "--disable-kube-proxy"
+                # Deactivate metrics-server since I'll manage it myself
+                "--disable=metrics-server"
+                # Deactivate traefik since I use ingress-nginx
+                "--disable=traefik"
+                # Deactivate ServiceLB since I'll use Cilium
+                "--disable=servicelb"
+                # Deactivate CoreDNS integration since I'll manage it myself
+                "--disable=coredns"
+              ]
+              ++ cfg.extraFlags)
+          else "";
       };
     };
   };
