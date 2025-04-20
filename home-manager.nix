@@ -1,4 +1,5 @@
 {
+  osConfig ? {},
   inputs,
   lib,
   ...
@@ -6,12 +7,11 @@
 builtins.listToAttrs (
   builtins.concatMap (
     host: let
-      pkgs =
-        inputs.nixos.homeManagerModules.lib.pkgsForSystem
-        (
-          import ./machines/${host}/base.nix
-        )
-        .system;
+      pkgs = inputs.nixos.homeManagerModules.lib.pkgsForSystem (
+        if osConfig ? nixpkgs.hostPlatform
+        then osConfig.nixpkgs.hostPlatform
+        else "x86_64-linux"
+      );
     in
       builtins.map (
         user: {
