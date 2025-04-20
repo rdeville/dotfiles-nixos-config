@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.5 (2025-04-20)
+
+### 🩹 Patch
+
+  * 🐛(os/k3s): Fix options passed to k3s when node is agent (!109) by Romain Deville ([`7d04c7f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d04c7ff4df809b4b3998bbf834eb55389c1812c))
+  * 🐛(os/k3s): Fix k3s arguments passed when node is agent by Romain Deville ([`b46d657`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b46d657025657616d1755f0e73a0f9246406ad76)) 🔏
+
+### 🔊 Others
+
+  * 🎨 Format nix files by Romain Deville ([`93d00c2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/93d00c2f014db3695f9f2db6b706cf321bea9ee7)) 🔏
+
 ## v0.37.4 (2025-04-20)
 
 ### 🩹 Patch
