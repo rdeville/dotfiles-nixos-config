@@ -107,9 +107,15 @@ in {
           then "server"
           else cfg.role;
 
-        extraFlags = builtins.toString ([
-            # Deactivate flannel related networking since I use Cilium
-            "--flannel-backend none"
+        extraFlags = builtins.toString ((
+            if cfg.role == "agent"
+            then []
+            else [
+              # Deactivate flannel related networking since I use Cilium
+              "--flannel-backend none"
+            ]
+          )
+          ++ [
             "--disable-network-policy"
             # # Deactivate kube-proxy since I replace it with Cilium
             "--disable-kube-proxy"

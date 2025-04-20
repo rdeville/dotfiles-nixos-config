@@ -24,7 +24,10 @@ in {
           hostName = lib.mkOption {
             type = lib.types.str;
             description = "Hostname where config will be applied.";
-            default = if osConfig ? networking then osConfig.networking.hostName else "";
+            default =
+              if osConfig ? networking
+              then osConfig.networking.hostName
+              else "";
           };
 
           stateVersion = lib.mkOption {
@@ -36,7 +39,10 @@ in {
           system = lib.mkOption {
             type = lib.types.str;
             description = "Arch system where config will be applied.";
-            default = if osConfig ? nixpkgs.hostPlatform then osConfig.nixpkgs.hostPlatform else "";
+            default =
+              if osConfig ? nixpkgs.hostPlatform
+              then osConfig.nixpkgs.hostPlatform
+              else "";
           };
 
           username = lib.mkOption {

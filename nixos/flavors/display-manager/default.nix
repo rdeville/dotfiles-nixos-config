@@ -19,7 +19,8 @@ in {
           };
 
           ly = {
-            enable = lib.mkDependEnabledOption ''
+            enable =
+              lib.mkDependEnabledOption ''
                 Install ly as display manager.
               ''
               config.os.flavors.${name}.enable;
