@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.4 (2025-04-20)
+
+### 🩹 Patch
+
+  * ✏️(os/audio): Remove useless variable in module by Romain Deville ([`7f92e36`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f92e360160b9ab70e873ff1bd37d267b6791253)) 🔏
+  * 🐛(os/k3s): Fix options usage for the flavor (!108) by Romain Deville ([`2d9f4b9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2d9f4b9d2d5d954322b735b3e9b58346525964dc))
+  * 🐛(os/k3s): Fix options usage in flavor by Romain Deville ([`ae14238`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ae14238ae03e04c3cb7c978f7547771e935003aa)) 🔏
+
 ## v0.37.3 (2025-04-19)
 
 ### 🩹 Patch
