@@ -97,6 +97,9 @@ in {
           (cfg)
           token
           tokenFile
+          disableAgent
+          serverAddr
+          clusterInit
           ;
 
         role =
