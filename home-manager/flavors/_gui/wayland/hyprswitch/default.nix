@@ -15,15 +15,9 @@ in {
         ${name} = {
           ${subname} = {
             ${subsubname} = {
-              enable =
-                lib.mkDependEnabledOption ''
-                  Install ${name}.${subname}.${subsubname} Home-Manager flavor.
-                ''
-                (
-                  config.hm.flavors.${name}.enable
-                  && config.hm.flavors.${name}.${subname}.enable
-                  && config.hm.flavors.${name}.${subname}.hyprland.enable
-                );
+              enable = lib.mkEnableOption ''
+                Install ${name}.${subname}.${subsubname} Home-Manager flavor.
+              '';
             };
           };
         };

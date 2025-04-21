@@ -46,7 +46,7 @@ in {
           };
 
           matchBlocks = lib.mkOption {
-            type = lib.types.uniq lib.types.attrs;
+            type = lib.types.attrsOf lib.types.attrs;
             description = ''
               MatchBlock object to configure ssh-client.
             '';
