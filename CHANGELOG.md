@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.7 (2025-04-21)
+
+### 🩹 Patch
+
+  * ⚡️ Update default values for some modules (!111) by Romain Deville ([`b8c3bb7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b8c3bb7e611f988019c6cc2c7da55655aa872f15))
+  * ⚡️(os): Add isMain and isGui options to module by Romain Deville ([`fe89ecd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fe89ecd9527d5568115678f74e709cf84640b737)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`e437e29`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e437e2986dd103a16e28c735cdc0ebc7f5c90311)) 🔏
+  * 🐛(hm/ssh-client): Fix wrong type in option for the module by Romain Deville ([`f205355`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f205355ac56214c16102378cfa121fbf096e5dfe)) 🔏
+  * 🔧(hm/_gui): Update hyprspace and hyprswitch default disabled by Romain Deville ([`20d45e1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/20d45e1bc6c854c1660695044944a17a2d6b520a)) 🔏
+
 ## v0.37.6 (2025-04-20)
 
 ### 🩹 Patch
