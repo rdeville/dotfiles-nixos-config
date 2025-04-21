@@ -12,15 +12,15 @@ builtins.foldl' (acc: host:
         modules = [
           # Overlay
           ./overlays
-          # Local Modules
-          ./machines/${host}
-          ./nixos
           # External Modules
           inputs.nixos.inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           inputs.nixos-facter-modules.nixosModules.facter
           # Internal Modules
           inputs.nixos.nixosModules.os
+          # Local Modules
+          ./machines/${host}
+          ./nixos
         ];
         specialArgs = {
           inherit inputs lib;
