@@ -80,11 +80,9 @@ in {
           };
 
           # BOOLEAN TO PARAMETERIZE SOME FLAVORS
-          isDarwin = lib.mkOption {
-            type = lib.types.bool;
-            description = "Boolean, set to true to specify OS is darwin.";
-            default = false;
-          };
+          isDarwin = lib.mkEnableOption "Boolean, set to true to specify OS is darwin.";
+          isMain = lib.mkEnableOption "Main computer.";
+          isGui = lib.mkEnableOption "GUI computer.";
         };
       };
     };
