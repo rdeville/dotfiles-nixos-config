@@ -141,8 +141,9 @@
                           };
                         }
                         // acc) {} (
-                        builtins.filter (host: (
-                          host != "keys" && host != "assets"
+                        builtins.filter (user: (
+                          # Ignore folder machines/*/_.*
+                          builtins.match "_.*"  user != []
                         )) (lib.listDirs ./machines/${host})
                       );
                     };
@@ -156,10 +157,8 @@
           };
         }
         // acc) {} (builtins.filter (host: (
-        # I usually store :
-        # * Host SSH/AGE keys in machines/${host}/keys
-        # * Host assets in machines/${host}/keys
-        host != "keys" && host != "assets"
+        # Ignore folder machines/_.*
+        builtins.match "_.*"  host != []
       )) (lib.listDirs ./machines));
 
     # HOME MANAGER
@@ -187,10 +186,8 @@
               // accUser)
             {}
             (builtins.filter (user: (
-              # I usually store :
-              # * Host SSH/AGE keys in machines/${host}/${user}/keys
-              # * Host assets in machines/${host}/${user}/keys
-              user != "keys" && user != "assets"
+              # Ignore folder machines/*/_.*
+              builtins.match "_.*"  user != []
             )) (lib.listDirs ./machines/${host}))
           )
           // accHost
@@ -198,10 +195,8 @@
       {}
       (
         builtins.filter (host: (
-          # I usually store :
-          # * Host SSH/AGE keys in machines/${host}/keys
-          # * Host assets in machines/${host}/keys
-          host != "keys" && host != "assets"
+          # Ignore folder machines/_.*
+          builtins.match "_.*"  host != []
         )) (lib.listDirs ./machines)
       );
   };
