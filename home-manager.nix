@@ -21,11 +21,13 @@ builtins.foldl' (acc: host:
       }
       // acc) {} (
       builtins.filter (user: (
-        user != "keys" && user != "assets"
+        # Ignore folders machines/*/_*
+        builtins.match "_.*" user != []
       )) (lib.listDirs ./machines/${host})
     )
     // acc) {} (
   builtins.filter (host: (
-    host != "keys" && host != "assets"
+    # Ignore folders machines/_*
+    builtins.match "_.*" host != []
   )) (lib.listDirs ./machines)
 )
