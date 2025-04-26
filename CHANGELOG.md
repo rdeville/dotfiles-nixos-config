@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.8 (2025-04-26)
+
+### 🩹 Patch
+
+  * ⚡️(flake): Make OS and HM ignore machines/_* and machines/*/_* folders (!112) by Romain Deville ([`fe5fa2c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fe5fa2c1cdc0d70807ff247bf849656215813d32))
+  * ⚡️(flake): Make OS and HM ignore machines/_* and machines/*/_* folders by Romain Deville ([`2e3f306`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2e3f306d5d757c573d6f8dfd5683d0e41df89350)) 🔏
+
 ## v0.37.7 (2025-04-21)
 
 ### 🩹 Patch
