@@ -16,6 +16,7 @@ builtins.foldl' (acc: host:
           inputs.nixos.inputs.sops-nix.nixosModules.sops
           inputs.home-manager.nixosModules.home-manager
           inputs.nixos-facter-modules.nixosModules.facter
+          inputs.nix-topology.nixosModules.default
           # Internal Modules
           inputs.nixos.nixosModules.os
           # Local Modules
@@ -29,6 +30,11 @@ builtins.foldl' (acc: host:
     }
     // acc) {} (
   builtins.filter (host: (
-    host != "keys" && host != "assets"
-  )) (lib.listDirs ./machines)
+    builtins.pathExists ./machines/${host}/default.nix
+  )) (
+    builtins.filter (host: (
+      # Ignore folders machines/_*
+      builtins.match "_.*" host != []
+    )) (lib.listDirs ./machines)
+  )
 )

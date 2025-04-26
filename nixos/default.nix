@@ -26,7 +26,8 @@ in {
         }
         // acc) {} (
         builtins.filter (host: (
-          host != "keys" && host != "assets"
+          # Ignore folders machines/_*
+          builtins.match "_.*" host != []
         )) (lib.listDirs ../machines/${cfg.hostName})
       );
     };
