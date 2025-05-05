@@ -32,7 +32,7 @@ in {
           tgra = "terragrunt run-all";
         };
       in {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           autoload -U +X bashcompinit && bashcompinit
           complete -o nospace -C "$(command -v terragrunt)" terragrunt
         '';

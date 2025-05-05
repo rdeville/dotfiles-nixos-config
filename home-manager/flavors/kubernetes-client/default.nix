@@ -43,7 +43,7 @@ in {
           kx = "kubectx";
         };
       in {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           source <(helm completion zsh)
           source <(kubectl completion zsh)
 

@@ -39,12 +39,10 @@ in {
           export LC_ALL="en_US.UTF-8"
         '';
 
-        initExtraFirst = ''
+        initContent = lib.mkBefore ''
           ABBR_GET_AVAILABLE_ABBREVIATION=1
           ABBR_LOG_AVAILABLE_ABBREVIATION=1
-        '';
 
-        initExtra = ''
           ${(builtins.readFile ./_completion.zsh)}
           ${(builtins.readFile ./_zshrc.zsh)}
         '';
@@ -59,15 +57,15 @@ in {
         shellAliases = {
           # append indicator at the end, show dir first, always show icons and
           # show human readable
-          ls = "lsd -F --group-dirs first --icon always -h";
+          ls = lib.mkForce "lsd -F --group-dirs first --icon always -h";
           sl = "ls";
           l = "ls";
-          ll = "ls -l";
-          la = "ls -a";
-          lla = "ls -al";
+          ll = lib.mkForce "ls -l"; # Otherwise conflict with lsd aliases
+          la = lib.mkForce "ls -a"; # Otherwise conflict with lsd aliases
+          lla = lib.mkForce "ls -al"; # Otherwise conflict with lsd aliases
           # Utility
-          tree = "ls --tree";
-          lt = "tree";
+          tree = lib.mkForce "ls --tree"; # Otherwise conflict with lsd aliases
+          lt = lib.mkForce "tree"; # Otherwise conflict with lsd aliases
           # grep overload
           grep = "grep --color=auto";
           # cd overload

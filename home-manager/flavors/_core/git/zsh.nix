@@ -1,8 +1,8 @@
-{config, ...}: {
+{config, lib, ...}: {
   config = {
     programs = {
       zsh = {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           gpat() {
             git push --all
             git push --tags

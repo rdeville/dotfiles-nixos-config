@@ -26,7 +26,7 @@ in {
 
     programs = {
       zsh = {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           mktex() {
             if [[ $# -eq 1 ]] && ! [[ $1 == 'bib' ]]; then
               if [[ $1 == 'clean' ]]; then

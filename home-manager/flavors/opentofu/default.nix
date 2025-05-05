@@ -28,7 +28,7 @@ in {
 
     programs = {
       zsh = {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           autoload -U +X bashcompinit && bashcompinit
           complete -o nospace -C "$(command -v opentofu)" opentofu
         '';

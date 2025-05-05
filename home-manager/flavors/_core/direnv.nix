@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{pkgs, lib, ...}: {
   config = {
     home = {
       packages = with pkgs; [
@@ -8,7 +8,7 @@
 
     programs = {
       zsh = {
-        initExtra = ''
+        initContent = lib.mkBefore ''
           source <(direnv hook zsh)
         '';
 
