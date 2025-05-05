@@ -8,7 +8,10 @@ builtins.foldl' (acc: host:
       {
         "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = import inputs.nixpkgs {
-            system = "x86_64-linux";
+            system =
+              if host == "palpatine"
+              then "aarch64-darwin"
+              else "x86_64-linux";
           };
           modules = [
             ./machines/${host}/${user}
