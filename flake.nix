@@ -143,7 +143,7 @@
                         // acc) {} (
                         builtins.filter (user: (
                           # Ignore folder machines/*/_.*
-                          builtins.match "_.*"  user != []
+                          builtins.match "_.*" user != []
                         )) (lib.listDirs ./machines/${host})
                       );
                     };
@@ -158,7 +158,7 @@
         }
         // acc) {} (builtins.filter (host: (
         # Ignore folder machines/_.*
-        builtins.match "_.*"  host != []
+        builtins.match "_.*" host != []
       )) (lib.listDirs ./machines));
 
     # HOME MANAGER
@@ -187,7 +187,7 @@
             {}
             (builtins.filter (user: (
               # Ignore folder machines/*/_.*
-              builtins.match "_.*"  user != []
+              builtins.match "_.*" user != []
             )) (lib.listDirs ./machines/${host}))
           )
           // accHost
@@ -196,7 +196,7 @@
       (
         builtins.filter (host: (
           # Ignore folder machines/_.*
-          builtins.match "_.*"  host != []
+          builtins.match "_.*" host != []
         )) (lib.listDirs ./machines)
       );
   };
