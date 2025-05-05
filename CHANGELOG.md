@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.9 (2025-05-05)
+
+### 🩹 Patch
+
+  * 👽️(hm/_core): Update flavor due to HM modules update (!113) by Romain Deville ([`8849656`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/884965602475b1ac99ab13bf578d4723451e3a4a))
+  * 👽️(hm): Update flavors due to HM modules update by Romain Deville ([`8f19d95`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8f19d95e01c790ca5bd104859755bd609e40aa57)) 🔏
+
 ## v0.37.8 (2025-04-26)
 
 ### 🩹 Patch
