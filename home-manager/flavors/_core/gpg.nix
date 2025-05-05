@@ -37,7 +37,9 @@ in {
         enable = true;
         defaultCacheTtl = 3600;
         maxCacheTtl = 3600;
-        pinentryPackage = pkgs.pinentry-tty;
+        pinentry = {
+          package = pkgs.pinentry-tty;
+        };
       };
     };
   };
