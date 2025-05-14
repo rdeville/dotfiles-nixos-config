@@ -1,6 +1,50 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.0 (2025-05-14)
+
+### ✨ Minor
+
+  * ✨ Huge refacto of machines with templates and tools update (!52) by Romain Deville ([`f57124d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f57124d402a7e026404678431d546c990164434c))
+  * ✨(machines/kenobi): Add kenobi routeur configuration by Romain Deville ([`ef4fde3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ef4fde327693ea4735cebf11c8e3d57c851d9c6e)) 🔏
+  * ✨(machines/nixos-live): Rename usb-amd64 to nixos-live and nixos-live-gui by Romain Deville ([`8ec6b49`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8ec6b4920f9e256619e89e19e8a9d7fef8fb74f4)) 🔏
+  * ✨(machines/luke): Add new luke machine configuration by Romain Deville ([`8a63beb`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8a63beb243ba88ba00eb1467264d34136b770e0f)) 🔏
+  * ✨(machines/leia): Add leia configurations by Romain Deville ([`81f7d1e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/81f7d1e03ea5f361f2005a97dc8912d4efc2a40f)) 🔏
+  * ✨(doc): Add topology.nix to describe not NixOS topology of my infra by Romain Deville ([`4dd4d82`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4dd4d826e5439baa1644d5f37bdd1d5813c59458)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(machines/_templates): Add OS and HM users templates by Romain Deville ([`b84be2f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b84be2fd860eb30c0a480b55de160c1a4a4f5544)) 🔏
+  * ⚡️(hm): Make home-manager.nix ignore _.* folders by Romain Deville ([`b6b11c8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b6b11c8882f86fe30bff33ce854fe5fd2e6abbce)) 🔏
+  * ⚡️(hm): Improve Home-Manager module configuration by Romain Deville ([`24e121c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/24e121c22093b545e2af711bff69e535db836aed)) 🔏
+  * ⚡️(os): Make nixos.nix and nixos/default.nix ignore _.* folders by Romain Deville ([`6943c7d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6943c7d535d03b3ab17e95aeb451a35a9da3414a)) 🔏
+  * ⚡️(os): Update NixOS Module configuration by Romain Deville ([`b610552`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b610552618bc195c1225926ee5ae47546e268e1b)) 🔏
+  * ⚡️(flake): Add topology output to flake to render infra representation by Romain Deville ([`e420c87`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e420c878609eedf7ffef5b66fc0478e3c27fc4e3)) 🔏
+  * ⚡️(devbox): Set devbox.json to use my public os flake by Romain Deville ([`c4d55d7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c4d55d704f00c0e622e40e91077613d9af632a72)) 🔏
+  * ⬆️ Upgrade devbox.lock by Romain Deville ([`f0dd105`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f0dd105d4d7f604dc0737dd212e307c09c285a2f)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`aeb433b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/aeb433bac8b9393f862df9a208db9934c8fa7a2f)) 🔏
+  * 🐛(hm): Fix system if host is palpatine by Romain Deville ([`50ed2a7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/50ed2a73e5f63c9d9ee6a5e454d7a76158b71adc)) 🔏
+  * 🔧(accounts): Add romain.deville@dougs.fr account by Romain Deville ([`e6c4ec8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e6c4ec830a259fb2e3784c0d8d010d5524bde1e2)) 🔏
+
+### 🔊 Others
+
+  * ♻️(machines/rey): Refacto machines using templates by Romain Deville ([`ad12f00`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ad12f00ef54130ae29d8610b1a87282aa614a75e)) 🔏
+  * ♻️(machines/palpatine): Refacto FBLP-181 into palpatine and use templates by Romain Deville ([`d3e8b67`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d3e8b67b5f533b966f8b448f6c35b2d9c73b8a3d)) 🔏
+  * ♻️(machines/darth-vader): Refacto to use templates by Romain Deville ([`8d6898a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8d6898aadcd729af703433c1eccea41771640606)) 🔏
+  * ♻️(machines/darth-plagueis): Refacto to use templates by Romain Deville ([`344c56d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/344c56dc39089f96c019a1e8bfa81cac8b402128)) 🔏
+  * ♻️(machines/darth-maul): Refacto to use templates by Romain Deville ([`5631356`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/56313568d86122d9c33086bd726a5f41e6dee14e)) 🔏
+  * 🎨(overlays): Format files in overlays by Romain Deville ([`775cf5d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/775cf5d4e5986dd1fa654cb6e864c79bde77677c)) 🔏
+  * 🎨 Format ./home-manager.nix by Romain Deville ([`1f0ee90`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1f0ee901a89c8be4348092f0ced56ff2cea7d55b)) 🔏
+  * 🔐(common_secrets): Add k3s related secrets by Romain Deville ([`1e5c2f2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1e5c2f2d5f7f5bf5bbca0fcb5dcc0e73572c92cc)) 🔏
+  * 🔐(sops): Update .sops.yaml config by Romain Deville ([`9123ffd`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9123ffd5d0af32ab58be0ab3d041e1142026915a)) 🔏
+  * 🔥(machines/palpatine): Remove useless files by Romain Deville ([`7c39c51`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7c39c510921e7317b0a355e92896119825e7df51)) 🔏
+  * 🔥(machines): Remove useless machines/base.nix by Romain Deville ([`4267905`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4267905aeac5c8684e20ca9660af32392427e7ee)) 🔏
+  * 🔥(machines): Remove dev machines since I don&#39;t use it by Romain Deville ([`1975f9f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1975f9f8d641b792763040ce7d40497d7ba3150d)) 🔏
+  * 🔥(machines): Remove luke machines since its not deployed by Romain Deville ([`a58e25d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a58e25d5663c65a3f8a66e8b49ddc28d1ad62282)) 🔏
+  * 🔨(scripts): Improve scripts and add new ones by Romain Deville ([`0208b9a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0208b9ac451eec4fb8344810a06d8355b814f873)) 🔏
+  * 🚚(accounts): Move accounts to home-manager by Romain Deville ([`1027aee`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1027aee6231f6aaf07b125bc9c7db95b7df7a29a)) 🔏
+  * 🚚(assets): Move assets to HM assets folder by Romain Deville ([`c923949`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c9239493a753ef0502ddbc619d848807179416f2)) 🔏
+
 ## v0.13.1 (2025-04-02)
 
 ### 🩹 Patch
