@@ -1,0 +1,58 @@
+# define public="enp2s0"
+# define wan="enp1s0"
+# define private="private"
+# define guest="guest"
+# define k8sPrd="k8s-prd"
+# define k8sStg="k8s-stg"
+# define wgPublic="wg-public"
+# define wgPrivate="wg-private"
+# define wgGuest="wg-guest"
+# define wgIllyse="wg-illyse"
+# define iot="iot"
+
+table ip filter {
+    # allow all packets sent by the firewall machine itself
+	chain output {
+		type filter hook output priority 100; policy accept;
+	}
+
+    chain input {
+        type filter hook input priority 0; policy drop;
+
+        iifname { "enp1s0" } accept comment "Allow local and private networks to access the router"
+
+        iifname { "enp1s0" } ct state { established, related } accept comment "Allow established traffic on wan"
+        iifname { "enp1s0" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP on external wan"
+
+        # iifname { "enp1s0" } counter drop comment "Drop all other unsolicited traffic from wan"
+    }
+
+    # INFO: Uncomment below to add trace information to show with command:
+    # ```
+    # nft monitor trace
+    # ```
+    chain trace_chain {
+      type filter hook prerouting priority -1;
+
+      iifname { "enp1s0" } nftrace set 1
+    }
+}
+
+table ip nat {
+    chain postrouting {
+        type nat hook postrouting priority 100; policy accept;
+        oifname "enp1s0" masquerade
+    }
+}
+
+table ip6 filter {
+    # Drop all IPv6 pkgs
+    chain input {
+        type filter hook input priority 0; policy drop;
+    }
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+    }
+}
+
+# vim: ft=nftables

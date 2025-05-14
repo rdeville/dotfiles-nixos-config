@@ -4,6 +4,10 @@
     "github:NixOS/nixpkgs/nixpkgs-unstable": {
       "resolved": "github:NixOS/nixpkgs/dad564433178067be1fbdfcce23b546254b6d641?lastModified=1740019556&narHash=sha256-vn285HxnnlHLWnv59Og7muqECNMS33mWLM14soFIv2g%3D"
     },
+    "github:rdeville-public/dotfiles-nixos-config#default": {
+      "last_modified": "2025-05-05T09:14:55Z",
+      "resolved": "github:rdeville-public/dotfiles-nixos-config/7da3e8ae530952f6b35d405d6efb94ed22d8e5b7?lastModified=1746436495&narHash=sha256-huGxA5AE%2FYCPmBRMTx%2FPbhG%2BYydxQXVdRkU6jkFt7XY%3D#default"
+    },
     "pre-commit@3.7.1": {
       "last_modified": "2024-06-21T06:40:32Z",
       "resolved": "github:NixOS/nixpkgs/ed0af8c19f55bede71dc9c2002185cf228339901#pre-commit",

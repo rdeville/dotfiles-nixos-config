@@ -1,106 +1,51 @@
-{
-  lib,
-  pkgs,
-  ...
-}: let
-  base = import ./base.nix;
-in {
+{lib, ...}: {
   imports = [
-    # (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
     ./hardware-configuration.nix
-    ./os.nix
+    ./topology.nix
+    # Templated config
+    ../_templates/server.nix
+    ../_templates/gui.nix
+    ../_templates/nvidia.nix
+    ../_templates/main.nix
   ];
 
-  facter = {
-    reportPath = ./facter.json;
-  };
-
-  # Use the systemd-boot EFI boot loader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader = {
-      systemd-boot = {
-        enable = true;
-      };
-
-      efi = lib.mkDefault {
-        canTouchEfiVariables = true;
-      };
-
-      # grub = {
-      #   enable = lib.mkForce true;
-      #   device = "nodev";
-      #   useOSProber = true;
-      #   efiSupport = true;
-      # };
-    };
-  };
-
-  hardware = {
-    graphics = {
-      enable = true;
-    };
-
-    nvidia = {
-      powerManagement = {
-        enable = true;
-        finegrained = false;
-      };
-      open = false;
-      nvidiaSettings = true;
-      package = pkgs.linuxPackages_latest.nvidiaPackages.latest;
-    };
-  };
-
-  networking = {
-    firewall = {
-      enable = false;
-    };
-    useDHCP = true;
-    hosts = {
-      "127.0.0.2" = [
-        "romaindeville.xyz"
-        "argo.romaindeville.xyz"
-        "grafana.romaindeville.xyz"
-      ];
-    };
-  };
-
   nixpkgs = {
-    hostPlatform = base.system;
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) [
-          "nvidia-settings"
           "nvidia-x11"
+          "nvidia-settings"
           "steam"
           "steam-unwrapped"
-          # "vscode"
-          # "vscode-extension-ms-vsliveshare-vsliveshare"
         ];
     };
   };
 
-  programs = {
-    dconf = {
-      enable = true;
-    };
-
-    ydotool = {
-      enable = true;
-      group = "ydotool";
+  networking = {
+    hostName = lib.mkForce (builtins.baseNameOf ./.);
+    interfaces = {
+      enp0s25 = {
+        useDHCP = true;
+        # ipv4 = {
+        #   routes = [
+        #     {
+        #       address = "172.16.0.0";
+        #       prefixLength = 16;
+        #       via = "192.168.1.1";
+        #     }
+        #   ];
+        # };
+      };
     };
   };
 
-  services = {
-    xserver = {
-      videoDrivers = ["nvidia"];
-    };
-  };
+  os = {
+    hostName = builtins.baseNameOf ./.;
 
-  virtualisation = {
-    libvirtd = {
-      enable = true;
+    flavors = {
+      steam = {
+        enable = true;
+      };
     };
   };
 }

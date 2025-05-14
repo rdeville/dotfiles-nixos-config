@@ -6,31 +6,37 @@ keys:
   - &hm-rdeville-darth-maul age17um38qhvjkseq3vly7hfuetut5af2nc9va8l2004vgyfkn3sdy8sszkqv0
   - &hm-root-darth-maul age1spywc96sgud6r2c0ew668u5d2c2wp006p0awvxlzagkuy7kzddpq5uk22s
     # Darth-plagueis
-  - &os-darth-plagueis age1wcc9qfkk3alxjuf3p5u5yfguxrdqltu2gss96tx90wmg2te9vykqdqasm3
   - &hm-rdeville-darth-plagueis age1fv9wshc62xc8qcxcavt0550uwakggsur0qp737nyyy0wyqlqw59s9fmlgw
-  - &hm-root-darth-plagueis age1sxgexrse6zhtneey6s70rvuwy5zm6yltuasm7gjupstsr5s73vvqs858z2
-    # Dev
-  - &os-dev age1hk5a9lka69hm50gmafzjfd9rkyarmu2m64v0e6t9vspn2ttfu4aqdmatc7
-  - &hm-nixos-dev age15vdy2vlpfn9dr4uhaygyfr5ng7geqqmv38aa98l67mhzw2k69v9qq9rglz
-  - &hm-root-dev age13c5qr96srpn27m8ct5g2jymgnfa6ks5xyc8mypqmsfd9m37u7cls3dlhaw
-    # FBLP-181
-  - &os-FBLP-181 age1fuuuq5x54ermwumqyz2elwd3aqtvgqyhedzxu2p39zz2va32fc3sul45y0
-  - &hm-romaindeville-FBLP-181 age1uxgqmys32n6h5xm8stqp8hfj349slq9cy3dl9slj3aa6tpu5ssqsqu32ps
+    # Darth-vader
+  - &hm-rdeville-darth-vader age1fv9wshc62xc8qcxcavt0550uwakggsur0qp737nyyy0wyqlqw59s9fmlgw
+    # Kenobi
+  - &os-kenobi age1wmehceqmljnmczl05ul7qv6ds07up7nxaachh6nsv94sgf5hpdzqstv6r5
+  - &hm-azathoth-kenobi age1htqu7emzp3kdka22kylqgphxhlsa7w546kt29jqgrgffkqxryvfq6fdqy9
+  - &hm-cthulhu-kenobi age1632t0u77m7jvt83mxx7slxr0lx6rr5anxq62qg7wmtccan05e3gq3w4mj8
+  - &hm-rdeville-kenobi age13psmeq4c5x0qcp20k98af7aa59jgzurjs0fx80hl7gysn6jrx5ts8e09u4
+  - &hm-root-kenobi age10mpkrap6c3ekux0ndc2qq2ux6q6rj3stt0fkpraptydd3snvec7qh9d879
+    # Leia
+  - &os-leia age1l0d7pn0684c87s02tpatgakqjd84c5m0ylljd4teq5zc6t8yx9uszhykzv
+  - &hm-rdeville-leia age1sq86wdv7wud8d05527lcs5vkusun2frae50gc8ls78x8px8erczqqjdzpp
+  - &hm-root-leia age1dz9lw7vl226lxstp8j65r4zxgm78jt2yl0yz66wpk75lljeu9apsfkx7e0
     # Luke
-  - &os-luke age1fzh7dxg8j48cc0rlhtlm5de9l8x88urhecs5umxf69gxd7ry6f2q90e0me
-  - &hm-rdeville-luke age1au0meks5j9unwhfa992ajj4k8xxzhf4kfs9tr32mwdst64c85q8s58cznj
-  - &hm-root-luke age1z8uuk4au4e3xs6qmsdvtn9gn6xx7qy6nxs8f244ez35ghkrfkgzsnq9uva
+  - &os-luke age1d8xhfznx5gk6c0pnwmgqznw4773m9nuww8pdhdfcv0gqunuwlq7q3sgmv8
+  - &hm-rdeville-luke age13dc3lma9jgn747fwy0cxzqlgpvrg5vv86ctlhe3nqqvk99z92anq02vcdn
+  - &hm-root-luke age1qzkh5ymmpltld5ktrszvf0z6th7ht03exc0zn97venwer3qamfrsk2pqhu
+    # Nixos-live
+  - &os-nixos-live age1ft2ryp6lzr24va7xqru7tl5nf7nlk22rg66gnjfhgrkcfetltpkssmksa3
+  - &hm-nixos-nixos-live age154mt92kyefv466c8kwvy06nf4ngxm4twcrrpz2md7jxeu2m6vfqqzd3q2f
+  - &hm-root-nixos-live age1ju3hh8ywt4sxyqdce8c45gxl7cdyq67h5q4e0a5082nx768pcunqrmwhzt
+    # Nixos-live-gui
+  - &os-nixos-live-gui age1ft2ryp6lzr24va7xqru7tl5nf7nlk22rg66gnjfhgrkcfetltpkssmksa3
+  - &hm-nixos-nixos-live-gui age154mt92kyefv466c8kwvy06nf4ngxm4twcrrpz2md7jxeu2m6vfqqzd3q2f
+  - &hm-root-nixos-live-gui age1ju3hh8ywt4sxyqdce8c45gxl7cdyq67h5q4e0a5082nx768pcunqrmwhzt
     # Palpatine
-  - &os-palpatine age1f8c90sspf24st3t455m079nssvy9tcdumm57ane9cydzk3dgyf0qefss42
-  - &hm-romaindeville-palpatine age13lhtkcjfq3ahsjp26zcgwvtvns64z3kt6fkutkl8pleff2zu9dysztvfc0
+  - &hm-rdeville-palpatine age13lhtkcjfq3ahsjp26zcgwvtvns64z3kt6fkutkl8pleff2zu9dysztvfc0
     # Rey
-  - &os-rey age1zx33d4eexmx0ca3yck4ykpz9624e0r5plxlzdedysetj3tg44awsxmnj8y
-  - &hm-rdeville-rey age1sg8swpg9vugyh4fuqlm2dmp9macsges4ehu3swn6evmudjpkaq8q239r53
-  - &hm-root-rey age1n8j86v72u9wdfvx7umr329grw3p6sa82aezg9v9eufw9teztepas4u3w6p
-    # Usb-amd64
-  - &os-usb-amd64 age1ft2ryp6lzr24va7xqru7tl5nf7nlk22rg66gnjfhgrkcfetltpkssmksa3
-  - &hm-nixos-usb-amd64 age154mt92kyefv466c8kwvy06nf4ngxm4twcrrpz2md7jxeu2m6vfqqzd3q2f
-  - &hm-root-usb-amd64 age1ju3hh8ywt4sxyqdce8c45gxl7cdyq67h5q4e0a5082nx768pcunqrmwhzt
+  - &os-rey age1ujm2249dgcmu9z6vmkju0mqfq2jkhph3e3n86gj8pekedscyq97s0ck0wz
+  - &hm-rdeville-rey age1m375ya60xd4gv4wz64jdnqxjeqmgfdugxhaczeq38j4v097vnp7q2mnlsq
+  - &hm-root-rey age1uepswg92eecqrg20j44dqxd6nlzvc8wdlxddguauq3dstn9dnpesj4qu0f
 creation_rules:
   - path_regex: darth-maul/rdeville/.*\.enc\.(yaml|json|asc|txt)$
     # Darth-maul
@@ -55,45 +61,58 @@ creation_rules:
       - age:
         - *rdeville
         - *hm-rdeville-darth-plagueis
-  - path_regex: darth-plagueis/root/.*\.enc\.(yaml|json|asc|txt)$
-    # Darth-plagueis
+  - path_regex: darth-vader/rdeville/.*\.enc\.(yaml|json|asc|txt)$
+    # Darth-vader
     key_groups:
       - age:
         - *rdeville
-        - *hm-root-darth-plagueis
-  - path_regex: darth-plagueis/.*\.enc\.(yaml|json|asc|txt)$
+        - *hm-rdeville-darth-vader
+  - path_regex: kenobi/azathoth/.*\.enc\.(yaml|json|asc|txt)$
+    # Kenobi
     key_groups:
       - age:
         - *rdeville
-        - *os-darth-plagueis
-  - path_regex: dev/nixos/.*\.enc\.(yaml|json|asc|txt)$
-    # Dev
+        - *hm-azathoth-kenobi
+  - path_regex: kenobi/cthulhu/.*\.enc\.(yaml|json|asc|txt)$
+    # Kenobi
     key_groups:
       - age:
         - *rdeville
-        - *hm-nixos-dev
-  - path_regex: dev/root/.*\.enc\.(yaml|json|asc|txt)$
-    # Dev
+        - *hm-cthulhu-kenobi
+  - path_regex: kenobi/rdeville/.*\.enc\.(yaml|json|asc|txt)$
+    # Kenobi
     key_groups:
       - age:
         - *rdeville
-        - *hm-root-dev
-  - path_regex: dev/.*\.enc\.(yaml|json|asc|txt)$
+        - *hm-rdeville-kenobi
+  - path_regex: kenobi/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Kenobi
     key_groups:
       - age:
         - *rdeville
-        - *os-dev
-  - path_regex: FBLP-181/romaindeville/.*\.enc\.(yaml|json|asc|txt)$
-    # FBLP-181
+        - *hm-root-kenobi
+  - path_regex: kenobi/.*\.enc\.(yaml|json|asc|txt)$
     key_groups:
       - age:
         - *rdeville
-        - *hm-romaindeville-FBLP-181
-  - path_regex: FBLP-181/.*\.enc\.(yaml|json|asc|txt)$
+        - *os-kenobi
+  - path_regex: leia/rdeville/.*\.enc\.(yaml|json|asc|txt)$
+    # Leia
     key_groups:
       - age:
         - *rdeville
-        - *os-FBLP-181
+        - *hm-rdeville-leia
+  - path_regex: leia/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Leia
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-root-leia
+  - path_regex: leia/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-leia
   - path_regex: luke/rdeville/.*\.enc\.(yaml|json|asc|txt)$
     # Luke
     key_groups:
@@ -111,17 +130,46 @@ creation_rules:
       - age:
         - *rdeville
         - *os-luke
-  - path_regex: palpatine/romaindeville/.*\.enc\.(yaml|json|asc|txt)$
+  - path_regex: nixos-live/nixos/.*\.enc\.(yaml|json|asc|txt)$
+    # Nixos-live
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-nixos-nixos-live
+  - path_regex: nixos-live/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Nixos-live
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-root-nixos-live
+  - path_regex: nixos-live/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-nixos-live
+  - path_regex: nixos-live-gui/nixos/.*\.enc\.(yaml|json|asc|txt)$
+    # Nixos-live-gui
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-nixos-nixos-live-gui
+  - path_regex: nixos-live-gui/root/.*\.enc\.(yaml|json|asc|txt)$
+    # Nixos-live-gui
+    key_groups:
+      - age:
+        - *rdeville
+        - *hm-root-nixos-live-gui
+  - path_regex: nixos-live-gui/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-nixos-live-gui
+  - path_regex: palpatine/rdeville/.*\.enc\.(yaml|json|asc|txt)$
     # Palpatine
     key_groups:
       - age:
         - *rdeville
-        - *hm-romaindeville-palpatine
-  - path_regex: palpatine/.*\.enc\.(yaml|json|asc|txt)$
-    key_groups:
-      - age:
-        - *rdeville
-        - *os-palpatine
+        - *hm-rdeville-palpatine
   - path_regex: rey/rdeville/.*\.enc\.(yaml|json|asc|txt)$
     # Rey
     key_groups:
@@ -139,31 +187,24 @@ creation_rules:
       - age:
         - *rdeville
         - *os-rey
-  - path_regex: usb-amd64/nixos/.*\.enc\.(yaml|json|asc|txt)$
-    # Usb-amd64
+  - path_regex: common_secrets/k3s-prod.enc.yaml$
     key_groups:
       - age:
         - *rdeville
-        - *hm-nixos-usb-amd64
-  - path_regex: usb-amd64/root/.*\.enc\.(yaml|json|asc|txt)$
-    # Usb-amd64
+  - path_regex: common_secrets/k3s-stg.enc.yaml$
     key_groups:
       - age:
         - *rdeville
-        - *hm-root-usb-amd64
-  - path_regex: usb-amd64/.*\.enc\.(yaml|json|asc|txt)$
-    key_groups:
-      - age:
-        - *rdeville
-        - *os-usb-amd64
+        - *os-luke
+        - *os-leia
   - path_regex: common_secrets/spotify.enc.yaml$
     key_groups:
       - age:
         - *rdeville
         - *hm-rdeville-rey
-        - *hm-romaindeville-palpatine
+        - *hm-rdeville-palpatine
         - *hm-rdeville-darth-maul
-        - *hm-romaindeville-FBLP-181
+        - *hm-rdeville-kenobi
   - path_regex: .*\.enc\.(yaml|json|asc|txt)$
     # Default encryption rules
     key_groups:

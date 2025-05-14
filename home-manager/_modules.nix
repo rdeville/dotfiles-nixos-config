@@ -1,15 +1,5 @@
-{
-  inputs,
-  host,
-  user,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
-    # Overlays
-    ../overlays
-    # Local Modules
-    ../machines/${host}/${user}
-    ../home-manager
     # External Modules
     inputs.nixos.inputs.sops-nix.homeManagerModules.sops
     inputs.nixos.inputs.nix-index-database.hmModules.nix-index
@@ -24,5 +14,9 @@
     inputs.tmuxdata.homeManagerModules.tmuxdata
     # Personal packaged programs
     inputs.dotgit-sync.homeManagerModules.dotgit-sync
+    # Overlays
+    ../overlays
+    # Local Modules
+    ../home-manager
   ];
 }

@@ -1,19 +1,13 @@
-{
-  config,
-  pkgs,
-  lib,
-  ...
-}: let
-  keyFile = "${config.xdg.cacheHome}/.age.key";
-in {
+{...}: {
   imports = [
-    ./hm.nix
+    ../../_templates/_users/rdeville/server.nix
   ];
 
-  sops = {
-    age = {
-      inherit keyFile;
+  hm = {
+    flavors = {
+      kubernetes-client = {
+        enable = true;
+      };
     };
-    defaultSopsFile = ./secrets.enc.yaml;
   };
 }

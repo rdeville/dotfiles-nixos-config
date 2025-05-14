@@ -30,10 +30,19 @@
     };
     disko = {
       url = "github:nix-community/disko";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     nixos-facter-modules = {
       url = "github:numtide/nixos-facter-modules";
+    };
+    # Packages or tools inputs
+    nix-topology = {
+      url = "github:oddlama/nix-topology";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
     };
     # My Personal Public NixOS /HM Config
     # -------------------------------------------------------------------------
@@ -132,6 +141,15 @@
           import ./lib/default.nix final
         )
       );
+
+    pkgsForSystem = system:
+      import inputs.nixpkgs {
+        inherit system;
+        overlays = [
+          inputs.nixgl.overlay
+          inputs.nix-topology.overlays.default
+        ];
+      };
   in {
     # TOOLING
     # ------------------------------------------------------------------------
@@ -139,7 +157,7 @@
     # Other options beside 'alejandra' include 'nixpkgs-fmt'
     formatter = forAllSystems (
       system: let
-        pkgs = inputs.nixos.nixosModules.lib.pkgsForSystem system;
+        pkgs = pkgsForSystem system;
       in
         pkgs.alejandra
     );
@@ -148,7 +166,7 @@
     # ------------------------------------------------------------------------
     packages = forAllSystems (
       system: let
-        pkgs = inputs.nixos.nixosModules.lib.pkgsForSystem system;
+        pkgs = pkgsForSystem system;
       in {
         default = import ./scripts {inherit pkgs;};
         scripts = import ./scripts {inherit pkgs;};
@@ -162,5 +180,25 @@
     # HOME MANAGER
     # ------------------------------------------------------------------------
     homeConfigurations = import ./home-manager.nix {inherit inputs lib;};
+
+    # TOPOLOGY
+    # ------------------------------------------------------------------------
+    topology = forAllSystems (
+      system: let
+        pkgs = pkgsForSystem system;
+      in
+        import inputs.nix-topology {
+          inherit pkgs;
+          modules = [
+            # Your own file to define global topology.
+            # Works in principle like a nixos module but uses different options.
+            ./topology.nix
+            # Inline module to inform topology of your existing NixOS hosts.
+            {
+              nixosConfigurations = self.nixosConfigurations;
+            }
+          ];
+        }
+    );
   };
 }

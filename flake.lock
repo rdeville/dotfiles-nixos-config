@@ -58,6 +58,27 @@
         "type": "github"
       }
     },
+    "devshell": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-topology",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1728330715,
+        "narHash": "sha256-xRJ2nPOXb//u1jaBnDP56M7v5ldavjbtR6lfGqSvcKg=",
+        "owner": "numtide",
+        "repo": "devshell",
+        "rev": "dd6b80932022cea34a019e2bb32f6fa9e494dfef",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "devshell",
+        "type": "github"
+      }
+    },
     "direnvrc": {
       "inputs": {
         "nixpkgs": [
@@ -65,11 +86,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1739035380,
-        "narHash": "sha256-Uu1Ru/zPslbl3VfEx9qd9zFmgHhLgDiGDtpbrVHiADM=",
+        "lastModified": 1746462303,
+        "narHash": "sha256-ihvO33NirwlwgY8nYqrybXp69g9hdS7vi7uJ+kc0YNI=",
         "ref": "refs/heads/main",
-        "rev": "a76f9e9f051b79d84350ebd735eb528129c6acc0",
-        "revCount": 187,
+        "rev": "6ce40ee866c98679f7e08f5f7384b12ad910c1a3",
+        "revCount": 194,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/direnv.git"
       },
@@ -85,11 +106,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743524395,
-        "narHash": "sha256-BXVan1TBC2iDJODFvCoz2XrbAOyZ9KWjwyIkOYwO4Mc=",
+        "lastModified": 1746729224,
+        "narHash": "sha256-9R4sOLAK1w3Bq54H3XOJogdc7a6C2bLLmatOQ+5pf5w=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "f6dbc8952df9e40afafbe38449751bfad12d64f2",
+        "rev": "85555d27ded84604ad6657ecca255a03fd878607",
         "type": "github"
       },
       "original": {
@@ -117,6 +138,22 @@
       "original": {
         "type": "git",
         "url": "https://framagit.org/rdeville-public/programs/dotgit-sync.git"
+      }
+    },
+    "flake-compat": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1696426674,
+        "narHash": "sha256-kvjfFW7WAETZlt09AgDn1MrtKzP7t90Vf7vypd3OL1U=",
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "rev": "0f9255e01c2351cc7d116c072cb317785dd33b33",
+        "type": "github"
+      },
+      "original": {
+        "owner": "edolstra",
+        "repo": "flake-compat",
+        "type": "github"
       }
     },
     "flake-parts": {
@@ -156,6 +193,24 @@
       }
     },
     "flake-utils_2": {
+      "inputs": {
+        "systems": "systems_3"
+      },
+      "locked": {
+        "lastModified": 1726560853,
+        "narHash": "sha256-X6rJYSESBVr3hBoH0WbKE5KvhPU5bloyZ2L4K60/fPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "c1dfcf08411b08f6b8615f7d8971a2bfa81d5e8a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_3": {
       "locked": {
         "lastModified": 1659877975,
         "narHash": "sha256-zllb8aq3YO3h8B/U0/J1WBgAL8EX5yWf5pMj3G0NAmc=",
@@ -170,6 +225,28 @@
         "type": "github"
       }
     },
+    "gitignore": {
+      "inputs": {
+        "nixpkgs": [
+          "nix-topology",
+          "pre-commit-hooks",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1709087332,
+        "narHash": "sha256-HG2cCnktfHsKV0s4XW83gU3F57gaTljL9KNSuG6bnQs=",
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "rev": "637db329424fd7e46cf4185293b9cc8c88c95394",
+        "type": "github"
+      },
+      "original": {
+        "owner": "hercules-ci",
+        "repo": "gitignore.nix",
+        "type": "github"
+      }
+    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -177,11 +254,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743556466,
-        "narHash": "sha256-rvU79DJ6rPDxiH0sTp686Vlm+JewwAZPGcwt8OfHJbM=",
+        "lastModified": 1747106332,
+        "narHash": "sha256-mOdRWJzJAMp0hF8aSResyp8BeOO5VoSng1uqtEq+8xI=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "5ee44bc7c2e853f144390a12ebe5174ad7e3b9e0",
+        "rev": "535a541b429c1e89f0955c160df1d6d2bfeaf802",
         "type": "github"
       },
       "original": {
@@ -199,11 +276,11 @@
         "rust-overlay": "rust-overlay"
       },
       "locked": {
-        "lastModified": 1741036724,
-        "narHash": "sha256-nCsqa5dXW1Qja+smRkVpNkGAHfYkBFJ6U3bVilY5pDo=",
+        "lastModified": 1745860672,
+        "narHash": "sha256-tJKLjWaOcJW4Ttu1noSY+lddlJvyX2eonTrgR5IycZo=",
         "owner": "h3rmt",
         "repo": "hyprswitch",
-        "rev": "3feeccf2f1d3d6c0fb7c79b965ccf382118651d2",
+        "rev": "313e7d5730af2e37ab73fe238b1bd3a2d3e5552f",
         "type": "github"
       },
       "original": {
@@ -220,11 +297,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743204783,
-        "narHash": "sha256-XuDH5ZfdDZV+KZYnQVg0EVfwJLY9w0qdepeh5PlvR0I=",
+        "lastModified": 1746829868,
+        "narHash": "sha256-K0G/rPoswS0syD+IK+qREuzyPDutmoQ1prrfUO+Jg+o=",
         "ref": "refs/heads/main",
-        "rev": "2839a8780121795e3243086bb5b094e13763306e",
-        "revCount": 272,
+        "rev": "24e573e83bfbb4faaece1d98a282418d2f709c70",
+        "revCount": 288,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/neovim.git"
       },
@@ -262,11 +339,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743306489,
-        "narHash": "sha256-LROaIjSLo347cwcHRfSpqzEOa2FoLSeJwU4dOrGm55E=",
+        "lastModified": 1746934494,
+        "narHash": "sha256-3n6i+F0sDASjkhbvgFDpPDZGp7z19IrRtjfF9TwJpCA=",
         "owner": "nix-community",
         "repo": "nix-index-database",
-        "rev": "b3696bfb6c24aa61428839a99e8b40c53ac3a82d",
+        "rev": "e9b21b01e4307176b9718a29ac514838e7f6f4ff",
         "type": "github"
       },
       "original": {
@@ -275,9 +352,32 @@
         "type": "github"
       }
     },
+    "nix-topology": {
+      "inputs": {
+        "devshell": "devshell",
+        "flake-utils": "flake-utils_2",
+        "nixpkgs": [
+          "nixpkgs"
+        ],
+        "pre-commit-hooks": "pre-commit-hooks"
+      },
+      "locked": {
+        "lastModified": 1744142264,
+        "narHash": "sha256-h5KyodobZm8dx/HSNN+basgdmjxrQxudjrss4gAQpZk=",
+        "owner": "oddlama",
+        "repo": "nix-topology",
+        "rev": "f49121cbbf4a86c560638ade406d99ee58deb7aa",
+        "type": "github"
+      },
+      "original": {
+        "owner": "oddlama",
+        "repo": "nix-topology",
+        "type": "github"
+      }
+    },
     "nixgl": {
       "inputs": {
-        "flake-utils": "flake-utils_2",
+        "flake-utils": "flake-utils_3",
         "nixpkgs": [
           "nixpkgs"
         ]
@@ -321,11 +421,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742772467,
-        "narHash": "sha256-9lN46U8cM6a1HX7i6+bD1OkzDeP/81zQh2a8ea3BGYk=",
+        "lastModified": 1746436495,
+        "narHash": "sha256-huGxA5AE/YCPmBRMTx/PbhG+YydxQXVdRkU6jkFt7XY=",
         "ref": "refs/heads/main",
-        "rev": "078d383c7455d96df6d63c96dc1bc93cc670db6f",
-        "revCount": 527,
+        "rev": "7da3e8ae530952f6b35d405d6efb94ed22d8e5b7",
+        "revCount": 573,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -336,11 +436,11 @@
     },
     "nixos-facter-modules": {
       "locked": {
-        "lastModified": 1738752252,
-        "narHash": "sha256-/nA3tDdp/2g0FBy8966ppC2WDoyXtUWaHkZWL+N3ZKc=",
+        "lastModified": 1743671943,
+        "narHash": "sha256-7sYig0+RcrR3sOL5M+2spbpFUHyEP7cnUvCaqFOBjyU=",
         "owner": "numtide",
         "repo": "nixos-facter-modules",
-        "rev": "60f8b8f3f99667de6a493a44375e5506bf0c48b1",
+        "rev": "58ad9691670d293a15221d4a78818e0088d2e086",
         "type": "github"
       },
       "original": {
@@ -351,11 +451,11 @@
     },
     "nixpkgs": {
       "locked": {
-        "lastModified": 1743448293,
-        "narHash": "sha256-bmEPmSjJakAp/JojZRrUvNcDX2R5/nuX6bm+seVaGhs=",
+        "lastModified": 1746904237,
+        "narHash": "sha256-3e+AVBczosP5dCLQmMoMEogM57gmZ2qrVSrmq9aResQ=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "77b584d61ff80b4cef9245829a6f1dfad5afdfa3",
+        "rev": "d89fc19e405cb2d55ce7cc114356846a0ee5e956",
         "type": "github"
       },
       "original": {
@@ -402,6 +502,33 @@
         "type": "github"
       }
     },
+    "pre-commit-hooks": {
+      "inputs": {
+        "flake-compat": "flake-compat",
+        "gitignore": "gitignore",
+        "nixpkgs": [
+          "nix-topology",
+          "nixpkgs"
+        ],
+        "nixpkgs-stable": [
+          "nix-topology",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1730797577,
+        "narHash": "sha256-SrID5yVpyUfknUTGWgYkTyvdr9J1LxUym4om3SVGPkg=",
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "rev": "1864030ed24a2b8b4e4d386a5eeaf0c5369e50a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "cachix",
+        "repo": "pre-commit-hooks.nix",
+        "type": "github"
+      }
+    },
     "root": {
       "inputs": {
         "awesome": "awesome",
@@ -413,6 +540,7 @@
         "hyprswitch": "hyprswitch",
         "neovimrc": "neovimrc",
         "nix-index-database": "nix-index-database",
+        "nix-topology": "nix-topology",
         "nixgl": "nixgl",
         "nixos": "nixos",
         "nixos-facter-modules": "nixos-facter-modules",
@@ -450,11 +578,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1743502316,
-        "narHash": "sha256-zI2WSkU+ei4zCxT+IVSQjNM9i0ST++T2qSFXTsAND7s=",
+        "lastModified": 1746485181,
+        "narHash": "sha256-PxrrSFLaC7YuItShxmYbMgSuFFuwxBB+qsl9BZUnRvg=",
         "owner": "Mic92",
         "repo": "sops-nix",
-        "rev": "e7f4d7ed8bce8dfa7d2f2fe6f8b8f523e54646f8",
+        "rev": "e93ee1d900ad264d65e9701a5c6f895683433386",
         "type": "github"
       },
       "original": {
@@ -494,6 +622,21 @@
         "type": "github"
       }
     },
+    "systems_3": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "tmuxdata": {
       "inputs": {
         "nixpkgs": [
@@ -501,11 +644,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1742769329,
-        "narHash": "sha256-ixVCquS5xGyCJAwKNh60V+X/YvM9IPBciD/mJLPf9A4=",
+        "lastModified": 1745180295,
+        "narHash": "sha256-Vmc5dinZba4n7s4u/3AFE/FkhSkfnnuoifZadEovvKA=",
         "ref": "refs/heads/main",
-        "rev": "7a9f5ab7bc07b0943ad8f2d104930d181c0ab5ff",
-        "revCount": 76,
+        "rev": "97e86b4615734d2c7546dc571a7c28646281e1f8",
+        "revCount": 80,
         "type": "git",
         "url": "ssh://git@framagit.org:/rdeville-private/dotfiles/tmux"
       },

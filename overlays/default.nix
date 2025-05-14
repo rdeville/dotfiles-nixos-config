@@ -8,8 +8,9 @@
   dateDelay = builtins.readFile (
     with pkgs;
       runCommand "date" {}
-      "echo -n `date -d 'now - 7 days' +%Y-%m-%d` > $out"
+      "echo -n `date -d 'now - 1 months' +%Y-%m-%d` > $out"
   );
+  # Structure : overlay-<pkgName>-<YYYY-MM-DD>
   overlayRegexp = "overlay-([a-zA-Z0-9_\.]*)-([0-9]{4}-[0-9]{2}-[0-9]{2})";
 in {
   nixpkgs = {
@@ -24,7 +25,8 @@ in {
               inherit (config.nixpkgs) system;
             };
           in {
-            "${pkgOverlay}" = if dateOverlay > dateDelay
+            "${pkgOverlay}" =
+              if dateOverlay > dateDelay
               then lib.mkWarn "Overlay ${overlay} hase more than one month" pkgs.${pkgOverlay}
               else pkgs.${pkgOverlay};
           }
