@@ -14,6 +14,12 @@
   };
 
   hm = {
+    userAccounts = [
+      "contact@romaindeville.fr"
+      "contact@romaindeville.ovh"
+    ];
+    hostName = "darth-maul";
+
     flavors = {
       vscode = {
         enable = true;

@@ -12,4 +12,11 @@
       };
     };
   };
+
+  hm = {
+    userAccounts = [
+      "contact@romaindeville.fr"
+      "contact@romaindeville.ovh"
+    ];
+  };
 }
