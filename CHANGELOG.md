@@ -1,6 +1,22 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.14.1 (2025-05-17)
+
+### 🩹 Patch
+
+  * ⚡️(scripts): Update script related to keys and secrets by Romain Deville ([`a431d9a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a431d9ab2b9c4f7ee7c831be645693c6c024cf77)) 🔏
+  * ⚡️(hm/assets/scripts): Update where kp script logs its output by Romain Deville ([`37c908b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/37c908b213d634a27772f5f886609ea8bb98016c)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`6a5b37e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6a5b37eec791faaa83971104f6b970ee60e59fef)) 🔏
+  * 🔧(sops): Update .sops.yaml with new keys by Romain Deville ([`9e9842c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9e9842c62d05180672e9ac07e5cdc9de2ad397f5)) 🔏
+
+### 🔊 Others
+
+  * 🔐 Update secret related scripts and regenerate only required keys (!53) by Romain Deville ([`f8e0fb6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f8e0fb675dd011f47473c3b48ddca2ef2cb4e227))
+  * 🔐(common_secrets): Rotate common secrets encryption by Romain Deville ([`515e151`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/515e151ef93ad054e1c9d13a744ac5d891da56da)) 🔏
+  * 🔐(hm/accounts): Rotate account encrypted credentials files by Romain Deville ([`a7ae516`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a7ae516e8d9964e865b349779eecb73170988b87)) 🔏
+  * 🔐(machines): Remove useless keys, regenerate other ones by Romain Deville ([`f161112`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f16111265347425706aae16a5690a0bea51ea581)) 🔏
+
 ## v0.14.0 (2025-05-14)
 
 ### ✨ Minor
