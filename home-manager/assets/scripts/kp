@@ -119,7 +119,7 @@ main() {
     } < <((printf '\0%s\0' "$(eval "${cmd}")" 1>&2) 2>&1)
     # shellcheck disable=SC2181
     if [[ -n "${STDERR}" ]]; then
-      echo "$(date): ${STDERR}" >>/tmp/kp.log
+      echo "$(date): ${STDERR}" >>"/tmp/${USER}/kp.log"
       sleep 1
     else
       found=true
@@ -127,7 +127,7 @@ main() {
   done
 
   if [[ "${found}" == "false" ]]; then
-    _log "ERROR" "Unable to access to DB, see /tmp/kp.log"
+    _log "ERROR" "Unable to access to DB, see /tmp/${USER}/kp.log"
     return 4
   fi
 
