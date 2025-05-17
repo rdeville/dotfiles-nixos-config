@@ -9,31 +9,48 @@ SCRIPTPATH="$(
 REPO_DIR=$(git rev-parse --show-toplevel)
 MACHINE_PATH="${REPO_DIR}/machines"
 
-cd "${REPO_DIR}" || exit 1
+_gen_host_keys() {
+  for host_path in "${MACHINE_PATH}"/*; do
+    if ! [[ "$(basename "${host_path}")" =~ (_templates) ]] &&
+      [[ -f "${host_path}/default.nix" ]]; then
+      # Generate host age for common secret and user password encrypted files
+      ${gen} "$(basename "${host_path}")" none all
+    fi
+  done
+}
 
-gen="${REPO_DIR}/scripts/key.sh generate"
+_gen_user_keys() {
+  # Workstation, allowed to SSH and use a common secret
+  ${gen} darth-maul rdeville ssh
+  ${gen} darth-maul rdeville age
+  # Laptop, allowed to SSH and use a common secret
+  ${gen} rey rdeville ssh
+  ${gen} rey rdeville age
+  # Professional workstation, allowed to SSH and use a common secret
+  ${gen} palpatine rdeville ssh
+  ${gen} palpatine rdeville age
+}
 
-for host_path in "${MACHINE_PATH}"/*; do
-  if ! [[ "$(basename "${host_path}")" =~ (_templates|nixos-live*) ]] \
-    && [[ -f "${host_path}/default.nix" ]]; then
-    # Generate host age for common secret and user password encrypted files
-    ${gen} "$(basename "${host_path}")" none all
+_gen_sops_config() {
+  if sps show | yq . &>/dev/null; then
+    sps show >"${REPO_DIR}/.sops.yaml"
+  else
+    _log "ERROR" "There is a misconfiguration when running 'sps show | yq .'"
   fi
-done
+}
 
+main() {
+  export DEBUG_LEVEL="${DEBUG_LEVEL:-INFO}"
+  source "${REPO_DIR}/scripts/lib/main.sh"
+  init_logger
 
-# Workstation, allowed to SSH and use a common secret
-${gen} darth-maul rdeville ssh
-${gen} darth-maul rdeville age
-# Laptop, allowed to SSH and use a common secret
-${gen} rey rdeville ssh
-${gen} rey rdeville age
-# Professional workstation, allowed to SSH and use a common secret
-${gen} palpatine rdeville ssh
-${gen} palpatine rdeville age
+  cd "${REPO_DIR}" || exit 1
 
-if sps show | yq . &>/dev/null; then
-  sps show > "${REPO_DIR}/.sops.yaml"
-else
-  echo "ERROR - There is a misconfiguration when running 'sps show | yq .'"
-fi
+  local gen="${REPO_DIR}/scripts/key.sh generate"
+
+  _gen_host_keys
+  _gen_user_keys
+  _gen_sops_config
+}
+
+main "$@"
