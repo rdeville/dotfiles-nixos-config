@@ -2,7 +2,7 @@
 # shellcheck disable=SC2034
 
 # DESCRIPTION: Wrapper to manage my private key
-#
+
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
   pwd -P
@@ -26,226 +26,334 @@ CONTEXT_OPTIONS=$(
 )
 
 declare -A ACTIONS
-ACTIONS["generate"]="Generate missing private keys"
-ACTIONS["rotate"]="Rotate private keys"
+ACTIONS["generate"]="Generate specified private keys"
+ACTIONS["verify"]="Verify specified keys"
+ACTIONS["rotate"]="Rotate specified keys"
 
-declare -A TYPES
-TYPES["all"]="Process all SSH and AGE key"
-TYPES["ssh"]="Process all SSH key type (rsa and ed25519)"
-TYPES["rsa"]="Process rsa SSH key type"
-TYPES["ed25519"]="Process ed25519 SSH key type"
-TYPES["user"]="Process user SSH key type"
-TYPES["age"]="Process AGE key type"
+declare -A ALGOS
+ALGOS["all"]="Process all SSH and AGE key"
+ALGOS["ssh"]="Process ed25519 SSH key type"
+ALGOS["age"]="Process AGE key type"
 
-_key_exists() {
-  if test -f "${encfile}"; then
-    return 0
+_return() {
+  if [[ -f "${tmp}" ]]; then
+    rm "${tmp}"
   fi
-
-  if ! [[ -d "${path}" ]]; then
-    _log "DEBUG" "Creating dir **${path//"${REPO_DIR}/"/}**"
-    mkdir -p "${path}"
-  fi
-
-  return 1
 }
 
 _generate_kp_entry() {
+  local password_options
+
+  if [[ -n "${user}" ]]; then
+    password_options="-g -L 128 -l -U -n -s --exclude-similar "
+  fi
+
   if kp show "${kp_entry}" 2>&1 | grep -q -E "Output of .* is empty"; then
-    _log "INFO" "Edit Keepass entry **${host}:${user}** ${algo^^} ${type}."
-    kp edit -g -L 128 -l -U -n -s --exclude-similar "${kp_entry}" &>/dev/null
+    _log "INFO" "Edit Keepass entry **${host}${username}** ${algo^^} ${type}."
+    kp edit "${password_options}" "${kp_entry}" &>/dev/null
   else
-    _log "INFO" "Create Keepass entry **${host}:${user}** ${algo^^} ${type}."
-    kp add -g -L 128 -l -U -n -s --exclude-similar "${kp_entry}" &>/dev/null
+    _log "INFO" "Create Keepass entry **${host}${username}** ${algo^^} ${type}."
+    kp mkdir "$(dirname "${kp_entry}")" &>/dev/null
+    kp add "${password_options}" "${kp_entry}" &>/dev/null
   fi
 }
 
 _kp_add_attachments() {
   local filepath="$1"
-  local filename
+  local filename="${2:-"${filepath}"}"
 
   filename="$(basename "${filepath}")"
 
-  if kp attachment-export "${kp_entry}" "${filename}" "${filepath}" &>/dev/null; then
+  if ! kp attachment-export "${kp_entry}" "${filename}" "${tmp}" &>/dev/null; then
+    kp attachment-import "${kp_entry}" "${filename}" "${filepath}" &>/dev/null
+  elif "${diff}" "${tmp}" "${filepath}" &>/dev/null; then
     local datePrefix
     datePrefix="$(date '+%Y-%m-%d-%H:%M')"
-    kp attachment-import "${kp_entry}" "${datePrefix}-${filename}" "${filepath}" &>/dev/null
-  fi
 
-  kp attachment-import "${kp_entry}" "${filename}" "${filepath}" &>/dev/null
+    _log "INFO" "Rotating **${host}${username} stored key since it differs with local one"
+    kp attachment-import "${kp_entry}" "${datePrefix}-${filename}" "${tmp}" &>/dev/null
+    kp attachment-import "${kp_entry}" "${filename}" "${filepath}" &>/dev/null
+  else
+    _log "WARNING" "File for key **${host}${username} already stored"
+  fi
 }
 
+# Check keys functions
+# -----------------------------------------------------------------------------
+_verify_age() {
+  if ! kp show "${kp_entry}" -a "Title" &>/dev/null; then
+    _log "ERROR" "No Key entry for **${host}${username}** ${algo^^}"
+    return 1
+  elif ! kp attachment-export "${kp_entry}" "${filename}" "${tmp}" &>/dev/null; then
+    _log "ERROR" "No Key file **${host}${username}** ${algo^^} should be stored in key entry"
+    return 1
+  elif ! [[ -f "${filepath}" ]]; then
+    _log "ERROR" "Key for **${host}${username}** ${algo^^} is stored but file does not exists"
+    return 1
+  else
+    local tmpDecrypted
+
+    tmpDecrypted=$(mktemp)
+    sops -d "${encfile}" >"${tmpDecrypted}"
+
+    if "${diff}" "${encfile}" "${tmp}" &>/dev/null; then
+      _log "ERROR" "Key file for **${host}${username}** ${algo^^} differs from the one stored"
+      rm "${tmpDecrypted}"
+      return 1
+    fi
+
+    rm "${tmpDecrypted}"
+  fi
+
+  _log "INFO" "Key file and stored ones correspond for **${host}${username}** ${algo^^} ${type}"
+}
+
+_verify_ssh() {
+  if [[ -n "${user}" ]]; then
+    if [[ -f "${filepath}" ]]; then
+      _log "ERROR" "Key **${host}${username}** ${algo^^} should not exists"
+      return 1
+    elif ! kp attachment-export "${kp_entry}" "${filename}" "${tmp}" &>/dev/null; then
+      _log "ERROR" "Key **${host}${username}** ${algo^^} should be stored"
+      return 1
+    elif ! kp show "${kp_entry}" -a "Password" &>/dev/null; then
+      _log "ERROR" "Key stored for **${host}${username}** ${algo^^} does not have password"
+      return 1
+    else
+      chmod 0600 "${tmp}"
+      ssh-keygen -y -f "${tmp}" \
+        -P "$(kp show "${kp_entry}" -a "Password" 2>/dev/null)" >"${tmp}.pub"
+
+      if ! [[ -f "${filepath}.pub" ]]; then
+        _log "ERROR" "Public key file **${host}${username}** ${algo^^} is absent"
+        return 1
+      fi
+
+      if ${diff} "${filepath}.pub" "${tmp}.pub" &>/dev/null; then
+        _log "ERROR" "Public key file **${host}${username}** ${algo^^} differs from the public key generated from the stored one"
+        rm "${tmp}.pub"
+        return 1
+      fi
+    fi
+  else
+    if ! kp show "${kp_entry}" -a "Title" &>/dev/null; then
+      _log "ERROR" "No Key entry for **${host}${username}** ${algo^^}"
+      return 1
+    elif ! kp attachment-export "${kp_entry}" "${filename}" "${tmp}" &>/dev/null; then
+      _log "ERROR" "No Key file **${host}${username}** ${algo^^} should be stored in key entry"
+      return 1
+    elif ! [[ -f "${encfile}" ]]; then
+      _log "ERROR" "Key for **${host}${username}** ${algo^^} is stored but file does not exists"
+      return 1
+    else
+      local tmpDecrypted
+
+      # Check private key
+      tmpDecrypted=$(mktemp)
+      sops -d "${encfile}" >"${tmpDecrypted}"
+
+      if "${diff}" "${encfile}" "${tmp}" &>/dev/null; then
+        _log "ERROR" "Key file for **${host}${username}** ${algo^^} differs from the one stored"
+        rm "${tmpDecrypted}"
+        return 1
+      fi
+
+      rm "${tmpDecrypted}"
+
+      # Check public key
+      chmod 0600 "${tmp}"
+      ssh-keygen -y -f "${tmp}" \
+        -P "$(kp show "${kp_entry}" -a "Password" 2>/dev/null)" >"${tmp}.pub"
+
+      if ${diff} "${filepath}.pub" "${tmp}.pub" &>/dev/null; then
+        _log "ERROR" "Public key file **${host}${username}** ${algo^^} differs from the public key generated from the stored one"
+        rm "${tmp}.pub"
+        return 1
+      fi
+    fi
+  fi
+
+  _log "INFO" "Key file and stored ones correspond for **${host}${username}** ${algo^^} ${type}"
+}
+
+_verify_key() {
+  _log "INFO" "Checking state of key **${host}${username}** ${algo^^}"
+
+  case "${algo}" in
+  age)
+    _verify_age
+    ;;
+  ssh)
+    _verify_ssh
+    ;;
+  esac
+}
+
+# Rotate keys functions
+# -----------------------------------------------------------------------------
+_rotate_key() {
+  echo _rotate_key TODO
+}
+
+# Generate keys functions
+# -----------------------------------------------------------------------------
 _generate_age() {
-  if [[ -f ${filepath} ]]; then
-    # shellcheck disable=SC2154
-    _log "WARNING" "Key **${host}${username}** ${algo^^} ${type} already exists."
+  if _verify_age &>/dev/null; then
+    _log "WARNING" "Key file and stored ones correspond for **${host}${username}** ${algo^^} ${type}"
     return
   fi
 
-  if [[ -z "${user}" ]]; then
-    kp_entry="${kp_prefix}/age-key@host"
-  else
-    kp_entry="${kp_prefix}/age-${user}@${host}"
+  if [[ -f "${filepath}" ]]; then
+    _log "ERROR" "Private Key **${host}${username}** ${algo^^} ${type} exists but shouldn't"
+    _log "ERROR" "Nothing will be done still file exists"
+    return 1
   fi
+
+  age-keygen -o "${filepath}" &>/dev/null
 
   if ! kp show "${kp_entry}" -a "Title" &>/dev/null; then
     _generate_kp_entry
-    _log "INFO" "Backup Generating **${host}${username}** ${algo^^} private key."
-    mv "${filepath}" "${filepath}.bak"
   fi
 
-  if [[ -n "${user}" ]]; then
-    comment="${user}@${host}"
-  fi
+  _log "INFO" "Attach files to Keepass entry **${host}${username}** ${algo^^} ${type}"
+  _kp_add_attachments "${filepath}" "${filepath}.age"
 
-  if ! [[ -f ${filepath} ]]; then
-    age-keygen -o "${filepath}" &>/dev/null
-  fi
-
-  _log "INFO" "Attach files to Keepass entry **${host}:${user}** ${algo^^} ${type}."
-  _kp_add_attachments "${filepath}"
-
-  if ! [[ -f "${encfile}" ]]; then
-    mv "${filepath}" "${encfile}"
-    encrypt "${encfile}"
-    chmod 0600 "${encfile}"
-  fi
-
-  _log "INFO" "Generating **${host}${username}** ${algo^^} private key"
-  age-keygen -o "${filepath}" &>/dev/null
   encrypt "${encfile}"
   chmod 0600 "${encfile}"
 }
 
 _generate_ssh() {
-  local comment="${host}"
-  local kp_passgen_options=" -L 128 -l -U -n -s --exclude-similar"
-  local kp_entry
-
-  if [[ -f ${filepath} ]]; then
-    _log "WARNING" "Key **${host}${username}** ${algo^^} ${type} already exists."
+  if _verify_ssh &>/dev/null; then
+    _log "WARNING" "Key file and stored ones correspond for **${host}${username}** ${algo^^} ${type}"
     return
   fi
 
-  if [[ -z "${user}" ]]; then
-    kp_entry="${kp_prefix}/$(basename "${filepath//_key/}")@host"
-  else
-    kp_entry="${kp_prefix}/ssh-${user}@${host}"
-  fi
-
-  if ! kp show "${kp_entry}" -a "Password" &>/dev/null; then
+  if ! kp show "${kp_entry}" -a "Title" &>/dev/null; then
     _generate_kp_entry
-    _log "INFO" "Backup Generating **${host}${username}** ${algo^^} ${type} private key."
-    mv "${filepath}" "${filepath}.bak"
-  fi
-
-  if [[ -n "${user}" ]]; then
-    comment="${user}@${host}"
   fi
 
   ssh-keygen -q -C "${comment}" -t "${type}" -b 4096 -f "${filepath}" \
-    -P "$(kp show "${kp_entry}" -a "Password")"
+    -P "$(kp show "${kp_entry}" -a "Password" 2>/dev/null)"
 
   _log "INFO" "Attach files to Keepass entry **${host}:${user}** ${algo^^} ${type}."
-  _kp_add_attachments "${filepath}"
-  _kp_add_attachments "${filepath}.pub"
+  _kp_add_attachments "${filepath}" "${filepath}.asc"
+  _kp_add_attachments "${filepath}.pub" "${filepath}.pub"
 
-  if ! [[ -f "${encfile}" ]]; then
+  if [[ -n "${user}" ]]; then
+    rm "${filepath}"
+  else
     mv "${filepath}" "${encfile}"
     encrypt "${encfile}"
-    chmod 0600 "${encfile}"
-    chmod 0600 "${filepath}.pub"
   fi
-}
+  rm "${tmp}"
+  chmod 0600 "${filepath}.pub"
 
-_rotate_key() {
-  _log "INFO" "Backup ${encfile//"${MACHINE_PATH}/"/}"
-  mv "${encfile}" "${encfile}.bak"
-  mv "${filepath}" "${filepath}.bak"
-
-  case ${algo} in
-  age)
-    _generate_age
-    ;;
-  ssh)
-    _generate_ssh
-    ;;
-  esac
+  _verify_ssh
 }
 
 _generate_key() {
-  if _key_exists; then
-    _log "WARNING" "Key **${host}${username}** ${algo^^} ${type} already exists."
-    return
+  local comment
+
+  if ! [[ -d "$(dirname "${filepath}")" ]]; then
+    mkdir -p "$(dirname "${filepath}")"
   fi
 
-  case ${algo} in
-  age)
-    _generate_age
-    ;;
-  ssh)
-    _generate_ssh
-    ;;
+  if [[ -n "${user}" && -f "${filepath}" && "${algo}" == "ssh" ]]; then
+    _log "ERROR" "Private Key **${host}${username}** ${algo^^} ${type} exists but shouldn't"
+    _log "ERROR" "Nothing will be done still file exists"
+    rm "${tmp}"
+    return 1
+  fi
+
+  case "${algo}" in
+    age)
+      _generate_age
+      ;;
+    ssh)
+      _generate_ssh
+      ;;
   esac
+
+  rm "${tmp}"
 }
 
 # Key management related method
+# -----------------------------------------------------------------------------
 _compute_key_path() {
-  local path=$1
-  local user=$2
-
-  case ${type} in
+  case ${algo} in
   age)
     filepath="${path}/age.enc.txt"
     encfile="${filepath}"
-    algo="age"
     ;;
-  user)
-    type="ed25519"
+  ssh)
     # shellcheck disable=SC2154
-    filepath=${path}/${user}-${host}
+    if [[ -n "${user}" ]]; then
+      filepath=${path}/${user}-${host}
+      type="ed25519"
+    else
+      filepath=${path}/${host}-${type}
+    fi
     encfile="${filepath}.enc.asc"
-    algo="ssh"
-    ;;
-  rsa)
-    filepath="${path}/ssh_host_rsa_key"
-    encfile="${filepath}.enc.asc"
-    algo="ssh"
-    ;;
-  ed25519)
-    filepath=${path}/ssh_host_ed25519_key
-    encfile="${filepath}.enc.asc"
-    # shellcheck disable=SC2034
-    algo="ssh"
     ;;
   *)
-    _log "ERROR" "Wrong type for the private key type: type=${type}"
+    _log "ERROR" "Wrong algo for the private key type: algo=${algo}"
+
     return 1
     ;;
   esac
 }
 
-_process_key() {
-  local host=$1
-  local userName=$2
-  local filepath
-  local encfile
-  local algo
+_compute_kp_entry() {
+  if [[ -z "${user}" ]]; then
+    if [[ "${type}" == "age" ]]; then
+      kp_entry="${kp_prefix}/${algo}-key@${host}"
+    else
+      kp_entry="${kp_prefix}/${algo}-${type}@${host}"
+      comment="${host}"
+    fi
+  else
+    kp_entry="${kp_prefix}/${algo}-${user}@${host}"
+    comment="${user}@${host}"
+  fi
+}
 
-  _compute_key_path "${path}" "${userName}"
+# Process functions
+# -----------------------------------------------------------------------------
+_process_key() {
+  local filepath
+  local filename
+  local encfile
+  local kp_entry
+  local tmp
+
+  tmp=$(mktemp)
+  chmod 0600 "${tmp}"
+
+  _compute_kp_entry
+  _compute_key_path
+
+  filename=$(basename "${filepath}")
+
   "_${action}_key"
 }
 
 _process_user() {
   local path="${MACHINE_PATH}/${host}/${user}/_keys"
+  local kp_prefix="/ordinateur/${host}"
+  local username=":${user}"
 
-  if [[ "${type}" == "all" ]]; then
-    for type in "age" "user"; do
-      _process_key "${host}" "${user}"
-    done
-    type="all"
+  if [[ "${algo}" == "all" ]]; then
+    algo="age"
+    type="age"
+    _process_key
+
+    algo="ssh"
+    type="ed25519"
+    _process_key
+
+    algo="all"
   else
-    _process_key "${host}" "${user}"
+    _process_key
   fi
 }
 
@@ -257,17 +365,42 @@ generate_user() {
   _process_user
 }
 
+verify_user() {
+  _process_user
+}
+
 _process_host() {
   local path="${MACHINE_PATH}/${host}/_keys"
   local kp_prefix="/ordinateur/${host}"
 
-  if [[ "${type}" == "all" ]]; then
-    for type in "age" "rsa" "ed25519"; do
-      _process_key "${host}"
-    done
+  if [[ "${algo}" == "all" ]]; then
+    algo="age"
+    type="age"
+    _process_key
+
+    algo="ssh"
+    type="ed25519"
+    _process_key
+
+    algo="ssh"
+    type="rsa"
+    _process_key
+
     type="all"
   else
-    _process_key "${host}"
+    case "${algo}" in
+    age)
+      type="age"
+      _process_key
+      ;;
+    ssh)
+      type="rsa"
+      _process_key
+
+      type="ed25519"
+      _process_key
+      ;;
+    esac
   fi
 }
 
@@ -276,6 +409,10 @@ rotate_host() {
 }
 
 generate_host() {
+  _process_host
+}
+
+verify_host() {
   _process_host
 }
 
@@ -303,13 +440,19 @@ main() {
   if [[ -n ${user} ]]; then
     shift
   fi
-  check_user "${DEFAULT_HOST}"
+  check_user "${DEFAULT_USER}"
 
-  local type=${1}
-  if [[ -n ${type} ]]; then
+  local algo=${1}
+  if [[ -n ${algo} ]]; then
     shift
   fi
-  type=$(check_option_valid "type" "${type}" "TYPES" "${DEFAULT_TYPE}")
+  algo=$(check_option_valid "algo" "${algo}" "ALGOS" "${DEFAULT_ALGO}")
+
+
+  local diff="diff"
+  if command -v delta &>/dev/null; then
+    diff="delta"
+  fi
 
   local cmd=""
   process_hosts

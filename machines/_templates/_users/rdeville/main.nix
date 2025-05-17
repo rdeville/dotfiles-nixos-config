@@ -45,11 +45,6 @@ in {
   };
 
   hm = {
-    userAccounts = [
-      "contact@romaindeville.fr"
-      "contact@romaindeville.ovh"
-    ];
-
     flavors = {
       _accounts = {
         enable = true;
@@ -118,7 +113,7 @@ in {
               identitiesOnly = true;
               host = elem.name;
               identityFile = [
-                "''\${HOME}/.ssh/pubkeys/${key}"
+                "\${HOME}/.ssh/pubkeys/${key}"
               ];
             };
           }
