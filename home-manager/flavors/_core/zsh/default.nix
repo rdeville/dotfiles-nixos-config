@@ -105,6 +105,12 @@ in {
             clb = "curl -L -I";
             # See only response headers from a get request
             clhead = "curl -D - -so /dev/null";
+
+            # Some sops abbr
+            sd = "sops decrypt";
+            sdi = "sops decrypt --in-place";
+            se = "sops encrypt";
+            sei = "sops encrypt --in-place";
           };
         };
       };
