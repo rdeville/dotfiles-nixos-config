@@ -28,16 +28,24 @@ process_users() {
 }
 
 process_host() {
-  process_users
+  local _user=${user}
 
-  user=""
-  if type "${action}_host" &>/dev/null; then
+  if [[ "${_user}" != "none" ]]; then
+    process_users
+  fi
+
+  if [[ "${_user}" =~ (all|none) || -z "${_user}" ]] && type "${action}_host" &>/dev/null; then
+    user=""
+
     "${action}_host"
   fi
+
+  user="${_user}"
 }
 
 process_hosts() {
   if [[ "${host}" == "none" ]]; then
+    _log "WARNING" "Host 'none' specified, nothing to do"
     return
   elif [[ "${host}" == "all" ]]; then
     for host_path in "${MACHINE_PATH}"/*; do

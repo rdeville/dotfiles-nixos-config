@@ -20,7 +20,6 @@ declare -A OPTIONS
 
 declare -A ACTIONS
 ACTIONS["show"]="Show the .sops.yaml configuration for each hosts/users."
-ACTIONS["write"]="Write the updated .sops.yaml config"
 
 update_keys() {
   age="age.enc.txt"
@@ -32,9 +31,9 @@ update_keys() {
     if [[ -d ${host} ]] && ! [[ "${host}" =~ _.*$ ]]; then
       hostname=$(basename "${host}")
       private="${host}/_keys/${age}"
-      echo "    # ${hostname^}"
 
       if [[ -f ${private} ]] && grep "ENC\[AES256_GCM" "${private}" >/dev/null; then
+        echo "    # ${hostname^}"
         anchor="&os-${hostname}"
         pub="$(sops -d "${private}" | grep "public key: " | cut -d ":" -f 2)"
         echo "  - ${anchor}${pub}"
@@ -70,6 +69,7 @@ _show_path_regex() {
   else
     echo "  - path_regex: .*\.enc\.(yaml|json|asc|txt)$"
   fi
+
   if [[ -n "${comment}" ]]; then
     echo "    # ${comment^}"
   fi
@@ -85,11 +85,11 @@ update_hosts_rules() {
   for host in "${MACHINE_PATH}/"*; do
     if [[ -d ${host} ]] && ! [[ "${host}" =~ _.*$ ]]; then
       hostname=$(basename "${host}")
-      private="${host}/${age}"
       comment=""
 
       for user in "${host}/"*; do
-        if [[ -d "${user}" ]] && ! [[ "${user}" =~ _.*$ ]]; then
+        private="${host}/${user}/_keys/${age}"
+        if [[ -d "${user}" && -f "${private}" ]] && ! [[ "${user}" =~ _.*$ ]]; then
           username=$(basename "${user}")
           anchor="hm-${username}-${hostname}"
           if [[ -z "${comment}" ]]; then
@@ -101,8 +101,9 @@ update_hosts_rules() {
         fi
       done
 
+      private="${host}/_keys/${age}"
       anchor="os-${hostname}"
-      if [[ -f "${host}/default.nix" ]]; then
+      if [[ -f "${host}/default.nix" && -f "${private}" ]]; then
         _show_path_regex "${hostname}" "${anchor}"
       fi
     fi
@@ -110,7 +111,7 @@ update_hosts_rules() {
 }
 
 update_accounts_rules() {
-  for account_path in "${REPO_DIR}/configs/accounts/"*; do
+  for account_path in "${REPO_DIR}/home-manager/accounts/"*; do
     if [[ -d "${account_path}" ]]; then
       account=$(basename "${account_path}")
       occurrences=$(grep -lr -E "${account}" "${MACHINE_PATH}")
@@ -118,11 +119,15 @@ update_accounts_rules() {
       _show_path_regex "${account}" "" "${account}"
       for file in ${occurrences}; do
         user_path=$(dirname "${file}")
+        user_age="${user_path}/_keys/${age}"
         user=$(basename "${user_path}")
+
         host_path=$(dirname "${user_path}")
         host=$(basename "${host_path}")
+
         if ! [[ "${host}" =~ _.*$ ]] &&
-          ! [[ "${user}" =~ _.*$ ]]; then
+          ! [[ "${user}" =~ _.*$ ]] &&
+          [[ -f "${user_age}" ]]; then
           echo "        - *hm-${user}-${host}"
         fi
       done
@@ -139,15 +144,18 @@ update_common_secrets_rules() {
     _show_path_regex "${secret}" "" "" "file"
     for file in ${occurrences}; do
       user_path=$(dirname "${file}")
+      user_age="${user_path}/_keys/${age}"
       user=$(basename "${user_path}")
+
       host_path=$(dirname "${user_path}")
+      host_age="${host_path}/_keys/${age}"
       host=$(basename "${host_path}")
 
       if ! [[ "${host}" =~ _.*$ ]] &&
         ! [[ "${user}" =~ _.*$ ]]; then
-        if [[ "${host}" == "machines" ]]; then
+        if [[ "${host}" == "machines" && -f "${user_age}" ]]; then
           echo "        - *os-${user}"
-        else
+        elif [[ -f "${user_age}" ]]; then
           echo "        - *hm-${user}-${host}"
         fi
       fi
@@ -160,6 +168,12 @@ show() {
   update_keys
 
   echo "creation_rules":
+  echo "  - path_regex: age\.enc\.txt"
+  echo "  # AGE key files can only be decrypted by @rdeville"
+  echo "    key_groups:"
+  echo "      - age:"
+  echo "        - *rdeville"
+
   update_hosts_rules
   update_accounts_rules
   update_common_secrets_rules

@@ -61,7 +61,7 @@ check_user() {
       exit 1
     fi
     shift
-  else
+  elif [[ -z "${user}" ]]; then
     user="${default}"
   fi
 }
