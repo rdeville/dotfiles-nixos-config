@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.10 (2025-05-17)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade devbox.lock by Romain Deville ([`2b54da6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2b54da60343da268baa647640a18b41d9bc90909)) 🔏
+  * 🐛(hm/_core/zsh): Fix zsh autocompletion with files for sops (!115) by Romain Deville ([`bf5bfba`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bf5bfbaaeb1266af2e02c6d843bca2f190b59b7a))
+  * 🐛(hm/_core/zsh): Update zsh completions for sops by Romain Deville ([`3235648`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/32356489c37e221129243db5231495e88afeb678)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm): Format nix files (!114) by Romain Deville ([`7da3e8a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7da3e8ae530952f6b35d405d6efb94ed22d8e5b7))
+  * 🎨(hm): Format nix files by Romain Deville ([`3f56e85`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f56e85ce06326ce6def3b434d3cdf4bec907cb5)) 🔏
+
 ## v0.37.9 (2025-05-05)
 
 ### 🩹 Patch
