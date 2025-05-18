@@ -18,18 +18,18 @@ in {
         {
           # Here is the magic to manage both HM/Nixos in a clean homogeneous way
           "${user}" = {
-            imports = [
-              ../home-manager/_modules.nix
-              ../machines/${cfg.hostName}/${user}
-            ];
+            imports =
+              if (builtins.pathExists ../machines/${cfg.hostName}/${user}/default.nix)
+              then [
+                ../home-manager/_modules.nix
+                ../machines/${cfg.hostName}/${user}
+              ]
+              else [
+                ../home-manager/_modules.nix
+              ];
           };
         }
-        // acc) {} (
-        builtins.filter (host: (
-          # Ignore folders machines/_*
-          builtins.match "_.*" host != []
-        )) (lib.listDirs ../machines/${cfg.hostName})
-      );
+        // acc) {} (builtins.attrNames config.os.users.users);
     };
   };
 }
