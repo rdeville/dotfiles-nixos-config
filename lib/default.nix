@@ -36,8 +36,19 @@ lib: let
       inherit lib hm;
       ${type} = typeCfg;
     };
+
+  getValidHosts =
+    builtins.filter (host: (
+      builtins.pathExists ../machines/${host}/default.nix
+    )) (
+      builtins.filter (host: (
+        # Ignore folders machines/_*
+        builtins.match "_.*" host != []
+      )) (lib.listDirs ../machines)
+    );
 in {
   inherit
+    getValidHosts
     mkImap
     mkSmtp
     mkImportCfg
