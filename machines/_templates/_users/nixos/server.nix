@@ -9,24 +9,16 @@
   };
 
   hm = {
-    username = "nixos";
+    username = builtins.baseNameOf ./.;
+
     flavors = {
       _core = {
-        git = {
-          enable = false;
-        };
-
-        gpg = {
-          enable = false;
-        };
-
-        fastfetch = {
-          enable = false;
-        };
-
-        lazygit = {
-          enable = false;
-        };
+        fastfetch.enable = false;
+        git.enable = false;
+        gpg.enable = false;
+        home-manager.enable = false;
+        lazygit.enable = false;
+        mr.enable = false;
       };
     };
   };

@@ -4,18 +4,8 @@
   lib,
   ...
 }: let
+  user = config.hm.username;
   keyFile = "${config.xdg.cacheHome}/.age.key";
-  user = "rdeville";
-  hosts = [
-    {
-      name = "darth-plagueis";
-      hostname = "romaindeville.ovh";
-    }
-    {
-      name = "darth-vader";
-      hostname = "romaindeville.fr";
-    }
-  ];
 in {
   sops = {
     age = {
@@ -102,33 +92,71 @@ in {
         ];
       };
 
-      ssh-client = {
-        matchBlocks = builtins.foldl' (acc: elem: let
-          key = "${user}-${config.hm.hostName}.pub";
-        in
+      ssh-client = let
+        userKey = "${user}-${config.hm.hostName}.pub";
+      in {
+        matchBlocks =
           {
-            "${elem.name}" = {
-              inherit user;
-              hostname = elem.hostname;
+            "${user}@darth-vader" = {
+              user = user;
+              hostname = "romaindeville.fr";
               identitiesOnly = true;
-              host = elem.name;
+              host = "darth-vader";
               identityFile = [
-                "\${HOME}/.ssh/pubkeys/${key}"
+                "$HOME/.ssh/pubkeys/${userKey}"
+              ];
+            };
+            "${user}@darth-plagueis" = {
+              user = user;
+              hostname = "romaindeville.ovh";
+              identitiesOnly = true;
+              host = "darth-plagueis";
+              identityFile = [
+                "$HOME/.ssh/pubkeys/${userKey}"
               ];
             };
           }
-          // acc) {}
-        hosts;
-        file = builtins.foldl' (acc: elem: let
-          key = "${user}-${config.hm.hostName}.pub";
-        in
+          // (builtins.foldl' (acc: host: let
+            key = "azathoth-${config.hm.hostName}.pub";
+          in
+            {
+              "azathoth@${host}" = {
+                inherit host;
+                user = "azathoh";
+                hostname = "${host}.tekunix.internal";
+                identitiesOnly = true;
+                identityFile = [
+                  "$HOME/.ssh/pubkeys/${key}"
+                ];
+              };
+              "${user}@${host}" = {
+                inherit host;
+                user = "azathoh";
+                hostname = "${host}.tekunix.internal";
+                identitiesOnly = true;
+                identityFile = [
+                  "$HOME/.ssh/pubkeys/${key}"
+                ];
+              };
+            }
+            // acc) {}
+          lib.getValidHosts);
+        file =
           {
-            ".ssh/pubkeys/${key}" = {
-              source = ../../../${config.hm.hostName}/${user}/_keys/${key};
+            ".ssh/pubkeys/${userKey}" = {
+              source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
             };
           }
-          // acc) {}
-        hosts;
+          // (builtins.foldl' (acc: host: let
+            key = "azathoth-${config.hm.hostName}.pub";
+          in
+            {
+              ".ssh/pubkeys/${key}" = {
+                source = ../../../${config.hm.hostName}/azathoth/_keys/${key};
+              };
+            }
+            // acc) {}
+          lib.getValidHosts);
       };
 
       terraform = {

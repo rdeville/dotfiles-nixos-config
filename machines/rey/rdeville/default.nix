@@ -1,10 +1,4 @@
 {...}: {
-  imports = [
-    ../../_templates/_users/rdeville/server.nix
-    ../../_templates/_users/rdeville/gui.nix
-    ../../_templates/_users/rdeville/main.nix
-  ];
-
   sops = {
     secrets = {
       "spotify-client-id" = {

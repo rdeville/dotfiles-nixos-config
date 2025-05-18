@@ -9,7 +9,7 @@
   };
 
   hm = {
-    username = "root";
+    username = builtins.baseNameOf ./.;
     flavors = {
       _core = {
         fastfetch.enable = false;

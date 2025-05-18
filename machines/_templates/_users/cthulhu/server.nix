@@ -27,7 +27,7 @@ in {
   };
 
   hm = {
-    username = "cthulhu";
+    username = builtins.baseNameOf ./.;
     flavors = {
       _core = {
         fastfetch.enable = false;

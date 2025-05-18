@@ -27,6 +27,22 @@
       };
     };
 
+    programs = {
+      ssh = {
+        knownHosts = builtins.foldl' (acc: host:
+          {
+            "${host}-rsa" = {
+              publicKeyFile = ../${host}/_keys/${host}-rsa.pub;
+            };
+            "${host}-ed25519" = {
+              publicKeyFile = ../${host}/_keys/${host}-ed25519.pub;
+            };
+          }
+          // acc) {}
+        lib.getValidHosts;
+      };
+    };
+
     os = {
       hostName = builtins.baseNameOf ./.;
 
