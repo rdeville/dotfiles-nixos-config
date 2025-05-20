@@ -6,6 +6,7 @@ keys:
   - &hm-rdeville-darth-maul age1vs609j7uujwqhvssefpzz9jk2m5m7kr3k8dy98wd67npaf5zkf3qdm6v6n
     # Kenobi
   - &os-kenobi age10wdnn33e698902prd9q57f2adg9vd3ttwcv9sgeq0kc2seh5jfjssn3uvj
+  - &hm-rdeville-kenobi age1q9sr0lpusj2v9npkhn67uy2ylhfz8xqj8qsczuruezqytjxjwq0sazjz8l
     # Leia
   - &os-leia age1ajff0yw9cnyve0zkqm73s7rswhjuefxzm8ry6c63syjx3yv4l9nqveklt9
     # Luke
@@ -87,6 +88,7 @@ creation_rules:
         - *hm-rdeville-rey
         - *hm-rdeville-palpatine
         - *hm-rdeville-darth-maul
+        - *hm-rdeville-kenobi
   - path_regex: common_secrets/spotify.enc.yaml.bak$
     key_groups:
       - age:
