@@ -8,7 +8,6 @@
       isSudo = true;
       extraGroups = [
         "ydotool"
-        "deploy"
       ];
       openssh = {
         authorizedKeys = {
@@ -150,13 +149,22 @@ in {
           groups = [
             "deploy"
           ];
-          runAs = "azathoth";
-          commands = [
-            {
-              command = "/run/current-system/sw/bin/nix-store";
-              options = ["SETENV" "NOPASSWD"];
-            }
-          ];
+          commands = let
+            options = ["NOPASSWD"];
+            storePrefix = "/nix/store/*";
+            systemName = "nixos-system-${config.networking.hostName}-*";
+            commands = [
+              "/run/current-system/sw/bin/nix-env -p /nix/var/nix/profiles/system --set ${storePrefix}-${systemName}"
+              "/run/current-system/sw/bin/systemd-run"
+            ];
+          in
+            builtins.map (command: {
+              inherit
+                options
+                command
+                ;
+            })
+            commands;
         }
         {
           users = [

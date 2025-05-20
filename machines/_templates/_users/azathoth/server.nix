@@ -50,7 +50,7 @@ in {
               identitiesOnly = true;
               host = "darth-vader";
               identityFile = [
-                "$HOME/.ssh/pubkeys/${userKey}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
               ];
             };
             "${user}@darth-plagueis" = {
@@ -59,7 +59,7 @@ in {
               identitiesOnly = true;
               host = "darth-plagueis";
               identityFile = [
-                "$HOME/.ssh/pubkeys/${userKey}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
               ];
             };
           }
@@ -72,7 +72,7 @@ in {
                 hostname = "${host}.tekunix.internal";
                 identitiesOnly = true;
                 identityFile = [
-                  "$HOME/.ssh/pubkeys/${key}"
+                  "${config.home.homeDirectory}/.ssh/pubkeys/${key}"
                 ];
               };
             }

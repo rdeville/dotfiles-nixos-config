@@ -92,7 +92,7 @@ in {
               identitiesOnly = true;
               host = elem.name;
               identityFile = [
-                "$HOME/.ssh/pubkeys/${pubKey.dst}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${pubKey.dst}"
               ];
             };
           }

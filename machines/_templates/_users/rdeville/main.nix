@@ -36,53 +36,20 @@ in {
 
   hm = {
     flavors = {
-      _accounts = {
-        enable = true;
-      };
-
-      _gui = {
-        enable = true;
-      };
-
-      audio = {
-        enable = true;
-      };
-
-      bluetooth = {
-        enable = true;
-      };
-
-      discord = {
-        enable = true;
-      };
-
-      docker = {
-        enable = true;
-      };
-
-      gh = {
-        enable = true;
-      };
-
-      glab = {
-        enable = true;
-      };
-
-      kubernetes-client = {
-        enable = true;
-      };
-
-      latex = {
-        enable = true;
-      };
-
-      nextcloud-client = {
-        enable = true;
-      };
-
-      opentofu = {
-        enable = true;
-      };
+      _accounts.enable = true;
+      _gui.enable = true;
+      audio.enable = true;
+      bluetooth.enable = true;
+      discord.enable = true;
+      docker.enable = true;
+      gh.enable = true;
+      glab.enable = true;
+      kubernetes-client.enable = true;
+      latex.enable = true;
+      nextcloud-client.enable = true;
+      opentofu.enable = true;
+      terraform.enable = true;
+      terragrunt.enable = true;
 
       spotify-player = {
         enable = true;
@@ -98,26 +65,26 @@ in {
         matchBlocks =
           {
             "${user}@darth-vader" = {
-              user = user;
+              inherit user;
               hostname = "romaindeville.fr";
               identitiesOnly = true;
               host = "darth-vader";
               identityFile = [
-                "$HOME/.ssh/pubkeys/${userKey}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
               ];
             };
             "${user}@darth-plagueis" = {
-              user = user;
+              inherit user;
               hostname = "romaindeville.ovh";
               identitiesOnly = true;
               host = "darth-plagueis";
               identityFile = [
-                "$HOME/.ssh/pubkeys/${userKey}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
               ];
             };
           }
           // (builtins.foldl' (acc: host: let
-            key = "azathoth-${config.hm.hostName}.pub";
+            azathothKey = "azathoth-${config.hm.hostName}.pub";
           in
             {
               "azathoth@${host}" = {
@@ -126,45 +93,30 @@ in {
                 hostname = "${host}.tekunix.internal";
                 identitiesOnly = true;
                 identityFile = [
-                  "$HOME/.ssh/pubkeys/${key}"
+                  "${config.home.homeDirectory}/.ssh/pubkeys/${azathothKey}"
                 ];
               };
               "${user}@${host}" = {
-                inherit host;
-                user = "azathoh";
+                inherit user host;
                 hostname = "${host}.tekunix.internal";
                 identitiesOnly = true;
                 identityFile = [
-                  "$HOME/.ssh/pubkeys/${key}"
+                  "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
                 ];
               };
             }
             // acc) {}
           lib.getValidHosts);
-        file =
-          {
-            ".ssh/pubkeys/${userKey}" = {
-              source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
-            };
-          }
-          // (builtins.foldl' (acc: host: let
-            key = "azathoth-${config.hm.hostName}.pub";
-          in
-            {
-              ".ssh/pubkeys/${key}" = {
-                source = ../../../${config.hm.hostName}/azathoth/_keys/${key};
-              };
-            }
-            // acc) {}
-          lib.getValidHosts);
-      };
-
-      terraform = {
-        enable = true;
-      };
-
-      terragrunt = {
-        enable = true;
+        file = let
+          key = "azathoth-${config.hm.hostName}.pub";
+        in {
+          ".ssh/pubkeys/${userKey}" = {
+            source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
+          };
+          ".ssh/pubkeys/${key}" = {
+            source = ../../../${config.hm.hostName}/azathoth/_keys/${key};
+          };
+        };
       };
     };
   };
