@@ -24,23 +24,11 @@
     firewall = {
       enable = false;
     };
-
-    nftables = {
-      enable = true;
-      ruleset = builtins.readFile ./config.nftables;
-    };
-
-    interfaces = {
-      enp1s0 = {
-        useDHCP = true;
-      };
-    };
   };
 
   services = {
     kea = {
       dhcp4 = {
-        enable = true;
         settings = {
           lease-database = {
             name = "/var/lib/kea/dhcp4.leases";
