@@ -1,6 +1,35 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.15.0 (2025-05-21)
+
+### ✨ Minor
+
+  * ✨(machines): Add new users, generate users keys and reencrytp all by Romain Deville ([`8a80663`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8a80663068c274c1020c729e39ad7d1ae64325c3)) 🔏
+  * ✨(scripts/ci): Add script do ease deployment of NixOS upgrade by Romain Deville ([`4b94265`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4b9426599797ce0f29b2d80d70cf6d6a745ea01a)) 🔏
+  * ✨(scripts/ci): Add script to verify target and repo keys by Romain Deville ([`1a66a05`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1a66a0596bfd93b835328541676d59720438f40a)) 🔏
+  * ✨(scripts/ci): Add install.sh script to ease installation of new machine by Romain Deville ([`3f207d9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3f207d99b39eeda6ed0edb8bfffbfe0e189d4626)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Prepare bulk management with scripts &amp; new users (!54) by Romain Deville ([`a8d6696`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a8d6696fc43e738975032ea2567f033974397b79))
+  * ⚡️(machines/_templates): Update users SSH configuration by Romain Deville ([`12ba2ed`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/12ba2edae79e767d56bc6a38e4481c77c6d1a780)) 🔏
+  * ⚡️(lib): Add getValidHosts function to return list of host with default.nix by Romain Deville ([`797db9c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/797db9ce5a1c0a08d71685ce160f3610760932b2)) 🔏
+  * ⚡️(scripts): Improve script CI generate_keys by Romain Deville ([`e6ecb01`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e6ecb01cf0b98e61037b668acbfb8aaa116b1c28)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`853c7a0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/853c7a09920a8d15cea22ff681d1418ba44dedc2)) 🔏
+  * 🐛(hm/assets/scripts): Fix kp script if log folder does not exists by Romain Deville ([`32abf77`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/32abf77a706aa8e695a2f508fd59105b471462e8)) 🔏
+  * 🔧(sops): Update .sops.yaml with new kenobi rdeville age key by Romain Deville ([`93714b2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/93714b2facac6155cfdded75d03bd9bda682c188)) 🔏
+
+### 🔊 Others
+
+  * ♻️(os): Set Home-Manager users in NixOS using os.users.users by Romain Deville ([`191d8e2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/191d8e276524bfc8c6908a4e395881021dffde40)) 🔏
+  * 🔐 Reencrypt all secret by Romain Deville ([`3c18577`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3c185775c454c68b71c51354848746c547e6b467)) 🔏
+  * 🔐(machines/darth-maul): Fix SSH key files with script generate_key by Romain Deville ([`10fee16`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/10fee16cccda7c016be12041488a7e6f7b3222e2)) 🔏
+  * 🔐(machines/rey): Add rey disk encryption keyfile with encrypted password by Romain Deville ([`b3efb8d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b3efb8d1a278415aa8c9be6d3316bedacb785d6d)) 🔏
+  * 🔥(machines/kenobi): Remove useless code for kenobi and set basic config by Romain Deville ([`792e5f5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/792e5f5758f57067d9762591ef1eb0cb01c591a3)) 🔏
+  * 🔨 Update script deploy by Romain Deville ([`e4dd014`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e4dd014594bb16236443ac5eecac1f9c43ffd458)) 🔏
+  * 🔨(scripts/ci): Add CI script to build all buildable configuration by Romain Deville ([`fc74cf9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fc74cf9baf121a6791c3de49e91dfcd34d27dc52)) 🔏
+
 ## v0.14.1 (2025-05-17)
 
 ### 🩹 Patch
