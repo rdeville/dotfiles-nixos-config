@@ -84,13 +84,13 @@ main() {
   source "${REPO_DIR}/scripts/lib/main.sh"
   init_logger
 
-  if [[ "$#" -lt 2 ]]; then
+  if [[ "$#" -lt 1 ]]; then
     usage
     return 1
   fi
 
   local hostname="$1"
-  local user="$2"
+  local user="${2:-"${USER}"}"
   local ip="${3:-${hostname}.tekunix.internal}"
   local tmp="/tmp/host-key/${hostname}"
   local user_has_secret=false
