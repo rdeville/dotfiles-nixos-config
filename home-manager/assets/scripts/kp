@@ -106,6 +106,10 @@ main() {
     return 4
   fi
 
+  if ! [[ -d "/tmp/${USER}" ]]; then
+    mkdir -p "/tmp/${USER}"
+  fi
+
   # Compute the command to execute and execute it
   cmd+=" '${KEEPASS_DB}' $*"
   local timeout=2

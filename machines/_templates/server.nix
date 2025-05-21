@@ -20,16 +20,31 @@
     };
     azathoth = {
       isSudo = true;
-      # openssh = {
-      #   authorizedKeys = {
-      #     keyFiles = [
-      #       ../darth-maul/azathoth/_keys/azathoth-darth-maul.pub
-      #       ../rey/azathoth/_keys/azathoth-rey.pub
-      #     ];
-      #   };
-      # };
+      extraGroups = [
+        "deploy"
+      ];
+      openssh = {
+        authorizedKeys = {
+          keyFiles = [
+            ../darth-maul/azathoth/_keys/azathoth-darth-maul.pub
+            ../rey/azathoth/_keys/azathoth-rey.pub
+            ../kenobi/azathoth/_keys/azathoth-kenobi.pub
+          ];
+        };
+      };
     };
-    cthulhu = {};
+    cthulhu = {
+      isSudo = true;
+      openssh = {
+        authorizedKeys = {
+          keyFiles = [
+            ../darth-maul/cthulhu/_keys/cthulhu-darth-maul.pub
+            ../rey/cthulhu/_keys/cthulhu-rey.pub
+            ../kenobi/cthulhu/_keys/cthulhu-kenobi.pub
+          ];
+        };
+      };
+    };
     root = {};
   };
 
@@ -125,6 +140,74 @@ in {
     dconf = {
       enable = true;
     };
+  };
+
+  security = {
+    sudo = {
+      extraRules = [
+        {
+          groups = [
+            "deploy"
+          ];
+          commands = let
+            options = ["NOPASSWD"];
+            storePrefix = "/nix/store/*";
+            systemName = "nixos-system-${config.networking.hostName}-*";
+            commands = [
+              "/run/current-system/sw/bin/nix-env -p /nix/var/nix/profiles/system --set ${storePrefix}-${systemName}"
+              "/run/current-system/sw/bin/systemd-run"
+            ];
+          in
+            builtins.map (command: {
+              inherit
+                options
+                command
+                ;
+            })
+            commands;
+        }
+        {
+          users = [
+            "cthulhu"
+          ];
+          commands = [
+            {
+              command = "ALL";
+              options = ["SETENV" "NOPASSWD"];
+            }
+          ];
+        }
+      ];
+    };
+  };
+
+  home-manager = {
+    users = builtins.foldl' (acc: elem:
+      {
+        ${elem} = {
+          imports =
+            if elem == "rdeville"
+            then
+              if config.os.isMain
+              then [
+                ./_users/${elem}/server.nix
+                ./_users/${elem}/gui.nix
+                ./_users/${elem}/main.nix
+              ]
+              else if config.os.isGui
+              then [
+                ./_users/${elem}/server.nix
+                ./_users/${elem}/gui.nix
+              ]
+              else [
+                ./_users/${elem}/server.nix
+              ]
+            else [
+              ./_users/${elem}/server.nix
+            ];
+        };
+      }
+      // acc) {} (builtins.attrNames users);
   };
 
   os = {

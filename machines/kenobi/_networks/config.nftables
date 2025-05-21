@@ -1,15 +1,3 @@
-# define public="enp2s0"
-# define wan="enp1s0"
-# define private="private"
-# define guest="guest"
-# define k8sPrd="k8s-prd"
-# define k8sStg="k8s-stg"
-# define wgPublic="wg-public"
-# define wgPrivate="wg-private"
-# define wgGuest="wg-guest"
-# define wgIllyse="wg-illyse"
-# define iot="iot"
-
 table ip filter {
     # allow all packets sent by the firewall machine itself
 	chain output {

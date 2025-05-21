@@ -28,13 +28,5 @@ builtins.foldl' (acc: host:
         };
       };
     }
-    // acc) {} (
-  builtins.filter (host: (
-    builtins.pathExists ./machines/${host}/default.nix
-  )) (
-    builtins.filter (host: (
-      # Ignore folders machines/_*
-      builtins.match "_.*" host != []
-    )) (lib.listDirs ./machines)
-  )
-)
+    // acc) {}
+lib.getValidHosts

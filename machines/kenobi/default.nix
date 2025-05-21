@@ -1,6 +1,7 @@
 {
   inputs,
   pkgs,
+  lib,
   ...
 }: {
   imports = [
@@ -13,7 +14,7 @@
     ./disko.nix
     # Other configurations
     # ./dns.nix
-    ./_networks
+    ./_networks/wan
   ];
 
   os = {
@@ -31,12 +32,36 @@
       conntrack-tools # view network connection states
       traceroute # view network routes
       iw # view wlan interfaces and devices
+      dig # DNS lookup utiliy
     ];
   };
 
-  services = {
-    resolved = {
-      dnssec = "true";
+  # services = {
+  #   resolved = {
+  #     dnssec = "allow-downgrade";
+  #   };
+  # };
+
+  programs = {
+    ssh = {
+      knownHosts = builtins.foldl' (acc: host:
+        {
+          "${host}-rsa" = {
+            publicKeyFile = ../${host}/_keys/${host}-rsa.pub;
+          };
+          "${host}-ed25519" = {
+            publicKeyFile = ../${host}/_keys/${host}-ed25519.pub;
+          };
+        }
+        // acc) {}
+      lib.getValidHosts;
+    };
+  };
+
+  users = {
+    groups = {
+      # Specific groups with deploy permission
+      deploy = {};
     };
   };
 }

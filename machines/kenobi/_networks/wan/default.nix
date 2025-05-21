@@ -25,8 +25,8 @@ in {
     #   };
     # };
 
-    nftables = {
-      ruleset = builtins.readFile ./config.nftables;
-    };
+    # nftables = {
+    #   ruleset = builtins.readFile ./config.nftables;
+    # };
   };
 }

@@ -4,18 +4,8 @@
   lib,
   ...
 }: let
+  user = config.hm.username;
   keyFile = "${config.xdg.cacheHome}/.age.key";
-  user = "rdeville";
-  hosts = [
-    {
-      name = "darth-plagueis";
-      hostname = "romaindeville.ovh";
-    }
-    {
-      name = "darth-vader";
-      hostname = "romaindeville.fr";
-    }
-  ];
 in {
   sops = {
     age = {
@@ -46,53 +36,20 @@ in {
 
   hm = {
     flavors = {
-      _accounts = {
-        enable = true;
-      };
-
-      _gui = {
-        enable = true;
-      };
-
-      audio = {
-        enable = true;
-      };
-
-      bluetooth = {
-        enable = true;
-      };
-
-      discord = {
-        enable = true;
-      };
-
-      docker = {
-        enable = true;
-      };
-
-      gh = {
-        enable = true;
-      };
-
-      glab = {
-        enable = true;
-      };
-
-      kubernetes-client = {
-        enable = true;
-      };
-
-      latex = {
-        enable = true;
-      };
-
-      nextcloud-client = {
-        enable = true;
-      };
-
-      opentofu = {
-        enable = true;
-      };
+      _accounts.enable = true;
+      _gui.enable = true;
+      audio.enable = true;
+      bluetooth.enable = true;
+      discord.enable = true;
+      docker.enable = true;
+      gh.enable = true;
+      glab.enable = true;
+      kubernetes-client.enable = true;
+      latex.enable = true;
+      nextcloud-client.enable = true;
+      opentofu.enable = true;
+      terraform.enable = true;
+      terragrunt.enable = true;
 
       spotify-player = {
         enable = true;
@@ -102,41 +59,64 @@ in {
         ];
       };
 
-      ssh-client = {
-        matchBlocks = builtins.foldl' (acc: elem: let
-          key = "${user}-${config.hm.hostName}.pub";
-        in
+      ssh-client = let
+        userKey = "${user}-${config.hm.hostName}.pub";
+      in {
+        matchBlocks =
           {
-            "${elem.name}" = {
+            "${user}@darth-vader" = {
               inherit user;
-              hostname = elem.hostname;
+              hostname = "romaindeville.fr";
               identitiesOnly = true;
-              host = elem.name;
+              host = "darth-vader";
               identityFile = [
-                "\${HOME}/.ssh/pubkeys/${key}"
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
+              ];
+            };
+            "${user}@darth-plagueis" = {
+              inherit user;
+              hostname = "romaindeville.ovh";
+              identitiesOnly = true;
+              host = "darth-plagueis";
+              identityFile = [
+                "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
               ];
             };
           }
-          // acc) {}
-        hosts;
-        file = builtins.foldl' (acc: elem: let
-          key = "${user}-${config.hm.hostName}.pub";
-        in
-          {
-            ".ssh/pubkeys/${key}" = {
-              source = ../../../${config.hm.hostName}/${user}/_keys/${key};
-            };
-          }
-          // acc) {}
-        hosts;
-      };
-
-      terraform = {
-        enable = true;
-      };
-
-      terragrunt = {
-        enable = true;
+          // (builtins.foldl' (acc: host: let
+            azathothKey = "azathoth-${config.hm.hostName}.pub";
+          in
+            {
+              "azathoth@${host}" = {
+                inherit host;
+                user = "azathoh";
+                hostname = "${host}.tekunix.internal";
+                identitiesOnly = true;
+                identityFile = [
+                  "${config.home.homeDirectory}/.ssh/pubkeys/${azathothKey}"
+                ];
+              };
+              "${user}@${host}" = {
+                inherit user host;
+                hostname = "${host}.tekunix.internal";
+                identitiesOnly = true;
+                identityFile = [
+                  "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
+                ];
+              };
+            }
+            // acc) {}
+          lib.getValidHosts);
+        file = let
+          key = "azathoth-${config.hm.hostName}.pub";
+        in {
+          ".ssh/pubkeys/${userKey}" = {
+            source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
+          };
+          ".ssh/pubkeys/${key}" = {
+            source = ../../../${config.hm.hostName}/azathoth/_keys/${key};
+          };
+        };
       };
     };
   };
