@@ -1,6 +1,5 @@
 {...}: {
   imports = [
-    ./wan
     ./wl-public
     ./eth-public
     ./eth-k8s-prd
@@ -17,12 +16,24 @@
   };
 
   networking = {
+    # WAN default Interface
+    interfaces = {
+      enp1s0 = {
+        useDHCP = true;
+      };
+    };
+
     nat = {
       enable = false;
     };
 
     firewall = {
       enable = false;
+    };
+
+    nftables = {
+      enable = true;
+      ruleset = builtins.readFile ./config.nftables;
     };
   };
 

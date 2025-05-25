@@ -1,24 +1,8 @@
 table ip filter {
-    chain input {
-        type filter hook input priority 0; policy drop;
-        # TODO: Remove this line once network finished since at the end, router
-        # will be accessible only from private vlan or wireguard interface
-        iifname { "wlp5s0f0" } accept comment "Allow local and private networks to access the router"
-    }
-
     chain forward {
         type filter hook forward priority 0; policy drop;
-        iifname { "wlp5s0f0" } oifname { "enp1s0" } accept comment "Allow almost WLAN to WAN"
-        iifname { "enp1s0" } oifname { "wlp5s0f0" } ct state { established, related } accept comment "Allow established back to WAN to WLAN"
-    }
-
-    # INFO: Uncomment below to add trace information to show with command:
-    # ```
-    # nft monitor trace
-    # ```
-    chain trace_chain {
-      type filter hook prerouting priority -1;
-      iifname { "wlp5s0f0" } nftrace set 1
+        iifname { "wlp5s0f0" } oifname { "enp1s0" } accept comment "Allow WLAN to WAN"
+        iifname { "enp1s0" } oifname { "wlp5s0f0" } ct state { established, related } accept comment "Allow established back from WAN to WLAN"
     }
 }
 

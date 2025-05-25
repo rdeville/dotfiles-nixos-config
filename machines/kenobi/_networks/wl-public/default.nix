@@ -101,11 +101,16 @@ in {
               inherit id;
               subnet = "${prefix}.0/${toString length}";
               reservations = [
-                # {
-                #   hw-address = "10:bf:48:7c:c8:e6";
-                #   hostname = "darth-maul";
-                #   ip-address = "${vlan.lan.prefix}.10";
-                # }
+                {
+                  hw-address = "10:bf:48:7c:c8:e6";
+                  hostname = "darth-maul";
+                  ip-address = "${prefix}.30";
+                }
+                {
+                  hw-address = "74:13:ea:be:97:9a";
+                  hostname = "rey";
+                  ip-address = "${prefix}.20";
+                }
               ];
               pools = [{pool = "${prefix}.64 - ${prefix}.254";}];
               interface = wlanIface;

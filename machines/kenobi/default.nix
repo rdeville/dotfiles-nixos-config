@@ -14,7 +14,7 @@
     ./disko.nix
     # Other configurations
     # ./dns.nix
-    ./_networks/wan
+    ./_networks
   ];
 
   os = {
@@ -36,11 +36,11 @@
     ];
   };
 
-  # services = {
-  #   resolved = {
-  #     dnssec = "allow-downgrade";
-  #   };
-  # };
+  services = {
+    resolved = {
+      dnssec = "true";
+    };
+  };
 
   programs = {
     ssh = {
