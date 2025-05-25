@@ -17,7 +17,7 @@ in {
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
-      default = "right";
+      default = "left";
     };
   };
 
@@ -31,7 +31,7 @@ in {
               disabled
               ;
             # Only show hostname when connected to an SSH session.
-            ssh_only = false;
+            ssh_only = true;
             # A format string representing the symbol when connected to SSH session.
             ssh_symbol = "󰢹 ";
             # String that the hostname is cut off at, after the first match. '.' will stop after the first dot. '' will disable any truncation.

@@ -94,7 +94,7 @@ in {
   };
 
   config = let
-    scriptPath = "hyprland/scripts";
+    scriptPath = "hypr/scripts";
   in
     lib.mkIf cfg.enable
     {
