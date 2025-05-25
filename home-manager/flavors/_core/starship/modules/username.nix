@@ -20,7 +20,7 @@ in {
     position = lib.mkOption {
       type = lib.types.str;
       description = "Position of the module (right or left)";
-      default = "right";
+      default = "left";
     };
   };
 
@@ -33,22 +33,8 @@ in {
               (cfg)
               disabled
               ;
-
-            # Always shows the username module.
-            show_always = true;
-            # Translate system usernames to something else
-            aliases =
-              {
-                "root" = "GOD";
-              }
-              // (
-                if config.hm.username != "root"
-                then {
-                  "${config.hm.username}" = "me";
-                }
-                else {}
-              );
-
+            # Only activate on SSH session
+            show_always = false;
             # The style used when the user is root/admin.
             style_root = "${em} bg:${bg} fg:${fg_root}";
             # The style used for non-root users.
@@ -56,8 +42,8 @@ in {
 
             # The format for the module.
             format = lib.concatStrings [
-              (sep bg)
               "[  $user ]($style)"
+              (sep bg)
             ];
           };
         };

@@ -60,6 +60,8 @@ in {
               description = "Format of the prompt.";
               default = lib.concatStrings [
                 "\${custom.init}"
+                "$username"
+                "$hostname"
                 "$direnv"
                 "$nix_shell"
                 "$directory"
@@ -67,8 +69,6 @@ in {
                 "$fill"
                 "$battery"
                 "\${env_var.keepass}"
-                "$username"
-                "$hostname"
                 "$os"
                 "$container"
                 "$time"

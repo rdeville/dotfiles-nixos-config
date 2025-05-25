@@ -31,7 +31,7 @@ in {
               disabled
               ;
             # The symbol used before displaying the command output.
-            symbol = " ";
+            symbol = "  ";
             # The style of the module.
             style = "bg:${bg} fg:${fg}";
             # The format for the module.

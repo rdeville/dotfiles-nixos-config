@@ -32,14 +32,15 @@ in {
               ;
             # The symbol used before displaying the current GCP profile.
             symbol = "󱇶 ";
-
             # Table of region aliases to display in addition to the GCP name.
             region_aliases = {};
             # Table of project aliases to display in addition to the GCP name.
             project_aliases = {};
             # Which environmental variables should trigger this module
-            detect_env_vars = [];
-
+            detect_env_vars = [
+              "GCLOUD_ENV"
+              "GCP_ENV"
+            ];
             # The style for the module.
             style = "bg:${bg} fg:${fg}";
             # The format for the module.
