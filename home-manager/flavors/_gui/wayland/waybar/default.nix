@@ -41,6 +41,16 @@ in {
                   default = "default";
                 };
               };
+
+              battery = lib.mkOption {
+                type = lib.types.attr;
+                description = ''
+                  Configuration of the battery segment. If not null, will
+                  display battery information provided by this option in the
+                  right of the waybar.
+                '';
+                default = {};
+              };
             };
           };
         };
