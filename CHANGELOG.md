@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.11 (2025-05-26)
+
+### 🩹 Patch
+
+  * 🐛(hm/_core/starship): Fix separator and modules for starship (!117) by Romain Deville ([`a2fe01c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a2fe01cd7298944813200c13479d69011a67725c))
+  * 🐛(hm/_core/starship): Fix separator and modules for starship by Romain Deville ([`2a224a3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a224a376152551e37e8aec3a2b5283a3e223674)) 🔏
+  * 🔧(hm): Update starship prompt module &amp; wayland config (!116) by Romain Deville ([`37463e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/37463e9b90d887b3228e811f7cfdb7680faba06e))
+  * 🔧(hm/_gui/wayland): Update module by Romain Deville ([`9b8c545`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9b8c545c60302ed118b01fb30bcc337e7e417dcb)) 🔏
+  * 🔧(hm/_core/starship): Update user and hostname module display by Romain Deville ([`edf63ae`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/edf63aefe5ca4cd72d5aa7de335237183adc8edd)) 🔏
+
 ## v0.37.10 (2025-05-17)
 
 ### 🩹 Patch
