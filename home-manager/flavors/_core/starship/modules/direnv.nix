@@ -36,8 +36,8 @@ in {
             style = "bg:${bg} fg:${fg}";
             # The format for the module.
             format = lib.concatStrings [
-              (sep bg)
-              "[$symbol($output)]($style)"
+            (sep bg)
+            "[$symbol($output)]($style)"
             ];
           };
         };

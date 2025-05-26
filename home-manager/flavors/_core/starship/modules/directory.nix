@@ -7,6 +7,7 @@
   cfg = mkLib.mkGetSarshipModuleConfig name;
   mkLib = import ../lib.nix {inherit config;};
 
+  sep = mkLib.sep.${cfg.position};
   bg = mkLib.colors.grey_900;
   fg = mkLib.colors.grey_100;
   git_fg = mkLib.colors.red_300;
@@ -60,6 +61,7 @@ in {
             style = "bg:${bg} fg:${fg}";
             # The format for the module.
             format = lib.concatStrings [
+              (sep bg)
               "[  ]($style)"
               "[$read_only]($read_only_style)"
               "[ $path]($style)"

@@ -7,6 +7,7 @@
   cfg = mkLib.mkGetSarshipModuleConfig name;
   mkLib = import ../lib.nix {inherit config;};
 
+  sep = mkLib.sep.${cfg.position};
   fg = mkLib.colors.blue_400;
   bg = mkLib.colors.grey_900;
   red = mkLib.colors.red_300;
@@ -48,6 +49,7 @@ in {
             style = "bg:${bg} fg:${fg}";
             # The format for the module.
             format = lib.concatStrings [
+              (sep bg)
               "[$symbol$state]($style)"
             ];
           };
