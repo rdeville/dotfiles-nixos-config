@@ -3,6 +3,9 @@
     flavors = {
       _gui = {
         enable = true;
+        picom = {
+          enable = false;
+        };
       };
 
       audio = {

@@ -22,24 +22,22 @@
   };
 
   networking = {
-    hostName = lib.mkForce (builtins.baseNameOf ./.);
-
     hosts = {
-      "192.168.1.10" = [ "kenobi" "kenobi.tekunix.internal" ];
+      "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
     };
 
     interfaces = {
       enp0s25 = {
         useDHCP = true;
-        # ipv4 = {
-        #   routes = [
-        #     {
-        #       address = "172.16.0.0";
-        #       prefixLength = 16;
-        #       via = "192.168.1.1";
-        #     }
-        #   ];
-        # };
+        ipv4 = {
+          routes = [
+            {
+              address = "172.16.0.0";
+              prefixLength = 16;
+              via = "192.168.1.1";
+            }
+          ];
+        };
       };
     };
   };
