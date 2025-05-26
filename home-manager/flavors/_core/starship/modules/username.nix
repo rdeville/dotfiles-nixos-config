@@ -42,8 +42,8 @@ in {
 
             # The format for the module.
             format = lib.concatStrings [
-              "[  $user ]($style)"
               (sep bg)
+              "[  $user ]($style)"
             ];
           };
         };
