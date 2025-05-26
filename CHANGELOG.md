@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.16.0 (2025-05-26)
+
+### ✨ Minor
+
+  * ✨(os): Setup basic kenobi nftables config and minor updates (!55) by Romain Deville ([`07f5b47`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/07f5b475fd9df4924a34cebd5907b6eb6384067b))
+  * ✨(machines/kenobi): Update kenobi router configuration by Romain Deville ([`0e0535e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0e0535ee0f18334cb539171de013b6a60ce210e5)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(machines/rey): Fix network and hyprland monitor resolution by Romain Deville ([`f4950b7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f4950b737fd0aaed84adeb7ac28f329ad39e61d3)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`a17dcc7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a17dcc7877cad93b2d932f0baa1349ff207c5eb6)) 🔏
+  * 🔧(machines/_templates): Update template for rdeville and azathoth by Romain Deville ([`bacf7b9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bacf7b9c79d3b56a492dcd594b89a08902fd9a23)) 🔏
+  * 🔧(machines/darth-maul): Add temporary route to kenobi by Romain Deville ([`be5832b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/be5832b0939623de5fbe799d48015acba1f2b4b3)) 🔏
+
 ## v0.15.0 (2025-05-21)
 
 ### ✨ Minor
