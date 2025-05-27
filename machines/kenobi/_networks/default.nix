@@ -1,5 +1,6 @@
 {...}: {
   imports = [
+    ./tun-illyse
     ./wl-public
     ./eth-public
     ./eth-k8s-prd
