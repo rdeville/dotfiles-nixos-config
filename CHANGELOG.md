@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.17.0 (2025-05-28)
+
+### ✨ Minor
+
+  * ✨(machines/kenobi): Add Illyse OpenVPN config &amp; hardening firewall (!56) by Romain Deville ([`4c67e34`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4c67e345fc2dcbbad33eb63e3d795bfc47f2fa30))
+  * ✨(machine/kenobi): Add Illyse OpenVPN configuration by Romain Deville ([`7513187`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/75131870e4fff565271605d138cd520f8d7cead0)) 🔏
+
+### 🩹 Patch
+
+  * 🔒️(machines/kenobi): Hardening access with Firewall activation by Romain Deville ([`4a4b7b1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4a4b7b115443bc7c9a7660e144d22b92b686fa5b)) 🔏
+
 ## v0.16.0 (2025-05-26)
 
 ### ✨ Minor
