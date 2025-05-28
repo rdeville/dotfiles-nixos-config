@@ -1,5 +1,9 @@
+# Sources :
+# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
+# https://www.jjpdev.com/posts/home-router-nixos/
 {...}: {
   imports = [
+    ./wan
     ./tun-illyse
     ./wl-public
     ./eth-public
@@ -17,27 +21,12 @@
   };
 
   networking = {
-    # WAN default Interface
-    interfaces = {
-      enp1s0 = {
-        useDHCP = true;
-      };
-    };
-
     nat = {
       enable = false;
     };
 
     firewall = {
       enable = true;
-      interfaces = {
-        "enp1s0" = {
-          allowedTCPPorts = [
-            # SSH Port
-            22
-          ];
-        };
-      };
     };
 
     nftables = {
