@@ -38,7 +38,7 @@
 
   services = {
     resolved = {
-      dnssec = "true";
+      dnssec = "false";
     };
   };
 

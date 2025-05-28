@@ -30,18 +30,22 @@ in {
       };
     };
 
-    # firewall = {
-    #   interfaces = {
-    #     "${lanIface}" = {
-    #       allowedUDPPorts = [
-    #         # DNS Port
-    #         53
-    #         # DHCP Port
-    #         67
-    #       ];
-    #     };
-    #   };
-    # };
+    firewall = {
+      interfaces = {
+        "${lanIface}" = {
+          allowedTCPPorts = [
+            # SSH Port
+            22
+          ];
+          allowedUDPPorts = [
+            # DNS Port
+            53
+            # DHCP Port
+            67
+          ];
+        };
+      };
+    };
 
     nftables = {
       ruleset = builtins.readFile ./config.nftables;
