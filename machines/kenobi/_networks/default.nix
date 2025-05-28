@@ -29,7 +29,15 @@
     };
 
     firewall = {
-      enable = false;
+      enable = true;
+      interfaces = {
+        "enp1s0" = {
+          allowedTCPPorts = [
+            # SSH Port
+            22
+          ];
+        };
+      };
     };
 
     nftables = {
@@ -39,6 +47,10 @@
   };
 
   services = {
+    openssh = {
+      openFirewall = false;
+    };
+
     kea = {
       dhcp4 = {
         settings = {

@@ -39,16 +39,25 @@
   };
 
   networking = {
-    # firewall = {
-    #   interfaces = {
-    #     tun-illyse = {
-    #       allowedUDPPorts = [
-    #         # DHCP Port
-    #         67
-    #       ];
-    #     };
-    #   };
-    # };
+    firewall = {
+      interfaces = {
+        tun-illyse = {
+          allowedTCPPorts = [
+            # SSH Port
+            22
+            # DNS Port
+            53
+            # HTTP(s) Ports
+            80
+            443
+          ];
+          allowedUDPPorts = [
+            # DNS Port
+            53
+          ];
+        };
+      };
+    };
 
     nftables = {
       ruleset = builtins.readFile ./config.nftables;
