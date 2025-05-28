@@ -1,5 +1,3 @@
-# Source :
-# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 {...}: let
   id = 1;
   lanDevice = "enp2s0";

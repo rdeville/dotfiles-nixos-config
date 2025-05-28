@@ -1,5 +1,3 @@
-# Source :
-# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 {config, ...}: let
   id = 2;
   wlanDevice = "wlp5s0f0";
