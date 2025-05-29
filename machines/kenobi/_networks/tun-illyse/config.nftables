@@ -4,11 +4,32 @@ table ip filter {
         iifname { "tun-illyse" } counter drop comment "Drop all other unsolicited traffic from tun-illyse"
     }
 
-    # chain forward {
-    #     type filter hook forward priority 0; policy drop;
-    #     iifname { "tun-illyse" } oifname { "enp1s0" } accept comment "Allow WLAN to WAN"
-    #     iifname { "enp1s0" } oifname { "wlp5s0f0" } ct state { established, related } accept comment "Allow established back from WAN to WLAN"
-    # }
+    chain forward {
+        type filter hook forward priority 0; policy drop;
+
+        iifname { "wlp5s0f0" } oifname { "tun-illyse" } accept comment "Allow WLAN to VPN Wan"
+        iifname { "tun-illyse" } oifname { "wlp5s0f0" } ct state { established, related } accept comment "Allow established back from VPN Wan to WLAN"
+
+        iifname { "enp1s0" } oifname { "tun-illyse" } accept comment "Allow 'eth-public' to VPN Wan"
+        iifname { "tun-illyse" } oifname { "enp1s0" } ct state { established, related } accept comment "Allow established back from VPN Wan to 'eth-public'"
+
+        # iifname { "k8s-prd" } oifname { "tun-illyse" } accept comment "Allow k8s-prd to VPN Wan"
+        # iifname { "tun-illyse" } oifname { "k8s-prd" } ct state { established, related } accept comment "Allow established back from VPN Wan to k8s-prd"
+        #
+        # iifname { "k8s-stg" } oifname { "tun-illyse" } accept comment "Allow k8s-prd to VPN Wan"
+        # iifname { "tun-illyse" } oifname { "k8s-stg" } ct state { established, related } accept comment "Allow established back from VPN Wan to k8s-prd"
+
+        iifname { "wg-public" } oifname { "tun-illyse" } accept comment "Allow k8s-prd to VPN Wan"
+        iifname { "tun-illyse" } oifname { "wg-public" } ct state { established, related } accept comment "Allow established back from VPN Wan to k8s-prd"
+    }
 }
+
+table ip nat {
+    chain postrouting {
+        type nat hook postrouting priority 100; policy accept;
+        oifname { "tun-illyse" } masquerade
+    }
+}
+
 
 # vim: ft=nftables
