@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.12 (2025-06-01)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`1cdf94f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1cdf94f1576b47a2242d7c1ace455335ba939a48)) 🔏
+  * 👽️(hm/_core): Remove thefuck from flavors since removed from HM (!118) by Romain Deville ([`3f3ec8e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f3ec8e57172c9dda98846df7b2f652b2d4e36fa))
+  * 👽️(hm/_core): Remove thefuck from flavors since removed from HM by Romain Deville ([`4aa8a1b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4aa8a1b323e608e5c4a39b452425c757f62c6d35)) 🔏
+
 ## v0.37.11 (2025-05-26)
 
 ### 🩹 Patch
