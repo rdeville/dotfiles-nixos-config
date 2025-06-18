@@ -21,12 +21,13 @@
       url = "github:awesomeWM/awesome/master";
       flake = false;
     };
-    hyprswitch = {
-      url = "github:h3rmt/hyprswitch/release";
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
+    };
+    ls-colors = {
+      url = "github:trapd00r/LS_COLORS";
+      flake = false;
     };
   };
 

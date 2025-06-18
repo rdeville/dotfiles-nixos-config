@@ -56,13 +56,11 @@ in {
       xserver = {
         inherit (cfg) xkb;
         enable = true;
-        displayManager = {
-          gdm = {
-            inherit (cfg.gdm) enable;
-          };
-        };
       };
       displayManager = {
+        gdm = {
+          inherit (cfg.gdm) enable;
+        };
         ly = {
           inherit (cfg.ly) enable settings;
         };
