@@ -1,6 +1,21 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.13 (2025-06-18)
+
+### 🩹 Patch
+
+  * ⚡️(hm/_core): Set dircolors now use inputs.ls-colors by Romain Deville ([`9bda2ab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9bda2ab07a6933b769a570e916d76d66ad6333bd)) 🔏
+  * ➕(flake): Add ls-colors as input now by Romain Deville ([`5a251a4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5a251a4119a9eea918c3828b37b39988ad73af6b)) 🔏
+  * ➖(hm/_gui): Remove hyprswith module since I don&#39;t use it (!119) by Romain Deville ([`d7433a4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d7433a4bf8d9fb1a6323cb7187b201710ffadf99))
+  * ➖(flake): Remove hyprswitch from flake.nix by Romain Deville ([`4b49f1f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4b49f1f80221f678ebfcfebf535ffe774765f0fb)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`0898d07`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0898d070297f4f3e261ba0d9da2c83dc501a1efe)) 🔏
+  * 👽️(os/display-manager): displayManager moved from svc.xserver to svc.displayManager by Romain Deville ([`b428bb5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b428bb54da3b8098258f92ff99e3a0557c3502c1)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/_gui): Drop hyprswitch support since I don&#39;t use it by Romain Deville ([`f5d9d94`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f5d9d94acf738e7b7deebe1898569c5281b63dd4)) 🔏
+
 ## v0.37.12 (2025-06-01)
 
 ### 🩹 Patch
