@@ -93,12 +93,6 @@ in {
 
     services = {
       xserver = {
-        displayManager = {
-          gdm = {
-            wayland = cfg.hyprland.enable || cfg.plasma.enable;
-          };
-        };
-
         windowManager = {
           awesome = {
             enable = cfg.awesome.enable;
@@ -112,6 +106,9 @@ in {
       };
 
       desktopManager = {
+        gdm = {
+          wayland = cfg.hyprland.enable || cfg.plasma.enable;
+        };
         plasma6 = {
           enable = cfg.plasma.enable;
         };
