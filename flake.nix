@@ -25,6 +25,10 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    ls-colors = {
+      url = "github:trapd00r/LS_COLORS";
+      flake = false;
+    };
   };
 
   outputs = inputs @ {self, ...}: let
