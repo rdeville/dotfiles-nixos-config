@@ -33,3 +33,7 @@ repos:
   hooks:
   - id: markdownlint
 # END DOTGIT-SYNC BLOCK MANAGED YAML_MERGED_ENFORCED
+- repo: https://github.com/red-lichtie/sops-pre-commit-hook
+  rev: v1.2.1
+  hooks:
+    - id: sops-pre-commit-hook

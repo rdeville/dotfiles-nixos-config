@@ -1,10 +1,16 @@
+# Sources :
+# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
+# https://www.jjpdev.com/posts/home-router-nixos/
 {...}: {
   imports = [
+    ./wan
     ./tun-illyse
-    ./wl-public
     ./eth-public
-    ./eth-k8s-prd
+    ./wl-public
     ./eth-k8s-stg
+    ./eth-k8s-prd
+    ./wg-public
+    ./wg-private
   ];
 
   boot = {
@@ -16,28 +22,19 @@
     };
   };
 
-  networking = {
-    # WAN default Interface
-    interfaces = {
-      enp1s0 = {
-        useDHCP = true;
-      };
+  systemd = {
+    network = {
+      enable = true;
     };
+  };
 
+  networking = {
     nat = {
       enable = false;
     };
 
     firewall = {
       enable = true;
-      interfaces = {
-        "enp1s0" = {
-          allowedTCPPorts = [
-            # SSH Port
-            22
-          ];
-        };
-      };
     };
 
     nftables = {

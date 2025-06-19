@@ -1,5 +1,3 @@
-# Source :
-# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 {...}: let
   id = 128;
   lanDevice = "enp3s0";
@@ -7,37 +5,43 @@
   prefix = "172.16.${toString id}";
   length = 20;
 in {
-  networking = {
-    # VLans
-    vlans = {
-      ${lanIface} = {
-        interface = lanDevice;
-        inherit id;
+  systemd = {
+    network = {
+      netdevs = {
+        "2${toString id}-${lanIface}" = {
+          netdevConfig = {
+            Kind = "vlan";
+            Name = "${lanIface}";
+          };
+          vlanConfig = {
+            Id = id;
+          };
+        };
       };
-    };
 
-    # Physical and virtual Interface
-    interfaces = {
-      ${lanIface} = {
-        useDHCP = false;
-        ipv4 = {
-          routes = [
-            {
-              address = "${prefix}.0";
-              prefixLength = length;
-              via = "${prefix}.1";
-            }
+      networks = {
+        "2000-${lanDevice}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanDevice;
+          };
+          vlan = [
+            lanIface
           ];
-          addresses = [
-            {
-              address = "${prefix}.1";
-              prefixLength = length;
-            }
-          ];
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
+        };
+        "2${toString id}-${lanIface}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanIface;
+          };
         };
       };
     };
-
+  };
+  networking = {
     # firewall = {
     #   interfaces = {
     #     "${lanIface}" = {

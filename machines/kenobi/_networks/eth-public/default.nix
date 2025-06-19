@@ -1,35 +1,39 @@
-# Source :
-# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 {...}: let
   id = 1;
-  lanDevice = "enp2s0";
-  lanIface = lanDevice;
+  lanIface = "enp2s0";
   prefix = "172.16.${toString id}";
   length = 24;
 in {
-  networking = {
-    # Physical and virtual Interface
-    interfaces = {
-      ${lanIface} = {
-        useDHCP = false;
-        ipv4 = {
+  systemd = {
+    network = {
+      networks = {
+        "200${toString id}-${lanIface}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanIface;
+          };
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          address = [
+            "${prefix}.1/${toString length}"
+          ];
           routes = [
             {
-              address = "${prefix}.0";
-              prefixLength = length;
-              via = "${prefix}.1";
+              Destination = "${prefix}.0/${toString length}";
+              Gateway = "${prefix}.1";
+              Source = "192.168.1.0/24";
             }
           ];
-          addresses = [
-            {
-              address = "${prefix}.1";
-              prefixLength = length;
-            }
-          ];
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
         };
       };
     };
-
+  };
+  networking = {
     firewall = {
       interfaces = {
         "${lanIface}" = {
@@ -55,6 +59,7 @@ in {
   services = {
     kea = {
       dhcp4 = {
+        enable = true;
         settings = {
           interfaces-config = {
             interfaces = [

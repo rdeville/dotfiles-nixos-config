@@ -44,6 +44,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    ls-colors = {
+      url = "github:trapd00r/LS_COLORS";
+      flake = false;
+    };
     # My Personal Public NixOS /HM Config
     # -------------------------------------------------------------------------
     nixos = {
@@ -51,11 +55,11 @@
       inputs = {
         awesome.follows = "awesome";
         home-manager.follows = "home-manager";
-        hyprswitch.follows = "hyprswitch";
         nixgl.follows = "nixgl";
         nixpkgs.follows = "nixpkgs";
         nix-index-database.follows = "nix-index-database";
         sops-nix.follows = "sops-nix";
+        ls-colors.follows = "ls-colors";
       };
     };
     nix-index-database = {
@@ -67,12 +71,6 @@
     awesome = {
       url = "github:awesomeWM/awesome/master";
       flake = false;
-    };
-    hyprswitch = {
-      url = "github:h3rmt/hyprswitch/release";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
     };
     # My personal dotfiles flakes
     awesomerc = {

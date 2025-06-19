@@ -1,43 +1,57 @@
-# Source :
-# https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 {...}: let
   id = 144;
   lanDevice = "enp3s0";
   lanIface = "k8s-stg";
   prefix = "172.16.${toString id}";
-  length = 24;
+  length = 20;
 in {
-  networking = {
-    # VLans
-    vlans = {
-      ${lanIface} = {
-        interface = lanDevice;
-        inherit id;
+  systemd = {
+    network = {
+      netdevs = {
+        "2${toString id}-${lanIface}" = {
+          netdevConfig = {
+            Kind = "vlan";
+            Name = "${lanIface}";
+          };
+          vlanConfig = {
+            Id = id;
+          };
+        };
       };
-    };
 
-    # Physical and virtual Interface
-    interfaces = {
-      ${lanIface} = {
-        useDHCP = false;
-        ipv4 = {
-          routes = [
-            {
-              address = "${prefix}.0";
-              prefixLength = length;
-              via = "${prefix}.1";
-            }
+      networks = {
+        "2000-${lanDevice}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanDevice;
+          };
+          vlan = [
+            lanIface
           ];
-          addresses = [
-            {
-              address = "${prefix}.1";
-              prefixLength = length;
-            }
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
+        };
+        "2${toString id}-${lanIface}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanIface;
+          };
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          address = [
+            "${prefix}.1/${toString length}"
           ];
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
         };
       };
     };
-
+  };
+  networking = {
     # firewall = {
     #   interfaces = {
     #     "${lanIface}" = {
