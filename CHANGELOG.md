@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.15 (2025-06-19)
+
+### 🩹 Patch
+
+  * 🐛(hm/_core): Fix dircolors configuration from ls-colors inputs (!121) by Romain Deville ([`a05fe91`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a05fe912cf99dad702af2fd74467ac95a3310ab6))
+  * 🐛(hm/_core): Fix dircolors configuration from ls-colors inputs by Romain Deville ([`7f41a5e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7f41a5e49afb1fbe94e91babe99155d265b3e7c9)) 🔏
+
 ## v0.37.14 (2025-06-19)
 
 ### 🩹 Patch
