@@ -1,6 +1,34 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.18.0 (2025-06-19)
+
+### ✨ Minor
+
+  * ✨(kenobi): Refacto networking config and add wireguard servers (!57) by Romain Deville ([`596e198`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/596e1985508beff79cf4e2f78c7e583238cc93bd))
+  * ✨(kenobi/net): Update list of net to deploy by Romain Deville ([`fc40452`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fc40452dda5f7adabfed95bf8c0cd8c404c60ea8)) 🔏
+  * ✨(kenobi/net): Add wireguard private server configuration by Romain Deville ([`f49df09`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f49df09b7b118c32c550277387171be825d9c32c)) 🔏
+  * ✨(kenobi/wg-public): Add public wireguard server and config by Romain Deville ([`8ea33b6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8ea33b63e86a89d375afaa4bed213f4137ec6dc9)) 🔏
+  * ✨(kenobi/net/k8s-prd): Move net from interfaces to service.network by Romain Deville ([`334bd57`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/334bd5741c0957c0034893b45a8446517d4b3f84)) 🔏
+  * ✨(kenobi/net/k8s-stg): Move net from interfaces to service.network by Romain Deville ([`418f39c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/418f39c67a2bcb4fb5177e90fdc1b9c27dc2d249)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(kenobi/net/wl-public): Move net from interfaces to systemd.network by Romain Deville ([`2018910`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2018910b47ad01397712be96098ad59fb2980572)) 🔏
+  * ⚡️(kenobi/net/eth-public): Move net from interfaces to systemd.network by Romain Deville ([`1734955`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/17349550c1063cbf243f7f2a5a4fff96af7da786)) 🔏
+  * ⚡️(kenobi/net/wan): Move wan from networking to systemd.network by Romain Deville ([`114238e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/114238ecf47b5405d94219daee4bc575a8d75afa)) 🔏
+  * ➖(flake): Remove hyprswitch from flake.nix and add ls-colors by Romain Deville ([`7944c15`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7944c1531bb946ffb5dbf728c356135435853934)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`5562d2f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5562d2f7f059780029359950e9ce551e127968bd)) 🔏
+  * 🔧(kenobi): Fix nftables to allow some traffic through tun-illyse by Romain Deville ([`e19a44c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e19a44c0d3121483e0b2980a67839262f3570fd1)) 🔏
+  * 🔧(pre-commit): Add validate-sops pre-commit by Romain Deville ([`fe52484`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fe52484fede909701dcdef053350459e8c49d90b)) 🔏
+
+### 🔊 Others
+
+  * ♻️(kenobi): Move wan network to its dedicated folder by Romain Deville ([`5a34a15`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5a34a1529043094a6127640df2c2bf254b6ad9a3)) 🔏
+  * 🎨(kenobi/dns): Format DNS entry for tekunix.cloud by Romain Deville ([`345d2a9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/345d2a90314a42e78b96f19ec64aafe7d964eceb)) 🔏
+  * 💡(kenobi): Remove useless comment by Romain Deville ([`6725ec0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6725ec05084f4bfda786f4c632824b5252f94897)) 🔏
+  * 🔐(rey/rdeville): Add wg private key for wg-public by Romain Deville ([`71d1bdc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/71d1bdc64b08400e2f3453651844af191412eff1)) 🔏
+
 ## v0.17.0 (2025-05-28)
 
 ### ✨ Minor
