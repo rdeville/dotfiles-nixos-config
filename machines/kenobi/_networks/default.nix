@@ -5,10 +5,12 @@
   imports = [
     ./wan
     ./tun-illyse
-    ./wl-public
     ./eth-public
-    ./eth-k8s-prd
+    ./wl-public
     ./eth-k8s-stg
+    ./eth-k8s-prd
+    ./wg-public
+    ./wg-private
   ];
 
   boot = {
@@ -17,6 +19,12 @@
         # if you use ipv4, this is all you need
         "net.ipv4.conf.all.forwarding" = true;
       };
+    };
+  };
+
+  systemd = {
+    network = {
+      enable = true;
     };
   };
 
