@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.14 (2025-06-19)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`af130eb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/af130eb7a1b9cb49581fc53929560da10f0fb2d2)) 🔏
+  * 🐛(os): Fix gdm definition in wrong block &amp; format files (!120) by Romain Deville ([`0ac57e8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0ac57e835f5cbb2957363a1c9a8e939b252875ed))
+  * 🐛(os/window-manager): Fix gdm definition in wrong service by Romain Deville ([`1098ed2`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1098ed2aefd103a8eb43b86242ea715b3c25cc5e)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/_core): Format files by Romain Deville ([`95653e4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/95653e4dd029274b3c6fbd48cc086f4a63feb06d)) 🔏
+
 ## v0.37.13 (2025-06-18)
 
 ### 🩹 Patch
