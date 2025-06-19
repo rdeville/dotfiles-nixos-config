@@ -90,7 +90,7 @@ in {
 
       dircolors = {
         enable = true;
-        extraConfig = "${inputs.ls-colors}/LS_COLORS";
+        extraConfig = builtins.readFile "${inputs.ls-colors}/LS_COLORS";
       };
 
       lsd = {
