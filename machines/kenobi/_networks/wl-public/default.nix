@@ -1,6 +1,5 @@
 {config, ...}: let
   id = 2;
-  wlanDevice = "wlp5s0f0";
   wlanIface = "wlp5s0f0";
   prefix = "172.16.${toString id}";
   length = 24;
@@ -13,34 +12,37 @@ in {
     };
   };
 
-  networking = {
-    # Physical and virtual Interface
-    wlanInterfaces = {
-      ${wlanIface} = {
-        device = wlanDevice;
-      };
-    };
-
-    interfaces = {
-      ${wlanIface} = {
-        ipv4 = {
+  systemd = {
+    network = {
+      networks = {
+        "200${toString id}-${wlanIface}" = {
+        enable = true;
+          matchConfig = {
+            Name = wlanIface;
+          };
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          address = [
+            "${prefix}.1/${toString length}"
+          ];
           routes = [
             {
-              address = "${prefix}.0";
-              prefixLength = length;
-              via = "${prefix}.1";
+              Destination = "${prefix}.0/${toString length}";
+              Gateway = "${prefix}.1";
+              Source = "192.168.1.0/24";
             }
           ];
-          addresses = [
-            {
-              address = "${prefix}.1";
-              prefixLength = length;
-            }
-          ];
+          linkConfig = {
+            RequiredForOnline = "enslaved";
+          };
         };
       };
     };
+  };
 
+  networking = {
     firewall = {
       interfaces = {
         "${wlanIface}" = {
