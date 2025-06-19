@@ -10,15 +10,27 @@ in {
     };
   };
 
-  networking = {
-    # Physical and virtual Interface
-    interfaces = {
-      ${lanIface} = {
-        device = lanDevice;
-        useDHCP = true;
+  systemd = {
+    network = {
+      networks = {
+        "1000-${lanIface}" = {
+          enable = true;
+          matchConfig = {
+            Name = lanIface;
+          };
+          networkConfig = {
+            DHCP = "ipv4";
+            IPv6AcceptRA = false;
+          };
+          linkConfig = {
+            RequiredForOnline = "routable";
+          };
+        };
       };
     };
+  };
 
+  networking = {
     firewall = {
       interfaces = {
         "${lanIface}" = {
