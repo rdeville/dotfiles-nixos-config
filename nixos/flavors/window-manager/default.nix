@@ -106,9 +106,6 @@ in {
       };
 
       desktopManager = {
-        gdm = {
-          wayland = cfg.hyprland.enable || cfg.plasma.enable;
-        };
         plasma6 = {
           enable = cfg.plasma.enable;
         };
@@ -116,6 +113,9 @@ in {
 
       displayManager = {
         defaultSession = "hyprland";
+        gdm = {
+          wayland = cfg.hyprland.enable || cfg.plasma.enable;
+        };
       };
     };
 
