@@ -10,6 +10,8 @@
   length = 24;
 
   listenPort = 65142;
+
+  mkLib = config.lib.topology;
 in {
   sops = {
     secrets = {
@@ -21,7 +23,6 @@ in {
         reloadUnits = [
           "systemd-networkd.service"
         ];
-
       };
     };
   };
@@ -40,13 +41,13 @@ in {
           };
           wireguardPeers = builtins.map (
             peer: {
-              name = peer;
-              allowedIPs = [
-                "${prefix}.64/25"
+              AllowedIPs = [
+                "0.0.0.0/0"
               ];
-              publicKey = builtins.readFile ./peers/${peer};
+              PublicKey = peer.pubKey;
+              PersistentKeepalive = 25;
             }
-          ) (lib.listDirs ./peers);
+          ) (import ./peers.nix {inherit lib;});
         };
       };
 
@@ -55,20 +56,31 @@ in {
           matchConfig = {
             Name = wgDevice;
           };
-          networkConfig = {
-            IPMasquerade = "ipv4";
-            IPv4Forwarding = true;
-          };
+          # networkConfig = {
+          #   IPMasquerade = "ipv4";
+          #   IPv4Forwarding = true;
+          # };
           address = [
             "${prefix}.1/${toString length}"
           ];
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
         };
       };
     };
   };
 
   networking = {
+    wireguard = {
+      enable = true;
+    };
+
     firewall = {
+      allowedUDPPorts = [
+        # Wireguard ports open on all interface
+        listenPort
+      ];
       interfaces = {
         "${wgIface}" = {
           allowedTCPPorts = [
@@ -78,8 +90,6 @@ in {
             53
           ];
           allowedUDPPorts = [
-            # Wireguard ports
-            listenPort
             # DHCP Port
             67
             # DNS Port
@@ -89,8 +99,36 @@ in {
       };
     };
 
-    # nftables = {
-    #   ruleset = builtins.readFile ./config.nftables;
-    # };
+    nftables = {
+      ruleset = builtins.readFile ./config.nftables;
+    };
+  };
+
+  topology = {
+    networks = {
+      wg-public = {
+        name = "Wireguard Public";
+        cidrv4 = "172.17.1.0/24";
+        style = {
+          primaryColor = "#c27aff";
+          secondaryColor = null;
+          pattern = "dotted";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        wg-public = {
+          network = "wg-public";
+        };
+      };
+
+      services = {
+        wireguard-public = {
+          icon = "services.wireguard";
+          name = "WireGuard Public VPN";
+        };
+      };
+    };
   };
 }
