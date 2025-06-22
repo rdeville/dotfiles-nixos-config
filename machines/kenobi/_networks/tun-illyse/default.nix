@@ -1,4 +1,6 @@
-{config, ...}: {
+{config, ...}: let
+  vpnIface = "tun-illyse";
+in {
   sops = {
     secrets = {
       "illyse-vpn-password" = {
@@ -38,10 +40,21 @@
     };
   };
 
+  systemd = {
+    network = {
+      wait-online = {
+        extraArgs = [
+          "--interface"
+          vpnIface
+        ];
+      };
+    };
+  };
+
   networking = {
     firewall = {
       interfaces = {
-        tun-illyse = {
+        "${vpnIface}" = {
           allowedTCPPorts = [
             # SSH Port
             22
