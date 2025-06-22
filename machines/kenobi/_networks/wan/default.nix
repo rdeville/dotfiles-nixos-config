@@ -12,6 +12,12 @@ in {
 
   systemd = {
     network = {
+      wait-online = {
+        extraArgs = [
+          "--interface"
+          lanDevice
+        ];
+      };
       networks = {
         "1000-${lanIface}" = {
           enable = true;
