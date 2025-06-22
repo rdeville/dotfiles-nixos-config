@@ -10,6 +10,8 @@
   length = 24;
 
   listenPort = 65143;
+
+  mkLib = config.lib.topology;
 in {
   sops = {
     secrets = {
@@ -28,7 +30,7 @@ in {
   systemd = {
     network = {
       netdevs = {
-        "300${toString id}-${wgIface}" = {
+        "400${toString id}-${wgIface}" = {
           netdevConfig = {
             Kind = "wireguard";
             Name = wgDevice;
@@ -39,35 +41,46 @@ in {
           };
           wireguardPeers = builtins.map (
             peer: {
-              name = peer;
-              allowedIPs = [
-                "${prefix}.64/25"
+              AllowedIPs = [
+                "${prefix}.0/24"
               ];
-              privateKey = builtins.readFile ./peers/${peer};
+              PublicKey = peer.pubKey;
+              PersistentKeepalive = 25;
             }
-          ) (lib.listDirs ./peers);
+          ) (import ./peers.nix {inherit lib;});
         };
       };
 
       networks = {
-        "300${toString id}-${wgIface}" = {
+        "400${toString id}-${wgIface}" = {
           matchConfig = {
             Name = wgDevice;
           };
-          networkConfig = {
-            IPMasquerade = "ipv4";
-            IPv4Forwarding = true;
-          };
+          # networkConfig = {
+          #   IPMasquerade = "ipv4";
+          #   IPv4Forwarding = true;
+          # };
           address = [
             "${prefix}.1/${toString length}"
           ];
+          linkConfig = {
+            RequiredForOnline = "no";
+          };
         };
       };
     };
   };
 
   networking = {
+    wireguard = {
+      enable = true;
+    };
+
     firewall = {
+      allowedUDPPorts = [
+        # Wireguard ports open on all interface
+        listenPort
+      ];
       interfaces = {
         "${wgIface}" = {
           allowedTCPPorts = [
@@ -77,8 +90,6 @@ in {
             53
           ];
           allowedUDPPorts = [
-            # Wireguard ports
-            listenPort
             # DHCP Port
             67
             # DNS Port
@@ -88,8 +99,36 @@ in {
       };
     };
 
-    # nftables = {
-    #   ruleset = builtins.readFile ./config.nftables;
-    # };
+    nftables = {
+      ruleset = builtins.readFile ./config.nftables;
+    };
+  };
+
+  topology = {
+    networks = {
+      wg-private = {
+        name = "Wireguard Private";
+        cidrv4 = "172.18.1.0/24";
+        style = {
+          primaryColor = "#9810fa";
+          secondaryColor = null;
+          pattern = "dotted";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        wg-private = {
+          network = "wg-private";
+        };
+      };
+
+      services = {
+        wireguard-private = {
+          icon = "services.wireguard";
+          name = "WireGuard Private VPN";
+        };
+      };
+    };
   };
 }
