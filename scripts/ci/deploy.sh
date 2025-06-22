@@ -113,7 +113,7 @@ main() {
   if ! nixos-rebuild switch \
     --flake ".#${hostname}" \
     --target-host "${user}@${ip}" \
-    --use-remote-sudo; then
+    --sudo; then
     _log "ERROR" "An error occurs during switch of NixOS configuration for **${hostname}**"
     rm -rf "${tmp}"
     return 1
