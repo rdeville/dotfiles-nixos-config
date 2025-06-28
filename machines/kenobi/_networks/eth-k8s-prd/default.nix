@@ -1,9 +1,11 @@
-{...}: let
+{config, ...}: let
   id = 128;
   lanDevice = "enp3s0";
   lanIface = "k8s-prd";
   prefix = "172.16.${toString id}";
   length = 20;
+
+  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -20,8 +22,8 @@ in {
       };
 
       networks = {
-        "2000-${lanDevice}" = {
-          enable = true;
+        "${lanDevice}" = {
+          enable = false;
           matchConfig = {
             Name = lanDevice;
           };
@@ -32,15 +34,26 @@ in {
             RequiredForOnline = "no";
           };
         };
-        "2${toString id}-${lanIface}" = {
+        "${lanIface}" = {
           enable = true;
           matchConfig = {
             Name = lanIface;
+          };
+          networkConfig = {
+            DHCP = "no";
+            IPv6AcceptRA = false;
+          };
+          address = [
+            "${prefix}.1/${toString length}"
+          ];
+          linkConfig = {
+            RequiredForOnline = "no";
           };
         };
       };
     };
   };
+
   networking = {
     # firewall = {
     #   interfaces = {
@@ -95,6 +108,28 @@ in {
               ];
             }
           ];
+        };
+      };
+    };
+  };
+
+  topology = {
+    networks = {
+      k8s-prd = {
+        name = "Kubernetes Production Network";
+        cidrv4 = "172.16.128.1/24";
+        style = {
+          primaryColor = "#155dfc";
+          secondaryColor = null;
+          pattern = "solid";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        k8s-prd = {
+          virtual = true;
+          network = "k8s-prd";
         };
       };
     };
