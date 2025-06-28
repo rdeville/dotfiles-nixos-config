@@ -1,9 +1,11 @@
-{...}: let
+{config, ...}: let
   id = 144;
   lanDevice = "enp3s0";
   lanIface = "k8s-stg";
   prefix = "172.16.${toString id}";
   length = 20;
+
+  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -20,8 +22,8 @@ in {
       };
 
       networks = {
-        "2000-${lanDevice}" = {
-          enable = true;
+        "${lanDevice}" = {
+          enable = false;
           matchConfig = {
             Name = lanDevice;
           };
@@ -32,7 +34,7 @@ in {
             RequiredForOnline = "no";
           };
         };
-        "2${toString id}-${lanIface}" = {
+        "${lanIface}" = {
           enable = true;
           matchConfig = {
             Name = lanIface;
@@ -105,6 +107,28 @@ in {
               ];
             }
           ];
+        };
+      };
+    };
+  };
+
+  topology = {
+    networks = {
+      k8s-stg = {
+        name = "Kubernetes Staging Network";
+        cidrv4 = "172.16.144.1/24";
+        style = {
+          primaryColor = "#51a2ff";
+          secondaryColor = null;
+          pattern = "solid";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        k8s-stg = {
+          virtual = true;
+          network = "k8s-stg";
         };
       };
     };
