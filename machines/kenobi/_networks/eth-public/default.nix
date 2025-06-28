@@ -1,8 +1,9 @@
-{...}: let
+{config, ...}: let
   id = 1;
   lanIface = "enp2s0";
   prefix = "172.16.${toString id}";
   length = 24;
+  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -18,13 +19,6 @@ in {
           };
           address = [
             "${prefix}.1/${toString length}"
-          ];
-          routes = [
-            {
-              Destination = "${prefix}.0/${toString length}";
-              Gateway = "${prefix}.1";
-              Source = "192.168.1.0/24";
-            }
           ];
           linkConfig = {
             RequiredForOnline = "no";
@@ -91,6 +85,27 @@ in {
               ];
             }
           ];
+        };
+      };
+    };
+  };
+
+  topology = {
+    networks = {
+      eth-public = {
+        name = "Public Ethernet Network";
+        cidrv4 = "172.16.1.1/24";
+        style = {
+          primaryColor = "#00a63e";
+          secondaryColor = null;
+          pattern = "solid";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        "${lanIface}" = {
+          network = "eth-public";
         };
       };
     };
