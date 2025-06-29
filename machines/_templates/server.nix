@@ -136,6 +136,14 @@ in {
     };
   };
 
+  nix = {
+    settings = {
+      trusted-users = [
+        "@deploy"
+      ];
+    };
+  };
+
   programs = {
     dconf = {
       enable = true;
@@ -146,16 +154,20 @@ in {
     sudo = {
       extraRules = [
         {
+          # From https://github.com/cole-h/nixos-config/blob/f31f40f8d97800ee2438be8ebe47aa5bb7ecff03/modules/config/deploy.nix
           groups = [
             "deploy"
           ];
+          runAs = "root";
           commands = let
             options = ["NOPASSWD"];
-            storePrefix = "/nix/store/*";
-            systemName = "nixos-system-${config.networking.hostName}-*";
+            storePath = "/nix/store/*";
+            currSysPath = "/run/current-system/sw/bin";
             commands = [
-              "/run/current-system/sw/bin/nix-env -p /nix/var/nix/profiles/system --set ${storePrefix}-${systemName}"
-              "/run/current-system/sw/bin/systemd-run"
+              "${storePath}/bin/switch-to-configuration"
+              "${storePath}/bin/env"
+              "${currSysPath}/nix-store"
+              "${currSysPath}/nix-env"
             ];
           in
             builtins.map (command: {

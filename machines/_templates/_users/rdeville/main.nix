@@ -22,6 +22,11 @@ in {
         slack
         ssh-to-age
         yubikey-manager
+        wireguard-tools
+        tcpdump # view network traffic
+        traceroute # view network routes
+        iw # view wlan interfaces and devices
+        dig # DNS lookup utiliy
       ]
       ++ (
         if ! config.hm.isDarwin

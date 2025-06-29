@@ -16,7 +16,7 @@ in {
     network = {
       networks = {
         "200${toString id}-${wlanIface}" = {
-        enable = true;
+          enable = true;
           matchConfig = {
             Name = wlanIface;
           };
@@ -27,15 +27,8 @@ in {
           address = [
             "${prefix}.1/${toString length}"
           ];
-          routes = [
-            {
-              Destination = "${prefix}.0/${toString length}";
-              Gateway = "${prefix}.1";
-              Source = "192.168.1.0/24";
-            }
-          ];
           linkConfig = {
-            RequiredForOnline = "enslaved";
+            RequiredForOnline = "no";
           };
         };
       };
@@ -120,7 +113,11 @@ in {
                   ip-address = "${prefix}.20";
                 }
               ];
-              pools = [{pool = "${prefix}.64 - ${prefix}.254";}];
+              pools = [
+                {
+                  pool = "${prefix}.64 - ${prefix}.254";
+                }
+              ];
               interface = wlanIface;
               option-data = [
                 {
@@ -134,6 +131,27 @@ in {
               ];
             }
           ];
+        };
+      };
+    };
+  };
+
+  topology = {
+    networks = {
+      wl-public = {
+        name = "Public Wireless Network";
+        cidrv4 = "172.16.2.1/24";
+        style = {
+          primaryColor = "#05df72";
+          secondaryColor = null;
+          pattern = "solid";
+        };
+      };
+    };
+    self = {
+      interfaces = {
+        wlp5s0f0 = {
+          network = "wl-public";
         };
       };
     };

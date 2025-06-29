@@ -11,6 +11,7 @@
     # Partition map
     inputs.disko.nixosModules.disko
     ./disko.nix
+    ./network.nix
     ./topology.nix
   ];
 
@@ -26,15 +27,15 @@
     };
   };
 
-  networking = {
-    hosts = {
-      "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
-    };
-
-    networkmanager = {
-      enable = true;
-    };
-  };
+  # networking = {
+  #   hosts = {
+  #     "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
+  #   };
+  #
+  #   networkmanager = {
+  #     enable = true;
+  #   };
+  # };
 
   programs = {
     ssh = {

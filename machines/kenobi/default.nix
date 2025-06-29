@@ -29,6 +29,7 @@
     systemPackages = with pkgs; [
       ethtool # manage NIC settings (offload, NIC feeatures, ...)
       tcpdump # view network traffic
+      wireguard-tools # Wireguard binaries
       conntrack-tools # view network connection states
       traceroute # view network routes
       iw # view wlan interfaces and devices

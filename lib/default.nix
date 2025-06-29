@@ -46,8 +46,20 @@ lib: let
         builtins.match "_.*" host != []
       )) (lib.listDirs ../machines)
     );
+
+  listSymlinks = inode:
+    builtins.map (elem: elem.name) (
+      builtins.filter (inode: inode.value == "symlink") (
+        builtins.map (key: {
+          name = key;
+          value = builtins.getAttr key (builtins.readDir inode);
+        })
+        (builtins.attrNames (builtins.readDir inode))
+      )
+    );
 in {
   inherit
+    listSymlinks
     getValidHosts
     mkImap
     mkSmtp

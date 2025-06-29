@@ -12,8 +12,6 @@
     inputs.tmuxrc.homeManagerModules.tmuxrc
     # Personal home-manager packaged data dotfiles
     inputs.tmuxdata.homeManagerModules.tmuxdata
-    # Personal packaged programs
-    inputs.dotgit-sync.homeManagerModules.dotgit-sync
     # Overlays
     ../overlays
     # Local Modules

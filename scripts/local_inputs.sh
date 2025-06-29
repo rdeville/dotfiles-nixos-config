@@ -13,7 +13,4 @@ declare -A inputs
 # Data Dotfiles
 # inputs[tmuxdata]="${HOME}/git/framagit.org/private/dotfiles/tmux"
 
-# Programs
-# inputs["dotgit-sync"]="${HOME}/git/framagit.org/public/programs/dotgit-sync/"
-
 export inputs

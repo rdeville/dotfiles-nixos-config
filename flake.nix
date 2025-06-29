@@ -104,14 +104,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    # My programs I want on my computer
-    # -------------------------------------------------------------------------
-    dotgit-sync = {
-      url = "git+https://framagit.org/rdeville-public/programs/dotgit-sync.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     # Overlays
     # -------------------------------------------------------------------------
     # Overlays are dynamically managed based on input name.
