@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.19.2 (2025-06-29)
+
+### 🩹 Patch
+
+  * 🍱(diagrams): Add first version of d2 diagrams for homelab networks (!60) by Romain Deville ([`342078e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/342078e75d27179b348d589eab892346bd5f3fec))
+  * 🍱(diagrams): Add first version of d2 diagrams for homelab network by Romain Deville ([`fbf21d0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fbf21d0139482bf576c1a2c1d3834f33be8441ab)) 🔏
+
+### 🔊 Others
+
+  * 🔨(devbox): Add d2 package to devbox config by Romain Deville ([`4b03210`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4b032109228d042235cf4e91defe2e03a158bdf7)) 🔏
+
 ## v0.19.1 (2025-06-29)
 
 ### 🩹 Patch
