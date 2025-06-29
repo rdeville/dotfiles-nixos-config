@@ -131,10 +131,6 @@ in {
       enable = config.hm.flavors._core.enable;
     };
 
-    dotgit-sync = {
-      enable = config.hm.flavors._core.enable;
-    };
-
     awesomerc = {
       enable = config.hm.flavors._gui.enable;
     };
