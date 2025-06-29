@@ -3,6 +3,7 @@
   "packages": {
     "pre-commit": "3.7.1",
     "yq-go": "4.44.1",
+    "d2": "0.7.0",
     "github:rdeville-public/dotfiles-nixos-config#default": "",
     "path:.#default": ""
   },
