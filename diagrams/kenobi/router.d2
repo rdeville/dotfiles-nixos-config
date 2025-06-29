@@ -1,0 +1,87 @@
+...@"../vars"
+...@"../_classes/networks.d2"
+...@"networks/internet"
+
+classes: {
+  net: {
+    shape: rectangle
+    label.near: center-left
+  }
+}
+kenobi: {
+  shape: rectangle
+  grid-columns: 1
+  phy: |md
+    Physical:
+      * enp1s0, phy, 192.168.1.10/24
+      * enp2s0, phy, 172.16.1.1/24
+      * wlp170s0, phy, 172.16.2.1/24
+  | {
+    class: [net]
+  }
+  vpn: |md
+    VPNs:
+      * wg-kenobi-pub, wg, 172.17.1.1/24
+      * wg-kenobi-pri, wg, 172.18.1.1/24
+      * tun-illyse, wg, 172.18.1.1/24
+  | {
+    class: [net]
+  }
+  vlan: |md
+    VLans:
+      * k8s-prd, vlan, 172.16.128.1/24
+      * k8s-stg, vlan, 172.16.144.1/24
+  | {
+    class: [net]
+  }
+}
+
+switch-eth-public: Switch Ethernet {
+  eth0: {}
+  eth1: {}
+  eth2: {}
+  eth3: {}
+  eth4: {}
+}
+
+switch-k8s: Switch Kubernetes {
+  wan: |md
+    wan
+
+    172.16.0.0/17
+  | {
+    shape: rectangle
+    eth0: {}
+  }
+  k8s-stg: |md
+    k8s-stg, vlan
+
+    172.16.128.0/24
+  | {
+    shape: rectangle
+    eth1: {}
+    eth2: {}
+  }
+  k8s-prd: |md
+    k8s-prd, vlan
+
+    172.16.144.0/24
+  | {
+    shape: rectangle
+    eth3: {}
+    eth4: {}
+    eth5: {}
+  }
+}
+
+kenobi -> internet {
+  source-arrowhead.label: enp1s0
+}
+
+kenobi -> switch-eth-public.eth0: {
+  source-arrowhead.label: enp2s0
+}
+
+kenobi -> switch-k8s.wan.eth0 {
+  source-arrowhead.label: enp3s0
+}
