@@ -1,6 +1,36 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.19.0 (2025-06-29)
+
+### ✨ Minor
+
+  * ✨ Improve Kenobi router config, setup Rey to use Kenobi networks (!58) by Romain Deville ([`1fde8c0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1fde8c0fa44f94838003280218a692f4b062c08c))
+  * ✨(rey/net): Add wireguard private and public network configuration by Romain Deville ([`a376c56`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a376c56bd54b13c3a0a1bb8dfde7219b730813e5)) 🔏
+  * ✨(kenobi/net/wg-public): Update wg-public configuration by Romain Deville ([`8ad4a7d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8ad4a7d8285cd7d661da54cff83077f04352399f)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(kenobi/net/tun-illyse): Set interface required for wait-online by Romain Deville ([`35aa88b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/35aa88bc80a44f7b976dc506c6d7284c6b145708)) 🔏
+  * ⚡️(kenobi/net/wan): Specify wan as interface required for wait-online by Romain Deville ([`9a4e4cb`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9a4e4cb76caa2d24f9b5b15414d6f25f1462eaab)) 🔏
+  * ⚡️(lib): Add listSymlinks method to libs by Romain Deville ([`23876df`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/23876df2460a702fdf0e132d58b7000c7db0e401)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`15e3b7e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/15e3b7e78d3b736b4a3b0a7f1d1cc755e3ca00c9)) 🔏
+  * 🍱(assets): Add assets used for topology graphic by Romain Deville ([`a96842e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a96842ead92fb7bdd321e7de5bd95a716849193f)) 🔏
+  * 🐛(_templates/server): Add new sudo cmd authorized for azathoth without password by Romain Deville ([`8bdd687`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8bdd68794a1522073d2d041cd7085b3a7cb8a0c0)) 🔏
+  * 👽️(script/ci): Update option for nixos-rebuild target-host in deploy.sh by Romain Deville ([`1fa3d73`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1fa3d73517d048abe49e8e5d43c3ee964e7df12d)) 🔏
+  * 🔧(topology): Update main topology representation by Romain Deville ([`6dc2bce`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6dc2bce43d09324235f0ebf7a3117857b39fa1e8)) 🔏
+  * 🔧(kenobi/net/eth-k8s-stg): Update network configuration by Romain Deville ([`78dc827`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/78dc827db16096bf3636777a3b73fcc30ea419e0)) 🔏
+  * 🔧(kenobi/net/eth-k8s-prd): Update network configuration by Romain Deville ([`cdebc2e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/cdebc2ee821df86c6b46eece7aa75411fe1d3531)) 🔏
+  * 🔧(kenobi/net/wg-private): Update network configuration by Romain Deville ([`75a8e40`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/75a8e402a457dd12303f6d2465f1fdd957d47e7d)) 🔏
+  * 🔧(kenobi/net/wl-public): Make network not needed for wait-online by Romain Deville ([`baf1bd6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/baf1bd655460055390112a5cbe84b12e38804a9e)) 🔏
+  * 🔧(kenobi/net/eth-public): Update network configuration by Romain Deville ([`61f3b28`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/61f3b288edc0bb5d03da0f639c6ca7fb4a530608)) 🔏
+  * 🔧(_templates/user/rdeville): Add network monitoring tools by Romain Deville ([`923bbb5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/923bbb58ad25efd47611d1f7ae0e95a487eb4401)) 🔏
+
+### 🔊 Others
+
+  * 🔥 Remove references to dotgit-sync by Romain Deville ([`935076f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/935076fc9e56aeac678f8428bee3d5224d805b1c)) 🔏
+  * 🚚(rey): Move kenobi wg-public related keys to be more coherent by Romain Deville ([`691f75d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/691f75d2a8b18739d999746d08c3281697c67405)) 🔏
+
 ## v0.18.0 (2025-06-19)
 
 ### ✨ Minor
