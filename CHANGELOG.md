@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.38.0 (2025-06-30)
+
+### ✨ Minor
+
+  * ✨(flavor/ssh-server): Add ports and openFirewall option to flavors (!123) by Romain Deville ([`fb96ae4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fb96ae428920f460d45641bd8496a8179c1ae07f))
+  * ✨(flavor/ssh-server): Add ports and openFirewall option to flavors by Romain Deville ([`b1088ff`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1088ff5741ecc507a30a7b406644ae3e3ea7b14)) 🔏
+
 ## v0.37.16 (2025-06-30)
 
 ### 🩹 Patch
