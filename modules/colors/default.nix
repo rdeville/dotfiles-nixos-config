@@ -1,5 +1,7 @@
 {lib, ...}: {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./material.nix
+  ];
 
   options = {
     colors = lib.mkOption {

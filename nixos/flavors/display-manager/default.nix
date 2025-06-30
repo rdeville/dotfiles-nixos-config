@@ -6,8 +6,6 @@
   name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
-
   options = {
     os = {
       flavors = {

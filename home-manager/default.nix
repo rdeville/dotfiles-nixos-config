@@ -7,9 +7,8 @@
 }: let
   cfg = config.hm;
 in {
-  imports =
-    builtins.map (item: ./${item}) (lib.importDir ./.)
-    ++ [
+  imports = [
+      ./flavors
       ../modules
     ];
 
