@@ -8,9 +8,9 @@
   cfg = config.hm;
 in {
   imports = [
-      ./flavors
-      ../modules
-    ];
+    ./flavors
+    ../modules
+  ];
 
   options = {
     hm = lib.mkOption {
