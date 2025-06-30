@@ -1,0 +1,45 @@
+$ORIGIN tekunix.cloud.
+$TTL    1h
+@              IN SOA   ns0.fdn.fr ns1.fdn.fr (
+                                1    ; Serial
+                                1h   ; Refresh
+                                1h   ; Retry
+                                1h   ; Expire
+                                1h)  ; Negative Cache TTL
+               IN      NS      ns0.fdn.fr
+               IN      NS      ns1.fdn.fr
+
+; Router IP which is also my ingress entrypoint for my prod cluster
+kenobi         IN A     172.16.1.1
+@              IN A     172.16.1.1
+*              IN A     172.16.1.1
+
+; PUBLIC Network
+darth-maul     IN A     172.16.1.10
+rey            IN A     172.16.1.11
+
+; External servers
+darth-plagueis IN CNAME romaindeville.ovh
+darth-vader    IN CNAME romaindeville.fr
+
+; Other Network
+; IP of my dev cluster (a.k.a darth-maul)
+*.dev          IN CNAME darth-maul
+
+; PRD Cluster Network
+; Control-Plane
+lilith         IN A     172.16.128.10
+maya           IN A     172.16.128.11
+ava            IN A     172.16.128.12
+; Worker
+zero           IN CNAME kenobi
+
+; STG Cluster Network
+; IP of the entrypoint for my stg cluster
+*.stg          IN CNAME leia
+; Control-Plane
+luke           IN A     172.16.144.10
+; Worker
+leia           IN A     172.16.144.20
+
+;  vim: ft=dns
