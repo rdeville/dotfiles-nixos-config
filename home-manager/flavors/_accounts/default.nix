@@ -1,7 +1,14 @@
 {lib, ...}: let
   name = builtins.baseNameOf ./.;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./neomutt
+    ./notmuch
+    ./khal.nix
+    ./khard.nix
+    ./mbsync.nix
+    ./vdirsyncer.nix
+  ];
 
   options = {
     hm = {

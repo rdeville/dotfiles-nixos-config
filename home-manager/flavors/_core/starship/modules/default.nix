@@ -1,3 +1,29 @@
-{lib, ...}: {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+{...}: {
+  imports = [
+    ./custom
+    ./env_vars
+    ./git
+    ./battery.nix
+    ./character.nix
+    ./cmd_duration.nix
+    ./container.nix
+    ./directory.nix
+    ./direnv.nix
+    ./fill.nix
+    ./gcloud.nix
+    ./hostname.nix
+    ./kubernetes.nix
+    ./nix_shell.nix
+    ./nodejs.nix
+    ./os.nix
+    ./package.nix
+    ./python.nix
+    ./shell.nix
+    ./shlvl.nix
+    ./status.nix
+    ./sudo.nix
+    ./terraform.nix
+    ./time.nix
+    ./username.nix
+  ];
 }

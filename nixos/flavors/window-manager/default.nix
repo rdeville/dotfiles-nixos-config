@@ -35,8 +35,6 @@
       gtk3Support = true;
     };
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
-
   options = {
     os = {
       flavors = {

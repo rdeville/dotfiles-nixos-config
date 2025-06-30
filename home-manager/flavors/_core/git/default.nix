@@ -7,7 +7,11 @@
   subname = "git";
   cfg = config.hm.flavors.${name}.${subname};
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./alias.nix
+    ./config.nix
+    ./zsh.nix
+  ];
 
   options = {
     hm = {

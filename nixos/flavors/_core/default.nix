@@ -16,8 +16,6 @@
     "2001:910:800::40" # ns1.fdn.fr
   ];
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
-
   options = {
     os = {
       flavors = {

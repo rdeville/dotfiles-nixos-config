@@ -14,7 +14,23 @@
   ];
   darwinPkgs = [];
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./git
+    ./mr
+    ./starship
+    ./tmux
+    ./zsh
+    ./bat.nix
+    ./direnv.nix
+    ./fastfetch.nix
+    ./fonts.nix
+    ./gpg.nix
+    ./home-manager.nix
+    ./lazygit.nix
+    ./neovim.nix
+    ./user-dirs.nix
+    ./viddy.nix
+  ];
 
   options = {
     hm = {

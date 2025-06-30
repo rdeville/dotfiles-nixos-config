@@ -14,7 +14,21 @@
   ];
   darwinPkgs = [];
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./firefox
+    ./kitty
+    ./rofi
+    ./thunderbird
+    ./wayland
+    ./alacritty.nix
+    ./chromium.nix
+    ./dunst.nix
+    ./gammastep.nix
+    ./gtk.nix
+    ./keynav.nix
+    ./picom.nix
+    ./redshift.nix
+  ];
 
   options = {
     hm = {

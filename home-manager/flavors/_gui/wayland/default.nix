@@ -6,7 +6,13 @@
   name = builtins.baseNameOf ../.;
   subname = builtins.baseNameOf ./.;
 in {
-  imports = builtins.map (item: ./${item}) (lib.importDir ./.);
+  imports = [
+    ./hyprland
+    ./hyprlock
+    ./hyprspace
+    ./waybar
+    ./wl-kbptr
+  ];
 
   options = {
     hm = {

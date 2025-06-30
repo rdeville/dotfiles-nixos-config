@@ -2,10 +2,6 @@ inputs: lib: let
   mkDebug = data: builtins.trace (builtins.toJSON data);
   mkWarn = data: lib.warn (builtins.toJSON data);
 
-  importDir = inode: (builtins.filter (
-    item: (item != "default.nix")
-  ) (listInodes inode));
-
   listDirs = inode:
     builtins.map (elem: elem.name) (
       builtins.filter (inode: inode.value == "directory") (
@@ -65,9 +61,9 @@ in {
   inherit
     mkDebug
     mkWarn
-    importDir
     listDirs
     listFiles
+    listInodes
     mkDefaultEnabledOption
     mkDependEnabledOption
     nixGLWrap
