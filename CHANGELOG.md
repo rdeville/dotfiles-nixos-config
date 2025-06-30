@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.37.16 (2025-06-30)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`1e85b30`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1e85b30f8bf89b11ef359ba365516c4e9cddba1c)) 🔏
+
+### 🔊 Others
+
+  * 🔥(lib): Remove function importDir from my lib and every call to it (!122) by Romain Deville ([`f0becf5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f0becf5e9ff6b4e6156033709344cbfb46196272))
+  * 🔥 Remove all usage of function importDir by Romain Deville ([`c59433d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c59433da2026061bc04f8877866597f8c903b78b)) 🔏
+  * 🔥(lib): Remove method importDir since causing issues in NixOS containers by Romain Deville ([`94a3832`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/94a38329047e3c345e2ad402a9dbc18e96401d5c)) 🔏
+
 ## v0.37.15 (2025-06-19)
 
 ### 🩹 Patch
