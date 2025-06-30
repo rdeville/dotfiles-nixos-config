@@ -29,6 +29,10 @@
   };
 
   networking = {
+    nameservers = [
+      # Itself to all local resolving
+      "127.0.0.1"
+    ];
     nat = {
       enable = false;
     };

@@ -3,15 +3,13 @@
   lib,
   ...
 }: let
-  id = 1;
+  id = 0;
   wgDevice = "wg-private";
   wgIface = "wg-private";
   prefix = "172.18.${toString id}";
-  length = 24;
+  length = 16;
 
   listenPort = 65143;
-
-  mkLib = config.lib.topology;
 in {
   sops = {
     secrets = {
@@ -42,7 +40,7 @@ in {
           wireguardPeers = builtins.map (
             peer: {
               AllowedIPs = [
-                "${prefix}.0/24"
+                "${prefix}.0/${toString length}"
               ];
               PublicKey = peer.pubKey;
               PersistentKeepalive = 25;
@@ -108,7 +106,7 @@ in {
     networks = {
       wg-private = {
         name = "Wireguard Private";
-        cidrv4 = "172.18.1.0/24";
+        cidrv4 = "${prefix}.0/${toString length}";
         style = {
           primaryColor = "#9810fa";
           secondaryColor = null;

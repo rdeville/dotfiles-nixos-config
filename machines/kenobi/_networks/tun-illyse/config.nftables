@@ -10,8 +10,8 @@ table ip filter {
         iifname { "wlp5s0f0" } oifname { "tun-illyse" } accept comment "Allow WLAN to VPN Wan"
         iifname { "tun-illyse" } oifname { "wlp5s0f0" } ct state { established, related } accept comment "Allow established back from VPN Wan to WLAN"
 
-        iifname { "enp1s0" } oifname { "tun-illyse" } accept comment "Allow 'eth-public' to VPN Wan"
-        iifname { "tun-illyse" } oifname { "enp1s0" } ct state { established, related } accept comment "Allow established back from VPN Wan to 'eth-public'"
+        iifname { "enp2s0" } oifname { "tun-illyse" } accept comment "Allow 'eth-public' to VPN Wan"
+        iifname { "tun-illyse" } oifname { "enp2s0" } ct state { established, related } accept comment "Allow established back from VPN Wan to 'eth-public'"
 
         # iifname { "k8s-prd" } oifname { "tun-illyse" } accept comment "Allow k8s-prd to VPN Wan"
         # iifname { "tun-illyse" } oifname { "k8s-prd" } ct state { established, related } accept comment "Allow established back from VPN Wan to k8s-prd"

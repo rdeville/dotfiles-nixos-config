@@ -1,9 +1,8 @@
-{config, ...}: let
+{...}: let
   id = 1;
   lanIface = "enp2s0";
   prefix = "172.16.${toString id}";
   length = 24;
-  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -34,6 +33,8 @@ in {
           allowedTCPPorts = [
             # SSH Port
             22
+            # DNS Port
+            53
           ];
           allowedUDPPorts = [
             # DNS Port
@@ -65,11 +66,11 @@ in {
               inherit id;
               subnet = "${prefix}.0/${toString length}";
               reservations = [
-                # {
-                #   hw-address = "10:bf:48:7c:c8:e6";
-                #   hostname = "darth-maul";
-                #   ip-address = "${vlan.lan.prefix}.10";
-                # }
+                {
+                  hw-address = "10:bf:48:7c:c8:e6";
+                  hostname = "darth-maul";
+                  ip-address = "${prefix}.10";
+                }
               ];
               pools = [{pool = "${prefix}.64 - ${prefix}.254";}];
               interface = lanIface;
