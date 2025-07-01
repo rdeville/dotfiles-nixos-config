@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.20.0 (2025-07-01)
+
+### ✨ Minor
+
+  * ✨ Add DNS to Kenobi, fix networks for some machines (!61) by Romain Deville ([`6ec6fd6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6ec6fd6aa490631cb9d66e66bb207975f64387a8))
+  * ✨(kenobi/dns): Setup and enable dns server configuration by Romain Deville ([`75f061c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/75f061c973f2a1ee5ed3a706980f13ce9871395c)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`b606eb7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b606eb754f65fd6b94304304225b319ae138690c)) 🔏
+  * 🔧(darth-maul): Remove hardcoded kenobi in /etc/hosts by Romain Deville ([`e4c9c7b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e4c9c7b12a3afe40023382092bd24fc3e13c0c95)) 🔏
+  * 🔧(rey): Remove useless code, fix network and dns config by Romain Deville ([`517a4b6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/517a4b6f12bb2b4d97deea8abe6ec40e42e79903)) 🔏
+  * 🔧(kenobi/net): Fix some network config, add dns specific for wg network by Romain Deville ([`e2a9c0e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e2a9c0e87c07b6ed0cc15bc795bc2789641359b2)) 🔏
+  * 🔧(templates/users): Update users SSH config to use tekunix.private by Romain Deville ([`67c8a53`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/67c8a537b9d5b22dd2eb816e23fa2a8a17ef0041)) 🔏
+  * 🔧(templates/server): Disable IPv6 and update nameservers by Romain Deville ([`764928e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/764928ee9c1e8b19a3f6f2cbcfcb2297cdfcc7d4)) 🔏
+
+### 🔊 Others
+
+  * 🔨(scripts/ci): Update domain use by script deploy by Romain Deville ([`037c640`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/037c640394539456a1d544d17f6721c01370df1a)) 🔏
+
 ## v0.19.2 (2025-06-29)
 
 ### 🩹 Patch
