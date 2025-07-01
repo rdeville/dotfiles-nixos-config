@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.21.0 (2025-07-01)
+
+### ✨ Minor
+
+  * ✨(os): Now able to deploy production server using nixpkgs stable (!62) by Romain Deville ([`f853462`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f853462233d4893ff4a21e9a3bccc6549505ac23))
+  * ✨(nixos): Add support for prod server using nixpkgs stable by Romain Deville ([`362ec36`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/362ec36b1570470e6e6067db8a35c2830623a76e)) 🔏
+
+### 🩹 Patch
+
+  * ➕(flake): Add input nixpkgs-stable by Romain Deville ([`fb4c6d3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fb4c6d37b83819ca6eb99df00a60fba80b6147cd)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`399f727`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/399f727f926e5e5a8e15fb9c88ea236ff765009e)) 🔏
+  * 🔧(kenobi): Fix kenobi k8s network and deploy prod using nixpgs-stable by Romain Deville ([`e9bde0a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e9bde0a8b6a91b6198195ada11774447ce38450c)) 🔏
+
+### 🔊 Others
+
+  * 🔨(scripts): Improve deploy script to ping target first by Romain Deville ([`7fa6fe1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7fa6fe13910983088d99c24ddb801b1f7ab83fe6)) 🔏
+  * 🔨(scripts): Add nixos-stable to local_inputs script by Romain Deville ([`f3f68ab`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f3f68ab70ea8be53ad78b8bdf8a7e4dabd0601b0)) 🔏
+
 ## v0.20.0 (2025-07-01)
 
 ### ✨ Minor
