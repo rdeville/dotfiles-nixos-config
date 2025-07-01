@@ -335,11 +335,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1751363256,
-        "narHash": "sha256-TR8yl2GgS+Bzg9FBhSlrnNlbbfdCPHrRP3vQuH0zai4=",
+        "lastModified": 1751384569,
+        "narHash": "sha256-8KLw7URcD3nd5g3N+chAu22QZjnTk2yXgiv/BLTH4DE=",
         "ref": "refs/heads/main",
-        "rev": "bd68c48ef480da18ad540cc0edc0bdb903a4876c",
-        "revCount": 613,
+        "rev": "11cc98525dbbb6d5e884be3b8eab5dd6fdcb9742",
+        "revCount": 618,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -363,6 +363,44 @@
         "type": "github"
       }
     },
+    "nixos-stable": {
+      "inputs": {
+        "awesome": [
+          "awesome"
+        ],
+        "home-manager": [
+          "home-manager"
+        ],
+        "ls-colors": [
+          "ls-colors"
+        ],
+        "nix-index-database": [
+          "nix-index-database"
+        ],
+        "nixgl": [
+          "nixgl"
+        ],
+        "nixpkgs": [
+          "nixpkgs-stable"
+        ],
+        "sops-nix": [
+          "sops-nix"
+        ]
+      },
+      "locked": {
+        "lastModified": 1751384569,
+        "narHash": "sha256-8KLw7URcD3nd5g3N+chAu22QZjnTk2yXgiv/BLTH4DE=",
+        "ref": "refs/heads/main",
+        "rev": "11cc98525dbbb6d5e884be3b8eab5dd6fdcb9742",
+        "revCount": 618,
+        "type": "git",
+        "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
+      },
+      "original": {
+        "type": "git",
+        "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1751271578,
@@ -375,6 +413,22 @@
       "original": {
         "owner": "nixos",
         "ref": "nixos-unstable",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
+    "nixpkgs-stable": {
+      "locked": {
+        "lastModified": 1751211869,
+        "narHash": "sha256-1Cu92i1KSPbhPCKxoiVG5qnoRiKTgR5CcGSRyLpOd7Y=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "b43c397f6c213918d6cfe6e3550abfe79b5d1c51",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
         "repo": "nixpkgs",
         "type": "github"
       }
@@ -420,7 +474,9 @@
         "nixgl": "nixgl",
         "nixos": "nixos",
         "nixos-facter-modules": "nixos-facter-modules",
+        "nixos-stable": "nixos-stable",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-stable": "nixpkgs-stable",
         "sops-nix": "sops-nix",
         "tmuxdata": "tmuxdata",
         "tmuxrc": "tmuxrc"

@@ -9,6 +9,7 @@ declare -A inputs
 # inputs[neovimrc]="${HOME}/git/framagit.org/public/dotfiles/neovim"
 # inputs[tmuxrc]="${HOME}/git/framagit.org/public/dotfiles/tmux"
 # inputs[nixos]="${HOME}/git/framagit.org/public/dotfiles/nixos"
+# inputs[nixos-stable]="${HOME}/git/framagit.org/public/dotfiles/nixos"
 
 # Data Dotfiles
 # inputs[tmuxdata]="${HOME}/git/framagit.org/private/dotfiles/tmux"

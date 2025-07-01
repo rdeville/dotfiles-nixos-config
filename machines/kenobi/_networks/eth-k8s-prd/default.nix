@@ -23,7 +23,7 @@ in {
 
       networks = {
         "${lanDevice}" = {
-          enable = false;
+          enable = true;
           matchConfig = {
             Name = lanDevice;
           };
