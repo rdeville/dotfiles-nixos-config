@@ -56,7 +56,6 @@ in {
           curl # Retriever
           dbus
           devbox # Isolated development tools
-          devenv # Isolated nix development tools
           diffutils # Command showing diff
           fzf # Fuzzy Finder
           gcc # C++ compiler
