@@ -13,7 +13,7 @@ in {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
           ports = lib.mkOption {
             type = lib.types.listOf lib.types.port;
-            default = [ 22 ];
+            default = [22];
             description = "Specifies on which ports the SSH daemon listens.";
           };
           openFirewall = lib.mkOption {
