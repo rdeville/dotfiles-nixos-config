@@ -10,6 +10,9 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nixpkgs-stable = {
+      url = "github:nixos/nixpkgs/nixos-25.05";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
       inputs = {
@@ -57,6 +60,18 @@
         home-manager.follows = "home-manager";
         nixgl.follows = "nixgl";
         nixpkgs.follows = "nixpkgs";
+        nix-index-database.follows = "nix-index-database";
+        sops-nix.follows = "sops-nix";
+        ls-colors.follows = "ls-colors";
+      };
+    };
+    nixos-stable = {
+      url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
+      inputs = {
+        awesome.follows = "awesome";
+        home-manager.follows = "home-manager";
+        nixgl.follows = "nixgl";
+        nixpkgs.follows = "nixpkgs-stable";
         nix-index-database.follows = "nix-index-database";
         sops-nix.follows = "sops-nix";
         ls-colors.follows = "ls-colors";
