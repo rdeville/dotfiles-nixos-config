@@ -95,7 +95,7 @@ in {
               "azathoth@${host}" = {
                 inherit host;
                 user = "azathoh";
-                hostname = "${host}.tekunix.internal";
+                hostname = "${host}.tekunix.private";
                 identitiesOnly = true;
                 identityFile = [
                   "${config.home.homeDirectory}/.ssh/pubkeys/${azathothKey}"
@@ -103,7 +103,7 @@ in {
               };
               "${user}@${host}" = {
                 inherit user host;
-                hostname = "${host}.tekunix.internal";
+                hostname = "${host}.tekunix.private";
                 identitiesOnly = true;
                 identityFile = [
                   "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"
