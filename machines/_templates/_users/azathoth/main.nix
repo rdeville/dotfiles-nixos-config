@@ -36,7 +36,7 @@ in {
             {
               "${user}@${host}" = {
                 inherit user host;
-                hostname = "${host}.tekunix.internal";
+                hostname = "${host}.tekunix.private";
                 identitiesOnly = true;
                 identityFile = [
                   "${config.home.homeDirectory}/.ssh/pubkeys/${userKey}"

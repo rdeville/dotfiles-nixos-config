@@ -27,16 +27,6 @@
     };
   };
 
-  # networking = {
-  #   hosts = {
-  #     "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
-  #   };
-  #
-  #   networkmanager = {
-  #     enable = true;
-  #   };
-  # };
-
   programs = {
     ssh = {
       knownHosts = builtins.foldl' (acc: host:
@@ -59,6 +49,10 @@
     flavors = {
       window-manager = {
         plasma.enable = false;
+      };
+
+      ssh-server = {
+        openFirewall = true;
       };
 
       steam.enable = true;

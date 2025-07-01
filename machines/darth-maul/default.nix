@@ -22,10 +22,6 @@
   };
 
   networking = {
-    hosts = {
-      "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
-    };
-
     interfaces = {
       enp0s25 = {
         useDHCP = true;

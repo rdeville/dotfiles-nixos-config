@@ -135,6 +135,9 @@ in {
       };
     };
   };
+  networking = {
+    enableIPv6 = false;
+  };
 
   nix = {
     settings = {

@@ -103,14 +103,9 @@ in {
               subnet = "${prefix}.0/${toString length}";
               reservations = [
                 {
-                  hw-address = "10:bf:48:7c:c8:e6";
-                  hostname = "darth-maul";
-                  ip-address = "${prefix}.30";
-                }
-                {
                   hw-address = "74:13:ea:be:97:9a";
                   hostname = "rey";
-                  ip-address = "${prefix}.20";
+                  ip-address = "${prefix}.11";
                 }
               ];
               pools = [

@@ -11,9 +11,9 @@
 
   wgPriIface = "wg-kenobi-pri";
   wgPriPort = 65143;
-  wgPriPrefix = "172.18.1";
-  wgPriIp = "${wgPriPrefix}.${toString wgPriId}";
-  wgPriId = 20;
+  wgPriPrefix = "172.18.0";
+  wgPriIp = "172.18.1.${toString wgPriId}";
+  wgPriId = 11;
 in {
   sops = {
     secrets = {
@@ -41,7 +41,9 @@ in {
   };
 
   networking = {
-    enableIPv6 = false;
+    networkmanager = {
+      enable = true;
+    };
     wireguard = {
       enable = true;
     };
@@ -68,7 +70,7 @@ in {
               AllowedIPs = [
                 "0.0.0.0/0"
               ];
-              Endpoint = "romaindeville.xyz:${toString wgPubPort}";
+              Endpoint = "89.234.140.170:${toString wgPubPort}";
             }
           ];
         };
@@ -89,27 +91,15 @@ in {
                 builtins.readFile ../kenobi/_networks/wg-private/wg-private.pub
               );
               AllowedIPs = [
-                "${wgPriPrefix}.0/24"
+                "${wgPriPrefix}.0/16"
               ];
-              Endpoint = "romaindeville.xyz:${toString wgPriPort}";
+              Endpoint = "89.234.140.170:${toString wgPriPort}";
             }
           ];
         };
       };
 
       networks = {
-        # wlp170s0 = {
-        #   matchConfig = {
-        #     Name = "wlp170s0";
-        #   };
-        #   routes = [
-        #     {
-        #       Destination = "89.234.140.170/32";
-        #       Table = "main";
-        #     }
-        #   ];
-        # };
-
         wg-kenobi-pub = {
           enable = true;
           matchConfig = {
@@ -118,6 +108,9 @@ in {
           address = [
             "${wgPubIp}/24"
           ];
+          dns = [
+            "${wgPubPrefix}.1"
+          ];
           gateway = [
             "${wgPubPrefix}.1"
           ];
@@ -125,18 +118,6 @@ in {
             # IPMasquerade = "ipv4";
             IPv6AcceptRA = false;
           };
-          # routes = [
-          #   {
-          #     Destination = "89.234.140.170/32";
-          #     Gateway = "192.168.1.1";
-          #     Table = "main";
-          #   }
-          #   {
-          #     Destination = "0.0.0.0/0";
-          #     Gateway = "172.17.1.1";
-          #     Table = "main";
-          #   }
-          # ];
           linkConfig = {
             RequiredForOnline = "no";
           };
@@ -148,7 +129,10 @@ in {
             Name = wgPriIface;
           };
           address = [
-            "${wgPriIp}/24"
+            "${wgPriIp}/16"
+          ];
+          dns = [
+            "${wgPriPrefix}.1"
           ];
           networkConfig = {
             IPv6AcceptRA = false;
@@ -162,17 +146,12 @@ in {
           };
           DHCP = "no";
         };
+        wlp170s0 = {
+          dns = [
+            "89.234.140.170"
+          ];
+        };
       };
-    };
-  };
-
-  networking = {
-    hosts = {
-      "192.168.1.10" = ["kenobi" "kenobi.tekunix.internal"];
-    };
-
-    networkmanager = {
-      enable = true;
     };
   };
 }

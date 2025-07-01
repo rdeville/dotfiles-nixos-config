@@ -14,5 +14,5 @@ table ip filter {
 #         iifname { "wg-public"} oifname { "tun-illyse" } masquerade
 #     }
 # }
-
+#
 # vim: ft=nftables

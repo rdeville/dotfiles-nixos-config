@@ -18,7 +18,7 @@ Three arguments are required:
 * HOSTNAME: The hostname of the machine to install, must be a existing host in
   folder 'machines'
 * USER: User to use for the SSH connexion to install the machine
-* IP: The IP or DNS of the machine to install, if not specified, will try to use 'USER@HOSTNAME.tekunix.internal'
+* IP: The IP or DNS of the machine to install, if not specified, will try to use 'USER@HOSTNAME.tekunix.private'
 EOM
 }
 
@@ -91,7 +91,7 @@ main() {
 
   local hostname="$1"
   local user="${2:-"${USER}"}"
-  local ip="${3:-${hostname}.tekunix.internal}"
+  local ip="${3:-${hostname}.tekunix.private}"
   local tmp="/tmp/host-key/${hostname}"
   local user_has_secret=false
 

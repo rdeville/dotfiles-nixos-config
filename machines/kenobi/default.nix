@@ -13,7 +13,7 @@
     inputs.disko.nixosModules.disko
     ./disko.nix
     # Other configurations
-    # ./dns.nix
+    ./_dns
     ./_networks
   ];
 
