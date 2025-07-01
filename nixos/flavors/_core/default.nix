@@ -6,15 +6,6 @@
 }: let
   name = builtins.baseNameOf ./.;
   cfg = config.os.flavors.${name};
-
-  nameservers = [
-    # FDN DNS Resolver
-    # https://www.fdn.fr/actions/dns/
-    "80.67.169.12" # ns0.fdn.fr
-    "80.67.169.40" # ns1.fdn.fr
-    "2001:910:800::12" # ns0.fdn.fr
-    "2001:910:800::40" # ns1.fdn.fr
-  ];
 in {
   options = {
     os = {
@@ -81,10 +72,6 @@ in {
     programs = {
       # Allow to use .pre-commit
       inherit (cfg) nix-ld;
-    };
-
-    networking = {
-      inherit nameservers;
     };
   };
 }
