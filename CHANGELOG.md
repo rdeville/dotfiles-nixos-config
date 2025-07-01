@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.39.0 (2025-07-01)
+
+### ✨ Minor
+
+  * ✨(os): Add option to manage config using nixpkgs stable or unstable (!125) by Romain Deville ([`8a599fb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8a599fb99dd39922e7ea18466b70f1fb05b04fee))
+  * ✨(os): Add option isProd to specify stable or unstable nixpkgs config to use by Romain Deville ([`2a44a05`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2a44a0528b324ccf82e2e49c55b0a321718552fb)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(os/flavors): Update flavor to manage nixpks stable and unstable by Romain Deville ([`4126f57`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4126f5747cb6c415af1ee6aed41b4e882f80355b)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/core): Remove devenv pkgs since I don&#39;t use it anymore by Romain Deville ([`dfffabd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dfffabdcfe15539ddbbd7a3f13b7a638918c2656)) 🔏
+  * 🔥(os/_core): Remove default networking.nameservers (!124) by Romain Deville ([`bd68c48`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bd68c48ef480da18ad540cc0edc0bdb903a4876c))
+  * 🔥(os/_core): Remove default networking.nameservers by Romain Deville ([`67e435f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/67e435f350dce52b5e61338f4f1a78a68429e5f9)) 🔏
+
 ## v0.38.0 (2025-06-30)
 
 ### ✨ Minor
