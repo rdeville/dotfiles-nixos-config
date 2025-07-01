@@ -95,6 +95,11 @@ main() {
   local tmp="/tmp/host-key/${hostname}"
   local user_has_secret=false
 
+  if ! ping -c 4 "${ip}"; then
+    _log "ERROR" "Unable to ping ${ip}, have you mounted the Wireguard Private Interface ? "
+    exit 1
+  fi
+
   if ! [[ -d "${tmp}" ]]; then
     mkdir -p "${tmp}"
   fi
@@ -113,7 +118,7 @@ main() {
   if ! nixos-rebuild switch \
     --flake ".#${hostname}" \
     --target-host "${user}@${ip}" \
-    --sudo; then
+    --use-remote-sudo; then
     _log "ERROR" "An error occurs during switch of NixOS configuration for **${hostname}**"
     rm -rf "${tmp}"
     return 1
