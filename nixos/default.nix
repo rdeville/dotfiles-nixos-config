@@ -38,13 +38,6 @@ in {
             default = "x86_64-linux";
           };
 
-          # OTHER CONFIGURATION
-          allowUnfree = lib.mkOption {
-            type = lib.types.bool;
-            description = "If true, allow installation of unfree packages.";
-            default = false;
-          };
-
           timeZone = lib.mkOption {
             type = lib.types.str;
             description = "The timezone of the host.";
@@ -129,9 +122,6 @@ in {
 
     nixpkgs = {
       hostPlatform = cfg.system;
-      config = {
-        inherit (cfg) allowUnfree;
-      };
     };
 
     console = {
