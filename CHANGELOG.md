@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.39.1 (2025-07-03)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`b1fa878`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1fa878c276324dc0129a00c0090f2f48abfbcd0)) 🔏
+
+### 🔊 Others
+
+  * 🔥(os): Drop allowUnfree from module (!126) by Romain Deville ([`035a2c1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/035a2c12cdaadd21235d68e71481c2591578a960))
+  * 🔥(os): Drop allowUnfree from module by Romain Deville ([`a6d038c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a6d038c0518e1c1b6f24bfd7a58ed1b2c4bf68ec)) 🔏
+
 ## v0.39.0 (2025-07-01)
 
 ### ✨ Minor
