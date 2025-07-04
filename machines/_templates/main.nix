@@ -1,8 +1,4 @@
 {pkgs, ...}: {
-  imports = [
-    ./server.nix
-  ];
-
   boot = {
     kernelPackages = pkgs.linuxPackages_latest;
   };

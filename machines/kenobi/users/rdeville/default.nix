@@ -7,7 +7,7 @@ in {
     };
     secrets = {
       "spotify-client-id" = {
-        sopsFile = ../../../common_secrets/spotify.enc.yaml;
+        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
       };
     };
   };

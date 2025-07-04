@@ -14,7 +14,7 @@ builtins.foldl' (acc: host:
               else "x86_64-linux";
           };
           modules = [
-            ./machines/${host}/${user}
+            ./machines/${host}/users/${user}
             ./home-manager/_modules.nix
           ];
           extraSpecialArgs = {
@@ -24,9 +24,9 @@ builtins.foldl' (acc: host:
       }
       // acc) {} (
       builtins.filter (user: (
-        # Ignore folders machines/*/_*
+        # Ignore folders machines/*/users/_*
         builtins.match "_.*" user != []
-      )) (lib.listDirs ./machines/${host})
+      )) (lib.listDirs ./machines/${host}/users)
     )
     // acc) {} (
   builtins.filter (host: (

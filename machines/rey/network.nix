@@ -65,7 +65,7 @@ in {
           wireguardPeers = [
             {
               PublicKey = lib.removeSuffix "\n" (
-                builtins.readFile ../kenobi/_networks/wg-public/wg-public.pub
+                builtins.readFile ../kenobi/networks/wg-public/wg-public.pub
               );
               AllowedIPs = [
                 "0.0.0.0/0"
@@ -88,7 +88,7 @@ in {
           wireguardPeers = [
             {
               PublicKey = lib.removeSuffix "\n" (
-                builtins.readFile ../kenobi/_networks/wg-private/wg-private.pub
+                builtins.readFile ../kenobi/networks/wg-private/wg-private.pub
               );
               AllowedIPs = [
                 "${wgPriPrefix}.0/16"
