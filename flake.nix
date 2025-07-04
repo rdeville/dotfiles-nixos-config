@@ -51,6 +51,14 @@
       url = "github:trapd00r/LS_COLORS";
       flake = false;
     };
+    microvm = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    microvm-stable = {
+      url = "github:astro/microvm.nix";
+      inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
     # My Personal Public NixOS /HM Config
     # -------------------------------------------------------------------------
     nixos = {
