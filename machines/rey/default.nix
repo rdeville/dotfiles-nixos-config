@@ -11,7 +11,7 @@
     # Partition map
     inputs.disko.nixosModules.disko
     ./disko.nix
-    ./network.nix
+    ./networks
     ./topology.nix
   ];
 
