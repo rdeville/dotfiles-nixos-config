@@ -114,7 +114,7 @@ in {
   sops = {
     inherit secrets;
     age = {
-      keyFile = "/etc/ssh/.age.key";
+      keyFile = "/etc/age/key.txt";
     };
     defaultSopsFile = ../${config.os.hostName}/secrets.enc.yaml;
   };
