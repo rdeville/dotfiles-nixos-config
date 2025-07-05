@@ -1,8 +1,4 @@
 {...}: let
-  localhost = [
-    # Localhost
-    "127.0.0.1/32"
-  ];
   internalNetworks = [
     # Localhost
     "192.168.1.0/24"

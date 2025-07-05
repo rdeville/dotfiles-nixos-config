@@ -1,11 +1,9 @@
-{config, ...}: let
+{...}: let
   id = 144;
   lanDevice = "enp3s0";
   lanIface = "k8s-stg";
   prefix = "172.16.${toString id}";
   length = 20;
-
-  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -37,7 +35,7 @@ in {
         "${lanIface}" = {
           enable = true;
           matchConfig = {
-            Name = lanIface;
+            Name = "${lanIface}";
           };
           networkConfig = {
             DHCP = "no";
@@ -53,19 +51,27 @@ in {
       };
     };
   };
+
   networking = {
-    # firewall = {
-    #   interfaces = {
-    #     "${lanIface}" = {
-    #       allowedUDPPorts = [
-    #         # DNS Port
-    #         53
-    #         # DHCP Port
-    #         67
-    #       ];
-    #     };
-    #   };
-    # };
+    firewall = {
+      interfaces = {
+        "${lanIface}" = {
+          allowedTCPPorts = [
+            # DNS Port
+            53
+            # HTTP(s) Ports
+            80
+            443
+          ];
+          allowedUDPPorts = [
+            # DNS Port
+            53
+            # DHCP Port
+            67
+          ];
+        };
+      };
+    };
 
     nftables = {
       ruleset = builtins.readFile ./config.nftables;

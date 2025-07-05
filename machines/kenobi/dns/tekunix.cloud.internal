@@ -12,7 +12,7 @@ $TTL    1h
 ; Router IP which is also my ingress entrypoint for my prod cluster
 kenobi         IN A     172.16.1.1
 @              IN A     172.16.1.1
-*              IN A     172.16.1.1
+*              IN A     172.16.128.1
 
 ; PUBLIC Network
 darth-maul     IN A     172.16.1.10
@@ -25,6 +25,7 @@ darth-vader    IN CNAME romaindeville.fr
 ; Other Network
 ; IP of my dev cluster (a.k.a darth-maul)
 *.dev          IN CNAME darth-maul
+*.rey          IN CNAME rey
 
 ; PRD Cluster Network
 ; Control-Plane
@@ -36,7 +37,7 @@ zero           IN CNAME kenobi
 
 ; STG Cluster Network
 ; IP of the entrypoint for my stg cluster
-*.stg          IN CNAME leia
+*.stg          IN A     172.16.144.1
 ; Control-Plane
 luke           IN A     172.16.144.10
 ; Worker

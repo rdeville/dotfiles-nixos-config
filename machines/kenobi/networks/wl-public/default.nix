@@ -40,16 +40,17 @@ in {
       interfaces = {
         "${wlanIface}" = {
           allowedTCPPorts = [
-            # SSH Port
-            22
             # DNS Port
             53
+            # HTTP(s) Ports
+            80
+            443
           ];
           allowedUDPPorts = [
-            # DHCP Port
-            67
             # DNS Port
             53
+            # DHCP Port
+            67
           ];
         };
       };

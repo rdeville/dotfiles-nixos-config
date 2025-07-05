@@ -3,6 +3,7 @@ table ip traceall
 delete table ip traceall
 
 table ip traceall {
+    # Trace to be able to Monitor
     chain prerouting {
         type filter hook prerouting priority -350; policy accept;
         meta nftrace set 1;
@@ -31,12 +32,24 @@ table ip traceall {
 
 table ip6 filter {
     # Drop all IPv6 packets
+    chain prerouting {
+        type filter hook prerouting priority 100; policy drop;
+    }
+
     chain input {
-        type filter hook input priority 0; policy drop;
+        type filter hook input priority 100; policy drop;
     }
 
     chain forward {
-        type filter hook forward priority 0; policy drop;
+        type filter hook forward priority 100; policy drop;
+    }
+
+    chain output {
+        type filter hook output priority 100; policy drop;
+    }
+
+    chain postrouting {
+        type filter hook postrouting priority 100; policy drop;
     }
 }
 

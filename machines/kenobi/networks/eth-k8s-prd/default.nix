@@ -4,8 +4,6 @@
   lanIface = "k8s-prd";
   prefix = "172.16.${toString id}";
   length = 20;
-
-  mkLib = config.lib.topology;
 in {
   systemd = {
     network = {
@@ -55,18 +53,25 @@ in {
   };
 
   networking = {
-    # firewall = {
-    #   interfaces = {
-    #     "${lanIface}" = {
-    #       allowedUDPPorts = [
-    #         # DNS Port
-    #         53
-    #         # DHCP Port
-    #         67
-    #       ];
-    #     };
-    #   };
-    # };
+    firewall = {
+      interfaces = {
+        "${lanIface}" = {
+          allowedTCPPorts = [
+            # DNS Port
+            53
+            # HTTP(s) Ports
+            80
+            443
+          ];
+          allowedUDPPorts = [
+            # DNS Port
+            53
+            # DHCP Port
+            67
+          ];
+        };
+      };
+    };
 
     nftables = {
       ruleset = builtins.readFile ./config.nftables;

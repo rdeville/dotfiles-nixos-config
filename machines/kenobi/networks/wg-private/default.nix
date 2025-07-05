@@ -54,10 +54,6 @@ in {
           matchConfig = {
             Name = wgDevice;
           };
-          # networkConfig = {
-          #   IPMasquerade = "ipv4";
-          #   IPv4Forwarding = true;
-          # };
           address = [
             "${prefix}.1/${toString length}"
           ];
@@ -75,11 +71,14 @@ in {
     };
 
     firewall = {
-      allowedUDPPorts = [
-        # Wireguard ports open on all interface
-        listenPort
-      ];
       interfaces = {
+        "tun-illyse" = {
+          allowedUDPPorts = [
+            # Open port on public IP
+            listenPort
+          ];
+        };
+
         "${wgIface}" = {
           allowedTCPPorts = [
             # SSH Port
@@ -88,10 +87,10 @@ in {
             53
           ];
           allowedUDPPorts = [
-            # DHCP Port
-            67
             # DNS Port
             53
+            # DHCP Port
+            67
           ];
         };
       };

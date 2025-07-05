@@ -31,10 +31,11 @@ in {
       interfaces = {
         "${lanIface}" = {
           allowedTCPPorts = [
-            # SSH Port
-            22
             # DNS Port
             53
+            # HTTP(s) Ports
+            80
+            443
           ];
           allowedUDPPorts = [
             # DNS Port

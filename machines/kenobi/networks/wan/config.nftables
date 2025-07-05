@@ -1,29 +1,7 @@
-# Start default configuration
-table ip filter {
-    chain input {
-        # WAN Default configuration
-        iifname { "enp1s0" } accept comment "Allow local and private networks to access the router"
-        iifname { "enp1s0" } ct state { established, related } accept comment "Allow established traffic"
-        iifname { "enp1s0" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
-        iifname { "enp1s0" } counter drop comment "Drop all other unsolicited traffic from wan"
-    }
-}
-
 table ip nat {
     chain postrouting {
         type nat hook postrouting priority 100; policy accept;
         oifname { "enp1s0" } masquerade
-    }
-}
-
-table ip6 filter {
-    # Drop all IPv6 packets
-    chain input {
-        type filter hook input priority 0; policy drop;
-    }
-
-    chain forward {
-        type filter hook forward priority 0; policy drop;
     }
 }
 

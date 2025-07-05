@@ -1,9 +1,17 @@
 table ip filter {
     chain input {
-        # TODO: Remove this line once network finished since at the end, router
-        # will be accessible only from private vlan or wireguard interface
-        iifname { "wg-private" } accept comment "Allow 'wg-private' networks to access the router"
-        iifname { "wg-private" } counter drop comment "Drop all other unsolicited traffic from 'wg-private'"
+        # INFO: This is the only network not forwarded and only on this
+        # network machines are SSH accessible
+        iifname { "wg-private" } accept comment "Allow wg-private networks to access the router"
+        iifname { "wg-private" } counter drop comment "Drop all other unsolicited traffic from wg-private"
+
+        iifname { "wg-private" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
+        iifname { "wg-private" } counter drop comment "Drop all other unsolicited traffic"
+    }
+
+    chain forward {
+        iifname { "wg-private" } oifname { "wg-private" } accept comment "Allow bi-directional wg-private"
+        iifname { "wg-private" } oifname { "wg-private" } ct state { established, related } accept comment "Allow established back from wg-private to wg-private"
     }
 }
 

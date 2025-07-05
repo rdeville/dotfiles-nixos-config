@@ -77,17 +77,20 @@ in {
     };
 
     firewall = {
-      allowedUDPPorts = [
-        # Wireguard ports open on all interface
-        listenPort
-      ];
       interfaces = {
+        "tun-illyse" = {
+          allowedUDPPorts = [
+            # Wireguard ports open on all interface
+            listenPort
+          ];
+        };
         "${wgIface}" = {
           allowedTCPPorts = [
-            # SSH Port
-            22
             # DNS Port
             53
+            # HTTP(s) Ports
+            80
+            443
           ];
           allowedUDPPorts = [
             # DHCP Port
