@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.40.0 (2025-07-06)
+
+### ✨ Minor
+
+  * ✨(os): Add parentName options to be used in VM/container (!127) by Romain Deville ([`13a64e8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/13a64e872a42e5e201b64d9de17768b4abd375f5))
+  * ✨(os): Add parentName options to store host name when in VM/container by Romain Deville ([`c7cb6a0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c7cb6a0b21a7f7c8bbb897c2d3b86705631f0180)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`866af94`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/866af9437a6badef9b2f25892938f6b9014625c2)) 🔏
+  * 🔧(os): Bump stateVersion to 25.05 by Romain Deville ([`6e9b374`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6e9b374626785547b74fce390820113bd304bd49)) 🔏
+
 ## v0.39.1 (2025-07-03)
 
 ### 🩹 Patch
