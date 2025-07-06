@@ -26,6 +26,12 @@ in {
             description = "Hostname where config will be applied.";
           };
 
+          parentName = lib.mkOption {
+            type = lib.types.str;
+            description = "If OS is a container or a VM, this store the name of the host OS";
+            default = "";
+          };
+
           stateVersion = lib.mkOption {
             type = lib.types.str;
             description = "Version of HM to follow";
