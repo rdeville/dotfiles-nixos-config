@@ -11,8 +11,9 @@
     # Partition map
     inputs.disko.nixosModules.disko
     ./disko.nix
-    ./network.nix
+    ./networks
     ./topology.nix
+    ./microvms
   ];
 
   nixpkgs = {
@@ -40,6 +41,15 @@
         }
         // acc) {}
       lib.getValidHosts;
+    };
+  };
+
+  networking = {
+    hosts = {
+      "127.0.0.1" = [
+        "kube.rey.tekunix.cloud"
+        "argocd.rey.tekunix.cloud"
+      ];
     };
   };
 

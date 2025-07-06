@@ -1,0 +1,8 @@
+table ip nat {
+    chain postrouting {
+        type nat hook postrouting priority 100; policy accept;
+        oifname { "enp1s0" } masquerade
+    }
+}
+
+# vim: ft=nftables

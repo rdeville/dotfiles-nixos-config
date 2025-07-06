@@ -19,11 +19,13 @@ in
       then {
         nixpkgs = inputs.nixpkgs-stable;
         nixos = inputs.nixos-stable;
+        microvm = inputs.microvm-stable;
         isProd = true;
       }
       else {
         nixpkgs = inputs.nixpkgs;
         nixos = inputs.nixos;
+        microvm = inputs.microvm;
         isProd = false;
       };
   in
@@ -39,6 +41,7 @@ in
           inputs.nix-topology.nixosModules.default
           # Internal Modules
           release.nixos.nixosModules.os
+          release.microvm.nixosModules.host
           # Local Modules
           ./machines/${host}
           ./nixos

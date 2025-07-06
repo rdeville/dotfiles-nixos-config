@@ -83,7 +83,7 @@ in {
         in
           {
             ".ssh/pubkeys/${key}" = {
-              source = ../../../${config.hm.hostName}/${user}/_keys/${key};
+              source = ../../../${config.hm.hostName}/users/${user}/_keys/${key};
             };
           }
           // acc) {}

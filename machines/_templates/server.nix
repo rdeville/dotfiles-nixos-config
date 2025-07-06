@@ -12,8 +12,8 @@
       openssh = {
         authorizedKeys = {
           keyFiles = [
-            ../darth-maul/rdeville/_keys/rdeville-darth-maul.pub
-            ../rey/rdeville/_keys/rdeville-rey.pub
+            ../darth-maul/users/rdeville/_keys/rdeville-darth-maul.pub
+            ../rey/users/rdeville/_keys/rdeville-rey.pub
           ];
         };
       };
@@ -26,9 +26,9 @@
       openssh = {
         authorizedKeys = {
           keyFiles = [
-            ../darth-maul/azathoth/_keys/azathoth-darth-maul.pub
-            ../rey/azathoth/_keys/azathoth-rey.pub
-            ../kenobi/azathoth/_keys/azathoth-kenobi.pub
+            ../darth-maul/users/azathoth/_keys/azathoth-darth-maul.pub
+            ../rey/users/azathoth/_keys/azathoth-rey.pub
+            ../kenobi/users/azathoth/_keys/azathoth-kenobi.pub
           ];
         };
       };
@@ -38,9 +38,9 @@
       openssh = {
         authorizedKeys = {
           keyFiles = [
-            ../darth-maul/cthulhu/_keys/cthulhu-darth-maul.pub
-            ../rey/cthulhu/_keys/cthulhu-rey.pub
-            ../kenobi/cthulhu/_keys/cthulhu-kenobi.pub
+            ../darth-maul/users/cthulhu/_keys/cthulhu-darth-maul.pub
+            ../rey/users/cthulhu/_keys/cthulhu-rey.pub
+            ../kenobi/users/cthulhu/_keys/cthulhu-kenobi.pub
           ];
         };
       };
@@ -114,7 +114,7 @@ in {
   sops = {
     inherit secrets;
     age = {
-      keyFile = "/etc/ssh/.age.key";
+      keyFile = "/etc/age/key.txt";
     };
     defaultSopsFile = ../${config.os.hostName}/secrets.enc.yaml;
   };

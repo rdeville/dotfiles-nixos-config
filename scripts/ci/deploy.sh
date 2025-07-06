@@ -33,14 +33,17 @@ _check_host_valid() {
 }
 
 _check_age_key() {
-  local age_target_path="/etc/ssh/.age.key"
+  local age_target_path="/etc/age/key.txt"
   local age_target="${tmp}/age.key.target"
   local age_repo_path="${MACHINE_PATH}/${hostname}/_keys/age.enc.txt"
   local age_repo="${tmp}/age.key.repo"
   local error="false"
   local username
 
-  scp "${user}@${ip}:${age_target_path}" "${age_target}" &>/dev/null
+  if ! scp "${user}@${ip}:${age_target_path}" "${age_target}" &>/dev/null; then
+    _log "ERROR" "Unable to copy target age key"
+    return 1
+  fi
   sops -d "${age_repo_path}" >"${age_repo}"
   chmod 0600 "${age_target}" "${age_repo}"
 
@@ -95,7 +98,7 @@ main() {
   local tmp="/tmp/host-key/${hostname}"
   local user_has_secret=false
 
-  if ! ping -c 4 "${ip}"; then
+  if ! ping -c 1 "${ip}" -q -W 1 &>/dev/null; then
     _log "ERROR" "Unable to ping ${ip}, have you mounted the Wireguard Private Interface ? "
     exit 1
   fi

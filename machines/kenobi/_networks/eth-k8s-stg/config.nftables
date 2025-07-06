@@ -1,9 +1,0 @@
-table ip filter {
-    chain forward {
-        type filter hook forward priority 0; policy drop;
-        iifname { "k8s-stg" } oifname { "enp1s0" } accept comment "Allow VLAN k8s-stg to WAN"
-        iifname { "enp1s0" } oifname { "k8s-stg" } ct state { established, related } accept comment "Allow established back from WAN to VLAN k8s-stg"
-    }
-}
-
-# vim: ft=nftables

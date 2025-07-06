@@ -116,10 +116,10 @@ in {
           key = "azathoth-${config.hm.hostName}.pub";
         in {
           ".ssh/pubkeys/${userKey}" = {
-            source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
+            source = ../../../${config.hm.hostName}/users/${user}/_keys/${userKey};
           };
           ".ssh/pubkeys/${key}" = {
-            source = ../../../${config.hm.hostName}/azathoth/_keys/${key};
+            source = ../../../${config.hm.hostName}/users/azathoth/_keys/${key};
           };
         };
       };

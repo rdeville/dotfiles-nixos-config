@@ -1,0 +1,11 @@
+table ip filter {
+    chain forward {
+        iifname { "k8s-prd" } oifname { "tun-illyse" } accept comment "Allow VLAN k8s-prd to VPN WAN"
+        iifname { "tun-illyse" } oifname { "k8s-prd" } ct state { established, related } accept comment "Allow established back from VPN WAN to VLAN k8s-prd"
+
+        iifname { "k8s-prd" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
+        iifname { "k8s-prd" } counter drop comment "Drop all other unsolicited traffic"
+    }
+}
+
+# vim: ft=nftables
