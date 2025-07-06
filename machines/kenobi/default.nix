@@ -15,6 +15,7 @@
     # Other configurations
     ./dns
     ./networks
+    ./microvms
   ];
 
   os = {

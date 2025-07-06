@@ -10,8 +10,6 @@
   length = 24;
 
   listenPort = 65142;
-
-  mkLib = config.lib.topology;
 in {
   sops = {
     secrets = {
@@ -56,10 +54,6 @@ in {
           matchConfig = {
             Name = wgDevice;
           };
-          # networkConfig = {
-          #   IPMasquerade = "ipv4";
-          #   IPv4Forwarding = true;
-          # };
           address = [
             "${prefix}.1/${toString length}"
           ];

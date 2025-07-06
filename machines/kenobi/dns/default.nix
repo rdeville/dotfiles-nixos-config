@@ -23,6 +23,7 @@ in {
       enable = true;
       ipv4Only = true;
       forwarders = [
+        # FDN DNS
         "80.67.169.12"
         "80.67.169.40"
       ];

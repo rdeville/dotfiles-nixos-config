@@ -26,6 +26,8 @@ ava            IN A     172.18.128.12
 
 ; STG Cluster Network
 ; -----------------------------------------------------------------------------
+; IP of the entrypoint for my stg cluster
+*.stg          IN A     172.18.144.1
 ; Control-Plane
 luke           IN A     172.18.144.10
 ; Worker

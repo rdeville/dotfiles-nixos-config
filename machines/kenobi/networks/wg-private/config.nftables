@@ -12,6 +12,8 @@ table ip filter {
     chain forward {
         iifname { "wg-private" } oifname { "wg-private" } accept comment "Allow bi-directional wg-private"
         iifname { "wg-private" } oifname { "wg-private" } ct state { established, related } accept comment "Allow established back from wg-private to wg-private"
+
+        iifname { "wg-private" } oifname { "wg-private" } accept comment "Allow bi-directional wg-private"
     }
 }
 

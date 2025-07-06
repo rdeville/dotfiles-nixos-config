@@ -28,6 +28,7 @@ darth-vader    IN CNAME romaindeville.fr
 *.rey          IN CNAME rey
 
 ; PRD Cluster Network
+; -----------------------------------------------------------------------------
 ; Control-Plane
 lilith         IN A     172.16.128.10
 maya           IN A     172.16.128.11
@@ -36,6 +37,7 @@ ava            IN A     172.16.128.12
 zero           IN CNAME kenobi
 
 ; STG Cluster Network
+; -----------------------------------------------------------------------------
 ; IP of the entrypoint for my stg cluster
 *.stg          IN A     172.16.144.1
 ; Control-Plane

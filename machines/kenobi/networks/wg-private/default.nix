@@ -85,6 +85,8 @@ in {
             22
             # DNS Port
             53
+            # Kube API
+            6443
           ];
           allowedUDPPorts = [
             # DNS Port

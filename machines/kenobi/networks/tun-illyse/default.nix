@@ -58,8 +58,6 @@ in {
           allowedTCPPorts = [
             # DNS Port
             53
-            # DHCP Port
-            67
             # HTTP(s) Ports
             80
             443
@@ -67,8 +65,6 @@ in {
           allowedUDPPorts = [
             # DNS Port
             53
-            # DHCP Port
-            67
           ];
         };
       };
