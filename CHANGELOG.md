@@ -1,6 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.22.0 (2025-07-06)
+
+### ✨ Minor
+
+  * ✨ Add k8s (dev &amp; stg) VMs and deploy firewall on kenobi (!63) by Romain Deville ([`3450761`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3450761f4e358c3901f37071fd020b4a2c2a0ffe))
+  * ✨(kenobi): Add basic VMs for k8s stg and minor fixes by Romain Deville ([`4a64b56`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4a64b56f67a7224296d748d5d0e9d37649692045)) 🔏
+  * ✨(rey): Add basic VM for k8s dev cluster by Romain Deville ([`de219f8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/de219f89cedad5c006a84cf262f1f8d1f48f4d87)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(kenobi): Add firewall rules and update DNS by Romain Deville ([`885ad8f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/885ad8f57b5e7c2d727dd8dde3f36263d50e5717)) 🔏
+  * ➕(flake): Add microvm to flake.nix and update flake.lock by Romain Deville ([`1b9d89d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1b9d89db29824af77c3742d0ddefd6aa39d89d7a)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`bc0f771`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bc0f7711173c11f9e3bd996dc8f97d9ca7e73293)) 🔏
+  * 🔧(nixos): Add microvm and microvm-stable in NixOS Config by Romain Deville ([`c7d1345`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c7d134507c586cb3f6589d0d16034e0a1eaa083b)) 🔏
+  * 🔧(templates/server): Update path to age key by Romain Deville ([`ca53514`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ca53514ac7c4b749cc6a71d42e4e01fe22e7379c)) 🔏
+
+### 🔊 Others
+
+  * 🔨(scripts): Improve deploy script by Romain Deville ([`3777765`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/377776545779bf28d9c40867fce6225bc42f93ba)) 🔏
+  * 🚚(rey): Rework networks into dedicated folder by Romain Deville ([`87c2f8d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/87c2f8de0f8fa873c264d340dbdc72e0b6775977)) 🔏
+  * 🚚(machines): Rename folder without underscore, create users folder by Romain Deville ([`0d60f4a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0d60f4a2c488cdc092b1ca1981c3acf175a311ab)) 🔏
+
 ## v0.21.0 (2025-07-01)
 
 ### ✨ Minor
