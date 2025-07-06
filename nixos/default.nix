@@ -35,7 +35,7 @@ in {
           stateVersion = lib.mkOption {
             type = lib.types.str;
             description = "Version of HM to follow";
-            default = "24.11";
+            default = "25.05";
           };
 
           system = lib.mkOption {
