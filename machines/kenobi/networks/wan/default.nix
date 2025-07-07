@@ -1,28 +1,19 @@
 {...}: let
-  lanDevice = "enp1s0";
-  lanIface = lanDevice;
+  network = "enp1s0";
 in {
-  sops = {
-    secrets = {
-      "wireless/public/password" = {
-        sopsFile = ../../secrets.enc.yaml;
-      };
-    };
-  };
-
   systemd = {
     network = {
       wait-online = {
         extraArgs = [
           "--interface"
-          lanDevice
+          network
         ];
       };
       networks = {
-        "1000-${lanIface}" = {
+        ${network} = {
           enable = true;
           matchConfig = {
-            Name = lanIface;
+            Name = network;
           };
           networkConfig = {
             DHCP = "ipv4";
@@ -39,19 +30,15 @@ in {
   networking = {
     firewall = {
       interfaces = {
-        "${lanIface}" = {
+        ${network} = {
           allowedTCPPorts = [
-            # DNS Port
-            53
-            # HTTP(s) Ports
-            80
-            443
+            22 # SSH
+            53 # DNS
+            80 # HTTP
+            443 # HTTPs
           ];
           allowedUDPPorts = [
-            # DNS Port
-            53
-            # DHCP Port
-            67
+            53 # DNS
           ];
         };
       };

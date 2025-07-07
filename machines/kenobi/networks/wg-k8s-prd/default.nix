@@ -3,13 +3,14 @@
   lib,
   ...
 }: let
-  network = "wg-public";
-  desc = "Wireguard Public";
-  prefix = "172.17.0";
+  network = "wg-k8s-prd";
+  desc = "Wireguard k8s Prd";
+  prefix = "172.30.128";
   length = "24";
-  listenPort = 60001;
+  listenPort = 65128;
   externalInterface = "tun-illyse";
-  clr = "#c27aff";
+  # Tailwind Blue 300
+  clr = "#8ec5ff";
   cidr = "${prefix}.0/${length}";
 in {
   sops = {

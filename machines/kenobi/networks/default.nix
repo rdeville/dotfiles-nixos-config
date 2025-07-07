@@ -6,11 +6,15 @@
     ./wan
     ./tun-illyse
     ./eth-public
+    ./eth-k8s-switch
     ./wl-public
-    ./eth-k8s-stg
-    ./eth-k8s-prd
+    ./vlan-k8s-stg
+    ./vlan-k8s-prd
     ./wg-public
     ./wg-private
+    ./wg-k8s-dev
+    ./wg-k8s-stg
+    ./wg-k8s-prd
   ];
 
   boot = {
@@ -33,9 +37,6 @@
       # Itself to all local resolving
       "127.0.0.1"
     ];
-    nat = {
-      enable = false;
-    };
 
     firewall = {
       enable = true;

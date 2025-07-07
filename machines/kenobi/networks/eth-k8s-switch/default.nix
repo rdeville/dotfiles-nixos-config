@@ -1,11 +1,8 @@
 {...}: let
-  id = 1;
-  network = "enp2s0";
-  desc = "Public Ethernet Network";
-  prefix = "172.16.0";
+  id = 3;
+  network = "enp3s0";
+  prefix = "172.16.3";
   length = "24";
-  clr = "#00a63e";
-  cidr = "${prefix}.0/${length}";
 in {
   systemd = {
     network = {
@@ -33,7 +30,7 @@ in {
   networking = {
     firewall = {
       interfaces = {
-        ${network} = {
+        "${network}" = {
           allowedTCPPorts = [
             53 # DNS
           ];
@@ -63,17 +60,12 @@ in {
           subnet4 = [
             {
               inherit id;
-              subnet = cidr;
+              subnet = "${prefix}.0/${length}";
               reservations = [
                 {
-                  hw-address = "74:13:ea:be:97:9a";
-                  hostname = "rey";
-                  ip-address = "${prefix}.3";
-                }
-              ];
-              pools = [
-                {
-                  pool = "${prefix}.64 - ${prefix}.254";
+                  hw-address = "8c:90:2d:9d:20:16";
+                  hostname = "k8s-switch";
+                  ip-address = "${prefix}.100";
                 }
               ];
               interface = network;
@@ -89,27 +81,6 @@ in {
               ];
             }
           ];
-        };
-      };
-    };
-  };
-
-  topology = {
-    networks = {
-      ${network} = {
-        name = desc;
-        cidrv4 = cidr;
-        style = {
-          primaryColor = clr;
-          secondaryColor = null;
-          pattern = "solid";
-        };
-      };
-    };
-    self = {
-      interfaces = {
-        ${network} = {
-          inherit network;
         };
       };
     };
