@@ -1,0 +1,9 @@
+table ip filter {
+    chain forward {
+        iifname { "wg-k8s-prd" } oifname { "wg-k8s-prd" } accept comment "Allow bidirectionnal wg-k8s-prd"
+        iifname { "wg-k8s-prd" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
+        iifname { "wg-k8s-prd" } counter drop comment "Drop all other unsolicited traffic"
+    }
+}
+
+# vim: ft=nftables
