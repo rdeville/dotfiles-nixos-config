@@ -1,19 +1,15 @@
-{...}: let
-  vmName = "vm-${builtins.baseNameOf ./.}";
-  prefix = "172.20.0";
+{
+  config,
+  lib,
+  ...
+}: let
+  parentName = config.os.hostName;
+  vmName = "vm-${parentName}-${builtins.baseNameOf ../.}";
+  netName = "vm-${builtins.baseNameOf ../.}";
+  prefix = "172.20.160";
   length = "24";
   cidr = "${prefix}.0/${length}";
 in {
-  sops = {
-    secrets = {
-      "microvm/${vmName}/age/age.txt" = {
-        format = "binary";
-        sopsFile = ./_keys/age.enc.txt;
-        key = "";
-      };
-    };
-  };
-
   systemd = {
     tmpfiles = {
       rules = [
@@ -30,9 +26,9 @@ in {
   systemd = {
     network = {
       networks = {
-        ${vmName} = {
+        ${netName} = {
           matchConfig = {
-            Name = "${vmName}";
+            Name = netName;
           };
           address = [
             "${prefix}.1/32"
@@ -42,9 +38,9 @@ in {
               Destination = "${cidr}";
             }
           ];
+          DHCP = "no";
           networkConfig = {
             IPv4Forwarding = true;
-            DHCPServer = false;
           };
           linkConfig = {
             RequiredForOnline = "no";
@@ -55,10 +51,32 @@ in {
   };
 
   networking = {
+    firewall = {
+      enable = lib.mkForce false;
+      # enable = lib.mkForce true;
+      interfaces = {
+        ${netName} = {
+          allowedTCPPorts = [
+            53 # DNS
+          ];
+          allowedUDPPorts = [
+            53 # DNS
+          ];
+        };
+      };
+    };
+
     nat = {
+      enable = true;
       internalIPs = [
-        "${cidr}"
+        "172.20.0.0/16"
       ];
+    };
+
+    nftables = {
+      enable = lib.mkForce false;
+      # enable = true;
+      ruleset = builtins.readFile ./config.nftables;
     };
   };
 }

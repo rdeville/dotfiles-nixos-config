@@ -4,7 +4,8 @@
   pkgs,
   ...
 }: let
-  vmName = "vm-${builtins.baseNameOf ./.}";
+  parentName = config.os.parentName;
+  vmName = "vm-${parentName}-${builtins.baseNameOf ./.}";
 
   users = {
     rdeville = {
@@ -18,25 +19,62 @@
         };
       };
     };
+    cthulhu = {
+      isSudo = true;
+      openssh = {
+        authorizedKeys = {
+          keyFiles = [
+            ../../../darth-maul/users/cthulhu/_keys/cthulhu-darth-maul.pub
+            ../../../rey/users/cthulhu/_keys/cthulhu-rey.pub
+            ../../../kenobi/users/cthulhu/_keys/cthulhu-kenobi.pub
+          ];
+        };
+      };
+    };
     root = {};
   };
 
-  secrets = {
-    "keys/rsa" = {
-      format = "binary";
-      sopsFile = ../../../${config.os.parentName}/_keys/${config.os.parentName}-rsa.enc.asc;
-      key = "";
+  secrets =
+    builtins.foldl' (acc: elem:
+      {
+        "users/${elem}/password" = {
+          neededForUsers = true;
+        };
+      }
+      // acc) {} (
+      builtins.filter (user: (
+        # Ignore users azathoth and cthulhu, no password login
+        (builtins.match "test" user != [])
+        && (builtins.match "azathoth" user != [])
+        && (builtins.match "cthulhu" user != [])
+      )) (builtins.attrNames users)
+    )
+    // {
+      "keys/rsa" = {
+        format = "binary";
+        sopsFile = ./_keys/${config.os.hostName}-rsa.enc.asc;
+        key = "";
+      };
+      "keys/ed25519" = {
+        format = "binary";
+        sopsFile = ./_keys/${config.os.hostName}-ed25519.enc.asc;
+        key = "";
+      };
     };
-    "keys/ed25519" = {
-      format = "binary";
-      sopsFile = ../../../${config.os.parentName}/_keys/${config.os.parentName}-ed25519.enc.asc;
-      key = "";
-    };
-  };
 in {
-  imports = [
-    ./networks
-  ];
+  sops = {
+    secrets =
+      secrets
+      // {
+        "k8s-dev-token" = {
+          sopsFile = ../../../../common_secrets/k8s-dev.enc.yaml;
+        };
+      };
+    age = {
+      keyFile = "/etc/age/key.txt";
+    };
+    defaultSopsFile = ./secrets.enc.yaml;
+  };
 
   os = {
     users = {
@@ -51,13 +89,9 @@ in {
 
       k3s = {
         enable = true;
-        role = "server";
-        disableAgent = false;
-        clusterInit = true;
-        extraFlags = [
-          "--default-local-storage-path /var/lib/k8s-data"
-          "--tls-san kube.rey.tekunix.cloud"
-        ];
+        role = "agent";
+        serverAddr = "https://kube.dev.tekunix.internal:6443";
+        tokenFile = config.sops.secrets."k8s-dev-token".path;
       };
     };
   };
@@ -68,7 +102,7 @@ in {
     volumes = [
       {
         image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher-k3s.img";
-        label = "var-lib-rancher-k3s";
+        label = "var-rancher-k3s";
         mountPoint = "/var/lib/rancher/k3s";
         size = 25600;
       }
@@ -87,7 +121,7 @@ in {
         proto = "virtiofs";
       }
       {
-        source = "/run/secrets/microvms/${vmName}/age";
+        source = "/etc/age";
         mountPoint = "/etc/age";
         tag = "etc-age-ro";
         proto = "virtiofs";
@@ -101,14 +135,6 @@ in {
     ];
   };
 
-  sops = {
-    inherit secrets;
-    age = {
-      keyFile = "/etc/age/key.txt";
-    };
-    defaultSopsFile = ../../../${config.os.parentName}/secrets.enc.yaml;
-  };
-
   environment = {
     etc = {
       machine-id = {
@@ -119,13 +145,13 @@ in {
         source = config.sops.secrets."keys/rsa".path;
       };
       "ssh/ssh_host_rsa_key.pub" = {
-        source = ../../../${config.os.parentName}/_keys/${config.os.parentName}-rsa.pub;
+        source = ./_keys/${config.os.hostName}-rsa.pub;
       };
       "ssh/ssh_host_ed25519_key" = {
         source = config.sops.secrets."keys/ed25519".path;
       };
       "ssh/ssh_host_ed25519_key.pub" = {
-        source = ../../../${config.os.parentName}/_keys/${config.os.parentName}-ed25519.pub;
+        source = ./_keys/${config.os.hostName}-ed25519.pub;
       };
     };
   };
@@ -140,6 +166,24 @@ in {
       dig # DNS lookup utiliy
       cilium-cli # Cilium utils
     ];
+  };
+
+  security = {
+    sudo = {
+      extraRules = [
+        {
+          users = [
+            "cthulhu"
+          ];
+          commands = [
+            {
+              command = "ALL";
+              options = ["SETENV" "NOPASSWD"];
+            }
+          ];
+        }
+      ];
+    };
   };
 
   fileSystems = {

@@ -5,8 +5,8 @@
   ...
 }: let
   isProd = config.os.isProd;
-  vmName = "vm-${builtins.baseNameOf ./.}";
   parentName = config.os.hostName;
+  vmName = "vm-${parentName}-${builtins.baseNameOf ./.}";
   imports =
     if isProd
     then [
@@ -17,7 +17,7 @@
     ];
 in {
   imports = [
-    ./host.nix
+    ./host
   ];
 
   microvm = {
@@ -31,7 +31,10 @@ in {
           imports =
             [
               inputs.sops-nix.nixosModules.sops
+              inputs.nix-topology.nixosModules.default
               ./configuration.nix
+              ./topology.nix
+              ./networks
             ]
             ++ imports;
 
