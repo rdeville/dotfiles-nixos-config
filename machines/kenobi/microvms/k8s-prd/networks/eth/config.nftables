@@ -1,0 +1,14 @@
+table ip filter {
+    chain input {
+        iifname { "vm-k8s-prd" } accept comment "Allow vm-k8s-prd to access the VM"
+        iifname { "vm-k8s-prd" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
+        iifname { "vm-k8s-prd" } counter drop comment "Drop all other unsolicited traffic"
+    }
+
+    chain forward {
+        iifname { "wg-k8s-prd" } accept comment "Allow to forward from wg-k8s-prd"
+        iifname { "wg-k8s-prd" } counter drop comment "Drop all other unsolicited traffic"
+    }
+}
+
+# vim: ft=nftables

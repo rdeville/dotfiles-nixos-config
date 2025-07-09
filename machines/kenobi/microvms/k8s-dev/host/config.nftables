@@ -1,0 +1,15 @@
+table ip filter {
+    chain input {
+        iifname { "vm-k8s-dev" } accept comment "Allow wg-private networks to access the router"
+    }
+
+    chain forward {
+        iifname { "vm-k8s-dev" } oifname { "vm-k8s-dev" } accept comment "Allow bidirectionnal vm-k8s-dev"
+        iifname { "vm-k8s-dev" } oifname { "tun-illyse" } accept comment "Allow vm-k8s-dev to VPN WAN"
+        iifname { "tun-illyse" } oifname { "vm-k8s-dev" } ct state { established, related } accept comment "Allow established back from VPN WAN to vm-public"
+        iifname { "vm-k8s-dev" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
+        iifname { "vm-k8s-dev" } counter drop comment "Drop all other unsolicited traffic"
+    }
+}
+
+# vim: ft=nftables
