@@ -1,6 +1,34 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.23.0 (2025-07-09)
+
+### ✨ Minor
+
+  * ✨ Instanciate k8s infrastructure (!64) by Romain Deville ([`e81e85a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e81e85a4835b8c10d4dd4350786a5174b378ccbf))
+  * ✨(rey/microvms): Add k8s microvms by Romain Deville ([`e2775b9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e2775b91f17018adfcebf7c8450ea8264be92309)) 🔏
+  * ✨(kenobi/microvms): Add k8s microvms, not activated yet by Romain Deville ([`d813612`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d813612c23cc130289b131a5e03f29a525dbfd59)) 🔏
+  * ✨(kenobi/dns): Update DNS entry and add DNS for k8s wireguard networks by Romain Deville ([`f50a598`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f50a5981f5d8ca4939574f6eb5f56f2f097a2396)) 🔏
+  * ✨(kenobi/net): Normalize networks and add k8s wireguard networks by Romain Deville ([`d71e126`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d71e126a5c73b3dbccfd2c2aae338de58d3aa7fa)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(rey/network): Normalize network configuration with nftables by Romain Deville ([`e067a8e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e067a8e401b5899142ab2f469fd94c2c898ccfc5)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`b956eac`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b956eac9689bb43444d695ce0095ff472743f487)) 🔏
+  * 🔧(topology): Update topology due to infra updates by Romain Deville ([`eea9771`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/eea9771466cac218323fb3bc0d678197547bf7a1)) 🔏
+  * 🔧(templates/server): Update allowed command for azathoth by Romain Deville ([`0f9186e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0f9186ee6a3e0367ad7d8a2621ecdc50ba9c277f)) 🔏
+  * 🔧(luke): Explicitly allow Ports by Romain Deville ([`42c6b10`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/42c6b108c451d6ad3628bf23bc64744e63e38c3e)) 🔏
+  * 🔧(leia): Explicitly allowed Ports by Romain Deville ([`706b6f9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/706b6f9a11fda76618866c5b9aaf94494b0aa813)) 🔏
+  * 🔧(sops): Remove microvms specific sops config by Romain Deville ([`2f7f4b7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2f7f4b7efcfba0b661c176eb3b0854a27082e374)) 🔏
+  * 🔧(flake): Update topology to ignores nixos-live configurations by Romain Deville ([`38ffcc6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/38ffcc6b4c4f5557d2292f6735cfce3dbdf2e50d)) 🔏
+
+### 🔊 Others
+
+  * 🔐(rey/keys): Add key for wireguard k8s by Romain Deville ([`f3293e1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f3293e19b9fcadf27c5f8c6dba25d326729c3eea)) 🔏
+  * 🔐(common_secrets): Update and k8s token secrets for all clusters by Romain Deville ([`0a1ab3d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0a1ab3d3142bf426d992e1fb128c37146b8f043c)) 🔏
+  * 🔨(script): Improve deploy to stop if os build failed by Romain Deville ([`1e01c1d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1e01c1d15ae51dfe1082accf3dcd235dcfb84797)) 🔏
+  * 🔨(scripts): Add new simple script to generate SSH and WG keys by Romain Deville ([`c1ec421`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c1ec421e1d2bbbadf64140c226412d3e0b3687d7)) 🔏
+
 ## v0.22.0 (2025-07-06)
 
 ### ✨ Minor
