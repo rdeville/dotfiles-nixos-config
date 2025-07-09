@@ -23,7 +23,7 @@ in {
             "152.228.170.17"
           ];
           physicalConnections = [
-            (mkLib.mkConnectionRev "internet" "*")
+            (mkLib.mkConnection "internet" "*")
           ];
         };
       };

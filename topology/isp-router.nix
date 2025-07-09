@@ -18,7 +18,7 @@ in {
         wan = {
           icon = "interfaces.fiber-duplex";
           physicalConnections = [
-            (mkLib.mkConnection "internet" "*")
+            (mkLib.mkConnectionRev "internet" "*")
           ];
           network = "internet";
         };
@@ -46,7 +46,7 @@ in {
       name = "ISP Public Network";
       cidrv4 = "192.168.1.0/24";
       style = {
-        primaryColor = "#e7000b";
+        primaryColor = "#f6339a";
         secondaryColor = null;
         pattern = "solid";
       };

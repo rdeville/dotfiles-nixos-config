@@ -27,7 +27,7 @@ in {
         wan = {
           icon = "interfaces.fiber-duplex";
           physicalConnections = [
-            (mkLib.mkConnection "internet" "*")
+            (mkLib.mkConnectionRev "internet" "*")
           ];
           network = "internet";
         };

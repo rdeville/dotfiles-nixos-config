@@ -9,9 +9,9 @@ in {
     ./topology/switch.nix
     ./topology/k8s-switch.nix
 
-    ./topology/chewbacca.nix
-    ./topology/han.nix
-    ./topology/lando.nix
+    ./topology/lilith.nix
+    ./topology/ava.nix
+    ./topology/maya.nix
   ];
 
   renderers = {
@@ -34,7 +34,7 @@ in {
     internet = {
       name = "Internet";
       style = {
-        primaryColor = "#fe9a00";
+        primaryColor = "#d8f999";
         secondaryColor = null;
         pattern = "solid";
       };

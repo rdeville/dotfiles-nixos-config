@@ -26,21 +26,13 @@ in {
       };
 
       interfaces = {
-        k8s-stg = {
-          icon = ../../assets/images/interfaces/vlan.png;
-        };
-
-        k8s-prd = {
-          icon = ../../assets/images/interfaces/vlan.png;
-        };
-
         enp1s0 = {
           addresses = [
             "192.168.1.10"
           ];
           type = "ethernet";
           physicalConnections = [
-            (mkLib.mkConnection "isp-router" "eth1")
+            (mkLib.mkConnectionRev "isp-router" "eth1")
           ];
         };
 
@@ -50,7 +42,7 @@ in {
             "89.234.140.170"
           ];
           physicalConnections = [
-            (mkLib.mkConnection "illyse" "wg0")
+            (mkLib.mkConnectionRev "illyse" "wg0")
           ];
         };
       };
@@ -66,11 +58,11 @@ in {
           info = "DHCP Server";
           icon = ../../assets/images/services/kea.png;
           details = {
-            k8s-prd = {
-              text = "Pool: 172.168.128.64 -> 172.168.128.254";
+            ethernet = {
+              text = "Pool: 172.168.0.64 -> 172.168.0.254";
             };
-            k8s-stg = {
-              text = "Pool: 172.168.144.64 -> 172.168.144.254";
+            wifi = {
+              text = "Pool: 172.168.1.64 -> 172.168.1.254";
             };
           };
         };

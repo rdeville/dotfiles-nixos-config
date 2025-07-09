@@ -2,7 +2,7 @@
   mkLib = config.lib.topology;
 in {
   nodes = {
-    chewbacca = {
+    lilith = {
       deviceType = "device";
       deviceIcon = "devices.nixos";
 
@@ -19,23 +19,23 @@ in {
       interfaces = {
         enp0s1 = {
           addresses = [
-            "172.16.128.11"
+            "172.16.128.10"
           ];
           type = "ethernet";
           network = "k8s-prd";
           physicalConnections = [
-            (mkLib.mkConnection "k8s-switch" "eth4")
+            (mkLib.mkConnectionRev "k8s-switch" "eth3")
           ];
         };
 
         wg-kenobi-pri = {
           addresses = [
-            "172.18.1.130"
+            "172.18.1.131"
           ];
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };

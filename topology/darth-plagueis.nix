@@ -23,7 +23,7 @@ in {
           ];
           network = "internet";
           physicalConnections = [
-            (mkLib.mkConnectionRev "internet" "*")
+            (mkLib.mkConnection "internet" "*")
           ];
         };
       };

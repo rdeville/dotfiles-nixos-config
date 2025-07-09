@@ -15,28 +15,33 @@ in {
       interfaces = {
         wlp170s0 = {
           addresses = [
-            "172.16.2.20"
+            "172.16.1.3"
           ];
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wlp5s0f0")
-          ];
-        };
-        wg-kenobi-pri = {
-          physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wlp5s0f0")
           ];
         };
-        wg-kenobi-pub = {
+        wg-private = {
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-public")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
+          ];
+        };
+        wg-public = {
+          physicalConnections = [
+            (mkLib.mkConnectionRev "kenobi" "wg-public")
+          ];
+        };
+        wg-k8s-dev = {
+          physicalConnections = [
+            (mkLib.mkConnectionRev "kenobi" "wg-k8s-dev")
           ];
         };
         enp0s1 = {
           addresses = [
-            "172.16.1.20"
+            "172.16.0.3"
           ];
           physicalConnections = [
-            (mkLib.mkConnection "switch" "eth2")
+            (mkLib.mkConnectionRev "switch" "eth2")
           ];
         };
       };

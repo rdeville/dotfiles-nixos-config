@@ -15,14 +15,14 @@ in {
         "k8s-stg@eth0" = {
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "k8s-stg")
+            (mkLib.mkConnectionRev "kenobi" "k8s-stg")
           ];
         };
 
         "k8s-prd@eth0" = {
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "k8s-prd")
+            (mkLib.mkConnectionRev "kenobi" "k8s-prd")
           ];
         };
 

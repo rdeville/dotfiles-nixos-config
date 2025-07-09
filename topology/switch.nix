@@ -13,7 +13,7 @@ in {
       interfaces = {
         eth0 = {
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "enp2s0")
+            (mkLib.mkConnectionRev "kenobi" "enp2s0")
           ];
         };
         eth1 = {};

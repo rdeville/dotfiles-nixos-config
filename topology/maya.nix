@@ -2,7 +2,7 @@
   mkLib = config.lib.topology;
 in {
   nodes = {
-    han = {
+    maya = {
       deviceType = "device";
       deviceIcon = "devices.nixos";
 
@@ -19,23 +19,23 @@ in {
       interfaces = {
         enp0s1 = {
           addresses = [
-            "172.16.128.10"
+            "172.16.128.11"
           ];
           type = "ethernet";
           network = "k8s-prd";
           physicalConnections = [
-            (mkLib.mkConnection "k8s-switch" "eth3")
+            (mkLib.mkConnectionRev "k8s-switch" "eth4")
           ];
         };
 
         wg-kenobi-pri = {
           addresses = [
-            "172.18.1.131"
+            "172.18.1.130"
           ];
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };

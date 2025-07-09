@@ -2,7 +2,7 @@
   mkLib = config.lib.topology;
 in {
   nodes = {
-    lando = {
+    ava = {
       deviceType = "device";
       deviceIcon = "devices.nixos";
 
@@ -24,7 +24,7 @@ in {
           type = "ethernet";
           network = "k8s-prd";
           physicalConnections = [
-            (mkLib.mkConnection "k8s-switch" "eth5")
+            (mkLib.mkConnectionRev "k8s-switch" "eth5")
           ];
         };
 
@@ -35,7 +35,7 @@ in {
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };
