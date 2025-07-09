@@ -20,7 +20,7 @@ in {
           type = "ethernet";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "k8s-switch" "eth2")
+            (mkLib.mkConnectionRev "k8s-switch" "eth2")
           ];
         };
         wg-kenobi-pri = {
@@ -30,7 +30,7 @@ in {
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };

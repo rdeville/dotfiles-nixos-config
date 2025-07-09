@@ -1,14 +1,27 @@
-{...}: {
+{...}: let
+  network = "wlp170s0";
+in {
   systemd = {
     network = {
       networks = {
-        wlp170s0 = {
+        ${network} = {
           matchConfig = {
-            Name = "wlp170s0";
+            Name = network;
           };
           dns = [
             "89.234.140.170"
           ];
+        };
+      };
+    };
+  };
+
+  networking = {
+    firewall = {
+      interfaces = {
+        ${network} = {
+          allowedTCPPorts = [];
+          allowedUDPPorts = [];
         };
       };
     };

@@ -16,11 +16,6 @@ keys:
   - &os-rey age197rrulzasp37ew22yhwd5h4rqxtka2pxcl3t4056zl8rgnwa4q7q92266d
   - &hm-rdeville-rey age13vptv2mspy6dy5c5kvduqfencmlcjvgtqsvul9cnehncrvuym3lsxe3hen
 creation_rules:
-  - path_regex: age\.enc\.txt
-  # AGE key files can only be decrypted by @rdeville
-    key_groups:
-      - age:
-        - *rdeville
   - path_regex: darth-maul/.*\.enc\.(yaml|json|asc|txt)$
     key_groups:
       - age:
@@ -67,20 +62,27 @@ creation_rules:
       - age:
         - *rdeville
         - *hm-rdeville-palpatine
-  - path_regex: common_secrets/k3s-prod.enc.yaml$
+  - path_regex: common_secrets/k8s-prd.enc.yaml$
     key_groups:
       - age:
         - *rdeville
-  - path_regex: common_secrets/k3s-stg.enc.yaml$
+        - *os-kenobi
+  - path_regex: common_secrets/k8s-stg.enc.yaml$
     key_groups:
       - age:
         - *rdeville
         - *os-luke
         - *os-leia
-  - path_regex: common_secrets/k3s-stg.enc.yaml.bak$
+        - *os-kenobi
+        - *os-rey
+        - *os-darth-maul
+  - path_regex: common_secrets/k8s-dev.enc.yaml$
     key_groups:
       - age:
         - *rdeville
+        - *os-kenobi
+        - *os-rey
+        - *os-darth-maul
   - path_regex: common_secrets/spotify.enc.yaml$
     key_groups:
       - age:
@@ -89,7 +91,8 @@ creation_rules:
         - *hm-rdeville-palpatine
         - *hm-rdeville-darth-maul
         - *hm-rdeville-kenobi
-  - path_regex: common_secrets/spotify.enc.yaml.bak$
+  - path_regex: age\.enc\.txt
+    # AGE key files can only be decrypted by @rdeville
     key_groups:
       - age:
         - *rdeville

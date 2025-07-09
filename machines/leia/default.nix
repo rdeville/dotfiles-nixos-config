@@ -17,13 +17,13 @@
   networking = {
     firewall = {
       enable = lib.mkForce false;
-      # allowedUDPPorts = [
+      allowedUDPPorts = [];
       #   # Cilium Port
       #   # See: https://docs.cilium.io/en/stable/operations/system_requirements/
       #   # Wireguard
       #   51871
       # ];
-      # allowedTCPPorts = [
+      allowedTCPPorts = [];
       #   # Kube API
       #   6443
       #   # Cilium Port

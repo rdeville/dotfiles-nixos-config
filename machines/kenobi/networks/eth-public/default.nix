@@ -1,23 +1,26 @@
 {...}: let
   id = 1;
-  lanIface = "enp2s0";
-  prefix = "172.16.${toString id}";
-  length = 24;
+  network = "enp2s0";
+  desc = "Public Ethernet Network";
+  prefix = "172.16.0";
+  length = "24";
+  clr = "#00a63e";
+  cidr = "${prefix}.0/${length}";
 in {
   systemd = {
     network = {
       networks = {
-        "200${toString id}-${lanIface}" = {
+        ${network} = {
           enable = true;
           matchConfig = {
-            Name = lanIface;
+            Name = network;
           };
           networkConfig = {
             DHCP = "no";
             IPv6AcceptRA = false;
           };
           address = [
-            "${prefix}.1/${toString length}"
+            "${prefix}.1/${length}"
           ];
           linkConfig = {
             RequiredForOnline = "no";
@@ -26,22 +29,17 @@ in {
       };
     };
   };
+
   networking = {
     firewall = {
       interfaces = {
-        "${lanIface}" = {
+        ${network} = {
           allowedTCPPorts = [
-            # DNS Port
-            53
-            # HTTP(s) Ports
-            80
-            443
+            53 # DNS
           ];
           allowedUDPPorts = [
-            # DNS Port
-            53
-            # DHCP Port
-            67
+            53 # DNS
+            67 # DHCP
           ];
         };
       };
@@ -59,31 +57,35 @@ in {
         settings = {
           interfaces-config = {
             interfaces = [
-              lanIface
+              network
             ];
           };
           subnet4 = [
             {
               inherit id;
-              subnet = "${prefix}.0/${toString length}";
+              subnet = cidr;
               reservations = [
                 {
-                  hw-address = "10:bf:48:7c:c8:e6";
-                  hostname = "darth-maul";
-                  ip-address = "${prefix}.10";
+                  hw-address = "74:13:ea:be:97:9a";
+                  hostname = "rey";
+                  ip-address = "${prefix}.3";
                 }
               ];
-              pools = [{pool = "${prefix}.64 - ${prefix}.254";}];
-              interface = lanIface;
+              pools = [
+                {
+                  pool = "${prefix}.64 - ${prefix}.254";
+                }
+              ];
+              interface = network;
               option-data = [
                 {
                   name = "routers";
                   data = "${prefix}.1";
                 }
-                # {
-                #   name = "domain-name-servers";
-                #     data = "${prefix}.1";
-                # }
+                {
+                  name = "domain-name-servers";
+                  data = "${prefix}.1";
+                }
               ];
             }
           ];
@@ -94,11 +96,11 @@ in {
 
   topology = {
     networks = {
-      eth-public = {
-        name = "Public Ethernet Network";
-        cidrv4 = "172.16.1.1/24";
+      ${network} = {
+        name = desc;
+        cidrv4 = cidr;
         style = {
-          primaryColor = "#00a63e";
+          primaryColor = clr;
           secondaryColor = null;
           pattern = "solid";
         };
@@ -106,8 +108,8 @@ in {
     };
     self = {
       interfaces = {
-        "${lanIface}" = {
-          network = "eth-public";
+        ${network} = {
+          inherit network;
         };
       };
     };

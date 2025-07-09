@@ -1,5 +1,5 @@
 {config, ...}: let
-  vpnIface = "tun-illyse";
+  netName = "tun-illyse";
 in {
   sops = {
     secrets = {
@@ -45,7 +45,7 @@ in {
       wait-online = {
         extraArgs = [
           "--interface"
-          vpnIface
+          netName
         ];
       };
     };
@@ -54,17 +54,14 @@ in {
   networking = {
     firewall = {
       interfaces = {
-        "${vpnIface}" = {
+        ${netName} = {
           allowedTCPPorts = [
-            # DNS Port
-            53
-            # HTTP(s) Ports
-            80
-            443
+            53 # DNS
+            80 # HTTP
+            443 # HTTPs
           ];
           allowedUDPPorts = [
-            # DNS Port
-            53
+            53 # DNS
           ];
         };
       };

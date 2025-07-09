@@ -208,7 +208,13 @@
             ./topology.nix
             # Inline module to inform topology of your existing NixOS hosts.
             {
-              nixosConfigurations = self.nixosConfigurations;
+              nixosConfigurations = builtins.foldl' (acc: elem:
+                {
+                  ${elem} = self.nixosConfigurations.${elem};
+                }
+                // acc) {} (builtins.filter (host:
+                builtins.match "nixos-live.*" host != [])
+              (builtins.attrNames self.nixosConfigurations));
             }
           ];
         }

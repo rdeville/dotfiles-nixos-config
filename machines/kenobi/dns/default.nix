@@ -1,5 +1,5 @@
 {...}: let
-  internalNetworks = [
+  internal-net = [
     # Localhost
     "192.168.1.0/24"
     # Public Ethernet
@@ -13,11 +13,29 @@
     # Public Wireguard
     "172.17.1.0/24"
   ];
-  privateNetworks = [
+  private-net = [
     # Private Wireguard
     "172.18.0.0/16"
   ];
+  kubernetes-net = [
+    # k8s prd Wireguard
+    "172.30.128.0/24"
+    # k8s stg Wireguard
+    "172.30.144.0/24"
+    # k8s dev Wireguard
+    "172.30.160.0/24"
+  ];
 in {
+  systemd = {
+    services = {
+      bind = {
+        after = [
+          "systemd-networkd.service"
+        ];
+      };
+    };
+  };
+
   services = {
     bind = {
       enable = true;
@@ -30,12 +48,17 @@ in {
 
       extraConfig = ''
         acl "private_client" {
-          ${builtins.concatStringsSep ";" privateNetworks};
+          ${builtins.concatStringsSep ";" private-net};
         };
 
         acl "internal_client" {
-          ${builtins.concatStringsSep ";" internalNetworks};
+          ${builtins.concatStringsSep ";" internal-net};
         };
+
+        acl "kubernetes_client" {
+          ${builtins.concatStringsSep ";" kubernetes-net};
+        };
+
 
         view "private_client" {
           match-clients {
@@ -52,6 +75,20 @@ in {
           zone "tekunix.cloud" {
             type master;
             file "${./tekunix.cloud.internal}";
+          };
+        };
+
+        view "kubernetes_client" {
+          match-clients {
+            "kubernetes_client";
+          };
+          allow-query-cache {
+            "kubernetes_client";
+          };
+          recursion yes;
+          zone "tekunix.internal" {
+            type master;
+            file "${./tekunix.internal}";
           };
         };
 

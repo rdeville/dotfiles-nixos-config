@@ -14,21 +14,23 @@ in {
 
       interfaces = {
         enp0s25 = {
-          addresses = ["172.16.1.30"];
+          addresses = [
+            "172.16.0.2"
+          ];
           physicalConnections = [
-            (mkLib.mkConnection "switch" "eth1")
+            (mkLib.mkConnectionRev "switch" "eth1")
           ];
         };
         wg-kenobi-pri = {
           type = "wireguard";
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-private")
+            (mkLib.mkConnectionRev "kenobi" "wg-private")
           ];
         };
         wg-kenobi-pub = {
           type = "wireguard";
           physicalConnections = [
-            (mkLib.mkConnection "kenobi" "wg-public")
+            (mkLib.mkConnectionRev "kenobi" "wg-public")
           ];
         };
       };

@@ -3,18 +3,19 @@
   lib,
   ...
 }: let
-  id = 1;
-  wgDevice = "wg-public";
-  wgIface = "wg-public";
-  prefix = "172.17.${toString id}";
-  length = 24;
-
-  listenPort = 65142;
+  network = "wg-public";
+  desc = "Wireguard Public";
+  prefix = "172.17.0";
+  length = "24";
+  listenPort = 60001;
+  externalInterface = "tun-illyse";
+  clr = "#c27aff";
+  cidr = "${prefix}.0/${length}";
 in {
   sops = {
     secrets = {
-      "wg-public/private-key" = {
-        sopsFile = ./wg-public.private.key.enc.txt;
+      "network/${network}/private-key" = {
+        sopsFile = ./${network}.private.key.enc.txt;
         format = "binary";
         group = config.users.users.systemd-network.group;
         mode = "0640";
@@ -28,21 +29,18 @@ in {
   systemd = {
     network = {
       netdevs = {
-        "300${toString id}-${wgIface}" = {
+        ${network} = {
           netdevConfig = {
             Kind = "wireguard";
-            Name = wgDevice;
+            Name = network;
           };
           wireguardConfig = {
             ListenPort = listenPort;
-            PrivateKeyFile = config.sops.secrets."wg-public/private-key".path;
+            PrivateKeyFile = config.sops.secrets."network/${network}/private-key".path;
           };
           wireguardPeers = builtins.map (
             peer: {
-              AllowedIPs = [
-                "0.0.0.0/0"
-              ];
-              PublicKey = peer.pubKey;
+              inherit (peer) AllowedIPs PublicKey;
               PersistentKeepalive = 25;
             }
           ) (import ./peers.nix {inherit lib;});
@@ -50,12 +48,12 @@ in {
       };
 
       networks = {
-        "300${toString id}-${wgIface}" = {
+        ${network} = {
           matchConfig = {
-            Name = wgDevice;
+            Name = network;
           };
           address = [
-            "${prefix}.1/${toString length}"
+            "${prefix}.1/${length}"
           ];
           linkConfig = {
             RequiredForOnline = "no";
@@ -72,25 +70,17 @@ in {
 
     firewall = {
       interfaces = {
-        "tun-illyse" = {
+        ${externalInterface} = {
           allowedUDPPorts = [
-            # Wireguard ports open on all interface
-            listenPort
+            listenPort # Wireguard
           ];
         };
-        "${wgIface}" = {
+        ${network} = {
           allowedTCPPorts = [
-            # DNS Port
-            53
-            # HTTP(s) Ports
-            80
-            443
+            53 # DNS
           ];
           allowedUDPPorts = [
-            # DHCP Port
-            67
-            # DNS Port
-            53
+            53 # DNS
           ];
         };
       };
@@ -103,27 +93,27 @@ in {
 
   topology = {
     networks = {
-      wg-public = {
-        name = "Wireguard Public";
-        cidrv4 = "172.17.1.0/24";
+      ${network} = {
+        name = desc;
+        cidrv4 = cidr;
         style = {
-          primaryColor = "#c27aff";
+          primaryColor = clr;
           secondaryColor = null;
           pattern = "dotted";
         };
       };
     };
+
     self = {
       interfaces = {
-        wg-public = {
-          network = "wg-public";
+        ${network} = {
+          inherit network;
         };
       };
-
       services = {
-        wireguard-public = {
+        ${network} = {
           icon = "services.wireguard";
-          name = "WireGuard Public VPN";
+          name = desc;
         };
       };
     };

@@ -169,8 +169,11 @@ in {
             commands = [
               "${storePath}/bin/switch-to-configuration"
               "${storePath}/bin/env"
+              # When using --sudo
               "${currSysPath}/nix-store"
               "${currSysPath}/nix-env"
+              # When using --use-remote-sudo
+              "${currSysPath}/systemd-run"
             ];
           in
             builtins.map (command: {

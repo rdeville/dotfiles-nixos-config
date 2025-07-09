@@ -1,12 +1,15 @@
 {config, ...}: let
   id = 2;
-  wlanIface = "wlp5s0f0";
-  prefix = "172.16.${toString id}";
-  length = 24;
+  network = "wlp5s0f0";
+  desc = "Public Wireless Network";
+  prefix = "172.16.1";
+  length = "24";
+  clr = "#05df72";
+  cidr = "${prefix}.0/${length}";
 in {
   sops = {
     secrets = {
-      "wireless/public/password" = {
+      "network/${network}/password" = {
         sopsFile = ../../secrets.enc.yaml;
       };
     };
@@ -15,17 +18,17 @@ in {
   systemd = {
     network = {
       networks = {
-        "200${toString id}-${wlanIface}" = {
+        ${network} = {
           enable = true;
           matchConfig = {
-            Name = wlanIface;
+            Name = network;
           };
           networkConfig = {
             DHCP = "no";
             IPv6AcceptRA = false;
           };
           address = [
-            "${prefix}.1/${toString length}"
+            "${prefix}.1/${length}"
           ];
           linkConfig = {
             RequiredForOnline = "no";
@@ -38,19 +41,15 @@ in {
   networking = {
     firewall = {
       interfaces = {
-        "${wlanIface}" = {
+        ${network} = {
           allowedTCPPorts = [
-            # DNS Port
-            53
-            # HTTP(s) Ports
-            80
-            443
+            53 # DNS
+            80 # HTTP
+            443 # HTTPs
           ];
           allowedUDPPorts = [
-            # DNS Port
-            53
-            # DHCP Port
-            67
+            53 # DNS
+            67 # DHCP
           ];
         };
       };
@@ -70,17 +69,17 @@ in {
     hostapd = {
       enable = true;
       radios = {
-        ${wlanIface} = {
+        ${network} = {
           band = "2g";
           countryCode = "FR";
           # French channels are 1, 6 and 11
           channel = 1;
           networks = {
-            ${wlanIface} = {
+            ${network} = {
               logLevel = 2; # default 2
               authentication = {
                 mode = "wpa2-sha256";
-                wpaPasswordFile = config.sops.secrets."wireless/public/password".path;
+                wpaPasswordFile = config.sops.secrets."network/${network}/password".path;
               };
               ssid = "La Resistance";
             };
@@ -95,18 +94,18 @@ in {
         settings = {
           interfaces-config = {
             interfaces = [
-              wlanIface
+              network
             ];
           };
           subnet4 = [
             {
               inherit id;
-              subnet = "${prefix}.0/${toString length}";
+              subnet = cidr;
               reservations = [
                 {
                   hw-address = "74:13:ea:be:97:9a";
                   hostname = "rey";
-                  ip-address = "${prefix}.11";
+                  ip-address = "${prefix}.3";
                 }
               ];
               pools = [
@@ -114,16 +113,16 @@ in {
                   pool = "${prefix}.64 - ${prefix}.254";
                 }
               ];
-              interface = wlanIface;
+              interface = network;
               option-data = [
                 {
                   name = "routers";
                   data = "${prefix}.1";
                 }
-                # {
-                #   name = "domain-name-servers";
-                #     data = "${prefix}.1";
-                # }
+                {
+                  name = "domain-name-servers";
+                  data = "${prefix}.1";
+                }
               ];
             }
           ];
@@ -134,11 +133,11 @@ in {
 
   topology = {
     networks = {
-      wl-public = {
-        name = "Public Wireless Network";
-        cidrv4 = "172.16.2.1/24";
+      ${network} = {
+        name = desc;
+        cidrv4 = cidr;
         style = {
-          primaryColor = "#05df72";
+          primaryColor = clr;
           secondaryColor = null;
           pattern = "solid";
         };
@@ -146,8 +145,8 @@ in {
     };
     self = {
       interfaces = {
-        wlp5s0f0 = {
-          network = "wl-public";
+        ${network} = {
+          inherit network;
         };
       };
     };

@@ -1,36 +1,39 @@
 $ORIGIN tekunix.private.
 $TTL    1h
-@              IN SOA   ns0.fdn.fr ns1.fdn.fr (
-                                1    ; Serial
-                                1h   ; Refresh
-                                1h   ; Retry
-                                1h   ; Expire
-                                1h)  ; Negative Cache TTL
-               IN      NS      ns0.fdn.fr
-               IN      NS      ns1.fdn.fr
+@                     IN SOA   ns0.fdn.fr ns1.fdn.fr (
+                                  1  ; Serial
+                                  1h ; Refresh
+                                  1h ; Retry
+                                  1h ; Expire
+                                  1h ; Negative Cache TTL
+                                )
+                      IN NS    ns0.fdn.fr
+                      IN NS    ns1.fdn.fr
 
-; Router IP which is also my ingress entrypoint for my prod cluster
-@              IN A     172.18.0.1
-*              IN A     172.18.0.1
-kenobi         IN A     172.18.0.1
+; External servers
+; -----------------------------------------------------------------------------
+darth-plagueis        IN CNAME romaindeville.ovh
+darth-vader           IN CNAME romaindeville.fr
 
-darth-maul     IN A     172.18.1.10
-rey            IN A     172.18.1.11
+; Router IP and Personal Machines
+; -----------------------------------------------------------------------------
+@                     IN A     172.18.0.1
+*                     IN A     172.18.0.1
+kenobi                IN A     172.18.0.1
+darth-maul            IN A     172.18.0.2
+rey                   IN A     172.18.0.3
 
 ; PRD Cluster Network
 ; -----------------------------------------------------------------------------
 ; Control-Plane & Worker
-lilith         IN A     172.18.128.10
-maya           IN A     172.18.128.11
-ava            IN A     172.18.128.12
+lilith                IN A     172.18.128.10
+maya                  IN A     172.18.128.11
+ava                   IN A     172.18.128.12
 
 ; STG Cluster Network
 ; -----------------------------------------------------------------------------
-; IP of the entrypoint for my stg cluster
-*.stg          IN A     172.18.144.1
-; Control-Plane
-luke           IN A     172.18.144.10
-; Worker
-leia           IN A     172.18.144.11
+; Control-Plane & Worker
+luke                  IN A     172.18.144.20
+leia                  IN A     172.18.144.21
 
-;  vim: ft=dns
+; vim: ft=dns

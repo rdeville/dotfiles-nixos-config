@@ -12,8 +12,8 @@
     inputs.disko.nixosModules.disko
     ./disko.nix
     ./networks
-    ./topology.nix
     ./microvms
+    ./topology.nix
   ];
 
   nixpkgs = {

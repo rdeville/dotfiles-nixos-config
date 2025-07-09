@@ -1,11 +1,8 @@
 {lib, ...}: let
-  readPubKey = path: lib.removeSuffix "\n" (builtins.readFile path);
+  readPubKeys = file: lib.removeSuffix "\n" (builtins.readFile file);
 in [
-  # WARNING ID = "1" IS RESERVED
-  # Indeed, this ID will be used for peers IPs of the form "1.2.3.ID/32", but
-  # wireguard server will have IP "1.2.3.1/24"
   {
-    id = "1.11";
-    pubKey = readPubKey ./peers/rey.pub;
+    AllowedIPs = "172.18.0.3/32";
+    PublicKey = readPubKeys (../../../rey/_keys/wg-private.pub);
   }
 ]
