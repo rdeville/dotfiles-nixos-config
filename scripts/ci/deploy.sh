@@ -96,6 +96,7 @@ main() {
   local user="${2:-"${USER}"}"
   local ip="${3:-${hostname}.tekunix.private}"
   local tmp="/tmp/host-key/${hostname}"
+  local log="${tmp}/os-build.log"
   local user_has_secret=false
 
   if ! ping -c 1 "${ip}" -q -W 1 &>/dev/null; then
@@ -112,7 +113,8 @@ main() {
     return 1
   fi
 
-  if ! os build "${hostname}"; then
+  os build "${hostname}" 2>&1 | tee "${log}"
+  if grep -q -E "^Error:" "${log}" &>/dev/null; then
     _log "ERROR" "An error occurs during build of **${hostname}**"
     rm -rf "${tmp}"
     return 1
