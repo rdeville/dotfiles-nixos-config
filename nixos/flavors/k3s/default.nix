@@ -126,7 +126,9 @@ in {
                 "--disable=coredns"
               ]
               ++ cfg.extraFlags)
-          else "";
+          else builtins.toString([
+            cfg.extraFlags
+          ]);
       };
     };
   };
