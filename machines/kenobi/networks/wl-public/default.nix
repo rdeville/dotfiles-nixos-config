@@ -1,8 +1,7 @@
 {config, ...}: let
   id = 2;
   network = "wlp5s0f0";
-  desc = "Public Wireless Network";
-  prefix = "172.16.1";
+  prefix = "172.16.2";
   length = "24";
   clr = "#05df72";
   cidr = "${prefix}.0/${length}";
@@ -15,48 +14,39 @@ in {
     };
   };
 
-  systemd = {
-    network = {
-      networks = {
-        ${network} = {
-          enable = true;
-          matchConfig = {
-            Name = network;
-          };
-          networkConfig = {
-            DHCP = "no";
-            IPv6AcceptRA = false;
-          };
-          address = [
-            "${prefix}.1/${length}"
-          ];
-          linkConfig = {
-            RequiredForOnline = "no";
+  os = {
+    flavors = {
+      network = {
+        networks = {
+          ${network} = {
+            interface = "wl-public";
+            isServer = true;
+            activationPolicy = "up";
+            requiredForOnline = "no";
+            networkCIDRPrefix = prefix;
+            networkCIDRLength = length;
+            address = [
+              "${prefix}.1/${length}"
+            ];
+            allowedTCPPorts = [
+              53 # DNS
+            ];
+            allowedUDPPorts = [
+              53 # DNS
+              67 # DHCP
+            ];
+            nftables = {
+              tunInterfaces = [
+                "wg-tun-illyse"
+              ];
+            };
+            topology = {
+              color = clr;
+              desc = "Local Wireless";
+            };
           };
         };
       };
-    };
-  };
-
-  networking = {
-    firewall = {
-      interfaces = {
-        ${network} = {
-          allowedTCPPorts = [
-            53 # DNS
-            80 # HTTP
-            443 # HTTPs
-          ];
-          allowedUDPPorts = [
-            53 # DNS
-            67 # DHCP
-          ];
-        };
-      };
-    };
-
-    nftables = {
-      ruleset = builtins.readFile ./config.nftables;
     };
   };
 
@@ -126,27 +116,6 @@ in {
               ];
             }
           ];
-        };
-      };
-    };
-  };
-
-  topology = {
-    networks = {
-      ${network} = {
-        name = desc;
-        cidrv4 = cidr;
-        style = {
-          primaryColor = clr;
-          secondaryColor = null;
-          pattern = "solid";
-        };
-      };
-    };
-    self = {
-      interfaces = {
-        ${network} = {
-          inherit network;
         };
       };
     };

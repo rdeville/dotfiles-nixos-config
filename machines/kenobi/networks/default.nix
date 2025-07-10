@@ -4,17 +4,11 @@
 {...}: {
   imports = [
     ./wan
-    ./tun-illyse
-    ./eth-public
-    ./eth-k8s-switch
     ./wl-public
-    ./vlan-k8s-stg
-    ./vlan-k8s-prd
-    ./wg-public
-    ./wg-private
-    ./wg-k8s-dev
-    ./wg-k8s-stg
-    ./wg-k8s-prd
+    ./wg-tun-illyse
+    ./wg-servers
+    ./vlan
+    ./ethernet
   ];
 
   boot = {
@@ -26,33 +20,27 @@
     };
   };
 
-  systemd = {
-    network = {
-      enable = true;
-    };
-  };
+  os = {
+    flavors = {
+      network = {
+        enable = true;
 
-  networking = {
-    nameservers = [
-      # Itself to all local resolving
-      "127.0.0.1"
-    ];
+        firewall = {
+          allowPing = true;
+        };
 
-    firewall = {
-      enable = true;
-    };
-
-    nftables = {
-      enable = true;
-      ruleset = builtins.readFile ./config.nftables;
+        nameservers = [
+          # Itself to all local resolving
+          "127.0.0.1"
+          # FDN
+          "80.67.169.12"
+          "80.67.169.40"
+        ];
+      };
     };
   };
 
   services = {
-    openssh = {
-      openFirewall = false;
-    };
-
     kea = {
       dhcp4 = {
         settings = {

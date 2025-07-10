@@ -42,6 +42,10 @@
     resolved = {
       dnssec = "false";
     };
+
+    fail2ban = {
+      enable = true;
+    };
   };
 
   programs = {
