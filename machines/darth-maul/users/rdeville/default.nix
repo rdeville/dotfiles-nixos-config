@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: {
+{config, ...}: {
   sops = {
     age = {
       keyFile = "${config.xdg.cacheHome}/.age.key";

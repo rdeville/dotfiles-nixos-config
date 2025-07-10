@@ -7,6 +7,8 @@
     ../_templates/gui.nix
     ../_templates/nvidia.nix
     ../_templates/main.nix
+    ./networks
+    ./microvms
   ];
 
   nixpkgs = {
@@ -18,23 +20,6 @@
           "steam"
           "steam-unwrapped"
         ];
-    };
-  };
-
-  networking = {
-    interfaces = {
-      enp0s25 = {
-        useDHCP = true;
-        ipv4 = {
-          routes = [
-            {
-              address = "172.16.0.0";
-              prefixLength = 16;
-              via = "192.168.1.1";
-            }
-          ];
-        };
-      };
     };
   };
 
@@ -58,9 +43,7 @@
     hostName = builtins.baseNameOf ./.;
 
     flavors = {
-      steam = {
-        enable = true;
-      };
+      steam.enable = true;
     };
   };
 }
