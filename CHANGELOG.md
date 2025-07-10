@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.40.1 (2025-07-10)
+
+### 🩹 Patch
+
+  * 🐛(os/k3s): Fix k3s flavor to pass args when node is agent (!128) by Romain Deville ([`30a526e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/30a526e0a3a46c2134b49b9a47642868a7437cc3))
+  * 🐛(os/k3s): Fix k3s flavor to pass args when node is agent by Romain Deville ([`9646f64`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9646f647686241fdbbc92db7fc3064c39e58e616)) 🔏
+
 ## v0.40.0 (2025-07-06)
 
 ### ✨ Minor
