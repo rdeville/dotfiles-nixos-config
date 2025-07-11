@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   imports = [
     ./topology/darth-vader.nix
     ./topology/darth-plagueis.nix
@@ -8,6 +6,9 @@ in {
     ./topology/isp-router.nix
     ./topology/switch.nix
     ./topology/k8s-switch.nix
+    ./topology/microvm.nix
+
+    ./topology/p-wing.nix
 
     ./topology/lilith.nix
     ./topology/ava.nix
@@ -26,7 +27,7 @@ in {
 
   nodes = {
     internet =
-      mkLib.mkInternet {
+      config.lib.topology.mkInternet {
       };
   };
 

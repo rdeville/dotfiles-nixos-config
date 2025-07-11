@@ -1,10 +1,7 @@
 {
-  config,
   lib,
   ...
-}: let
-  mkLib = config.lib.topology;
-in {
+}: {
   topology = {
     extractors = {
       kea = {
@@ -25,28 +22,6 @@ in {
         image = ../../assets/images/devices/kenobi.png;
       };
 
-      interfaces = {
-        enp1s0 = {
-          addresses = [
-            "192.168.1.10"
-          ];
-          type = "ethernet";
-          physicalConnections = [
-            (mkLib.mkConnectionRev "isp-router" "eth1")
-          ];
-        };
-
-        wg-illyse = {
-          type = "wireguard";
-          addresses = [
-            "89.234.140.170"
-          ];
-          physicalConnections = [
-            (mkLib.mkConnectionRev "illyse" "wg0")
-          ];
-        };
-      };
-
       services = {
         openssh = {
           hidden = false;
@@ -59,10 +34,10 @@ in {
           icon = ../../assets/images/services/kea.png;
           details = {
             ethernet = {
-              text = "Pool: 172.168.0.64 -> 172.168.0.254";
+              text = "Pool: 172.16.1.64 -> 172.16.1.254";
             };
             wifi = {
-              text = "Pool: 172.168.1.64 -> 172.168.1.254";
+              text = "Pool: 172.16.2.64 -> 172.16.2.254";
             };
           };
         };

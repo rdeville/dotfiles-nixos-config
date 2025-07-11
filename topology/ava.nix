@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     ava = {
       deviceType = "device";
@@ -24,7 +22,7 @@ in {
           type = "ethernet";
           network = "k8s-prd";
           physicalConnections = [
-            (mkLib.mkConnectionRev "k8s-switch" "eth5")
+            (config.lib.topology.mkConnectionRev "k8s-switch" "eth5")
           ];
         };
 
@@ -35,17 +33,12 @@ in {
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "wg-private")
+            (config.lib.topology.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };
 
       services = {
-        k8s = {
-          name = "Kubernetes Control Plane & Worker";
-          icon = ../assets/images/services/kubernetes.png;
-        };
-
         openssh = {
           name = "OpenSSH";
           icon = "services.openssh";

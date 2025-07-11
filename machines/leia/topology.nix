@@ -2,9 +2,7 @@
   config,
   lib,
   ...
-}: let
-  mkLib = config.lib.topology;
-in {
+}: {
   topology = {
     self = {
       hardware = {
@@ -20,7 +18,7 @@ in {
           type = "ethernet";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnectionRev "k8s-switch" "eth2")
+            (config.lib.topology.mkConnectionRev "k8s-switch" "eth2")
           ];
         };
         wg-kenobi-pri = {
@@ -30,17 +28,12 @@ in {
           type = "wireguard";
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "wg-private")
+            (config.lib.topology.mkConnectionRev "kenobi" "wg-private")
           ];
         };
       };
 
       services = {
-        k8s = {
-          name = "Kubernetes CP";
-          icon = ../../assets/images/services/kubernetes.png;
-        };
-
         openssh = {
           hidden = false;
           name = "OpenSSH";

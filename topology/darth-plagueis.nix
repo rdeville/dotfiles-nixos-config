@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     darth-plagueis = {
       deviceType = "device";
@@ -23,7 +21,7 @@ in {
           ];
           network = "internet";
           physicalConnections = [
-            (mkLib.mkConnection "internet" "*")
+            (config.lib.topology.mkConnection "internet" "*")
           ];
         };
       };

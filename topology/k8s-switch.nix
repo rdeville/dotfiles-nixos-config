@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     k8s-switch = {
       deviceType = "device";
@@ -12,43 +10,48 @@ in {
       };
 
       interfaces = {
-        "k8s-stg@eth0" = {
-          virtual = true;
+        eth0 = {
+          addresses = [
+            "172.16.3.100"
+          ];
+          mac = "Ports: 443";
           physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "k8s-stg")
+            (config.lib.topology.mkConnectionRev "kenobi" "eth-k8s")
           ];
         };
 
-        "k8s-prd@eth0" = {
+        k8s-stg = {
           virtual = true;
           physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "k8s-prd")
+            (config.lib.topology.mkConnectionRev "kenobi" "k8s-stg")
+          ];
+        };
+
+        k8s-prd = {
+          virtual = true;
+          physicalConnections = [
+            (config.lib.topology.mkConnectionRev "kenobi" "k8s-prd")
           ];
         };
 
         eth1 = {
-          virtual = true;
           network = "k8s-stg";
         };
 
         eth2 = {
           network = "k8s-stg";
-          virtual = true;
         };
 
         eth3 = {
           network = "k8s-prd";
-          virtual = true;
         };
 
         eth4 = {
           network = "k8s-prd";
-          virtual = true;
         };
 
         eth5 = {
           network = "k8s-prd";
-          virtual = true;
         };
       };
     };

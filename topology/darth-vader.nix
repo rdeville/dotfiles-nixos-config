@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     darth-vader = {
       deviceType = "device";
@@ -23,7 +21,7 @@ in {
             "152.228.170.17"
           ];
           physicalConnections = [
-            (mkLib.mkConnection "internet" "*")
+            (config.lib.topology.mkConnection "internet" "*")
           ];
         };
       };

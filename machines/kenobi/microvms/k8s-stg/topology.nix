@@ -8,11 +8,6 @@ in {
   topology = {
     self = {
       services = {
-        k8s = {
-          name = "Kubernetes CP & Worker";
-          icon = ../../../../assets/images/services/kubernetes.png;
-        };
-
         openssh = {
           hidden = false;
           name = "OpenSSH";
@@ -23,7 +18,7 @@ in {
       interfaces = lib.mkForce {
         eth = {
           addresses = [
-            "172.20.0.144"
+            "172.20.144.201"
           ];
           physicalConnections = [
             (mkLib.mkConnectionRev "kenobi" "vm-k8s-stg")
