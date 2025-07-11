@@ -7,7 +7,7 @@
   length = "24";
   network = "wg-public";
   serverEndpoint = "89.234.140.170:60001";
-  activationPolicy = "up";
+  activationPolicy = "down";
   cidr = "${prefix}.0/${length}";
   allowedIPs = ["0.0.0.0/0"];
   secretPath = "network/${network}/private-key";

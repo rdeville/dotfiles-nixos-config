@@ -56,32 +56,7 @@ in {
       enable = lib.mkForce false;
       allowPing = true;
       allowedUDPPorts = [];
-      #   # Cilium Port
-      #   # See: https://docs.cilium.io/en/stable/operations/system_requirements/
-      #   # Wireguard
-      #   51871
-      # ];
       allowedTCPPorts = [];
-      #   # Kube API
-      #   6443
-      #   # Cilium Port
-      #   # See: https://docs.cilium.io/en/stable/operations/system_requirements/
-      #   # Cilium health
-      #   4240
-      #   # Cilium metrics
-      #   10250
-      #   # Hubble metrics
-      #   9965
-      #   # Hubble peer
-      #   4244
-      # ];
-      # # See: https://github.com/cilium/cilium/issues/27900#issuecomment-2572253315
-      # trustedInterfaces = [
-      #   "cilium_net*"
-      #   "cilium_host*"
-      #   "cilium_vxlan"
-      #   "lxc*"
-      # ];
     };
 
     nftables = {

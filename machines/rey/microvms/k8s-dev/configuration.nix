@@ -161,6 +161,7 @@ in {
       ethtool # manage NIC settings (offload, NIC feeatures, ...)
       tcpdump # view network traffic
       conntrack-tools # view network connection states
+      wireguard-tools # Wireguard binaries
       traceroute # view network routes
       iw # view wlan interfaces and devices
       dig # DNS lookup utiliy
