@@ -9,6 +9,7 @@
     ./ssh-server
     ./steam
     ./window-manager
+    ./network
   ];
 
   options = {
