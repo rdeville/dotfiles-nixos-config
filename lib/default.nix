@@ -1,4 +1,4 @@
-lib: let
+self: lib: let
   mkImap = domain: conn_type: {
     port =
       if conn_type == "SSL/TLS"
@@ -57,6 +57,125 @@ lib: let
         (builtins.attrNames (builtins.readDir inode))
       )
     );
+
+  mkWgNetworkClient = routerName: wgNetworks: id: config:
+    builtins.foldl' (acc: elem:
+      {
+        ${elem.name} = let
+          routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
+          port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
+          ip = builtins.concatStringsSep "" (
+            builtins.elemAt (
+              builtins.split "(.*)/.*" (
+                builtins.elemAt routerNet.networks.${elem.name}.address 0
+              )
+            )
+            1
+          );
+          prefix = builtins.concatStringsSep "" (
+            builtins.elemAt (
+              builtins.split "(.*)\.[0-9]{1,3}/.*" (
+                builtins.elemAt routerNet.networks.${elem.name}.address 0
+              )
+            )
+            1
+          );
+        in {
+          address = lib.mkIf (elem ? address) elem.address;
+          gateway = lib.mkIf (elem ? gateway) elem.gateway;
+          routes = lib.mkIf (elem ? routes) elem.routes;
+          networkConfig = lib.mkIf (elem ? networkConfig) elem.networkConfig;
+          dns = [ip];
+          networkCIDRPrefix = prefix;
+          activationPolicy =
+            if elem ? activationPolicy
+            then elem.activationPolicy
+            else "down";
+          allowedTCPPorts = lib.mkIf (elem ? allowedTCPPorts) elem.allowedTCPPorts;
+          allowedUDPPorts = lib.mkIf (elem ? allowedUDPPorts) elem.allowedUDPPorts;
+          nftables = {
+            allowNat = lib.mkIf (elem ? allowNat) elem.allowNat;
+            allowInput = lib.mkIf (elem ? allowInput) elem.allowInput;
+            allowInputConnected = lib.mkIf (elem ? allowInputConnected) elem.allowInputConnected;
+            allowBidirectional = lib.mkIf (elem ? allowBidirectional) elem.allowBidirectional;
+            tunInterfaces = lib.mkIf (elem ? tunInterfaces) elem.tunInterfaces;
+          };
+          wireguard = {
+            inherit id;
+            enable = true;
+            privateKeyFile = config.sops.secrets."network/${elem.name}/private-key".path;
+            peers = [
+              {
+                Endpoint = "${elem.endpoint}:${port}";
+                PublicKey = ../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
+                AllowedIPs = elem.allowedIPs;
+              }
+            ];
+          };
+          topology = {
+            connections = [
+              {
+                to = "${routerName}";
+                iface = elem.name;
+                reversed = true;
+              }
+            ];
+          };
+        };
+      }
+      // acc) {}
+    wgNetworks;
+
+  mkWgNetworkServer = routerName: wgNetworks: config:
+    builtins.foldl' (acc: elem:
+      {
+        ${elem.name} = {
+          dns = [
+            "${elem.CIDRPrefix}.${toString elem.id}"
+          ];
+          networkCIDRPrefix = elem.CIDRPrefix;
+          networkCIDRLength = elem.CIDRLength;
+          activationPolicy = "up";
+          allowedTCPPorts = lib.mkIf (elem ? allowedTCPPorts) elem.allowedTCPPorts;
+          allowedUDPPorts =
+            (
+              if (elem ? allowedUDPPorts)
+              then elem.allowedUDPPorts
+              else []
+            )
+            ++ [elem.listenPort];
+          isServer = true;
+          nftables = {
+            allowNat = lib.mkIf (elem ? allowNat) elem.allowNat;
+            allowInput = lib.mkIf (elem ? allowInput) elem.allowInput;
+            allowInputConnected = lib.mkIf (elem ? allowInputConnected) elem.allowInputConnected;
+            allowBidirectional = lib.mkIf (elem ? allowBidirectional) elem.allowBidirectional;
+            tunInterfaces = lib.mkIf (elem ? tunInterfaces) elem.tunInterfaces;
+          };
+          wireguard = {
+            inherit
+              (elem)
+              id
+              listenInterfaces
+              listenPort
+              peers
+              ;
+            enable = true;
+            privateKeyFile = config.sops.secrets."network/${elem.name}/private-key".path;
+          };
+          topology =
+            {
+              inherit (elem) color;
+            }
+            // (
+              if (elem ? desc)
+              then {inherit (elem) desc;}
+              else {}
+            );
+        };
+      }
+      // acc) {}
+    wgNetworks;
 in {
   inherit
     listSymlinks
@@ -64,5 +183,7 @@ in {
     mkImap
     mkSmtp
     mkImportCfg
+    mkWgNetworkClient
+    mkWgNetworkServer
     ;
 }
