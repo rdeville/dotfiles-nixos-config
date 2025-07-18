@@ -1,9 +1,0 @@
-table ip filter {
-    chain forward {
-        iifname { "wg-public" } oifname { "wg-public" } accept comment "Allow bidirectionnal wg-public"
-        iifname { "wg-public" } icmp type { echo-request, destination-unreachable, time-exceeded } counter accept comment "Allow select ICMP"
-        iifname { "wg-public" } counter drop comment "Drop all other unsolicited traffic"
-    }
-}
-
-# vim: ft=nftables
