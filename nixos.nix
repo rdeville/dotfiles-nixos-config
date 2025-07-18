@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   lib,
   ...
@@ -31,6 +32,9 @@ in
   in
     {
       "${host}" = release.nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          inherit inputs lib self;
+        };
         modules = [
           # Overlay
           ./overlays
@@ -44,18 +48,46 @@ in
           release.microvm.nixosModules.host
           # Local Modules
           ./machines/${host}
-          ./nixos
-          {
+          ({
+            inputs,
+            config,
+            lib,
+            ...
+          }: let
+            cfg = config.os;
+          in {
             config = {
               os = {
                 inherit (release) isProd;
               };
+
+              home-manager = {
+                useGlobalPkgs = false;
+                useUserPackages = true;
+                extraSpecialArgs = {
+                  # Here the magic happens with inputs into home-manager
+                  inherit inputs lib self;
+                };
+                users = builtins.foldl' (acc: user:
+                  {
+                    # Here is the magic to manage both HM/Nixos in a clean homogeneous way
+                    "${user}" = {
+                      imports =
+                        if (builtins.pathExists ./machines/${cfg.hostName}/users/${user}/default.nix)
+                        then [
+                          ./home-manager/_modules.nix
+                          ./machines/${cfg.hostName}/users/${user}
+                        ]
+                        else [
+                          ./home-manager/_modules.nix
+                        ];
+                    };
+                  }
+                  // acc) {} (builtins.attrNames config.os.users.users);
+              };
             };
-          }
+          })
         ];
-        specialArgs = {
-          inherit inputs lib;
-        };
       };
     }
     // acc) {}
