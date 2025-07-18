@@ -67,7 +67,7 @@ in {
       secrets
       // {
         "k8s-stg-token" = {
-          sopsFile = ../../../../common_secrets/k8s-stg.enc.yaml;
+          sopsFile = ../../../../common/secrets/k8s-stg.enc.yaml;
         };
       };
     age = {

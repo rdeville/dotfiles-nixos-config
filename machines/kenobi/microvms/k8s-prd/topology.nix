@@ -1,10 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
-  mkLib = config.lib.topology;
-in {
+{lib, ...}: {
   topology = {
     self = {
       services = {
@@ -13,25 +7,6 @@ in {
           name = "OpenSSH";
           icon = "services.openssh";
           info = lib.mkForce "";
-        };
-      };
-      interfaces = lib.mkForce {
-        eth = {
-          addresses = [
-            "172.20.128.201"
-          ];
-          physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "vm-k8s-prd")
-          ];
-        };
-        wg-k8s-prd = {
-          network = "wg-k8s-prd";
-          addresses = [
-            "172.30.128.201"
-          ];
-          physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "wg-k8s-prd")
-          ];
         };
       };
     };

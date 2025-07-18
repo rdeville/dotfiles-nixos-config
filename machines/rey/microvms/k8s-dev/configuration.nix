@@ -186,7 +186,7 @@ in {
       iw # view wlan interfaces and devices
       dig # DNS lookup utiliy
       cilium-cli # Cilium utils
-      vim
+      neovim
     ];
   };
 
