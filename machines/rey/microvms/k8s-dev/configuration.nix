@@ -1,4 +1,6 @@
 {
+  self,
+  inputs,
   config,
   lib,
   pkgs,
@@ -67,7 +69,7 @@ in {
       secrets
       // {
         "k8s-dev-token" = {
-          sopsFile = ../../../../common_secrets/k8s-dev.enc.yaml;
+          sopsFile = ../../../../common/secrets/k8s-dev.enc.yaml;
         };
       };
     age = {
@@ -92,6 +94,11 @@ in {
         role = "agent";
         serverAddr = "https://kube.dev.tekunix.internal:6443";
         tokenFile = config.sops.secrets."k8s-dev-token".path;
+        extraFlags = [
+          "--with-node-id"
+          "--node-ip 172.30.160.203"
+          "--node-external-ip 172.30.160.203"
+        ];
       };
     };
   };
@@ -99,6 +106,7 @@ in {
   microvm = {
     vcpu = 2;
     mem = 8192;
+    writableStoreOverlay = "/nix/.rw-store";
     volumes = [
       {
         image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher-k3s.img";
@@ -111,6 +119,12 @@ in {
         label = "etc-rancher-k3s";
         mountPoint = "/etc/rancher/k3s";
         size = 256;
+      }
+      {
+        image = "/var/lib/microvms/${vmName}/volumes/nix-store-overlay.img";
+        label = "store-overlay";
+        mountPoint = config.microvm.writableStoreOverlay;
+        size = 2048;
       }
     ];
     shares = [
@@ -133,6 +147,12 @@ in {
         proto = "virtiofs";
       }
     ];
+  };
+
+  nix = {
+    settings = {
+      auto-optimise-store = false;
+    };
   };
 
   environment = {
@@ -166,6 +186,7 @@ in {
       iw # view wlan interfaces and devices
       dig # DNS lookup utiliy
       cilium-cli # Cilium utils
+      vim
     ];
   };
 
@@ -185,6 +206,68 @@ in {
         }
       ];
     };
+  };
+
+  home-manager = {
+    useGlobalPkgs = false;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      # Here the magic happens with inputs into home-manager
+      inherit inputs lib self;
+    };
+    users = builtins.foldl' (acc: user:
+      {
+        # Here is the magic to manage both HM/Nixos in a clean homogeneous way
+        "${user}" = {
+          home = {
+            stateVersion = config.system.stateVersion;
+            username = user;
+            sessionVariables = {
+              HOST = config.os.hostName;
+              EDITOR = "nvim";
+            };
+            preferXdgDirectories = true;
+          };
+
+          systemd = {
+            user = {
+              startServices = "sd-switch";
+            };
+          };
+
+          programs = {
+            home-manager = {
+              enable = true;
+            };
+
+            zsh = {
+              enable = true;
+              autosuggestion.enable = true;
+              syntaxHighlighting = {
+                enable = true;
+                highlighters = [
+                  "main"
+                ];
+              };
+
+              defaultKeymap = "viins";
+              profileExtra = ''
+                export LC_ALL="en_US.UTF-8"
+              '';
+
+              shellAliases = {
+                l = "ls";
+                ll = "ls -l";
+                la = "ls -a";
+                lla = "ls -al";
+                # grep overload
+                grep = "grep --color=auto";
+              };
+            };
+          };
+        };
+      }
+      // acc) {} (builtins.attrNames config.os.users.users);
   };
 
   fileSystems = {

@@ -1,8 +1,4 @@
-{
-  config,
-  lib,
-  ...
-}: let
+{config, ...}: let
   parentName = config.os.hostName;
   vmName = "vm-${parentName}-${builtins.baseNameOf ../.}";
   netName = "vm-${builtins.baseNameOf ../.}";
@@ -23,27 +19,38 @@ in {
     };
   };
 
-  systemd = {
-    network = {
-      networks = {
-        ${netName} = {
-          matchConfig = {
-            Name = netName;
-          };
-          address = [
-            "${prefix}.1/32"
-          ];
-          routes = [
-            {
-              Destination = "${cidr}";
-            }
-          ];
-          DHCP = "no";
-          networkConfig = {
-            IPv4Forwarding = true;
-          };
-          linkConfig = {
-            RequiredForOnline = "no";
+  networking = {
+    firewall = {
+      logRefusedPackets = true;
+      logRefusedConnections = true;
+      logReversePathDrops = true;
+    };
+  };
+
+  os = {
+    flavors = {
+      network = {
+        networks = {
+          ${netName} = {
+            requiredForOnline = "no";
+            activationPolicy = "up";
+            address = [
+              "${prefix}.1/32"
+            ];
+            nftables = {
+              allowInputConnected = true;
+              tunInterfaces = [
+                "wlp170s0"
+              ];
+            };
+            routes = [
+              {
+                Destination = "${cidr}";
+              }
+            ];
+            networkConfig = {
+              IPv4Forwarding = true;
+            };
           };
         };
       };
@@ -51,32 +58,11 @@ in {
   };
 
   networking = {
-    firewall = {
-      enable = lib.mkForce false;
-      # enable = lib.mkForce true;
-      interfaces = {
-        ${netName} = {
-          allowedTCPPorts = [
-            53 # DNS
-          ];
-          allowedUDPPorts = [
-            53 # DNS
-          ];
-        };
-      };
-    };
-
     nat = {
       enable = true;
       internalIPs = [
-        "172.20.0.0/16"
+        "${cidr}"
       ];
-    };
-
-    nftables = {
-      enable = lib.mkForce false;
-      # enable = true;
-      ruleset = builtins.readFile ./config.nftables;
     };
   };
 }

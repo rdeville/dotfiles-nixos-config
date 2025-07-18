@@ -45,11 +45,6 @@
   };
 
   networking = {
-    nameservers = [
-      # FDN
-      "80.67.169.12"
-      "80.67.169.40"
-    ];
     hosts = {
       "127.0.0.1" = [
         "kube.rey.tekunix.cloud"

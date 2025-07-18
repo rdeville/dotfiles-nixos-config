@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   config,
   lib,
@@ -24,7 +25,7 @@ in {
     vms = {
       ${vmName} = {
         specialArgs = {
-          inherit inputs lib;
+          inherit inputs lib self;
         };
 
         config = {config, ...}: {
@@ -32,6 +33,7 @@ in {
             [
               inputs.sops-nix.nixosModules.sops
               inputs.nix-topology.nixosModules.default
+              inputs.home-manager.nixosModules.home-manager
               ./configuration.nix
               ./topology.nix
               ./networks
