@@ -109,7 +109,7 @@ in {
 
       settings = {
         accept-flake-config = true;
-        auto-optimise-store = true;
+        auto-optimise-store = lib.mkDefault true;
         extra-experimental-features = [
           "flakes"
           "nix-command"
