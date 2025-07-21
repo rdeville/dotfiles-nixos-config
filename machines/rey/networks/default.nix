@@ -127,7 +127,7 @@ in {
               };
               topology = {
                 addresses = [
-                  "192.168.1.3"
+                  "172.16.2.3"
                 ];
                 connections = [
                   {
