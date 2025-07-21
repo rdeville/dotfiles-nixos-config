@@ -73,22 +73,6 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
-    networking = {
-      nftables = {
-        enable = true;
-      };
-      firewall = {
-        enable = true;
-        checkReversePath = "loose";
-        allowedTCPPorts = [
-          # HTTP(s)
-          80
-          443
-        ];
-        allowedUDPPorts = [];
-      };
-    };
-
     services = {
       k3s = {
         enable = true;
@@ -126,9 +110,10 @@ in {
                 "--disable=coredns"
               ]
               ++ cfg.extraFlags)
-          else builtins.toString([
-            cfg.extraFlags
-          ]);
+          else
+            builtins.toString [
+              cfg.extraFlags
+            ];
       };
     };
   };
