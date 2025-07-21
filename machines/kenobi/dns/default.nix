@@ -11,7 +11,7 @@
     # K8S stg vlan
     "172.16.144.0/20"
     # Public Wireguard
-    "172.17.1.0/24"
+    "172.17.0.0/24"
   ];
   private-net = [
     # Private Wireguard
