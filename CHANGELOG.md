@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.0 (2025-07-21)
+
+### ✨ Minor
+
+  * ✨(os): Add network modules and minor fixes (!129) by Romain Deville ([`d279940`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d27994057a14285db71c10fbffa6e133eaa9e14f))
+  * ✨(os/network): Add module to configure vlans by Romain Deville ([`f91120c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f91120cad10eb37b7d0bc5735cf53a83da7c144c)) 🔏
+  * ✨(os/network): Add wireguard flavor to ease wireguard config by Romain Deville ([`42d265d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/42d265d1d8a58e40ffaadd9122b5764dd5510211)) 🔏
+  * ✨(os): Add network flavors to ease router and net config by Romain Deville ([`58363a0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/58363a0dcda67b944a2292fe0327fd69aa98e046)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(os): Update nix.settings with lib.mkDefault by Romain Deville ([`b8e7bde`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b8e7bde4166c5ca096890da634a01c688369ff36)) 🔏
+  * ➕(flake): Add input topology by Romain Deville ([`e534562`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e5345622e334accd0c363dbc86f0d9052c0e3087)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`adb772d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/adb772d2bbd9aba43ef73c1563a646fa899cbffe)) 🔏
+  * 🍱(assets): Add topology interfaces assets by Romain Deville ([`427ed37`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/427ed370ed0becc16dfdcdb0b52a8875b520273d)) 🔏
+  * 🐛(os/k3s): Fix k3s flavor to pass args when node is agent by Romain Deville ([`aa431ae`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aa431ae7322240d8da59e539496dc4b15fa2c7a6)) 🔏
+
 ## v0.40.1 (2025-07-10)
 
 ### 🩹 Patch
