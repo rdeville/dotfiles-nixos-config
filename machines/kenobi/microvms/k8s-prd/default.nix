@@ -1,4 +1,5 @@
 {
+  self,
   inputs,
   config,
   lib,
@@ -24,7 +25,7 @@ in {
     vms = {
       ${vmName} = {
         specialArgs = {
-          inherit inputs lib;
+          inherit inputs lib self;
         };
 
         config = {config, ...}: {
@@ -56,42 +57,17 @@ in {
         access_log /var/log/nginx/kube.tekunix.cloud.access.log basic;
         error_log /var/log/nginx/kube.tekunix.cloud.error.log debug;
 
-        upstream k8s-prd-http {
-          server 172.30.128.201:80;
-        }
-
-        upstream k8s-prd-https {
-          server 172.30.128.201:443;
-        }
-
-        server {
-          listen 172.30.128.1:80;
-          server_name *.tekunix.cloud;
-          proxy_pass k8s-prd-http;
-        }
-
-        server {
-          listen 172.30.128.1:443;
-          server_name *.tekunix.cloud;
-          proxy_pass k8s-prd-https;
-        }
       '';
 
       virtualHosts = {
         "*.tekunix.cloud" = {
           listen = [
-            {
-              addr = "89.234.140.170";
-              port = 80;
-            }
-            {
-              addr = "89.234.140.170";
-              port = 443;
-            }
+            { port = 80; }
+            { port = 443; }
           ];
           locations = {
             "/" = {
-              proxyPass = "http://172.30.128.201";
+              proxyPass = "http://172.30.160.201";
               proxyWebsockets = true;
             };
           };

@@ -62,12 +62,16 @@
       };
     };
 in {
+  imports = [
+    ../../../_templates/k3s.nix
+  ];
+
   sops = {
     secrets =
       secrets
       // {
         "k8s-dev-token" = {
-          sopsFile = ../../../../common_secrets/k8s-dev.enc.yaml;
+          sopsFile = ../../../../common/secrets/k8s-dev.enc.yaml;
         };
       };
     age = {
@@ -88,14 +92,14 @@ in {
       };
 
       k3s = {
-        enable = true;
         role = "server";
         disableAgent = false;
         clusterInit = true;
         extraFlags = [
-          "--default-local-storage-path /var/lib/k8s-data"
           "--tls-san kube.dev.tekunix.internal"
           "--tls-san 172.30.160.201"
+          "--node-ip 172.30.160.201"
+          "--node-external-ip 172.30.160.201"
         ];
         tokenFile = config.sops.secrets."k8s-dev-token".path;
       };

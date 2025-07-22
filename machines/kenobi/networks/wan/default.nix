@@ -1,51 +1,41 @@
-{...}: let
-  network = "enp1s0";
-in {
-  systemd = {
-    network = {
-      wait-online = {
-        extraArgs = [
-          "--interface"
-          network
-        ];
-      };
-      networks = {
-        ${network} = {
-          enable = true;
-          matchConfig = {
-            Name = network;
-          };
-          networkConfig = {
-            DHCP = "ipv4";
-            IPv6AcceptRA = false;
-          };
-          linkConfig = {
-            RequiredForOnline = "routable";
+{config, ...}: {
+  os = {
+    flavors = {
+      network = {
+        networks = {
+          # Default WAN
+          enp1s0 = {
+            DHCP = "yes";
+            activationPolicy = "up";
+            requiredForOnline = "routable";
+            allowedTCPPorts =
+              config.services.openssh.ports
+              ++ [
+                53
+              ];
+            allowedUDPPorts = [
+              53
+            ];
+            nftables = {
+              allowInput = true;
+              allowInputConnected = true;
+              allowNat = true;
+            };
+            topology = {
+              addresses = [
+                "192.168.1.10"
+              ];
+              connections = [
+                {
+                  to = "isp-router";
+                  iface = "eth1";
+                  reversed = true;
+                }
+              ];
+            };
           };
         };
       };
-    };
-  };
-
-  networking = {
-    firewall = {
-      interfaces = {
-        ${network} = {
-          allowedTCPPorts = [
-            22 # SSH
-            53 # DNS
-            80 # HTTP
-            443 # HTTPs
-          ];
-          allowedUDPPorts = [
-            53 # DNS
-          ];
-        };
-      };
-    };
-
-    nftables = {
-      ruleset = builtins.readFile ./config.nftables;
     };
   };
 }

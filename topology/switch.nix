@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     switch = {
       deviceType = "switch";
@@ -13,7 +11,7 @@ in {
       interfaces = {
         eth0 = {
           physicalConnections = [
-            (mkLib.mkConnectionRev "kenobi" "enp2s0")
+            (config.lib.topology.mkConnectionRev "kenobi" "eth-public")
           ];
         };
         eth1 = {};

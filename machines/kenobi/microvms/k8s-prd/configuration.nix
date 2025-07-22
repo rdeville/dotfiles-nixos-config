@@ -67,7 +67,7 @@ in {
       secrets
       // {
         "k8s-prd-token" = {
-          sopsFile = ../../../../common_secrets/k8s-prd.enc.yaml;
+          sopsFile = ../../../../common/secrets/k8s-prd.enc.yaml;
         };
       };
     age = {

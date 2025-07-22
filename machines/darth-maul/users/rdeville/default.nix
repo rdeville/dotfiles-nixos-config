@@ -1,15 +1,11 @@
-{
-  config,
-  osConfig,
-  ...
-}: {
+{config, ...}: {
   sops = {
     age = {
       keyFile = "${config.xdg.cacheHome}/.age.key";
     };
     secrets = {
       "spotify-client-id" = {
-        sopsFile = ../../../../common_secrets/spotify.enc.yaml;
+        sopsFile = ../../../../common/secrets/spotify.enc.yaml;
       };
     };
   };
@@ -19,12 +15,10 @@
       "contact@romaindeville.fr"
       "contact@romaindeville.ovh"
     ];
-    hostName = osConfig.networking.hostName;
 
     flavors = {
-      vscode = {
-        enable = true;
-      };
+      vscode.enable = true;
+      bluetooth.enable = true;
     };
   };
 }

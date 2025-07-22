@@ -50,7 +50,7 @@
   sops = {
     secrets = {
       "k3s-stg-token" = {
-        sopsFile = ../../common_secrets/k3s-stg.enc.yaml;
+        sopsFile = ../../common/secrets/k3s-stg.enc.yaml;
       };
     };
   };

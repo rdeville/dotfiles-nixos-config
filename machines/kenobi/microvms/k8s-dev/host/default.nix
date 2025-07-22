@@ -1,7 +1,7 @@
 {config, ...}: let
+  parentName = config.os.hostName;
   vmName = "vm-${parentName}-${builtins.baseNameOf ../.}";
   netName = "vm-${builtins.baseNameOf ../.}";
-  parentName = config.os.hostName;
   prefix = "172.20.160";
   length = "24";
   cidr = "${prefix}.0/${length}";
@@ -19,27 +19,31 @@ in {
     };
   };
 
-  systemd = {
-    network = {
-      networks = {
-        ${netName} = {
-          matchConfig = {
-            Name = netName;
-          };
-          address = [
-            "${prefix}.1/32"
-          ];
-          routes = [
-            {
-              Destination = "${cidr}";
-            }
-          ];
-          DHCP = "no";
-          networkConfig = {
-            IPv4Forwarding = true;
-          };
-          linkConfig = {
-            RequiredForOnline = "no";
+  os = {
+    flavors = {
+      network = {
+        networks = {
+          ${netName} = {
+            activationPolicy = "up";
+            address = [
+              "${prefix}.1/32"
+            ];
+            routes = [
+              {
+                Destination = "${cidr}";
+              }
+            ];
+            nftables = {
+              allowInput = true;
+              allowInputConnected = true;
+              tunInterfaces = [
+                "wg-tun-illyse"
+                "enp1s0"
+              ];
+            };
+            networkConfig = {
+              IPv4Forwarding = true;
+            };
           };
         };
       };
@@ -47,31 +51,11 @@ in {
   };
 
   networking = {
-    firewall = {
-      enable = true;
-      interfaces = {
-        ${netName} = {
-          allowedTCPPorts = [
-            53 # DNS
-          ];
-          allowedUDPPorts = [
-            53 # DNS
-            65160 # Wireguard k8s-dev
-          ];
-        };
-      };
-    };
-
     nat = {
       enable = true;
       internalIPs = [
         cidr
       ];
-    };
-
-    nftables = {
-      enable = true;
-      ruleset = builtins.readFile ./config.nftables;
     };
   };
 }

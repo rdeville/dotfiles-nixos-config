@@ -151,7 +151,7 @@
       inputs.nixos.homeManagerModules.lib.extend
       (
         final: prev: (
-          import ./lib/default.nix final
+          import ./lib/default.nix self final
         )
       );
 
@@ -188,7 +188,7 @@
 
     # NIXOS
     # ------------------------------------------------------------------------
-    nixosConfigurations = import ./nixos.nix {inherit inputs lib;};
+    nixosConfigurations = import ./nixos.nix {inherit inputs lib self;};
 
     # HOME MANAGER
     # ------------------------------------------------------------------------

@@ -1,6 +1,4 @@
-{config, ...}: let
-  mkLib = config.lib.topology;
-in {
+{config, ...}: {
   nodes = {
     illyse = {
       name = "illyse";
@@ -27,7 +25,7 @@ in {
         wan = {
           icon = "interfaces.fiber-duplex";
           physicalConnections = [
-            (mkLib.mkConnectionRev "internet" "*")
+            (config.lib.topology.mkConnectionRev "internet" "*")
           ];
           network = "internet";
         };

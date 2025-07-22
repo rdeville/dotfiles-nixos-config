@@ -62,7 +62,7 @@
       };
 
       ssh-server = {
-        openFirewall = true;
+        openFirewall = false;
       };
 
       steam.enable = true;
