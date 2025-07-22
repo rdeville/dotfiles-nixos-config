@@ -1,6 +1,47 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.24.0 (2025-07-22)
+
+### ✨ Minor
+
+  * ✨(darth-maul): Add k8s-dev microvms configuration by Romain Deville ([`bcb89ba`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bcb89baf0714866c90588e99ea357680cdfadac2)) 🔏
+  * ✨(darth-maul/net): Add wiregaurd infra config and normalize net by Romain Deville ([`aea8b35`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/aea8b355fb953d662dd9a0430760d4857ef59a04)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Improve kenobi, rey and darth-maul to use new network module (!65) by Romain Deville ([`8e131c3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8e131c3d9bdefe8e71b41afb5af295de432387e0))
+  * ⚡️(rey/net): Update networks definition to use os.flavors.network module by Romain Deville ([`95091b0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/95091b01b63f4683c0298c0fcbbb80148d9ddafd)) 🔏
+  * ⚡️(darth-maul/user): Update user config and secret path by Romain Deville ([`db81df1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/db81df11d54c0cf6f5e543c80343b4717e3acd1f)) 🔏
+  * ⚡️(luke): Improve network configuration by Romain Deville ([`db23ca3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/db23ca33835dada9626cf7d40fd6cd93c2926cc4)) 🔏
+  * ⚡️(os): Improve nixos.nix by Romain Deville ([`edf1831`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/edf1831c17f65dabcd28c3d280f28e43effe8a75)) 🔏
+  * ⚡️(lib): Add mkWgNetwork function by Romain Deville ([`b4b7fe7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b4b7fe7bf8f639185911ec087995984b03058c12)) 🔏
+  * ➕(flake): Add self to nixos import by Romain Deville ([`495e78d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/495e78d08a1b49123fbb9d833083374d88742b14)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`5770916`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/577091647564d66e0510b9acc9ca54c33e171a19)) 🔏
+  * 🍱(assets/devices): Add pixel-7 image by Romain Deville ([`a93d441`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a93d4416d2e9014495f2996654069f9b57583f1b)) 🔏
+  * 👽️(hm): Update nix-index-database imported module by Romain Deville ([`2f75e2a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2f75e2ad32b6ba3145325fee4eee13848f50f852)) 🔏
+  * 🔧(kenobi/dns): Update DNS configuration by Romain Deville ([`82043e9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/82043e95ee0c4f88c89f9bdab68f678b3fda264d)) 🔏
+  * 🔧(kenobi/users): Update secret path by Romain Deville ([`fc80839`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fc808393aaf496de9d3c9f2809ac76dc1446d616)) 🔏
+  * 🔧(kenobi/vms): Update k8s vms configuration by Romain Deville ([`8e77a5b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8e77a5b7a8c9d5c1d4a329884f04df12b6044b1d)) 🔏
+  * 🔧(rey/users): Update secret path by Romain Deville ([`bfd3d58`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bfd3d5856577e0973c606143722380f44b8d7d50)) 🔏
+  * 🔧(rey/vms): Normalize microvms to use os.flavors.network module by Romain Deville ([`b09036d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b09036d5529404fcf3944ed405236ae3434b3587)) 🔏
+  * 🔧 rey net by Romain Deville ([`65951af`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/65951af89adcea1c5ec944fd94ad2c6c3b4f09ef)) 🔏
+  * 🔧(rey): Update config with nameserver, add wireguard tools, remove comment by Romain Deville ([`7bbe1b4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7bbe1b4c25129da4905f77e3ddd0adb7b7db75c9)) 🔏
+  * 🔧(palpatine/users): Update secret path by Romain Deville ([`f81783b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f81783b30b2bc6fc79653a7dc28d8e76efa2cae8)) 🔏
+  * 🔧(luke): Update secret path by Romain Deville ([`8e058ff`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8e058ffd57dba4f14987b8974d3238e7ffcb5d2f)) 🔏
+  * 🔧(leia): Update secret path by Romain Deville ([`a843336`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a843336999dd92f77aaa448deaf03a7cb15a0ef1)) 🔏
+  * 🔧(common): Add k8s common configs by Romain Deville ([`e2fdb7d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e2fdb7d2a37643dd09c67227458f8c0fbb9cc67d)) 🔏
+  * 🔧(topology): Update topology config due to net changes by Romain Deville ([`9c21c1c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9c21c1ca84b26e5948eccc7a047bd6c3f7cd5889)) 🔏
+
+### 🔊 Others
+
+  * 🔐(kenobi/net/wg-public): Add P-Wing configuration by Romain Deville ([`97ef96b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/97ef96b67e171b4c09051f8739c2f88d8df56e1b)) 🔏
+  * 🔐(kenobi/net): Update config to use os.flavor.network module by Romain Deville ([`5f2cc3c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5f2cc3c4b2f6b77d2d736013615e404da1d1c594)) 🔏
+  * 🔐(darth-maul/keys): Add wireguard keys by Romain Deville ([`b49be18`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b49be18489e49e4ad9ccba7e886a983ec94923b3)) 🔏
+  * 🔐(luke): Add wireguard keys by Romain Deville ([`21cc181`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/21cc181ca64d43d64514ec01cdbd83a69af991d7)) 🔏
+  * 🔐(common): Move common_secrets to common/secrets by Romain Deville ([`c7684b8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c7684b843a11499c67dd18d7972e5878948ef03d)) 🔏
+  * 🔨(scripts): Improve deploy script by Romain Deville ([`9ecb63d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9ecb63dce0ef671dde71737c787d2dbab8021979)) 🔏
+
 ## v0.23.0 (2025-07-09)
 
 ### ✨ Minor
