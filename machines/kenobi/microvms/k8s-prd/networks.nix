@@ -6,7 +6,7 @@
 }: let
   id = 201;
 
-  k8sPorts = import ../../../../../common/config/k8s.nix {inherit config;};
+  k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
   wgEndpoint = "${vm.prefix}.1";
 
@@ -39,10 +39,14 @@
         allowedTCPPorts
         ;
       activationPolicy = "up";
+      allowInput = true;
       allowBidirectional = true;
       allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
+      tunInterfaces = [
+        "cilium_wg0"
+      ];
       routes = [
         {
           Destination = routerNetwork.${name}.networkCIDR;
@@ -52,6 +56,7 @@
   ];
 
   vm = {
+    interface = "enp0s7";
     network = "vm-k8s-prd";
     prefix = "172.20.128";
     mac = "02:00:00:00:00:a0";
@@ -61,7 +66,7 @@ in {
     secrets = builtins.foldl' (acc: elem:
       {
         "network/${elem.name}/private-key" = {
-          sopsFile = ../_keys/${elem.name}.private.key.enc.txt;
+          sopsFile = ./_keys/${elem.name}.private.key.enc.txt;
           format = "binary";
           group = config.users.users.systemd-network.group;
           mode = "0640";
@@ -88,19 +93,23 @@ in {
     flavors = {
       network = {
         enable = true;
-        nftable = {
-          enable = false;
-        };
         firewall = {
-          enable = false;
           inherit (k8sPorts) trustedInterfaces;
         };
         networks =
           {
-            ${vm.network} = {
+            ${vm.interface} = {
+              interface = vm.interface;
+              matchConfig = {
+                name = "enx*";
+              };
               allowedTCPPorts = config.services.openssh.ports;
-              mac = vm.mac;
               activationPolicy = "up";
+              nftables = {
+                allowInput = true;
+                allowInputConnected = true;
+                allowBidirectional = true;
+              };
               address = [
                 "${vm.prefix}.${toString id}/32"
               ];
@@ -117,9 +126,11 @@ in {
                   GatewayOnLink = true;
                 }
               ];
-              nftables = {
-                allowInput = true;
-                allowInputConnected = true;
+              topology = {
+                name = vm.network;
+                addresses = [
+                  "${vm.prefix}.${toString id}"
+                ];
               };
             };
           }

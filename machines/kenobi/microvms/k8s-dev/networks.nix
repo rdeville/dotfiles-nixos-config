@@ -6,7 +6,7 @@
 }: let
   id = 201;
 
-  k8sPorts = import ../../../../../common/config/k8s.nix {inherit config;};
+  k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
   wgEndpoint = "${vm.prefix}.1";
 
@@ -21,7 +21,7 @@
       allowedTCPPorts = config.services.openssh.ports;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       address = [
-        "172.18.144.${toString id}/${routerNetwork.${name}.networkCIDRLength}"
+        "172.18.160.${toString id}/${routerNetwork.${name}.networkCIDRLength}"
       ];
       routes = [
         {
@@ -30,7 +30,7 @@
       ];
     })
     (let
-      name = "wg-k8s-stg";
+      name = "wg-k8s-dev";
     in {
       inherit name;
       inherit
@@ -39,10 +39,14 @@
         allowedTCPPorts
         ;
       activationPolicy = "up";
+      allowInput = true;
       allowBidirectional = true;
       allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
+      tunInterfaces = [
+        "cilium_wg0"
+      ];
       routes = [
         {
           Destination = routerNetwork.${name}.networkCIDR;
@@ -52,8 +56,9 @@
   ];
 
   vm = {
-    network = "vm-k8s-stg";
-    prefix = "172.20.144";
+    interface = "enp0s7";
+    network = "vm-k8s-dev";
+    prefix = "172.20.160";
     mac = "02:00:00:00:00:a0";
   };
 in {
@@ -61,7 +66,7 @@ in {
     secrets = builtins.foldl' (acc: elem:
       {
         "network/${elem.name}/private-key" = {
-          sopsFile = ../_keys/${elem.name}.private.key.enc.txt;
+          sopsFile = ./_keys/${elem.name}.private.key.enc.txt;
           format = "binary";
           group = config.users.users.systemd-network.group;
           mode = "0640";
@@ -88,19 +93,23 @@ in {
     flavors = {
       network = {
         enable = true;
-        nftable = {
-          enable = false;
-        };
         firewall = {
           inherit (k8sPorts) trustedInterfaces;
-          enable = false;
         };
         networks =
           {
-            ${vm.network} = {
+            ${vm.interface} = {
+              interface = vm.interface;
+              matchConfig = {
+                name = "enx*";
+              };
               allowedTCPPorts = config.services.openssh.ports;
-              mac = vm.mac;
               activationPolicy = "up";
+              nftables = {
+                allowInput = true;
+                allowInputConnected = true;
+                allowBidirectional = true;
+              };
               address = [
                 "${vm.prefix}.${toString id}/32"
               ];
@@ -117,9 +126,11 @@ in {
                   GatewayOnLink = true;
                 }
               ];
-              nftables = {
-                allowInput = true;
-                allowInputConnected = true;
+              topology = {
+                name = vm.network;
+                addresses = [
+                  "${vm.prefix}.${toString id}"
+                ];
               };
             };
           }

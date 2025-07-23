@@ -24,22 +24,23 @@ in {
       network = {
         networks = {
           ${netName} = {
-            requiredForOnline = "no";
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
             ];
-            nftables = {
-              allowInputConnected = true;
-              tunInterfaces = [
-                "wlp170s0"
-              ];
-            };
             routes = [
               {
                 Destination = "${cidr}";
               }
             ];
+            nftables = {
+              allowInput = true;
+              allowInputConnected = true;
+              tunInterfaces = [
+                "wg-tun-illyse"
+                "enp1s0"
+              ];
+            };
             networkConfig = {
               IPv4Forwarding = true;
             };
@@ -53,7 +54,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        "${cidr}"
+        cidr
       ];
     };
   };

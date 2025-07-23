@@ -1,6 +1,7 @@
 {config, ...}: let
   id = 2;
-  network = "wlp5s0f0";
+  network = "wl-public";
+  interface = "wlp5s0f0";
   prefix = "172.16.2";
   length = "24";
   clr = "#05df72";
@@ -19,7 +20,7 @@ in {
       network = {
         networks = {
           ${network} = {
-            interface = "wl-public";
+            inherit interface;
             isServer = true;
             activationPolicy = "up";
             requiredForOnline = "no";

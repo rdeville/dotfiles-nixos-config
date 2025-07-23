@@ -1,8 +1,8 @@
 {...}: let
   networks = [
     {
-      name = "enp2s0";
-      interface = "eth-public";
+      name = "eth-public";
+      interface = "enp2s0";
       id = 1;
       reservations = [];
       topology = {
@@ -11,8 +11,8 @@
       };
     }
     {
-      name = "enp3s0";
-      interface = "eth-k8s";
+      name = "eth-k8s";
+      interface = "enp3s0";
       id = 3;
       reservations = [
         {

@@ -88,7 +88,6 @@ in {
     flavors = {
       ssh-server = {
         enable = true;
-        openFirewall = true;
       };
 
       k3s = {
