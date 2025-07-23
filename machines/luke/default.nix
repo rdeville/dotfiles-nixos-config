@@ -1,7 +1,6 @@
 {
   inputs,
   config,
-  lib,
   ...
 }: {
   imports = [
@@ -12,45 +11,13 @@
     inputs.disko.nixosModules.disko
     ./disko.nix
     ./topology.nix
+    ./network.nix
   ];
-
-  networking = {
-    firewall = {
-      enable = lib.mkForce false;
-      allowedUDPPorts = [];
-      #   # Cilium Port
-      #   # See: https://docs.cilium.io/en/stable/operations/system_requirements/
-      #   # Wireguard
-      #   51871
-      # ];
-      allowedTCPPorts = [];
-      #   # Kube API
-      #   6443
-      #   # Cilium Port
-      #   # See: https://docs.cilium.io/en/stable/operations/system_requirements/
-      #   # Cilium health
-      #   4240
-      #   # Cilium metrics
-      #   10250
-      #   # Hubble metrics
-      #   9965
-      #   # Hubble peer
-      #   4244
-      # ];
-      # # See: https://github.com/cilium/cilium/issues/27900#issuecomment-2572253315
-      # trustedInterfaces = [
-      #   "cilium_net*"
-      #   "cilium_host*"
-      #   "cilium_vxlan"
-      #   "lxc*"
-      # ];
-    };
-  };
 
   sops = {
     secrets = {
-      "k3s-stg-token" = {
-        sopsFile = ../../common/secrets/k3s-stg.enc.yaml;
+      "k8s-stg-token" = {
+        sopsFile = ../../common/secrets/k8s-stg.enc.yaml;
       };
     };
   };
@@ -62,8 +29,8 @@
       k3s = {
         role = "server";
         disableAgent = false;
-        clusterInit = true;
-        tokenFile = config.sops.secrets."k3s-stg-token".path;
+        serverAddr = "https://kube.stg.tekunix.cloud:6443";
+        tokenFile = config.sops.secrets."k8s-stg-token".path;
       };
     };
   };
