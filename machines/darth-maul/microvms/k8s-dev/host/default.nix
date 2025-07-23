@@ -19,14 +19,6 @@ in {
     };
   };
 
-  networking = {
-    firewall = {
-      logRefusedPackets = true;
-      logRefusedConnections = true;
-      logReversePathDrops = true;
-    };
-  };
-
   os = {
     flavors = {
       network = {
