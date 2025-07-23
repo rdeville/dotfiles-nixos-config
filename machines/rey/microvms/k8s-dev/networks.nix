@@ -6,7 +6,7 @@
 }: let
   id = 203;
 
-  k8sPorts = import ../../../../../common/config/k8s.nix {inherit config;};
+  k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
   wgEndpoint = "89.234.140.170";
 
@@ -15,8 +15,8 @@
       name = "wg-private";
     in {
       inherit name;
-      endpoint = wgEndpoint;
       activationPolicy = "up";
+      endpoint = wgEndpoint;
       allowInput = true;
       allowedTCPPorts = config.services.openssh.ports;
       allowedIPs = routerNetwork.${name}.networkCIDR;
@@ -39,6 +39,7 @@
         allowedTCPPorts
         ;
       activationPolicy = "up";
+      allowInput = true;
       allowBidirectional = true;
       allowInputConnected = true;
       endpoint = wgEndpoint;
@@ -55,6 +56,7 @@
   ];
 
   vm = {
+    interface = "enp0s8";
     network = "vm-k8s-dev";
     prefix = "172.20.160";
     mac = "02:00:00:00:00:a0";
@@ -64,7 +66,7 @@ in {
     secrets = builtins.foldl' (acc: elem:
       {
         "network/${elem.name}/private-key" = {
-          sopsFile = ../_keys/${elem.name}.private.key.enc.txt;
+          sopsFile = ./_keys/${elem.name}.private.key.enc.txt;
           format = "binary";
           group = config.users.users.systemd-network.group;
           mode = "0640";
@@ -87,32 +89,26 @@ in {
     ];
   };
 
-  networking = {
-    firewall = {
-      logRefusedPackets = true;
-      logRefusedConnections = true;
-      logReversePathDrops = true;
-    };
-  };
-
   os = {
     flavors = {
       network = {
         enable = true;
         firewall = {
-          trustedInterfaces = k8sPorts.trustedInterfaces ++ [vm.network];
+          trustedInterfaces = k8sPorts.trustedInterfaces;
         };
-        firewall.enable = false;
-        nftable.enable = false;
         networks =
           {
-            ${vm.network} = {
+            ${vm.interface} = {
+              interface = vm.interface;
+              matchConfig =  {
+                name = "enx*";
+              };
               allowedTCPPorts = config.services.openssh.ports;
-              mac = vm.mac;
               activationPolicy = "up";
               nftables = {
                 allowInput = true;
                 allowInputConnected = true;
+                allowBidirectional = true;
               };
               address = [
                 "${vm.prefix}.${toString id}/32"
@@ -130,6 +126,12 @@ in {
                   GatewayOnLink = true;
                 }
               ];
+              topology = {
+                name = vm.network;
+                addresses = [
+                  "${vm.prefix}.${toString id}"
+                ];
+              };
             };
           }
           // lib.mkWgNetworkClient "kenobi" wgNetworks id config;
