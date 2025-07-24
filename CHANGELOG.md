@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.2 (2025-07-24)
+
+### 🩹 Patch
+
+  * ⚡️(os/network): Improve module with two new options (firewall.debug and nftables.defaultPolicy) (!131) by Romain Deville ([`efa1574`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/efa15746a0143c37d5c6e4fe2114b349088c2b9e))
+  * ⚡️(os/network): Improve option for module network (debug and defaultPolicy added) by Romain Deville ([`317ad78`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/317ad7864b65bef46476947342e542f11b316493)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`c59f0ab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c59f0ab1952491f3f9a1e66ff5c80d3ac4f25714)) 🔏
+
 ## v0.41.1 (2025-07-22)
 
 ### 🩹 Patch
