@@ -96,15 +96,22 @@ in {
               description = "List of trusted interfaces";
               default = [];
             };
+            debug = lib.mkEnableOption ''
+              Activate logging of refused packet, connection, etc.
+              WARNING ! Can log lots of things
+            '';
           };
 
           nftable = {
             enable = lib.mkDefaultEnabledOption "Enable nftables";
-
+            defaultPolicy = lib.mkOption {
+              type = lib.types.enum ["drop" "accept"];
+              description = "Activate default accept policy";
+              default = "drop";
+            };
             flushRuleset = lib.mkDefaultEnabledOption ''
               Enable Flush ruleset on reload
             '';
-
             extraTables = lib.mkOption {
               type = lib.types.attrsOf lib.types.attrs;
               description = ''
@@ -197,6 +204,9 @@ in {
           checkReversePath
           trustedInterfaces
           ;
+        logRefusedPackets = cfg.firewall.debug;
+        logRefusedConnections = cfg.firewall.debug;
+        logReversePathDrops = cfg.firewall.debug;
         # NO PORT GLOBALLY OPEN !
         allowedTCPPorts = [];
         allowedUDPPorts = [];
@@ -240,13 +250,14 @@ in {
               content =
                 lib.strings.concatMapStrings (chain: ''
                   chain ${chain} {
-                      type filter hook ${chain} priority 99; policy drop;
+                      type filter hook ${chain} priority 99; policy ${cfg.nftable.defaultPolicy};
                       counter drop comment "Drop IPv6 traffic"
                     }
                 '')
                 nftablesChains;
             };
-            os-allow = {
+            os-allow =
+              {
               family = "inet";
               content = lib.strings.concatStrings [
                 (
@@ -265,7 +276,7 @@ in {
                       else "";
                   in ''
                     chain input {
-                      type filter hook input priority 0; policy drop;
+                      type filter hook input priority 0; policy ${cfg.nftable.defaultPolicy};
                       iifname { lo } accept comment "Allow local access from this network"
                       ${input}
                       ${inputConnected}
@@ -292,13 +303,13 @@ in {
                       else "";
                   in ''
                     chain forward {
-                      type filter hook forward priority 0; policy drop;
+                      type filter hook forward priority 0; policy ${cfg.nftable.defaultPolicy};
                       ${bidirection}
                       ${tunnel}
                     }
                   ''
                 )
-              ];
+              ] ;
             };
             os-nat = lib.mkIf (netNat != []) {
               family = "inet";
