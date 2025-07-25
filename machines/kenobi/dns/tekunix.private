@@ -23,17 +23,17 @@ kenobi                IN A     172.18.0.1
 darth-maul            IN A     172.18.0.2
 rey                   IN A     172.18.0.3
 
-; PRD Cluster Network
-; -----------------------------------------------------------------------------
-; Control-Plane & Worker
-lilith                IN A     172.18.128.10
-maya                  IN A     172.18.128.11
-ava                   IN A     172.18.128.12
-
 ; STG Cluster Network
 ; -----------------------------------------------------------------------------
 ; Control-Plane & Worker
-luke                  IN A     172.18.144.20
-leia                  IN A     172.18.144.21
+luke                  IN A     172.18.144.11
+leia                  IN A     172.18.144.12
+
+; PRD Cluster Network
+; -----------------------------------------------------------------------------
+; Control-Plane & Worker
+lilith                IN A     172.18.128.11
+maya                  IN A     172.18.128.12
+ava                   IN A     172.18.128.13
 
 ; vim: ft=dns

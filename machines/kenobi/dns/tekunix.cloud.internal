@@ -22,25 +22,6 @@ kenobi                IN A     172.16.0.1
 darth-maul            IN A     172.16.0.2
 rey                   IN A     172.16.1.3
 
-; PRD Cluster Network
-; -----------------------------------------------------------------------------
-*                     IN A     172.16.128.201
-vm-kenobi-k8s-prd     IN A     172.16.128.201 ; CP & Worker (VM)
-; Control-Plane & Worker
-lilith                IN A     172.16.128.10  ; Worker
-maya                  IN A     172.16.128.11  ; Worker
-ava                   IN A     172.16.128.12  ; Worker
-
-; STG Cluster Network
-; -----------------------------------------------------------------------------
-*.stg                 IN A     172.16.144.201
-vm-kenobi-k8s-stg     IN A     172.16.144.201 ; CP & Worker (VM)
-; Control-Plane & Worker
-luke                  IN A     172.16.144.20  ; Worker
-leia                  IN A     172.16.144.21  ; Worker
-vm-darth-maul-k8s-stg IN A     172.16.144.202 ; Worker (VM)
-vm-rey-k8s-stg        IN A     172.16.144.203 ; Worker (VM)
-
 ; DEV Cluster Network
 ; -----------------------------------------------------------------------------
 *.dev                 IN A     172.16.160.201
@@ -48,5 +29,24 @@ vm-kenobi-k8s-dev     IN A     172.16.160.201 ; CP & Worker (VM)
 ; Control-Plane & Worker
 vm-rey-k8s-dev        IN A     172.16.160.203 ; Worker (VM)
 vm-darth-maul-k8s-dev IN A     172.16.160.203 ; Worker (VM)
+
+; STG Cluster Network
+; -----------------------------------------------------------------------------
+*.stg                 IN A     172.16.144.201
+vm-kenobi-k8s-stg     IN A     172.16.144.201 ; CP & Worker (VM)
+; Control-Plane & Worker
+luke                  IN A     172.16.144.11  ; Worker
+leia                  IN A     172.16.144.12  ; Worker
+vm-darth-maul-k8s-stg IN A     172.16.144.202 ; Worker (VM)
+vm-rey-k8s-stg        IN A     172.16.144.203 ; Worker (VM)
+
+; PRD Cluster Network
+; -----------------------------------------------------------------------------
+*                     IN A     172.16.128.201
+vm-kenobi-k8s-prd     IN A     172.16.128.201 ; CP & Worker (VM)
+; Control-Plane & Worker
+lilith                IN A     172.16.128.21  ; Worker
+maya                  IN A     172.16.128.22  ; Worker
+ava                   IN A     172.16.128.23  ; Worker
 
 ; vim: ft=dns
