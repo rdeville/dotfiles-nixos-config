@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.25.1 (2025-07-25)
+
+### 🩹 Patch
+
+  * 🔧(rey): Remove useless wg-public config by Romain Deville ([`fb85ffa`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fb85ffaa3651d580fdadac4f42327e274687f6d4)) 🔏
+  * 🔧(kenobi): Remove useless wg-public config by Romain Deville ([`112a533`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/112a533d41ded476800c0f1063580a5490f34625)) 🔏
+  * 🔧(darth-maul): Remove useless wg-public config by Romain Deville ([`085a8fd`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/085a8fd7dfba58552bdcfd3224436b53db3a08e3)) 🔏
+
+### 🔊 Others
+
+  * 🔥 Remove useless wg-public config for microvms* (!68) by Romain Deville ([`d1f927f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d1f927f6149907eb297de33f5306f3c973414cc2))
+
 ## v0.25.0 (2025-07-25)
 
 ### ✨ Minor
