@@ -24,11 +24,9 @@
     flavors = {
       network = {
         enable = true;
-
         firewall = {
           allowPing = true;
         };
-
         nameservers = [
           # Itself to all local resolving
           "127.0.0.1"

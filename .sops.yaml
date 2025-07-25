@@ -1,6 +1,8 @@
 keys:
     # Personal Superuser
   - &rdeville age1z5w53ch2ym5qmhew239j7qh0q0ax72daq42qvvwexferta2yrprsf4kes9
+    # Ava
+  - &os-ava age13250m88newwrrlk2sdqh0p3eejqjt85yugccze2ds220flrfwvns3stnpk
     # Darth-maul
   - &os-darth-maul age1hylp3390lkmpfjw4t0e606wsmxsxsnfrx7w0z5qg9enzlqrhj9dqckqas7
   - &hm-rdeville-darth-maul age1vs609j7uujwqhvssefpzz9jk2m5m7kr3k8dy98wd67npaf5zkf3qdm6v6n
@@ -9,9 +11,13 @@ keys:
   - &hm-rdeville-kenobi age1q9sr0lpusj2v9npkhn67uy2ylhfz8xqj8qsczuruezqytjxjwq0sazjz8l
     # Leia
   - &os-leia age1ajff0yw9cnyve0zkqm73s7rswhjuefxzm8ry6c63syjx3yv4l9nqveklt9
+    # Lilith
+  - &os-lilith age1mplefr39uke7gvnc42lyqtm478n4vpqu0thjhk8syy57rrevj9us204dtp
     # Luke
   - &os-luke age1lh4jzqvx7235f047kfclw464fhrztn3v9rzm56ucz33t36xelf4qvaxu7j
   - &hm-rdeville-palpatine age1zpspypff2htcp7990d6ejn84h48cg5m70s6vujjmz8xruzrsufxq0ex0sv
+    # Maya
+  - &os-maya age1gq4650ep2vtthk3zwu5ml8awewja8aq73dzkruant3qnwyz5h5tsufdaq3
     # Rey
   - &os-rey age197rrulzasp37ew22yhwd5h4rqxtka2pxcl3t4056zl8rgnwa4q7q92266d
   - &hm-rdeville-rey age13vptv2mspy6dy5c5kvduqfencmlcjvgtqsvul9cnehncrvuym3lsxe3hen
@@ -21,6 +27,11 @@ creation_rules:
       - age:
         - *rdeville
         - *os-darth-maul
+  - path_regex: ava/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-ava
   - path_regex: kenobi/.*\.enc\.(yaml|json|asc|txt)$
     key_groups:
       - age:
@@ -31,11 +42,21 @@ creation_rules:
       - age:
         - *rdeville
         - *os-leia
+  - path_regex: lilith/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-lilith
   - path_regex: luke/.*\.enc\.(yaml|json|asc|txt)$
     key_groups:
       - age:
         - *rdeville
         - *os-luke
+  - path_regex: maya/.*\.enc\.(yaml|json|asc|txt)$
+    key_groups:
+      - age:
+        - *rdeville
+        - *os-maya
   - path_regex: rey/.*\.enc\.(yaml|json|asc|txt)$
     key_groups:
       - age:
@@ -66,16 +87,21 @@ creation_rules:
     key_groups:
       - age:
         - *rdeville
+        - *os-darth-maul
+        - *os-ava
         - *os-kenobi
+        - *os-lilith
+        - *os-maya
+        - *os-rey
   - path_regex: common_secrets/k8s-stg.enc.yaml$
     key_groups:
       - age:
         - *rdeville
+        - *os-darth-maul
+        - *os-kenobi
         - *os-luke
         - *os-leia
-        - *os-kenobi
         - *os-rey
-        - *os-darth-maul
   - path_regex: common_secrets/k8s-dev.enc.yaml$
     key_groups:
       - age:

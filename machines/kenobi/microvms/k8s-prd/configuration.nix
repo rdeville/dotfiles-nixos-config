@@ -62,6 +62,10 @@
       };
     };
 in {
+  imports = [
+    ../../../_templates/k3s.nix
+  ];
+
   sops = {
     secrets =
       secrets
@@ -84,18 +88,17 @@ in {
     flavors = {
       ssh-server = {
         enable = true;
-        openFirewall = true;
       };
 
       k3s = {
-        enable = true;
         role = "server";
         disableAgent = false;
         clusterInit = true;
         extraFlags = [
-          "--default-local-storage-path /var/lib/k8s-data"
-          "--tls-san kube.tekunix.cloud"
+          "--tls-san kube.tekunix.internal"
           "--tls-san 172.30.128.201"
+          "--node-ip 172.30.128.201"
+          "--node-external-ip 172.30.128.201"
         ];
         tokenFile = config.sops.secrets."k8s-prd-token".path;
       };

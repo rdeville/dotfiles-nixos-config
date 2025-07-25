@@ -47,7 +47,7 @@ in {
           lib.getValidHosts);
         file = {
           ".ssh/pubkeys/${userKey}" = {
-            source = ../../../${config.hm.hostName}/${user}/_keys/${userKey};
+            source = ../../../${config.hm.hostName}/users/${user}/_keys/${userKey};
           };
         };
       };

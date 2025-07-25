@@ -7,7 +7,7 @@
     ../_templates/gui.nix
     ../_templates/nvidia.nix
     ../_templates/main.nix
-    ./networks
+    ./networks.nix
     ./microvms
   ];
 

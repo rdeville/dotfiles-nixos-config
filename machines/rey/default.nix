@@ -1,5 +1,6 @@
 {
   inputs,
+  pkgs,
   lib,
   ...
 }: {
@@ -10,9 +11,9 @@
     ../_templates/gui.nix
     # Partition map
     inputs.disko.nixosModules.disko
-    ./disko.nix
-    ./networks
     ./microvms
+    ./disko.nix
+    ./networks.nix
     ./topology.nix
   ];
 
@@ -59,10 +60,6 @@
     flavors = {
       window-manager = {
         plasma.enable = false;
-      };
-
-      ssh-server = {
-        openFirewall = false;
       };
 
       steam.enable = true;

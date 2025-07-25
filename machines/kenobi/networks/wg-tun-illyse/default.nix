@@ -48,9 +48,11 @@ in {
               }
             ];
 
-            allowedTCPPorts = config.services.openssh.ports ++ [
-              53 # DNS
-            ];
+            allowedTCPPorts =
+              config.services.openssh.ports
+              ++ [
+                53 # DNS
+              ];
             allowedUDPPorts = [
               53 # DNS
             ];

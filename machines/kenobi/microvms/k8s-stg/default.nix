@@ -35,7 +35,7 @@ in {
               inputs.nix-topology.nixosModules.default
               ./configuration.nix
               ./topology.nix
-              ./networks
+              ./networks.nix
             ]
             ++ imports;
 
@@ -51,19 +51,17 @@ in {
   services = {
     nginx = {
       enable = true;
-      streamConfig = ''
-        log_format basic '$remote_addr - - [$time_local] $protocol $status $bytes_sent $bytes_received $session_time "$upstream_addr"';
-
-        access_log /var/log/nginx/kube.stg.tekunix.cloud.access.log basic;
-        error_log /var/log/nginx/kube.stg.tekunix.cloud.error.log debug;
-
-      '';
-
       virtualHosts = {
         "*.stg.tekunix.cloud" = {
           listen = [
-            { port = 80; }
-            { port = 443; }
+            {
+              addr = "";
+              port = 80;
+            }
+            {
+              addr = "";
+              port = 443;
+            }
           ];
           locations = {
             "/" = {
@@ -71,6 +69,13 @@ in {
               proxyWebsockets = true;
             };
           };
+
+          extraConfig = ''
+            log_format basic '$remote_addr - - [$time_local] $protocol $status $bytes_sent $bytes_received $session_time "$upstream_addr"';
+
+            access_log /var/log/nginx/kube.stg.tekunix.cloud.access.log basic;
+            error_log /var/log/nginx/kube.stg.tekunix.cloud.error.log debug;
+          '';
         };
       };
     };

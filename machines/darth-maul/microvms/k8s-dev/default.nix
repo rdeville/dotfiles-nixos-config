@@ -36,7 +36,7 @@ in {
               inputs.home-manager.nixosModules.home-manager
               ./configuration.nix
               ./topology.nix
-              ./networks
+              ./networks.nix
             ]
             ++ imports;
 

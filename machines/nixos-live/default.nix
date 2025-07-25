@@ -1,6 +1,8 @@
 {
   modulesPath,
+  config,
   pkgs,
+  lib,
   ...
 }: let
   users = {
@@ -10,8 +12,8 @@
       openssh = {
         authorizedKeys = {
           keyFiles = [
-            ../darth-maul/rdeville/_keys/rdeville-darth-maul.pub
-            ../rey/rdeville/_keys/rdeville-rey.pub
+            ../darth-maul/users/rdeville/_keys/rdeville-darth-maul.pub
+            ../rey/users/rdeville/_keys/rdeville-rey.pub
           ];
         };
       };
@@ -25,8 +27,26 @@ in {
     (modulesPath + "/installer/cd-dvd/installation-cd-minimal.nix")
   ];
 
+  facter = {
+    reportPath = ../${config.os.hostName}/facter.json;
+  };
+
+  documentation = {
+    nixos = {
+      includeAllModules = lib.mkForce false;
+    };
+  };
+
+  boot = {
+    loader = {
+      grub = {
+        enable = lib.mkForce false;
+      };
+    };
+  };
+
   networking = {
-    useDHCP = true;
+    useDHCP = lib.mkForce true;
   };
 
   isoImage = {
@@ -55,5 +75,17 @@ in {
         enable = true;
       };
     };
+  };
+
+  home-manager = {
+    users = builtins.foldl' (acc: elem:
+      {
+        ${elem} = {
+          imports = [
+            ../_templates/_users/${elem}/server.nix
+          ];
+        };
+      }
+      // acc) {} (builtins.attrNames users);
   };
 }

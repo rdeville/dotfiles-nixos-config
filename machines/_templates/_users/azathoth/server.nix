@@ -39,7 +39,7 @@ in {
         mr.enable = false;
       };
 
-      ssh-client = let
+      ssh-client = lib.mkIf config.hm.isMain (let
         userKey = "${user}-${config.hm.hostName}.pub";
       in {
         matchBlocks =
@@ -88,7 +88,7 @@ in {
           }
           // acc) {}
         lib.getValidHosts;
-      };
+      });
     };
   };
 }

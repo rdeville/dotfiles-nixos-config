@@ -9,10 +9,6 @@
     ./topology/microvm.nix
 
     ./topology/p-wing.nix
-
-    ./topology/lilith.nix
-    ./topology/ava.nix
-    ./topology/maya.nix
   ];
 
   renderers = {

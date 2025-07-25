@@ -96,7 +96,7 @@
         ];
         name = "wg-public";
         CIDRPrefix = "172.17.0";
-        CIDRLength = "24";
+        CIDRLength = "16";
         listenPort = 60001;
 
         allowInputConnected = true;
