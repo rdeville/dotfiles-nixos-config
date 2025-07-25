@@ -42,13 +42,13 @@ _format_target() {
 
 _prepare_host_encryption_key() {
   _log "INFO" "Prepare host and usersencryption keys"
-  local tmp_host="${tmp}/etc/ssh"
+  local tmp_host="${tmp}/etc/age"
   local tmp_user
   local username
   local key
 
   mkdir -p "${tmp_host}"
-  sops -d "${MACHINE_PATH}/${HOSTNAME}/keys/age.enc.txt" >"${tmp_host}/.age.key"
+  sops -d "${MACHINE_PATH}/${HOSTNAME}/keys/age.enc.txt" >"${tmp_host}/key.txt"
 
   for user in "${MACHINE_PATH}/${HOSTNAME}/"*/; do
     username=$(basename "${user}")
@@ -82,7 +82,7 @@ _install_nixos() {
     --build-on local \
     --extra-files "${tmp}"
 
-  ssh "${url}" -c "chmod 0600 /mnt/etc/ssh/.age.key"
+  ssh "${url}" -c "chmod 0600 /mnt/etc/age/key.txt"
 }
 
 _restart_and_wait() {
