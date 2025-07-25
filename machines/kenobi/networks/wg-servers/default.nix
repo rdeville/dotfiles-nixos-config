@@ -30,6 +30,7 @@
           listenInterfaces =
             listenInterfaces
             ++ [
+              "enp3s0"
               "vm-k8s-prd"
             ];
         }
@@ -43,6 +44,8 @@
           listenInterfaces =
             listenInterfaces
             ++ [
+              "enp3s0"
+              "k8s-stg"
               "vm-k8s-stg"
             ];
         }
@@ -115,6 +118,9 @@
           "vm-k8s-dev"
           "vm-k8s-stg"
           "vm-k8s-prd"
+          "enp3s0"
+          "k8s-stg"
+          "k8s-prd"
         ];
         name = "wg-private";
         CIDRPrefix = "172.18.0";

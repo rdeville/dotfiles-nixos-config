@@ -23,7 +23,7 @@
   }
   {
     # vm-darth-maul-k8s-dev
-    AllowedIPs = "172.18.0.202/32";
+    AllowedIPs = "172.18.160.202/32";
     PublicKey = ../../../darth-maul/microvms/k8s-dev/_keys/wg-private.pub;
   }
   # REY
@@ -34,32 +34,32 @@
   }
   {
     # vm-rey-k8s-dev
-    AllowedIPs = "172.18.0.203/32";
+    AllowedIPs = "172.18.160.203/32";
     PublicKey = ../../../rey/_keys/wg-private.pub;
   }
   # LUKE
   {
-    AllowedIPs = "172.18.0.11/32";
+    AllowedIPs = "172.18.144.11/32";
     PublicKey = ../../../luke/_keys/wg-private.pub;
   }
   # LEIA
   {
-    AllowedIPs = "172.18.0.12/32";
+    AllowedIPs = "172.18.144.12/32";
     PublicKey = ../../../leia/_keys/wg-private.pub;
   }
   # LILITH
   {
-    AllowedIPs = "172.18.0.21/32";
+    AllowedIPs = "172.18.128.21/32";
     PublicKey = ../../../lilith/_keys/wg-private.pub;
   }
   # MAYA
   {
-    AllowedIPs = "172.18.0.22/32";
+    AllowedIPs = "172.18.128.22/32";
     PublicKey = ../../../maya/_keys/wg-private.pub;
   }
   # AVA
   {
-    AllowedIPs = "172.18.0.23/32";
+    AllowedIPs = "172.18.128.23/32";
     PublicKey = ../../../ava/_keys/wg-private.pub;
   }
 ]

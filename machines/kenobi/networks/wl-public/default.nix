@@ -1,7 +1,8 @@
 {config, ...}: let
   id = 2;
   network = "wl-public";
-  interface = "wlp5s0f0";
+  interface = "wlp5s0f*";
+  realInterface = "wlp5s0f0";
   prefix = "172.16.2";
   length = "24";
   clr = "#05df72";
@@ -20,7 +21,9 @@ in {
       network = {
         networks = {
           ${network} = {
-            inherit interface;
+            matchConfig = {
+              name = interface;
+            };
             isServer = true;
             activationPolicy = "up";
             requiredForOnline = "no";
@@ -42,6 +45,9 @@ in {
               ];
             };
             topology = {
+              addresses = [
+                "${prefix}.1"
+              ];
               color = clr;
               desc = "Local Wireless";
             };
@@ -60,14 +66,14 @@ in {
     hostapd = {
       enable = true;
       radios = {
-        ${network} = {
+        ${realInterface} = {
           band = "2g";
           countryCode = "FR";
           # French channels are 1, 6 and 11
           channel = 1;
           networks = {
-            ${network} = {
-              logLevel = 2; # default 2
+            ${realInterface} = {
+              logLevel = 4; # default 2
               authentication = {
                 mode = "wpa2-sha256";
                 wpaPasswordFile = config.sops.secrets."network/${network}/password".path;
@@ -83,37 +89,32 @@ in {
       dhcp4 = {
         enable = true;
         settings = {
-          interfaces-config = {
-            interfaces = [
-              network
-            ];
-          };
           subnet4 = [
             {
               inherit id;
               subnet = cidr;
               reservations = [
-                {
-                  hw-address = "74:13:ea:be:97:9a";
-                  hostname = "rey";
-                  ip-address = "${prefix}.3";
-                }
+                # {
+                #   hw-address = "74:13:ea:be:97:9a";
+                #   hostname = "rey";
+                #   ip-address = "${prefix}.3";
+                # }
               ];
               pools = [
                 {
                   pool = "${prefix}.64 - ${prefix}.254";
                 }
               ];
-              interface = network;
+              interface = realInterface;
               option-data = [
-                {
-                  name = "routers";
-                  data = "${prefix}.1";
-                }
-                {
-                  name = "domain-name-servers";
-                  data = "${prefix}.1";
-                }
+                # {
+                #   name = "routers";
+                #   data = "${prefix}.1";
+                # }
+                # {
+                #   name = "domain-name-servers";
+                #   data = "${prefix}.1";
+                # }
               ];
             }
           ];
