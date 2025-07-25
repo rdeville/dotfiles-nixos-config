@@ -1,6 +1,28 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.25.0 (2025-07-25)
+
+### ✨ Minor
+
+  * ✨ Prepare all machines to be k8s nodes (!67) by Romain Deville ([`226820a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/226820a29b66fa49f2b315ede9c72fe3b57625fc))
+  * ✨(ava): Add ava base k3s configuration and secrets by Romain Deville ([`a6e6ab3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a6e6ab33fd1b846b7642da43b2fea80facd5fa74)) 🔏
+  * ✨(maya): Add maya base k3s configuration and secrets by Romain Deville ([`fc36383`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fc36383121c68f8780b0295f0a79938a8a6a6620)) 🔏
+  * ✨(lilith): Add lilith base k3s configuration and secrets by Romain Deville ([`bf9d954`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bf9d9542c6c15db578b98adef07e7cddb27908e2)) 🔏
+  * ✨(luke): Make luke k8s ready by Romain Deville ([`139d9be`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/139d9be6bdb513e49375b868836d7c549fe8bbc4)) 🔏
+  * ✨(leia): Make leia k8s ready by Romain Deville ([`3e539fc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3e539fc838e1f7709c0eadd4bd412273624312be)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(rey): Make rey k8s ready by Romain Deville ([`f56e28f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f56e28f5e2dfcce06ee0d70652a7defe70991a67)) 🔏
+  * ⚡️(darth-maul): Make darth-maul k8s ready by Romain Deville ([`bc50fcf`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bc50fcfa289af47b19345b78002fd578937ba5e4)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`11dc920`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/11dc9208133f51141033fd247cc0f596b59aeae5)) 🔏
+  * 🐛(nixos-live): Fix path in imports by Romain Deville ([`7160eb8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7160eb87ce37b83f8be95e769869f39361810659)) 🔏
+  * 🐛(_templates/user): Fix azathoth config is not main machine by Romain Deville ([`17c4e8f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/17c4e8f2169bd5d3a51655f5e5641ac6ce6a400a)) 🔏
+  * 🔒️(sops): Add ava, maya and lilith to sops rules by Romain Deville ([`062d74b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/062d74b52ceae6d5981a0f1e47f8ac049baa1c6e)) 🔏
+  * 🔧(kenobi): Add new machines wireguard keys to wireguard networks by Romain Deville ([`81868a3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/81868a34b468a3655b62ef69542e5a8bc3d23381)) 🔏
+  * 🔧(topology): Remove lilith, maya and ava from manual topology by Romain Deville ([`1b05225`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1b05225ca030c382157893035a641bec3a169bc8)) 🔏
+
 ## v0.24.1 (2025-07-22)
 
 ### 🩹 Patch
