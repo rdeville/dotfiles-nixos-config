@@ -10,11 +10,6 @@
     AllowedIPs = "172.17.0.3/32";
     PublicKey = ../../../rey/_keys/wg-public.pub;
   }
-  {
-    # vm-rey-k8s-dev
-    AllowedIPs = "172.17.0.203/32";
-    PublicKey = ../../../rey/microvms/k8s-dev/_keys/wg-public.pub;
-  }
   # P-Wing
   {
     AllowedIPs = "172.17.0.4/32";
