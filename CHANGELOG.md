@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.3 (2025-07-25)
+
+### 🩹 Patch
+
+  * ⚡️(os/network): Review network module (matchConfig and topology) (!132) by Romain Deville ([`8406acb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8406acbc6a2fc22d6d9775ebce7d8e8868cf50b1))
+  * ⚡️(os/network): Improve network configuration (MatchConfig &amp; topology) by Romain Deville ([`bde40c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bde40c94935c9bb973bd87f75289ef5e189044d3)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`1c8fd42`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1c8fd4291dd6a2aa53cb3d7cce197062c1c30eb9)) 🔏
+
 ## v0.41.2 (2025-07-24)
 
 ### 🩹 Patch
