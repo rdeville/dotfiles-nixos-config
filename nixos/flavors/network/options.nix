@@ -154,10 +154,17 @@ in {
       default = [];
     };
 
-    mac = lib.mkOption {
-      type = lib.types.nullOr lib.types.str;
-      description = "Mac address of the interface";
-      default = null;
+    matchConfig = {
+      mac = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        description = "Mac address of the interface";
+        default = null;
+      };
+      name = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        description = "Name of the network";
+        default = null;
+      };
     };
 
     mtu = lib.mkOption {
@@ -205,6 +212,12 @@ in {
         For more details about what is nix-topology, see :
           * https://oddlama.github.io/nix-topology/
       '';
+
+      name = lib.mkOption {
+        type = lib.types.str;
+        description = "Name of the interface on the nix-topology render";
+        default = cfg.name;
+      };
 
       color = lib.mkOption {
         type = lib.types.str;

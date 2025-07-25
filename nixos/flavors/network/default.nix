@@ -14,20 +14,26 @@
     "postrouting"
   ];
 
-  netInput = builtins.filter (
-    name:
-      cfg.networks.${name}.nftables.allowInput
-  ) (builtins.attrNames cfg.networks);
+  netInput = builtins.map (name: cfg.networks.${name}.interface) (
+    builtins.filter (
+      name:
+        cfg.networks.${name}.nftables.allowInput
+    ) (builtins.attrNames cfg.networks)
+  );
 
-  netInputConnected = builtins.filter (
-    name:
-      cfg.networks.${name}.nftables.allowInputConnected
-  ) (builtins.attrNames cfg.networks);
+  netInputConnected = builtins.map (name: cfg.networks.${name}.interface) (
+    builtins.filter (
+      name:
+        cfg.networks.${name}.nftables.allowInputConnected
+    ) (builtins.attrNames cfg.networks)
+  );
 
-  netBidirectional = builtins.filter (
-    name:
-      cfg.networks.${name}.nftables.allowBidirectional
-  ) (builtins.attrNames cfg.networks);
+  netBidirectional = builtins.map (name: cfg.networks.${name}.interface) (
+    builtins.filter (
+      name:
+        cfg.networks.${name}.nftables.allowBidirectional
+    ) (builtins.attrNames cfg.networks)
+  );
 
   netNat = builtins.filter (
     name:
@@ -75,6 +81,10 @@ in {
           firewall = {
             enable = lib.mkDefaultEnabledOption "Enable firewall";
             allowPing = lib.mkDefaultEnabledOption "Allow to ping";
+            debug = lib.mkEnableOption ''
+              Activate logging of refused packet, connection, etc.
+              WARNING ! Can log lots of things
+            '';
             checkReversePath = lib.mkOption {
               type = lib.types.either lib.types.bool (
                 lib.types.enum [
@@ -96,10 +106,6 @@ in {
               description = "List of trusted interfaces";
               default = [];
             };
-            debug = lib.mkEnableOption ''
-              Activate logging of refused packet, connection, etc.
-              WARNING ! Can log lots of things
-            '';
           };
 
           nftable = {
@@ -167,13 +173,22 @@ in {
                 ;
 
               matchConfig =
-                if interface.mac != null
-                then {
-                  MACAddress = interface.mac;
-                }
-                else {
-                  Name = interface.interface;
-                };
+                (
+                  if interface.matchConfig.mac != null
+                  then {
+                    MACAddress = interface.matchConfig.mac;
+                  }
+                  else {}
+                )
+                // (
+                  if interface.matchConfig.name != null
+                  then {
+                    Name = interface.matchConfig.name;
+                  }
+                  else {
+                    Name = interface.interface;
+                  }
+                );
               networkConfig =
                 {
                   IPv6AcceptRA = false;
@@ -214,7 +229,7 @@ in {
           interface = cfg.networks.${name};
         in
           {
-            ${name} = {
+            ${interface.interface} = {
               inherit
                 (interface)
                 allowedTCPPorts
@@ -256,8 +271,7 @@ in {
                 '')
                 nftablesChains;
             };
-            os-allow =
-              {
+            os-allow = {
               family = "inet";
               content = lib.strings.concatStrings [
                 (
@@ -274,11 +288,19 @@ in {
                         iifname { ${builtins.concatStringsSep "," netInputConnected} } ct state { established, related } accept comment "Allow if connection is already established"
                       ''
                       else "";
+                    trusted =
+                      if (cfg.firewall.trustedInterfaces != [])
+                      then ''
+
+                        iifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } accept comment "Trusted Interfaces"
+                      ''
+                      else "";
                   in ''
                     chain input {
                       type filter hook input priority 0; policy ${cfg.nftable.defaultPolicy};
                       iifname { lo } accept comment "Allow local access from this network"
                       ${input}
+                      ${trusted}
                       ${inputConnected}
                     }
                   ''
@@ -301,15 +323,24 @@ in {
                           iifname { ${interface} } oifname { ${builtins.concatStringsSep "," netTun.${interface}} } ct state { established, related } accept comment "Allow if connection is already established"
                         '') (builtins.attrNames netTun)
                       else "";
+                    trusted =
+                      if (cfg.firewall.trustedInterfaces != [])
+                      then
+                        lib.strings.concatMapStrings (interface: ''
+                          iifname {  ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } oifname { ${builtins.concatStringsSep "," netTun.${interface}} } accept comment "Allow forward from trusted interfaces"
+                          iifname { ${interface} } oifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } ct state { established, related } accept comment "Allow back to trusted interfaces if connection is already established"
+                        '') (builtins.attrNames netTun)
+                      else "";
                   in ''
                     chain forward {
                       type filter hook forward priority 0; policy ${cfg.nftable.defaultPolicy};
+                      ${trusted}
                       ${bidirection}
                       ${tunnel}
                     }
                   ''
                 )
-              ] ;
+              ];
             };
             os-nat = lib.mkIf (netNat != []) {
               family = "inet";
@@ -329,22 +360,21 @@ in {
       self = {
         interfaces = builtins.foldl' (acc: elem: let
           iface = config.os.flavors.network.networks.${elem};
-          interfaceName =
-            if (iface.interface != iface.name)
-            then iface.interface
-            else iface.name;
         in
           {
-            ${interfaceName} = {
+            ${iface.topology.name} = {
               mac = lib.mkForce (
-                if config.networking.firewall.interfaces.${elem}.allowedTCPPorts == []
+                if iface.allowedTCPPorts == []
                 then "No Open Ports"
                 else "Ports: ${builtins.concatStringsSep "," (
                   builtins.map (port: toString port)
-                  config.networking.firewall.interfaces.${elem}.allowedTCPPorts
+                  iface.allowedTCPPorts
                 )}"
               );
-              addresses = cfg.networks.${elem}.topology.addresses;
+              addresses =
+                if cfg.networks.${elem}.topology ? addresses
+                then cfg.networks.${elem}.topology.addresses
+                else [];
               icon = let
                 net = config.os.flavors.network.networks.${elem};
               in
