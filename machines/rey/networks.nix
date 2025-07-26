@@ -118,6 +118,9 @@ in {
           {
             wl-public = {
               interface = "wlp170s0";
+              matchConfig = {
+                name = "wlp170s*";
+              };
               DHCP = "yes";
               activationPolicy = "up";
               requiredForOnline = "yes";

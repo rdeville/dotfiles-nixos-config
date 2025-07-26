@@ -17,7 +17,7 @@
           ];
           mac = "No Open Ports";
           physicalConnections = [
-            (config.lib.topology.mkConnectionRev "switch" "eth2")
+            (config.lib.topology.mkConnectionRev "switch" "eth")
           ];
         };
       };
