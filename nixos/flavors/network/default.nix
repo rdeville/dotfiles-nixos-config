@@ -328,7 +328,7 @@ in {
                       then
                         lib.strings.concatMapStrings (interface: ''
                           iifname {  ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } oifname { ${builtins.concatStringsSep "," netTun.${interface}} } accept comment "Allow forward from trusted interfaces"
-                          iifname { ${interface} } oifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } ct state { established, related } accept comment "Allow back to trusted interfaces if connection is already established"
+                          iifname { ${builtins.concatStringsSep "," netTun.${interface}} } oifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } ct state { established, related } accept comment "Allow back to trusted interfaces if connection is already established"
                         '') (builtins.attrNames netTun)
                       else "";
                   in ''
