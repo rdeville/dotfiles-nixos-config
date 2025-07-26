@@ -1,6 +1,34 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.26.0 (2025-07-26)
+
+### ✨ Minor
+
+  * ✨ finalize k8s stg node and update networks rendering (!69) by Romain Deville ([`018ea4f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/018ea4ff4f4024ed5cb23a024eb9284e3fe9061b))
+
+### 🩹 Patch
+
+  * ⚡️(luke): Improve network for k8s by Romain Deville ([`da4613f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/da4613f7f0cd1e931607567d8b111e9970778117)) 🔏
+  * ⚡️(leia): Improve network for k8s by Romain Deville ([`7f2db49`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7f2db49c73cf481a7aee689b941cb37decbfa924)) 🔏
+  * ⚡️(kenobi/net): Improve networks for k8s nodes and vlans by Romain Deville ([`84026cf`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/84026cf7d3db332a6294221910af289ce8043947)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`fd7f24c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fd7f24c0b89d1c07cd80cd944f3571a96759fedc)) 🔏
+  * 🐛(kenobi/vms): Fix nginx address related to vms by Romain Deville ([`5fdc8de`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5fdc8deb60c5b8b19aa3c3a09a989cc50ab21d12)) 🔏
+  * 🔧(topology): Update k8s stg nodes hardware description by Romain Deville ([`82df123`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/82df123fce85fa6b170c1fb0f4f04a994bc16cd1)) 🔏
+  * 🔧(maya): Prepare k8s nodes network by Romain Deville ([`6f8f47c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6f8f47c3f5ebddec620644dd2853acaba5e4c442)) 🔏
+  * 🔧(lilith): Prepare k8s nodes network by Romain Deville ([`b5f203a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b5f203a8e8dff59f710f4d5f49033206ffdc17df)) 🔏
+  * 🔧(ava): Prepare k8s nodes network by Romain Deville ([`da80223`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/da802239fff37f1976dd4bf95e08edab969c590c)) 🔏
+  * 🔧(kenobi/dns): Update DNS entry with right IPs by Romain Deville ([`2a8810c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2a8810c66ef4f0827c6327ec6a0fac4e4577d1f5)) 🔏
+  * 🔧(rey|darth-maul): Update network config for topology rendering by Romain Deville ([`735c761`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/735c76179c22fcb3eb4ee12b30e854c423e2423f)) 🔏
+  * 🔧(templates): Update pkgs for host server by Romain Deville ([`fbdbec2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fbdbec23c840afc6e153942beab379dc33e98822)) 🔏
+
+### 🔊 Others
+
+  * 🔥(kenobi): Remove packages now in templates/server by Romain Deville ([`a02c21c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a02c21cbfd147087577e4ad1301a1755a120b586)) 🔏
+  * 🔥(rey|darth-maul): Remove package now in templates/server by Romain Deville ([`0c3ed3c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0c3ed3cec217fab7d79343da4093f6526027dcb8)) 🔏
+  * 🔨(scripts): Add gpg script to auto-import or update expiricy by Romain Deville ([`e673498`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e67349810e1eadc873ebf601d738a3e23a262a5b)) 🔏
+  * 🔨(script): Fix AGE key path in install script by Romain Deville ([`40715a7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/40715a7d43c0bc297d9217b10f6fe4b1fcd2777d)) 🔏
+
 ## v0.25.1 (2025-07-25)
 
 ### 🩹 Patch
