@@ -14,8 +14,7 @@
             (config.lib.topology.mkConnectionRev "kenobi" "eth-public")
           ];
         };
-        eth1 = {};
-        eth2 = {};
+        eth = {};
       };
     };
   };
