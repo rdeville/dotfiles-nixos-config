@@ -17,6 +17,7 @@
     in {
       inherit name;
       endpoint = wgEndpoint;
+      activationPolicy = "up";
       allowInput = true;
       allowInputConnected = true;
       allowedTCPPorts = config.services.openssh.ports;
@@ -73,14 +74,43 @@ in {
 
   os = {
     flavors = {
+      ssh-server = {
+        openFirewall = true;
+      };
       network = {
         enable = true;
         firewall = {
+          debug = true;
+          enable = false;
           trustedInterfaces = k8sPorts.trustedInterfaces;
+        };
+        nftable = {
+          enable = true;
+          defaultPolicy = "accept";
         };
         networks =
           {
-            enp1s0 = {
+            eth-k8s = {
+              matchConfig = {
+                name = "enp3s*";
+              };
+              DHCP = "no";
+              activationPolicy = "up";
+              requiredForOnline = "no";
+              nftables = {
+                allowInputConnected = true;
+              };
+              topology = {
+                connections = [
+                  {
+                    to = "k8s-switch";
+                    iface = "eth";
+                    reversed = true;
+                  }
+                ];
+              };
+            };
+            k8s-prd = {
               interface = "k8s-prd";
               DHCP = "yes";
               activationPolicy = "up";
@@ -88,14 +118,21 @@ in {
               nftables = {
                 allowInputConnected = true;
               };
+              vlan = {
+                enable = true;
+                id = 128;
+                vlanInterfaces = [
+                  "enp3s0"
+                ];
+              };
               topology = {
                 addresses = [
                   "${prefix}.${toString id}"
                 ];
                 connections = [
                   {
-                    to = "k8s-switch";
-                    iface = "eth4";
+                    to = "kenobi";
+                    iface = "k8s-prd";
                     reversed = true;
                   }
                 ];
