@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.4 (2025-07-26)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`c188e1c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c188e1cf86eff8cd2a1d780fb6a5ce3af9a696eb)) 🔏
+  * 🐛(os/network): Fix wrong interface in nftable forward rule (!133) by Romain Deville ([`7d09f9d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d09f9db5235407e3dd5357ae15d2291af0e80e2))
+  * 🐛(os/network): Fix wrong interface in nftable forward rule by Romain Deville ([`0369526`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/03695263c8d39033044cb2b9b075fbada1875694)) 🔏
+
 ## v0.41.3 (2025-07-25)
 
 ### 🩹 Patch
