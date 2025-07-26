@@ -100,7 +100,7 @@ in {
           {
             ${vm.interface} = {
               interface = vm.interface;
-              matchConfig =  {
+              matchConfig = {
                 name = "enx*";
               };
               allowedTCPPorts = config.services.openssh.ports;

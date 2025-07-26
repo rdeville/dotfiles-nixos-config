@@ -1,7 +1,16 @@
 # Sources :
 # https://labs.quansight.org/blog/2020/07/nixos-rpi-wifi-router
 # https://www.jjpdev.com/posts/home-router-nixos/
-{...}: {
+{...}: let
+  interfaces = [
+    "wlp5s0f0"
+    "enp2s0"
+    "enp3s0"
+    "enp4s0"
+    "k8s-stg"
+    "k8s-prd"
+  ];
+in {
   imports = [
     ./wan
     ./wl-public
@@ -26,6 +35,7 @@
         enable = true;
         firewall = {
           allowPing = true;
+          checkReversePath = "loose";
         };
         nameservers = [
           # Itself to all local resolving
@@ -42,6 +52,9 @@
     kea = {
       dhcp4 = {
         settings = {
+          interfaces-config = {
+            inherit interfaces;
+          };
           lease-database = {
             name = "/var/lib/kea/dhcp4.leases";
             persist = true;

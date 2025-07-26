@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   users = {
@@ -120,6 +121,20 @@ in {
   };
 
   environment = {
+    systemPackages = with pkgs; [
+      ethtool # manage NIC settings (offload, NIC feeatures, ...)
+      tcpdump # view network traffic
+      conntrack-tools # view network connection states
+      wireguard-tools # Wireguard binaries
+      traceroute # view network routes
+      arp-scan # scan arp packet
+      iw # view wlan interfaces and devices
+      dig # DNS lookup utiliy
+      cilium-cli # Cilium utils
+      arp-scan # ARP packet scanner
+      neovim # terminal editor
+      nettools # Network utility (like netstat)
+    ];
     etc = {
       "ssh/ssh_host_rsa_key" = {
         source = config.sops.secrets."keys/rsa".path;
@@ -135,6 +150,7 @@ in {
       };
     };
   };
+
   networking = {
     enableIPv6 = false;
   };

@@ -54,6 +54,7 @@
       in {
         inherit name;
         endpoint = wgEndpoint;
+        activationPolicy = "up";
         allowInput = true;
         allowInputConnected = true;
         allowedTCPPorts = config.services.openssh.ports;
@@ -97,8 +98,11 @@ in {
         };
         networks =
           {
-            enp25s0 = {
-              interface = "eth-public";
+            eth-public = {
+              interface = "enp25s0";
+              matchConfig = {
+                name = "enp25s*";
+              };
               DHCP = "yes";
               activationPolicy = "up";
               requiredForOnline = "yes";
@@ -109,7 +113,7 @@ in {
                 connections = [
                   {
                     to = "switch";
-                    iface = "eth1";
+                    iface = "eth";
                     reversed = true;
                   }
                 ];

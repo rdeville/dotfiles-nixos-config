@@ -22,14 +22,12 @@ kenobi                IN A     172.30.0.1
 darth-maul            IN A     172.30.0.2
 rey                   IN A     172.30.1.3
 
-; PRD Cluster Network
+; DEV Cluster Network
 ; -----------------------------------------------------------------------------
-*                     IN A     172.30.128.201
-vm-kenobi-k8s-prd     IN A     172.30.128.201 ; CP & Worker (VM)
-; Control-Plane & Worker
-lilith                IN A     172.30.128.10  ; Worker
-maya                  IN A     172.30.128.11  ; Worker
-ava                   IN A     172.30.128.12  ; Worker
+*.dev                 IN A     172.30.160.201
+vm-kenobi-k8s-dev     IN A     172.30.160.201 ; CP & Worker (VM)
+vm-darth-maul-k8s-dev IN A     172.30.160.202 ; Worker (VM)
+vm-rey-k8s-dev        IN A     172.30.160.203 ; Worker (VM)
 
 ; STG Cluster Network
 ; -----------------------------------------------------------------------------
@@ -38,14 +36,16 @@ vm-kenobi-k8s-stg     IN A     172.30.144.201 ; CP & Worker (VM)
 vm-darth-maul-k8s-stg IN A     172.30.144.202 ; Worker (VM)
 vm-rey-k8s-stg        IN A     172.30.144.203 ; Worker (VM)
 ; Control-Plane & Worker
-luke                  IN A     172.30.144.20  ; Worker
-leia                  IN A     172.30.144.21  ; Worker
+luke                  IN A     172.30.144.11  ; Worker
+leia                  IN A     172.30.144.12  ; Worker
 
-; DEV Cluster Network
+; PRD Cluster Network
 ; -----------------------------------------------------------------------------
-*.dev                 IN A     172.30.160.201
-vm-kenobi-k8s-dev     IN A     172.30.160.201 ; CP & Worker (VM)
-vm-darth-maul-k8s-dev IN A     172.30.160.202 ; Worker (VM)
-vm-rey-k8s-dev        IN A     172.30.160.203 ; Worker (VM)
+*                     IN A     172.30.128.201
+vm-kenobi-k8s-prd     IN A     172.30.128.201 ; CP & Worker (VM)
+; Control-Plane & Worker
+lilith                IN A     172.30.128.21  ; Worker
+maya                  IN A     172.30.128.22  ; Worker
+ava                   IN A     172.30.128.23  ; Worker
 
 ; vim: ft=dns

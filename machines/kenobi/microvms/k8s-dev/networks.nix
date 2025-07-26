@@ -127,7 +127,6 @@ in {
                 }
               ];
               topology = {
-                name = vm.network;
                 addresses = [
                   "${vm.prefix}.${toString id}"
                 ];

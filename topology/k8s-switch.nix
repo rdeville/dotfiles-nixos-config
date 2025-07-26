@@ -34,24 +34,8 @@
           ];
         };
 
-        eth1 = {
-          network = "k8s-stg";
-        };
-
-        eth2 = {
-          network = "k8s-stg";
-        };
-
-        eth3 = {
-          network = "k8s-prd";
-        };
-
-        eth4 = {
-          network = "k8s-prd";
-        };
-
-        eth5 = {
-          network = "k8s-prd";
+        eth = {
+          network = "eth-k8s";
         };
       };
     };

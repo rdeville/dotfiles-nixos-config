@@ -2,28 +2,13 @@
   networks = [
     {
       name = "eth-public";
-      interface = "enp2s0";
+      interface = "enp2s*";
+      realInterface = "enp2s0";
       id = 1;
       reservations = [];
       topology = {
         color = "#00a63e";
         desc = "Local Ethernet";
-      };
-    }
-    {
-      name = "eth-k8s";
-      interface = "enp3s0";
-      id = 3;
-      reservations = [
-        {
-          hw-address = "8c:90:2d:9d:20:16";
-          hostname = "k8s-switch";
-          id = 100;
-        }
-      ];
-      topology = {
-        color = "#733e0a";
-        desc = "Kubernetes Ethernet";
       };
     }
   ];
@@ -39,6 +24,10 @@ in {
               interface = elem.interface;
               isServer = true;
               activationPolicy = "up";
+              nftables = {
+                allowInputConnected = true;
+                allowBidirectional = true;
+              };
               requiredForOnline = "no";
               networkCIDRPrefix = prefix;
               address = [
@@ -57,6 +46,9 @@ in {
                 ];
               };
               topology = {
+                addresses = [
+                  "${prefix}.1"
+                ];
                 inherit (elem.topology) color desc;
               };
             };
@@ -72,9 +64,6 @@ in {
       dhcp4 = {
         enable = true;
         settings = {
-          interfaces-config = {
-            interfaces = builtins.map (elem: elem.name) networks;
-          };
           subnet4 =
             builtins.map (
               elem: let
@@ -82,7 +71,7 @@ in {
               in {
                 inherit (elem) id;
                 subnet = "${prefix}.0/24";
-                interface = elem.name;
+                interface = elem.realInterface;
                 reservations = builtins.foldl' (acc: elem:
                   [
                     {
