@@ -15,6 +15,7 @@
       name = "wg-private";
     in {
       inherit name;
+      interface = name;
       activationPolicy = "up";
       endpoint = wgEndpoint;
       allowInput = true;
@@ -38,6 +39,7 @@
         allowedUDPPorts
         allowedTCPPorts
         ;
+      interface = name;
       activationPolicy = "up";
       allowInput = true;
       allowBidirectional = true;
@@ -98,7 +100,7 @@ in {
         };
         networks =
           {
-            ${vm.interface} = {
+            ${vm.network} = {
               interface = vm.interface;
               matchConfig = {
                 name = "enx*";

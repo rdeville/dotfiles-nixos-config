@@ -33,6 +33,7 @@
         [
           {
             inherit (elem) name;
+            interface = elem.name;
             endpoint = wgEndpoint;
             allowedIPs = routerNetwork.${elem.name}.networkCIDR;
             allowInputConnected = true;
@@ -51,6 +52,7 @@
     [
       {
         name = "wg-public";
+        interface = "wg-public";
         endpoint = wgEndpoint;
         allowedIPs = "0.0.0.0/0";
         routes = [
@@ -72,9 +74,9 @@
         name = "wg-private";
       in {
         inherit name;
+        interface = name;
         endpoint = wgEndpoint;
         allowInput = true;
-        allowInputConnected = true;
         allowedTCPPorts = config.services.openssh.ports;
         allowedIPs = routerNetwork.${name}.networkCIDR;
         routes = [
@@ -125,7 +127,6 @@ in {
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {
-                allowInput = true;
                 allowInputConnected = true;
               };
               topology = {

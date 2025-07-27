@@ -24,6 +24,7 @@ in {
       network = {
         networks = {
           ${netName} = {
+            interface = netName;
             requiredForOnline = "no";
             activationPolicy = "up";
             address = [
