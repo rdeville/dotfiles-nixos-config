@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DESCRIPTION: Script to remotely install machine using disko and nixos-anywhere
+#
 # shellcheck disable=SC2034
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1

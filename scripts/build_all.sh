@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DESCRIPTION: Script to test to build all NixOS and Home-Manager
+
 # shellcheck disable=SC2034
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1

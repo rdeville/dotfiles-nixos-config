@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DESCRIPTION: Script to generate Wireguard Keys
+
 netname=$1
 
 if [[ -z "${netname}" ]]; then

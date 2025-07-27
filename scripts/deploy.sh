@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DESCRIPTION: Wrapper to remotely deploy a NixOS Configuration
+
 # shellcheck disable=SC2034
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
@@ -120,10 +122,19 @@ main() {
     return 1
   fi
 
-  if ! nixos-rebuild switch \
-    --flake ".#${hostname}" \
-    --target-host "${user}@${ip}" \
-    --use-remote-sudo; then
+  local cmd_options=""
+  compute_override_inputs
+  local cmd=(
+    "nixos-rebuild"
+    "switch"
+    "--flake .#${hostname}"
+    "--target-host ${user}@${ip}"
+    "--use-remote-sudo"
+    "${cmd_options//\\/}"
+  )
+
+  # shellcheck disable=SC2048
+  if ! ${cmd[*]}; then
     _log "ERROR" "An error occurs during switch of NixOS configuration for **${hostname}**"
     rm -rf "${tmp}"
     return 1

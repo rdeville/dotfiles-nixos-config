@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-# DESCRIPTION: Wraper to manage secrets encryptions
+# DESCRIPTION: Wrapper to manage secrets encryptions
 
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1

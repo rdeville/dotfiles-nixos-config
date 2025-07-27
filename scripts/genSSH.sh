@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# DESCRIPTION: Script to generate SSH Keys
+
 hostname=$1
 
 if [[ -z "${hostname}" ]]; then

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2034
 
-# DESCRIPTION: Update GPG keys expiricy
+# DESCRIPTION: Update GPG keys expiricy or import them
 
 set -e
 
