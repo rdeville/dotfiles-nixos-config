@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.6 (2025-07-27)
+
+### 🩹 Patch
+
+  * ⚡️(os/users): Improve module to add groups define as user.extraGroups (!135) by Romain Deville ([`5c4462d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5c4462db7300f02403be50c9f5cdf6a959838c6c))
+  * ⚡️(os/users): Improve module to add groups define as user.extraGroups by Romain Deville ([`aaaf896`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aaaf8966522387fab6faca132e706a4d57a56503)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`c73bab5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c73bab572f1893755c854d024bd92382fdf37aee)) 🔏
+
 ## v0.41.5 (2025-07-27)
 
 ### 🩹 Patch
