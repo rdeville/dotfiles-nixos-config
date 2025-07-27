@@ -32,6 +32,5 @@
     "cilium_host*"
     "cilium_vxlan"
     "lxc*"
-    "wg-k8s-dev"
   ];
 }
