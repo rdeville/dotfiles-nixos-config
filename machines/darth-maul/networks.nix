@@ -7,7 +7,7 @@
   id = 2;
 
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
-  wgEndpoint = "172.16.0.1";
+  wgEndpoint = "172.16.1.1";
 
   wgClusters = (
     let
@@ -33,6 +33,7 @@
         [
           {
             inherit (elem) name;
+            interface = elem.name;
             endpoint = wgEndpoint;
             allowedIPs = routerNetwork.${elem.name}.networkCIDR;
             allowInputConnected = true;
@@ -53,10 +54,10 @@
         name = "wg-private";
       in {
         inherit name;
+        interface = name;
         endpoint = wgEndpoint;
         activationPolicy = "up";
         allowInput = true;
-        allowInputConnected = true;
         allowedTCPPorts = config.services.openssh.ports;
         allowedIPs = routerNetwork.${name}.networkCIDR;
         routes = [
@@ -93,19 +94,19 @@ in {
           # Kenobi
           "89.234.140.170"
         ];
-        networkmanager = {
-          enable = true;
-        };
         networks =
           {
             eth-public = {
-              interface = "enp25s0";
+              interface = "eno1";
               matchConfig = {
-                name = "enp25s*";
+                name = "eno*";
               };
               DHCP = "yes";
               activationPolicy = "up";
               requiredForOnline = "yes";
+              nftables = {
+                allowInputConnected = true;
+              };
               topology = {
                 addresses = [
                   "172.16.1.2"

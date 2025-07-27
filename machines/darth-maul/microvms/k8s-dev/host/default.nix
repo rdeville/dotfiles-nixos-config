@@ -24,6 +24,7 @@ in {
       network = {
         networks = {
           ${netName} = {
+            interface = netName;
             requiredForOnline = "no";
             activationPolicy = "up";
             address = [
@@ -32,7 +33,7 @@ in {
             nftables = {
               allowInputConnected = true;
               tunInterfaces = [
-                "wlp170s0"
+                "eno1"
               ];
             };
             routes = [
