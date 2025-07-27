@@ -5,7 +5,6 @@
   ...
 }: let
   cfg = config.os.users;
-
   defaultGroup = [
     "networkmanager"
   ];
@@ -126,6 +125,18 @@ in {
           }
         )
         cfg.users;
+      groups = builtins.foldl' (
+        acc: elem:
+          (
+            builtins.foldl' (acc: group:
+              {
+                ${group} = {};
+              }
+              // acc) {}
+            cfg.users.${elem}.extraGroups
+          )
+          // acc
+      ) {} (builtins.attrNames cfg.users);
     };
 
     programs = builtins.listToAttrs (
