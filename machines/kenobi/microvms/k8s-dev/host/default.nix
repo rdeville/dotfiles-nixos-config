@@ -22,6 +22,11 @@ in {
   os = {
     flavors = {
       network = {
+        firewall = {
+          trustedInterfaces = [
+            netName
+          ];
+        };
         networks = {
           ${netName} = {
             interface = netName;
@@ -32,7 +37,7 @@ in {
             ];
             routes = [
               {
-                Destination = "${cidr}";
+                Destination = cidr;
               }
             ];
             nftables = {

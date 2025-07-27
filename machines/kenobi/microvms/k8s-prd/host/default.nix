@@ -22,6 +22,11 @@ in {
   os = {
     flavors = {
       network = {
+        firewall = {
+          trustedInterfaces = [
+            netName
+          ];
+        };
         networks = {
           ${netName} = {
             interface = netName;
@@ -29,6 +34,11 @@ in {
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
+            ];
+            routes = [
+              {
+                Destination = cidr;
+              }
             ];
             nftables = {
               # Required for DNS request
@@ -38,11 +48,6 @@ in {
                 "wg-tun-illyse"
               ];
             };
-            routes = [
-              {
-                Destination = "${cidr}";
-              }
-            ];
             networkConfig = {
               IPv4Forwarding = true;
             };

@@ -34,7 +34,7 @@ in {
       network = {
         enable = true;
         firewall = {
-          checkReversePath = "loose";
+          checkReversePath = false;
         };
         nameservers = [
           # Itself to all local resolving
