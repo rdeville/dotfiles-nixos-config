@@ -81,6 +81,7 @@ self: lib: let
             1
           );
         in {
+          inherit (elem) interface;
           address = lib.mkIf (elem ? address) elem.address;
           gateway = lib.mkIf (elem ? gateway) elem.gateway;
           routes = lib.mkIf (elem ? routes) elem.routes;
@@ -130,6 +131,7 @@ self: lib: let
     builtins.foldl' (acc: elem:
       {
         ${elem.name} = {
+          inherit (elem) interface;
           dns = [
             "${elem.CIDRPrefix}.${toString elem.id}"
           ];
