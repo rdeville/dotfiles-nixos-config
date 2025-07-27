@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.5 (2025-07-27)
+
+### 🩹 Patch
+
+  * 🔧(os/net): Improve module firewall and nftable configuration (!134) by Romain Deville ([`3389878`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3389878067edc59c7f1878c0423134494b75b1a1))
+  * 🔧(os/net): Improve module firewall and nftable configuration by Romain Deville ([`ae36fd1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ae36fd11d4a3b8ce055da7cd5c08487385e3bf59)) 🔏
+
 ## v0.41.4 (2025-07-26)
 
 ### 🩹 Patch
