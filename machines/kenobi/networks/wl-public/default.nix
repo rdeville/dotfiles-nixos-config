@@ -21,6 +21,7 @@ in {
       network = {
         networks = {
           ${network} = {
+            interface = realInterface;
             matchConfig = {
               name = interface;
             };
@@ -40,6 +41,8 @@ in {
               67 # DHCP
             ];
             nftables = {
+              allowInput = true;
+              allowBidirectional = true;
               tunInterfaces = [
                 "wg-tun-illyse"
               ];
@@ -94,11 +97,11 @@ in {
               inherit id;
               subnet = cidr;
               reservations = [
-                # {
-                #   hw-address = "74:13:ea:be:97:9a";
-                #   hostname = "rey";
-                #   ip-address = "${prefix}.3";
-                # }
+                {
+                  hw-address = "74:13:ea:be:97:9a";
+                  hostname = "rey";
+                  ip-address = "${prefix}.3";
+                }
               ];
               pools = [
                 {

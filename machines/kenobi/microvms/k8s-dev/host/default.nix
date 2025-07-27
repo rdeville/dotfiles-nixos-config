@@ -24,6 +24,7 @@ in {
       network = {
         networks = {
           ${netName} = {
+            interface = netName;
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
@@ -38,7 +39,6 @@ in {
               allowInputConnected = true;
               tunInterfaces = [
                 "wg-tun-illyse"
-                "enp1s0"
               ];
             };
             networkConfig = {

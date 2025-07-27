@@ -5,7 +5,13 @@
       interface = "enp2s*";
       realInterface = "enp2s0";
       id = 1;
-      reservations = [];
+      reservations = [
+        {
+          hw-address = "10:bf:48:7c:c8:e6";
+          hostname = "darth-maul";
+          id = 2;
+        }
+      ];
       topology = {
         color = "#00a63e";
         desc = "Local Ethernet";
@@ -21,12 +27,18 @@ in {
             ${elem.name} = let
               prefix = "172.16.${toString elem.id}";
             in {
-              interface = elem.interface;
+              interface = elem.realInterface;
+              matchConfig = {
+                name = elem.interface;
+              };
               isServer = true;
               activationPolicy = "up";
               nftables = {
-                allowInputConnected = true;
+                allowInput = true;
                 allowBidirectional = true;
+                tunInterfaces = [
+                  "wg-tun-illyse"
+                ];
               };
               requiredForOnline = "no";
               networkCIDRPrefix = prefix;
@@ -40,11 +52,6 @@ in {
                 53 # DNS
                 67 # DHCP
               ];
-              nftables = {
-                tunInterfaces = [
-                  "wg-tun-illyse"
-                ];
-              };
               topology = {
                 addresses = [
                   "${prefix}.1"
@@ -81,6 +88,11 @@ in {
                   ]
                   ++ acc) []
                 elem.reservations;
+                pools = [
+                  {
+                    pool = "${prefix}.64 - ${prefix}.254";
+                  }
+                ];
                 option-data = [
                   {
                     name = "routers";
