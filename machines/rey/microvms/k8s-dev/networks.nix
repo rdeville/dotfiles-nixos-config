@@ -42,8 +42,6 @@
       interface = name;
       activationPolicy = "up";
       allowInput = true;
-      allowBidirectional = true;
-      allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
@@ -105,12 +103,9 @@ in {
               matchConfig = {
                 name = "enx*";
               };
-              allowedTCPPorts = config.services.openssh.ports;
               activationPolicy = "up";
               nftables = {
-                allowInput = true;
                 allowInputConnected = true;
-                allowBidirectional = true;
               };
               address = [
                 "${vm.prefix}.${toString id}/32"

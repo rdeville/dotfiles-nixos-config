@@ -31,9 +31,10 @@ in {
               "${prefix}.1/32"
             ];
             nftables = {
-              allowInputConnected = true;
               tunInterfaces = [
-                "wlp170s0"
+                "wlp*"
+                "wg-public"
+                "enp*"
               ];
             };
             routes = [
@@ -54,7 +55,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        "${cidr}"
+        cidr
       ];
     };
   };
