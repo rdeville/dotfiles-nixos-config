@@ -7,6 +7,8 @@
   cfg = config;
 in {
   options = {
+    enable = lib.mkDefaultEnabledOption "Enable interface";
+
     name = lib.mkOption {
       type = lib.types.str;
       description = "This network interface.";
@@ -17,13 +19,9 @@ in {
     interface = lib.mkOption {
       type = lib.types.str;
       description = ''
-        Set the interface in `MatchConfig` if `name` is different
-        from the network interface to use
+        Name of the real interface to apply for firewall or nftable.
       '';
-      default = name;
     };
-
-    enable = lib.mkDefaultEnabledOption "Enable interface";
 
     isServer = lib.mkEnableOption ''
       Specify if network is provided by a server.

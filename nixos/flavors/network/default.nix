@@ -49,7 +49,7 @@
     {
       ${elem} =
         builtins.foldl' (acc: net:
-          [net]
+          [cfg.networks.${net}.interface]
           ++ acc) []
         (
           builtins.filter (
@@ -186,7 +186,7 @@ in {
                     Name = interface.matchConfig.name;
                   }
                   else {
-                    Name = interface.interface;
+                    Name = interface.name;
                   }
                 );
               networkConfig =
