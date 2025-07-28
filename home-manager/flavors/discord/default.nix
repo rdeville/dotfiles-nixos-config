@@ -20,16 +20,17 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        discord
+        vesktop
       ];
     };
 
-    xdg = {
-      configFile = {
-        "discord/settings.json" = {
-          text = builtins.toJSON {
-            SKIP_HOST_UPDATE = true;
-          };
+    programs = {
+      vesktop = {
+        enable = true;
+        settings = {
+          autoUpdate = false;
+          autoUpdateNotification = false;
+          notifyAboutUpdates = false;
         };
       };
     };
