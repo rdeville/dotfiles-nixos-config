@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.26.1 (2025-07-28)
+
+### 🩹 Patch
+
+  * 🐛(overlay): Fix overlay module to due warning (!70) by Romain Deville ([`3c37a6d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3c37a6dcc286f6074cb1ec203adde6ac0a5eaf01))
+  * 🐛(overlay): Fix overlay module to due warning by Romain Deville ([`a29dae2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a29dae203259d436020ad602b9a6c4354f450a5d)) 🔏
+
 ## v0.26.0 (2025-07-26)
 
 ### ✨ Minor
