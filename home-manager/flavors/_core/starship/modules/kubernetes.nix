@@ -89,7 +89,7 @@ in {
             #The format for the module.
             format = lib.concatStrings [
               (sep bg)
-              "[ $symbol$user@$cluster $context:$namespace ]($style)"
+              "[ $symbol$user@$context:$namespace ]($style)"
             ];
           };
         };
