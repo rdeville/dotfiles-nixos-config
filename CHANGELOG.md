@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.8 (2025-07-28)
+
+### 🩹 Patch
+
+  * ⚡️(hm): Update discord to use OSS Vesktop and starship k8s segment (!137) by Romain Deville ([`3f38fe6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3f38fe6a765dd70e4cc191f145b2713c2e3fd12c))
+  * ⚡️(hm/discord): Replace discord with it OSS alternative Vesktop by Romain Deville ([`ecd911f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ecd911f04e33c8e1587c331186dbd2ac1be6c40c)) 🔏
+  * 🔧(hm/_core): Update starship segment kubernetes by Romain Deville ([`0b01139`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0b011398f3fb54e37bc51d4b1043872cd376521b)) 🔏
+
 ## v0.41.7 (2025-07-28)
 
 ### 🩹 Patch
