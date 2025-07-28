@@ -25,22 +25,24 @@ in {
         networks = {
           ${netName} = {
             interface = netName;
+            requiredForOnline = "no";
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
             ];
+            nftables = {
+              # Required for DNS request
+              allowInput = true;
+              tunInterfaces = [
+                "enp*"
+                "wg-tun-illyse"
+              ];
+            };
             routes = [
               {
                 Destination = "${cidr}";
               }
             ];
-            nftables = {
-              allowInput = true;
-              allowInputConnected = true;
-              tunInterfaces = [
-                "wg-tun-illyse"
-              ];
-            };
             networkConfig = {
               IPv4Forwarding = true;
             };

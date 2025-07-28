@@ -5,6 +5,12 @@
   ...
 }: let
   id = 201;
+  vm = {
+    interface = "enp0s8";
+    network = "vm-k8s-dev";
+    prefix = "172.20.160";
+    mac = "02:00:00:00:00:a0";
+  };
 
   k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
@@ -42,8 +48,6 @@
       interface = name;
       activationPolicy = "up";
       allowInput = true;
-      allowBidirectional = true;
-      allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
@@ -56,13 +60,6 @@
       ];
     })
   ];
-
-  vm = {
-    interface = "enp0s7";
-    network = "vm-k8s-dev";
-    prefix = "172.20.160";
-    mac = "02:00:00:00:00:a0";
-  };
 in {
   sops = {
     secrets = builtins.foldl' (acc: elem:
@@ -105,15 +102,17 @@ in {
               matchConfig = {
                 name = "enx*";
               };
-              allowedTCPPorts = config.services.openssh.ports;
               activationPolicy = "up";
+              allowedTCPPorts = config.services.openssh.ports;
               nftables = {
                 allowInput = true;
                 allowInputConnected = true;
-                allowBidirectional = true;
               };
               address = [
                 "${vm.prefix}.${toString id}/32"
+              ];
+              dns = [
+                "${vm.prefix}.1"
               ];
               routes = [
                 {
