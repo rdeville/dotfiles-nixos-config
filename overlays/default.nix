@@ -1,6 +1,5 @@
 {
   inputs,
-  config,
   lib,
   pkgs,
   ...
@@ -21,14 +20,14 @@ in {
             overlayInfo = builtins.match overlayRegexp overlay;
             pkgOverlay = builtins.elemAt overlayInfo 0;
             dateOverlay = builtins.elemAt overlayInfo 1;
-            pkgs = import inputs."${overlay}" {
-              inherit (config.nixpkgs) system;
+            newPkgs = import inputs."${overlay}" {
+              inherit (pkgs) system;
             };
           in {
             "${pkgOverlay}" =
-              if dateOverlay > dateDelay
-              then lib.mkWarn "Overlay ${overlay} hase more than one month" pkgs.${pkgOverlay}
-              else pkgs.${pkgOverlay};
+              if dateDelay > dateOverlay
+              then lib.mkWarn "Overlay ${overlay} hase more than one month" newPkgs.${pkgOverlay}
+              else newPkgs.${pkgOverlay};
           }
         )
       ) (
