@@ -51,6 +51,9 @@
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
+        # Bidirectional + Trusted Interface
+        name
+        vm.interface
         "cilium_wg0"
       ];
       routes = [
@@ -94,6 +97,7 @@ in {
         enable = true;
         firewall = {
           trustedInterfaces = k8sPorts.trustedInterfaces;
+          checkReversePath = false;
         };
         networks =
           {
