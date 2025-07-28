@@ -1,6 +1,37 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.27.0 (2025-07-28)
+
+### ✨ Minor
+
+  * ✨ Hardening currently deployed node networks (close firewall and nftables) (!71) by Romain Deville ([`64d1540`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/64d1540ae50ff6dfa1ce3e621ea03178a5f82f4e))
+
+### 🩹 Patch
+
+  * ⚡️(maya/net): Update network to latest module nixos.os version by Romain Deville ([`fbe7d19`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fbe7d197449c743abdffbdfb990a86245b303f19)) 🔏
+  * ⚡️(luke/net): Hardening network, removing useless nftable rules by Romain Deville ([`25283a1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/25283a1507915b2eafcf90c07bc5f6ef652f23b6)) 🔏
+  * ⚡️(lilith/net): Update network to latest module nixos.os version by Romain Deville ([`c921927`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c921927ead284b517063a6468cf90ce9eaf5903f)) 🔏
+  * ⚡️(leia/net): Hardening network firewall and nftable by Romain Deville ([`e309b14`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e309b14eae0860fded2596b788afd38e9673fab2)) 🔏
+  * ⚡️(ava/net): Update network to latest module nixos.os version by Romain Deville ([`9501809`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9501809a87e5ca1bdbbe05ff9763787b6ffad886)) 🔏
+  * ⚡️(darth-maul/vms): Hardening VMs network firewall and nftable by Romain Deville ([`b16c5f4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b16c5f4b812a522cd44904e551055b76defd7293)) 🔏
+  * ⚡️(darth-maul/net): Hardening network firewall and nftable by Romain Deville ([`699573b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/699573bb8711481b9dc5f68aa2aa70e9bc22749c)) 🔏
+  * ⚡️(rey/vm): Hardening VMs network firewall and nftable by Romain Deville ([`5498ecc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5498ecc703c798106531aad9dfa7935d61429f27)) 🔏
+  * ⚡️(rey/net): Hardening network firewall and nftable by Romain Deville ([`2f1b3b1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2f1b3b1ec04e4a1f7a7c3c82e661279d320d0557)) 🔏
+  * ⚡️(kenobi/net): Hardening network firewall and nftable by Romain Deville ([`5b424df`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5b424df534f376e9a55b96a5c405c57867053f8b)) 🔏
+  * ⚡️(lib): Add interface support to function wgConfig by Romain Deville ([`ba83bd6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ba83bd617f88e19aa4e329af545a128bbeb81e7c)) 🔏
+  * ✏️(overlays): Fix typos in overlays module by Romain Deville ([`b81d5b3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b81d5b329c470616fee30051fbf197c16cd0cb90)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`23ba2e1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/23ba2e19babd9432e9c1539004978b570fddaa29)) 🔏
+  * 🔧(darth-maul/hardware): Activate bluetooth by Romain Deville ([`e5e4ad5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e5e4ad5f118c28168ecd0bc8f9e931613068769b)) 🔏
+  * 🔧(kenobi/vms): Hardening network firewall and nftable by Romain Deville ([`0153bfe`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0153bfeb697a4943b5ccbcf22e29a8a34be5a116)) 🔏
+  * 🔧(kenobi/wg-private): Fix vm-rey public key by Romain Deville ([`12f420d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/12f420dfe4c5cf72f36cf3f5048c80435debf7fe)) 🔏
+  * 🔧(kenobi/dns): Fix some VMs DNS entry by Romain Deville ([`1e8d77b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1e8d77bb32aaf7400c5a428a986aa0ffa5484070)) 🔏
+
+### 🔊 Others
+
+  * 🔥(common/cfg/k8s): Remove wg-k8s-dev from default input trusted interface by Romain Deville ([`9ff5ba6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9ff5ba668693766cefb7123fdb1e782732e863a7)) 🔏
+  * 🚧(scripts): WIP on script deploy by Romain Deville ([`0f160d1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0f160d126bca660325dc8bf5bf3ee1e58925a200)) 🔏
+
 ## v0.26.1 (2025-07-28)
 
 ### 🩹 Patch
