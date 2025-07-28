@@ -61,7 +61,6 @@ in {
                           builtins.readFile peer.PublicKey
                         );
                     AllowedIPs = peer.AllowedIPs;
-                    PersistentKeepalive = 30;
                   }
                   else {
                     inherit (peer) Endpoint;
