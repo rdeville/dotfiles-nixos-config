@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.7 (2025-07-28)
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`cb10373`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cb10373bc457c27deec80565b94ea3db008fabcf)) 🔏
+  * 🔧(os/net/wg): Remove PersistentKeepalive from server, client must do it (!136) by Romain Deville ([`43ca8f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/43ca8f5e5de0bc2b697f9cba9fde7d60f2de7036))
+  * 🔧(os/net/wg): Remove PersistentKeepalive from server, client must do it by Romain Deville ([`bce8dec`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bce8dec10601d5f2b8a0599aa47c1cf4028dbee7)) 🔏
+
 ## v0.41.6 (2025-07-27)
 
 ### 🩹 Patch
