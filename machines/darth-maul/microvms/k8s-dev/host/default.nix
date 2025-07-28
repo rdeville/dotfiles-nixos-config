@@ -31,7 +31,6 @@ in {
               "${prefix}.1/32"
             ];
             nftables = {
-              allowInputConnected = true;
               tunInterfaces = [
                 "eno1"
               ];
@@ -54,7 +53,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        "${cidr}"
+        cidr
       ];
     };
   };
