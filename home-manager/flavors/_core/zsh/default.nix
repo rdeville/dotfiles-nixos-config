@@ -33,7 +33,7 @@ in {
       zsh = {
         enable = cfg.enable;
 
-        dotDir = ".cache/zsh";
+        dotDir = "${config.xdg.cacheHome}/zsh";
         defaultKeymap = "viins";
         profileExtra = ''
           export LC_ALL="en_US.UTF-8"
