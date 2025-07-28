@@ -15,6 +15,7 @@
       name = "wg-private";
     in {
       inherit name;
+      interface = name;
       activationPolicy = "up";
       endpoint = wgEndpoint;
       allowInput = true;
@@ -38,10 +39,9 @@
         allowedUDPPorts
         allowedTCPPorts
         ;
+      interface = name;
       activationPolicy = "up";
       allowInput = true;
-      allowBidirectional = true;
-      allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
@@ -98,17 +98,14 @@ in {
         };
         networks =
           {
-            ${vm.interface} = {
+            ${vm.network} = {
               interface = vm.interface;
               matchConfig = {
                 name = "enx*";
               };
-              allowedTCPPorts = config.services.openssh.ports;
               activationPolicy = "up";
               nftables = {
-                allowInput = true;
                 allowInputConnected = true;
-                allowBidirectional = true;
               };
               address = [
                 "${vm.prefix}.${toString id}/32"

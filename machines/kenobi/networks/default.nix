@@ -34,7 +34,6 @@ in {
       network = {
         enable = true;
         firewall = {
-          allowPing = true;
           checkReversePath = "loose";
         };
         nameservers = [

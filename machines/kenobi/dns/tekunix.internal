@@ -33,19 +33,17 @@ vm-rey-k8s-dev        IN A     172.30.160.203 ; Worker (VM)
 ; -----------------------------------------------------------------------------
 *.stg                 IN A     172.30.144.201
 vm-kenobi-k8s-stg     IN A     172.30.144.201 ; CP & Worker (VM)
-vm-darth-maul-k8s-stg IN A     172.30.144.202 ; Worker (VM)
-vm-rey-k8s-stg        IN A     172.30.144.203 ; Worker (VM)
 ; Control-Plane & Worker
-luke                  IN A     172.30.144.11  ; Worker
-leia                  IN A     172.30.144.12  ; Worker
+luke                  IN A     172.30.144.11  ; CP & Worker
+leia                  IN A     172.30.144.12  ; CP & Worker
 
 ; PRD Cluster Network
 ; -----------------------------------------------------------------------------
 *                     IN A     172.30.128.201
 vm-kenobi-k8s-prd     IN A     172.30.128.201 ; CP & Worker (VM)
 ; Control-Plane & Worker
-lilith                IN A     172.30.128.21  ; Worker
-maya                  IN A     172.30.128.22  ; Worker
+lilith                IN A     172.30.128.21  ; CP & Worker
+maya                  IN A     172.30.128.22  ; CP & Worker
 ava                   IN A     172.30.128.23  ; Worker
 
 ; vim: ft=dns

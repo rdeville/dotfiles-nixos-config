@@ -16,6 +16,7 @@
       name = "wg-private";
     in {
       inherit name;
+      interface = name;
       endpoint = wgEndpoint;
       activationPolicy = "up";
       allowInput = true;
@@ -41,6 +42,7 @@
           allowedUDPPorts
           allowedTCPPorts
           ;
+        interface = name;
         activationPolicy = "up";
         allowBidirectional = true;
         allowInputConnected = true;
@@ -80,7 +82,6 @@ in {
       network = {
         enable = true;
         firewall = {
-          debug = true;
           enable = false;
           trustedInterfaces = k8sPorts.trustedInterfaces;
         };
@@ -91,6 +92,7 @@ in {
         networks =
           {
             eth-k8s = {
+              interface = "enp3s0";
               matchConfig = {
                 name = "enp3s*";
               };

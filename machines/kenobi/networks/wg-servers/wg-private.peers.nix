@@ -35,7 +35,7 @@
   {
     # vm-rey-k8s-dev
     AllowedIPs = "172.18.160.203/32";
-    PublicKey = ../../../rey/_keys/wg-private.pub;
+    PublicKey = ../../../rey/microvms/k8s-dev/_keys/wg-private.pub;
   }
   # LUKE
   {

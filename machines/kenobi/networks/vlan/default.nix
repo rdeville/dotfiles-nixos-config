@@ -2,8 +2,10 @@
   networks = [
     {
       name = "eth-k8s";
-      interface = "enp3s*";
-      realInterface = "enp3s0";
+      interface = "enp3s0";
+      matchConfig = {
+        name = "enp3s*";
+      };
       id = 3;
       reservations = [
         {
@@ -19,8 +21,9 @@
     }
     {
       name = "k8s-prd";
-      interface = "eth-k8s";
+      interface = "k8s-prd";
       vlan = true;
+      vlanInterface = "eth-k8s";
       id = 128;
       reservations = [];
       topology = {
@@ -30,8 +33,9 @@
     }
     {
       name = "k8s-stg";
-      interface = "eth-k8s";
+      interface = "k8s-stg";
       vlan = true;
+      vlanInterface = "eth-k8s";
       id = 144;
       reservations = [
         {
@@ -61,16 +65,22 @@ in {
               prefix = "172.16.${toString elem.id}";
             in
               {
+                inherit (elem) interface;
+                matchConfig =
+                  if elem ? matchConfig
+                  then elem.matchConfig
+                  else {
+                    name = elem.interface;
+                  };
                 vlan = lib.mkIf (elem ? vlan && elem.vlan) {
                   inherit (elem) id;
                   enable = true;
                   vlanInterfaces = [
-                    elem.interface
+                    elem.vlanInterface
                   ];
                 };
                 nftables = {
                   allowInput = true;
-                  allowInputConnected = true;
                   tunInterfaces = [
                     "wg-tun-illyse"
                   ];
@@ -96,7 +106,6 @@ in {
               // (
                 if (! elem ? vlan || ! elem.vlan)
                 then {
-                  inherit (elem) interface;
                   topology = {
                     addresses = [
                       "${prefix}.1"
@@ -127,7 +136,7 @@ in {
                 interface =
                   if (elem ? vlan && elem.vlan)
                   then elem.name
-                  else elem.realInterface;
+                  else elem.interface;
                 subnet = "${prefix}.0/24";
                 reservations = builtins.foldl' (acc: resa:
                   [

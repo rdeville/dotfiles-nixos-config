@@ -22,6 +22,7 @@
       clusters = [
         {
           name = "wg-k8s-prd";
+          interface = "wg-k8s-prd";
           id = 128;
           topology = {
             color = "#8ec5ff";
@@ -30,12 +31,14 @@
           listenInterfaces =
             listenInterfaces
             ++ [
+              "enp2s0"
               "enp3s0"
               "vm-k8s-prd"
             ];
         }
         {
           name = "wg-k8s-stg";
+          interface = "wg-k8s-stg";
           id = 144;
           topology = {
             color = "#2b7fff";
@@ -44,6 +47,7 @@
           listenInterfaces =
             listenInterfaces
             ++ [
+              "enp2s0"
               "enp3s0"
               "k8s-stg"
               "vm-k8s-stg"
@@ -51,6 +55,7 @@
         }
         {
           name = "wg-k8s-dev";
+          interface = "wg-k8s-dev";
           id = 160;
           topology = {
             color = "#1447e6";
@@ -59,6 +64,7 @@
           listenInterfaces =
             listenInterfaces
             ++ [
+              "enp2s0"
               "vm-k8s-dev"
             ];
         }
@@ -68,14 +74,13 @@
         [
           {
             inherit id;
-            inherit (elem) name listenInterfaces;
+            inherit (elem) name listenInterfaces interface;
             inherit (elem.topology) color desc;
             CIDRPrefix = "172.30.${toString elem.id}";
             CIDRLength = "24";
             listenPort = 65000 + elem.id;
 
             allowInput = true;
-            allowInputConnected = true;
             allowBidirectional = true;
             allowedTCPPorts = dnsPorts;
             allowedUDPPorts = dnsPorts;
@@ -93,11 +98,12 @@
   in
     [
       {
+        name = "wg-public";
+        interface = "wg-public";
         inherit id tunInterfaces;
         listenInterfaces = [
           "wg-tun-illyse"
         ];
-        name = "wg-public";
         CIDRPrefix = "172.17.0";
         CIDRLength = "16";
         listenPort = 60001;
@@ -112,17 +118,19 @@
         color = "#c27aff";
       }
       {
-        inherit id;
+        name = "wg-private";
+        interface = "wg-private";
+        inherit id tunInterfaces;
         listenInterfaces = [
           "wg-tun-illyse"
           "vm-k8s-dev"
           "vm-k8s-stg"
           "vm-k8s-prd"
+          "enp2s0"
           "enp3s0"
           "k8s-stg"
           "k8s-prd"
         ];
-        name = "wg-private";
         CIDRPrefix = "172.18.0";
         CIDRLength = "16";
         listenPort = 61001;

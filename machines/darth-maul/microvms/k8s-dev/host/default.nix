@@ -24,15 +24,15 @@ in {
       network = {
         networks = {
           ${netName} = {
+            interface = netName;
             requiredForOnline = "no";
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
             ];
             nftables = {
-              allowInputConnected = true;
               tunInterfaces = [
-                "wlp170s0"
+                "eno1"
               ];
             };
             routes = [
@@ -53,7 +53,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        "${cidr}"
+        cidr
       ];
     };
   };

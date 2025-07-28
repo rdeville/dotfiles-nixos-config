@@ -22,7 +22,7 @@ in {
     flavors = {
       network = {
         networks = {
-          enp1s0 = {
+          wan = {
             routes = [
               {
                 Destination = "${prefix}.7/32";
@@ -32,6 +32,7 @@ in {
           };
           # Default WAN
           wg-tun-illyse = {
+            interface = "wg-tun-illyse";
             mtu = 1400;
             activationPolicy = "up";
             requiredForOnline = "no";
@@ -47,7 +48,6 @@ in {
                 Destination = allowedIPs;
               }
             ];
-
             allowedTCPPorts =
               config.services.openssh.ports
               ++ [
@@ -58,7 +58,6 @@ in {
             ];
             nftables = {
               allowInput = true;
-              allowInputConnected = true;
               allowNat = true;
             };
             networkConfig = {

@@ -1,4 +1,6 @@
 {
+  self,
+  inputs,
   config,
   lib,
   pkgs,
@@ -110,16 +112,22 @@ in {
     mem = 4096;
     volumes = [
       {
-        image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher-k3s.img";
-        label = "var-rancher-k3s";
-        mountPoint = "/var/lib/rancher/k3s";
+        image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher.img";
+        label = "var-rancher";
+        mountPoint = "/var/lib/rancher";
         size = 25600;
       }
       {
-        image = "/var/lib/microvms/${vmName}/volumes/etc-rancher-k3s.img";
-        label = "etc-rancher-k3s";
-        mountPoint = "/etc/rancher/k3s";
+        image = "/var/lib/microvms/${vmName}/volumes/etc-rancher.img";
+        label = "etc-rancher";
+        mountPoint = "/etc/rancher";
         size = 256;
+      }
+      {
+        image = "/var/lib/microvms/${vmName}/volumes/nix-store-overlay.img";
+        label = "store-overlay";
+        mountPoint = config.microvm.writableStoreOverlay;
+        size = 2048;
       }
     ];
     shares = [
@@ -144,7 +152,27 @@ in {
     ];
   };
 
+  nix = {
+    settings = {
+      auto-optimise-store = false;
+    };
+  };
+
   environment = {
+    systemPackages = with pkgs; [
+      ethtool # manage NIC settings (offload, NIC feeatures, ...)
+      tcpdump # view network traffic
+      conntrack-tools # view network connection states
+      wireguard-tools # Wireguard binaries
+      traceroute # view network routes
+      arp-scan # scan arp packet
+      iw # view wlan interfaces and devices
+      dig # DNS lookup utiliy
+      cilium-cli # Cilium utils
+      arp-scan # ARP packet scanner
+      neovim # terminal editor
+      nettools # Network utility (like netstat)
+    ];
     etc = {
       machine-id = {
         mode = "0644";
@@ -181,6 +209,68 @@ in {
         }
       ];
     };
+  };
+
+  home-manager = {
+    useGlobalPkgs = false;
+    useUserPackages = true;
+    extraSpecialArgs = {
+      # Here the magic happens with inputs into home-manager
+      inherit inputs lib self;
+    };
+    users = builtins.foldl' (acc: user:
+      {
+        # Here is the magic to manage both HM/Nixos in a clean homogeneous way
+        "${user}" = {
+          home = {
+            stateVersion = config.system.stateVersion;
+            username = user;
+            sessionVariables = {
+              HOST = config.os.hostName;
+              EDITOR = "nvim";
+            };
+            preferXdgDirectories = true;
+          };
+
+          systemd = {
+            user = {
+              startServices = "sd-switch";
+            };
+          };
+
+          programs = {
+            home-manager = {
+              enable = true;
+            };
+
+            zsh = {
+              enable = true;
+              autosuggestion.enable = true;
+              syntaxHighlighting = {
+                enable = true;
+                highlighters = [
+                  "main"
+                ];
+              };
+
+              defaultKeymap = "viins";
+              profileExtra = ''
+                export LC_ALL="en_US.UTF-8"
+              '';
+
+              shellAliases = {
+                l = "ls";
+                ll = "ls -l";
+                la = "ls -a";
+                lla = "ls -al";
+                # grep overload
+                grep = "grep --color=auto";
+              };
+            };
+          };
+        };
+      }
+      // acc) {} (builtins.attrNames config.os.users.users);
   };
 
   fileSystems = {

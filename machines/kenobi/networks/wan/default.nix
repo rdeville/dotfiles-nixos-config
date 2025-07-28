@@ -1,23 +1,18 @@
-{config, ...}: {
+{...}: {
   os = {
     flavors = {
       network = {
         networks = {
           # Default WAN
-          enp1s0 = {
+          wan = {
+            interface = "enp1s0";
+            matchConfig = {
+              name = "enp1s*";
+            };
             DHCP = "yes";
             activationPolicy = "up";
             requiredForOnline = "routable";
-            allowedTCPPorts =
-              config.services.openssh.ports
-              ++ [
-                53
-              ];
-            allowedUDPPorts = [
-              53
-            ];
             nftables = {
-              allowInput = true;
               allowInputConnected = true;
               allowNat = true;
             };

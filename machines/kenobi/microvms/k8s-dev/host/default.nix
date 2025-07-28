@@ -24,6 +24,8 @@ in {
       network = {
         networks = {
           ${netName} = {
+            interface = netName;
+            requiredForOnline = "no";
             activationPolicy = "up";
             address = [
               "${prefix}.1/32"
@@ -34,11 +36,11 @@ in {
               }
             ];
             nftables = {
+              # Required for DNS request
               allowInput = true;
-              allowInputConnected = true;
               tunInterfaces = [
+                "enp*"
                 "wg-tun-illyse"
-                "enp1s0"
               ];
             };
             networkConfig = {

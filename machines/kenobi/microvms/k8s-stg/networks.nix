@@ -5,6 +5,12 @@
   ...
 }: let
   id = 201;
+  vm = {
+    interface = "enp0s8";
+    network = "vm-k8s-stg";
+    prefix = "172.20.144";
+    mac = "02:00:00:00:00:a0";
+  };
 
   k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
@@ -15,6 +21,7 @@
       name = "wg-private";
     in {
       inherit name;
+      interface = name;
       activationPolicy = "up";
       endpoint = wgEndpoint;
       allowInput = true;
@@ -38,10 +45,9 @@
         allowedUDPPorts
         allowedTCPPorts
         ;
+      interface = name;
       activationPolicy = "up";
       allowInput = true;
-      allowBidirectional = true;
-      allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
@@ -54,13 +60,6 @@
       ];
     })
   ];
-
-  vm = {
-    interface = "enp0s7";
-    network = "vm-k8s-stg";
-    prefix = "172.20.144";
-    mac = "02:00:00:00:00:a0";
-  };
 in {
   sops = {
     secrets = builtins.foldl' (acc: elem:
@@ -98,17 +97,14 @@ in {
         };
         networks =
           {
-            ${vm.interface} = {
+            ${vm.network} = {
               interface = vm.interface;
               matchConfig = {
                 name = "enx*";
               };
-              allowedTCPPorts = config.services.openssh.ports;
               activationPolicy = "up";
               nftables = {
-                allowInput = true;
                 allowInputConnected = true;
-                allowBidirectional = true;
               };
               address = [
                 "${vm.prefix}.${toString id}/32"
@@ -127,7 +123,6 @@ in {
                 }
               ];
               topology = {
-                name = vm.network;
                 addresses = [
                   "${vm.prefix}.${toString id}"
                 ];

@@ -16,10 +16,10 @@
       name = "wg-private";
     in {
       inherit name;
-      endpoint = wgEndpoint;
+      interface = name;
       activationPolicy = "up";
+      endpoint = wgEndpoint;
       allowInput = true;
-      allowInputConnected = true;
       allowedTCPPorts = config.services.openssh.ports;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       address = [
@@ -41,9 +41,9 @@
           allowedUDPPorts
           allowedTCPPorts
           ;
+        interface = name;
         activationPolicy = "up";
-        allowBidirectional = true;
-        allowInputConnected = true;
+        allowInput = true;
         endpoint = wgEndpoint;
         allowedIPs = routerNetwork.${name}.networkCIDR;
         routes = [
@@ -80,26 +80,18 @@ in {
       network = {
         enable = true;
         firewall = {
-          debug = true;
-          enable = false;
           trustedInterfaces = k8sPorts.trustedInterfaces;
-        };
-        nftable = {
-          enable = true;
-          defaultPolicy = "accept";
         };
         networks =
           {
             eth-k8s = {
+              interface = "enp3s0";
               matchConfig = {
                 name = "enp3s*";
               };
               DHCP = "no";
               activationPolicy = "up";
               requiredForOnline = "no";
-              nftables = {
-                allowInputConnected = true;
-              };
               topology = {
                 connections = [
                   {

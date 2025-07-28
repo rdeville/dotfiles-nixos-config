@@ -26,7 +26,7 @@ in {
           in {
             "${pkgOverlay}" =
               if dateDelay > dateOverlay
-              then lib.mkWarn "Overlay ${overlay} hase more than one month" newPkgs.${pkgOverlay}
+              then lib.mkWarn "Overlay ${overlay} has more than one month" newPkgs.${pkgOverlay}
               else newPkgs.${pkgOverlay};
           }
         )

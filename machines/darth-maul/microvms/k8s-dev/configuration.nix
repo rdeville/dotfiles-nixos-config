@@ -94,7 +94,6 @@ in {
         serverAddr = "https://kube.dev.tekunix.internal:6443";
         tokenFile = config.sops.secrets."k8s-dev-token".path;
         extraFlags = [
-          "--with-node-id"
           "--node-ip 172.30.160.202"
           "--node-external-ip 172.30.160.202"
         ];
@@ -104,19 +103,19 @@ in {
 
   microvm = {
     vcpu = 2;
-    mem = 8192;
+    mem = 4096;
     writableStoreOverlay = "/nix/.rw-store";
     volumes = [
       {
-        image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher-k3s.img";
-        label = "var-rancher-k3s";
-        mountPoint = "/var/lib/rancher/k3s";
+        image = "/var/lib/microvms/${vmName}/volumes/var-lib-rancher.img";
+        label = "var-rancher";
+        mountPoint = "/var/lib/rancher";
         size = 25600;
       }
       {
-        image = "/var/lib/microvms/${vmName}/volumes/etc-rancher-k3s.img";
-        label = "etc-rancher-k3s";
-        mountPoint = "/etc/rancher/k3s";
+        image = "/var/lib/microvms/${vmName}/volumes/etc-rancher.img";
+        label = "etc-rancher";
+        mountPoint = "/etc/rancher";
         size = 256;
       }
       {
@@ -155,6 +154,20 @@ in {
   };
 
   environment = {
+    systemPackages = with pkgs; [
+      ethtool # manage NIC settings (offload, NIC feeatures, ...)
+      tcpdump # view network traffic
+      conntrack-tools # view network connection states
+      wireguard-tools # Wireguard binaries
+      traceroute # view network routes
+      arp-scan # scan arp packet
+      iw # view wlan interfaces and devices
+      dig # DNS lookup utiliy
+      cilium-cli # Cilium utils
+      arp-scan # ARP packet scanner
+      neovim # terminal editor
+      nettools # Network utility (like netstat)
+    ];
     etc = {
       machine-id = {
         mode = "0644";

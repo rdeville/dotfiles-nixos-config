@@ -4,6 +4,11 @@
     AllowedIPs = "172.30.128.201/32";
     PublicKey = ../../microvms/k8s-prd/_keys/wg-k8s-prd.pub;
   }
+  # DARTH-MAUL
+  {
+    AllowedIPs = "172.30.128.2/32";
+    PublicKey = ../../../darth-maul/_keys/wg-k8s-prd.pub;
+  }
   # REY
   {
     AllowedIPs = "172.30.128.3/32";
