@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.9 (2025-07-28)
+
+### 🩹 Patch
+
+  * 👽️(hm/_core): Update zsh dotdir path to be absolute due to HM update (!138) by Romain Deville ([`1769510`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1769510d14307ae1055ef976ac6736406799612d))
+  * 👽️(hm/_core): Update zsh dotdir path to be absolute due to HM update by Romain Deville ([`6ae1ab7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6ae1ab713c5194db387b9f6d3e868d1f0a967138)) 🔏
+
 ## v0.41.8 (2025-07-28)
 
 ### 🩹 Patch
