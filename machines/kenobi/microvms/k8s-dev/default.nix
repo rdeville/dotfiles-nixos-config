@@ -70,6 +70,7 @@ in {
               proxyWebsockets = true;
             };
           };
+
           extraConfig = ''
             log_format basic '$remote_addr - - [$time_local] $protocol $status $bytes_sent $bytes_received $session_time "$upstream_addr"';
 
@@ -94,6 +95,7 @@ in {
               proxyWebsockets = true;
             };
           };
+
           extraConfig = ''
             log_format basic '$remote_addr - - [$time_local] $protocol $status $bytes_sent $bytes_received $session_time "$upstream_addr"';
 

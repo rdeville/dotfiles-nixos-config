@@ -5,6 +5,12 @@
   ...
 }: let
   id = 203;
+  vm = {
+    interface = "enp0s8";
+    network = "vm-k8s-dev";
+    prefix = "172.20.160";
+    mac = "02:00:00:00:00:a0";
+  };
 
   k8sPorts = import ../../../../common/config/k8s.nix {inherit config;};
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
@@ -45,6 +51,9 @@
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
+        # Bidirectional + Trusted Interface
+        name
+        vm.interface
         "cilium_wg0"
       ];
       routes = [
@@ -54,13 +63,6 @@
       ];
     })
   ];
-
-  vm = {
-    interface = "enp0s8";
-    network = "vm-k8s-dev";
-    prefix = "172.20.160";
-    mac = "02:00:00:00:00:a0";
-  };
 in {
   sops = {
     secrets = builtins.foldl' (acc: elem:
@@ -95,6 +97,7 @@ in {
         enable = true;
         firewall = {
           trustedInterfaces = k8sPorts.trustedInterfaces;
+          checkReversePath = false;
         };
         networks =
           {

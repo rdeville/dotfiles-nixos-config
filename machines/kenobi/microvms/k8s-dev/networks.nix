@@ -48,9 +48,13 @@
       interface = name;
       activationPolicy = "up";
       allowInput = true;
+      allowInputConnected = true;
       endpoint = wgEndpoint;
       allowedIPs = routerNetwork.${name}.networkCIDR;
       tunInterfaces = [
+        # Bidirectional + Trusted Interface
+        name
+        vm.interface
         "cilium_wg0"
       ];
       routes = [
@@ -94,6 +98,7 @@ in {
         enable = true;
         firewall = {
           inherit (k8sPorts) trustedInterfaces;
+          checkReversePath = false;
         };
         networks =
           {
@@ -103,9 +108,7 @@ in {
                 name = "enx*";
               };
               activationPolicy = "up";
-              allowedTCPPorts = config.services.openssh.ports;
               nftables = {
-                allowInput = true;
                 allowInputConnected = true;
               };
               address = [

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 #shellcheck disable=SC2034
 
-# DESCRIPTION: Wraper to bulk commit machines config
+# DESCRIPTION: Wrapper to bulk commit machines config
 
 SCRIPTPATH="$(
   cd -- "$(dirname "$0")" >/dev/null 2>&1 || exit 1
@@ -63,11 +63,11 @@ _commit() {
     local msg="${gitmoji}(${host}): Update ${lvl} ${type} ${host}:${user}"
 
     if ! _git_commit; then
-      _log "ERROR" "An error occured with commit of **${host}:${user}**"
+      _log "ERROR" "An error occurred with commit of **${host}:${user}**"
       exit 1
     fi
   else
-    _log "DEBUG" "Nothig to commit for ${action} **${host}:${user}**"
+    _log "DEBUG" "Nothing to commit for ${action} **${host}:${user}**"
     _log "DEBUG" "${commit_path}"
   fi
 }

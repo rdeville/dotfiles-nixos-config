@@ -108,7 +108,7 @@
         CIDRLength = "16";
         listenPort = 60001;
 
-        allowInputConnected = true;
+        allowInput = true;
         allowBidirectional = true;
         allowedTCPPorts = dnsPorts;
         allowedUDPPorts = dnsPorts;

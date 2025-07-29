@@ -110,14 +110,14 @@ in {
               ];
               interface = realInterface;
               option-data = [
-                # {
-                #   name = "routers";
-                #   data = "${prefix}.1";
-                # }
-                # {
-                #   name = "domain-name-servers";
-                #   data = "${prefix}.1";
-                # }
+                {
+                  name = "routers";
+                  data = "${prefix}.1";
+                }
+                {
+                  name = "domain-name-servers";
+                  data = "${prefix}.1";
+                }
               ];
             }
           ];
