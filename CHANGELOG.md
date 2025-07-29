@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.41.10 (2025-07-29)
+
+### 🩹 Patch
+
+  * ⚡️(os/net): Improve forward rules with trustedInterfaces (!139) by Romain Deville ([`bbe0671`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bbe0671de427945c4cf29fc4f3034514998a8846))
+  * ⚡️(os/net): Improve forward rules with trustedInterfaces by Romain Deville ([`335fe48`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/335fe48333ff10800b1aa779d8c21deaa65db6f9)) 🔏
+
 ## v0.41.9 (2025-07-28)
 
 ### 🩹 Patch
