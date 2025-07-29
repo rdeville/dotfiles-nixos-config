@@ -319,22 +319,13 @@ in {
                       if (netTun != {})
                       then
                         lib.strings.concatMapStrings (interface: ''
-                          iifname { ${builtins.concatStringsSep "," netTun.${interface}} } oifname { ${interface} } accept comment "Allow forward from these network tunnel interface"
-                          iifname { ${interface} } oifname { ${builtins.concatStringsSep "," netTun.${interface}} } ct state { established, related } accept comment "Allow if connection is already established"
-                        '') (builtins.attrNames netTun)
-                      else "";
-                    trusted =
-                      if (cfg.firewall.trustedInterfaces != [])
-                      then
-                        lib.strings.concatMapStrings (interface: ''
-                          iifname {  ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } oifname { ${builtins.concatStringsSep "," netTun.${interface}} } accept comment "Allow forward from trusted interfaces"
-                          iifname { ${builtins.concatStringsSep "," netTun.${interface}} } oifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } ct state { established, related } accept comment "Allow back to trusted interfaces if connection is already established"
+                          iifname { ${builtins.concatStringsSep "," (netTun.${interface} ++ cfg.firewall.trustedInterfaces)} } oifname { ${interface} } accept comment "Allow forward from these network tunnel interface"
+                          iifname { ${interface} } oifname { ${builtins.concatStringsSep "," (netTun.${interface} ++ cfg.firewall.trustedInterfaces)} } ct state { established, related } accept comment "Allow if connection is already established"
                         '') (builtins.attrNames netTun)
                       else "";
                   in ''
                     chain forward {
                       type filter hook forward priority 0; policy ${cfg.nftable.defaultPolicy};
-                      ${trusted}
                       ${bidirection}
                       ${tunnel}
                     }
