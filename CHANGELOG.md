@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.27.1 (2025-07-29)
+
+### 🩹 Patch
+
+  * ⚡️ Review (again) networks security and clean scripts folder (!72) by Romain Deville ([`bd9509e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bd9509eb59f4186ca29ad7c4443b639b6908de7b))
+  * ⚡️(darth-maul): Hardening network firewall and nftable by Romain Deville ([`3a82a4d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3a82a4df933dd0e7a62467c77fa0b1e4c08a5cef)) 🔏
+  * ⚡️(rey): Hardening network firewall and nftable by Romain Deville ([`1bf8aeb`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1bf8aeb241c84f84941b322d24ef213cfa415386)) 🔏
+  * ⚡️(kenobi): Hardening network firewall and nftable by Romain Deville ([`40f4477`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/40f4477b228a577689071702d3051e1c60dc598b)) 🔏
+  * ⚡️(scrips): Update script deploy to support local inputs by Romain Deville ([`7ab6c43`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7ab6c434b7e93e3e63a4970099733a7afffd777c)) 🔏
+  * ⬆️ Upgrade devbox.lock by Romain Deville ([`32a19e4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/32a19e420030d030c2cef353ddd951873e3d0e25)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`2d98e34`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2d98e34ddd907601589f654a6dc78b853dbc6e6f)) 🔏
+
 ## v0.27.0 (2025-07-28)
 
 ### ✨ Minor
