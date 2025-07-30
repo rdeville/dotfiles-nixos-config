@@ -134,6 +134,9 @@ in {
       arp-scan # ARP packet scanner
       neovim # terminal editor
       nettools # Network utility (like netstat)
+      openssl # openssh key generator
+      dive # container explorator
+      wget # download utility
     ];
     etc = {
       "ssh/ssh_host_rsa_key" = {
