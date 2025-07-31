@@ -13,9 +13,12 @@
       # See: https://docs.cilium.io/en/stable/operations/system_requirements/
       9965 # Hubble metrics
       4222 # Hubble health
-      4245 # Hubble relay
       4240 # Cilium health
       10250 # Cilium metrics
+      # Ingress Nginx
+      8443 # Admission Controller
+      30080 # HTTP Service NodePort
+      30443 # HTTPs Service NodePort
     ]
     ++ (
       if config.services.k3s.role == "server"
