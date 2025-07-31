@@ -79,10 +79,15 @@
             CIDRPrefix = "172.30.${toString elem.id}";
             CIDRLength = "24";
             listenPort = 65000 + elem.id;
-
             allowInput = true;
-            allowBidirectional = true;
-            allowedTCPPorts = dnsPorts;
+            forward = {
+              bidirectional = true;
+            };
+            allowedTCPPorts =
+              dnsPorts
+              ++ [
+                443
+              ];
             allowedUDPPorts = dnsPorts;
 
             peers = import ./${elem.name}.peers.nix;
@@ -92,7 +97,7 @@
       clusters
   );
   wgNetworks = let
-    tunInterfaces = [
+    outputInterfaces = [
       "wg-tun-illyse"
     ];
   in
@@ -100,7 +105,10 @@
       {
         name = "wg-public";
         interface = "wg-public";
-        inherit id tunInterfaces;
+        inherit id;
+        forward = {
+          inherit outputInterfaces;
+        };
         listenInterfaces = [
           "wg-tun-illyse"
         ];
@@ -109,7 +117,9 @@
         listenPort = 60001;
 
         allowInput = true;
-        allowBidirectional = true;
+        forward = {
+          bidirectional = true;
+        };
         allowedTCPPorts = dnsPorts;
         allowedUDPPorts = dnsPorts;
         peers = import ./wg-public.peers.nix;
@@ -120,7 +130,7 @@
       {
         name = "wg-private";
         interface = "wg-private";
-        inherit id tunInterfaces;
+        inherit id;
         listenInterfaces = [
           "wg-tun-illyse"
           "vm-k8s-dev"
@@ -134,9 +144,11 @@
         CIDRPrefix = "172.18.0";
         CIDRLength = "16";
         listenPort = 61001;
-
+        # Required for DNS
         allowInput = true;
-        allowBidirectional = true;
+        forward = {
+          bidirectional = true;
+        };
         allowedTCPPorts = config.services.openssh.ports ++ dnsPorts;
         allowedUDPPorts = dnsPorts;
 

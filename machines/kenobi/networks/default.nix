@@ -34,7 +34,12 @@ in {
       network = {
         enable = true;
         firewall = {
+          debug = true;
+          # Required due to k8s networks
           checkReversePath = false;
+        };
+        nftables = {
+          debug = true;
         };
         nameservers = [
           # Itself to all local resolving
