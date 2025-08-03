@@ -98,14 +98,19 @@ self: lib: let
             allowNat = lib.mkIf (elem ? allowNat) elem.allowNat;
             allowInput = lib.mkIf (elem ? allowInput) elem.allowInput;
             allowInputConnected = lib.mkIf (elem ? allowInputConnected) elem.allowInputConnected;
-            allowBidirectional = lib.mkIf (elem ? allowBidirectional) elem.allowBidirectional;
-            tunInterfaces = lib.mkIf (elem ? tunInterfaces) elem.tunInterfaces;
+            forward = {
+              bidirectional = lib.mkIf (elem ? forward.bidirectional) elem.forward.bidirectional;
+              outputInterfaces = lib.mkIf (elem ? forward.outputInterfaces) elem.forward.outputInterfaces;
+              inputInterfaces = lib.mkIf (elem ? forward.inputInterfaces) elem.forward.inputInterfaces;
+            };
           };
           wireguard = {
             inherit id;
             enable = true;
             privateKeyFile = config.sops.secrets."network/${elem.name}/private-key".path;
-            peers = [
+            peers = if (elem ? peers && elem.peers != [])
+              then elem.peers
+              else [
               {
                 Endpoint = "${elem.endpoint}:${port}";
                 PublicKey = ../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
@@ -151,8 +156,11 @@ self: lib: let
             allowNat = lib.mkIf (elem ? allowNat) elem.allowNat;
             allowInput = lib.mkIf (elem ? allowInput) elem.allowInput;
             allowInputConnected = lib.mkIf (elem ? allowInputConnected) elem.allowInputConnected;
-            allowBidirectional = lib.mkIf (elem ? allowBidirectional) elem.allowBidirectional;
-            tunInterfaces = lib.mkIf (elem ? tunInterfaces) elem.tunInterfaces;
+            forward = {
+              bidirectional = lib.mkIf (elem ? forward.bidirectional) elem.forward.bidirectional;
+              outputInterfaces = lib.mkIf (elem ? forward.outputInterfaces) elem.forward.outputInterfaces;
+              inputInterfaces = lib.mkIf (elem ? forward.inputInterfaces) elem.forward.inputInterfaces;
+            };
           };
           wireguard = {
             inherit
