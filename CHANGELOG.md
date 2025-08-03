@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.42.0 (2025-08-03)
+
+### ✨ Minor
+
+  * ✨(os/network): Upgrade module to better manage and generate nftables (!140) by Romain Deville ([`d09fe4e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d09fe4e9da28fd27557e9f9ce823a4e6583cbca5))
+  * ✨(os/network): Upgrade module to better manage and generate nftables by Romain Deville ([`b0037c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b0037c9a9bbed8ee0bac8597e803f19dbe4c2293)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`b1db1f9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b1db1f97cf4175798ca0111b33a6e2a8cd5f6b70)) 🔏
+
 ## v0.41.10 (2025-07-29)
 
 ### 🩹 Patch
