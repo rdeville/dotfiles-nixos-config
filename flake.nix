@@ -47,10 +47,6 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
-    ls-colors = {
-      url = "github:trapd00r/LS_COLORS";
-      flake = false;
-    };
     microvm = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +54,22 @@
     microvm-stable = {
       url = "github:astro/microvm.nix";
       inputs.nixpkgs.follows = "nixpkgs-stable";
+    };
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
+    # Non flake repo, since I use specific files from them
+    ls-colors = {
+      url = "github:trapd00r/LS_COLORS";
+      flake = false;
+    };
+    ai-robot-txt = {
+      url = "github:ai-robots-txt/ai.robots.txt";
+      flake = false;
     };
     # My Personal Public NixOS /HM Config
     # -------------------------------------------------------------------------
@@ -83,12 +95,6 @@
         nix-index-database.follows = "nix-index-database";
         sops-nix.follows = "sops-nix";
         ls-colors.follows = "ls-colors";
-      };
-    };
-    nix-index-database = {
-      url = "github:nix-community/nix-index-database";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
       };
     };
     awesome = {
