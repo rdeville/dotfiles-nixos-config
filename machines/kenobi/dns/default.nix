@@ -6,10 +6,6 @@
     "172.16.1.0/24"
     # Public Wlan
     "172.16.2.0/24"
-    # K8S PRD vlan
-    "172.16.128.0/20"
-    # K8S stg vlan
-    "172.16.144.0/20"
     # Public Wireguard
     "172.17.0.0/24"
   ];
@@ -47,6 +43,14 @@ in {
       ];
 
       extraConfig = ''
+        logging {
+          channel default_syslog {
+            syslog daemon;
+            severity info;
+          };
+          category default { default_syslog; };
+        };
+
         acl "private_client" {
           ${builtins.concatStringsSep ";" private-net};
         };
@@ -72,6 +76,7 @@ in {
             type master;
             file "${./tekunix.private}";
           };
+
           zone "tekunix.cloud" {
             type master;
             file "${./tekunix.cloud.internal}";
@@ -86,6 +91,7 @@ in {
             "kubernetes_client";
           };
           recursion yes;
+
           zone "tekunix.internal" {
             type master;
             file "${./tekunix.internal}";
@@ -101,9 +107,15 @@ in {
             "internal_client";
           };
           recursion yes;
+
           zone "tekunix.cloud" {
             type master;
             file "${./tekunix.cloud.internal}";
+          };
+
+          zone "romaindeville.xyz" {
+            type master;
+            file "${./romaindeville.xyz.internal}";
           };
         };
 
@@ -115,6 +127,7 @@ in {
             any;
           };
           recursion yes;
+
           zone "tekunix.cloud" {
             type master;
             file "${./tekunix.cloud}";

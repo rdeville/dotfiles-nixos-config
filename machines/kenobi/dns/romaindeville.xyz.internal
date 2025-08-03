@@ -1,4 +1,4 @@
-$ORIGIN tekunix.cloud.
+$ORIGIN romaindeville.xyz.
 $TTL    1h
 @             IN SOA    ns0.fdn.fr ns1.fdn.fr (
                           1  ; Serial
