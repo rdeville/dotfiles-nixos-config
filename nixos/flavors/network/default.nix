@@ -31,7 +31,7 @@
   netBidirectional = builtins.map (name: cfg.networks.${name}.interface) (
     builtins.filter (
       name:
-        cfg.networks.${name}.nftables.allowBidirectional
+        cfg.networks.${name}.nftables.forward.bidirectional
     ) (builtins.attrNames cfg.networks)
   );
 
@@ -40,29 +40,32 @@
       cfg.networks.${name}.nftables.allowNat
   ) (builtins.attrNames cfg.networks);
 
-  tunInterfaces = builtins.foldl' (acc: elem:
-    cfg.networks.${elem}.nftables.tunInterfaces
-    ++ acc) []
-  (builtins.attrNames cfg.networks);
-
-  netTun = builtins.foldl' (acc: elem:
-    {
-      ${elem} =
-        builtins.foldl' (acc: net:
-          [cfg.networks.${net}.interface]
-          ++ acc) []
-        (
-          builtins.filter (
-            name: let
-              tunInterfaces = cfg.networks.${name}.nftables.tunInterfaces;
-            in
-              tunInterfaces != [] && builtins.elem elem tunInterfaces
-          )
-          (builtins.attrNames cfg.networks)
-        );
-    }
-    // acc) {}
-  tunInterfaces;
+  forward = {
+    netOutput =
+      builtins.foldl' (acc: elem:
+        {
+          ${cfg.networks.${elem}.interface} = cfg.networks.${elem}.nftables.forward.outputInterfaces;
+        }
+        // acc) {}
+      (
+        builtins.filter (
+          name:
+            cfg.networks.${name}.nftables.forward.outputInterfaces != []
+        ) (builtins.attrNames cfg.networks)
+      );
+    netInput =
+      builtins.foldl' (acc: elem:
+        {
+          ${cfg.networks.${elem}.interface} = cfg.networks.${elem}.nftables.forward.inputInterfaces;
+        }
+        // acc) {}
+      (
+        builtins.filter (
+          name:
+            cfg.networks.${name}.nftables.forward.inputInterfaces != []
+        ) (builtins.attrNames cfg.networks)
+      );
+  };
 in {
   imports = [
     ./wireguard
@@ -110,6 +113,7 @@ in {
 
           nftable = {
             enable = lib.mkDefaultEnabledOption "Enable nftables";
+            debug = lib.mkEnableOption "Enable nftrace for all table, chain and hook";
             defaultPolicy = lib.mkOption {
               type = lib.types.enum ["drop" "accept"];
               description = "Activate default accept policy";
@@ -249,16 +253,14 @@ in {
 
         tables =
           {
-            os-monitor-all = {
+            os-monitor-all = lib.mkIf cfg.nftable.debug {
               family = "inet";
-              content =
-                lib.strings.concatMapStrings (chain: ''
-                  chain ${chain} {
-                      type filter hook ${chain} priority -350; policy accept;
-                      meta nftrace set 1;
-                    }
-                '')
-                nftablesChains;
+              content = ''
+                chain prerouting {
+                  type filter hook prerouting priority -350; policy accept;
+                  meta nftrace set 1;
+                }
+              '';
             };
             os-drop-ipv6 = {
               family = "ip6";
@@ -315,19 +317,28 @@ in {
                         '')
                         netBidirectional
                       else "";
-                    tunnel =
-                      if (netTun != {})
+                    output =
+                      if forward.netOutput != {}
                       then
                         lib.strings.concatMapStrings (interface: ''
-                          iifname { ${builtins.concatStringsSep "," (netTun.${interface} ++ cfg.firewall.trustedInterfaces)} } oifname { ${interface} } accept comment "Allow forward from these network tunnel interface"
-                          iifname { ${interface} } oifname { ${builtins.concatStringsSep "," (netTun.${interface} ++ cfg.firewall.trustedInterfaces)} } ct state { established, related } accept comment "Allow if connection is already established"
-                        '') (builtins.attrNames netTun)
+                          iifname { ${interface} } oifname { ${builtins.concatStringsSep ", " forward.netOutput.${interface}} } accept comment "Allow forward to these network interface"
+                          iifname { ${builtins.concatStringsSep ", " forward.netOutput.${interface}} } oifname { ${interface} } ct state { established, related } accept comment "Allow if connection is already established"
+                        '') (builtins.attrNames forward.netOutput)
+                      else "";
+                    input =
+                      if forward.netInput != {}
+                      then
+                        lib.strings.concatMapStrings (interface: ''
+                          iifname { ${builtins.concatStringsSep ", " forward.netInput.${interface}} } oifname { ${interface} } accept comment "Allow forward to these network interface"
+                          iifname { ${interface} } oifname { ${builtins.concatStringsSep ", " forward.netInput.${interface}} } ct state { established, related } accept comment "Allow if connection is already established"
+                        '') (builtins.attrNames forward.netInput)
                       else "";
                   in ''
                     chain forward {
                       type filter hook forward priority 0; policy ${cfg.nftable.defaultPolicy};
                       ${bidirection}
-                      ${tunnel}
+                      ${output}
+                      ${input}
                     }
                   ''
                 )

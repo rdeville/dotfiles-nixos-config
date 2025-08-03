@@ -62,6 +62,10 @@ in {
     };
 
     nftables = {
+      allowNat = lib.mkEnableOption ''
+        Allow nat from the network.
+      '';
+
       allowInput = lib.mkEnableOption ''
         Allow other machines on this network to communicate with the machine.
       '';
@@ -70,20 +74,26 @@ in {
         Allow packet from connected comlunication on input chain.
       '';
 
-      allowBidirectional = lib.mkEnableOption ''
-        Allow bidirectional communication within the network.
-      '';
-
-      allowNat = lib.mkEnableOption ''
-        Allow nat from the network.
-      '';
-
-      tunInterfaces = lib.mkOption {
-        type = lib.types.listOf lib.types.str;
-        description = ''
-          List of tunnel interfaces to which allow forward traffic.
+      forward = {
+        bidirectional = lib.mkEnableOption ''
+          Allow bidirectional communication within the network.
         '';
-        default = [];
+
+        outputInterfaces = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          description = ''
+            List of tunnel interfaces to which allow forward traffic.
+          '';
+          default = [];
+        };
+
+        inputInterfaces = lib.mkOption {
+          type = lib.types.listOf lib.types.str;
+          description = ''
+            List of tunnel interfaces to which allow forward traffic.
+          '';
+          default = [];
+        };
       };
 
       extraTables = lib.mkOption {
