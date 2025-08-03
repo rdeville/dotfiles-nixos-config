@@ -47,6 +47,7 @@ in
           release.nixos.nixosModules.os
           release.microvm.nixosModules.host
           # Local Modules
+          ./nixos/modules
           ./machines/${host}
           ({
             inputs,
@@ -75,10 +76,14 @@ in
                       imports =
                         if (builtins.pathExists ./machines/${cfg.hostName}/users/${user}/default.nix)
                         then [
+                          # Internal Modules
+                          release.nixos.homeManagerModules.hm
                           ./home-manager/_modules.nix
                           ./machines/${cfg.hostName}/users/${user}
                         ]
                         else [
+                          # Internal Modules
+                          release.nixos.homeManagerModules.hm
                           ./home-manager/_modules.nix
                         ];
                     };
