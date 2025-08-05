@@ -17,7 +17,7 @@ in {
     packages = with pkgs;
       [
         inkscape
-        gimp
+        gimp3
         ghostscript
         slack
         ssh-to-age
