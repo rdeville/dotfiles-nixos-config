@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.0 (2025-08-05)
+
+### ✨ Minor
+
+  * ✨(os/net): Add new option for extraRules and refacto module by Romain Deville ([`09ec2f4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/09ec2f406bc03c7f473cf4b4dbec34b0392329c1)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️ Add labels and taint support to k3s, opti nftable and add firefox addon (!141) by Romain Deville ([`dcf080d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dcf080deb5d8b2ea2d56c5ebef0319401023a0d4))
+  * ⚡️(k3s): Add labels and taints option to module for k3s node by Romain Deville ([`1a3a723`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1a3a7232ed9bb9bb5a841417854c58b9638fc5c9)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`2508f03`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2508f0383dc6ac6e739603be0141e67c2aabe2c1)) 🔏
+  * 🔧(hm/gui/firefox): Add Environment Marker addons by Romain Deville ([`6e254d8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6e254d89b64155193461cac7336dafe4ae2a0b22)) 🔏
+
 ## v0.42.0 (2025-08-03)
 
 ### ✨ Minor
