@@ -26,18 +26,36 @@ in {
     config = {
       allowUnfreePredicate = pkg:
         builtins.elem (lib.getName pkg) (
-          if config.hm.isMain
-          then [
-            "discord"
-            "terraform"
-            "slack"
-            "vscode"
-            "vscode-extension-ms-vsliveshare-vsliveshare"
-            "zsh-abbr"
-          ]
-          else [
-            "zsh-abbr"
-          ]
+          (
+            if config.hm.isMain
+            then [
+              "discord"
+              "terraform"
+              "slack"
+              "vscode"
+              "vscode-extension-ms-vsliveshare-vsliveshare"
+              "zsh-abbr"
+              "cuda_cudart-12.8.90"
+            ]
+            else [
+              "zsh-abbr"
+            ]
+          )
+          ++ (
+            if
+              (
+                config.nixpkgs ? config.cudaSupport && config.nixpkgs.config.cudaSupport
+              )
+            then [
+              "cuda_cudart"
+              "cuda_cccl"
+              "libnpp"
+              "libcublas"
+              "libcufft"
+              "cuda_nvcc"
+            ]
+            else []
+          )
         );
     };
   };
