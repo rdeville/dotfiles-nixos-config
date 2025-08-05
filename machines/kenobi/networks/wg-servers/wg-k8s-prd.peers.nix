@@ -16,17 +16,17 @@
   }
   # LILITH
   {
-    AllowedIPs = "172.30.128.21/32";
+    AllowedIPs = "172.30.128.31/32";
     PublicKey = ../../../lilith/_keys/wg-k8s-prd.pub;
   }
   # MAYA
   {
-    AllowedIPs = "172.30.128.22/32";
+    AllowedIPs = "172.30.128.32/32";
     PublicKey = ../../../maya/_keys/wg-k8s-prd.pub;
   }
   # AVA
   {
-    AllowedIPs = "172.30.128.23/32";
+    AllowedIPs = "172.30.128.33/32";
     PublicKey = ../../../ava/_keys/wg-k8s-prd.pub;
   }
 ]

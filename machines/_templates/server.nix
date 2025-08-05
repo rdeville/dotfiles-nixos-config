@@ -3,80 +3,11 @@
   lib,
   pkgs,
   ...
-}: let
-  users = {
-    rdeville = {
-      isSudo = true;
-      extraGroups = [
-        "ydotool"
-      ];
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../darth-maul/users/rdeville/_keys/rdeville-darth-maul.pub
-            ../rey/users/rdeville/_keys/rdeville-rey.pub
-          ];
-        };
-      };
-    };
-    azathoth = {
-      isSudo = true;
-      extraGroups = [
-        "deploy"
-      ];
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../darth-maul/users/azathoth/_keys/azathoth-darth-maul.pub
-            ../rey/users/azathoth/_keys/azathoth-rey.pub
-            ../kenobi/users/azathoth/_keys/azathoth-kenobi.pub
-          ];
-        };
-      };
-    };
-    cthulhu = {
-      isSudo = true;
-      openssh = {
-        authorizedKeys = {
-          keyFiles = [
-            ../darth-maul/users/cthulhu/_keys/cthulhu-darth-maul.pub
-            ../rey/users/cthulhu/_keys/cthulhu-rey.pub
-            ../kenobi/users/cthulhu/_keys/cthulhu-kenobi.pub
-          ];
-        };
-      };
-    };
-    root = {};
-  };
+}: {
+  imports = [
+    ./_users
+  ];
 
-  secrets =
-    builtins.foldl' (acc: elem:
-      {
-        "users/${elem}/password" = {
-          neededForUsers = true;
-        };
-      }
-      // acc) {} (
-      builtins.filter (user: (
-        # Ignore users azathoth and cthulhu, no password login
-        (builtins.match "test" user != [])
-        && (builtins.match "azathoth" user != [])
-        && (builtins.match "cthulhu" user != [])
-      )) (builtins.attrNames users)
-    )
-    // {
-      "keys/rsa" = {
-        format = "binary";
-        sopsFile = ../${config.os.hostName}/_keys/${config.os.hostName}-rsa.enc.asc;
-        key = "";
-      };
-      "keys/ed25519" = {
-        format = "binary";
-        sopsFile = ../${config.os.hostName}/_keys/${config.os.hostName}-ed25519.enc.asc;
-        key = "";
-      };
-    };
-in {
   boot = {
     tmp = {
       # Clean /tmp on boot
@@ -113,7 +44,18 @@ in {
   };
 
   sops = {
-    inherit secrets;
+    secrets = {
+      "keys/rsa" = {
+        format = "binary";
+        sopsFile = ../${config.os.hostName}/_keys/${config.os.hostName}-rsa.enc.asc;
+        key = "";
+      };
+      "keys/ed25519" = {
+        format = "binary";
+        sopsFile = ../${config.os.hostName}/_keys/${config.os.hostName}-ed25519.enc.asc;
+        key = "";
+      };
+    };
     age = {
       keyFile = "/etc/age/key.txt";
     };
@@ -134,6 +76,9 @@ in {
       arp-scan # ARP packet scanner
       neovim # terminal editor
       nettools # Network utility (like netstat)
+      openssl # openssh key generator
+      dive # container explorator
+      wget # download utility
     ];
     etc = {
       "ssh/ssh_host_rsa_key" = {
@@ -215,40 +160,7 @@ in {
     };
   };
 
-  home-manager = {
-    users = builtins.foldl' (acc: elem:
-      {
-        ${elem} = {
-          imports =
-            if elem == "rdeville"
-            then
-              if config.os.isMain
-              then [
-                ./_users/${elem}/server.nix
-                ./_users/${elem}/gui.nix
-                ./_users/${elem}/main.nix
-              ]
-              else if config.os.isGui
-              then [
-                ./_users/${elem}/server.nix
-                ./_users/${elem}/gui.nix
-              ]
-              else [
-                ./_users/${elem}/server.nix
-              ]
-            else [
-              ./_users/${elem}/server.nix
-            ];
-        };
-      }
-      // acc) {} (builtins.attrNames users);
-  };
-
   os = {
-    users = {
-      inherit users;
-    };
-
     flavors = {
       ssh-server = {
         enable = true;

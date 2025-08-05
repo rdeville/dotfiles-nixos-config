@@ -6,6 +6,13 @@
 }: let
   id = 3;
 
+  routerName = "kenobi";
+  endpoint = [
+    "89.234.140.170" # External Endpoint
+    "172.16.1.1" # Ethernet Endpoint
+    "172.16.2.1" # Wifi Endpoint
+  ];
+
   routerNetwork = self.nixosConfigurations.kenobi.config.os.flavors.network.networks;
   wgEndpoint = "89.234.140.170";
 
@@ -35,8 +42,18 @@
             inherit (elem) name;
             interface = elem.name;
             endpoint = wgEndpoint;
-            allowedIPs = routerNetwork.${elem.name}.networkCIDR;
             allowInputConnected = true;
+            peers = builtins.map(endpoint:
+              let
+                routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
+                port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
+              in
+              {
+                Endpoint = "${endpoint}:${port}";
+                PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
+                AllowedIPs = routerNetwork.${elem.name}.networkCIDR;
+              }
+            ) endpoint;
             routes = [
               {
                 Destination = routerNetwork.${elem.name}.networkCIDR;
@@ -62,9 +79,11 @@
         ];
         allowNat = true;
         allowInputConnected = true;
-        tunInterfaces = [
-          "wlp170s0"
-        ];
+        forward = {
+          outputInterfaces = [
+            "wlp170s0"
+          ];
+        };
         networkConfig = {
           IPMasquerade = "ipv4";
           IPv4Forwarding = true;
@@ -78,7 +97,17 @@
         endpoint = wgEndpoint;
         allowInput = true;
         allowedTCPPorts = config.services.openssh.ports;
-        allowedIPs = routerNetwork.${name}.networkCIDR;
+        peers = builtins.map(endpoint:
+          let
+            routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
+            port = builtins.toString routerNet.netdevs.${name}.wireguardConfig.ListenPort;
+          in
+          {
+            Endpoint = "${endpoint}:${port}";
+            PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${name}.pub;
+            AllowedIPs = routerNetwork.${name}.networkCIDR;
+          }
+        ) endpoint;
         routes = [
           {
             Destination = routerNetwork.${name}.networkCIDR;
@@ -116,6 +145,22 @@ in {
         networkmanager = {
           enable = true;
         };
+        firewall = {
+          trustedInterfaces = [
+            "veth*"
+          ];
+          debug = true;
+        };
+        nftables = {
+          debug = true;
+          extraInputRules = ''
+            iifname { "br-*" } accept comment "Allow Kind bridge."
+          '';
+          extraForwardRules = ''
+            iifname { "br-*" } oifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } accept comment "Allow Kind bridge."
+            iifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } oifname { "br-*" } ct state { established, related } accept comment "Allow if connection is already established"
+          '';
+        };
         networks =
           {
             wl-public = {
@@ -127,6 +172,8 @@ in {
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {
+                # Allow k3d container to access internet
+                allowNat = true;
                 allowInputConnected = true;
               };
               topology = {
@@ -142,9 +189,43 @@ in {
                 ];
               };
             };
+            eth-public = {
+              interface = "eth*";
+              matchConfig = {
+                name = "en*";
+              };
+              DHCP = "yes";
+              activationPolicy = "up";
+              requiredForOnline = "no";
+              nftables = {
+                allowInputConnected = true;
+              };
+              topology = {
+                addresses = [
+                  "172.16.1.3"
+                ];
+                connections = [
+                  {
+                    to = "switch";
+                    iface = "eth";
+                    reversed = true;
+                  }
+                ];
+              };
+            };
           }
           // lib.mkWgNetworkClient "kenobi" wgNetworks id config;
       };
+    };
+  };
+
+  networking = {
+    nat = {
+      enable = true;
+      internalIPs = [
+        # Allow Kind network to have internet
+        "172.19.0.0/16"
+      ];
     };
   };
 }

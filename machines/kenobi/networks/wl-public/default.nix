@@ -41,11 +41,14 @@ in {
               67 # DHCP
             ];
             nftables = {
+              # Required for DNS
               allowInput = true;
-              allowBidirectional = true;
-              tunInterfaces = [
-                "wg-tun-illyse"
-              ];
+              forward = {
+                bidirectional = true;
+                outputInterfaces = [
+                  "wg-tun-illyse"
+                ];
+              };
             };
             topology = {
               addresses = [

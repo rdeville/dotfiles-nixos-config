@@ -7,6 +7,7 @@
         name = "enp3s*";
       };
       id = 3;
+      outputInterfaces = [];
       reservations = [
         {
           hw-address = "8c:90:2d:9d:20:16";
@@ -26,6 +27,9 @@
       vlanInterface = "eth-k8s";
       id = 128;
       reservations = [];
+      outputInterfaces = [
+        "wg-k8s-prd"
+      ];
       topology = {
         color = "#ffdf20";
         desc = "VLan Kubernetes Production";
@@ -37,6 +41,9 @@
       vlan = true;
       vlanInterface = "eth-k8s";
       id = 144;
+      outputInterfaces = [
+        "wg-k8s-prd"
+      ];
       reservations = [
         {
           hw-address = "e0:d5:5e:99:3a:d5";
@@ -80,10 +87,15 @@ in {
                   ];
                 };
                 nftables = {
+                  # Required for DNS
                   allowInput = true;
-                  tunInterfaces = [
-                    "wg-tun-illyse"
-                  ];
+                  forward = {
+                    outputInterfaces =
+                      [
+                        "wg-tun-illyse"
+                      ]
+                      ++ elem.outputInterfaces;
+                  };
                 };
                 isServer = true;
                 activationPolicy = "up";
@@ -94,6 +106,7 @@ in {
                 ];
                 allowedTCPPorts = [
                   53 # DNS
+                  80 # HTTP, Required for ACME Challenge
                 ];
                 allowedUDPPorts = [
                   53 # DNS

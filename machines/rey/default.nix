@@ -57,6 +57,16 @@
   os = {
     hostName = builtins.baseNameOf ./.;
 
+    users = {
+      users = {
+        rdeville = {
+          extraGroups = [
+            "docker"
+          ];
+        };
+      };
+    };
+
     flavors = {
       window-manager = {
         plasma.enable = false;

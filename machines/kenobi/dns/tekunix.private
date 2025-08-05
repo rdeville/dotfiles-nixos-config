@@ -1,47 +1,45 @@
 $ORIGIN tekunix.private.
 $TTL    1h
-@                     IN SOA   ns0.fdn.fr ns1.fdn.fr (
+@                     IN SOA    ns0.fdn.fr ns1.fdn.fr (
                                   1  ; Serial
                                   1h ; Refresh
                                   1h ; Retry
                                   1h ; Expire
                                   1h ; Negative Cache TTL
                                 )
-                      IN NS    ns0.fdn.fr
-                      IN NS    ns1.fdn.fr
+                      IN NS     ns0.fdn.fr
+                      IN NS     ns1.fdn.fr
 
 ; External servers
 ; -----------------------------------------------------------------------------
-darth-plagueis        IN CNAME romaindeville.ovh
-darth-vader           IN CNAME romaindeville.fr
-
-; Router IP and Personal Machines
-; -----------------------------------------------------------------------------
-@                     IN A     172.18.0.1
-*                     IN A     172.18.0.1
-kenobi                IN A     172.18.0.1
-darth-maul            IN A     172.18.0.2
-rey                   IN A     172.18.0.3
-
-; DEV Cluster Network
-; -----------------------------------------------------------------------------
-vm-kenobi-k8s-dev     IN A     172.18.160.201 ; CP & Worker (VM)
-vm-darth-maul-k8s-dev IN A     172.18.160.202 ; Worker (VM)
-vm-rey-k8s-dev        IN A     172.18.160.203 ; Worker (VM)
-
-; STG Cluster Network
-; -----------------------------------------------------------------------------
-; Control-Plane & Worker
-vm-kenobi-k8s-stg     IN A     172.18.144.201 ; CP & Worker (VM)
-luke                  IN A     172.18.144.11 ; CP & Worker
-leia                  IN A     172.18.144.12 ; CP & Worker
+darth-plagueis        IN CNAME  romaindeville.ovh
+darth-vader           IN CNAME  romaindeville.fr
 
 ; PRD Cluster Network
 ; -----------------------------------------------------------------------------
-vm-kenobi-k8s-prd     IN A     172.18.128.201 ; CP & Worker (VM)
-; Control-Plane & Worker
-lilith                IN A     172.18.128.11 ; CP & Worker (VM)
-maya                  IN A     172.18.128.12 ; CP & Worker (VM)
-ava                   IN A     172.18.128.13 ; Worker (VM)
+@                     IN A      172.18.0.1
+*                     IN A      172.18.0.1
+vm-kenobi-k8s-prd     IN A      172.18.128.201 ; Worker (VM)
+lilith                IN A      172.18.128.31  ; CP & Worker (VM)
+maya                  IN A      172.18.128.32  ; CP & Worker (VM)
+ava                   IN A      172.18.128.33  ; CP & Worker (VM)
+
+; STG Cluster Network
+; -----------------------------------------------------------------------------
+vm-kenobi-k8s-stg     IN A      172.18.144.201 ; Worker (VM)
+luke                  IN A      172.18.144.11  ; CP & Worker
+leia                  IN A      172.18.144.21  ; Worker
+
+; DEV Cluster Network
+; -----------------------------------------------------------------------------
+vm-kenobi-k8s-dev     IN A      172.18.160.201 ; CP & Worker (VM)
+vm-darth-maul-k8s-dev IN A      172.18.160.202 ; Worker (VM)
+vm-rey-k8s-dev        IN A      172.18.160.203 ; Worker (VM)
+
+; Router IP and Personal Machines
+; -----------------------------------------------------------------------------
+kenobi                IN A      172.18.0.1
+darth-maul            IN A      172.18.0.2
+rey                   IN A      172.18.0.3
 
 ; vim: ft=dns

@@ -21,7 +21,7 @@
   }
   # LEIA
   {
-    AllowedIPs = "172.30.144.12/32";
+    AllowedIPs = "172.30.144.21/32";
     PublicKey = ../../../leia/_keys/wg-k8s-stg.pub;
   }
 ]

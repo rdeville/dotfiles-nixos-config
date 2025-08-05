@@ -52,11 +52,14 @@ in {
               config.services.openssh.ports
               ++ [
                 53 # DNS
+                80 # HTTP
+                443 # HTTPs
               ];
             allowedUDPPorts = [
               53 # DNS
             ];
             nftables = {
+              # Required for wireguard and DNS
               allowInput = true;
               allowNat = true;
             };

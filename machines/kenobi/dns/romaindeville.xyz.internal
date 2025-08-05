@@ -1,4 +1,4 @@
-$ORIGIN tekunix.cloud.
+$ORIGIN romaindeville.xyz.
 $TTL    1h
 @             IN SOA    ns0.fdn.fr ns1.fdn.fr (
                           1  ; Serial
@@ -17,8 +17,6 @@ $TTL    1h
 
 ; LOCAL K3D Cluster
 ; -----------------------------------------------------------------------------
-*.local       IN A      127.0.0.1
-; Don't know why, but kube.local.tekunix.cloud is resolved the same as *
-kube.local    IN A      127.0.0.1
+*.local       IN A     127.0.0.1
 
 ; vim: ft=dns

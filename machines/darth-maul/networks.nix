@@ -102,6 +102,9 @@ in {
                 name = "eno*";
               };
               DHCP = "yes";
+              dns = [
+                "172.16.1.1"
+              ];
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {

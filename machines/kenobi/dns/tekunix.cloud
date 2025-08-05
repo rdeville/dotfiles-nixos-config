@@ -1,16 +1,24 @@
 $ORIGIN tekunix.cloud.
 $TTL    1h
-@              IN SOA   ns0.fdn.fr ns1.fdn.fr (
-                                1    ; Serial
-                                1h   ; Refresh
-                                1h   ; Retry
-                                1h   ; Expire
-                                1h)  ; Negative Cache TTL
-               IN NS    ns0.fdn.fr
-               IN NS    ns1.fdn.fr
+@             IN SOA   ns0.fdn.fr ns1.fdn.fr (
+                          1  ; Serial
+                          1h ; Refresh
+                          1h ; Retry
+                          1h ; Expire
+                          1h ; Negative Cache TTL
+                        )
+              IN NS    ns0.fdn.fr
+              IN NS    ns1.fdn.fr
 
-; Router IP which is also my ingress entrypoint for my prod cluster
-@              IN A     89.234.140.170
-*              IN A     89.234.140.170
+; PRD Cluster Network
+; -----------------------------------------------------------------------------
+@             IN A     89.234.140.170
+*             IN A     89.234.140.170
+
+; LOCAL K3D Cluster
+; -----------------------------------------------------------------------------
+*.local       IN A     127.0.0.1
+; Don't know why, but kube.local.tekunix.cloud is resolved the same as *
+kube.local    IN A      127.0.0.1
 
 ;  vim: ft=dns

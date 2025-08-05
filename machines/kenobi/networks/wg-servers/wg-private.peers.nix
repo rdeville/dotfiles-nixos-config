@@ -44,22 +44,22 @@
   }
   # LEIA
   {
-    AllowedIPs = "172.18.144.12/32";
+    AllowedIPs = "172.18.144.21/32";
     PublicKey = ../../../leia/_keys/wg-private.pub;
   }
   # LILITH
   {
-    AllowedIPs = "172.18.128.21/32";
+    AllowedIPs = "172.18.128.31/32";
     PublicKey = ../../../lilith/_keys/wg-private.pub;
   }
   # MAYA
   {
-    AllowedIPs = "172.18.128.22/32";
+    AllowedIPs = "172.18.128.32/32";
     PublicKey = ../../../maya/_keys/wg-private.pub;
   }
   # AVA
   {
-    AllowedIPs = "172.18.128.23/32";
+    AllowedIPs = "172.18.128.33/32";
     PublicKey = ../../../ava/_keys/wg-private.pub;
   }
 ]

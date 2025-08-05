@@ -34,11 +34,14 @@ in {
               isServer = true;
               activationPolicy = "up";
               nftables = {
+                # Required for DNS
                 allowInput = true;
-                allowBidirectional = true;
-                tunInterfaces = [
-                  "wg-tun-illyse"
-                ];
+                forward = {
+                  bidirectional = true;
+                  outputInterfaces = [
+                    "wg-tun-illyse"
+                  ];
+                };
               };
               requiredForOnline = "no";
               networkCIDRPrefix = prefix;
@@ -47,6 +50,8 @@ in {
               ];
               allowedTCPPorts = [
                 53 # DNS
+                80 # HTTP
+                443 # HTTPs
               ];
               allowedUDPPorts = [
                 53 # DNS
