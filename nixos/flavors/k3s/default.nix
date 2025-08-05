@@ -67,6 +67,18 @@ in {
             default = false;
             description = "Only run the control-plane, not the worker.";
           };
+
+          labels = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [];
+            description = "List of labels to add to the node.";
+          };
+
+          taints = lib.mkOption {
+            type = lib.types.listOf lib.types.str;
+            default = [];
+            description = "List of taints to add to the node.";
+          };
         };
       };
     };
@@ -109,6 +121,8 @@ in {
                 # Deactivate CoreDNS integration since I'll manage it myself
                 "--disable=coredns"
               ]
+              ++ (builtins.map (label: "--node-label ${label}") cfg.labels)
+              ++ (builtins.map (taint: "--node-taint ${taint}") cfg.taints)
               ++ cfg.extraFlags)
           else
             builtins.toString [
