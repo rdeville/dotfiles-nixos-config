@@ -15,4 +15,10 @@ $TTL    1h
 @             IN A     89.234.140.170
 *             IN A     89.234.140.170
 
+; LOCAL K3D Cluster
+; -----------------------------------------------------------------------------
+*.local       IN A     127.0.0.1
+; Don't know why, but kube.local.tekunix.cloud is resolved the same as *
+kube.local    IN A      127.0.0.1
+
 ;  vim: ft=dns
