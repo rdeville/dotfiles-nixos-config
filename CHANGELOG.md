@@ -1,6 +1,47 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.28.0 (2025-08-05)
+
+### ✨ Minor
+
+  * ✨ Huge refacto, new k8s module, now all machines are k8s ready (!73) by Romain Deville ([`73209aa`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/73209aafc442bede9c44827190439da59833d946))
+  * ✨(kenobi/vms): Refacto, use new k8s-vms module and setup LB (http/https/cp) by Romain Deville ([`d59ce02`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d59ce021b63e2d1409b5ad00d6d9fab1ce12481e)) 🔏
+  * ✨(nixos): Include k8s-server and k8s-microvms modules by Romain Deville ([`ac1d776`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ac1d77688f4d4bca5cdc592bc2a918c0596dc489)) 🔏
+  * ✨(nixos/k8s-server): Add module to ease and normalize deployment of k8s server by Romain Deville ([`63c73d8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/63c73d8578deeb5eabdb071c959b4a08e15e2636)) 🔏
+  * ✨(nixos/k8s-microvms): Add module to ease and normalize deployment of k8s VMs by Romain Deville ([`c0f02fb`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c0f02fbd1ebb77a52e3da2adb7dce3090cb925dc)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(kenobi/net): Harden network config and use new public network module by Romain Deville ([`9f3f20d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9f3f20d8abb01f250160766c2cebeb14a537bdcc)) 🔏
+  * ⚡️(kenobi/dns): Add log config, local romaindeville.xyz domain and simplify config by Romain Deville ([`c41209e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c41209e2f40691bbcef04f6028497d3d7719c8db)) 🔏
+  * ⚡️(templates/user/rdeville): Add unfree cuda package if cudaSupport by Romain Deville ([`58176da`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/58176da2c94595361add8afc2cd5b5ae0e831242)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`6186316`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/618631662714eb6969cf18e339c54d5dc181efe8)) 🔏
+  * 🍱(assets): Add service HAProxy logo to assets by Romain Deville ([`8a83695`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8a836957c720cb2473706c4da5613c6569d935ea)) 🔏
+  * 👽️(rey/net): Update network declaration to use new network module by Romain Deville ([`01141a4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/01141a407de09fad93ff8f90bda1e9df09737477)) 🔏
+  * 👽️(lib): Update wireguard method due to change in my public nixos network module by Romain Deville ([`e3c12f3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e3c12f340cb61c0a4f36ebe490a31cad14c8a47c)) 🔏
+  * 🔧(kenobi/net/wg): Update client address after refacto by Romain Deville ([`25093dc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/25093dc241ee0dc8b1faedc97cafb8bd8d7d664d)) 🔏
+  * 🔧(kenobi/dns): Add resolution *.local to 127.0.0.1 to ease local development by Romain Deville ([`b6f1035`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b6f1035e786c08250996e14f0f6d6e18416c5ac0)) 🔏
+  * 🔧(rey): Update rey configuration to use k3d by Romain Deville ([`6d94673`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6d94673700d3039515981d2b7d0514851baf5a15)) 🔏
+  * 🔧(darth-maul/net): Add DNS config for eth network by Romain Deville ([`68f8740`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/68f87400391e584a7cb963f11964bfd64a2f239b)) 🔏
+  * 🔧(darth-maul): Add cudaSupport by Romain Deville ([`e11843b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e11843b279a2e43941e3590293896cdf93d6ed64)) 🔏
+  * 🔧(common/k8s): Update k8s TCP ports with new NodePorts for HAProxy LB by Romain Deville ([`997d30e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/997d30e796af5a840e46fee5b400c353add6253f)) 🔏
+  * 🔧(template/users/rdeville): Replace gimp2 to gimp3 for Gui &amp; Main computer by Romain Deville ([`17d17c2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/17d17c292a101dfa2e8c0ea95d80a707ff7ed63c)) 🔏
+  * 🔧(template/server): Add openssl, dive and wget package by Romain Deville ([`921e47c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/921e47c7be610a8691bad2d003488f78c4928988)) 🔏
+  * 🔧(flake): Add ia-robot-txt to inputs by Romain Deville ([`5a9dac3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5a9dac3ce49c3fbf9908e6fa4c1e6d378170e9d4)) 🔏
+
+### 🔊 Others
+
+  * ♻️(lilith): Refacto to use new k8s-server module by Romain Deville ([`b9ea8d7`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b9ea8d7f37a463461d394f6978f0b0221f223dd9)) 🔏
+  * ♻️(maya): Refacto to use new k8s-server module by Romain Deville ([`08edca8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/08edca8f29b9ca0905f81b157f81d466d888be39)) 🔏
+  * ♻️(ava): Refacto to use new k8s-server module by Romain Deville ([`f14e25f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f14e25ffe4fef3f22314432b45908c1a8fd4e852)) 🔏
+  * ♻️(leia): Refacto to use new k8s-server module by Romain Deville ([`6b95fa6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6b95fa6ab04fdd10d096a286929b1d82baeade8b)) 🔏
+  * ♻️(luke): Refacto to use new k8s-server module by Romain Deville ([`a925ef3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a925ef3bd9a5763d8a5802a7fb4a8830ce63014f)) 🔏
+  * ♻️(rey/vms): Update VMs declaration to use new k8s modules by Romain Deville ([`228eb8f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/228eb8f25fb12c472030ec519d9ec43fd1772fdf)) 🔏
+  * ♻️(darth-maul/vms): Update VMs declaration to use new k8s modules by Romain Deville ([`8e4623a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8e4623a5f1a6b68beaf572990d9ee36c466e2146)) 🔏
+  * ♻️(_templates): Refacto Users declaration due to new k8s modules by Romain Deville ([`c9bdc02`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c9bdc025e1770275679cf2f437ca7b4122406699)) 🔏
+  * ♻️(hm): Change structure of usage of home-manager due to new k8s modules by Romain Deville ([`ade193a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ade193a410c0de5fc39b1a816014f930c35f38ea)) 🔏
+
 ## v0.27.1 (2025-07-29)
 
 ### 🩹 Patch
