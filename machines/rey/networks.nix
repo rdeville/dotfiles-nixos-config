@@ -145,6 +145,22 @@ in {
         networkmanager = {
           enable = true;
         };
+        firewall = {
+          trustedInterfaces = [
+            "veth*"
+          ];
+          debug = true;
+        };
+        nftables = {
+          debug = true;
+          extraInputRules = ''
+            iifname { "br-*" } accept comment "Allow Kind bridge."
+          '';
+          extraForwardRules = ''
+            iifname { "br-*" } oifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } accept comment "Allow Kind bridge."
+            iifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } oifname { "br-*" } ct state { established, related } accept comment "Allow if connection is already established"
+          '';
+        };
         networks =
           {
             wl-public = {
@@ -156,6 +172,8 @@ in {
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {
+                # Allow k3d container to access internet
+                allowNat = true;
                 allowInputConnected = true;
               };
               topology = {
@@ -198,6 +216,16 @@ in {
           }
           // lib.mkWgNetworkClient "kenobi" wgNetworks id config;
       };
+    };
+  };
+
+  networking = {
+    nat = {
+      enable = true;
+      internalIPs = [
+        # Allow Kind network to have internet
+        "172.19.0.0/16"
+      ];
     };
   };
 }
