@@ -28,44 +28,85 @@
     ) (builtins.attrNames cfg.networks)
   );
 
-  netBidirectional = builtins.map (name: cfg.networks.${name}.interface) (
-    builtins.filter (
-      name:
-        cfg.networks.${name}.nftables.forward.bidirectional
-    ) (builtins.attrNames cfg.networks)
-  );
-
   netNat = builtins.filter (
     name:
       cfg.networks.${name}.nftables.allowNat
   ) (builtins.attrNames cfg.networks);
 
-  forward = {
-    netOutput =
-      builtins.foldl' (acc: elem:
-        {
-          ${cfg.networks.${elem}.interface} = cfg.networks.${elem}.nftables.forward.outputInterfaces;
-        }
-        // acc) {}
+  inputRules = [
+    (
       (
-        builtins.filter (
-          name:
-            cfg.networks.${name}.nftables.forward.outputInterfaces != []
-        ) (builtins.attrNames cfg.networks)
-      );
-    netInput =
-      builtins.foldl' (acc: elem:
-        {
-          ${cfg.networks.${elem}.interface} = cfg.networks.${elem}.nftables.forward.inputInterfaces;
-        }
-        // acc) {}
+        if (netInput != [])
+        then ''
+          # Inputs
+          iifname { ${builtins.concatStringsSep "," netInput} } accept comment "Allow local access from this network"
+        ''
+        else ""
+      )
+      + (
+        if (netInputConnected != [])
+        then ''
+          # Inputs connected
+          iifname { ${builtins.concatStringsSep "," netInputConnected} } ct state { established, related } accept comment "Allow if connection is already established"
+        ''
+        else ""
+      )
+      + (
+        if (cfg.firewall.trustedInterfaces != [])
+        then ''
+          # Trusted
+          iifname { "lo", ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } accept comment "Trusted Interfaces"
+        ''
+        else ''
+          # Trusted
+          iifname { lo } accept comment "Allow local access from this network"
+        ''
+      )
+    )
+  ];
+
+  forwardRules = builtins.foldl' (acc: elem: let
+    interface = cfg.networks.${elem}.interface;
+    nftables = cfg.networks.${elem}.nftables.forward;
+    rules =
       (
-        builtins.filter (
-          name:
-            cfg.networks.${name}.nftables.forward.inputInterfaces != []
-        ) (builtins.attrNames cfg.networks)
+        if (nftables.bidirectional)
+        then ''
+          # Bidirectional
+          iifname { "${interface}" } oifname { "${interface}" } accept comment "Allow bidirection forward on this network"
+        ''
+        else ""
+      )
+      + (
+        if nftables.outputInterfaces != []
+        then ''
+          # Output
+          iifname { "${interface}" } oifname { "${builtins.concatStringsSep "\", \"" nftables.outputInterfaces}" } accept comment "Allow forward to these output interface"
+          iifname { "${builtins.concatStringsSep "\", \"" nftables.outputInterfaces}" } oifname { "${interface}" } ct state { established, related } accept comment "Allow if connection is already established"
+        ''
+        else ""
+      )
+      + (
+        if nftables.inputInterfaces != []
+        then ''
+          # Input
+          iifname { "${builtins.concatStringsSep "\", \"" nftables.inputInterfaces}" } oifname { "${interface}" } accept comment "Allow forward to these input interface"
+          iifname { "${interface}" } oifname { "${builtins.concatStringsSep "\", \"" nftables.inputInterfaces}" } ct state { established, related } accept comment "Allow if connection is already established"
+        ''
+        else ""
       );
-  };
+    content =
+      if rules != ""
+      then ''
+        # ${interface} Rules
+        ${rules}
+      ''
+      else "";
+  in
+    [
+      content
+    ]
+    ++ acc) [] (builtins.attrNames cfg.networks);
 in {
   imports = [
     ./wireguard
@@ -111,7 +152,7 @@ in {
             };
           };
 
-          nftable = {
+          nftables = {
             enable = lib.mkDefaultEnabledOption "Enable nftables";
             debug = lib.mkEnableOption "Enable nftrace for all table, chain and hook";
             defaultPolicy = lib.mkOption {
@@ -129,6 +170,20 @@ in {
                 to know structures.
               '';
               default = {};
+            };
+            extraInputRules = lib.mkOption {
+              type = lib.types.lines;
+              default = "";
+              description = ''
+                Contents of the rule to add to chain input.
+              '';
+            };
+            extraForwardRules = lib.mkOption {
+              type = lib.types.lines;
+              default = "";
+              description = ''
+                Contents of the rule to add to chain forward.
+              '';
             };
           };
 
@@ -246,14 +301,14 @@ in {
 
       nftables = {
         inherit
-          (cfg.nftable)
+          (cfg.nftables)
           enable
           flushRuleset
           ;
 
         tables =
           {
-            os-monitor-all = lib.mkIf cfg.nftable.debug {
+            os-monitor-all = lib.mkIf cfg.nftables.debug {
               family = "inet";
               content = ''
                 chain prerouting {
@@ -267,7 +322,7 @@ in {
               content =
                 lib.strings.concatMapStrings (chain: ''
                   chain ${chain} {
-                      type filter hook ${chain} priority 99; policy ${cfg.nftable.defaultPolicy};
+                      type filter hook ${chain} priority 99; policy ${cfg.nftables.defaultPolicy};
                       counter drop comment "Drop IPv6 traffic"
                     }
                 '')
@@ -275,74 +330,19 @@ in {
             };
             os-allow = {
               family = "inet";
-              content = lib.strings.concatStrings [
-                (
-                  let
-                    input =
-                      if (netInput != [])
-                      then ''
-                        iifname { ${builtins.concatStringsSep "," netInput} } accept comment "Allow local access from this network"
-                      ''
-                      else "";
-                    inputConnected =
-                      if (netInputConnected != [])
-                      then ''
-                        iifname { ${builtins.concatStringsSep "," netInputConnected} } ct state { established, related } accept comment "Allow if connection is already established"
-                      ''
-                      else "";
-                    trusted =
-                      if (cfg.firewall.trustedInterfaces != [])
-                      then ''
+              content = ''
+                chain input {
+                  type filter hook input priority 0; policy ${cfg.nftables.defaultPolicy};
+                  ${lib.strings.concatStrings inputRules}
+                  ${cfg.nftables.extraInputRules}
+                }
 
-                        iifname { ${builtins.concatStringsSep "," cfg.firewall.trustedInterfaces} } accept comment "Trusted Interfaces"
-                      ''
-                      else "";
-                  in ''
-                    chain input {
-                      type filter hook input priority 0; policy ${cfg.nftable.defaultPolicy};
-                      iifname { lo } accept comment "Allow local access from this network"
-                      ${input}
-                      ${trusted}
-                      ${inputConnected}
-                    }
-                  ''
-                )
-                (
-                  let
-                    bidirection =
-                      if (netBidirectional != [])
-                      then
-                        lib.strings.concatMapStrings (interface: ''
-                          iifname { ${interface} } oifname { ${interface} } accept comment "Allow bidirection forward on this network"
-                        '')
-                        netBidirectional
-                      else "";
-                    output =
-                      if forward.netOutput != {}
-                      then
-                        lib.strings.concatMapStrings (interface: ''
-                          iifname { ${interface} } oifname { ${builtins.concatStringsSep ", " forward.netOutput.${interface}} } accept comment "Allow forward to these network interface"
-                          iifname { ${builtins.concatStringsSep ", " forward.netOutput.${interface}} } oifname { ${interface} } ct state { established, related } accept comment "Allow if connection is already established"
-                        '') (builtins.attrNames forward.netOutput)
-                      else "";
-                    input =
-                      if forward.netInput != {}
-                      then
-                        lib.strings.concatMapStrings (interface: ''
-                          iifname { ${builtins.concatStringsSep ", " forward.netInput.${interface}} } oifname { ${interface} } accept comment "Allow forward to these network interface"
-                          iifname { ${interface} } oifname { ${builtins.concatStringsSep ", " forward.netInput.${interface}} } ct state { established, related } accept comment "Allow if connection is already established"
-                        '') (builtins.attrNames forward.netInput)
-                      else "";
-                  in ''
-                    chain forward {
-                      type filter hook forward priority 0; policy ${cfg.nftable.defaultPolicy};
-                      ${bidirection}
-                      ${output}
-                      ${input}
-                    }
-                  ''
-                )
-              ];
+                chain forward {
+                  type filter hook forward priority 0; policy ${cfg.nftables.defaultPolicy};
+                  ${lib.strings.concatStrings forwardRules}
+                  ${cfg.nftables.extraForwardRules}
+                }
+              '';
             };
             os-nat = lib.mkIf (netNat != []) {
               family = "inet";
@@ -354,7 +354,7 @@ in {
               '';
             };
           }
-          // cfg.nftable.extraTables;
+          // cfg.nftables.extraTables;
       };
     };
 

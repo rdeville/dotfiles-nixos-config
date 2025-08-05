@@ -11,6 +11,8 @@ in {
     firefox = {
       # See list of policies https://mozilla.github.io/policy-templates/
       policies = {
+        # Use this nice project to get UUID : https://github.com/tupakkatapa/mozid
+        # Or find source code and check firefox manifest
         ExtensionSettings = builtins.listToAttrs [
           # Antidote
           (extension "connecteur-pour-antidote" "antidote_uni10_firefox@druide.com")
@@ -42,6 +44,8 @@ in {
           (extension "tridactyl-vim" "tridactyl.vim@cmcaine.co.uk")
           # uBlock Origin
           (extension "ublock-origin" "uBlock0@raymondhill.net")
+          # Environment Marker
+          (extension "environment-marker-extension" "environmentmarker@example.com")
         ];
       };
     };
