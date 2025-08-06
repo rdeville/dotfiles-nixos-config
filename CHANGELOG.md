@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.28.1 (2025-08-06)
+
+### 🩹 Patch
+
+  * ⚡️ Declare group docker for user rdeville in templates config (!74) by Romain Deville ([`1817030`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1817030a53f55d69aaf3c3c7c71e040c924bf76b))
+  * ⚡️(template/main): Add user rdeville to docker group for k3d for main machine by Romain Deville ([`0d3eec0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0d3eec07c926a5d113cbd29589f70569d624d65a)) 🔏
+
+### 🔊 Others
+
+  * 🔥(rey): Remove docker for rdeville since declared in template now by Romain Deville ([`26daeaa`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/26daeaaff82019910a9a9d2bf3f347529c9744e0)) 🔏
+
 ## v0.28.0 (2025-08-05)
 
 ### ✨ Minor
