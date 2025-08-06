@@ -11,6 +11,15 @@
 
   os = {
     isMain = true;
+    users = {
+      users = {
+        rdeville = {
+          extraGroups = [
+            "docker"
+          ];
+        };
+      };
+    };
 
     flavors = {
       docker = {
