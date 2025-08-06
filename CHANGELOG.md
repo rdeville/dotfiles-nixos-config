@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.0 (2025-08-06)
+
+### ✨ Minor
+
+  * ✨(darth-maul): Make darth-maul k3d local k8s cluster ready (!75) by Romain Deville ([`469edfc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/469edfc66d7a36c725b0b10ba90f833a45b89e0f))
+  * ✨(darth-maul): Make darth-maul k3d local k8s cluster ready by Romain Deville ([`225ef26`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/225ef263381c965cbf95c0005a3af9a31b0bcc8e)) 🔏
+
 ## v0.28.1 (2025-08-06)
 
 ### 🩹 Patch
