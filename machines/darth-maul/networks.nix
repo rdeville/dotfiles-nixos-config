@@ -92,8 +92,25 @@ in {
         enable = true;
         nameservers = [
           # Kenobi
-          "89.234.140.170"
+          "172.16.1.1"
         ];
+        firewall = {
+          trustedInterfaces = [
+            "veth*"
+          ];
+          debug = true;
+        };
+        nftables = {
+          debug = true;
+          extraInputRules = ''
+            iifname { "br-*" } accept comment "Allow Kind bridge."
+          '';
+          extraForwardRules = ''
+            iifname { "br-*" } oifname { "br-*" } accept comment "Allow bidirectional on k3d bridge"
+            iifname { "br-*" } oifname { "enp*", "eno*" } accept comment "Allow Kind bridge."
+            iifname { "enp*", "eno*" } oifname { "br-*" } ct state { established, related } accept comment "Allow if connection is already established"
+          '';
+        };
         networks =
           {
             eth-public = {
@@ -102,12 +119,10 @@ in {
                 name = "eno*";
               };
               DHCP = "yes";
-              dns = [
-                "172.16.1.1"
-              ];
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {
+                allowNat = true;
                 allowInputConnected = true;
               };
               topology = {
@@ -126,6 +141,16 @@ in {
           }
           // lib.mkWgNetworkClient "kenobi" wgNetworks id config;
       };
+    };
+  };
+
+  networking = {
+    nat = {
+      enable = true;
+      internalIPs = [
+        # Allow Kind network to have internet
+        "172.19.0.0/16"
+      ];
     };
   };
 }
