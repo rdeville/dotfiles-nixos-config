@@ -1,7 +1,4 @@
-{
-  inputs,
-  ...
-}: {
+{inputs, ...}: {
   imports = [
     # External Modules
     inputs.nixos.inputs.sops-nix.homeManagerModules.sops

@@ -39,7 +39,7 @@ in {
             extraForwardRules = ''
               iifname { cilium_host*, cilium_net* } oifname { cilium_host*, cilium_net* } accept comment "Allow bidirection for k3s"
             '';
-           };
+          };
         };
 
         k3s = {

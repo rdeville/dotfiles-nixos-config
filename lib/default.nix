@@ -108,15 +108,16 @@ self: lib: let
             inherit id;
             enable = true;
             privateKeyFile = config.sops.secrets."network/${elem.name}/private-key".path;
-            peers = if (elem ? peers && elem.peers != [])
+            peers =
+              if (elem ? peers && elem.peers != [])
               then elem.peers
               else [
-              {
-                Endpoint = "${elem.endpoint}:${port}";
-                PublicKey = ../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
-                AllowedIPs = elem.allowedIPs;
-              }
-            ];
+                {
+                  Endpoint = "${elem.endpoint}:${port}";
+                  PublicKey = ../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
+                  AllowedIPs = elem.allowedIPs;
+                }
+              ];
           };
           topology = {
             connections = [
