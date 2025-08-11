@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.1 (2025-08-11)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock and format code (!76) by Romain Deville ([`a96d76d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a96d76d11da58d0cc0154d4051029e04edc61737))
+  * ⬆️ Update flake.lock by Romain Deville ([`f17af4f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f17af4fdc3005f75bcd23d6864b4c7ccb591a835)) 🔏
+
+### 🔊 Others
+
+  * 🎨 Pass nix format on the code by Romain Deville ([`85445e6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/85445e6a62f66c20461ddecedc5eb1c3ffc2bb12)) 🔏
+
 ## v0.29.0 (2025-08-06)
 
 ### ✨ Minor
