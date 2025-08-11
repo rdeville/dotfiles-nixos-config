@@ -50,10 +50,13 @@
           [
             "cilium_wg0"
             "cilium_host"
-          ] ++ cfg.wireguard.outputInterfaces;
-        inputInterfaces = [
-          "lxc*"
-        ] ++ cfg.wireguard.inputInterfaces;
+          ]
+          ++ cfg.wireguard.outputInterfaces;
+        inputInterfaces =
+          [
+            "lxc*"
+          ]
+          ++ cfg.wireguard.inputInterfaces;
       };
       routes = [
         {

@@ -43,17 +43,18 @@
             interface = elem.name;
             endpoint = wgEndpoint;
             allowInputConnected = true;
-            peers = builtins.map(endpoint:
-              let
-                routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
-                port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
-              in
-              {
-                Endpoint = "${endpoint}:${port}";
-                PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
-                AllowedIPs = routerNetwork.${elem.name}.networkCIDR;
-              }
-            ) endpoint;
+            peers =
+              builtins.map (
+                endpoint: let
+                  routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
+                  port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
+                in {
+                  Endpoint = "${endpoint}:${port}";
+                  PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
+                  AllowedIPs = routerNetwork.${elem.name}.networkCIDR;
+                }
+              )
+              endpoint;
             routes = [
               {
                 Destination = routerNetwork.${elem.name}.networkCIDR;
@@ -97,17 +98,18 @@
         endpoint = wgEndpoint;
         allowInput = true;
         allowedTCPPorts = config.services.openssh.ports;
-        peers = builtins.map(endpoint:
-          let
-            routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
-            port = builtins.toString routerNet.netdevs.${name}.wireguardConfig.ListenPort;
-          in
-          {
-            Endpoint = "${endpoint}:${port}";
-            PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${name}.pub;
-            AllowedIPs = routerNetwork.${name}.networkCIDR;
-          }
-        ) endpoint;
+        peers =
+          builtins.map (
+            endpoint: let
+              routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
+              port = builtins.toString routerNet.netdevs.${name}.wireguardConfig.ListenPort;
+            in {
+              Endpoint = "${endpoint}:${port}";
+              PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${name}.pub;
+              AllowedIPs = routerNetwork.${name}.networkCIDR;
+            }
+          )
+          endpoint;
         routes = [
           {
             Destination = routerNetwork.${name}.networkCIDR;
