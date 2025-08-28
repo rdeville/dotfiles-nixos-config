@@ -32,7 +32,7 @@ in {
           stateVersion = lib.mkOption {
             type = lib.types.str;
             description = "Version of HM to follow";
-            default = "24.11";
+            default = "25.05";
           };
 
           system = lib.mkOption {
@@ -133,7 +133,7 @@ in {
     nix = {
       gc = {
         automatic = true;
-        frequency = "weekly";
+        dates = "weekly";
         options = "--delete-older-than 7d";
       };
 
