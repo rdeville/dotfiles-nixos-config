@@ -367,7 +367,7 @@ in {
             ${iface.topology.name} = {
               mac = lib.mkForce (
                 if iface.allowedTCPPorts == []
-                then "No Open Ports"
+                then ""
                 else "Ports: ${builtins.concatStringsSep "," (
                   builtins.map (port: toString port)
                   iface.allowedTCPPorts
