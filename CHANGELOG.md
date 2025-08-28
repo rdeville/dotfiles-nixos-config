@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.2 (2025-08-28)
+
+### 🩹 Patch
+
+  * 👽️(hm): Update HM modules (nix.gc and ssh-client) due to HM changes (!143) by Romain Deville ([`5c385d3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5c385d3d8925eb07feb4269e2bcaff9e2729cff8))
+  * 👽️(hm/ssh-client): Update module to remove default and use matchBlocks by Romain Deville ([`63e8179`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/63e8179605a7c3821d8a9534184890cece049717)) 🔏
+  * 👽️(home-manager): Bump to 25.05 and update nix.gc.frequency to nix.gc.date by Romain Deville ([`5f3336c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5f3336cb055570859ed071a76b6765f637496635)) 🔏
+
 ## v0.43.1 (2025-08-28)
 
 ### 🩹 Patch
