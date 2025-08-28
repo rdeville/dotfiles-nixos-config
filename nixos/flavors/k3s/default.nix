@@ -120,6 +120,8 @@ in {
                 "--disable=servicelb"
                 # Deactivate CoreDNS integration since I'll manage it myself
                 "--disable=coredns"
+                # Deactivate Local Storage since I'll use rook-ceph
+                "--disable=local-storage"
               ]
               ++ (builtins.map (label: "--node-label ${label}") cfg.labels)
               ++ (builtins.map (taint: "--node-taint ${taint}") cfg.taints)
