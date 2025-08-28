@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.1 (2025-08-28)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`9b4fce0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9b4fce06b6c57c27ebc3bc6c080074f3e85b37b9)) 🔏
+  * 🔧(os/k3s): Deactivate local-storage &#39;cos I&#39;ll use rook-ceph (!142) by Romain Deville ([`b3766e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b3766e980c5a22392c6eb1200de8b0460927920b))
+  * 🔧(os/k3s): Disable local-storage from k3s &#39;cos I&#39;ll use rook-ceph by Romain Deville ([`1370cb4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1370cb4cf356cf4021f0a07ec6509b11863ed59e)) 🔏
+
 ## v0.43.0 (2025-08-05)
 
 ### ✨ Minor
