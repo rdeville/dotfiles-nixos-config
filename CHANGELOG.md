@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.3 (2025-08-28)
+
+### 🩹 Patch
+
+  * 🔧(os/network): Remove text if no port are opened (!144) by Romain Deville ([`711c5c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/711c5c921807eaa2836d4026c197ad4f04485581))
+  * 🔧(os/network): Remove text if no port are opened by Romain Deville ([`80fddeb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/80fddeb768f8cfc2559a1914737f7c0fbdd5b5ac)) 🔏
+
 ## v0.43.2 (2025-08-28)
 
 ### 🩹 Patch
