@@ -140,6 +140,11 @@
     # overlay-PKG_NAME-YYYY-MM-DD = {
     #   url = "github:nixos/nixpkgs/abcdef01234567890abcdefg01234567890abcdef";
     # };
+    # Wait for this PR to be backported to unstable:
+    # https://github.com/NixOS/nixpkgs/pull/437045
+    overlay-vdirsyncer-2025-08-28 = {
+      url = "github:nixos/nixpkgs/85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054";
+    };
   };
   outputs = inputs @ {self, ...}: let
     # This is a function that generates an attribute by calling a function you
