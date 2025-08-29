@@ -15,7 +15,6 @@
           addresses = [
             "172.17.0.4"
           ];
-          mac = "No Open Ports";
           physicalConnections = [
             (config.lib.topology.mkConnectionRev "kenobi" "wg-public")
           ];
@@ -26,7 +25,6 @@
           addresses = [
             "172.16.2.4"
           ];
-          mac = "No Open Ports";
           physicalConnections = [
             (config.lib.topology.mkConnectionRev "kenobi" "wl-public")
           ];
