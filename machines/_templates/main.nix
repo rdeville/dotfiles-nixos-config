@@ -16,6 +16,8 @@
         rdeville = {
           extraGroups = [
             "docker"
+            "libvirtd"
+            "qemu-libvirtd"
           ];
         };
       };
