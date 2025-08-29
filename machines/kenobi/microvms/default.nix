@@ -31,7 +31,7 @@ in {
   config = {
     k8s-microvms = {
       k8s-dev = {
-        enable = true;
+        enable = false;
         env = "dev";
         clusterDomain = [
           "kube.dev.tekunix.internal"
@@ -48,7 +48,7 @@ in {
         };
       };
       k8s-stg = {
-        enable = true;
+        enable = false;
         id = 201;
         vcpu = 1;
         mem = 4096;
@@ -108,7 +108,7 @@ in {
       };
 
       haproxy = {
-        enable = true;
+        enable = false;
         config = builtins.readFile (
           pkgs.replaceVars ./haproxy.cfg {
             ai_robots_txt = config.environment.etc.${ai-robots-txt}.source;
