@@ -96,19 +96,18 @@ in {
         ];
         firewall = {
           trustedInterfaces = [
-            "veth*"
+            "virbr*"
           ];
           debug = true;
         };
         nftables = {
           debug = true;
           extraInputRules = ''
-            iifname { "br-*" } accept comment "Allow Kind bridge."
+            iifname { "virbr*" } accept comment "Allow Vagrant bridge."
           '';
           extraForwardRules = ''
-            iifname { "br-*" } oifname { "br-*" } accept comment "Allow bidirectional on k3d bridge"
-            iifname { "br-*" } oifname { "enp*", "eno*" } accept comment "Allow Kind bridge."
-            iifname { "enp*", "eno*" } oifname { "br-*" } ct state { established, related } accept comment "Allow if connection is already established"
+            iifname { "virbr*" } oifname { "virbr*", "eno*" } accept comment "Allow Kind bridge."
+            iifname { "virbr*", "eno*" } oifname { "virbr*" } ct state { established, related } accept comment "Allow if connection is already established"
           '';
         };
         networks =
@@ -148,8 +147,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        # Allow Kind network to have internet
-        "172.19.0.0/16"
+        "192.168.121.0/24"
       ];
     };
   };
