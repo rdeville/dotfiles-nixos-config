@@ -29,11 +29,11 @@
           id = 144;
           color = "#2b7fff";
         }
-        {
-          name = "wg-k8s-dev";
-          id = 160;
-          color = "#1447e6";
-        }
+        # {
+        #   name = "wg-k8s-dev";
+        #   id = 160;
+        #   color = "#1447e6";
+        # }
       ];
     in
       builtins.foldl' (acc: elem:
