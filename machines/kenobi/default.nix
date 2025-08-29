@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   lib,
   ...
 }: {
@@ -13,6 +12,7 @@
     inputs.disko.nixosModules.disko
     ./disko.nix
     # Other configurations
+    ./ingress
     ./dns
     ./networks
     ./microvms
