@@ -25,6 +25,9 @@
     url = calendar.url;
     userName = calendar.userName;
   };
+  thunderbird = {
+    enable = calendar ? thunderbird.enabled && calendar.thunderbird.enabled;
+  };
   vdirsyncer = {
     enable = calendar ? vdirsyncer.enabled && calendar.vdirsyncer.enabled;
     collections = ["from a" "from b"];
