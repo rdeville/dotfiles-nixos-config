@@ -53,7 +53,7 @@
         {
           hw-address = "fc:aa:14:dc:88:9f";
           hostname = "leia";
-          id = 12;
+          id = 21;
         }
       ];
       topology = {

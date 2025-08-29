@@ -53,21 +53,21 @@
               "vm-k8s-stg"
             ];
         }
-        {
-          name = "wg-k8s-dev";
-          interface = "wg-k8s-dev";
-          id = 160;
-          topology = {
-            color = "#1447e6";
-            desc = "Wireguard k8s Development";
-          };
-          listenInterfaces =
-            listenInterfaces
-            ++ [
-              "enp2s0"
-              "vm-k8s-dev"
-            ];
-        }
+        # {
+        #   name = "wg-k8s-dev";
+        #   interface = "wg-k8s-dev";
+        #   id = 160;
+        #   topology = {
+        #     color = "#1447e6";
+        #     desc = "Wireguard k8s Development";
+        #   };
+        #   listenInterfaces =
+        #     listenInterfaces
+        #     ++ [
+        #       "enp2s0"
+        #       "vm-k8s-dev"
+        #     ];
+        # }
       ];
     in
       builtins.foldl' (acc: elem:
