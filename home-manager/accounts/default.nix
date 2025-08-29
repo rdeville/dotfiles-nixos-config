@@ -11,6 +11,9 @@ let
         enable = false;
         type = "discover";
       };
+      thunderbird = {
+        enable = false;
+      };
       vdirsyncer = {
         enable = true;
       };
@@ -19,6 +22,9 @@ let
     contact = {
       khard = {
         enable = true;
+      };
+      thunderbird = {
+        enable = false;
       };
       vdirsyncer = {
         enable = true;
@@ -37,6 +43,10 @@ let
       khal = {
         enable = false;
       };
+      thunderbird = {
+        # Does not seems do discover calendars properly
+        enable = false;
+      };
       vdirsyncer = {
         enable = false;
       };
@@ -45,6 +55,9 @@ let
     contact = {
       khard = {
         enable = false;
+      };
+      thunderbird = {
+        enable = true;
       };
       vdirsyncer = {
         enable = false;
