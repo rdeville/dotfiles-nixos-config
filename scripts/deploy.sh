@@ -42,19 +42,6 @@ _check_age_key() {
   local error="false"
   local username
 
-  if ! scp "${user}@${ip}:${age_target_path}" "${age_target}" &>/dev/null; then
-    _log "ERROR" "Unable to copy target age key"
-    return 1
-  fi
-  sops -d "${age_repo_path}" >"${age_repo}"
-  chmod 0600 "${age_target}" "${age_repo}"
-
-  if ! diff "${age_target}" "${age_repo}" &>/dev/null; then
-    _log "ERROR" "Age key on target differs from the key in this repo config"
-    _log "ERROR" "Please upload valid age key for the host before continue"
-    error="true"
-  fi
-
   for _user in "${MACHINE_PATH}/${hostname}"/*/; do
     username=$(basename "${_user}")
 
