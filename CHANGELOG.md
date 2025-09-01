@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.4 (2025-09-01)
+
+### 🩹 Patch
+
+  * ⚡️(os/k3s): Add isci workaround for Longhorn (!145) by Romain Deville ([`b21b486`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b21b486fe1d144d602287b35b752fb6a0b20c62c))
+  * ⚡️(os/k3s): Add isci workaround for Longhorn by Romain Deville ([`c45d3b7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c45d3b7cbbb4cb21ca6932736a22d9e71a068545)) 🔏
+
 ## v0.43.3 (2025-08-28)
 
 ### 🩹 Patch
