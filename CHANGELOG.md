@@ -1,6 +1,43 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.2 (2025-09-01)
+
+### 🩹 Patch
+
+  * ⚡️(os/k8s-server): Remove k3s storage path and VMs users definition in modules by Romain Deville ([`6a36f3e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6a36f3e0c2e3b299adef7c94ba2cd44a7e234e8e)) 🔏
+  * ⚡️(hm/accounts): Define thunberbird contact and calendar account activation by Romain Deville ([`65f82c1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/65f82c19bb8abdf4929689b743a89e3c4b38d4a6)) 🔏
+  * ⚡️(lib): Add thunbirder to accounts and calendar accounts since it&#39;s supported by Romain Deville ([`57cb403`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/57cb403b8df51399b81dd108288c67aad7f6ae43)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`3ec46fa`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3ec46fa6c2fddb61e93112327d98c791b56f6452)) 🔏
+  * 🔧 Deactivate all VMs, rework network and script to reinstall machines (!77) by Romain Deville ([`311df8a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/311df8afe091406e6651a19f6ccd49ca26559840))
+  * 🔧(flake): Add vdirsyncer overlay by Romain Deville ([`b1f76a5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b1f76a5dccb6e9d9d39be27be114b2561a040b53)) 🔏
+  * 🔧(topology): Update P-Wing description by Romain Deville ([`4c9a3a5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4c9a3a55ccb49e0164b3e909d9a4d27e7765fd62)) 🔏
+  * 🔧(nixos-live): Update nixos-live configuration due to other changes by Romain Deville ([`f01846c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f01846cbf8b03386f4d5e98d4d0b3f29b7ff6ac6)) 🔏
+  * 🔧(luke/disko): Redefine leia disko partition (less root, more storage) by Romain Deville ([`dffeae0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/dffeae0beea95c8cebd1c4e309fd938589d91078)) 🔏
+  * 🔧(leia/disko): Redefine leia disko partition (less root, more storage) by Romain Deville ([`eb295f9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/eb295f9f7b7bc319f56995eb68daae7127521f16)) 🔏
+  * 🔧(rey): Remove wg-k8s-dev configuration since removed from kenobi by Romain Deville ([`0c85053`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0c85053e4d4796f3f8e10f2837dbf9b4392f2ca6)) 🔏
+  * 🔧(darth-maul): Remove wg-k8s-dev configuration since removed from kenobi by Romain Deville ([`9c849a1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9c849a1edbb30c39c699c262e7c75a9dc2c0661e)) 🔏
+  * 🔧(kenobi/network): Deactivate wg-k8s-dev network for now by Romain Deville ([`db7c8ae`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/db7c8aec6e018445e65079622ab80da08eb586c1)) 🔏
+  * 🔧(kenobi/dns): Drop dev cluster (vms down), update local entry by Romain Deville ([`99c8d65`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/99c8d65aa00d357e78ccb44288a79df48adeaca9)) 🔏
+  * 🔧(kenobi/microvms): Deactivate microvms for now and haproxy by Romain Deville ([`908a49c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/908a49c484c6515e498795a7e76cecdffddea7bb)) 🔏
+  * 🔧(darth-maul/network): Drop k3d nft rule for vagrant by Romain Deville ([`9399540`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/93995407aead34b6bc5ae35f538a5873b0e8ba6a)) 🔏
+  * 🔧(darth-maul/microvms): Deactivate k8s-dev VMs for now by Romain Deville ([`b62bd43`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b62bd43b20c12e1a329051c75547df8aac915d60)) 🔏
+  * 🔧(rey/topology): Remove redondant topology information by Romain Deville ([`46feaa8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/46feaa87149997e895ec0189e4f6a7967a7b656e)) 🔏
+  * 🔧(rey/users/rdeville): Update hyprland monitor configuration by Romain Deville ([`f556919`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f556919bb5973f395332a80902c593c860f5eb72)) 🔏
+  * 🔧(rey/network): Drop k3d nft rule for vagrant by Romain Deville ([`dbd3670`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/dbd367086f32b801125d6fb543ba6a3b05571f55)) 🔏
+  * 🔧(rey): Update /etc/hosts content with new vagrant cluster by Romain Deville ([`8611e89`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8611e891ca3d102314b0e2525a003a746a85b57a)) 🔏
+  * 🔧(rey/microvms): Deactivate k8s-dev VMs for now by Romain Deville ([`7d4dedc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7d4dedce82225750dbbaa18558f86779c9d8a4e3)) 🔏
+  * 🔧(palpatine/users/rdeville): Fix palpatine configuration and remove dougs cfg by Romain Deville ([`a03e698`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a03e6986f36c1833fd36bb7471c71f655db5a8e7)) 🔏
+  * 🔧(template): Improve user rdeville groups and ssh keys management by Romain Deville ([`89027e0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/89027e0f730107cecb87992328a5509bf7dc9bff)) 🔏
+  * 🔧(hm): Rework home-manager.nix and comment darwin palpatine for now by Romain Deville ([`f86230d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f86230d2d914b1f80a7a2a7fcc777d5c67b08ed1)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/accounts): Remove dougs accounts by Romain Deville ([`75c6dfd`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/75c6dfd162ed182f0fc2e9f7b372c9a6b51f06ac)) 🔏
+  * 🔨(scripts): Update deploy and install script after luke and leia reinstall by Romain Deville ([`d7d0c8a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d7d0c8a8c93609256ad019db42fc149edcc0bef0)) 🔏
+  * 🔨(scripts/lib): Update check_user method with new folder structure for HM by Romain Deville ([`eb818f9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/eb818f9ac535d1a2cf6136ae66c1f36cf3b14771)) 🔏
+  * 🚚(kenobi): Move nginx and haproxy config from microvms to ingress by Romain Deville ([`0066205`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/006620513f3386ba733d74db8ef33743aa40ea65)) 🔏
+
 ## v0.29.1 (2025-08-11)
 
 ### 🩹 Patch
