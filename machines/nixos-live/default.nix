@@ -5,6 +5,14 @@
   lib,
   ...
 }: let
+  nixpkgs = {
+    config = {
+      allowUnfreePredicate = pkg:
+        builtins.elem (lib.getName pkg) [
+          "zsh-abbr"
+        ];
+    };
+  };
   users = {
     nixos = {
       isSudo = true;
@@ -67,25 +75,32 @@ in {
     system = "x86_64-linux";
 
     users = {
+      defaultUserShell = pkgs.bash;
       inherit users;
     };
 
     flavors = {
       ssh-server = {
         enable = true;
+        openFirewall = true;
       };
     };
   };
 
   home-manager = {
-    users = builtins.foldl' (acc: elem:
-      {
-        ${elem} = {
-          imports = [
-            ../_templates/_users/${elem}/server.nix
-          ];
+    users = {
+      nixos = {
+        inherit nixpkgs;
+        imports = [
+          ../_templates/_users/nixos/server.nix
+        ];
+      };
+      root = {
+        inherit nixpkgs;
+        hm = {
+          username = "root";
         };
-      }
-      // acc) {} (builtins.attrNames users);
+      };
+    };
   };
 }
