@@ -17,7 +17,6 @@ in {
     packages = with pkgs;
       [
         inkscape
-        gimp3
         ghostscript
         slack
         ssh-to-age
@@ -26,6 +25,7 @@ in {
       ++ (
         if ! config.hm.isDarwin
         then [
+          gimp3
           libreoffice
           signal-desktop-bin
           whatsapp-for-linux
@@ -109,14 +109,21 @@ in {
           lib.getValidHosts);
         file = let
           key = "azathoth-${config.hm.hostName}.pub";
-        in {
-          ".ssh/pubkeys/${userKey}" = {
-            source = ../../../${config.hm.hostName}/users/${user}/_keys/${userKey};
-          };
-          ".ssh/pubkeys/${key}" = {
-            source = ../../../${config.hm.hostName}/users/azathoth/_keys/${key};
-          };
-        };
+        in
+          {
+            ".ssh/pubkeys/${userKey}" = {
+              source = ../../../${config.hm.hostName}/users/${user}/_keys/${userKey};
+            };
+          }
+          // (
+            if builtins.pathExists ../../../${config.hm.hostName}/users/azathoth/_keys/${key}
+            then {
+              ".ssh/pubkeys/${key}" = {
+                source = ../../../${config.hm.hostName}/users/azathoth/_keys/${key};
+              };
+            }
+            else {}
+          );
       };
     };
   };

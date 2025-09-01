@@ -1,30 +1,26 @@
 $ORIGIN tekunix.internal.
 $TTL    1h
-@             IN SOA    ns0.fdn.fr ns1.fdn.fr (
+@                 IN SOA    ns0.fdn.fr ns1.fdn.fr (
                           1  ; Serial
                           1h ; Refresh
                           1h ; Retry
                           1h ; Expire
                           1h ; Negative Cache TTL
                         )
-              IN NS     ns0.fdn.fr
-              IN NS     ns1.fdn.fr
+                  IN NS     ns0.fdn.fr
+                  IN NS     ns1.fdn.fr
 
 ; PRD Cluster Network
 ; -----------------------------------------------------------------------------
-@             IN A      172.30.128.1   ; HAProxy LB
-*             IN A      172.30.128.1   ; HAProxy LB
-
-; DEV Cluster Network
-; -----------------------------------------------------------------------------
-*.dev         IN A      172.30.160.1   ; HAProxy LB
+@                 IN A      172.30.128.1   ; HAProxy LB
+*                 IN A      172.30.128.1   ; HAProxy LB
 
 ; STG Cluster Network
 ; -----------------------------------------------------------------------------
-*.stg         IN A      172.30.144.1   ; HAProxy LB
+*.stg             IN A      172.30.144.1   ; HAProxy LB
 
-; LOCAL K3D Cluster
+; LOCAL Vagrant Cluster
 ; -----------------------------------------------------------------------------
-*.local       IN A      127.0.0.1
+*.local           IN A      192.168.20.4
 
 ; vim: ft=dns

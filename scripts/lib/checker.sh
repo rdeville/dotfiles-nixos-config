@@ -55,9 +55,10 @@ check_host() {
 check_user() {
   local default="${1:"none"}"
 
-  if [[ -n "${user}" ]] && ! [[ "${user}" =~ ^(none|all)$ ]]; then
-    if ! [[ -d "${MACHINE_PATH}/${host}/${user}" ]]; then
-      _log "ERROR" "User **${user}@${host}** does not exists in machines/${host}/"
+  if [[ -n "${user}" ]] &&
+    ! [[ "${user}" =~ ^(none|all)$ ]]; then
+    if ! [[ -d "${MACHINE_PATH}/${host}/users/${user}" ]]; then
+      _log "ERROR" "User **${user}@${host}** does not exists in machines/${host}/users"
       exit 1
     fi
     shift

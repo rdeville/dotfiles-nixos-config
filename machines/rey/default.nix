@@ -1,6 +1,5 @@
 {
   inputs,
-  pkgs,
   lib,
   ...
 }: {
@@ -47,9 +46,9 @@
 
   networking = {
     hosts = {
-      "127.0.0.1" = [
-        "kube.rey.tekunix.cloud"
-        "argocd.rey.tekunix.cloud"
+      "192.168.20.4" = [
+        "kube.local.tekunix.cloud"
+        "argo.local.tekunix.cloud"
       ];
     };
   };

@@ -10,18 +10,6 @@
         image = ../../assets/images/devices/framework.png;
       };
 
-      interfaces = {
-        eth-public = {
-          addresses = [
-            "172.16.1.3"
-          ];
-          mac = "No Open Ports";
-          physicalConnections = [
-            (config.lib.topology.mkConnectionRev "switch" "eth")
-          ];
-        };
-      };
-
       services = {
         openssh = {
           hidden = false;

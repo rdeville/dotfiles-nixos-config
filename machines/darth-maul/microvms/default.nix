@@ -2,7 +2,7 @@
   config = {
     k8s-microvms = {
       k8s-dev = {
-        enable = true;
+        enable = false;
         id = 202;
         vcpu = 2;
         mem = 4096;

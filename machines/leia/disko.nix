@@ -34,7 +34,7 @@
           type = "lvm_vg";
           lvs = {
             root = {
-              size = "25G";
+              size = "5G";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -45,7 +45,7 @@
               };
             };
             nix = {
-              size = "100G";
+              size = "50G";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -53,7 +53,7 @@
               };
             };
             log = {
-              size = "25G";
+              size = "10G";
               content = {
                 type = "filesystem";
                 format = "ext4";
@@ -68,16 +68,16 @@
                 mountpoint = "/var/lib";
               };
             };
-            k8s-data = {
-              size = "50G";
+            longhorn-data = {
+              size = "250G";
               content = {
                 type = "filesystem";
                 format = "ext4";
-                mountpoint = "/var/lib/k8s-data";
+                mountpoint = "/var/lib/longhorn";
               };
             };
             home = {
-              size = "50G";
+              size = "10G";
               content = {
                 type = "filesystem";
                 format = "ext4";

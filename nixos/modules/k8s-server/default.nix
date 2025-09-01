@@ -16,7 +16,6 @@ in {
   };
 
   imports = [
-    ../../../machines/_templates/_users
     ./options.nix
     ./networks.nix
   ];
@@ -56,13 +55,6 @@ in {
               "--node-ip 172.30.${cfg.envID}.${toString cfg.id}"
               "--node-external-ip 172.30.${cfg.envID}.${toString cfg.id}"
             ]
-            ++ (
-              if cfg.role == "server"
-              then [
-                "--default-local-storage-path /var/lib/k8s-data"
-              ]
-              else []
-            )
             ++ (
               if cfg.clusterInit
               then

@@ -50,9 +50,9 @@ _prepare_host_encryption_key() {
   local key
 
   mkdir -p "${tmp_host}"
-  sops -d "${MACHINE_PATH}/${HOSTNAME}/keys/age.enc.txt" >"${tmp_host}/key.txt"
+  sops -d "${MACHINE_PATH}/${hostname}/_keys/age.enc.txt" >"${tmp_host}/key.txt"
 
-  for user in "${MACHINE_PATH}/${HOSTNAME}/"*/; do
+  for user in "${MACHINE_PATH}/${hostname}/"*/; do
     username=$(basename "${user}")
     key="${user}/_keys/age.enc.txt"
 
@@ -75,7 +75,7 @@ _prepare_host_encryption_key() {
 }
 
 _install_nixos() {
-  _log "INFO" "Running nixos-anywhere and install NixOS"
+  _log "INFO" "Running nixos-anywhere and install NixOS to ${url}"
 
   nix run github:nix-community/nixos-anywhere -- \
     --flake ".#${hostname}" \
@@ -84,7 +84,7 @@ _install_nixos() {
     --build-on local \
     --extra-files "${tmp}"
 
-  ssh "${url}" -c "chmod 0600 /mnt/etc/age/key.txt"
+  ssh "${url}" -c "sudo chmod 0600 /mnt/etc/age/key.txt"
 }
 
 _restart_and_wait() {
@@ -139,7 +139,7 @@ main() {
   local tmp="/tmp/host-key/${hostname}"
   local user_has_secret=false
 
-  if ! ping -q -c 4 -t "${ip}" &>/dev/null; then
+  if ! ping -q -c 4 -t 1 "${ip}" &>/dev/null; then
     _log "ERROR" "Target ${ip} does not respond to ping, nothing to do"
     return 1
   fi
@@ -148,7 +148,6 @@ main() {
   _format_target
   _prepare_host_encryption_key
   _install_nixos
-  _update_host_key_ownership
   _restart_and_wait
 
   # Clean temporary file that contains unencrypted files

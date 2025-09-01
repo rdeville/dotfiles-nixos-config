@@ -8,12 +8,13 @@ builtins.foldl' (acc: host:
       {
         "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = import inputs.nixpkgs {
-            system =
-              if host == "palpatine"
-              then "aarch64-darwin"
-              else "x86_64-linux";
+            system = "x86_64-linux";
+            # if host == "palpatine"
+            # then "aarch64-darwin"
+            # else "x86_64-linux";
           };
           modules = [
+            inputs.nixos.homeManagerModules.hm
             ./machines/${host}/users/${user}
             ./home-manager/_modules.nix
           ];
@@ -29,8 +30,10 @@ builtins.foldl' (acc: host:
       )) (lib.listDirs ./machines/${host}/users)
     )
     // acc) {} (
-  builtins.filter (host: (
-    # Ignore folders machines/_*
-    builtins.match "_.*" host != []
-  )) (lib.listDirs ./machines)
+  builtins.filter (
+    host: (
+      # Ignore folders machines/_* and folders machines/*/ that does not have users
+      builtins.match "_.*" host != [] && builtins.pathExists ./machines/${host}/users
+    )
+  ) (lib.listDirs ./machines)
 )

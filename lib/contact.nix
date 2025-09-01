@@ -19,6 +19,9 @@
       then contact.defaultCollection
       else "contacts";
   };
+  thunderbird = {
+    enable = contact ? thunderbird.enabled && contact.thunderbird.enabled;
+  };
   vdirsyncer = {
     enable =
       if contact ? vdirsyncer && contact.vdirsyncer ? enabled

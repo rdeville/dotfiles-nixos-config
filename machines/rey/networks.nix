@@ -29,11 +29,11 @@
           id = 144;
           color = "#2b7fff";
         }
-        {
-          name = "wg-k8s-dev";
-          id = 160;
-          color = "#1447e6";
-        }
+        # {
+        #   name = "wg-k8s-dev";
+        #   id = 160;
+        #   color = "#1447e6";
+        # }
       ];
     in
       builtins.foldl' (acc: elem:
@@ -149,18 +149,18 @@ in {
         };
         firewall = {
           trustedInterfaces = [
-            "veth*"
+            "virbr*"
           ];
           debug = true;
         };
         nftables = {
           debug = true;
           extraInputRules = ''
-            iifname { "br-*" } accept comment "Allow Kind bridge."
+            iifname { "virbr*" } accept comment "Allow Vagrant bridge."
           '';
           extraForwardRules = ''
-            iifname { "br-*" } oifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } accept comment "Allow Kind bridge."
-            iifname { "br-*", "wlp*", "wg-public", "enp*", "eth*" } oifname { "br-*" } ct state { established, related } accept comment "Allow if connection is already established"
+            iifname { "virbr*" } oifname { "virbr*", "wlp*", "eth*" } accept comment "Allow Kind bridge."
+            iifname { "virbr*", "wlp*", "eth*" } oifname { "virbr*" } ct state { established, related } accept comment "Allow if connection is already established"
           '';
         };
         networks =
@@ -174,7 +174,6 @@ in {
               activationPolicy = "up";
               requiredForOnline = "yes";
               nftables = {
-                # Allow k3d container to access internet
                 allowNat = true;
                 allowInputConnected = true;
               };
@@ -200,6 +199,7 @@ in {
               activationPolicy = "up";
               requiredForOnline = "no";
               nftables = {
+                allowNat = true;
                 allowInputConnected = true;
               };
               topology = {
@@ -225,8 +225,7 @@ in {
     nat = {
       enable = true;
       internalIPs = [
-        # Allow Kind network to have internet
-        "172.19.0.0/16"
+        "192.168.121.0/24"
       ];
     };
   };
