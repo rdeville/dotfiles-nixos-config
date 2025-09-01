@@ -85,7 +85,25 @@ in {
   };
 
   config = lib.mkIf cfg.enable {
+    systemd = {
+      services = {
+        # Workaround for longhorn, see:
+        # https://github.com/longhorn/longhorn/issues/2166#issuecomment-2994323945
+        iscsid = {
+          serviceConfig = {
+            PrivateMounts = "yes";
+            BindPaths = "/run/current-system/sw/bin:/bin";
+          };
+        };
+      };
+    };
     services = {
+      # Workaround for longhorn, see:
+      # https://github.com/longhorn/longhorn/issues/2166#issuecomment-2994323945
+      openiscsi = {
+        enable = true;
+        name = "${config.networking.hostName}-initiatorhost";
+      };
       k3s = {
         enable = true;
 
