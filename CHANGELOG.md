@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.5 (2025-09-03)
+
+### 🩹 Patch
+
+  * ⚡️(overlay): Improve regexp in overlay to support package with &#39;-&#39; by Romain Deville ([`644b51a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/644b51a2b6c93b75201618bebf21f039a7726d74)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`4313ebe`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4313ebe7ba61e127d440c3c84c9430005bc1d75f)) 🔏
+  * 🔧 Drop cudaSupport for darth-maul, update hyprland cfg, improve overlay (!80) by Romain Deville ([`9f2f95e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9f2f95e1c4bbeaa5d0fc603c632624c57208e1f1))
+  * 🔧(flake): Add spotify-player and nwg-display overlay until backport by Romain Deville ([`8536e9a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8536e9a2363c123d30d59dc53a16431bc983d467)) 🔏
+  * 🔧(rey/user/rdeville): Add monitor to hyprland config by Romain Deville ([`ed17635`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ed17635ad57704b44d70dcce6abeb6668180b4f7)) 🔏
+  * 🔧(rey): Update /etc/hosts entry for local kube by Romain Deville ([`2cacf36`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/2cacf3675305c0f9183b32fd4ae75a038708c0c9)) 🔏
+  * 🔧(darth-maul): Drop cudaSupport by Romain Deville ([`a3c469e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a3c469e4cbf41e1cb4acbbff54e1ef54a2a030f3)) 🔏
+
 ## v0.29.4 (2025-09-03)
 
 ### 🩹 Patch
