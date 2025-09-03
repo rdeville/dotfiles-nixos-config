@@ -62,12 +62,13 @@ self: lib: let
     builtins.foldl' (acc: elem:
       {
         ${elem.name} = let
+          netName = "10-${elem.name}";
           routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
-          port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
+          port = builtins.toString routerNet.netdevs.${netName}.wireguardConfig.ListenPort;
           ip = builtins.concatStringsSep "" (
             builtins.elemAt (
               builtins.split "(.*)/.*" (
-                builtins.elemAt routerNet.networks.${elem.name}.address 0
+                builtins.elemAt routerNet.networks.${netName}.address 0
               )
             )
             1
@@ -75,7 +76,7 @@ self: lib: let
           prefix = builtins.concatStringsSep "" (
             builtins.elemAt (
               builtins.split "(.*)\.[0-9]{1,3}/.*" (
-                builtins.elemAt routerNet.networks.${elem.name}.address 0
+                builtins.elemAt routerNet.networks.${netName}.address 0
               )
             )
             1
