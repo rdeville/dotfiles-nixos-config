@@ -46,8 +46,10 @@
 
   networking = {
     hosts = {
+      "192.168.20.3" = [
+        "kube.local.tekunix.internal"
+      ];
       "192.168.20.4" = [
-        "kube.local.tekunix.cloud"
         "argo.local.tekunix.cloud"
       ];
     };
