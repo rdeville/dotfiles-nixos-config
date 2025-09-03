@@ -212,6 +212,9 @@ in {
   config = lib.mkIf cfg.enable {
     networking = {
       inherit (cfg) useDHCP;
+      dhcpcd = {
+        enable = cfg.useDHCP;
+      };
     };
 
     systemd = {
@@ -220,7 +223,7 @@ in {
           interface = cfg.networks.${name};
         in
           {
-            ${name} = {
+            "10-${name}" = {
               inherit
                 (interface)
                 enable
@@ -256,6 +259,7 @@ in {
               linkConfig = {
                 RequiredForOnline = interface.requiredForOnline;
                 ActivationPolicy = interface.activationPolicy;
+                Unmanaged = interface.unmanaged;
               };
             };
           }

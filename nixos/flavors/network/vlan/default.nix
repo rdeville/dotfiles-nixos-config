@@ -14,7 +14,7 @@ in {
           interface = cfg.networks.${name};
         in
           {
-            ${name} = {
+            "10-${name}" = {
               netdevConfig = {
                 Kind = "vlan";
                 Name = name;
@@ -30,7 +30,7 @@ in {
         networks =
           builtins.foldl' (acc: name:
             {
-              ${name} = {
+              "10-${name}" = {
                 vlan =
                   builtins.filter (
                     interface:

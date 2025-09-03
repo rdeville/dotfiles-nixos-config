@@ -200,6 +200,17 @@ in {
       default = "no";
     };
 
+    unmanaged = lib.mkOption {
+      type = lib.types.enum ["yes" "no"];
+      description = ''
+        Takes a boolean (yes or no).
+        When "yes", no attempts are made to bring
+        up or configure matching links, equivalent to when there are no
+        matching network files. Defaults to "no".
+      '';
+      default = "no";
+    };
+
     wireguard = lib.mkOption {
       type = lib.types.submodule (import ./wireguard/options.nix);
       description = "Wireguard configuration for this network";
