@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.4 (2025-09-03)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`372ce73`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/372ce73ed58840b07a3110777a2ed0fdc01e2e83)) 🔏
+  * 👽️ Update network configuration to due os.flavors.network update (!79) by Romain Deville ([`007c5e4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/007c5e4d976aada9a6a90f7d5a279264e6aa95c3))
+  * 👽️(rey/net): Update network generation due to os.flavors.network update by Romain Deville ([`9eb6d04`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9eb6d04bd158236c85209fee93d14375ec11600e)) 🔏
+  * 👽️(lib): Update function to interface due to os.flavors.network update by Romain Deville ([`3e0aa30`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3e0aa30ca25b3128ce8fdc706c123876cdcc5d0e)) 🔏
+  * 🔧(kenobi/net): Add route and disable pool for network eth-k8s by Romain Deville ([`c95163a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c95163a5b20d2b50ec65c937df84377e9b50b2bd)) 🔏
+
 ## v0.29.3 (2025-09-01)
 
 ### 🩹 Patch
