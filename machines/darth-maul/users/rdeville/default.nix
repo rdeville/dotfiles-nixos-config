@@ -10,12 +10,6 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      cudaSupport = true;
-    };
-  };
-
   hm = {
     userAccounts = [
       "contact@romaindeville.fr"
