@@ -102,6 +102,7 @@ in {
         packages = with pkgs; [
           kitty
           hyprpolkitagent
+          nwg-displays
           pipewire
           wireplumber
         ];
