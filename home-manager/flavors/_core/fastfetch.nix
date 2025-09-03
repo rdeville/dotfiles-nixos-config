@@ -203,10 +203,6 @@ in {
         settings = {
           "$schema" = "https://github.com/fastfetch-cli/fastfetch/raw/main/doc/json_schema.json";
           inherit (cfg) modules logo;
-          general = {
-            multithreading = true;
-            thread = true;
-          };
           display = {
             color = {
               keys = "red";
@@ -219,11 +215,15 @@ in {
               binaryPrefix = "iec";
             };
             bar = {
-              borderLeft = "";
-              borderRight = "";
+              border = {
+                left = "";
+                right = "";
+              };
               width = 10;
-              charTotal = "□";
-              charElapsed = "■";
+              char = {
+                total = "-";
+                elapsed = "■";
+              };
             };
             percent = {
               ndigits = 2;

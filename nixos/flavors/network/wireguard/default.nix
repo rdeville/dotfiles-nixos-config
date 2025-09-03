@@ -40,7 +40,7 @@ in {
           interface = cfg.networks.${name};
         in
           {
-            ${name} = {
+            "10-${name}" = {
               netdevConfig = {
                 Kind = "wireguard";
                 Name = name;
@@ -87,7 +87,7 @@ in {
           (
             if cfg.networks.${name}.address == []
             then {
-              ${name} = {
+              "10-${name}" = {
                 address =
                   if cfg.networks.${name}.isServer
                   then [
