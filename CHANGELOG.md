@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.6 (2025-09-03)
+
+### 🩹 Patch
+
+  * 📦️(_gui/wayland): Add nwg-displays package if hyprland is installed (!147) by Romain Deville ([`fd2b013`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fd2b013a28caba6411a3cec89e138633a42ac332))
+  * 📦️(_gui/wayland): Add nwg-displays package if hyprland is installed by Romain Deville ([`9933574`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9933574654d297a6018149b7ffa7fbe704765b47)) 🔏
+
 ## v0.43.5 (2025-09-03)
 
 ### 🩹 Patch
