@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.5 (2025-09-03)
+
+### 🩹 Patch
+
+  * ⚡️(os/network): Update network do deactivate dhcpcd is networking.useDHCP=false (!146) by Romain Deville ([`1732e6e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1732e6e9a92ec84cb9e06a6dce493ac182184394))
+  * ⚡️(os/network): Update network do deactivate dhcpcd is networking.useDHCP=false by Romain Deville ([`70c8cb5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/70c8cb51889da67566e73041556e1255fb844668)) 🔏
+  * 👽️(hm/_core/fastech): Update config due to fastfech config changes by Romain Deville ([`7475c8c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7475c8c95f8d4745f70da96c69449b7cf7c51848)) 🔏
+
 ## v0.43.4 (2025-09-01)
 
 ### 🩹 Patch
