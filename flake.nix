@@ -145,6 +145,12 @@
     overlay-vdirsyncer-2025-08-28 = {
       url = "github:nixos/nixpkgs/85dbfc7aaf52ecb755f87e577ddbe6dbbdbc1054";
     };
+    overlay-spotify-player-2025-09-03 = {
+      url = "github:nixos/nixpkgs/a19e4649f8542b591750b79e59288c1cd5ebeefd";
+    };
+    overlay-nwg-displays-2025-09-03 = {
+      url = "github:nixos/nixpkgs/a3887e95aa55d8738445133f896ad4b75b54b9d0";
+    };
   };
   outputs = inputs @ {self, ...}: let
     # This is a function that generates an attribute by calling a function you
