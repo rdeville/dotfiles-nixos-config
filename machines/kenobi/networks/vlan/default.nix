@@ -8,6 +8,12 @@
       };
       id = 3;
       outputInterfaces = [];
+      routes = [
+        {
+          Destination = "172.16.3.0/24";
+        }
+      ];
+      enablePool = false;
       reservations = [
         {
           hw-address = "8c:90:2d:9d:20:16";
@@ -160,11 +166,14 @@ in {
                   ]
                   ++ acc) []
                 elem.reservations;
-                pools = [
-                  {
-                    pool = "${prefix}.64 - ${prefix}.254";
-                  }
-                ];
+                pools =
+                  if elem ? enablePool && elem.enablePool
+                  then [
+                    {
+                      pool = "${prefix}.64 - ${prefix}.254";
+                    }
+                  ]
+                  else [];
                 option-data = [
                   {
                     name = "routers";

@@ -46,8 +46,9 @@
             peers =
               builtins.map (
                 endpoint: let
+                  netName = "10-${elem.name}";
                   routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
-                  port = builtins.toString routerNet.netdevs.${elem.name}.wireguardConfig.ListenPort;
+                  port = builtins.toString routerNet.netdevs.${netName}.wireguardConfig.ListenPort;
                 in {
                   Endpoint = "${endpoint}:${port}";
                   PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${elem.name}.pub;
@@ -92,6 +93,7 @@
       }
       (let
         name = "wg-private";
+        netName = "10-${name}";
       in {
         inherit name;
         interface = name;
@@ -102,7 +104,7 @@
           builtins.map (
             endpoint: let
               routerNet = self.nixosConfigurations.${routerName}.config.systemd.network;
-              port = builtins.toString routerNet.netdevs.${name}.wireguardConfig.ListenPort;
+              port = builtins.toString routerNet.netdevs.${netName}.wireguardConfig.ListenPort;
             in {
               Endpoint = "${endpoint}:${port}";
               PublicKey = ../../machines/${routerName}/networks/wg-servers/_keys/${name}.pub;
@@ -159,8 +161,8 @@ in {
             iifname { "virbr*" } accept comment "Allow Vagrant bridge."
           '';
           extraForwardRules = ''
-            iifname { "virbr*" } oifname { "virbr*", "wlp*", "eth*" } accept comment "Allow Kind bridge."
-            iifname { "virbr*", "wlp*", "eth*" } oifname { "virbr*" } ct state { established, related } accept comment "Allow if connection is already established"
+            iifname { "virbr*" } oifname { "virbr*", "wlp*", "eth*", "wg-public" } accept comment "Allow Kind bridge."
+            iifname { "virbr*", "wlp*", "eth*", "wg-public" } oifname { "virbr*" } ct state { established, related } accept comment "Allow if connection is already established"
           '';
         };
         networks =
