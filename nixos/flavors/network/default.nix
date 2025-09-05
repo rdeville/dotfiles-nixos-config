@@ -212,6 +212,7 @@ in {
   config = lib.mkIf cfg.enable {
     networking = {
       inherit (cfg) useDHCP;
+
       dhcpcd = {
         enable = cfg.useDHCP;
       };
@@ -219,6 +220,10 @@ in {
 
     systemd = {
       network = {
+        # Force links to empty to avoid auto-configuration of interface if
+        # facter detect VPN interfaces
+        links = lib.mkForce {};
+
         networks = builtins.foldl' (acc: name: let
           interface = cfg.networks.${name};
         in
