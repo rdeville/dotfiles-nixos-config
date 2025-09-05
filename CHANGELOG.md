@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.43.7 (2025-09-05)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`92a570c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/92a570cba4ad3003f581a6e637b4c8900f2e286a)) 🔏
+  * 🔧(os/net): Force network.links empty to avoid auto-configuration (!148) by Romain Deville ([`779a231`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/779a2315bba868cc6dfa32d4568dad36a93127d8))
+  * 🔧(os/net): Force network.links empty to avoid auto-configuration by Romain Deville ([`ec9bc9f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ec9bc9f2719b65d2a7f594e564f822a337bbd4c4)) 🔏
+
 ## v0.43.6 (2025-09-03)
 
 ### 🩹 Patch
