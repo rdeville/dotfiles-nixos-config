@@ -151,6 +151,9 @@
     overlay-nwg-displays-2025-09-03 = {
       url = "github:nixos/nixpkgs/a3887e95aa55d8738445133f896ad4b75b54b9d0";
     };
+    overlay-terraform-docs-2025-09-13 = {
+      url = "github:nixos/nixpkgs/d0fc30899600b9b3466ddb260fd83deb486c32f1";
+    };
   };
   outputs = inputs @ {self, ...}: let
     # This is a function that generates an attribute by calling a function you
