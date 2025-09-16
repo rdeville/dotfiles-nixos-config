@@ -15,7 +15,6 @@
     ./ingress
     ./dns
     ./networks
-    ./microvms
   ];
 
   os = {
