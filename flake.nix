@@ -133,6 +133,10 @@
         nixpkgs.follows = "nixpkgs";
       };
     };
+    dotgit-sync = {
+      url = "git+ssh://git@framagit.org:/rdeville-public/programs/dotgit-sync";
+      # DO NOT FOLLOW NIXPKGS SINCE BUILD IS BROKEN WITH NIXPKGS
+    };
     # Overlays
     # -------------------------------------------------------------------------
     # Overlays are dynamically managed based on input name.
