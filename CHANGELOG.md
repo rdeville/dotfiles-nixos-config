@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.7 (2025-09-16)
+
+### 🩹 Patch
+
+  * ⚡️ Add dotgit-sync HM module for template/user/rdeville main (!82) by Romain Deville ([`b81bbb2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b81bbb2245a0cd0c229563e1903f398f9c1516a9))
+  * ➕(flake): Add dotgit-sync as inputs by Romain Deville ([`977356d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/977356de7cf9e8c9dbf2b05a1bfb26285739060f)) 🔏
+  * ⬆️ Upgrade flake.lock by Romain Deville ([`813334a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/813334a7224a209ba376ff040de82eded4787803)) 🔏
+  * 🔧(templates/users/rdeville): Add dotgit-sync to main template by Romain Deville ([`33d303c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/33d303c4d54adc43863616af1a4f2e229977f419)) 🔏
+  * 🔧(hm): Add dotgit-sync inputs to HM imported modules by Romain Deville ([`bdf15c6`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bdf15c6e814e3594f8fa29b0de6f26ddac2b1a55)) 🔏
+
 ## v0.29.6 (2025-09-16)
 
 ### 🩹 Patch
