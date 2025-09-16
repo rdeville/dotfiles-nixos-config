@@ -12,6 +12,16 @@ in {
     };
   };
 
+  wayland = {
+    windowManager = {
+      hyprland = {
+        extraConfig = ''
+          monitor = HDMI-A-1,2560x1440@59.95,0x0,1.66667
+        '';
+      };
+    };
+  };
+
   hm = {
     flavors = {
       bluetooth = {
