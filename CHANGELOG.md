@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.8 (2025-09-16)
+
+### 🩹 Patch
+
+  * 🔧(kenobi/user/rdeville): Update hyprland monitor scale configuration (!83) by Romain Deville ([`ac7849b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ac7849b3afb0250303f966375d819128830e51d6))
+  * 🔧(kenobi/user/rdeville): Update hyprland monitor scale configuration by Romain Deville ([`ecc489f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ecc489fefdfdc9ce0eb9e8d1aeab3b332f623570)) 🔏
+
 ## v0.29.7 (2025-09-16)
 
 ### 🩹 Patch
