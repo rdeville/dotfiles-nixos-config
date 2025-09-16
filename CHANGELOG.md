@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.6 (2025-09-16)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`a250236`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a25023628d8b6450302c443752c0a3802e04b544)) 🔏
+  * 🔧(rey): Update facter.json and flake.lock (!81) by Romain Deville ([`1f6e65c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1f6e65c34600daffc691f4a68410dce91aa6575e))
+  * 🔧(flake): Add terraform-docs overlay by Romain Deville ([`3ae4ff4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3ae4ff413edb8843fecb891d328aabaa5b5a18ec)) 🔏
+  * 🔧(rey): Update facter.json by Romain Deville ([`731b59d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/731b59d1101457d0818c8036934cacd9e57712e3)) 🔏
+
 ## v0.29.5 (2025-09-03)
 
 ### 🩹 Patch
