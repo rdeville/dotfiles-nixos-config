@@ -127,4 +127,8 @@ in {
       };
     };
   };
+
+  dotgit-sync = {
+    enable = true;
+  };
 }
