@@ -8,7 +8,6 @@
     ../_templates/nvidia.nix
     ../_templates/main.nix
     ./networks.nix
-    ./microvms
   ];
 
   nixpkgs = {

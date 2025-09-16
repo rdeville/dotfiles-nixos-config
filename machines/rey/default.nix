@@ -10,7 +10,6 @@
     ../_templates/gui.nix
     # Partition map
     inputs.disko.nixosModules.disko
-    ./microvms
     ./disko.nix
     ./networks.nix
     ./topology.nix
