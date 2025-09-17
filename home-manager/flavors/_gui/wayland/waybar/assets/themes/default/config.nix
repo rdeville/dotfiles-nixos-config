@@ -16,31 +16,48 @@ in
           {
             layer = "top";
             position = "top";
-            height = 20;
+            height = 24;
+            spacing = 0;
 
             modules-left = [
               "hyprland/workspaces"
-              "hyprland/submap"
+              "hyprland/mode"
               "hyprland/window"
             ];
-
             modules-right = [
-              "network"
+              "battery"
+              "network#speed"
+              "network#ip"
               "memory"
               "cpu"
               "tray"
               "clock"
             ];
 
+            # Modules
+            # -------------------------------------------------------------------
+            battery = {
+              interval = 60;
+              states = {
+                warning = 30;
+                critical = 15;
+              };
+              format = "󱐥{icon} {capacity}%";
+              format-charging = "󱐥{icon} {capacity}%({time})";
+              format-discharging = " {icon} {capacity}%({time})";
+              format-time = "{H}:{M}";
+              format-icons = ["󰂎" "󱊡" "󱊢" "󱊣"];
+              tooltip = false;
+            };
+
             clock = {
-              interval = 30;
-              format = " {:%e %b %Y | %H:%M}";
+              format = " {:%a %e %b | %H:%M:%S}";
               tooltip = false;
             };
 
             cpu = {
               interval = 5;
-              format = " {usage:02d}% {load}";
+              format = " {usage}%({load:0.1f})";
               states = {
                 warning = 70;
                 critical = 90;
@@ -49,55 +66,62 @@ in
 
             memory = {
               interval = 5;
-              format = " {usage:02d}%";
+              format = " {used:0.1f}Go({}%)";
               states = {
                 warning = 70;
                 critical = 90;
               };
             };
 
-            network = {
+            "network#ip" = {
               interval = 5;
-              format-wifi = " {essid} ({signalStrength}%)";
-              format-ethernet = "󰈀 {ifname}:{ipaddr}/{cidr}";
-              format-disconnected = " Disconnected";
-              tooltip-format = "{ifname}:{ipaddr}";
+              format-wifi = "  {ifname}:{ipaddr} ({essid} {signalStrength}%)";
+              format-ethernet = "  {ifname}: {ipaddr}/{cidr}";
+              format-disconnected = "  Disconnected";
             };
 
-            tray = {
-              icon-size = 18;
+            "network#speed" = {
+              interval = 5;
+              format = " 󰞒 {bandwidthDownOctets}   {bandwidthUpOctets} 󰞕 ";
             };
 
             "hyprland/submap" = {
-              always_on = true;
-              format = "⚠️ {} ";
+              format = "⚠️ {}";
+              tooltip = false;
             };
 
             "hyprland/window" = {
               format = "{class}";
-              separate-outputs = true;
+              max-length = 120;
               rewrite = {
-                "(.*)KeePassXC" = "keepassxc";
+                firefox = "Firefox";
+                kitty = "Kitty";
+                org.keepassxc.KeePassXC = "KeePassXC";
+                thunderbird = "Thunderbird";
               };
+              icon-size = 18;
+              icon = true;
             };
 
             "hyprland/workspaces" = {
-              format = "{icon}:{windows} ";
-              persistent-workspaces = {
-                "1" = "*";
-                "2" = "*";
-                "3" = "*";
-                "8" = "*";
-                "9" = "*";
-                "10" = "*";
+              all-outputs = true;
+              disable-scroll = true;
+              format = "{name}:{icon}";
+              format-icons = {
+                "1" = " ";
+                "2" = " ";
+                "3" = " ";
+                "8" = "󰇮 ";
+                "9" = "󰚚 ";
+                "10" = " ";
+                urgent = " ";
+                focused = " ";
+                default = " ";
               };
-              window-rewrite = {
-                "class<.*KeePassXC>" = "󱚨 ";
-                "class<discord>" = " ";
-                "class<firefox>" = " ";
-                "class<kitty>" = " ";
-              };
-              window-rewrite-default = "󰣆 ";
+            };
+
+            tray = {
+              icon-size = 18;
             };
           }
         ];
