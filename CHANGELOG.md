@@ -1,6 +1,25 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.9 (2025-09-17)
+
+### 🩹 Patch
+
+  * ⚡️(hm): Add hyprpaper support and update nvim config (!85) by Romain Deville ([`957664e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/957664e86b0ddc97f8b532d5dd75ed8a08fe02d5))
+  * ⚡️(templates/users/rdeville): Setup hyprpaper config for main computer by Romain Deville ([`c17049c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c17049cbb390e011c156a2348def4684bb72dee2)) 🔏
+  * ⚡️(templates/users/rdeville): Add kiwi (aka wiki) config after neovimrc update by Romain Deville ([`177d2e1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/177d2e1ce21e7567a9aa24590c435f093ed7302f)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`9ee0d6d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9ee0d6d30e48d6ec325e8f13c2b0a50b6cf12365)) 🔏
+  * 🍱(assets): Add wallpapers by Romain Deville ([`8b9e0c5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8b9e0c5d601160962e209f332013690d46fafb77)) 🔏
+
+### 🔊 Others
+
+  * ⚰️ Remove all MicroVMs and k8s-dev configurations (!84) by Romain Deville ([`6b88b0c`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6b88b0c3f8aa8ed181abaca29d756945210f0ed5))
+  * 🎨(hm): Remove useless module args by Romain Deville ([`8aff39f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/8aff39f1d5e61c25b0c5299a2f53060b63e74363)) 🔏
+  * 🔐(common/secrets): Remove k8s-dev secrets by Romain Deville ([`7ececae`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7ececaea76e1cae0455e3e93639bc7e529e87e05)) 🔏
+  * 🔥(darth-maul): Remove all MicroVMs and k8s-dev config by Romain Deville ([`9bbeec4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9bbeec4f51f265ee43cf1d1a93e4ef61cd51f6a5)) 🔏
+  * 🔥(kenobi): Remove all MicroVMs and k8s-dev config by Romain Deville ([`e8e50c5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e8e50c5930683a3dd6f7c58a1aded88ddea3eb94)) 🔏
+  * 🔥(rey): Remove all MicroVMs and k8s-dev config by Romain Deville ([`a2365b5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a2365b5276db37b9d4dc1ce9dd90e89e6d1aba2b)) 🔏
+
 ## v0.29.8 (2025-09-16)
 
 ### 🩹 Patch
