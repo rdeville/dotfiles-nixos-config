@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.44.1 (2025-09-17)
+
+### 🩹 Patch
+
+  * 🔧(hm/gui/wayland): Restore persistent-workspace in waybar (!150) by Romain Deville ([`d5c17f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d5c17f58bf3d2c0f74002c59d1f81b459508e9fa))
+  * 🔧(hm/gui/wayland): Restore persistent-workspace in waybar by Romain Deville ([`a152dfb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a152dfb9b06c1d481b01f7a55cd73b443333abf0)) 🔏
+
 ## v0.44.0 (2025-09-17)
 
 ### ✨ Minor
