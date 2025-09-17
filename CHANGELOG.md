@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.44.0 (2025-09-17)
+
+### ✨ Minor
+
+  * ✨(hm/gui/wayland): Add hyprpaper support and improve waybar (!149) by Romain Deville ([`e169d8f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e169d8ff892379a69a3b639de3b4eadf1b44895a))
+  * ✨(hm/gui/wayland): Add hyprpaper support with wallpaper randomizer by Romain Deville ([`7ee4873`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7ee48731c07e8daea0773ce134f279edcc9d61cf)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(hm/gui/wayland): Improve waybar config with new design by Romain Deville ([`6831cca`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6831cca97a44f788e599305ac3777e6f24bc6642)) 🔏
+
 ## v0.43.7 (2025-09-05)
 
 ### 🩹 Patch
