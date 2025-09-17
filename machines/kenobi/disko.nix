@@ -68,14 +68,6 @@
                 mountpoint = "/var/lib";
               };
             };
-            k8s-data = {
-              size = "50G";
-              content = {
-                type = "filesystem";
-                format = "ext4";
-                mountpoint = "/var/lib/k8s-data";
-              };
-            };
             home = {
               size = "25G";
               content = {
