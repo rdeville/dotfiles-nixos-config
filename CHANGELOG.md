@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.10 (2025-09-17)
+
+### 🩹 Patch
+
+  * 🐛(kenobi): Remove LV k8s-data in disko and vm-k8s remaining data (!86) by Romain Deville ([`94b4ead`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/94b4eaddb8b3e2a117f896ae80c4b7cbaa66abd1))
+  * 🐛(kenobi): Remove LV k8s-data in disko and vm-k8s remaining data by Romain Deville ([`ef778a9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ef778a9ed728d7882f98bf6ed95467477aadad8a)) 🔏
+
 ## v0.29.9 (2025-09-17)
 
 ### 🩹 Patch
