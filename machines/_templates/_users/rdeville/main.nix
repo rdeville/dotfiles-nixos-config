@@ -34,6 +34,14 @@ in {
       );
   };
 
+  xdg = {
+    dataFile = {
+      "nvim/kiwi.lua" = {
+        source = ./files/kiwi.lua;
+      };
+    };
+  };
+
   hm = {
     flavors = {
       _accounts.enable = true;
