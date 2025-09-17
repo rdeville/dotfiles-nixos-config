@@ -169,7 +169,7 @@ in {
               };
               DHCP = "yes";
               activationPolicy = "up";
-              requiredForOnline = "yes";
+              requiredForOnline = "no";
               nftables = {
                 allowNat = true;
                 allowInputConnected = true;
