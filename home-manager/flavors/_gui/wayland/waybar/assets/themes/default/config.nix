@@ -104,9 +104,15 @@ in
             };
 
             "hyprland/workspaces" = {
-              all-outputs = true;
-              disable-scroll = true;
               format = "{name}:{icon}";
+              persistent-workspaces = {
+                "1" = "*";
+                "2" = "*";
+                "3" = "*";
+                "8" = "*";
+                "9" = "*";
+                "10" = "*";
+              };
               format-icons = {
                 "1" = " ";
                 "2" = " ";
