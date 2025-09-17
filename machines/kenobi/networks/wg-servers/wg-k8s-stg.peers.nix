@@ -1,9 +1,4 @@
 [
-  # KENOBI WM
-  {
-    AllowedIPs = "172.30.144.201/32";
-    PublicKey = ../../microvms/k8s-stg/_keys/wg-k8s-stg.pub;
-  }
   # DARTH-MAUL
   {
     AllowedIPs = "172.30.144.2/32";

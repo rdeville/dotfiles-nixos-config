@@ -1,15 +1,4 @@
 [
-  # KENOBI
-  {
-    # vm-kenobi-k8s-prd
-    AllowedIPs = "172.18.128.201/32";
-    PublicKey = ../../microvms/k8s-prd/_keys/wg-private.pub;
-  }
-  {
-    # vm-kenobi-k8s-prd
-    AllowedIPs = "172.18.144.201/32";
-    PublicKey = ../../microvms/k8s-stg/_keys/wg-private.pub;
-  }
   # DARTH MAUL
   {
     # darth-maul
