@@ -34,10 +34,26 @@ in {
       );
   };
 
+  xdg = {
+    dataFile = {
+      "nvim/kiwi.lua" = {
+        source = ./files/kiwi.lua;
+      };
+    };
+  };
+
   hm = {
     flavors = {
       _accounts.enable = true;
-      _gui.enable = true;
+      _gui = {
+        enable = true;
+        wayland = {
+          hyprpaper = {
+            wallpaperDir = ../../../../assets/images/wallpapers;
+            wallpaperRefresh = 360; # 6 hours
+          };
+        };
+      };
       audio.enable = true;
       bluetooth.enable = true;
       discord.enable = true;
