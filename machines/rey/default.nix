@@ -54,6 +54,16 @@
     };
   };
 
+  systemd = {
+    network = {
+      wait-online = {
+        # Don't know why, but Rey now failed on this service
+        # Moreover, rey can totally be offline
+        enable = false;
+      };
+    };
+  };
+
   os = {
     hostName = builtins.baseNameOf ./.;
 
