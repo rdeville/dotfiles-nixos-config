@@ -51,7 +51,7 @@ in
             };
 
             clock = {
-              format = " {:%a %e %b | %H:%M:%S}";
+              format = " {:%a %e %b | %H:%M}";
               tooltip = false;
             };
 
