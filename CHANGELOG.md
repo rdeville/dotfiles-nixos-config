@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.44.2 (2025-09-18)
+
+### 🩹 Patch
+
+  * 🔧(hm/gui/wayland): Remove second from waybar clock module (!151) by Romain Deville ([`ad95ca4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ad95ca4f0a60f08b6512759eb3e59b284a29c229))
+  * 🔧(hm/gui/wayland): Remove second from waybar clock module by Romain Deville ([`ff45649`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ff4564905ab47736e22b1a3deecabee93645763a))
+
 ## v0.44.1 (2025-09-17)
 
 ### 🩹 Patch
