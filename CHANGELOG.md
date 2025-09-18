@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.11 (2025-09-18)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`6797c18`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6797c18b082c664e9c2e2e7cfaf803c3d232d63c)) 🔏
+  * 🐛(rey): Deactivate networkd-wait-online service since didn&#39;t work on rey (!87) by Romain Deville ([`0a8eb8d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0a8eb8d8add28297932c68479d15971f89854321))
+  * 🐛(rey): Deactivate networkd-wait-online service since didn&#39;t work on rey by Romain Deville ([`f465e32`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f465e320c37c1865a224c126e9a76f5bf9721efe)) 🔏
+
 ## v0.29.10 (2025-09-17)
 
 ### 🩹 Patch
