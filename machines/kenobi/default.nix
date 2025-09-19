@@ -15,24 +15,11 @@
     ./ingress
     ./dns
     ./networks
+    ./services
   ];
 
   os = {
     hostName = builtins.baseNameOf ./.;
-  };
-
-  networking = {
-    useDHCP = false;
-  };
-
-  services = {
-    resolved = {
-      dnssec = "false";
-    };
-
-    fail2ban = {
-      enable = true;
-    };
   };
 
   programs = {
@@ -51,10 +38,27 @@
     };
   };
 
-  users = {
-    groups = {
-      # Specific groups with deploy permission
-      deploy = {};
+  networking = {
+    useDHCP = false;
+  };
+
+  services = {
+    resolved = {
+      dnssec = "false";
+    };
+
+    fail2ban = {
+      enable = true;
+    };
+  };
+
+  security = {
+    acme = {
+      acceptTerms = true;
+      defaults = {
+        email = "accounts+letsencrypt-kenobi-defaul-stg@romaindeville.fr";
+        server = "https://acme-staging-v02.api.letsencrypt.org/directory";
+      };
     };
   };
 }

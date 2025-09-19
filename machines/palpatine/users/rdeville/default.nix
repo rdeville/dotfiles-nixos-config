@@ -81,11 +81,11 @@
       # };
 
       _accounts.enable = true;
-      audio.enable =lib.mkForce false;
-      bluetooth.enable =lib.mkForce false;
-      discord.enable =lib.mkForce false;
-      latex.enable =lib.mkForce false;
-      nextcloud-client.enable =lib.mkForce false;
+      audio.enable = lib.mkForce false;
+      bluetooth.enable = lib.mkForce false;
+      discord.enable = lib.mkForce false;
+      latex.enable = lib.mkForce false;
+      nextcloud-client.enable = lib.mkForce false;
     };
   };
 }

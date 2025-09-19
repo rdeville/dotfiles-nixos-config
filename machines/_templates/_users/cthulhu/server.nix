@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   sops = {
