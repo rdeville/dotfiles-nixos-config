@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.29.12 (2025-09-19)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`9b15f9b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9b15f9bcddc316db5ddee1cf1a05f963a291d454)) 🔏
+  * 🔧 Remove allowUnfreePredicate in favor to allowUnfree and minor fix (!88) by Romain Deville ([`f902a79`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f902a797d5adfcafdab0a75769bdc2f71097cd4d))
+  * 🔧(flake): Add terraform overlay by Romain Deville ([`b502e5e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b502e5e0c9fd1160f3c8bb4429116b3845db644d)) 🔏
+  * 🔧 Remove allowUnfreePredicate in favor to allowUnfree by Romain Deville ([`85f2b8f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/85f2b8f6e3c41a2f14f8efff7af74194243fd828)) 🔏
+  * 🔧(templates/users/rdeville): Switch from hyprpaper to swww wallpaper manager by Romain Deville ([`ea82f78`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/ea82f786eedb4131bffc3c59ced44b2ed42a30b0)) 🔏
+  * 🔧(palpatine): Remove old work package and format module by Romain Deville ([`37534ca`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/37534ca94f62d946a260665326f4e8dcc7bbb797)) 🔏
+
 ## v0.29.11 (2025-09-18)
 
 ### 🩹 Patch
