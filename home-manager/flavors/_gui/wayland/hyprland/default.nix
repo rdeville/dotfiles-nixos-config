@@ -139,6 +139,18 @@ in {
                 exec-once=systemctl --user start xdg-desktop-portal-hyprland
                 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
               ''
+              + (
+              if config.hm.flavors._gui.wayland.waybar.enable
+              then ''
+                exec-once=waybar
+              ''
+              else "")
+              + (
+              if config.hm.flavors._gui.wayland.swww.enable
+              then ''
+                exec-once=swww-daemon
+              ''
+              else "")
               + cfg.extraConfig;
 
             settings =
@@ -200,71 +212,77 @@ in {
                 # s -> separate, will arbitrarily combine keys between each mod/key, see [Keysym combos](#keysym-combos) above.
                 # d -> has description, will allow you to write a description for your bind.
                 # p -> bypasses the app's requests to inhibit keybinds.
-                bind = [
-                  "$mod $ctrl, Q, exec, $menu -show power-menu -modi 'power-menu:rofi-power-menu --confirm=shutdown/reboot'"
-                  "$mod $shift, Q, exec, hyprlock"
-                  "$mod $shift, R, exec, ${config.xdg.configHome}/${scriptPath}/process hyprland reload"
-                  "$mod $shift, B, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
+                bind =
+                  [
+                    "$mod $ctrl, Q, exec, $menu -show power-menu -modi 'power-menu:rofi-power-menu --confirm=shutdown/reboot'"
+                    "$mod $shift, Q, exec, hyprlock"
+                    "$mod $shift, R, exec, ${config.xdg.configHome}/${scriptPath}/process hyprland reload"
+                  ]
+                  ++ [(
+                    if config.hm.flavors._gui.wayland.waybar.enable
+                    then "$mod $shift, B, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
+                    else ""
+                  )]
+                  ++ [
+                    "$mod $ctrl, C, killactive,"
+                    "$mod, Return, exec, $terminal"
 
-                  "$mod $ctrl, C, killactive,"
-                  "$mod, Return, exec, $terminal"
+                    # Window management
+                    "$mod, M, fullscreen, 1"
+                    "$mod, F, togglefloating,"
+                    # Move focus
+                    "$mod, h, movefocus, l"
+                    "$mod, l, movefocus, r"
+                    "$mod, k, movefocus, u"
+                    "$mod, j, movefocus, d"
+                    # Move window position
+                    "$mod $shift, h, movewindow, l"
+                    "$mod $shift, l, movewindow, r"
+                    "$mod $shift, k, movewindow, u"
+                    "$mod $shift, j, movewindow, d"
+                    # Switch workspaces with mainMod [0-9]
+                    "$mod, code:10, exec, hyprctl dispatch moveworkspacetomonitor 1 current && hyprctl dispatch workspace 1"
+                    "$mod, code:11, exec, hyprctl dispatch moveworkspacetomonitor 2 current && hyprctl dispatch workspace 2"
+                    "$mod, code:12, exec, hyprctl dispatch moveworkspacetomonitor 3 current && hyprctl dispatch workspace 3"
+                    "$mod, code:13, exec, hyprctl dispatch moveworkspacetomonitor 4 current && hyprctl dispatch workspace 4"
+                    "$mod, code:14, exec, hyprctl dispatch moveworkspacetomonitor 5 current && hyprctl dispatch workspace 5"
+                    "$mod, code:15, exec, hyprctl dispatch moveworkspacetomonitor 6 current && hyprctl dispatch workspace 6"
+                    "$mod, code:16, exec, hyprctl dispatch moveworkspacetomonitor 7 current && hyprctl dispatch workspace 7"
+                    "$mod, code:17, exec, hyprctl dispatch moveworkspacetomonitor 8 current && hyprctl dispatch workspace 8"
+                    "$mod, code:18, exec, hyprctl dispatch moveworkspacetomonitor 9 current && hyprctl dispatch workspace 9"
+                    "$mod, code:19, exec, hyprctl dispatch moveworkspacetomonitor 10 current && hyprctl dispatch workspace 10"
+                    "$mod $ctrl, h, workspace, -1"
+                    "$mod $ctrl, l, workspace, +1"
+                    # Move active window to a workspace with mainMod $shift [0-9]
+                    "$mod $shift, code:10, movetoworkspacesilent, 1"
+                    "$mod $shift, code:11, movetoworkspacesilent, 2"
+                    "$mod $shift, code:12, movetoworkspacesilent, 3"
+                    "$mod $shift, code:13, movetoworkspacesilent, 4"
+                    "$mod $shift, code:14, movetoworkspacesilent, 5"
+                    "$mod $shift, code:15, movetoworkspacesilent, 6"
+                    "$mod $shift, code:16, movetoworkspacesilent, 7"
+                    "$mod $shift, code:17, movetoworkspacesilent, 8"
+                    "$mod $shift, code:18, movetoworkspacesilent, 9"
+                    "$mod $shift, code:19, movetoworkspacesilent, 10"
+                    # Move active window to a workspace with mainMod $shift [0-9]
+                    # and focus follow
+                    "$mod $ctrl, code:10, movetoworkspace, 1"
+                    "$mod $ctrl, code:11, movetoworkspace, 2"
+                    "$mod $ctrl, code:12, movetoworkspace, 3"
+                    "$mod $ctrl, code:13, movetoworkspace, 4"
+                    "$mod $ctrl, code:14, movetoworkspace, 5"
+                    "$mod $ctrl, code:15, movetoworkspace, 6"
+                    "$mod $ctrl, code:16, movetoworkspace, 7"
+                    "$mod $ctrl, code:17, movetoworkspace, 8"
+                    "$mod $ctrl, code:18, movetoworkspace, 9"
+                    "$mod $ctrl, code:19, movetoworkspace, 10"
 
-                  # Window management
-                  "$mod, M, fullscreen, 1"
-                  "$mod, F, togglefloating,"
-                  # Move focus
-                  "$mod, h, movefocus, l"
-                  "$mod, l, movefocus, r"
-                  "$mod, k, movefocus, u"
-                  "$mod, j, movefocus, d"
-                  # Move window position
-                  "$mod $shift, h, movewindow, l"
-                  "$mod $shift, l, movewindow, r"
-                  "$mod $shift, k, movewindow, u"
-                  "$mod $shift, j, movewindow, d"
-                  # Switch workspaces with mainMod [0-9]
-                  "$mod, code:10, exec, hyprctl dispatch moveworkspacetomonitor 1 current && hyprctl dispatch workspace 1"
-                  "$mod, code:11, exec, hyprctl dispatch moveworkspacetomonitor 2 current && hyprctl dispatch workspace 2"
-                  "$mod, code:12, exec, hyprctl dispatch moveworkspacetomonitor 3 current && hyprctl dispatch workspace 3"
-                  "$mod, code:13, exec, hyprctl dispatch moveworkspacetomonitor 4 current && hyprctl dispatch workspace 4"
-                  "$mod, code:14, exec, hyprctl dispatch moveworkspacetomonitor 5 current && hyprctl dispatch workspace 5"
-                  "$mod, code:15, exec, hyprctl dispatch moveworkspacetomonitor 6 current && hyprctl dispatch workspace 6"
-                  "$mod, code:16, exec, hyprctl dispatch moveworkspacetomonitor 7 current && hyprctl dispatch workspace 7"
-                  "$mod, code:17, exec, hyprctl dispatch moveworkspacetomonitor 8 current && hyprctl dispatch workspace 8"
-                  "$mod, code:18, exec, hyprctl dispatch moveworkspacetomonitor 9 current && hyprctl dispatch workspace 9"
-                  "$mod, code:19, exec, hyprctl dispatch moveworkspacetomonitor 10 current && hyprctl dispatch workspace 10"
-                  "$mod $ctrl, h, workspace, -1"
-                  "$mod $ctrl, l, workspace, +1"
-                  # Move active window to a workspace with mainMod $shift [0-9]
-                  "$mod $shift, code:10, movetoworkspacesilent, 1"
-                  "$mod $shift, code:11, movetoworkspacesilent, 2"
-                  "$mod $shift, code:12, movetoworkspacesilent, 3"
-                  "$mod $shift, code:13, movetoworkspacesilent, 4"
-                  "$mod $shift, code:14, movetoworkspacesilent, 5"
-                  "$mod $shift, code:15, movetoworkspacesilent, 6"
-                  "$mod $shift, code:16, movetoworkspacesilent, 7"
-                  "$mod $shift, code:17, movetoworkspacesilent, 8"
-                  "$mod $shift, code:18, movetoworkspacesilent, 9"
-                  "$mod $shift, code:19, movetoworkspacesilent, 10"
-                  # Move active window to a workspace with mainMod $shift [0-9]
-                  # and focus follow
-                  "$mod $ctrl, code:10, movetoworkspace, 1"
-                  "$mod $ctrl, code:11, movetoworkspace, 2"
-                  "$mod $ctrl, code:12, movetoworkspace, 3"
-                  "$mod $ctrl, code:13, movetoworkspace, 4"
-                  "$mod $ctrl, code:14, movetoworkspace, 5"
-                  "$mod $ctrl, code:15, movetoworkspace, 6"
-                  "$mod $ctrl, code:16, movetoworkspace, 7"
-                  "$mod $ctrl, code:17, movetoworkspace, 8"
-                  "$mod $ctrl, code:18, movetoworkspace, 9"
-                  "$mod $ctrl, code:19, movetoworkspace, 10"
-
-                  # Rofi
-                  "$mod, R, exec, pkill $menu || $menu -show drun -show-icons"
-                  "$mod, I, exec, ${config.xdg.configHome}/rofi/scripts/menu gitmoji"
-                  "$mod, E, exec, ${config.xdg.configHome}/rofi/scripts/menu emoji"
-                  "$mod, N, exec, ${config.xdg.configHome}/rofi/scripts/menu nerdfont"
-                ];
+                    # Rofi
+                    "$mod, R, exec, pkill $menu || $menu -show drun -show-icons"
+                    "$mod, I, exec, ${config.xdg.configHome}/rofi/scripts/menu gitmoji"
+                    "$mod, E, exec, ${config.xdg.configHome}/rofi/scripts/menu emoji"
+                    "$mod, N, exec, ${config.xdg.configHome}/rofi/scripts/menu nerdfont"
+                  ];
 
                 binde = [
                   # Window Resize

@@ -96,8 +96,10 @@ in
               rewrite = {
                 firefox = "Firefox";
                 kitty = "Kitty";
-                org.keepassxc.KeePassXC = "KeePassXC";
+                "org.keepassxc.KeePassXC" = "KeePassXC";
                 thunderbird = "Thunderbird";
+                vesktop = "Vesktop";
+                wasistlos = "WhatsApp";
               };
               icon-size = 18;
               icon = true;

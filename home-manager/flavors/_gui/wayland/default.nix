@@ -10,7 +10,7 @@ in {
     ./hyprland
     ./hyprlock
     ./hyprspace
-    ./hyprpaper
+    ./swww
     ./waybar
     ./wl-kbptr
   ];
