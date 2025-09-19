@@ -29,7 +29,7 @@ in {
         # Workaround while watiing a fix allowing to set xdg chmod
         # See: https://github.com/nix-community/home-manager/issues/3090
         "glab-cli/HMInit_config.yml" = {
-          enable = with pkgs; builtins.elem glab config.home.packages;
+          enable = true;
           text = pkgs.lib.generators.toYAML {} {
             git_protocol = "ssh";
             glamour_style = "dark";
@@ -42,7 +42,7 @@ in {
           '';
         };
         "glab-cli/HMInit_aliases.yml" = {
-          enable = with pkgs; builtins.elem glab config.home.packages;
+          enable = true;
           text = pkgs.lib.generators.toYAML {} {
             ci = "pipeline ci";
             co = "mr checkout";

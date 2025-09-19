@@ -54,7 +54,7 @@ in {
     xdg = {
       configFile = {
         "terraform/terraformrc" = {
-          enable = with pkgs; builtins.elem terraform config.home.packages;
+          enable = true;
           text = ''
             plugin_cache_dir = "${config.xdg.cacheHome}/terraform/plugins"
           '';

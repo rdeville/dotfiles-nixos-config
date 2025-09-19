@@ -48,10 +48,7 @@ in {
           prompt = "enabled";
           # A pager program to send command output to, e.g. "less". Set the value to
           # "cat" to disable the pager.
-          pager = with pkgs;
-            if builtins.elem bat config.home.packages
-            then "bat"
-            else "cat";
+          pager = pkgs.bat;
         };
       };
       inherit (cfg) gh-dash;
