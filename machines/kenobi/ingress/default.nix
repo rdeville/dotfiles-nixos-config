@@ -42,17 +42,29 @@ in {
     };
   };
 
+  users = {
+    users = {
+      nginx = {
+        extraGroups = ["openbao"];
+      };
+    };
+  };
+
   services = {
     nginx = {
       enable = true;
       virtualHosts = {
         "*.tekunix.cloud" = {
           inherit (nginx) listen locations;
-          extraConfig = builtins.readFile (inputs.ai-robot-txt + "/nginx-block-ai-bots.conf");
+          extraConfig = ''
+            ${builtins.readFile (inputs.ai-robot-txt + "/nginx-block-ai-bots.conf")}
+          '';
         };
         "*.romaindeville.xyz" = {
           inherit (nginx) listen locations;
-          extraConfig = builtins.readFile (inputs.ai-robot-txt + "/nginx-block-ai-bots.conf");
+          extraConfig = ''
+            ${builtins.readFile (inputs.ai-robot-txt + "/nginx-block-ai-bots.conf")}
+          '';
         };
       };
     };

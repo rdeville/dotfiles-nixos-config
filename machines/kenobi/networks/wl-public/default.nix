@@ -35,6 +35,7 @@ in {
             ];
             allowedTCPPorts = [
               53 # DNS
+              8200 # OpenBao
             ];
             allowedUDPPorts = [
               53 # DNS
