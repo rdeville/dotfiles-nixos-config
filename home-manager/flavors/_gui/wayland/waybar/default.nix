@@ -28,12 +28,6 @@ in {
                   && config.hm.flavors.${name}.${subname}.hyprland.enable
                 );
 
-              systemd = {
-                enable = lib.mkDefaultEnabledOption ''
-                  Whether to enable Waybar systemd integration.
-                '';
-              };
-
               theme = {
                 name = lib.mkOption {
                   type = lib.types.str;
@@ -64,7 +58,6 @@ in {
         inherit
           (cfg)
           enable
-          systemd
           ;
       };
     };
