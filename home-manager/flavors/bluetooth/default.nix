@@ -2,7 +2,6 @@
   config,
   lib,
   pkgs,
-  hm,
   ...
 }: let
   name = builtins.baseNameOf ./.;
@@ -35,7 +34,7 @@ in {
     xdg = {
       configFile = {
         "bluetuith/bluetuith.conf" = {
-          enable = with pkgs; builtins.elem bluetuith config.home.packages;
+          enable = ! config.hm.isDarwin;
           text = ''
             {
               keybindings: {

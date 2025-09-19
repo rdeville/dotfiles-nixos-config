@@ -140,17 +140,19 @@ in {
                 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
               ''
               + (
-              if config.hm.flavors._gui.wayland.waybar.enable
-              then ''
-                exec-once=waybar
-              ''
-              else "")
+                if config.hm.flavors._gui.wayland.waybar.enable
+                then ''
+                  exec-once=waybar
+                ''
+                else ""
+              )
               + (
-              if config.hm.flavors._gui.wayland.swww.enable
-              then ''
-                exec-once=swww-daemon
-              ''
-              else "")
+                if config.hm.flavors._gui.wayland.swww.enable
+                then ''
+                  exec-once=swww-daemon
+                ''
+                else ""
+              )
               + cfg.extraConfig;
 
             settings =
@@ -218,11 +220,13 @@ in {
                     "$mod $shift, Q, exec, hyprlock"
                     "$mod $shift, R, exec, ${config.xdg.configHome}/${scriptPath}/process hyprland reload"
                   ]
-                  ++ [(
-                    if config.hm.flavors._gui.wayland.waybar.enable
-                    then "$mod $shift, B, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
-                    else ""
-                  )]
+                  ++ [
+                    (
+                      if config.hm.flavors._gui.wayland.waybar.enable
+                      then "$mod $shift, B, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
+                      else ""
+                    )
+                  ]
                   ++ [
                     "$mod $ctrl, C, killactive,"
                     "$mod, Return, exec, $terminal"

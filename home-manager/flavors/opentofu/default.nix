@@ -54,7 +54,7 @@ in {
     xdg = {
       configFile = {
         "opentofu/terraformrc" = {
-          enable = with pkgs; builtins.elem opentofu config.home.packages;
+          enable = true;
           text = ''
             plugin_cache_dir = "$HOME/.cache/opentofu/plugins"
           '';
