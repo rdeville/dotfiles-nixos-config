@@ -5,20 +5,11 @@
     ./display-manager
     ./docker
     ./k3s
+    ./openbao
     ./printing
     ./ssh-server
     ./steam
     ./window-manager
     ./network
   ];
-
-  options = {
-    os = {
-      flavors = lib.mkOption {
-        type = lib.types.submodule {};
-        description = "Install NixOS flavors.";
-        default = {};
-      };
-    };
-  };
 }
