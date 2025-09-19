@@ -21,7 +21,7 @@ in {
             pkgOverlay = builtins.elemAt overlayInfo 0;
             dateOverlay = builtins.elemAt overlayInfo 1;
             newPkgs = import inputs."${overlay}" {
-              inherit (pkgs) system;
+              inherit (pkgs) system config;
             };
           in {
             "${pkgOverlay}" =

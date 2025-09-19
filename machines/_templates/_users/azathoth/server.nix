@@ -12,15 +12,6 @@ in {
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "zsh-abbr"
-        ];
-    };
-  };
-
   programs = {
     home-manager = {
       enable = true;

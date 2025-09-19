@@ -48,7 +48,7 @@ in {
       _gui = {
         enable = true;
         wayland = {
-          hyprpaper = {
+          swww = {
             wallpaperDir = ../../../../assets/images/wallpapers;
             wallpaperRefresh = 360; # 6 hours
           };

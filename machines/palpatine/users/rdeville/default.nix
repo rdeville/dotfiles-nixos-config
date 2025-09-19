@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -18,18 +17,6 @@
     };
   };
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-          "slack"
-          "terraform"
-          "zsh-abbr"
-        ];
-    };
-  };
-
   programs = {
     kitty = {
       settings = {
@@ -39,13 +26,8 @@
   };
 
   home = {
-    packages = with pkgs; [
-      kind
-      (google-cloud-sdk.withExtraComponents [
-        google-cloud-sdk.components.gke-gcloud-auth-plugin
-      ])
-      google-cloud-sql-proxy
-      vaultwarden
+    packages = [
+      # TODO: @rdeville, Add company specific packages
     ];
   };
 
@@ -62,6 +44,10 @@
     isMain = true;
     # isDarwin = true;
     isWork = true;
+
+    nixpkgs = {
+      allowUnfree = true;
+    };
 
     # userAccounts = [
     #   # "contact@romaindeville.fr"
@@ -94,29 +80,12 @@
       #   };
       # };
 
-      _accounts = {
-        enable = true;
-      };
-
-      audio = {
-        enable = lib.mkForce false;
-      };
-
-      bluetooth = {
-        enable = lib.mkForce false;
-      };
-
-      discord = {
-        enable = lib.mkForce false;
-      };
-
-      latex = {
-        enable = lib.mkForce false;
-      };
-
-      nextcloud-client = {
-        enable = lib.mkForce false;
-      };
+      _accounts.enable = true;
+      audio.enable =lib.mkForce false;
+      bluetooth.enable =lib.mkForce false;
+      discord.enable =lib.mkForce false;
+      latex.enable =lib.mkForce false;
+      nextcloud-client.enable =lib.mkForce false;
     };
   };
 }

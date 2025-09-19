@@ -10,18 +10,6 @@
     ./networks.nix
   ];
 
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "nvidia-x11"
-          "nvidia-settings"
-          "steam"
-          "steam-unwrapped"
-        ];
-    };
-  };
-
   programs = {
     ssh = {
       knownHosts = builtins.foldl' (acc: host:

@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   ...
 }: let
   keyFile = "${config.xdg.cacheHome}/.age.key";
@@ -8,15 +7,6 @@ in {
   sops = {
     age = {
       inherit keyFile;
-    };
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "zsh-abbr"
-        ];
     };
   };
 

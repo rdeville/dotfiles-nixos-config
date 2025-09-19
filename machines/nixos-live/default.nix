@@ -7,10 +7,7 @@
 }: let
   nixpkgs = {
     config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "zsh-abbr"
-        ];
+      allowUnfree = true;
     };
   };
   users = {

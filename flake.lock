@@ -166,11 +166,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1757508292,
-        "narHash": "sha256-7lVWL5bC6xBIMWWDal41LlGAG+9u2zUorqo3QCUL4p4=",
+        "lastModified": 1758160037,
+        "narHash": "sha256-fXelTdjdILspZ1IUU9aICB1+PXwSFiF8j+7ujwo1VpQ=",
         "owner": "nix-community",
         "repo": "disko",
-        "rev": "146f45bee02b8bd88812cfce6ffc0f933788875a",
+        "rev": "4f554162fff88e77655073d352eec0cea71103a2",
         "type": "github"
       },
       "original": {
@@ -447,11 +447,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758119172,
-        "narHash": "sha256-LnVuGLf0PJHqqIHroxEzwXS57mjAdHSrXi0iODKbbiU=",
+        "lastModified": 1758250706,
+        "narHash": "sha256-Jv/V+PNi5RyqCUK2V6YJ0iCqdLPutU69LZas85EBUaU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "9f408dc51c8e8216a94379e6356bdadbe8b4fef9",
+        "rev": "363007f12930caf8b0ea59c0bf5be109c52ad0ef",
         "type": "github"
       },
       "original": {
@@ -700,11 +700,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758127201,
-        "narHash": "sha256-Xhm5wyRbZ9qSoBia+yK0uY6H8+RYu6rN2pVArX4EC2Q=",
+        "lastModified": 1758286359,
+        "narHash": "sha256-K2myIga+PtJPPtteAb2VmrfVLTxXZY+vEybeKhiHgls=",
         "ref": "refs/heads/main",
-        "rev": "33d44409599ad7ff515e3ff1a4a70be0c149f0aa",
-        "revCount": 718,
+        "rev": "5192cedad78777ba1fb5639555089ce9c2ed3702",
+        "revCount": 730,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -754,11 +754,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758127201,
-        "narHash": "sha256-Xhm5wyRbZ9qSoBia+yK0uY6H8+RYu6rN2pVArX4EC2Q=",
+        "lastModified": 1758286359,
+        "narHash": "sha256-K2myIga+PtJPPtteAb2VmrfVLTxXZY+vEybeKhiHgls=",
         "ref": "refs/heads/main",
-        "rev": "33d44409599ad7ff515e3ff1a4a70be0c149f0aa",
-        "revCount": 718,
+        "rev": "5192cedad78777ba1fb5639555089ce9c2ed3702",
+        "revCount": 730,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -784,11 +784,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1757941119,
-        "narHash": "sha256-TssJZFzMRYdWgpHySzKv4YQg6DUv5SDENiWbVgNTo0M=",
+        "lastModified": 1758216857,
+        "narHash": "sha256-h1BW2y7CY4LI9w61R02wPaOYfmYo82FyRqHIwukQ6SY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "7ff837017c3b82bd3671932599a119d7bc672ff0",
+        "rev": "d2ed99647a4b195f0bcc440f76edfa10aeb3b743",
         "type": "github"
       },
       "original": {
@@ -800,11 +800,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1757745802,
-        "narHash": "sha256-hLEO2TPj55KcUFUU1vgtHE9UEIOjRcH/4QbmfHNF820=",
+        "lastModified": 1758198701,
+        "narHash": "sha256-7To75JlpekfUmdkUZewnT6MoBANS0XVypW6kjUOXQwc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "c23193b943c6c689d70ee98ce3128239ed9e32d1",
+        "rev": "0147c2f1d54b30b5dd6d4a8c8542e8d7edf93b5d",
         "type": "github"
       },
       "original": {
@@ -846,19 +846,35 @@
         "type": "github"
       }
     },
-    "overlay-terraform-docs-2025-09-13": {
+    "overlay-terraform-2025-09-19": {
       "locked": {
-        "lastModified": 1756787288,
-        "narHash": "sha256-rw/PHa1cqiePdBxhF66V7R+WAP8WekQ0mCDG4CFqT8Y=",
+        "lastModified": 1758216857,
+        "narHash": "sha256-h1BW2y7CY4LI9w61R02wPaOYfmYo82FyRqHIwukQ6SY=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "d0fc30899600b9b3466ddb260fd83deb486c32f1",
+        "rev": "d2ed99647a4b195f0bcc440f76edfa10aeb3b743",
         "type": "github"
       },
       "original": {
         "owner": "nixos",
+        "ref": "nixos-25.05",
         "repo": "nixpkgs",
-        "rev": "d0fc30899600b9b3466ddb260fd83deb486c32f1",
+        "type": "github"
+      }
+    },
+    "overlay-terraform-docs-2025-09-13": {
+      "locked": {
+        "lastModified": 1758216857,
+        "narHash": "sha256-h1BW2y7CY4LI9w61R02wPaOYfmYo82FyRqHIwukQ6SY=",
+        "owner": "nixos",
+        "repo": "nixpkgs",
+        "rev": "d2ed99647a4b195f0bcc440f76edfa10aeb3b743",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nixos",
+        "ref": "nixos-25.05",
+        "repo": "nixpkgs",
         "type": "github"
       }
     },
@@ -1011,6 +1027,7 @@
         "nixpkgs-stable": "nixpkgs-stable",
         "overlay-nwg-displays-2025-09-03": "overlay-nwg-displays-2025-09-03",
         "overlay-spotify-player-2025-09-03": "overlay-spotify-player-2025-09-03",
+        "overlay-terraform-2025-09-19": "overlay-terraform-2025-09-19",
         "overlay-terraform-docs-2025-09-13": "overlay-terraform-docs-2025-09-13",
         "overlay-vdirsyncer-2025-08-28": "overlay-vdirsyncer-2025-08-28",
         "sops-nix": "sops-nix",
