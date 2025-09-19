@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.30.0 (2025-09-19)
+
+### ✨ Minor
+
+  * ✨ Add deployment of OpenBao (rey,kenobi) and minor fixes (!89) by Romain Deville ([`21e5517`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/21e551795a08fc47853ec1589a1e2912d6f0e9df))
+  * ✨(rey): Add local OpenBao deployment for dev using prod raft backend by Romain Deville ([`37b3284`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/37b3284c0ff7f531203432addb78a871ff202266)) 🔏
+  * ✨(kenobi): Add OpenBao deployment and temporary deactivate haproxy stg by Romain Deville ([`3179bce`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3179bce808827d4f8b8f868e8588909a6a27ecc1)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`9ff305f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9ff305f1afb5b1d74018eb7286e28d7a44764bb4)) 🔏
+  * 🍱(assets/images): Add OpenBao services logo by Romain Deville ([`30dd449`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/30dd4495abd7c2b78c325de4fd5bae5f840b7c3f)) 🔏
+
+### 🔊 Others
+
+  * 🎨(machines): Reformat few machines files by Romain Deville ([`3dfe353`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/3dfe3533ea66f8ac494006bff5d8e957e0c2cfaf)) 🔏
+
 ## v0.29.12 (2025-09-19)
 
 ### 🩹 Patch
