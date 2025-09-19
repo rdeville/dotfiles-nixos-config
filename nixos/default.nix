@@ -9,82 +9,75 @@ in {
   imports = [
     ../modules
     ./flavors
+    ./services
     ./users.nix
   ];
 
   options = {
-    os = lib.mkOption {
-      description = ''
-        My custom `os` module to setup NixOS using my own flavors
-      '';
-      default = {};
-      type = lib.types.submodule {
-        options = {
-          # BASE CONFIGURATION
-          hostName = lib.mkOption {
-            type = lib.types.str;
-            description = "Hostname where config will be applied.";
-          };
+    os = {
+      # BASE CONFIGURATION
+      hostName = lib.mkOption {
+        type = lib.types.str;
+        description = "Hostname where config will be applied.";
+      };
 
-          parentName = lib.mkOption {
-            type = lib.types.str;
-            description = "If OS is a container or a VM, this store the name of the host OS";
-            default = "";
-          };
+      parentName = lib.mkOption {
+        type = lib.types.str;
+        description = "If OS is a container or a VM, this store the name of the host OS";
+        default = "";
+      };
 
-          stateVersion = lib.mkOption {
-            type = lib.types.str;
-            description = "Version of HM to follow";
-            default = "25.05";
-          };
+      stateVersion = lib.mkOption {
+        type = lib.types.str;
+        description = "Version of HM to follow";
+        default = "25.05";
+      };
 
-          system = lib.mkOption {
-            type = lib.types.str;
-            description = "Arch system where config will be applied.";
-            default = "x86_64-linux";
-          };
+      system = lib.mkOption {
+        type = lib.types.str;
+        description = "Arch system where config will be applied.";
+        default = "x86_64-linux";
+      };
 
-          timeZone = lib.mkOption {
-            type = lib.types.str;
-            description = "The timezone of the host.";
-            default = "Europe/Paris";
-          };
+      timeZone = lib.mkOption {
+        type = lib.types.str;
+        description = "The timezone of the host.";
+        default = "Europe/Paris";
+      };
 
-          defaultLocale = lib.mkOption {
-            type = lib.types.str;
-            description = "i18n local default value.";
-            default = "en_US.UTF-8";
-          };
+      defaultLocale = lib.mkOption {
+        type = lib.types.str;
+        description = "i18n local default value.";
+        default = "en_US.UTF-8";
+      };
 
-          extraLocaleSettings = lib.mkOption {
-            type = lib.types.attrsOf lib.types.str;
-            description = "i18n extra local values, like LC_MONETARY.";
-            default = {
-              LC_MONETARY = "fr_FR.UTF-8";
-            };
-          };
-
-          console = {
-            keyMap = lib.mkOption {
-              type = lib.types.either lib.types.str lib.types.path;
-              description = "The keyboard mapping table for the virtual consoles.";
-              default = "fr";
-            };
-
-            font = lib.mkOption {
-              type = lib.types.either lib.types.str lib.types.path;
-              description = "The font to use in the console.";
-              default = "Lat2-Terminus16";
-            };
-          };
-
-          # BOOLEAN TO PARAMETERIZE SOME FLAVORS
-          isDarwin = lib.mkEnableOption "Boolean, set to true to specify OS is darwin.";
-          isMain = lib.mkEnableOption "Main computer.";
-          isGui = lib.mkEnableOption "GUI computer.";
-          isProd = lib.mkEnableOption "Prod computer.";
+      extraLocaleSettings = lib.mkOption {
+        type = lib.types.attrsOf lib.types.str;
+        description = "i18n extra local values, like LC_MONETARY.";
+        default = {
+          LC_MONETARY = "fr_FR.UTF-8";
         };
       };
+
+      console = {
+        keyMap = lib.mkOption {
+          type = lib.types.either lib.types.str lib.types.path;
+          description = "The keyboard mapping table for the virtual consoles.";
+          default = "fr";
+        };
+
+        font = lib.mkOption {
+          type = lib.types.either lib.types.str lib.types.path;
+          description = "The font to use in the console.";
+          default = "Lat2-Terminus16";
+        };
+      };
+
+      # BOOLEAN TO PARAMETERIZE SOME FLAVORS
+      isDarwin = lib.mkEnableOption "Boolean, set to true to specify OS is darwin.";
+      isMain = lib.mkEnableOption "Main computer.";
+      isGui = lib.mkEnableOption "GUI computer.";
+      isProd = lib.mkEnableOption "Prod computer.";
     };
   };
 
