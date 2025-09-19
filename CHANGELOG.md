@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.45.1 (2025-09-19)
+
+### 🩹 Patch
+
+  * ⚡️(hm): Improve use of boolean in some flavors and format code (!153) by Romain Deville ([`12d0ebf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/12d0ebf4501ff92133b8c2c2fcd4fba305f04d9b))
+  * ⚡️(hm): Remove builtin.elem &#39;pkg-name&#39; config.home.packages to use boolean by Romain Deville ([`8d38a3f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8d38a3fcdbb4e847e706428ce6407fd0f6aab7b1)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/gui/wayland): Run nix fmt by Romain Deville ([`75767dd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/75767dd93fb4e0c71e43b171abd50732dd9bfc66)) 🔏
+
 ## v0.45.0 (2025-09-19)
 
 ### ✨ Minor
