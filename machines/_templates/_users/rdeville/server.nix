@@ -1,7 +1,4 @@
-{
-  config,
-  ...
-}: let
+{config, ...}: let
   pubKey = {
     dst = "code+public@romaindeville.fr.pub";
     src = "code-public-romaindeville.fr.pub";
