@@ -1,6 +1,22 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.46.0 (2025-09-19)
+
+### ✨ Minor
+
+  * ✨(os): Add flavors OpenBao and deployment of its systemd service (!154) by Romain Deville ([`70fe869`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/70fe8693e9d8afaf7c3ed82781e0616037e0d3a7))
+  * ✨(os/flavors): Add OpenBao flavors using `os.services.openbao` by Romain Deville ([`7638a29`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7638a29c277061dfefb3c39d1d59eb5a89f31c60)) 🔏
+  * ✨(os/services): Add new modules services with service openbao by Romain Deville ([`253009f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/253009fbad9435ab11a9ae1bef6c8742dd69affa)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(os): Update options structure to allow `flavors` and `services` by Romain Deville ([`1c16686`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1c166861363e663cc0f98551f3fae858710684dd)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/gui/wayland): Drop hyprpaper, didn&#39;t manage to make it work correctly by Romain Deville ([`c61ad9c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c61ad9c00d52a7251b70e3fa37851be137f200d7)) 🔏
+
 ## v0.45.1 (2025-09-19)
 
 ### 🩹 Patch
