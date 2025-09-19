@@ -156,7 +156,10 @@
       url = "github:nixos/nixpkgs/a3887e95aa55d8738445133f896ad4b75b54b9d0";
     };
     overlay-terraform-docs-2025-09-13 = {
-      url = "github:nixos/nixpkgs/d0fc30899600b9b3466ddb260fd83deb486c32f1";
+      url = "github:nixos/nixpkgs/nixos-25.05";
+    };
+    overlay-terraform-2025-09-19 = {
+      url = "github:nixos/nixpkgs/nixos-25.05";
     };
   };
   outputs = inputs @ {self, ...}: let
