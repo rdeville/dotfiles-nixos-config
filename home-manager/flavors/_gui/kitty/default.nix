@@ -89,7 +89,7 @@ in {
 
           # Color Scheme
           # -----------------------------------------------------------------------------
-          background_opacity = "0.75";
+          background_opacity = "0.6";
           foreground = "#EEEEEE";
           background = "#000000";
           selection_foreground = "#000000";
