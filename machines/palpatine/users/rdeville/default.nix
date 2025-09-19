@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   lib,
   ...
@@ -15,18 +14,6 @@
       "spotify-client-id" = {
         sopsFile = ../../../../common/secrets/spotify.enc.yaml;
       };
-    };
-  };
-
-  nixpkgs = {
-    config = {
-      allowUnfreePredicate = pkg:
-        builtins.elem (lib.getName pkg) [
-          "discord"
-          "slack"
-          "terraform"
-          "zsh-abbr"
-        ];
     };
   };
 
@@ -57,6 +44,10 @@
     isMain = true;
     # isDarwin = true;
     isWork = true;
+
+    nixpkgs = {
+      allowUnfree = true;
+    };
 
     # userAccounts = [
     #   # "contact@romaindeville.fr"

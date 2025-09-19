@@ -79,6 +79,13 @@ in {
             hm = {
               stateVersion = config.os.stateVersion;
             };
+
+            nixpkgs = {
+              config = {
+                allowUnfree = true;
+              };
+            };
+
             imports =
               if elem == "rdeville"
               then

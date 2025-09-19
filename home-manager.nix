@@ -9,6 +9,9 @@ builtins.foldl' (acc: host:
         "${user}@${host}" = inputs.home-manager.lib.homeManagerConfiguration {
           pkgs = import inputs.nixpkgs {
             system = "x86_64-linux";
+            config = {
+              allowUnfree = true;
+            };
             # if host == "palpatine"
             # then "aarch64-darwin"
             # else "x86_64-linux";

@@ -108,6 +108,12 @@
     };
   };
 
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+    };
+  };
+
   programs = {
     dconf = {
       enable = true;
