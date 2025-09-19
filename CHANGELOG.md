@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.45.0 (2025-09-19)
+
+### ✨ Minor
+
+  * ✨(hm/gui): Add swww wallpaper manager, tweak wayland and kitty cfg (!152) by Romain Deville ([`d5c2ae1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d5c2ae163b1c8e58ad3c137eab2bca6a2a68c79e))
+  * ✨(hm/gui/wayland): Add swww wallpaper mamanger with randomizer by Romain Deville ([`122738c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/122738c44d755e017456376560ff1622a9c888b1)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(hm/gui/kitty): Decrease background_opacity to make it more transparent by Romain Deville ([`8ec2aff`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8ec2aff73311df8f577f4d844ce03daf693e2afc)) 🔏
+  * 🔧(hm/gui/wayland): Tweak waybar and hyprland config with new swww module by Romain Deville ([`8411f30`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8411f30d9d27901221cc6e78b8e2dc247c290dbd)) 🔏
+
 ## v0.44.2 (2025-09-18)
 
 ### 🩹 Patch
