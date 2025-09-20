@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.46.1 (2025-09-20)
+
+### 🩹 Patch
+
+  * ⚡️(os/openbao): Update type for tls Cert and Key file (!155) by Romain Deville ([`fb0451c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fb0451cf92db8c54cc4a5fa9256ebedfd8bb9d21))
+  * ⚡️(os/openbao): Update type for tls Cert and Key file by Romain Deville ([`539794f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/539794f8d31a9d0b1479fdd32707727e5fb6b05b)) 🔏
+
 ## v0.46.0 (2025-09-19)
 
 ### ✨ Minor
