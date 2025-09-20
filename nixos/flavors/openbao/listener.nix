@@ -63,7 +63,7 @@ in {
     '';
 
     tlsCertFile = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.path;
       description = ''
         Specifies the path to the certificate for TLS.
       '';
@@ -71,7 +71,7 @@ in {
     };
 
     tlsKeyFile = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.path;
       description = ''
         Specifies the path to the private key for the certificate.
       '';
