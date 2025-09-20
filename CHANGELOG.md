@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.30.1 (2025-09-20)
+
+### 🩹 Patch
+
+  * ⚡️(rey): Improve nginx to act as TLS reverse proxy &amp; add wallpapers (!90) by Romain Deville ([`a4e4acc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a4e4acc1901732f7106dedfd39062d75f6392fe7))
+  * ⚡️(rey): Improve nginx to act as TLS reverse proxy by Romain Deville ([`07ac16d`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/07ac16d26b0ec080a774eb1bb0b23786d52ce23b)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`9482e66`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9482e66bdb6742330106c38be1ee757fd52e2986)) 🔏
+  * 🍱(assets/wallpaper): Add new wallpapers by Romain Deville ([`7e0f862`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7e0f862097d92f996654adcd22e4e74619e601c8)) 🔏
+
 ## v0.30.0 (2025-09-19)
 
 ### ✨ Minor
