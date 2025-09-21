@@ -142,7 +142,7 @@ in {
               + (
                 if config.hm.flavors._gui.wayland.waybar.enable
                 then ''
-                  exec-once=waybar
+                  exec-once=sleep 2 && systemctl --user restart waybar.service
                 ''
                 else ""
               )
@@ -198,7 +198,6 @@ in {
                   kb_layout = "fr";
                   kb_options = "caps:escape";
                 };
-
                 # Keyboard Binding
                 # bind supports flags in this format:
                 # bind[flags] = ...
