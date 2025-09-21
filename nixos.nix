@@ -63,6 +63,7 @@ in
               };
 
               home-manager = {
+                backupFileExtension = "bak";
                 useGlobalPkgs = false;
                 useUserPackages = true;
                 extraSpecialArgs = {
