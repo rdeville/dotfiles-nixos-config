@@ -70,7 +70,7 @@ in
 
           /* The whole bar */
           #waybar {
-            background: rgba(0, 0, 0, 0);
+            background: @zinc-dark;
             color: @zinc-light;
             font-family: FiraCode Nerd Font;
             font-size: 12px;
