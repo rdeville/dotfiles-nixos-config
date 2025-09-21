@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.46.2 (2025-09-21)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`d4d31d7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d4d31d77dc51aa7bb34dc66fd187b5620af2c0da)) 🔏
+  * 🐛(hm/gui/wayland): Fix hyprland config to avoid duplicate waybar (!156) by Romain Deville ([`0ad6eb6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0ad6eb685e609c7bb3558e8993d3eed9477e742d))
+  * 🐛(hm/gui/wayland): Fix hyprland config to avoid duplicate waybar by Romain Deville ([`11e4b87`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/11e4b87fb19aba13cec1a07ecbcad4935a852e6e)) 🔏
+  * 💄(hm/gui/wayland): Set opaque waybar background due to light wallpapers by Romain Deville ([`965adfc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/965adfc1f0ff9032e9456b6ed8bd9f915bc66f9c)) 🔏
+
 ## v0.46.1 (2025-09-20)
 
 ### 🩹 Patch
