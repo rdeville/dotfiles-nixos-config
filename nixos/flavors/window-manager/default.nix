@@ -90,41 +90,24 @@ in {
     };
 
     services = {
-      xserver =
-        {
-          windowManager = {
-            awesome = {
-              enable = cfg.awesome.enable;
-              luaModules = with pkgs.luaPackages; [
-                luarocks # is the package manager for Lua modules
-                pkgs.luajitPackages.lgi
-              ];
-              package = awesomePkg;
-            };
-          };
-        }
-        // lib.optionalAttrs config.os.isProd {
-          displayManager = {
-            gdm = {
-              wayland = cfg.hyprland.enable || cfg.plasma.enable;
-            };
+      xserver = {
+        windowManager = {
+          awesome = {
+            enable = cfg.awesome.enable;
+            luaModules = with pkgs.luaPackages; [
+              luarocks # is the package manager for Lua modules
+              pkgs.luajitPackages.lgi
+            ];
+            package = awesomePkg;
           };
         };
+      };
 
       desktopManager = {
         plasma6 = {
           enable = cfg.plasma.enable;
         };
       };
-      displayManager =
-        {
-          defaultSession = "hyprland";
-        }
-        // lib.optionalAttrs (! config.os.isProd) {
-          gdm = {
-            wayland = cfg.hyprland.enable || cfg.plasma.enable;
-          };
-        };
     };
 
     programs = {

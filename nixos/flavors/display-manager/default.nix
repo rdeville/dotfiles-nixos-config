@@ -65,6 +65,7 @@ in {
         };
       displayManager =
         {
+          defaultSession = "hyprland";
           ly = {
             inherit (cfg.ly) enable settings;
           };
