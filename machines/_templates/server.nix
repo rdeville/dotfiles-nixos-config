@@ -121,6 +121,13 @@
   };
 
   security = {
+    pam = {
+      yubico = {
+        enable = true;
+        # debug = true;
+        mode = "challenge-response";
+      };
+    };
     sudo = {
       extraRules = [
         {

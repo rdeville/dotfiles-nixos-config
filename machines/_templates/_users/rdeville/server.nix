@@ -1,4 +1,8 @@
 {config, ...}: let
+  yubicoIds = [
+    "30105708"
+    "30105737"
+  ];
   pubKey = {
     dst = "code+public@romaindeville.fr.pub";
     src = "code-public-romaindeville.fr.pub";
@@ -18,6 +22,26 @@
     }
   ];
 in {
+  sops = {
+    secrets = builtins.foldl' (acc: elem:
+      {
+        "yubico-${elem}-challenge" = {
+          sopsFile = ../../../../common/secrets/yubico-${elem}.enc.yaml;
+        };
+      }
+      // acc) {}
+    yubicoIds;
+    templates = builtins.foldl' (acc: elem:
+      {
+        "yubico-${elem}-challenge" = {
+          content = config.sops.placeholder."yubico-${elem}-challenge";
+          path = "/home/${config.hm.username}/.yubico/challenge-${elem}";
+        };
+      }
+      // acc) {}
+    yubicoIds;
+  };
+
   hm = {
     username = builtins.baseNameOf ./.;
     flavors = {
