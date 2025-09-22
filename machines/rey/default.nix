@@ -2,6 +2,7 @@
   inputs,
   config,
   lib,
+  pkgs,
   ...
 }: {
   imports = [
@@ -16,31 +17,6 @@
     ./topology.nix
     ./nginx
   ];
-
-  sops = {
-    secrets = {
-      "openbao/cert" = {
-        format = "binary";
-        sopsFile = ./nginx/ssl/openbao.crt.enc.asc;
-        key = "";
-        group = config.users.users.openbao.group;
-        mode = "0640";
-        reloadUnits = [
-          "openbao.service"
-        ];
-      };
-      "openbao/key" = {
-        format = "binary";
-        sopsFile = ./nginx/ssl/openbao.key.enc.asc;
-        key = "";
-        group = config.users.users.openbao.group;
-        mode = "0640";
-        reloadUnits = [
-          "openbao.service"
-        ];
-      };
-    };
-  };
 
   programs = {
     ssh = {
@@ -68,6 +44,17 @@
     };
   };
 
+  environment = {
+    etc = {
+      "openbao/openbao.crt" = {
+        source = ./nginx/ssl/openbao.crt;
+      };
+      "openbao/openbao.key" = {
+        source = ./nginx/ssl/openbao.key;
+      };
+    };
+  };
+
   os = {
     hostName = builtins.baseNameOf ./.;
 
@@ -82,8 +69,8 @@
         apiAddr = "http://127.0.0.1:8200";
         listeners = [
           {
-            tlsCertFile = config.sops.secrets."openbao/cert".path;
-            tlsKeyFile = config.sops.secrets."openbao/key".path;
+            tlsCertFile = config.environment.etc."openbao/openbao.crt".source;
+            tlsKeyFile = config.environment.etc."openbao/openbao.crt".source;
           }
         ];
         storage = {
