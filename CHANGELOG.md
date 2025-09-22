@@ -1,6 +1,24 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.31.0 (2025-09-22)
+
+### ✨ Minor
+
+  * ✨ Add rdeville login using Yubico, decrypt and move OpenBao dev SSL keys (!91) by Romain Deville ([`eaf729f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/eaf729f493543dda38ce11140d5b323f6f56983c))
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`e6cfd00`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e6cfd00ec7d16c0aa58cdf5f87da4fa823d82bc1)) 🔏
+  * 🔒️(templates): Add login using Yubico, add user rdeville yubico keys challenge by Romain Deville ([`d6f01d3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d6f01d3ac95217d240638ca71d128da5f2f73e9d)) 🔏
+  * 🔧(os): Setup backup extension for HM when used in NixOS by Romain Deville ([`7e43afc`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7e43afc2c7ad415440b39fc47cf433c699556282)) 🔏
+
+### 🔊 Others
+
+  * 🔐(common/secrets): Add yubico response challenge to login with Yubikey by Romain Deville ([`9b6fa5e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/9b6fa5eb2b76c6924716cb15c7a1207f781ca3e3)) 🔏
+  * 🔐(sops): Update sops configuration, fix config, add yubico challenge files by Romain Deville ([`7135e3f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/7135e3f5f971efaf07be48727567cde5e0d8cbff)) 🔏
+  * 🚚(rey/nginx): Decrypt and move openbao dev SSL key by Romain Deville ([`84ae646`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/84ae646946420702c439c72a4e0a331540c15fff)) 🔏
+
 ## v0.30.1 (2025-09-20)
 
 ### 🩹 Patch
