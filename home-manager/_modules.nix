@@ -6,7 +6,6 @@
     # Personal home-manager packaged config dotfiles
     inputs.neovimrc.homeManagerModules.neovimrc
     # Personal home-manager packaged data dotfiles
-    inputs.tmuxdata.homeManagerModules.tmuxdata
     inputs.dotgit-sync.homeManagerModules.dotgit-sync
     # Overlays
     ../overlays
