@@ -6,11 +6,33 @@
 }: let
   user = config.hm.username;
   keyFile = "${config.xdg.cacheHome}/.age.key";
+  yubicoIds = [
+    "30105708"
+    "30105737"
+  ];
+
 in {
   sops = {
     age = {
       inherit keyFile;
     };
+    secrets = builtins.foldl' (acc: elem:
+      {
+        "yubico-${elem}-challenge" = {
+          sopsFile = ../../../../common/secrets/yubico-${elem}.enc.yaml;
+        };
+      }
+      // acc) {}
+    yubicoIds;
+    templates = builtins.foldl' (acc: elem:
+      {
+        "yubico-${elem}-challenge" = {
+          content = config.sops.placeholder."yubico-${elem}-challenge";
+          path = "/home/${config.hm.username}/.yubico/challenge-${elem}";
+        };
+      }
+      // acc) {}
+    yubicoIds;
   };
 
   home = {
