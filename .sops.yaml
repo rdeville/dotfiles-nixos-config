@@ -116,6 +116,7 @@ creation_rules:
       - age:
         - *rdeville
         - *hm-rdeville-rey
+        - *hm-rdeville-palpatine
   - path_regex: age\.enc\.txt
     # AGE key files can only be decrypted by @rdeville
     key_groups:
