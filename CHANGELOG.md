@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.1 (2025-09-23)
+
+### 🩹 Patch
+
+  * 🐛(hm/mr): Fix dotfiles.git in myrepos config (!95) by Romain Deville ([`19b5c72`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/19b5c720a77cefc698821f8d9e4a34b60e4c2b87))
+  * 🐛(hm/mr): Fix dotfiles.git in myrepos config by Romain Deville ([`a25add9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/a25add95361bd164758b97686372a3a191fb7f0f)) 🔏
+  * 🐛(hm): Fix boolean for dotfiles by Romain Deville ([`e6f0e81`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e6f0e8198702d58583d12abdce49fe85f43d38ed)) 🔏
+
 ## v0.32.0 (2025-09-23)
 
 ### ✨ Minor
