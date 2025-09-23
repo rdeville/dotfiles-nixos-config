@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.31.2 (2025-09-23)
+
+### 🩹 Patch
+
+  * ⚡️ Make yubico autologin only on main machine and activate spt on kenobi (!93) by Romain Deville ([`b3dead5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b3dead5188aeaabc40381ea306dcba1c25ae2588))
+  * 🔧(kenobi): Activate spotify-player flavor by Romain Deville ([`b4d6c55`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b4d6c55ce83f66ceb44c62e5cc21b83b9b111c5b)) 🔏
+  * 🔧(sops): Add palpatin to machine allowed to decrypt yubico secrets by Romain Deville ([`6a527df`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/6a527df6413a5f61853f829b1aadc96684c10073)) 🔏
+
+### 🔊 Others
+
+  * 🏗️(machine/templates/users): Make yubico autologin only on main machines by Romain Deville ([`e0b08c3`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/e0b08c304aa477b2ee573bba669b55edb47f6ffd)) 🔏
+  * 🔐(common/secrets): Rotate yubico encryption with new sops config by Romain Deville ([`4ac4b58`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4ac4b58f07ccc7f979b62915a7194e44a533d78a)) 🔏
+
 ## v0.31.1 (2025-09-23)
 
 ### 🩹 Patch
