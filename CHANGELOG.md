@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.31.1 (2025-09-23)
+
+### 🩹 Patch
+
+  * 🐛(rey): Fix wrong key used for OpenBao (!92) by Romain Deville ([`c0c3ab8`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/c0c3ab82491e8a331763d0282c67f7d2a03d13f8))
+  * 🐛(rey): Fix wrong key used for OpenBao by Romain Deville ([`4ac4e68`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4ac4e687150f7dd86807de303acda6683fbf4c52)) 🔏
+
 ## v0.31.0 (2025-09-22)
 
 ### ✨ Minor
