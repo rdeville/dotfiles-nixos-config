@@ -26,7 +26,7 @@ in {
             src = ./.;
             installPhase = let
               hostCfg =
-                if config.hm.isProd
+                if config.hm.isWork
                 then ''
                   cp templates/pro/${config.hm.username}.git $out/hosts/${config.hm.hostName}/${config.hm.username}.git
                 ''
