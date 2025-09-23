@@ -1,6 +1,6 @@
 include =
   CONF_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/mr/repos"
-  cat ${CONF_DIR}/framagit.org/private/dotfiles/*.git
-  cat ${CONF_DIR}/framagit.org/public/dotfiles/*.git
+  cat ${CONF_DIR}/framagit.org/private/dotfiles.git
+  cat ${CONF_DIR}/framagit.org/public/dotfiles.git
 
 # vim: ft=dosini

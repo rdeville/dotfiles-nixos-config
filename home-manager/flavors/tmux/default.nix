@@ -26,7 +26,7 @@ in {
             src = ./.;
             installPhase = let
               hostCfg =
-                if config.hm.isProd
+                if config.hm.isWork
                 then ''
                   cp templates/pro.conf $out/hosts/${config.hm.hostName}.conf
                 ''

@@ -1,16 +1,12 @@
-lib =
-  DATA=${XDG_DATA_HOME:-${HOME}/.local/share}
-  CFG=${XDG_CONFIG_HOME:-${HOME}/.config}
-
 [${HOME}/git/framagit.org/private/dotfiles/nixos]
 checkout =
   mr_checkout "git@framagit.org:rdeville-private/dotfiles/nixos-config.git"
-  ln -s "${MR_REPO}" "${CFG}/nixos"
-  ln -s "${MR_REPO}" "${CFG}/home-manager"
+  ln -s "${MR_REPO}" "${XDG_CONFIG_HOME:-${HOME}/.config}/nixos"
+  ln -s "${MR_REPO}" "${XDG_CONFIG_HOME:-${HOME}/.config}/home-manager"
 
 [${HOME}/git/framagit.org/private/dotfiles/direnv]
 checkout =
   mr_checkout "git@framagit.org:rdeville-private/dotfiles/direnv.git"
-  ln -s "${MR_REPO}" "${DATA}/direnv
+  ln -s "${MR_REPO}" "${XDG_DATA_HOME:-${HOME}/.local/share}/direnv"
 
 # vim: ft=dosini

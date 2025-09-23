@@ -23,15 +23,6 @@
           else false;
       };
 
-      isProd = lib.mkOption {
-        type = lib.types.bool;
-        description = "Define HM is for a prod computer.";
-        default =
-          if osConfig ? os.isGui
-          then osConfig.os.isGui
-          else false;
-      };
-
       userAccounts = lib.mkOption {
         type = lib.types.listOf lib.types.str;
         description = "List of user accounts in config/accounts folder.";
