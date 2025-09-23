@@ -1,0 +1,6 @@
+[global]
+# Specify how long to wait before warning the user that the command is taking
+# too long to execute. Defaults to "5s".
+# Set to 5 min as installation of package (specifically when using nix flake)
+# may take some times
+warn_timeout="5m"

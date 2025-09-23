@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+
+# Deactivate default direnv log
+export DIRENV_LOG_FORMAT=""
+if [[ -z "${DEBUG_LEVEL}" && -z "${DIRENV_DEBUG_LEVEL}" ]]; then
+  DEBUG_LEVEL="INFO"
+else
+  DEBUG_LEVEL="${DIRENV_DEBUG_LEVEL:-INFO}"
+fi
+
+# shellcheck source=./lib/_init_logger.sh
+source "${XDG_CONFIG_HOME:-"${HOME}/.config"}/direnv/lib/_init_logger.sh"
+
+# Ensure this script has not been modified
+_log "INFO" "direnv: 🔁 **${PWD/${HOME}/\~}/.envrc**"
+_check_sha "${XDG_CONFIG_HOME:-${HOME}/.config}/direnv/direnvrc" || exit 1
+
+# vim: ft=bash

@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# TMUXP VARIABLES
+export TMUXP_SESSION_NAME="" # TODO SET TMUXP_SESSION_NAME !!
+
+source_up_if_exists
+
+# vim: ft=bash
