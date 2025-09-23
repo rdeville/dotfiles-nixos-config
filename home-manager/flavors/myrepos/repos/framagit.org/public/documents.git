@@ -1,0 +1,9 @@
+[${HOME}/git/framagit.org/public/documents/kubernetes-lessons]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/documents/kubernetes-lessons.git"
+
+[${HOME}/git/framagit.org/public/documents/opentofu-lessons]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/documents/opentofu-lessons.git"
+
+# vim: ft=dosini

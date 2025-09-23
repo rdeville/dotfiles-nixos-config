@@ -1,0 +1,9 @@
+[${HOME}/git/framagit.org/public/dotfiles/neovim]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/dotfiles/neovim.git"
+
+[${HOME}/git/framagit.org/public/dotfiles/nixos]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/dotfiles/nixos-config.git"
+
+# vim: ft=dosini

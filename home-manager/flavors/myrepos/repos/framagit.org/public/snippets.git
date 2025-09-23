@@ -1,0 +1,5 @@
+[${HOME}/git/framagit.org/public/snippets/_log]
+checkout =
+  mr_checkout "git@framagit.org:snippets/7183.git"
+
+# vim: ft=dosini

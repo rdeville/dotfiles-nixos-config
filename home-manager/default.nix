@@ -62,6 +62,7 @@
       accounts));
 in {
   imports = [
+    ./flavors
     ./assets
     ./options.nix
   ];
