@@ -1,6 +1,26 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.47.0 (2025-09-23)
+
+### ✨ Minor
+
+  * ✨(hm): Rework flavors with config file from my old dedicated repo (!158) by Romain Deville ([`a74dd9f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a74dd9f18acaa5aaf2407637fa85d256827fc302))
+  * ✨(hm/gui/awesome): Add flavor with config file from my old dedicated repo by Romain Deville ([`d83e83f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d83e83f7c60682db13aec56db26083d75419933b)) 🔏
+  * ✨(hm/core/direnv): Rework flavor with config file from my old dedicated repo by Romain Deville ([`4115a30`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4115a3058044f85bcd433971d3217efd78078bfb)) 🔏
+  * ✨(hm/core/tmux): Rework flavor with config file from my old dedicated repo by Romain Deville ([`e4522f6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e4522f684f0bad48caf703f0d169da2fff89a7fc)) 🔏
+
+### 🩹 Patch
+
+  * ➕(flake): Add bling input since its required for my awesome config by Romain Deville ([`8f1d1c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8f1d1c95a7d061526de5d7e01cb69abaf9b7b996)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`9cfea33`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9cfea3338ea3813b05d0c2b1bf9e1bf0517d59ec)) 🔏
+
+### 🔊 Others
+
+  * 📝 Improve RAEDME with HM usage as NixOS module by Romain Deville ([`795e74f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/795e74f5b5359e80882d4c7adfb2c8ec81ec12d9)) 🔏
+  * 🔥(os/display-manager): Remove duplicate code (!157) by Romain Deville ([`7fb219a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7fb219ab06e2f8d18a01bf24d7bb103108ee58b6))
+  * 🔥(os/display-manager): Remove duplicate code by Romain Deville ([`273c0ab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/273c0ab6c7d2143438ebb44480304f5250019ef4)) 🔏
+
 ## v0.46.2 (2025-09-21)
 
 ### 🩹 Patch
