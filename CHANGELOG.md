@@ -1,6 +1,25 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.0 (2025-09-23)
+
+### ✨ Minor
+
+  * ✨ Integrate personal dotfile configuration, update due to public NixOS changes (!94) by Romain Deville ([`f1320a4`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f1320a4657c3432db30f0fc4a09cc74affaebd7e))
+  * ✨(hm/tmux): Add personal dotfile tmux configuration by Romain Deville ([`166bc81`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/166bc81576dc8bd10ce5db9f132593d6765cc9c8)) 🔏
+  * ✨(hm/mr): Add personal dotfile myrepos configuration by Romain Deville ([`d8f46be`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d8f46beaaa24aa721f345b25e47b807664c18222)) 🔏
+
+### 🩹 Patch
+
+  * ⚡️(hm): Add isProd boolean option for HM by Romain Deville ([`0a2e4a9`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/0a2e4a9e0f07cfadba37ae22919b9dbfcea26d7e)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`df81a7f`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/df81a7f798cdffef67ed6b5359639f1a85680895)) 🔏
+  * 👽️(hm): Update public dotfiles config since now part of public NixOS by Romain Deville ([`bf9d29e`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/bf9d29e3d4807117b2c703b5947f7acd67707735)) 🔏
+  * 🔧(templates/users): Add new private dotfiles flavors to users templates by Romain Deville ([`97be8d2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/97be8d2ec49e47969f740e5301840099532df275)) 🔏
+
+### 🔊 Others
+
+  * 🎨(kenobi/user/rdeville): Run Nix fmt by Romain Deville ([`4935221`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/493522115782aadcee5e94d8e15aba30a5ad56bc)) 🔏
+
 ## v0.31.2 (2025-09-23)
 
 ### 🩹 Patch
