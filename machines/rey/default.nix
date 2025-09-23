@@ -70,7 +70,7 @@
         listeners = [
           {
             tlsCertFile = config.environment.etc."openbao/openbao.crt".source;
-            tlsKeyFile = config.environment.etc."openbao/openbao.crt".source;
+            tlsKeyFile = config.environment.etc."openbao/openbao.key".source;
           }
         ];
         storage = {
