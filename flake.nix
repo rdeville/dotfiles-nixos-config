@@ -77,6 +77,7 @@
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
         awesome.follows = "awesome";
+        bling.follows = "bling";
         home-manager.follows = "home-manager";
         nixgl.follows = "nixgl";
         nixpkgs.follows = "nixpkgs";
@@ -89,6 +90,7 @@
       url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
       inputs = {
         awesome.follows = "awesome";
+        bling.follows = "bling";
         home-manager.follows = "home-manager";
         nixgl.follows = "nixgl";
         nixpkgs.follows = "nixpkgs-stable";
@@ -101,34 +103,13 @@
       url = "github:awesomeWM/awesome/master";
       flake = false;
     };
+    bling = {
+      url = "github:BlingCorp/bling/master";
+      flake = false;
+    };
     # My personal dotfiles flakes
-    awesomerc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/awesomewm.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-        awesome.follows = "awesome";
-      };
-    };
-    direnvrc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/direnv.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
     neovimrc = {
       url = "git+https://framagit.org/rdeville-public/dotfiles/neovim.git";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    tmuxrc = {
-      url = "git+https://framagit.org/rdeville-public/dotfiles/tmux";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-      };
-    };
-    tmuxdata = {
-      url = "git+ssh://git@framagit.org:/rdeville-private/dotfiles/tmux";
       inputs = {
         nixpkgs.follows = "nixpkgs";
       };
