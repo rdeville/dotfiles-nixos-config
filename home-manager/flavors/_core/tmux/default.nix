@@ -8,6 +8,11 @@
   subname = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name}.${subname};
 in {
+  imports = [
+    ./tmuxp
+    ./tmuxrc
+  ];
+
   options = {
     hm = {
       flavors = {
@@ -27,7 +32,6 @@ in {
   config = lib.mkIf cfg.enable {
     home = {
       packages = with pkgs; [
-        tmuxp # Tmux Manager
         tmux # Terminal multiplexer
       ];
     };
@@ -41,25 +45,8 @@ in {
             ts = "tmux switch-client -t";
             tls = "tmux list-sessions";
             tksv = "tmux kill-server";
-            tkss = "tmux kill-session -t";
-
-            # Tmuxp
-            tl = "tmuxp load -y";
-            tld = "tmuxp load -y \${TMUXP_CONFIG:-default}";
+            tkst = "tmux kill-session -t";
           };
-        };
-      };
-    };
-
-    xdg = {
-      configFile = {
-        "tmuxp/default.yaml" = {
-          enable = true;
-          source = ./default.yaml;
-        };
-        "tmuxp/home.yaml" = {
-          enable = true;
-          source = ./home.yaml;
         };
       };
     };
