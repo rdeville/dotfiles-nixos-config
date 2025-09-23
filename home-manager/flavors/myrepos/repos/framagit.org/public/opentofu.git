@@ -1,0 +1,53 @@
+[${HOME}/git/framagit.org/public/opentofu/cloudflare-dns]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/cloudflare-dns.git"
+
+[${HOME}/git/framagit.org/public/opentofu/github-organization]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/github-organization.git"
+
+[${HOME}/git/framagit.org/public/opentofu/github-repository]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/github-repository.git"
+
+[${HOME}/git/framagit.org/public/opentofu/github-team]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/github-team.git"
+
+[${HOME}/git/framagit.org/public/opentofu/github-user]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/github-user.git"
+
+[${HOME}/git/framagit.org/public/opentofu/gitlab-group]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/gitlab-group.git"
+
+[${HOME}/git/framagit.org/public/opentofu/gitlab-repository]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/gitlab-repository.git"
+
+[${HOME}/git/framagit.org/public/opentofu/gitlab-user]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/gitlab-user.git"
+
+[${HOME}/git/framagit.org/public/opentofu/openbao-identity]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/openbao-identity.git"
+
+[${HOME}/git/framagit.org/public/opentofu/openbao-identity]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/openbao-identity.git"
+
+[${HOME}/git/framagit.org/public/opentofu/openbao-group]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/openbao-group.git"
+
+[${HOME}/git/framagit.org/public/opentofu/openbao-oidc-provider]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/openbao-oidc-provider.git"
+
+[${HOME}/git/framagit.org/public/opentofu/openbao-policy]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/opentofu/openbao-policy.git"
+
+# vim: ft=dosini

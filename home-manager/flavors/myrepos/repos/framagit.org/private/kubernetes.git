@@ -1,0 +1,5 @@
+[${HOME}/git/framagit.org/private/kubernetes/homelab]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-private/kubernetes/homelab.git"
+
+# vim: ft=dosini

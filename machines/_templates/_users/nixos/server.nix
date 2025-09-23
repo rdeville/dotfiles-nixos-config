@@ -1,4 +1,4 @@
-{lib, ...}: {
+{...}: {
   hm = {
     username = builtins.baseNameOf ./.;
 
@@ -11,6 +11,7 @@
         lazygit.enable = false;
         mr.enable = false;
       };
+      tmux.enable = true;
     };
   };
 }

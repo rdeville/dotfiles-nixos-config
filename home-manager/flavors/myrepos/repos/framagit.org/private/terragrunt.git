@@ -1,0 +1,9 @@
+[${HOME}/git/framagit.org/private/terragrunt/git-repos]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-private/terragrunt/git-repos.git"
+
+[${HOME}/git/framagit.org/private/terragrunt/homelab]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-private/terragrunt/homelab.git"
+
+# vim: ft=dosini

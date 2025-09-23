@@ -31,10 +31,6 @@
     ];
   };
 
-  awesomerc = {
-    enable = lib.mkForce false;
-  };
-
   hm = {
     username = builtins.baseNameOf ./.;
     # system = "aarch64-darwin";

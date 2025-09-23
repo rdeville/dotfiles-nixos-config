@@ -8,6 +8,7 @@
         gpg.enable = false;
         lazygit.enable = false;
       };
+      tmux.enable = true;
     };
   };
 }

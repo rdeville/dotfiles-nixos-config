@@ -33,30 +33,6 @@
         "type": "github"
       }
     },
-    "awesomerc": {
-      "inputs": {
-        "awesome": [
-          "awesome"
-        ],
-        "bling": "bling",
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1758035845,
-        "narHash": "sha256-XtBku5YR+h4vBYpt9vI6GM5IZKGTrcEwbPJRRbCKodk=",
-        "ref": "refs/heads/main",
-        "rev": "ddbfb6b630a5c7ad78b80c468f6505b7771842ae",
-        "revCount": 147,
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/awesomewm.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/awesomewm.git"
-      }
-    },
     "bling": {
       "flake": false,
       "locked": {
@@ -137,26 +113,6 @@
         "owner": "numtide",
         "repo": "devshell",
         "type": "github"
-      }
-    },
-    "direnvrc": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1758035274,
-        "narHash": "sha256-IyjWlm7hlOUWFeL36uq5waFG6Ha9ndjGWNvCQ443HpU=",
-        "ref": "refs/heads/main",
-        "rev": "7b448fbcc10ae19878acce25b22ee9005c72218c",
-        "revCount": 196,
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/direnv.git"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/direnv.git"
       }
     },
     "disko": {
@@ -447,11 +403,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758375677,
-        "narHash": "sha256-BLtD+6qWz7fQjPk2wpwyXQLGI0E30Ikgf2ppn2nVadI=",
+        "lastModified": 1758653055,
+        "narHash": "sha256-v2Pue/Xa9cDbKcrsOmhD8fiYR4No65z+ReAUBBvvE7g=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "edc7468e12be92e926847cb02418e649b02b59dd",
+        "rev": "131f4e22c30c114378dcf6191cb75c97eba673d0",
         "type": "github"
       },
       "original": {
@@ -679,6 +635,9 @@
         "awesome": [
           "awesome"
         ],
+        "bling": [
+          "bling"
+        ],
         "home-manager": [
           "home-manager"
         ],
@@ -700,11 +659,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758442293,
-        "narHash": "sha256-2OBFXAR6TPqCeqgmdkFB0AOf4wWp5Pigg6qGvzJLxQA=",
+        "lastModified": 1758659739,
+        "narHash": "sha256-DAl/mQ/moa7/JJrN8z9VXgkbWhtY7Sz/TyyI0N8p/JM=",
         "ref": "refs/heads/main",
-        "rev": "7fb219ab06e2f8d18a01bf24d7bb103108ee58b6",
-        "revCount": 746,
+        "rev": "9318f4413646fe83e281e3ca9c6dbe1014fa4b00",
+        "revCount": 754,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -733,6 +692,9 @@
         "awesome": [
           "awesome"
         ],
+        "bling": [
+          "bling"
+        ],
         "home-manager": [
           "home-manager"
         ],
@@ -754,11 +716,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758442293,
-        "narHash": "sha256-2OBFXAR6TPqCeqgmdkFB0AOf4wWp5Pigg6qGvzJLxQA=",
+        "lastModified": 1758659739,
+        "narHash": "sha256-DAl/mQ/moa7/JJrN8z9VXgkbWhtY7Sz/TyyI0N8p/JM=",
         "ref": "refs/heads/main",
-        "rev": "7fb219ab06e2f8d18a01bf24d7bb103108ee58b6",
-        "revCount": 746,
+        "rev": "9318f4413646fe83e281e3ca9c6dbe1014fa4b00",
+        "revCount": 754,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -784,11 +746,11 @@
     },
     "nixpkgs-stable": {
       "locked": {
-        "lastModified": 1758346548,
-        "narHash": "sha256-afXE7AJ7MY6wY1pg/Y6UPHNYPy5GtUKeBkrZZ/gC71E=",
+        "lastModified": 1758589230,
+        "narHash": "sha256-zMTCFGe8aVGTEr2RqUi/QzC1nOIQ0N1HRsbqB4f646k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b2a3852bd078e68dd2b3dfa8c00c67af1f0a7d20",
+        "rev": "d1d883129b193f0b495d75c148c2c3a7d95789a0",
         "type": "github"
       },
       "original": {
@@ -800,11 +762,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1758277210,
-        "narHash": "sha256-iCGWf/LTy+aY0zFu8q12lK8KuZp7yvdhStehhyX1v8w=",
+        "lastModified": 1758427187,
+        "narHash": "sha256-pHpxZ/IyCwoTQPtFIAG2QaxuSm8jWzrzBGjwQZIttJc=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "8eaee110344796db060382e15d3af0a9fc396e0e",
+        "rev": "554be6495561ff07b6c724047bdd7e0716aa7b46",
         "type": "github"
       },
       "original": {
@@ -848,11 +810,11 @@
     },
     "overlay-terraform-2025-09-19": {
       "locked": {
-        "lastModified": 1758346548,
-        "narHash": "sha256-afXE7AJ7MY6wY1pg/Y6UPHNYPy5GtUKeBkrZZ/gC71E=",
+        "lastModified": 1758589230,
+        "narHash": "sha256-zMTCFGe8aVGTEr2RqUi/QzC1nOIQ0N1HRsbqB4f646k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b2a3852bd078e68dd2b3dfa8c00c67af1f0a7d20",
+        "rev": "d1d883129b193f0b495d75c148c2c3a7d95789a0",
         "type": "github"
       },
       "original": {
@@ -864,11 +826,11 @@
     },
     "overlay-terraform-docs-2025-09-13": {
       "locked": {
-        "lastModified": 1758346548,
-        "narHash": "sha256-afXE7AJ7MY6wY1pg/Y6UPHNYPy5GtUKeBkrZZ/gC71E=",
+        "lastModified": 1758589230,
+        "narHash": "sha256-zMTCFGe8aVGTEr2RqUi/QzC1nOIQ0N1HRsbqB4f646k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "b2a3852bd078e68dd2b3dfa8c00c67af1f0a7d20",
+        "rev": "d1d883129b193f0b495d75c148c2c3a7d95789a0",
         "type": "github"
       },
       "original": {
@@ -1008,8 +970,7 @@
       "inputs": {
         "ai-robot-txt": "ai-robot-txt",
         "awesome": "awesome",
-        "awesomerc": "awesomerc",
-        "direnvrc": "direnvrc",
+        "bling": "bling",
         "disko": "disko",
         "dotgit-sync": "dotgit-sync",
         "home-manager": "home-manager",
@@ -1030,9 +991,7 @@
         "overlay-terraform-2025-09-19": "overlay-terraform-2025-09-19",
         "overlay-terraform-docs-2025-09-13": "overlay-terraform-docs-2025-09-13",
         "overlay-vdirsyncer-2025-08-28": "overlay-vdirsyncer-2025-08-28",
-        "sops-nix": "sops-nix",
-        "tmuxdata": "tmuxdata",
-        "tmuxrc": "tmuxrc"
+        "sops-nix": "sops-nix"
       }
     },
     "sops-nix": {
@@ -1206,46 +1165,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "tmuxdata": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756378999,
-        "narHash": "sha256-D08YuYysx4kKTLoNBCzVbV8M3uuQHkg0w/vlldnSMww=",
-        "ref": "refs/heads/main",
-        "rev": "b3cb952ea812b97b8d3c16ea8261584635a81be6",
-        "revCount": 82,
-        "type": "git",
-        "url": "ssh://git@framagit.org/rdeville-private/dotfiles/tmux"
-      },
-      "original": {
-        "type": "git",
-        "url": "ssh://git@framagit.org/rdeville-private/dotfiles/tmux"
-      }
-    },
-    "tmuxrc": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1756380603,
-        "narHash": "sha256-qs5Q9UCpdM4pm0dIX2PnPDo2Wn/GonC7Ut7whrhzmJA=",
-        "ref": "refs/heads/main",
-        "rev": "3ae4fe0ec785c0db3444d94c950d05c0ac533957",
-        "revCount": 102,
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/tmux"
-      },
-      "original": {
-        "type": "git",
-        "url": "https://framagit.org/rdeville-public/dotfiles/tmux"
       }
     },
     "treefmt-nix": {

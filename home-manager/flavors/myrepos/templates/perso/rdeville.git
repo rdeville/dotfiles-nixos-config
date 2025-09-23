@@ -1,0 +1,5 @@
+include =
+  CONF_DIR="${XDG_DATA_HOME:-${HOME}/.local/share}/mr/repos"
+  cat ${CONF_DIR}/framagit.org/*/*.git
+
+# vim: ft=dosini

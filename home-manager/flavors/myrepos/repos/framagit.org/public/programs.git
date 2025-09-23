@@ -1,0 +1,13 @@
+[${HOME}/git/framagit.org/public/programs/christmas-draw]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/programs/christmas-draw.git"
+
+[${HOME}/git/framagit.org/public/programs/dotgit-sync]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/programs/dotgit-sync.git"
+
+[${HOME}/git/framagit.org/public/programs/dotgit-sync-templates]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/programs/dotgit-sync-templates.git"
+
+# vim: ft=dosini

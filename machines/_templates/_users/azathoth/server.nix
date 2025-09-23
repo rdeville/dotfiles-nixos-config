@@ -80,6 +80,8 @@ in {
           // acc) {}
         lib.getValidHosts;
       });
+
+      tmux.enable = true;
     };
   };
 }
