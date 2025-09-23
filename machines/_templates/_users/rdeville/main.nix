@@ -10,7 +10,6 @@
     "30105708"
     "30105737"
   ];
-
 in {
   sops = {
     age = {
@@ -88,6 +87,7 @@ in {
       opentofu.enable = true;
       terraform.enable = true;
       terragrunt.enable = true;
+      myrepos.enable = true;
 
       spotify-player = {
         enable = true;

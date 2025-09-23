@@ -24,6 +24,7 @@ in {
         git.enable = false;
         mr.enable = false;
       };
+      tmux.enable = true;
     };
   };
 }
