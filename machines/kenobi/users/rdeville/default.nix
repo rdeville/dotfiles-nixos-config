@@ -1,4 +1,4 @@
-{config, ...}: let
+{config, lib, pkgs, ...}: let
   keyFile = "${config.xdg.cacheHome}/.age.key";
 in {
   sops = {
@@ -26,6 +26,13 @@ in {
     flavors = {
       bluetooth = {
         enable = true;
+      };
+      spotify-player = {
+        enable = true;
+        client_id_command = lib.strings.concatStringsSep " " [
+          "${pkgs.coreutils}/bin/cat"
+          "${config.xdg.configHome}/sops-nix/secrets/spotify-client-id"
+        ];
       };
     };
   };
