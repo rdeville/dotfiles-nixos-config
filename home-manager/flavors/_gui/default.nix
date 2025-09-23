@@ -15,6 +15,7 @@
   darwinPkgs = [];
 in {
   imports = [
+    ./awesome
     ./firefox
     ./kitty
     ./rofi

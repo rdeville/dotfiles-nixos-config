@@ -17,10 +17,6 @@
     nixgl = {
       url = "github:nix-community/nixGL";
     };
-    awesome = {
-      url = "github:awesomeWM/awesome/master";
-      flake = false;
-    };
     nix-index-database = {
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -31,6 +27,14 @@
     };
     ls-colors = {
       url = "github:trapd00r/LS_COLORS";
+      flake = false;
+    };
+    awesome = {
+      url = "github:awesomeWM/awesome/master";
+      flake = false;
+    };
+    bling = {
+      url = "github:BlingCorp/bling/master";
       flake = false;
     };
   };

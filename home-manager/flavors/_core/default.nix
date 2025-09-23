@@ -15,13 +15,13 @@
   darwinPkgs = [];
 in {
   imports = [
+    ./direnv
     ./git
     ./mr
     ./starship
     ./tmux
     ./zsh
     ./bat.nix
-    ./direnv.nix
     ./fastfetch.nix
     ./fonts.nix
     ./gpg.nix

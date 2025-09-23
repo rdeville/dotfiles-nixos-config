@@ -47,6 +47,7 @@ In order to use this repos, you must either be :
   Home-Manager configurations.
 * On any Linux OS with [Nix](https://nixos.org/download/) installed with
   [Home-Manager](https://nix-community.github.io/home-manager/).
+  ⚠️ In this case, you will only be able to use Home-Manager flavors.
 
 Optionally, to automate the setup of this repository, you can use following
 packages :
@@ -141,6 +142,93 @@ If you want to use OS flavors, add following lines in your files:
 ```
 
 ### ✨ Home-Manager Flavors
+
+#### Home-Manager as NixOS module
+
+If you want to use HM flavors as NixOS module, add following lines in your
+files:
+
+* `flake.nix`
+```nix
+{
+  inputs = {
+    # Replace by the one you use
+    nixpkgs = {
+      url = "github:nixos/nixpkgs/nixos-unstable";
+    };
+    home-manager = {
+      url = "github:nix-community/home-manager";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    nixos = {
+      url = "git+https://framagit.org/rdeville-public/dotfiles/nixos-config.git";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+    [...]
+  }
+
+  outputs = inputs @ {self, ...}: {
+    # NIXOS
+    # ------------------------------------------------------------------------
+    nixosConfigurations = {
+      your-hostname = inputs.nixpkgs.lib.nixosSystem {
+        modules = [
+          # NixOS module for this repo
+          inputs.nixos.nixosModules.os
+          # Home-Manager module for this repo
+          home-manager.nixosModules.home-manager
+          # Your other modules here
+          [...]
+          # Finally, your configuration.nix here:
+          ({ ...}: {
+            os = {
+              users = {
+                username = {
+                  [...]
+                };
+              };
+            };
+            home-manager = {
+              backupFileExtension = "bak";
+              useGlobalPkgs = false;
+              useUserPackages = true;
+              extraSpecialArgs = {
+                inherit inputs lib self;
+              };
+              users = {
+                # Finally, the home.nix per user here:
+                username = ({...}:
+                  imports = [
+                    inputs.nixos.homeManagerModules.hm
+                  ];
+                  hm = {
+                    flavors = {
+                      # Deactivate _core flavors which is activated by default
+                      _core = {
+                        enable = false;
+                      };
+                      # Activate kubernetes-client flavors
+                      kubernetes-client = {
+                        enable = true;
+                      };
+                      # Add other flavors if you want
+                    };
+                  };
+                };
+              };
+            };
+          })
+        ];
+      };
+    };
+  };
+}
+```
+
+
+#### Home-Manager Sandalone
 
 If you want to use HM flavors, add following lines in your files:
 
