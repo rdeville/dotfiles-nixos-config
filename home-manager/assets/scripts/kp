@@ -106,16 +106,35 @@ main() {
     return 4
   fi
 
-  if ! [[ -d "/tmp/${USER}" ]]; then
-    mkdir -p "/tmp/${USER}"
+  cmd+=" '${KEEPASS_DB}' $*"
+
+  local log_dir="/tmp/kp/${USER}"
+  local log_file="${log_dir}/kp.log"
+  local lock_file="${log_dir}/kp.lock"
+  if ! [[ -d "${log_dir}" ]]; then
+    mkdir -p "${log_dir}"
   fi
 
+  while [[ -f "${lock_file}" ]]; do
+    sleep 2
+
+    # If lock file is older than 2 minutes
+    if [[ -f "${lock_file}" ]]; then
+      date="$(date '+%s')"
+      lock="$(cat "${lock_file}")"
+      diff="$((date - ${lock:-${date}}))"
+      if [[ -n "${diff}" ]] && [[ "${diff}" -gt 5 ]]; then
+        rm "${lock_file}"
+      fi
+    fi
+  done
+
   # Compute the command to execute and execute it
-  cmd+=" '${KEEPASS_DB}' $*"
-  local timeout=2
-  local timeoutDate=$(($(date +%s) + timeout))
   local found=false
-  while [[ "$(date +%s)" -lt ${timeoutDate}  ]] && [[ "${found}" == "false" ]]; do
+  local timeout=4
+  local timeoutDate=$(($(date +%s) + timeout))
+  date '+%s' >"${lock_file}"
+  while [[ "$(date +%s)" -lt ${timeoutDate} ]] && [[ "${found}" == "false" ]]; do
     # Execute command and store STDOUT and STDERR
     {
       IFS=$'\n' read -r -d '' STDERR
@@ -123,15 +142,21 @@ main() {
     } < <((printf '\0%s\0' "$(eval "${cmd}")" 1>&2) 2>&1)
     # shellcheck disable=SC2181
     if [[ -n "${STDERR}" ]]; then
-      echo "$(date): ${STDERR}" >>"/tmp/${USER}/kp.log"
+      cat <<EOM >>"${log_file}"
+$(date): COMMAND
+$(date): ${cmd}
+$(date): STDERR
+$(date): ${STDERR}
+EOM
       sleep 1
     else
       found=true
     fi
   done
+  rm "${lock_file}"
 
   if [[ "${found}" == "false" ]]; then
-    _log "ERROR" "Unable to access to DB, see /tmp/${USER}/kp.log"
+    _log "ERROR" "Unable to access to DB, see ${log_file}"
     return 4
   fi
 
