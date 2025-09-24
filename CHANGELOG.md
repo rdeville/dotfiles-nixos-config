@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.2 (2025-09-24)
+
+### 🩹 Patch
+
+  * 🐛(hm/tmux): Remove importing file that does not exists anymore (!96) by Romain Deville ([`fa11483`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fa11483b6167adef54287d3ce519cd83f2b44602))
+  * 🐛(hm/tmux): Remove importing file that does not exists anymore by Romain Deville ([`56e1e68`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/56e1e6803589ea07c5e811ed0e45897e67a2a441)) 🔏
+
 ## v0.32.1 (2025-09-23)
 
 ### 🩹 Patch
