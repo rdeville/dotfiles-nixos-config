@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.3 (2025-09-24)
+
+### 🩹 Patch
+
+  * ⚡️(hm/assets/scripts): Improve kp wrapper script with lock management (!97) by Romain Deville ([`f7b19e2`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f7b19e22250590d3bac48e10b71b65931c26ac0f))
+  * ⚡️(hm/assets/scripts): Improve kp wrapper script with lock management by Romain Deville ([`f801938`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f801938d61d84316114faa54e14be9d6d899b0d9)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`cd0789a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/cd0789a82bd39c401f9e988dce9b034f2b1d864b)) 🔏
+
 ## v0.32.2 (2025-09-24)
 
 ### 🩹 Patch
