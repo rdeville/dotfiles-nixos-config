@@ -1,0 +1,5 @@
+[${HOME}/git/framagit.org/public/websites/romaindeville-fr]
+checkout =
+  mr_checkout "git@framagit.org:rdeville-public/websites/romaindeville-fr.git"
+
+# vim: ft=dosini
