@@ -32,14 +32,18 @@ _check_sha() {
   # shellcheck disable=SC2155
   local file_dir="$(dirname "${file}")"
   local sha_file="${XDG_CACHE_HOME:-${HOME}/.cache}/direnv${file_dir/${HOME}/}/${file_name}.sha"
+  local cache_file="${XDG_CACHE_HOME:-${HOME}/.cache}/direnv${file_dir/${HOME}/}/${file_name}"
 
   if ! [[ -f "${sha_file}" ]]; then
     _log "INFO" "direnv: Sha of **\`${file/${HOME}/\~}\`** does not exist yet."
     _log "INFO" "direnv: Will be computed in to **\`${sha_file/${HOME}/\~}\`** authorized."
     ! [[ -d "$(dirname "${sha_file}")" ]] && mkdir -p "$(dirname "${sha_file}")"
     shasum "${file}" >"${sha_file}"
+    cp "${file}" "${cache_file}"
   elif ! shasum -c "${sha_file}" &>/dev/null; then
     _log "ERROR" "direnv: Sha of **\`${file/${HOME}/\~}\`** differs from **\`${sha_file/${HOME}/\~}\`**."
+    _log "ERROR" "direnv: To see the diff, run:"
+    _log "ERROR" "**\`vimdiff ${cache_file/${HOME}/\~} ${file/${HOME}/\~}\`** to see the diff"
     return 1
   fi
 }
