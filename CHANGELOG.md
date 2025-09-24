@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.4 (2025-09-24)
+
+### 🩹 Patch
+
+  * 🔧(hm/myrepos): Add my website repository to the repository lists (!98) by Romain Deville ([`1d0d2d1`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1d0d2d1eb4aafcc2eea096f8c072ab36dd48595b))
+  * 🔧(hm/myrepos): Add my website repository to the repository lists by Romain Deville ([`5b83213`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5b83213ad28fbeda438c8cc96b439f7c192b4921)) 🔏
+
 ## v0.32.3 (2025-09-24)
 
 ### 🩹 Patch
