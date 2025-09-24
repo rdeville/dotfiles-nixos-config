@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.47.1 (2025-09-24)
+
+### 🩹 Patch
+
+  * ⚡️(hm/core/direnv): Improve my direnv stdlib with keepass lock (!159) by Romain Deville ([`d69f0fa`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d69f0fa7e9aa68d83b408317288285118923919c))
+  * ⚡️(hm/core/direnv): Improve my direnv stdlib with keepass lock by Romain Deville ([`7b4d804`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7b4d80485887877b79fb0fe029a4041fd2d3f7a9)) 🔏
+
 ## v0.47.0 (2025-09-23)
 
 ### ✨ Minor
