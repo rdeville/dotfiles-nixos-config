@@ -71,7 +71,7 @@ in {
         wayland = {
           swww = {
             wallpaperDir = ../../../../assets/images/wallpapers;
-            wallpaperRefresh = 360; # 6 hours
+            wallpaperRefresh = 60; # 1 hours
           };
         };
       };
