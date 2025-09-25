@@ -21,36 +21,11 @@ is_yubikey_plugged() {
     return 1
   fi
 
-  local log_dir="/tmp/kp/${USER}/"
-  local lock_file="/tmp/kp/${USER}/kp.lock"
-  local diff
-  if [[ -d "${log_dir}" ]]; then
-    mkdir -p "${log_dir}"
-  fi
-  # If current access to keepassdb, i.e. there is the lock file, either from
-  # this script or from another script.
-  # For instance, my personal script `kp` that is a wrapper around keepassxc-cli
-  while [[ -f "${lock_file}" ]]; do
-    sleep 2
-
-    # If lock file is older than 2 minutes
-    if [[ -f "${lock_file}" ]]; then
-      date="$(date '+%s')"
-      lock="$(cat "${lock_file}")"
-      diff="$((date - ${lock:-${date}}))"
-      if [[ -n "${diff}" ]] && [[ "${diff}" -gt 5 ]]; then
-        rm "${lock_file}"
-      fi
-    fi
-  done
-
-  # Set lock file to avoid concurrency access
-  date '+%s' >"${lock_file}"
   if ! ykman list 2>/dev/null | grep -q 'Serial:'; then
     _log "WARNING" "No yubikey plugged"
     return 1
   fi
-  rm "${lock_file}"
+  # rm "${lock_file}"
   return 0
 }
 
