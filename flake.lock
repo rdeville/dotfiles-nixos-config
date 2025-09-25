@@ -3,11 +3,11 @@
     "ai-robot-txt": {
       "flake": false,
       "locked": {
-        "lastModified": 1757852325,
-        "narHash": "sha256-Bt5cOt0JB5MpszIbr9xRnS3VpvT0dog6uhRf9eOxb+U=",
+        "lastModified": 1758795458,
+        "narHash": "sha256-BcrTtIOr0y45cpsMZfMbduie/vdMn79HuNvvXZYF6rY=",
         "owner": "ai-robots-txt",
         "repo": "ai.robots.txt",
-        "rev": "8df813b66ae87832d29dd99dd6cb8a4e20d760c8",
+        "rev": "38d60b928c029f1441786e2ad434a8d6f7254150",
         "type": "github"
       },
       "original": {
@@ -403,11 +403,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758692005,
-        "narHash": "sha256-bNRMXWSLM4K9cF1YaHYjLol60KIAWW4GzAoJDp5tA0w=",
+        "lastModified": 1758810399,
+        "narHash": "sha256-bpWoE1tiFX5T1tr5EudkpW9Kk02XR+6olkoSkf3nHZU=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "6ce2e18007ff022db41d9cc042f8838e8c51ed66",
+        "rev": "39d26c16866260eee6d0487fe9c102ba1c1bf7b2",
         "type": "github"
       },
       "original": {
@@ -659,11 +659,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758705098,
-        "narHash": "sha256-KZ2OH4OXL1MEl9Ye2gJpLhD8g+30kUAtqtn0oM8/lB0=",
+        "lastModified": 1758828337,
+        "narHash": "sha256-XLD5FBXOPo6MYGzyEC7zOcvEZ02UazsHgx9uSy9yDUY=",
         "ref": "refs/heads/main",
-        "rev": "2564fa5eeb511f91cdd9e39011046acf3fbd1609",
-        "revCount": 757,
+        "rev": "5be22f44f6a3a4fa7b3aaa572ee1120afa80d39c",
+        "revCount": 760,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -716,11 +716,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1758705098,
-        "narHash": "sha256-KZ2OH4OXL1MEl9Ye2gJpLhD8g+30kUAtqtn0oM8/lB0=",
+        "lastModified": 1758828337,
+        "narHash": "sha256-XLD5FBXOPo6MYGzyEC7zOcvEZ02UazsHgx9uSy9yDUY=",
         "ref": "refs/heads/main",
-        "rev": "2564fa5eeb511f91cdd9e39011046acf3fbd1609",
-        "revCount": 757,
+        "rev": "5be22f44f6a3a4fa7b3aaa572ee1120afa80d39c",
+        "revCount": 760,
         "type": "git",
         "url": "https://framagit.org/rdeville-public/dotfiles/nixos-config.git"
       },
@@ -762,11 +762,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1758427187,
-        "narHash": "sha256-pHpxZ/IyCwoTQPtFIAG2QaxuSm8jWzrzBGjwQZIttJc=",
+        "lastModified": 1758690382,
+        "narHash": "sha256-NY3kSorgqE5LMm1LqNwGne3ZLMF2/ILgLpFr1fS4X3o=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "554be6495561ff07b6c724047bdd7e0716aa7b46",
+        "rev": "e643668fd71b949c53f8626614b21ff71a07379d",
         "type": "github"
       },
       "original": {
