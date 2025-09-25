@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.47.2 (2025-09-25)
+
+### 🩹 Patch
+
+  * ⚡️(hm/core/direnv): Remove Yubi lock access, waiting time too long (!160) by Romain Deville ([`8348c2b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8348c2b999f975fad6adf87a8793df39371e7bb3))
+  * ⚡️(hm/core/direnv): Remove Yubi lock access, waiting time too long by Romain Deville ([`78fb21c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/78fb21cca8087c13e94079dbed3173ab87bb89d3)) 🔏
+
 ## v0.47.1 (2025-09-24)
 
 ### 🩹 Patch
