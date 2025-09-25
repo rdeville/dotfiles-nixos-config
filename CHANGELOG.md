@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.5 (2025-09-25)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`d13debb`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d13debbd781ae2cc3dae67b2b45f4c90d6c3ae37)) 🔏
+  * 🍱(assets/images): Add new wallpapers and change wallpaperRefresh (!99) by Romain Deville ([`706597b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/706597b621fc13d8bab04043f47c59a45e10df15))
+  * 🍱(assets/images): Add wallpapers and optimize all of them with jpegoptim by Romain Deville ([`b8de280`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/b8de280911ec990cb1dbfcd5c9e7bbf1f6429822)) 🔏
+  * 🔧(templates/users/rdeville): Change wallpaperRefresh from 360 to 60 by Romain Deville ([`d9141ec`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/d9141ec5188622c9737a660bea8887ffbeb7eb35)) 🔏
+
 ## v0.32.4 (2025-09-24)
 
 ### 🩹 Patch
