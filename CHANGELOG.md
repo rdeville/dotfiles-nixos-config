@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.6 (2025-09-26)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock (!100) by Romain Deville ([`4cabf02`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/4cabf02292e7869a071aa1d821e7f8ef1b0b8372))
+  * ⬆️ Update flake.lock by Romain Deville ([`aedea46`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/aedea4648ea6e2c2ac56d2fd4ece78e4674f17d0)) 🔏
+
 ## v0.32.5 (2025-09-25)
 
 ### 🩹 Patch
