@@ -28,6 +28,11 @@ in {
                 Enable my firefox custom CSS.
               ''
               config.hm.flavors.${name}.enable;
+            enableSidebery =
+              lib.mkDependEnabledOption ''
+                Enable Sidebery Add-on.
+              ''
+              config.hm.flavors.${name}.enable;
           };
         };
       };
