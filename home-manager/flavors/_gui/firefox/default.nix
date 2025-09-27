@@ -9,6 +9,7 @@
   cfg = config.hm.flavors.${name}.${subname};
 in {
   imports = [
+    ./policies.nix
     ./profiles.nix
     ./policies.extensions.nix
   ];
@@ -43,7 +44,6 @@ in {
     programs = {
       firefox = {
         enable = true;
-        policies = import ./policies.nix;
         package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
       };
     };
