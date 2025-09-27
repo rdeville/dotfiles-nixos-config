@@ -1,6 +1,21 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.0 (2025-09-27)
+
+### ✨ Minor
+
+  * ✨(hm/gui/firefox): Add options to disable customCSS or Sidebery (!163) by Romain Deville ([`279e764`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/279e7642206af7fb76cd20706066334f50a7434f))
+
+### 🩹 Patch
+
+  * ⚡️(hm/gui/firefox): Make Sidebery add-on optional (activated by default) by Romain Deville ([`3bc287a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3bc287a94bed6e571e2ba88ec4a12db3e1fb2d90)) 🔏
+  * ⚡️(hm/gui/firefox): Add option enableCustomCSS to manage userChrome.css by Romain Deville ([`ce29ca1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ce29ca1005e8037f474e5b2c7c3f317c5125bd0a)) 🔏
+
+### 🔊 Others
+
+  * ♻️(hm/gui/firefox): Refacto policies to be a normal nix module by Romain Deville ([`fc5316c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fc5316ca9bec155acfc07fd3c14a4852767d8afa)) 🔏
+
 ## v0.47.4 (2025-09-27)
 
 ### 🩹 Patch
