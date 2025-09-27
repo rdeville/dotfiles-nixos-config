@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.47.4 (2025-09-27)
+
+### 🩹 Patch
+
+  * ⚡️(hm/gui): Add waylan support to firefow for screen sharing (!162) by Romain Deville ([`6b2e317`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b2e31796e39fefc02f0d736ee4f781c52ce8dc3))
+  * ⚡️(hm/gui): Add wayland support to firefox to support screen sharing by Romain Deville ([`279983d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/279983d596256277a9de4417bccbda63d4c844e7))
+
+### 🔊 Others
+
+  * 🎨(hm/gui): Format files using nix fmt by Romain Deville ([`262967b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/262967be4a9fd9cd72c8d2f2f1ab1176c2b9cf9e))
+
 ## v0.47.3 (2025-09-26)
 
 ### 🩹 Patch
