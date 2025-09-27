@@ -1,10 +1,12 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   name = builtins.baseNameOf ../.;
   subname = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name}.${subname};
 in {
   imports = [
     ./hyprland
@@ -27,6 +29,18 @@ in {
               (! config.hm.isDarwin && config.hm.flavors.${name}.enable);
           };
         };
+      };
+    };
+  };
+
+  config = lib.mkIf cfg.enable {
+    xdg = {
+      portal = {
+        enable = true;
+        extraPortals = with pkgs; [
+          xdg-desktop-portal-wlr
+          xdg-desktop-portal-gtk
+        ];
       };
     };
   };

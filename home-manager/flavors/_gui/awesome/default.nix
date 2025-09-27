@@ -36,7 +36,8 @@ in {
       flavors = {
         ${name} = {
           ${subname} = {
-            enable = lib.mkDependEnabledOption ''
+            enable =
+              lib.mkDependEnabledOption ''
                 Install ${name}.${subname} Home-Manager flavor.
               ''
               (
