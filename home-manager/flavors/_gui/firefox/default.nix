@@ -1,6 +1,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   name = builtins.baseNameOf ../.;
@@ -33,6 +34,7 @@ in {
       firefox = {
         enable = true;
         policies = import ./policies.nix;
+        package = (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {});
       };
     };
   };
