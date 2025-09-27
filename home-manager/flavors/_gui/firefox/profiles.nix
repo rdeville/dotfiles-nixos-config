@@ -4,6 +4,10 @@
   lib,
   ...
 }: let
+  name = builtins.baseNameOf ../.;
+  subname = builtins.baseNameOf ./.;
+  cfg = config.hm.flavors.${name}.${subname};
+
   nixIcon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
   hidden = {
     metaData = {
@@ -90,30 +94,45 @@ in {
         profiles =
           if config.hm.isWork
           then {
-            pro = {
-              id = 1;
-              isDefault = config.hm.isWork;
-              name = "pro";
-              userContent = "";
-              settings = settings // {};
-              inherit
-                search
-                userChrome
-                ;
-            };
+            pro =
+              {
+                id = 1;
+                isDefault = config.hm.isWork;
+                name = "pro";
+                userContent = "";
+                settings = settings // {};
+                inherit
+                  search
+                  userChrome
+                  ;
+              }
+              // (
+                if cfg.enableCustomCSS
+                then {
+                  inherit userChrome;
+                }
+                else {}
+              );
           }
           else {
-            perso = {
-              id = 0;
-              isDefault = ! config.hm.isWork;
-              name = "perso";
-              userContent = "";
-              settings = settings // {};
-              inherit
-                search
-                userChrome
-                ;
-            };
+            perso =
+              {
+                id = 0;
+                isDefault = ! config.hm.isWork;
+                name = "perso";
+                userContent = "";
+                settings = settings // {};
+                inherit
+                  search
+                  ;
+              }
+              // (
+                if cfg.enableCustomCSS
+                then {
+                  inherit userChrome;
+                }
+                else {}
+              );
           };
       };
     };

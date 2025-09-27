@@ -9,6 +9,7 @@
   cfg = config.hm.flavors.${name}.${subname};
 in {
   imports = [
+    ./policies.nix
     ./profiles.nix
     ./policies.extensions.nix
   ];
@@ -23,6 +24,16 @@ in {
                 Install ${name}.${subname} Home-Manager flavor.
               ''
               config.hm.flavors.${name}.enable;
+            enableCustomCSS =
+              lib.mkDependEnabledOption ''
+                Enable my firefox custom CSS.
+              ''
+              config.hm.flavors.${name}.enable;
+            enableSidebery =
+              lib.mkDependEnabledOption ''
+                Enable Sidebery Add-on.
+              ''
+              config.hm.flavors.${name}.enable;
           };
         };
       };
@@ -33,8 +44,7 @@ in {
     programs = {
       firefox = {
         enable = true;
-        policies = import ./policies.nix;
-        package = (pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {});
+        package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
       };
     };
   };
