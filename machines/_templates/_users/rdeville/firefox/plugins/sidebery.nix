@@ -371,9 +371,29 @@ in {
                     prev_panel = "Alt+Shift+P";
                     new_tab_in_group = "Alt+Space";
                     unload_other_tabs_in_panel = "Alt+U";
-                    switch_to_next_tab = "Alt+Shift+J";
-                    switch_to_prev_tab = "Alt+Shift+K";
+                    switch_to_next_tab = "Alt+Shift+K";
+                    switch_to_prev_tab = "Alt+Shift+J";
                   };
+                  sidebarCSS = ''
+                  #root.root {
+                    --ntb-border-radius: 0px;
+                    --search-border-radius: 0px;
+                    --slt-margin: 0px;
+                    --slt-border-radius: 0px;
+                    --tabs-margin: 0px;
+                    --tabs-border-radius: 0px;
+                    --tabs-color-layer-opacity: 0.125;
+                    --tabs-activated-color-layer-opacity: 0.25;
+                    --tabs-discarded-favicon-opacity: 0.25;
+                    --tabs-discarded-title-opacity: 0.5;
+                    --tabs-indent: 12px;
+                    --tabs-lvl-opacity: 0;
+                    --nav-btn-margin: 0px;
+                    --nav-btn-border-radius: 0px;
+                    --general-margin: 0px;
+                    --general-border-radius: 0px;
+                  }
+                  '';
                 };
               };
             };
