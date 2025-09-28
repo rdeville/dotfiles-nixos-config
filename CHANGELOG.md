@@ -1,6 +1,19 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.7 (2025-09-28)
+
+### 🩹 Patch
+
+  * ⚡️(hm/templates/users): Add Firefox add-on configuration for rdeville (!101) by Romain Deville ([`66aa7d0`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/66aa7d06bff64c88f93e383afe26ba3ef2b4c7e5))
+  * ⚡️(template/users/rdeville): Add firefox add-on configuration by Romain Deville ([`fbaf161`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/fbaf16186a6101181dd8d3041bfea95634554f20))
+  * ⬆️ Update flake.lock by Romain Deville ([`082958b`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/082958b3f7f1b12c95904cde8f5664b1fc409a63))
+
+### 🔊 Others
+
+  * 🔥(diagrams): Remove d2 diagrams since I do not use it by Romain Deville ([`1a795e5`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/1a795e5a0796079442343dec023c1ece010889e8))
+  * 🚚(templates/users/rdeville): Move file kiwi.lua into dotfiles folder by Romain Deville ([`5c26125`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/5c261253dd08d21339790307bd977fc5882ce3e1))
+
 ## v0.32.6 (2025-09-26)
 
 ### 🩹 Patch
