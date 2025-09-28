@@ -34,9 +34,11 @@ in {
 
         zsh-abbr = {
           abbreviations = {
+            tg = "terragrunt";
             tga = "terragrunt apply";
             tgf = "terragrunt run -- fmt";
             tgi = "terragrunt init";
+            tgiu = "terragrunt init --upgrade";
             tgo = "terragrunt output";
             tgp = "terragrunt plan";
             tgv = "terragrunt validate";
@@ -47,6 +49,7 @@ in {
             tgaa = "terragrunt apply --all";
             tgfa = "terragrunt run --all -- fmt";
             tgia = "terragrunt init --all";
+            tgiua = "terragrunt init --upgrade --all";
             tgoa = "terragrunt output --all";
             tgpa = "terragrunt plan --all";
             tgva = "terragrunt validate --all";
