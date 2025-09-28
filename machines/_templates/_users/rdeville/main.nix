@@ -58,7 +58,7 @@ in {
   xdg = {
     dataFile = {
       "nvim/kiwi.lua" = {
-        source = ./files/kiwi.lua;
+        source = ./dotfiles/nvim/kiwi.lua;
       };
     };
   };
