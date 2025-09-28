@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.1 (2025-09-28)
+
+### 🩹 Patch
+
+  * 🔧(hm/terragrunt): Update zsh-abbr due to Terragrunt CLI update (!164) by Romain Deville ([`eae8ab3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/eae8ab3337e556b40dbe301b399d43862f6e1eeb))
+  * 🔧(hm/terragrunt): Update zsh-abbr due to Terragrunt CLI update by Romain Deville ([`8a4acbe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8a4acbe8dafc98ea684260450861c0cff0dbe847)) 🔏
+
 ## v0.48.0 (2025-09-27)
 
 ### ✨ Minor
