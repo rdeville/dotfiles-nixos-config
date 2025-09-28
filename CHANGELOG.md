@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.2 (2025-09-28)
+
+### 🩹 Patch
+
+  * 🔧(hm/terragrunt): Add new abbr for terragrunt to upgrade provider (!165) by Romain Deville ([`1637b13`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1637b1354a0f63756e560eb3ea6aced137125bf9))
+  * 🔧(hm/terragrunt): Add new abbr for terragrunt to upgrade provider by Romain Deville ([`ac4adaf`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ac4adafd1723a219a28c4b0f62f4ebb86b1c7507)) 🔏
+
 ## v0.48.1 (2025-09-28)
 
 ### 🩹 Patch
