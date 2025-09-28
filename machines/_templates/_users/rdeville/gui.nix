@@ -1,4 +1,8 @@
 {...}: {
+  imports = [
+    ./firefox
+  ];
+
   hm = {
     flavors = {
       _gui = {
