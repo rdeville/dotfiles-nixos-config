@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.32.8 (2025-09-28)
+
+### 🩹 Patch
+
+  * 🔧(templates/users): Update Firefox sidebery add-on configuration (!102) by Romain Deville ([`f712a2a`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/f712a2a1a96e7304af0797e10e20d2f3620f2251))
+  * 🔧(templates/users): Update Firefox sidebery add-on configuration by Romain Deville ([`311cc01`](https://framagit.org/rdeville-private/dotfiles/nixos-config/-/commit/311cc01a0e9e26a4dd20084262c41045e2e28349)) 🔏
+
 ## v0.32.7 (2025-09-28)
 
 ### 🩹 Patch
