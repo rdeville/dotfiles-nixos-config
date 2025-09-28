@@ -26,43 +26,32 @@ in {
     };
 
     programs = {
-      zsh = let
-        aliasAbbr = {
-          tg = "terragrunt";
-          tgra = "terragrunt run-all";
-        };
-      in {
+      zsh = {
         initContent = lib.mkBefore ''
           autoload -U +X bashcompinit && bashcompinit
           complete -o nospace -C "$(command -v terragrunt)" terragrunt
         '';
 
-        shellAliases = aliasAbbr;
-
         zsh-abbr = {
-          abbreviations =
-            aliasAbbr
-            // {
-              tga = "tg apply";
-              tgf = "tg fmt";
-              tgi = "tg init";
-              tgo = "tg output";
-              tgp = "tg plan";
-              tgv = "tg validate";
-              tgs = "tg state";
-              tgssh = "tg state show";
-              tgsh = "tg show";
+          abbreviations = {
+            tga = "terragrunt apply";
+            tgf = "terragrunt run -- fmt";
+            tgi = "terragrunt init";
+            tgo = "terragrunt output";
+            tgp = "terragrunt plan";
+            tgv = "terragrunt validate";
+            tgs = "terragrunt state";
+            tgssh = "terragrunt state show";
+            tgsh = "terragrunt show";
 
-              tgraa = "tgra apply";
-              tgraf = "tgra fmt";
-              tgrai = "tgra init";
-              tgrao = "tgra output";
-              tgrap = "tgra plan";
-              tgrav = "tgra validate";
-              tgras = "tgra state";
-              tgrassh = "tgra state show";
-              tgrash = "tgra show";
-            };
+            tgaa = "terragrunt apply --all";
+            tgfa = "terragrunt run --all -- fmt";
+            tgia = "terragrunt init --all";
+            tgoa = "terragrunt output --all";
+            tgpa = "terragrunt plan --all";
+            tgva = "terragrunt validate --all";
+            tgsha = "terragrunt show --all";
+          };
         };
       };
     };
