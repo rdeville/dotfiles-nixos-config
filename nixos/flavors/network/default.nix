@@ -212,7 +212,6 @@ in {
   config = lib.mkIf cfg.enable {
     networking = {
       inherit (cfg) useDHCP;
-
       dhcpcd = {
         enable = cfg.useDHCP;
       };
@@ -220,6 +219,7 @@ in {
 
     systemd = {
       network = {
+        enable = true;
         # Force links to empty to avoid auto-configuration of interface if
         # facter detect VPN interfaces
         links = lib.mkForce {};
@@ -371,16 +371,56 @@ in {
       self = {
         interfaces = builtins.foldl' (acc: elem: let
           iface = config.os.flavors.network.networks.${elem};
+          realIface = iface.interface;
+          portTCP = lib.lists.unique ((
+              if config.networking.firewall.interfaces ? ${realIface}.allowedTCPPorts
+              then config.networking.firewall.interfaces.${realIface}.allowedTCPPorts
+              else []
+            )
+            ++ (
+              if config.networking.firewall.interfaces ? ${elem}.allowedTCPPorts
+              then config.networking.firewall.interfaces.${elem}.allowedTCPPorts
+              else []
+            ));
+          portUDP = lib.lists.unique (
+            (
+              if config.networking.firewall.interfaces ? ${realIface}.allowedUDPPorts
+              then config.networking.firewall.interfaces.${realIface}.allowedUDPPorts
+              else []
+            )
+            ++ (
+              if config.networking.firewall.interfaces ? ${elem}.allowedUDPPorts
+              then config.networking.firewall.interfaces.${elem}.allowedUDPPorts
+              else []
+            )
+          );
         in
           {
             ${iface.topology.name} = {
               mac = lib.mkForce (
-                if iface.allowedTCPPorts == []
-                then ""
-                else "Ports: ${builtins.concatStringsSep "," (
-                  builtins.map (port: toString port)
-                  iface.allowedTCPPorts
-                )}"
+                let
+                  portsTCP =
+                    if portTCP == []
+                    then ""
+                    else "TCP: ${builtins.concatStringsSep "," (
+                      builtins.map (port: toString port)
+                      portTCP
+                    )}";
+                  portsUDP =
+                    if portUDP == []
+                    then ""
+                    else "UDP: ${builtins.concatStringsSep "," (
+                      builtins.map (port: toString port)
+                      portUDP
+                    )}";
+                in
+                  if portsTCP != "" && portsUDP != ""
+                  then "${portsTCP}; ${portsUDP}"
+                  else if portsTCP != "" && portsUDP == ""
+                  then "${portsTCP}"
+                  else if portsTCP == "" && portsUDP != ""
+                  then "${portsUDP}"
+                  else ""
               );
               addresses =
                 if cfg.networks.${elem}.topology ? addresses
