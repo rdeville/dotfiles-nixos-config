@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.3 (2025-10-01)
+
+### 🩹 Patch
+
+  * ⚡️(topology): Update list of ports rendered for network in topology (!166) by Romain Deville ([`c37d321`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c37d321b03c947ca611bb2a6dd830adc94170c07))
+  * ⚡️(topology): Update list of ports rendered for network in topology by Romain Deville ([`05a34af`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/05a34af12fef29d1daa97a105a563b8714a58d04)) 🔏
+
+### 🔊 Others
+
+  * 🎨(os/net/wireguard): Format the code using nix fmt by Romain Deville ([`844c7d3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/844c7d3eebeed5bcc2802c4a7a4e0b3801b12d3a)) 🔏
+
 ## v0.48.2 (2025-09-28)
 
 ### 🩹 Patch
