@@ -5,7 +5,10 @@
 }: let
   cfg = config.os.flavors.network;
 
-  wgNetwork = builtins.filter (elem: cfg.networks.${elem}.wireguard.enable) (builtins.attrNames cfg.networks);
+  wgNetwork = builtins.filter (
+    elem:
+      cfg.networks.${elem}.wireguard.enable
+  ) (builtins.attrNames cfg.networks);
 
   allowedUDPPorts =
     builtins.foldl' (acc: name:
