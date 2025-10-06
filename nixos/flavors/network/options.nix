@@ -156,6 +156,15 @@ in {
       default = [];
     };
 
+    domains = lib.mkOption {
+      type = lib.types.nullOr (lib.types.listOf lib.types.str);
+      description = ''
+        List of domains for which DNS requests will be done through
+        this interface
+      '';
+      default = null;
+    };
+
     addresses = lib.mkOption {
       type = lib.types.listOf lib.types.str;
       description = "List of IPs for this network";
