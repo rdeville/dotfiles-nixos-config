@@ -11,13 +11,6 @@
         BackgroundAppUpdate = false;
         DefaultDownloadDirectory = "$HOME/downloads";
         DisableAppUpdate = true;
-        DNSOverHTTPS = {
-          Enabled = true;
-          ProviderURL = "https://ns1.fdn.fr/dns-query";
-          Locked = true;
-          ExcludedDomains = [];
-          Fallback = true;
-        };
         EnableTrackingProtection = {
           Value = true;
           Locked = true;
