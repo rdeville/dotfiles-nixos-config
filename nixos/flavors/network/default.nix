@@ -233,6 +233,7 @@ in {
                 (interface)
                 enable
                 dns
+                domains
                 DHCP
                 address
                 gateway
