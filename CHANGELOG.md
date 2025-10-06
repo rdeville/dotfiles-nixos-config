@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.4 (2025-10-06)
+
+### 🩹 Patch
+
+  * ⚡️(os/net): Add domain to do DNS resolution per network (!167) by Romain Deville ([`630bd15`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/630bd15214e297d2a230915cf3fbf4993cd0ac3b))
+  * ⚡️(os/net): Add option `domains` to specify per interface domain resolution by Romain Deville ([`4837c10`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4837c10d6683d5b56bdbf18ca84b5d9f13d11ed7)) 🔏
+  * 🔧(hm/gui/firefox): Remove DoT config since I use my own private DNS resolver by Romain Deville ([`891ac58`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/891ac58f50afc79935508a225ccdc00d71f2da2e)) 🔏
+
 ## v0.48.3 (2025-10-01)
 
 ### 🩹 Patch
