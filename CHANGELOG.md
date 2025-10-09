@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.6 (2025-10-09)
+
+### 🩹 Patch
+
+  * 🐛(os-hm/window-manager): Fix AwesomeWM build breaking due to CMake 4 update (!169) by Romain Deville ([`afdfb15`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/afdfb15dbc3c91a3669e2711efd350df3dbe1e6e))
+  * 🐛(os-hm/window-manager): Fix AwesomeWM build breaking due to CMake 4 update by Romain Deville ([`67aa212`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/67aa212a8f1b3eceba16b20791b060b8994e7b85)) 🔏
+
 ## v0.48.5 (2025-10-06)
 
 ### 🩹 Patch
