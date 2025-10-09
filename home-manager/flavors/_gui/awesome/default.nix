@@ -19,7 +19,14 @@
         patchShebangs tests/examples/_postprocess.lua
         patchShebangs tests/examples/_postprocess_cleanup.lua
       '';
-      cmakeFlags = old.cmakeFlags ++ ["-DGENERATE_MANPAGES=OFF"];
+
+      cmakeFlags =
+        old.cmakeFlags
+        ++ [
+          "-DGENERATE_MANPAGES=OFF"
+          "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
+        ];
+
       GI_TYPELIB_PATH = let
         mkTypeLibPath = pkg: "${pkg}/lib/girepository-1.0";
         extraGITypeLibPaths = pkgs.lib.forEach extraGIPackages mkTypeLibPath;
