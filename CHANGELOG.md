@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.7 (2025-10-09)
+
+### 🩹 Patch
+
+  * ⚡️(hm/gui/firefox): Allow to select precisely which firefox addon to install (!170) by Romain Deville ([`cde6311`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cde6311953c64bb24f722996ca1a55196dbb64e0))
+  * ⚡️(hm/gui/firefox): Allow to select precisely which firefox addon to install by Romain Deville ([`9f97aa5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9f97aa53e7088c31629b72a237c6908dbeb507ad)) 🔏
+  * 👽️(hm/gui/wayland): Update xdg.portal config as its backend config change by Romain Deville ([`c926fa8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c926fa8293b7c5f11d7c7883f98c9dd17fcffd7e)) 🔏
+
 ## v0.48.6 (2025-10-09)
 
 ### 🩹 Patch
