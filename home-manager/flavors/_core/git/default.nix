@@ -61,27 +61,28 @@ in {
         signing = {
           inherit (cfg.signing) format;
         };
+      };
 
-        delta = {
-          # DETLA CONFIG (Git Pager config when using git diff)
-          enable = true;
-          options = {
-            dark = true;
-            line-numbers = true;
-            side-by-side = true;
-            true-color = "always";
-            plus-style = "syntax #013400";
-            minus-style = "syntax #340001";
-          };
+      delta = {
+        # DETLA CONFIG (Git Pager config when using git diff)
+        enable = true;
+        enableGitIntegration = true;
+        options = {
+          dark = true;
+          line-numbers = true;
+          side-by-side = true;
+          true-color = "always";
+          plus-style = "syntax #013400";
+          minus-style = "syntax #340001";
         };
+      };
 
-        difftastic = {
-          # DETLA CONFIG (Git Pager config when using git diff)
-          enable = ! config.programs.git.delta.enable;
-          options = {
-            background = "dark";
-            display = "side-by-side-show-both";
-          };
+      difftastic = {
+        # DETLA CONFIG (Git Pager config when using git diff)
+        enable = ! config.programs.delta.enable;
+        options = {
+          background = "dark";
+          display = "side-by-side-show-both";
         };
       };
     };
