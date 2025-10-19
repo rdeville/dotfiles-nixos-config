@@ -93,7 +93,7 @@ in {
               border = "single";
               filterMode = "fuzzy";
               pager =
-                if config.programs.git.delta.enable
+                if config.programs.delta.enable
                 then "delta"
                 else "";
               promptToReturnFromSubprocess = true;

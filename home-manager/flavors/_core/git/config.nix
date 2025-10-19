@@ -26,7 +26,7 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       git = {
-        extraConfig = {
+        settings = {
           # GIT-* COMMAND CONFIG
           # ==============================================================================
           # Core
