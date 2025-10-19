@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.8 (2025-10-19)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`ec5d76d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ec5d76d3bee38f836a06a01fcc9619afddf6abad)) 🔏
+  * 👽️(hm/core): Update git, delta and difftastice config due to HM update (!171) by Romain Deville ([`32efe31`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/32efe31675d90de0d711a51ceb93015c1ea945de))
+  * 👽️(hm/core): Update git, delta and difftastice config due to HM update by Romain Deville ([`9666c90`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9666c900289122faf80abe42228875a0f4897f41)) 🔏
+
 ## v0.48.7 (2025-10-09)
 
 ### 🩹 Patch
