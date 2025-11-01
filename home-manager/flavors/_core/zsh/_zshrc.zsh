@@ -27,15 +27,3 @@ if command -v fastfetch >/dev/null 2>&1 &&
   [[ -z "${VIMRUNTIME}" ]]; then
   fastfetch
 fi
-
-if command -v tmux &>/dev/null &&
-  [[ -n "${PS1}" ]] &&
-  [[ -z "${VIMRUNTIME}" ]] &&
-  [[ -z "${TMUX}" ]] &&
-  [[ ! "${TERM}" =~ (screen|tmux) ]]; then
-  if command -v tmuxp &>/dev/null; then
-    tmuxp load -y "${TMUXP_CONFIG:-home}"
-  else
-    tmux
-  fi
-fi
