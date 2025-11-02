@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.10 (2025-11-02)
+
+### 🩹 Patch
+
+  * ⚡️(os/docker): Improve docker flavors, especially rootless configuration (!173) by Romain Deville ([`4e685e3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4e685e3025dd651b1cb10b8513163e7de44c7ed4))
+  * ⚡️(os/docker): Improve docker flavors, especially rootless configuration by Romain Deville ([`5709583`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5709583b0dc7fde4f939ac87f902a6716ca2794a)) 🔏
+
 ## v0.48.9 (2025-11-02)
 
 ### 🩹 Patch
