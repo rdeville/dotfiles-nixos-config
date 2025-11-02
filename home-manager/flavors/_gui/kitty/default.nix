@@ -82,7 +82,7 @@ in {
           # -----------------------------------------------------------------------------
           tab_bar_edge = "top";
           tab_bar_style = "powerline";
-          tab_bar_min_tabs = "1";
+          tab_bar_min_tabs = "2";
           inactive_tab_foreground = "#9E9E9E";
           inactive_tab_background = "#212121";
           inactive_tab_font_style = "normal";

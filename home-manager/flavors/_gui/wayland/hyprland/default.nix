@@ -105,6 +105,8 @@ in {
           nwg-displays
           pipewire
           wireplumber
+          grim
+          slurp
         ];
       };
 
@@ -113,6 +115,13 @@ in {
           "${scriptPath}" = {
             source = ./assets/scripts;
           };
+        };
+      };
+
+      programs = {
+        hyprshot = {
+          enable = true;
+          saveLocation = "$HOME/screenshots";
         };
       };
 
@@ -133,8 +142,9 @@ in {
 
             extraConfig =
               ''
-                exec-once=$terminal
-                exec-once=keepassxc
+                windowrule = bordercolor rgba(${clr.str.red_600}ee) rgba(${clr.str.purple_400}ee) 45deg,fullscreen:1
+                windowrule = bordercolor rgba(${clr.str.yellow_600}ee) rgba(${clr.str.amber_400}ee) 45deg,floating:1
+
                 exec-once=systemctl --user start hyprpolkitagent
                 exec-once=systemctl --user start xdg-desktop-portal-hyprland
                 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
@@ -172,26 +182,30 @@ in {
                   gaps_out = 10;
                   "col.active_border" = "rgba(${clr.str.cyan_A400}ee) rgba(${clr.str.green_A400}ee) 45deg";
                   "col.inactive_border" = "rgba(${clr.str.grey_900}aa)";
-                  # gaps_workspaces = "TODO"; #gaps between workspaces. Stacks with gaps_out.	int	0
-                  # col.inactive_border = "TODO"; #border color for inactive windows	gradient	0xff444444
-                  # col.active_border = "TODO"; #border color for the active window	gradient	0xffffffff
-                  # col.nogroup_border = "TODO";
-                  # #inactive border color for window that cannot be added to a group
-                  # (see denywindowfromgroup dispatcher)	gradient	0xffffaaff
-                  # col.nogroup_border_active = "TODO";
-                  #active border color for window that cannot be added to a group	gradient	0xffff00ff
                   layout = "master";
-                  # no_focus_fallback = "TODO"; #if true, will not fall back to the next available window when moving focus in a direction where no window was found	bool	false
-                  # resize_on_border = "TODO"; #enables resizing windows by clicking and dragging on borders and gaps	bool	false
-                  # extend_border_grab_area = "TODO"; #extends the area around the border where you can click and drag on, only used when general:resize_on_border is on.	int	15
-                  # hover_icon_on_border = "TODO"; #show a cursor icon when hovering over borders, only used when general:resize_on_border is on.	bool	true
-                  # allow_tearing = "TODO"; #master switch for allowing tearing to occur. See the Tearing page.	bool	false
-                  # resize_corner = "TODO"; #force floating windows to use a specific corner when being resized (1-4 going clockwise from top left, 0 to disable)	int	0
                 };
 
                 # Cursor Config
                 cursor = {
-                  inactive_timeout = 60;
+                  inactive_timeout = 30;
+                };
+
+                # Window decoration
+                decoration = {
+                  rounding = 5;
+                };
+
+                # Window Tabbed Groups
+                group = {
+                  auto_group = false;
+                  "col.border_active" = "rgba(${clr.str.cyan_A400}ee) rgba(${clr.str.green_A400}ee) 45deg";
+                  "col.border_inactive" = "rgba(${clr.str.grey_900}aa)";
+                  groupbar = {
+                    render_titles = false;
+                    indicator_height = 5;
+                    "col.active" = "rgba(${clr.str.cyan_A400}ee)";
+                    "col.inactive" = "rgba(${clr.str.grey_900}aa)";
+                  };
                 };
 
                 input = {
@@ -215,14 +229,14 @@ in {
                 # p -> bypasses the app's requests to inhibit keybinds.
                 bind =
                   [
-                    "$mod $ctrl, Q, exec, $menu -show power-menu -modi 'power-menu:rofi-power-menu --confirm=shutdown/reboot'"
-                    "$mod $shift, Q, exec, hyprlock"
+                    "$mod $shift, Q, exec, $menu -show power-menu -modi 'power-menu:rofi-power-menu --confirm=shutdown/reboot'"
+                    "$mod, q, exec, hyprlock"
                     "$mod $shift, R, exec, ${config.xdg.configHome}/${scriptPath}/process hyprland reload"
                   ]
                   ++ [
                     (
                       if config.hm.flavors._gui.wayland.waybar.enable
-                      then "$mod $shift, B, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
+                      then "$mod, b, exec, ${config.xdg.configHome}/${scriptPath}/process waybar toggle"
                       else ""
                     )
                   ]
@@ -230,10 +244,24 @@ in {
                     "$mod $ctrl, C, killactive,"
                     "$mod, Return, exec, $terminal"
 
+                    # Layout Toggle
+                    "$mod, space, exec, hyprctl keyword general:layout \"$(hyprctl getoption general:layout | grep -q 'dwindle' && echo 'master' || echo 'dwindle')\""
+
+                    # Window Groups
+                    "$mod       , t, togglegroup"
+                    "$mod       , tab, changegroupactive, b"
+                    "$mod $shift, tab, changegroupactive, f"
+                    "$mod $ctrl, h, moveintogroup, l"
+                    "$mod $ctrl, l, moveintogroup, r"
+                    "$mod $ctrl, k, moveintogroup, u"
+                    "$mod $ctrl, j, moveintogroup, d"
+                    "$mod, escape, moveoutofgroup, active"
                     # Window management
                     "$mod, M, fullscreen, 1"
                     "$mod, F, togglefloating,"
+                    "$mod, s, pin"
                     # Move focus
+                    "$mod, u, focusurgentorlast"
                     "$mod, h, movefocus, l"
                     "$mod, l, movefocus, r"
                     "$mod, k, movefocus, u"
@@ -254,8 +282,8 @@ in {
                     "$mod, code:17, exec, hyprctl dispatch moveworkspacetomonitor 8 current && hyprctl dispatch workspace 8"
                     "$mod, code:18, exec, hyprctl dispatch moveworkspacetomonitor 9 current && hyprctl dispatch workspace 9"
                     "$mod, code:19, exec, hyprctl dispatch moveworkspacetomonitor 10 current && hyprctl dispatch workspace 10"
-                    "$mod $ctrl, h, workspace, -1"
-                    "$mod $ctrl, l, workspace, +1"
+                    "$mod, a, workspace, -1"
+                    "$mod, e, workspace, +1"
                     # Move active window to a workspace with mainMod $shift [0-9]
                     "$mod $shift, code:10, movetoworkspacesilent, 1"
                     "$mod $shift, code:11, movetoworkspacesilent, 2"
@@ -285,6 +313,14 @@ in {
                     "$mod, I, exec, ${config.xdg.configHome}/rofi/scripts/menu gitmoji"
                     "$mod, E, exec, ${config.xdg.configHome}/rofi/scripts/menu emoji"
                     "$mod, N, exec, ${config.xdg.configHome}/rofi/scripts/menu nerdfont"
+
+                    # Hyprshot
+                    # Screenshot a window
+                    "$mod, p, exec, hyprshot -m window"
+                    # Screenshot a monitor
+                    "$mod $shift, p, exec, hyprshot -m output"
+                    # Screenshot a region
+                    "$mod $ctrl, p, exec, hyprshot -m region"
                   ];
 
                 binde = [
