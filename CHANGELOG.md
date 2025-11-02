@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.11 (2025-11-02)
+
+### 🩹 Patch
+
+  * 🐛(hm/gui/wayland/hyprland): Fix keyboard shortcut conflict (!174) by Romain Deville ([`1e323c9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1e323c90392bee75d1f06cd59bb2aba71cab2652))
+  * 🐛(hm/gui/wayland/hyprland): Fix keyboard shortcut conflict by Romain Deville ([`4a03f6c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4a03f6c0ce89bd1bc5ed082a2c3f2969e166fa50)) 🔏
+
 ## v0.48.10 (2025-11-02)
 
 ### 🩹 Patch
