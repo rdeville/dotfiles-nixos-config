@@ -252,6 +252,7 @@ in {
                     "$mod       , tab, changegroupactive, b"
                     "$mod $shift, tab, changegroupactive, f"
                     "$mod $ctrl, h, moveintogroup, l"
+
                     "$mod $ctrl, l, moveintogroup, r"
                     "$mod $ctrl, k, moveintogroup, u"
                     "$mod $ctrl, j, moveintogroup, d"
@@ -282,8 +283,8 @@ in {
                     "$mod, code:17, exec, hyprctl dispatch moveworkspacetomonitor 8 current && hyprctl dispatch workspace 8"
                     "$mod, code:18, exec, hyprctl dispatch moveworkspacetomonitor 9 current && hyprctl dispatch workspace 9"
                     "$mod, code:19, exec, hyprctl dispatch moveworkspacetomonitor 10 current && hyprctl dispatch workspace 10"
-                    "$mod, a, workspace, -1"
-                    "$mod, e, workspace, +1"
+                    "$mod, z, workspace, -1"
+                    "$mod, o, workspace, +1"
                     # Move active window to a workspace with mainMod $shift [0-9]
                     "$mod $shift, code:10, movetoworkspacesilent, 1"
                     "$mod $shift, code:11, movetoworkspacesilent, 2"
