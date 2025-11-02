@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.9 (2025-11-02)
+
+### 🩹 Patch
+
+  * ⚡️(hm/core/zsh): Remove auto tmux loading by Romain Deville ([`5d2708a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5d2708a79c53b3b7c16643585c421036ea94258f)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`93ac398`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/93ac3983175e31ea5a194b466a88d96a95f19ab6)) 🔏
+  * 🔧(hm): Improve hyprland, zsh and kitty config (!172) by Romain Deville ([`6c0a71f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6c0a71fa8c71c344db56ff0266170f683230f0d7))
+  * 🔧(hm/gui/wayland): Improve hyprland windows management (tabbed, colors, etc) by Romain Deville ([`e5af05a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e5af05a52332255ef000d9229c0b77e9bb0bf521)) 🔏
+  * 🔧(hm/gui/kitty): Set tabs to be shown when at least two tabs by Romain Deville ([`72fff33`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/72fff331f049f343c50e89752ca77c6436bed276)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/gui/wayland): Remove kolourpaint from hyprlock config by Romain Deville ([`3fca863`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3fca863b333fab926e4b3dd2b99181c457b82c1f)) 🔏
+
 ## v0.48.8 (2025-10-19)
 
 ### 🩹 Patch
