@@ -12,11 +12,6 @@ in {
       flavors = {
         ${name} = {
           enable = lib.mkEnableOption "Install ${name} NixOS flavor.";
-          rootless =
-            lib.mkDependEnabledOption ''
-              Install ${name} with rootless support.
-            ''
-            cfg.enable;
           daemon = {
             settings = lib.mkOption {
               type = lib.types.attrs;
@@ -24,12 +19,26 @@ in {
               default = {};
             };
           };
+          rootless = {
+            enable =
+              lib.mkDependEnabledOption ''
+                Install ${name} with rootless support.
+              ''
+              cfg.enable;
+            daemon = {
+              settings = lib.mkOption {
+                type = lib.types.attrs;
+                description = "Configuration for docker daemon.";
+                default = {};
+              };
+            };
+          };
         };
       };
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable || cfg.rootless.enable) {
     environment = {
       systemPackages = with pkgs; [
         docker
@@ -43,7 +52,7 @@ in {
           ipv6 = false;
         };
       in {
-        enable = true;
+        inherit (cfg) enable;
 
         daemon = {
           settings = settings // cfg.daemon.settings;
@@ -54,11 +63,16 @@ in {
         };
 
         rootless = {
-          enable = cfg.rootless;
+          inherit (cfg.rootless) enable;
           setSocketVariable = true;
 
           daemon = {
-            settings = settings // cfg.daemon.settings;
+            settings =
+              {
+                fixed-cidr = "172.42.100.0/24";
+                ipv6 = false;
+              }
+              // cfg.rootless.daemon.settings;
           };
         };
       };
