@@ -35,6 +35,7 @@ in {
             settings = {
               "toolkit.legacyUserProfileCustomizations.stylesheets" = true;
               "mail.openpgp.allow_external_gnupg" = true;
+              "mail.openpgp.fetch_pubkeys_from_gnupg" = true;
             };
           };
         };
