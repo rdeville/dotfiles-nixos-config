@@ -38,7 +38,10 @@ in {
         defaultCacheTtl = 3600;
         maxCacheTtl = 3600;
         pinentry = {
-          package = pkgs.pinentry-tty;
+          package =
+            if config.hm.isGui
+            then pkgs.pinentry-qt
+            else pkgs.pinentry-tty;
         };
       };
     };
