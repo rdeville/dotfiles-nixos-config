@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.12 (2025-11-07)
+
+### 🩹 Patch
+
+  * 🔧(hm): Improve pinentry to use if on Gui and update thunderbird config (!175) by Romain Deville ([`dcbb80c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/dcbb80cbf377cc287ca8d09017007ccea73ac7d8))
+  * 🔧(hm/gui/thunderbird): Update Thunderbird GnuPG settings by Romain Deville ([`63d1833`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/63d18336ebd5ea2336416b60a4a91d123f7b9ad1)) 🔏
+  * 🔧(hm/core/gpg): Improve pinentry pkgs depending if OS have GUI or not by Romain Deville ([`51e5984`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/51e59843d755b1d27c6682934c21603a5635900b)) 🔏
+
 ## v0.48.11 (2025-11-02)
 
 ### 🩹 Patch
