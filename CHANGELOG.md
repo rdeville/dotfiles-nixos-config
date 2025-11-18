@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.13 (2025-11-18)
+
+### 🩹 Patch
+
+  * ⚡️(hm/ollama): Improve ollama configuration with new options (!176) by Romain Deville ([`f7bf2a3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f7bf2a39d66f72790f990436b3c570b65e95e031))
+  * ⚡️(hm/ollama): Improve ollama configuration with new options by Romain Deville ([`b95c6dc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b95c6dce5eed35f556cebc7a501f5efa720e52b8)) 🔏
+
 ## v0.48.12 (2025-11-07)
 
 ### 🩹 Patch
