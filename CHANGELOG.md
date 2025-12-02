@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.48.14 (2025-12-02)
+
+### 🩹 Patch
+
+  * 🔧(hm/gui/kitty): Update shortcut to be passed to inner apps (!177) by Romain Deville ([`4e6ff28`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4e6ff2808b92a7de21947e94429fcc479a6d3aab))
+  * 🔧(hm/gui/kitty): Update shortcut to be passed to inner apps by Romain Deville ([`c3d8e4e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c3d8e4e13cc59cdeca50d15189efeffbd57477ee)) 🔏
+
 ## v0.48.13 (2025-11-18)
 
 ### 🩹 Patch
