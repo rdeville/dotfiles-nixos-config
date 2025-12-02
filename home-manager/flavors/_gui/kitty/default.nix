@@ -36,8 +36,11 @@ in {
           "ctrl+shift+t" = "new_tab";
           "ctrl+shift+s" = "select_tab";
           "ctrl+shift+q" = "close_window";
-          "ctrl+shift+h" = "previous_tab";
-          "ctrl+shift+l" = "next_tab";
+          # Pass keyboard input to terminal
+          "ctrl+alt+h" = "";
+          "ctrl+alt+j" = "";
+          "ctrl+alt+k" = "";
+          "ctrl+alt+l" = "";
         };
         font = {
           name = config.hm.flavors.${name}.font.name;
