@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.49.0 (2025-12-13)
+
+### ✨ Minor
+
+  * ✨ Improve hm and os configuration to prepare nix-darwin addition (!178) by Romain Deville ([`872e61d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/872e61db61a3660931721669cb97c911b6e9fee6))
+
+### 🩹 Patch
+
+  * ⚡️(hm): Improve condition to better manage isDarwin boolean by Romain Deville ([`3ff91e7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3ff91e7bb2a3da131931ab3ba02f92afe1eb4ba9)) 🔏
+  * ⚡️(hm/_core): Add logo.type to fastfetch flavor by Romain Deville ([`3d96f8b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3d96f8bd04d6aa52dca444d041fbc501f47b1b55)) 🔏
+  * ⚡️(hm): Add options isGui and isMain and improve other &#34;is&#34; boolean by Romain Deville ([`18679e8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/18679e8777cbba6ce51b7eb3add5aa6aa1dab9e9)) 🔏
+  * ⚡️(os): Add isWork option natively by Romain Deville ([`4d75600`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4d75600b66bb302fd9257d682194d3d31a24f398)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/ollama): Run nix fmt on ollama flavor by Romain Deville ([`fc880a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fc880a6ea824cefa8c0454736866c2613e22f0e0)) 🔏
+
 ## v0.48.14 (2025-12-02)
 
 ### 🩹 Patch
