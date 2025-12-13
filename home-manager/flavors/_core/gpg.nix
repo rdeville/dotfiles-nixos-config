@@ -39,7 +39,7 @@ in {
         maxCacheTtl = 3600;
         pinentry = {
           package =
-            if config.hm.isGui
+            if (config.hm.isGui && ! config.hm.isDarwin)
             then pkgs.pinentry-qt
             else pkgs.pinentry-tty;
         };

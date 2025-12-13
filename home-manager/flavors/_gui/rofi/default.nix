@@ -25,7 +25,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
     home = {
       packages = with pkgs; [
         rofi-power-menu

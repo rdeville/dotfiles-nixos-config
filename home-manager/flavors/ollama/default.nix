@@ -78,13 +78,12 @@ in {
           else if cfg.gpu == "nvidia"
           then "cuda"
           else false;
-        environmentVariables =
-          {
-            OLLAMA_MODELS = cfg.modelsLocation;
-            OLLAMA_CONTEXT_LENGTH = toString cfg.contextLength;
-            OLLAMA_KEEP_ALIVE = "${toString cfg.keepAlive}m";
-            OLLAMA_LOAD_TIMEOUT = "${toString cfg.loadTimeout}m";
-          };
+        environmentVariables = {
+          OLLAMA_MODELS = cfg.modelsLocation;
+          OLLAMA_CONTEXT_LENGTH = toString cfg.contextLength;
+          OLLAMA_KEEP_ALIVE = "${toString cfg.keepAlive}m";
+          OLLAMA_LOAD_TIMEOUT = "${toString cfg.loadTimeout}m";
+        };
       };
     };
   };

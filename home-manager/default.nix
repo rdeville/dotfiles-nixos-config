@@ -38,10 +38,7 @@ in {
           system = lib.mkOption {
             type = lib.types.str;
             description = "Arch system where config will be applied.";
-            default =
-              if osConfig ? nixpkgs.hostPlatform
-              then osConfig.nixpkgs.hostPlatform
-              else "";
+            default = osConfig.nixpkgs.hostPlatform or "";
           };
 
           username = lib.mkOption {
@@ -69,13 +66,25 @@ in {
           isDarwin = lib.mkOption {
             type = lib.types.bool;
             description = "Boolean, set to true to specify OS is darwin.";
-            default = false;
+            default = osConfig.os.isDarwin or false;
+          };
+
+          isMain = lib.mkOption {
+            type = lib.types.bool;
+            description = "Define HM is for a main computer.";
+            default = osConfig.os.isMain or false;
+          };
+
+          isGui = lib.mkOption {
+            type = lib.types.bool;
+            description = "Define HM is for a gui computer.";
+            default = osConfig.os.isGui or false;
           };
 
           isWork = lib.mkOption {
             type = lib.types.bool;
             description = "Boolean, set to true to host is my professional computer.";
-            default = false;
+            default = osConfig.os.isWork or false;
           };
 
           sessionPath = lib.mkOption {
