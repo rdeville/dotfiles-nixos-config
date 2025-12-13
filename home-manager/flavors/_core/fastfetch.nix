@@ -188,6 +188,26 @@ in {
                 default = {};
                 description = "Path to the logo to use in fastfetch";
               };
+
+              type = lib.mkOption {
+                type = lib.types.enum [
+                  "auto"
+                  "file"
+                  "file-raw"
+                  "data"
+                  "data-raw"
+                  "sixel"
+                  "kitty"
+                  "kitty-direct"
+                  "kitty-icat"
+                  "iterm"
+                  "chafa"
+                  "raw"
+                  "none"
+                ];
+                description = "Type of logo to display";
+                default = "auto";
+              };
             };
           };
         };
