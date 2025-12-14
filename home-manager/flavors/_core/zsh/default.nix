@@ -31,7 +31,7 @@ in {
   config = {
     programs = {
       zsh = {
-        enable = cfg.enable;
+        inherit (cfg) enable;
 
         dotDir = "${config.xdg.cacheHome}/zsh";
         defaultKeymap = "viins";

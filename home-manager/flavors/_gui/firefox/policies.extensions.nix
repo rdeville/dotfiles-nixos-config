@@ -125,7 +125,7 @@ in {
                 (extension elemCfg.shortId elemCfg.uuid)
               ]
               ++ acc) [] (builtins.filter (elem:
-                cfg.addons.${elem}.enable == true) (builtins.attrNames addons))
+                cfg.addons.${elem}.enable) (builtins.attrNames addons))
           );
         };
       };

@@ -52,8 +52,8 @@ in {
           builtins.map (profile: let
             val = cfg.profiles."${profile}";
           in {
-            condition = val.condition;
-            contents = val.contents;
+            inherit (val) condition;
+            inherit (val) contents;
             contentSuffix = "${profile}.gitconfig";
           })
           (builtins.attrNames cfg.profiles);

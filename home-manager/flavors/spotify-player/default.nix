@@ -43,7 +43,7 @@ in {
         };
         settings = {
           theme = "dracula";
-          client_id_command = cfg.client_id_command;
+          inherit (cfg) client_id_command;
           client_port = 8080;
           playback_format = "
             {track} • {artists}

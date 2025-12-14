@@ -43,7 +43,7 @@ in {
           "ctrl+alt+l" = "";
         };
         font = {
-          name = config.hm.flavors.${name}.font.name;
+          inherit (config.hm.flavors.${name}.font) name;
           package = config.hm.flavors.${name}.font.pkgs;
         };
         settings = {

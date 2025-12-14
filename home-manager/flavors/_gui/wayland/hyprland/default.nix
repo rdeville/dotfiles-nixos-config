@@ -138,7 +138,7 @@ in {
               enable = true;
             };
 
-            plugins = cfg.plugins;
+            inherit (cfg) plugins;
 
             extraConfig =
               ''

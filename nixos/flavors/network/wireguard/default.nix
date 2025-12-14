@@ -36,7 +36,7 @@
       wgNetwork
     );
 in {
-  config = lib.mkIf (wgNetwork != []) {
+  config = lib.mkIf (wgNetwork != [] && cfg.enable) {
     systemd = {
       network = {
         netdevs = builtins.foldl' (acc: name: let
@@ -52,35 +52,35 @@ in {
                 ListenPort = interface.wireguard.listenPort;
                 PrivateKeyFile = interface.wireguard.privateKeyFile;
               };
-              wireguardPeers = builtins.map (
-                peer:
-                  if interface.isServer
-                  then {
-                    PublicKey =
-                      if lib.isString peer.PublicKey
-                      then peer.PublicKey
-                      else
-                        lib.removeSuffix "\n" (
-                          builtins.readFile peer.PublicKey
-                        );
-                    AllowedIPs = peer.AllowedIPs;
-                  }
-                  else {
-                    inherit (peer) Endpoint;
-                    PublicKey =
-                      if lib.isString peer.PublicKey
-                      then peer.PublicKey
-                      else
-                        lib.removeSuffix "\n" (
-                          builtins.readFile peer.PublicKey
-                        );
-                    AllowedIPs =
-                      if peer ? AllowedIPs
-                      then peer.AllowedIPs
-                      else "${interface.networkCIDRPrefix}.${toString interface.wireguard.id}/32";
-                    PersistentKeepalive = 30;
-                  }
-              ) (interface.wireguard.peers);
+              wireguardPeers =
+                builtins.map (
+                  peer:
+                    if interface.isServer
+                    then {
+                      PublicKey =
+                        if lib.isString peer.PublicKey
+                        then peer.PublicKey
+                        else
+                          lib.removeSuffix "\n" (
+                            builtins.readFile peer.PublicKey
+                          );
+                      inherit (peer) AllowedIPs;
+                    }
+                    else {
+                      inherit (peer) Endpoint;
+                      PublicKey =
+                        if lib.isString peer.PublicKey
+                        then peer.PublicKey
+                        else
+                          lib.removeSuffix "\n" (
+                            builtins.readFile peer.PublicKey
+                          );
+                      AllowedIPs =
+                        peer.AllowedIPs or "${interface.networkCIDRPrefix}.${toString interface.wireguard.id}/32";
+                      PersistentKeepalive = 30;
+                    }
+                )
+                interface.wireguard.peers;
             };
           }
           // acc) {}

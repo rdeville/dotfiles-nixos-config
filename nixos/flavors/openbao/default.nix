@@ -90,7 +90,7 @@ in {
                   then [
                     (
                       {
-                        type = elem.type;
+                        inherit (elem) type;
                         address =
                           if elem.interface != null
                           then let
@@ -131,7 +131,7 @@ in {
               cfg.listeners;
 
               storage = let
-                type = cfg.storage.type;
+                inherit (cfg.storage) type;
                 backend = cfg.storage.${type};
               in {
                 "${type}" = backend;

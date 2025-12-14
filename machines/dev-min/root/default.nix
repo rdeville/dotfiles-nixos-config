@@ -1,4 +1,4 @@
-{...}: let
+_: let
   username = builtins.baseNameOf ./.;
 
   base = import ../base.nix;

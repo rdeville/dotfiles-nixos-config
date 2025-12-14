@@ -6,6 +6,10 @@
     nixpkgs = {
       url = "github:nixos/nixpkgs/nixos-unstable";
     };
+    nix-darwin = {
+      url = "github:nix-darwin/nix-darwin/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     sops-nix = {
       url = "github:Mic92/sops-nix/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -42,15 +46,11 @@
   outputs = inputs @ {self, ...}: let
     mkLib = nixpkgs: context:
       nixpkgs.lib.extend
-      (final: prev:
-        (
-          import ./lib/default.nix inputs final
-        )
-        // (
-          if inputs ? ${context}.lib
-          then inputs.${context}.lib
-          else {}
-        ));
+      (
+        final: prev:
+          (import ./lib/default.nix inputs final)
+          // (inputs.${context}.lib or {})
+      );
 
     # This is a function that generates an attribute by calling a function you
     # pass to it, with each system as an argument
@@ -111,6 +111,14 @@
       lib = mkLib inputs.nixpkgs "nixos";
     };
     nixosModule = self.nixosModules.os;
+
+    # NIX DARWIN MODULES
+    # ========================================================================
+    darwinModules = {
+      os = import ./darwin;
+      lib = mkLib inputs.nixpkgs "nix-darwin";
+    };
+    darwinModule = self.nixosModules.os;
 
     # NIXOS CONFIGURATIONS
     # ========================================================================

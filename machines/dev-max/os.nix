@@ -1,4 +1,4 @@
-{...}: let
+_: let
   base = import ./base.nix;
 
   users = {
@@ -45,6 +45,10 @@ in {
 
       printing = {
         enable = true;
+      };
+
+      network = {
+        enable = false;
       };
 
       ssh-server = {
