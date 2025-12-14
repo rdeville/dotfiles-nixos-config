@@ -242,7 +242,7 @@ in {
     };
 
     home = {
-      file = cfg.file;
+      inherit (cfg) file;
     };
   };
 }

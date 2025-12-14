@@ -16,7 +16,7 @@
   };
   alias = alias: {
     metaData = {
-      alias = alias;
+      inherit alias;
     };
   };
   engines = {

@@ -1,7 +1,7 @@
 # See:
 # * https://mozilla.github.io/policy-templates
 # * about:policies#documentation
-{...}: {
+_: {
   programs = {
     firefox = {
       policies = {

@@ -49,8 +49,8 @@ in {
           enable = true;
           onCalendar = "Sun *-*-* 00:00";
         };
-        containers = cfg.containers;
-        networks = cfg.networks;
+        inherit (cfg) containers;
+        inherit (cfg) networks;
         settings = {
           containers = {};
           policy = {};

@@ -17,7 +17,7 @@ in {
             enable = lib.mkDefaultEnabledOption "Install gh-dash package and config";
 
             settings = lib.mkOption {
-              type = (pkgs.formats.yaml {}).type;
+              inherit ((pkgs.formats.yaml {})) type;
               default = {};
               example = lib.literalExpression ''
                 {

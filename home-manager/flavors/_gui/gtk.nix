@@ -33,7 +33,7 @@ in {
         size = 0;
       };
       font = {
-        name = config.hm.flavors.${name}.font.name;
+        inherit (config.hm.flavors.${name}.font) name;
         package = config.hm.flavors.${name}.font.pkgs;
         size = 10;
       };

@@ -7,7 +7,7 @@
   cfg = mkLib.mkGetSarshipModuleConfig name;
   mkLib = import ../lib.nix {inherit config;};
 
-  black = mkLib.colors.black;
+  inherit (mkLib.colors) black;
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
