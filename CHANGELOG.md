@@ -1,6 +1,36 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.0 (2025-12-14)
+
+### ✨ Minor
+
+  * ✨ Add nix-darwin specific flavors (os and hm) and fix linter (!179) by Romain Deville ([`35b1c7b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/35b1c7bb93429527247cc0560fe64bbc390a51ee))
+  * ✨(hm/gui): Add import of gui nix-darwin flavors (aerospace, sketchybar, etc.) by Romain Deville ([`21337ef`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/21337ef4b0b809674084779ea5663789d8c6fa06)) 🔏
+  * ✨(hm/gui/sketchybar): Add sketchybar flavors for nix-darwin by Romain Deville ([`c1d30ad`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c1d30ad64ad5f311ae865bff3eebdfbaecfd201e)) 🔏
+  * ✨(hm/gui/jankyborders): Add jankyborders flavors for nix-darwin by Romain Deville ([`b634272`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b63427244484535b4d9d99ea9f7fb8c3a15dbb5b)) 🔏
+  * ✨(hm/gui/aerospace): Add aerospace config for nix-darwin by Romain Deville ([`36d723a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36d723af66ed55a3fee128ea16d1323745ed2f95)) 🔏
+  * ✨(darwin/network): Add nix-darwin network flavor by Romain Deville ([`c18eb3f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c18eb3fcc0c21c2d87cc99c5225e0d8044a873c9)) 🔏
+  * ✨(darwin/docker): Add nix-darwin docker flavor by Romain Deville ([`bd6d371`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bd6d371686171dff9624e88b1ae0bb65b5f0640e)) 🔏
+  * ✨(darwin/display/window-manager): Add nix-darwin display.window-manager flavor by Romain Deville ([`932c5a6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/932c5a6f4d70e389d7e22f63e2307a26d88d1947)) 🔏
+  * ✨(darwin/display/dock): Add display.dock nix-darwin flavor by Romain Deville ([`d2bc9f7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d2bc9f76b5903e0babf6d8c5ee4d1c55a903f464)) 🔏
+  * ✨(darwin/display): Add imports for nix-darwin display flavors by Romain Deville ([`e451977`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e451977d19365a89cf523b5ecdbf3c9ad5a95e48)) 🔏
+  * ✨(darwin/core): Add nix-darwin _core flavors to setup main system by Romain Deville ([`13e1012`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/13e10129bab04a632c195aed3ccb38fb5d2dde68)) 🔏
+  * ✨(darwin/users): Add nix-darwin users module to setup users by Romain Deville ([`ce2db49`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ce2db49b8a566cf8b72e70875c981989bc835c00)) 🔏
+  * ✨(darwin): Add nix-darwin flavors imports by Romain Deville ([`9e90ac8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9e90ac851cf07c8ae192594aaab5028da1f1de69)) 🔏
+  * ✨(darwin): Add default basic nix-darwin configuration by Romain Deville ([`0d1e415`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0d1e4156de4e23fdc5d8c2ed13f49d27eb452c22)) 🔏
+  * ✨(flake): Add nix-darwin input and darwinModules by Romain Deville ([`e6bf38b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e6bf38b1f2b3b4f356dd777f958ce7bdadd28254)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`8463a1a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8463a1ab3664de8ed0b8588703c3d92237b73dea)) 🔏
+
+### 🔊 Others
+
+  * 🚨(machines): Run statix fix on all machines config by Romain Deville ([`6e97cdb`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6e97cdba7d43256bb276d1b4b01b3ba4d2a8cf7b)) 🔏
+  * 🚨(os): Run statix fix on all nixos config by Romain Deville ([`fd9b078`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/fd9b0785aa0d4d0ed27d1c42336a9f49a2970909)) 🔏
+  * 🚨(hm): Run statix fix on all home-manager config by Romain Deville ([`f5e7294`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f5e729417e4f4d499b039a37c4a1a5e1c4d0506d)) 🔏
+
 ## v0.49.0 (2025-12-13)
 
 ### ✨ Minor
