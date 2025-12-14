@@ -115,9 +115,7 @@ in {
             hashedPasswordFile =
               if user.hashedPasswordFile != null
               then user.hashedPasswordFile
-              else if config ? sops.secrets."users/${name}/password".path
-              then config.sops.secrets."users/${name}/password".path
-              else null;
+              else config.sops.secrets."users/${name}/password".path or null;
             extraGroups =
               defaultGroup
               ++ user.extraGroups
@@ -142,7 +140,7 @@ in {
     programs = builtins.listToAttrs (
       builtins.map (
         name: let
-          shell = cfg.users.${name}.shell;
+          inherit (cfg.users.${name}) shell;
         in {
           name = shell;
           value = {

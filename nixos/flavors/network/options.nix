@@ -107,12 +107,13 @@ in {
     };
 
     networkCIDRPrefix = lib.mkOption {
-      type = lib.types.str;
+      type = lib.types.nullOr lib.types.str;
       description = ''
         IP prefix of the network hosted by interface of the form `X.Y.Z`.
         Omit the last value of the IP since it will be computed from
         the attribute `networkID`.
       '';
+      default = null;
     };
 
     networkCIDRLength = lib.mkOption {
@@ -133,7 +134,7 @@ in {
         Computed values of the CIDR of the interface network
       '';
       default =
-        if cfg.DHCP == null
+        if cfg.DHCP == null && cfg.networkCIDRPrefix != null
         then "${cfg.networkCIDRPrefix}.0/${cfg.networkCIDRLength}"
         else "";
     };
@@ -305,6 +306,7 @@ in {
             };
           };
         });
+        description = ''Declare connections to show in topology rendering'';
         default = [];
       };
     };

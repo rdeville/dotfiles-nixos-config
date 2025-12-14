@@ -7,7 +7,7 @@
 
   vlanNetwork = builtins.filter (elem: cfg.networks.${elem}.vlan.enable) (builtins.attrNames cfg.networks);
 in {
-  config = lib.mkIf (vlanNetwork != []) {
+  config = lib.mkIf (vlanNetwork != [] && cfg.enable) {
     systemd = {
       network = {
         netdevs = builtins.foldl' (acc: name: let
@@ -39,9 +39,7 @@ in {
                         then [
                           interface
                         ]
-                        else
-                          []
-                          ++ acc) []
+                        else acc) []
                       vlanNetwork)
                       != []
                   )

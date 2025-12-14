@@ -98,7 +98,7 @@ in {
       xserver = {
         windowManager = {
           awesome = {
-            enable = cfg.awesome.enable;
+            inherit (cfg.awesome) enable;
             luaModules = with pkgs.luaPackages; [
               luarocks # is the package manager for Lua modules
               pkgs.luajitPackages.lgi
@@ -110,14 +110,14 @@ in {
 
       desktopManager = {
         plasma6 = {
-          enable = cfg.plasma.enable;
+          inherit (cfg.plasma) enable;
         };
       };
     };
 
     programs = {
       hyprland = {
-        enable = cfg.hyprland.enable;
+        inherit (cfg.hyprland) enable;
       };
     };
   };

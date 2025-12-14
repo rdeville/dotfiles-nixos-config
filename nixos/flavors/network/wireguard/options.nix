@@ -68,12 +68,13 @@
           Endpoint = lib.mkOption {
             type = lib.types.nullOr lib.types.str;
             description = ''
-              Entpoint of server to which wireguard should connect to of the form
+              Endpoint of server to which wireguard should connect to of the form
             '';
             default = null;
           };
         };
       });
+      description = ''Wireguard peers configurations'';
       default = [];
     };
   };

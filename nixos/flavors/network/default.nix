@@ -1,4 +1,5 @@
 {
+  inputs,
   config,
   lib,
   ...
@@ -66,11 +67,11 @@
   ];
 
   forwardRules = builtins.foldl' (acc: elem: let
-    interface = cfg.networks.${elem}.interface;
+    inherit (cfg.networks.${elem}) interface;
     nftables = cfg.networks.${elem}.nftables.forward;
     rules =
       (
-        if (nftables.bidirectional)
+        if nftables.bidirectional
         then ''
           # Bidirectional
           iifname { "${interface}" } oifname { "${interface}" } accept comment "Allow bidirection forward on this network"
@@ -121,6 +122,10 @@ in {
 
           useDHCP = lib.mkEnableOption "Globally enable DHCP";
           useIPv6 = lib.mkEnableOption "Globall enable IPv6";
+
+          topology = {
+            enable = lib.mkEnableOption "Enable topology globally for networks";
+          };
 
           firewall = {
             enable = lib.mkDefaultEnabledOption "Enable firewall";
@@ -209,313 +214,314 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
-    networking = {
-      inherit (cfg) useDHCP;
-      dhcpcd = {
-        enable = cfg.useDHCP;
-      };
-    };
-
-    systemd = {
-      network = {
-        enable = true;
-        # Force links to empty to avoid auto-configuration of interface if
-        # facter detect VPN interfaces
-        links = lib.mkForce {};
-
-        networks = builtins.foldl' (acc: name: let
-          interface = cfg.networks.${name};
-        in
-          {
-            "10-${name}" = {
-              inherit
-                (interface)
-                enable
-                dns
-                domains
-                DHCP
-                address
-                gateway
-                routes
-                ;
-
-              matchConfig =
-                (
-                  if interface.matchConfig.mac != null
-                  then {
-                    MACAddress = interface.matchConfig.mac;
-                  }
-                  else {}
-                )
-                // (
-                  if interface.matchConfig.name != null
-                  then {
-                    Name = interface.matchConfig.name;
-                  }
-                  else {
-                    Name = interface.name;
-                  }
-                );
-              networkConfig =
-                {
-                  IPv6AcceptRA = false;
-                }
-                // interface.networkConfig;
-              linkConfig = {
-                RequiredForOnline = interface.requiredForOnline;
-                ActivationPolicy = interface.activationPolicy;
-                Unmanaged = interface.unmanaged;
-              };
-            };
-          }
-          // acc) {} (builtins.attrNames cfg.networks);
-      };
-    };
-
-    networking = {
-      inherit (cfg) nameservers;
-
-      networkmanager = {
-        inherit (cfg.networkmanager) enable;
+  config =
+    lib.mkIf cfg.enable {
+      networking = {
+        inherit (cfg) useDHCP;
+        dhcpcd = {
+          enable = cfg.useDHCP;
+        };
       };
 
-      firewall = {
-        inherit
-          (cfg.firewall)
-          enable
-          allowPing
-          checkReversePath
-          trustedInterfaces
-          ;
-        logRefusedPackets = cfg.firewall.debug;
-        logRefusedConnections = cfg.firewall.debug;
-        logReversePathDrops = cfg.firewall.debug;
-        # NO PORT GLOBALLY OPEN !
-        allowedTCPPorts = [];
-        allowedUDPPorts = [];
-        interfaces = builtins.foldl' (acc: name: let
-          interface = cfg.networks.${name};
-        in
-          {
-            ${interface.interface} = {
-              inherit
-                (interface)
-                allowedTCPPorts
-                allowedUDPPorts
-                ;
-            };
-          }
-          // acc) {} (builtins.attrNames cfg.networks);
-      };
+      systemd = {
+        network = {
+          enable = true;
+          # Force links to empty to avoid auto-configuration of interface if
+          # facter detect VPN interfaces
+          links = lib.mkForce {};
 
-      nftables = {
-        inherit
-          (cfg.nftables)
-          enable
-          flushRuleset
-          ;
+          networks = builtins.foldl' (acc: name: let
+            interface = cfg.networks.${name};
+          in
+            {
+              "10-${name}" = {
+                inherit
+                  (interface)
+                  enable
+                  dns
+                  domains
+                  DHCP
+                  address
+                  gateway
+                  routes
+                  ;
 
-        tables =
-          {
-            os-monitor-all = lib.mkIf cfg.nftables.debug {
-              family = "inet";
-              content = ''
-                chain prerouting {
-                  type filter hook prerouting priority -350; policy accept;
-                  meta nftrace set 1;
-                }
-              '';
-            };
-            os-drop-ipv6 = {
-              family = "ip6";
-              content =
-                lib.strings.concatMapStrings (chain: ''
-                  chain ${chain} {
-                      type filter hook ${chain} priority 99; policy ${cfg.nftables.defaultPolicy};
-                      counter drop comment "Drop IPv6 traffic"
+                matchConfig =
+                  (
+                    if interface.matchConfig.mac != null
+                    then {
+                      MACAddress = interface.matchConfig.mac;
                     }
-                '')
-                nftablesChains;
-            };
-            os-allow = {
-              family = "inet";
-              content = ''
-                chain input {
-                  type filter hook input priority 0; policy ${cfg.nftables.defaultPolicy};
-                  ${lib.strings.concatStrings inputRules}
-                  ${cfg.nftables.extraInputRules}
-                }
-
-                chain forward {
-                  type filter hook forward priority 0; policy ${cfg.nftables.defaultPolicy};
-                  ${lib.strings.concatStrings forwardRules}
-                  ${cfg.nftables.extraForwardRules}
-                }
-              '';
-            };
-            os-nat = lib.mkIf (netNat != []) {
-              family = "inet";
-              content = ''
-                chain postrouting {
-                    type nat hook postrouting priority 100; policy accept;
-                    oifname { ${builtins.concatStringsSep "," netNat} } masquerade
-                }
-              '';
-            };
-          }
-          // cfg.nftables.extraTables;
-      };
-    };
-
-    topology = {
-      self = {
-        interfaces = builtins.foldl' (acc: elem: let
-          iface = config.os.flavors.network.networks.${elem};
-          realIface = iface.interface;
-          portTCP = lib.lists.unique ((
-              if config.networking.firewall.interfaces ? ${realIface}.allowedTCPPorts
-              then config.networking.firewall.interfaces.${realIface}.allowedTCPPorts
-              else []
-            )
-            ++ (
-              if config.networking.firewall.interfaces ? ${elem}.allowedTCPPorts
-              then config.networking.firewall.interfaces.${elem}.allowedTCPPorts
-              else []
-            ));
-          portUDP = lib.lists.unique (
-            (
-              if config.networking.firewall.interfaces ? ${realIface}.allowedUDPPorts
-              then config.networking.firewall.interfaces.${realIface}.allowedUDPPorts
-              else []
-            )
-            ++ (
-              if config.networking.firewall.interfaces ? ${elem}.allowedUDPPorts
-              then config.networking.firewall.interfaces.${elem}.allowedUDPPorts
-              else []
-            )
-          );
-        in
-          {
-            ${iface.topology.name} = {
-              mac = lib.mkForce (
-                let
-                  portsTCP =
-                    if portTCP == []
-                    then ""
-                    else "TCP: ${builtins.concatStringsSep "," (
-                      builtins.map (port: toString port)
-                      portTCP
-                    )}";
-                  portsUDP =
-                    if portUDP == []
-                    then ""
-                    else "UDP: ${builtins.concatStringsSep "," (
-                      builtins.map (port: toString port)
-                      portUDP
-                    )}";
-                in
-                  if portsTCP != "" && portsUDP != ""
-                  then "${portsTCP}; ${portsUDP}"
-                  else if portsTCP != "" && portsUDP == ""
-                  then "${portsTCP}"
-                  else if portsTCP == "" && portsUDP != ""
-                  then "${portsUDP}"
-                  else ""
-              );
-              addresses =
-                if cfg.networks.${elem}.topology ? addresses
-                then cfg.networks.${elem}.topology.addresses
-                else [];
-              icon = let
-                net = config.os.flavors.network.networks.${elem};
-              in
-                if net.vlan ? enable && net.vlan.enable
-                then ../../../assets/images/interfaces/vlan.png
-                else if net.wireguard ? enable && net.wireguard.enable
-                then "interfaces.wireguard"
-                else "interfaces.ethernet";
-              physicalConnections = builtins.foldl' (acc: conn:
-                if conn.reversed
-                then [
-                  (config.lib.topology.mkConnectionRev conn.to conn.iface)
-                ]
-                else
-                  [
-                    (config.lib.topology.mkConnection conn.to conn.iface)
-                  ]
-                  ++ acc) []
-              cfg.networks.${elem}.topology.connections;
-              network = lib.mkIf cfg.networks.${elem}.isServer elem;
-            };
-          }
-          // acc) {} (builtins.attrNames cfg.networks);
-        services = (
-          if config.services.k3s.enable
-          then {
-            k3s = let
-              k3s = config.services.k3s;
-              server =
-                if k3s.role == "server"
-                then true
-                else false;
-              agent =
-                if (k3s.role == "agent" || (k3s.role == "server" && k3s.disableAgent == false))
-                then true
-                else false;
-              name = lib.concatStringsSep " " [
-                "Kubernetes"
-                (
-                  if server
-                  then "Control Plane"
-                  else ""
-                )
-                (
-                  if agent
-                  then "Worker"
-                  else ""
-                )
-              ];
-            in {
-              inherit name;
-              icon = ../../../assets/images/services/kubernetes.png;
-            };
-          }
-          else {}
-        );
-      };
-
-      networks = builtins.foldl' (acc: elem:
-        (
-          if cfg.networks.${elem}.isServer
-          then let
-            net = cfg.networks.${elem};
-            netName =
-              if net.topology.netName != null
-              then net.topology.netName
-              else elem;
-          in {
-            ${netName} = {
-              name = net.topology.desc;
-              cidrv4 = net.networkCIDR;
-              style = {
-                primaryColor = net.topology.color;
-                secondaryColor = null;
-                pattern = let
-                  wireguard = net.wireguard;
-                  vlan = net.vlan;
-                in
-                  if (wireguard ? enable && wireguard.enable)
-                  then "dotted"
-                  else if (vlan ? enable && vlan.enable)
-                  then "dashed"
-                  else "solid";
+                    else {}
+                  )
+                  // (
+                    if interface.matchConfig.name != null
+                    then {
+                      Name = interface.matchConfig.name;
+                    }
+                    else {
+                      Name = interface.name;
+                    }
+                  );
+                networkConfig =
+                  {
+                    IPv6AcceptRA = false;
+                  }
+                  // interface.networkConfig;
+                linkConfig = {
+                  RequiredForOnline = interface.requiredForOnline;
+                  ActivationPolicy = interface.activationPolicy;
+                  Unmanaged = interface.unmanaged;
+                };
               };
-            };
-          }
-          else {}
-        )
-        // acc) {} (builtins.attrNames cfg.networks);
-    };
-  };
+            }
+            // acc) {} (builtins.attrNames cfg.networks);
+        };
+      };
+
+      networking = {
+        inherit (cfg) nameservers;
+
+        networkmanager = {
+          inherit (cfg.networkmanager) enable;
+        };
+
+        firewall = {
+          inherit
+            (cfg.firewall)
+            enable
+            allowPing
+            checkReversePath
+            trustedInterfaces
+            ;
+          logRefusedPackets = cfg.firewall.debug;
+          logRefusedConnections = cfg.firewall.debug;
+          logReversePathDrops = cfg.firewall.debug;
+          # NO PORT GLOBALLY OPEN !
+          allowedTCPPorts = [];
+          allowedUDPPorts = [];
+          interfaces = builtins.foldl' (acc: name: let
+            interface = cfg.networks.${name};
+          in
+            {
+              ${interface.interface} = {
+                inherit
+                  (interface)
+                  allowedTCPPorts
+                  allowedUDPPorts
+                  ;
+              };
+            }
+            // acc) {} (builtins.attrNames cfg.networks);
+        };
+
+        nftables = {
+          inherit
+            (cfg.nftables)
+            enable
+            flushRuleset
+            ;
+
+          tables =
+            {
+              os-monitor-all = lib.mkIf cfg.nftables.debug {
+                family = "inet";
+                content = ''
+                  chain prerouting {
+                    type filter hook prerouting priority -350; policy accept;
+                    meta nftrace set 1;
+                  }
+                '';
+              };
+              os-drop-ipv6 = {
+                family = "ip6";
+                content =
+                  lib.strings.concatMapStrings (chain: ''
+                    chain ${chain} {
+                        type filter hook ${chain} priority 99; policy ${cfg.nftables.defaultPolicy};
+                        counter drop comment "Drop IPv6 traffic"
+                      }
+                  '')
+                  nftablesChains;
+              };
+              os-allow = {
+                family = "inet";
+                content = ''
+                  chain input {
+                    type filter hook input priority 0; policy ${cfg.nftables.defaultPolicy};
+                    ${lib.strings.concatStrings inputRules}
+                    ${cfg.nftables.extraInputRules}
+                  }
+
+                  chain forward {
+                    type filter hook forward priority 0; policy ${cfg.nftables.defaultPolicy};
+                    ${lib.strings.concatStrings forwardRules}
+                    ${cfg.nftables.extraForwardRules}
+                  }
+                '';
+              };
+              os-nat = lib.mkIf (netNat != []) {
+                family = "inet";
+                content = ''
+                  chain postrouting {
+                      type nat hook postrouting priority 100; policy accept;
+                      oifname { ${builtins.concatStringsSep "," netNat} } masquerade
+                  }
+                '';
+              };
+            }
+            // cfg.nftables.extraTables;
+        };
+      };
+      # } // (if ! cfg.topology.enable then {} else {
+    }
+    // (
+      if ! inputs ? nix-topology
+      then {}
+      else {
+        topology = lib.mkDebug cfg.topology.enable {
+          self = {
+            id = config.os.hostName;
+            name = config.os.hostName;
+            interfaces = builtins.foldl' (acc: elem: let
+              iface = config.os.flavors.network.networks.${elem};
+              realIface = iface.interface;
+              portTCP = lib.lists.unique ((
+                  config.networking.firewall.interfaces.${realIface}.allowedTCPPorts or []
+                )
+                ++ (
+                  config.networking.firewall.interfaces.${elem}.allowedTCPPorts or []
+                ));
+              portUDP = lib.lists.unique (
+                (
+                  config.networking.firewall.interfaces.${realIface}.allowedUDPPorts or []
+                )
+                ++ (
+                  config.networking.firewall.interfaces.${elem}.allowedUDPPorts or []
+                )
+              );
+            in
+              if ! iface.topology.enable
+              then {}
+              else
+                {
+                  ${iface.topology.name} = {
+                    mac = lib.mkForce (
+                      let
+                        portsTCP =
+                          if portTCP == []
+                          then ""
+                          else "TCP: ${builtins.concatStringsSep "," (
+                            builtins.map toString portTCP
+                          )}";
+                        portsUDP =
+                          if portUDP == []
+                          then ""
+                          else "UDP: ${builtins.concatStringsSep "," (
+                            builtins.map toString portUDP
+                          )}";
+                      in
+                        if portsTCP != "" && portsUDP != ""
+                        then "${portsTCP}; ${portsUDP}"
+                        else if portsTCP != "" && portsUDP == ""
+                        then "${portsTCP}"
+                        else if portsTCP == "" && portsUDP != ""
+                        then "${portsUDP}"
+                        else ""
+                    );
+                    addresses = cfg.networks.${elem}.topology.addresses or [];
+                    icon = let
+                      net = config.os.flavors.network.networks.${elem};
+                    in
+                      if net.vlan ? enable && net.vlan.enable
+                      then ../../../assets/images/interfaces/vlan.png
+                      else if net.wireguard ? enable && net.wireguard.enable
+                      then "interfaces.wireguard"
+                      else "interfaces.ethernet";
+                    physicalConnections = builtins.foldl' (acc: conn:
+                      if conn.reversed
+                      then [
+                        (config.lib.topology.mkConnectionRev conn.to conn.iface)
+                      ]
+                      else
+                        [
+                          (config.lib.topology.mkConnection conn.to conn.iface)
+                        ]
+                        ++ acc) []
+                    cfg.networks.${elem}.topology.connections;
+                    network = lib.mkIf cfg.networks.${elem}.isServer elem;
+                  };
+                }
+                // acc) {} (builtins.attrNames cfg.networks);
+            services =
+              if config.services.k3s.enable
+              then {
+                k3s = let
+                  inherit (config.services) k3s;
+                  server =
+                    if k3s.role == "server"
+                    then true
+                    else false;
+                  agent =
+                    if (k3s.role == "agent" || (k3s.role == "server" && ! k3s.disableAgent))
+                    then true
+                    else false;
+                  name = lib.concatStringsSep " " [
+                    "Kubernetes"
+                    (
+                      if server
+                      then "Control Plane"
+                      else ""
+                    )
+                    (
+                      if agent
+                      then "Worker"
+                      else ""
+                    )
+                  ];
+                in {
+                  inherit name;
+                  icon = ../../../assets/images/services/kubernetes.png;
+                };
+              }
+              else {};
+          };
+
+          networks = builtins.foldl' (acc: elem:
+            (
+              if cfg.networks.${elem}.isServer
+              then let
+                net = cfg.networks.${elem};
+                netName =
+                  if net.topology.netName != null
+                  then net.topology.netName
+                  else elem;
+              in {
+                ${netName} = {
+                  name = net.topology.desc;
+                  cidrv4 = net.networkCIDR;
+                  style = {
+                    primaryColor = net.topology.color;
+                    secondaryColor = null;
+                    pattern = let
+                      inherit
+                        (net)
+                        wireguard
+                        vlan
+                        ;
+                    in
+                      if (wireguard ? enable && wireguard.enable)
+                      then "dotted"
+                      else if (vlan ? enable && vlan.enable)
+                      then "dashed"
+                      else "solid";
+                  };
+                };
+              }
+              else {}
+            )
+            // acc) {} (builtins.attrNames cfg.networks);
+        };
+      }
+    );
 }
