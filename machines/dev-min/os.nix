@@ -1,4 +1,4 @@
-{...}: let
+_: let
   base = import ./base.nix;
 
   users = {
