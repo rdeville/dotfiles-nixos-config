@@ -15,10 +15,13 @@
   darwinPkgs = [];
 in {
   imports = [
+    ./aerospace
     ./awesome
     ./firefox
+    ./jankyborders
     ./kitty
     ./rofi
+    ./sketchybar
     ./thunderbird
     ./wayland
     ./alacritty.nix
