@@ -5,6 +5,14 @@ _: {
   programs = {
     firefox = {
       policies = {
+        # DEACTIVATE FIREFOX AI !
+        GenerativeAI = {
+          Enabled = false;
+          Chatbot = false;
+          LinkPreviews = false;
+          TabGroups = false;
+          Locked = false;
+        };
         AppAutoUpdate = false;
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
@@ -22,10 +30,6 @@ _: {
           "*" = {
             blocked_install_message = "Not Permitted to Install this type of addon";
             installation_mode = "blocked";
-            "allowed_types" = [
-              "theme"
-              "dictionary"
-            ];
           };
         };
         ExtensionUpdate = true;

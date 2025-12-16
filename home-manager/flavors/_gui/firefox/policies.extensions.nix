@@ -86,6 +86,11 @@
       shortId = "environment-marker-extension";
       uuid = "environmentmarker@example.com";
     };
+    # THEME
+    material-dark = {
+      shortId = "materialfox-dark";
+      uuid = "material-dark@mucksponge";
+    };
   };
 in {
   options = {
