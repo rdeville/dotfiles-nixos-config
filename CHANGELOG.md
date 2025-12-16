@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.1 (2025-12-16)
+
+### 🩹 Patch
+
+  * ⚡️(hm/gui/firefox): Deactivate GenAI config, add theme and remove useless config (!180) by Romain Deville ([`c37d47a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c37d47a53b43d9b38344bfa1846c70266786d309))
+  * ⚡️(hm/gui/firefox): Deactivate all GenAI related config by Romain Deville ([`3353fe0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3353fe059985cc44363b8c54276924f89dc882cd)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`33fdd9f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/33fdd9fe78ba87a1a420bbb4c9eba1ddd6ffc5b1)) 🔏
+  * ⬆️(devbox): Update devbox.lock by Romain Deville ([`a9d4a44`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a9d4a44c53d5250bf7d5ca4ac435fde205732ccc)) 🔏
+  * 🔧(hm/gui/firefox): Add materialfox-dark theme by Romain Deville ([`3a10f70`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3a10f70cbedc5debdbda69177fa0f1aa8a431f9b)) 🔏
+
+### 🔊 Others
+
+  * 🔥(hm/gui/firefox): Remove useless parameter since all addons are &#34;blocked&#34; by Romain Deville ([`b20957f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b20957f971900081b5b9e4898877778c54ecf5f9)) 🔏
+
 ## v0.50.0 (2025-12-14)
 
 ### ✨ Minor
