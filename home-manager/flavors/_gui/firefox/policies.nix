@@ -30,10 +30,6 @@ _: {
           "*" = {
             blocked_install_message = "Not Permitted to Install this type of addon";
             installation_mode = "blocked";
-            "allowed_types" = [
-              "theme"
-              "dictionary"
-            ];
           };
         };
         ExtensionUpdate = true;
