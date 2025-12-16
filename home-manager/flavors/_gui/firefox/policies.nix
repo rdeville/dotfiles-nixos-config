@@ -5,6 +5,14 @@ _: {
   programs = {
     firefox = {
       policies = {
+        # DEACTIVATE FIREFOX AI !
+        GenerativeAI = {
+          Enabled = false;
+          Chatbot = false;
+          LinkPreviews = false;
+          TabGroups = false;
+          Locked = false;
+        };
         AppAutoUpdate = false;
         AutofillAddressEnabled = false;
         AutofillCreditCardEnabled = false;
