@@ -47,9 +47,7 @@ in {
           enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
 
           awesome = {
-            enable =
-              lib.mkDependEnabledOption "Install awesome window manager"
-              config.os.flavors.${name}.enable;
+            enable = lib.mkEnableOption "Install awesome window manager";
           };
 
           hyprland = {
