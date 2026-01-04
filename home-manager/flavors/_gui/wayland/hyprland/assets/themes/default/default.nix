@@ -17,7 +17,6 @@ in
           settings = {
             general = {
               border_size = 2;
-              no_border_on_floating = false;
               gaps_in = 5;
               gaps_out = 10;
               "col.active_border" = "rgba(${clr.str.cyan_A400}ee) rgba(${clr.str.green_A400}ee) 45deg";
