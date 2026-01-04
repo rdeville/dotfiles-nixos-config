@@ -148,6 +148,8 @@ in {
                 exec-once=systemctl --user start hyprpolkitagent
                 exec-once=systemctl --user start xdg-desktop-portal-hyprland
                 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+                animation = global, 1, 2.5,    default
               ''
               + (
                 if config.hm.flavors._gui.wayland.waybar.enable
