@@ -142,12 +142,14 @@ in {
 
             extraConfig =
               ''
-                windowrule = bordercolor rgba(${clr.str.red_600}ee) rgba(${clr.str.purple_400}ee) 45deg,fullscreen:1
-                windowrule = bordercolor rgba(${clr.str.yellow_600}ee) rgba(${clr.str.amber_400}ee) 45deg,floating:1
+                windowrule = border_color rgba(${clr.str.red_600}ee) rgba(${clr.str.purple_400}ee) 45deg,match:fullscreen true
+                windowrule = border_color rgba(${clr.str.yellow_600}ee) rgba(${clr.str.amber_400}ee) 45deg,match:float true
 
                 exec-once=systemctl --user start hyprpolkitagent
                 exec-once=systemctl --user start xdg-desktop-portal-hyprland
                 exec-once=dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP
+
+                animation = global, 1, 2.5,    default
               ''
               + (
                 if config.hm.flavors._gui.wayland.waybar.enable
@@ -177,7 +179,6 @@ in {
 
                 general = {
                   border_size = 2;
-                  no_border_on_floating = false;
                   gaps_in = 5;
                   gaps_out = 10;
                   "col.active_border" = "rgba(${clr.str.cyan_A400}ee) rgba(${clr.str.green_A400}ee) 45deg";
