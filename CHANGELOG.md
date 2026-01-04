@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.3 (2026-01-04)
+
+### 🩹 Patch
+
+  * ⚡️(hm/gui/hyprland): Make global animations faster by Romain Deville ([`460314e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/460314e493aa2773e859671d29d67b94ede62615)) 🔏
+  * 👽️ Update hyprland config param changes and add faster animations (!182) by Romain Deville ([`cb17677`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cb17677e8864d54d2e784cff89337daf62b436e3))
+  * 👽️(hm/gui/hyprland): Update hyprland config due to change in conf file structure by Romain Deville ([`27508f7`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/27508f7716b128062fda6ab13840720c32183a71)) 🔏
+
 ## v0.50.2 (2026-01-04)
 
 ### 🩹 Patch
