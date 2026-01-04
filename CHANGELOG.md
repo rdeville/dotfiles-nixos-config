@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.2 (2026-01-04)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`bdcd353`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bdcd35315346bd8b559383ae36c09068ed62dd34)) 🔏
+  * 🔧 Set AwesomeWM for HM and NixOS disabled by default by Romain Deville ([`3209f3c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3209f3c5288aa1e570713a47ef873e9501d71924)) 🔏
+  * 🔧 Remove default stateVersion to ensure it is defined per machine by Romain Deville ([`bd3586d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bd3586da384a6981f294efe21688608c3b3da9b2)) 🔏
+  * 🚩 Remove default value for options and isProd boolean (!181) by Romain Deville ([`e411311`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e411311e4043e0ba7fdb0aaf2e8c58b6bb71cbf1))
+  * 🚩 Remove isProd boolean and support by Romain Deville ([`5e4e1ec`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/5e4e1eccfa805c452187d34e130ef31e515f9055)) 🔏
+
 ## v0.50.1 (2025-12-16)
 
 ### 🩹 Patch
