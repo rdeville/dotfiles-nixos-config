@@ -51,30 +51,19 @@ in {
 
   config = lib.mkIf (! config.os.isDarwin && cfg.enable) {
     services = {
-      xserver =
-        {
-          inherit (cfg) xkb;
-          enable = true;
-        }
-        // lib.optionalAttrs config.os.isProd {
-          displayManager = {
-            gdm = {
-              inherit (cfg.gdm) enable;
-            };
-          };
+      xserver = {
+        inherit (cfg) xkb;
+        enable = true;
+      };
+      displayManager = {
+        defaultSession = "hyprland";
+        ly = {
+          inherit (cfg.ly) enable settings;
         };
-      displayManager =
-        {
-          defaultSession = "hyprland";
-          ly = {
-            inherit (cfg.ly) enable settings;
-          };
-        }
-        // lib.optionalAttrs (! config.os.isProd) {
-          gdm = {
-            inherit (cfg.gdm) enable;
-          };
+        gdm = {
+          inherit (cfg.gdm) enable;
         };
+      };
     };
   };
 }

@@ -30,7 +30,6 @@ in {
       stateVersion = lib.mkOption {
         type = lib.types.str;
         description = "Version of HM to follow";
-        default = "25.05";
       };
 
       system = lib.mkOption {
@@ -77,7 +76,6 @@ in {
       isDarwin = lib.mkEnableOption "Boolean, set to true to specify OS is darwin.";
       isMain = lib.mkEnableOption "Main computer.";
       isGui = lib.mkEnableOption "GUI computer.";
-      isProd = lib.mkEnableOption "Prod computer.";
       isWork = lib.mkEnableOption "Work computer.";
     };
   };

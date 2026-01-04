@@ -43,21 +43,14 @@ in {
       flavors = {
         ${name} = {
           ${subname} = {
-            enable =
-              lib.mkDependEnabledOption ''
-                Install ${name}.${subname} Home-Manager flavor.
-              ''
-              (
-                config.hm.flavors.${name}.enable
-                && ! config.hm.isDarwin
-              );
+            enable = lib.mkEnableOption "Install ${name}.${subname} Home-Manager flavor.";
           };
         };
       };
     };
   };
 
-  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
+  config = lib.mkIf (cfg.enable && ! config.hm.isDarwin) {
     home = {
       file = {
         ".xinitrc" = {
