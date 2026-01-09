@@ -8,6 +8,9 @@
           type = lib.types.attrsOf (
             lib.types.submodule {
               options = {
+                isPrimary = lib.mkEnableOption "Set user as primary";
+                isSudo = lib.mkEnableOption "Enable sudo group for the user";
+
                 shell = lib.mkOption {
                   type = lib.types.str;
                   description = "The shell for the user.";
