@@ -14,8 +14,8 @@
       };
 
       stateVersion = lib.mkOption {
-        type = lib.types.str;
-        description = "Version of HM to follow";
+        type = lib.types.int;
+        description = "Version of nix-darwin to follow";
       };
 
       system = lib.mkOption {

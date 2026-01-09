@@ -1,6 +1,5 @@
 {
   config,
-  lib,
   pkgs,
   ...
 }: let
@@ -9,6 +8,7 @@ in {
   imports = [
     ./flavors
     ./users
+    ./options.nix
   ];
 
   config = {
@@ -23,15 +23,20 @@ in {
     nix = {
       gc = {
         automatic = true;
-        dates = "weekly";
         options = "--delete-older-than 7d";
+        interval = [
+          {
+            Hour = 18;
+            Minute = 00;
+            Weekday = 5;
+          }
+        ];
       };
 
       package = pkgs.nixVersions.latest;
 
       settings = {
         accept-flake-config = true;
-        auto-optimise-store = lib.mkDefault true;
         extra-experimental-features = [
           "flakes"
           "nix-command"
