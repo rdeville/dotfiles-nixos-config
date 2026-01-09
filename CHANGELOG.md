@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.4 (2026-01-09)
+
+### 🩹 Patch
+
+  * ⚡️ Fix nix-darwin modules (!183) by Romain Deville ([`4c8dc74`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4c8dc74ae76de5046d9c0881ee6945d9cdd7db87))
+  * ⚡️(darwin): Fix darwin default module options and configuration by Romain Deville ([`664072c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/664072cae5a218c795b03b8ae0cbad647ec5e55d)) 🔏
+  * ⚡️(darwin/users): Fix users configuration to reflect nix-darwin configuration by Romain Deville ([`f9a9e55`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f9a9e5589014f54b2efe7ec57c1e488d056cc5b7)) 🔏
+  * 🐛(darwin/flavors): Remove wrong import by Romain Deville ([`b01dd6e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b01dd6e2f161e0630a782cc0efbb72d0342c13c7)) 🔏
+  * 🐛(darwin/docker): Fix typos in options and homebrew configuration by Romain Deville ([`10d56bd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/10d56bd47e818b95c0096e20f3ace051674f4875)) 🔏
+  * 🐛(darwin/display/dock): Fix option type and flavor name in options by Romain Deville ([`3e1258b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3e1258b15455637ae828cb7c188c2836af36d050)) 🔏
+  * 🐛(darwin/core): Fix wrong option type and move defaults.nix to default.nix by Romain Deville ([`8d02e70`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8d02e70ecbbd153f2fa4543bc7dcb52fd07d39d0)) 🔏
+
 ## v0.50.3 (2026-01-04)
 
 ### 🩹 Patch
