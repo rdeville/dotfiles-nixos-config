@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.5 (2026-01-09)
+
+### 🩹 Patch
+
+  * 🐛(os/network): Fix topology configurartion in network flavor (!184) by Romain Deville ([`59b2239`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/59b22391ef7dfd688bdf492fb32769868b08e21b))
+  * 🐛(os/network): Fix topology configurartion in network flavor by Romain Deville ([`c5210a9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c5210a925121f6c0ca03b9ef0830d257994a934c)) 🔏
+
 ## v0.50.4 (2026-01-09)
 
 ### 🩹 Patch
