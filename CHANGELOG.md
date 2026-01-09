@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.7 (2026-01-09)
+
+### 🩹 Patch
+
+  * 🐛(hm/gh): Fix pager config to point to bin instead of pkgs folders (!186) by Romain Deville ([`6b2e44c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b2e44c889ef0f6264f38bd9ef19f347661f08d8))
+  * 🐛(hm/gh): Fix pager config to point to bin instead of pkgs folders by Romain Deville ([`011e8b9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/011e8b9503313a9a0ac1d38e26d9fa067b7f1b76)) 🔏
+
 ## v0.50.6 (2026-01-09)
 
 ### 🩹 Patch
