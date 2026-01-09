@@ -47,9 +47,6 @@ in {
         htop # Process Manager
         coreutils # GNU Utilities
         killall # Process Killer
-        lshw # Hardware Config
-        pciutils # Manage PCI
-        usbutils # Manage USB
 
         # NixOS CLI related packages
         nix-tree # Browse Nix Store

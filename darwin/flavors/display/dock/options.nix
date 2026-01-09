@@ -26,7 +26,7 @@ in {
               ''Whether to group windows by application in Mission Control's Exposé'';
 
             largesize = lib.mkOption {
-              type = lib.types.int;
+              type = lib.types.nullOr lib.types.int;
               description = ''Magnified icon size on hover'';
               default = null;
             };

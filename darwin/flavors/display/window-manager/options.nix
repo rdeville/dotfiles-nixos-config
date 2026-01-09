@@ -3,7 +3,7 @@
   config,
   ...
 }: let
-  name = builtins.baseNameOf ./.;
+  name = builtins.baseNameOf ../.;
   subname = builtins.baseNameOf ./.;
 in {
   options = {

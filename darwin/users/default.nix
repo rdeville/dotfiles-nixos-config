@@ -4,17 +4,19 @@
   ...
 }: let
   cfg = config.os.users;
-  defaultGroup = [
-    "networkmanager"
-  ];
-  sudoGroup = user:
-    if user.isSudo
-    then [
-      "wheel"
-    ]
-    else [];
 in {
+  imports = [
+    ./options.nix
+  ];
+
   config = {
+    system = {
+      primaryUser = builtins.toString (builtins.filter (item: let
+        user = cfg.users.${item};
+      in
+        user.isPrimary) (builtins.attrNames cfg.users));
+    };
+
     users = {
       users =
         builtins.mapAttrs (
@@ -25,11 +27,6 @@ in {
               home
               ;
             shell = pkgs.${user.shell};
-            isNormalUser = name != "root";
-            extraGroups =
-              defaultGroup
-              ++ user.extraGroups
-              ++ (sudoGroup user);
           }
         )
         cfg.users;

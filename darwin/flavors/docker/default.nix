@@ -10,7 +10,7 @@ in {
     os = {
       flavors = {
         ${name} = {
-          enable = lib.mkEnable "Install ${name} NixOS flavors.";
+          enable = lib.mkEnableOption "Install ${name} NixOS flavors.";
         };
       };
     };
@@ -20,7 +20,7 @@ in {
     homebrew = {
       enable = true;
 
-      cask = [
+      casks = [
         "docker"
       ];
     };

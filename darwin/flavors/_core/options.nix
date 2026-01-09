@@ -93,9 +93,11 @@ in {
                 Whether to show warnings when change the file extension of files
               '';
             FXPreferredViewStyle = lib.mkOption {
-              type =
-                lib.types.enum [
-                ];
+              type = lib.types.enum [
+                "Nlsv"
+                "icnv"
+                "clmv"
+              ];
               description = ''
                 Change the default finder view.
                 * "icnv" = Icon view,
@@ -327,9 +329,9 @@ in {
               lib.mkEnableOption
               ''Whether to enable "Natural" scrolling direction'';
             "com.apple.trackpad.scaling" = lib.mkOption {
-              type = lib.types.int;
+              type = lib.types.float;
               description = ''Configures the trackpad tracking speed (0 to 3)'';
-              default = 2;
+              default = 2.0;
             };
             _HIHideMenuBar =
               lib.mkDefaultEnabledOption
