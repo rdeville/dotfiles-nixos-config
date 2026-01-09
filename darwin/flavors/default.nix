@@ -4,6 +4,5 @@
     ./display
     ./docker
     ./network
-    ./window-manager
   ];
 }
