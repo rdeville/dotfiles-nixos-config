@@ -100,26 +100,6 @@
     }
     {
       type = "custom";
-      format = "{#31}├─── {#33}Network Information {#31}───────────────────────────────────";
-    }
-    {
-      type = "localip";
-      key = "│ {#32}󰩠 ";
-      showAllIps = true;
-      compact = true;
-    }
-    {
-      type = "publicip";
-      format = "{1}";
-      key = "│ {#32}󱫋 ";
-    }
-    {
-      type = "wifi";
-      key = "│ {#32}󰀂 ";
-      format = "{4}";
-    }
-    {
-      type = "custom";
       format = "{#31}├─── {#33}Graphical Information {#31}─────────────────────────────────";
     }
     {
