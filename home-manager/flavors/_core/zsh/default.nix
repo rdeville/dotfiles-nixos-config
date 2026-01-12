@@ -37,6 +37,7 @@ in {
         defaultKeymap = "viins";
         profileExtra = ''
           export LC_ALL="en_US.UTF-8"
+          export GOPATH="${config.xdg.cacheHome}/go"
         '';
 
         initContent = lib.mkBefore ''
