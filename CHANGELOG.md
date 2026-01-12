@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.8 (2026-01-12)
+
+### 🩹 Patch
+
+  * 🔧(hm/core/zsh): Add export of GOPATH variable to XDG_CACHE_HOME (!187) by Romain Deville ([`be39d89`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/be39d8969ffc9f5f99e2ba682cc68d071fe6ed00))
+  * 🔧(hm/core/zsh): Add export of GOPATH variable to XDG_CACHE_HOME by Romain Deville ([`129ce3c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/129ce3c069c08a1ee34361d9f77b00e167c52860)) 🔏
+
 ## v0.50.7 (2026-01-09)
 
 ### 🩹 Patch
