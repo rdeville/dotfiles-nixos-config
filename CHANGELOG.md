@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.9 (2026-01-12)
+
+### 🩹 Patch
+
+  * 🔧(hm/core/fastfetch): Remove network module from default module (!188) by Romain Deville ([`8b2c844`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8b2c84441cd6832bdbf8af48c3c16eb14d710e61))
+  * 🔧(hm/core/fastfetch): Remove network module from default module by Romain Deville ([`2602499`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2602499774ba1940bb3a58804f5373c75510762c)) 🔏
+
 ## v0.50.8 (2026-01-12)
 
 ### 🩹 Patch
