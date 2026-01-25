@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.10 (2026-01-25)
+
+### 🩹 Patch
+
+  * ⚡️ Improve Starship and Firefox HM Config (!189) by Romain Deville ([`c7c1bc0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c7c1bc0de06356320a1a97f3c1452f0175c9591d))
+  * ⚡️(hm/gui/firefox): Add NoAI DuckDuck and remove DuckDuck and Perplexity search by Romain Deville ([`37a3fcc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/37a3fccc372b63ee452b7b4b2f8c6dd2a06c8215)) 🔏
+  * ⚡️(hm/core/starship): Improve k8s context module and add default modules by Romain Deville ([`bb3a45e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/bb3a45e635e61a417985ef0e33d821819c16b57e)) 🔏
+
 ## v0.50.9 (2026-01-12)
 
 ### 🩹 Patch
