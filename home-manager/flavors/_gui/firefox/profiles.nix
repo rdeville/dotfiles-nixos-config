@@ -20,6 +20,20 @@
     };
   };
   engines = {
+    "DuckDuckGo NoAI" = {
+      urls = [
+        {
+          template = "https://noai.duckduckgo.com/";
+          params = [
+            {
+              name = "q";
+              value = "{searchTerms}";
+            }
+          ];
+        }
+      ];
+      definedAliases = ["@ddg" "@d" "ddg" "d"];
+    };
     "Nix Packages" = {
       urls = [
         {
@@ -61,25 +75,25 @@
   };
   search = {
     # DuckDuckGo
-    default = "ddg";
-    privateDefault = "ddg";
+    default = "DuckDuckGo NoAI";
+    privateDefault = "DuckDuckGo NoAI";
     engines =
       engines
       // {
         # DuckDuckGo
-        "ddg" = alias "d";
-        "google" = alias "g";
-        "wikipedia (en)" = alias "w";
-        "Bookmarks" = alias "b";
-        "Tabs" = alias "t";
-        "History" = alias "h";
+        "ddg" = hidden;
         "bing" = hidden;
         "qwant" = hidden;
+        "perplexity" = hidden;
+        "google" = alias "g";
+        "wikipedia (en)" = alias ":w";
+        "bookmarks" = alias ":b";
+        "tabs" = alias ":t";
+        "history" = alias ":h";
       };
     force = true;
     order = [
-      # DuckDuckGo
-      "ddg"
+      "DuckDuckGo NoAI"
       "wikipedia"
       "Nix Packages"
       "Home Manager"
