@@ -21,9 +21,11 @@ in {
     };
 
     nix = {
+      package = pkgs.nixVersions.latest;
+
       gc = {
         automatic = true;
-        options = "--delete-older-than 7d";
+        options = "--delete-older-than 30d";
         interval = [
           {
             Hour = 18;
@@ -33,7 +35,16 @@ in {
         ];
       };
 
-      package = pkgs.nixVersions.latest;
+      optimise = {
+        automatic = true;
+        interval = [
+          {
+            Hour = 18;
+            Minute = 15;
+            Weekday = 5;
+          }
+        ];
+      };
 
       settings = {
         accept-flake-config = true;
