@@ -14,7 +14,7 @@ init_logger() {
     { [[ -f "${log_file}" ]] && [[ "${time}" -gt "${delai}" ]]; }; then
     if ping -q -c 1 framagit.org &>/dev/null; then
       # shellcheck disable=SC1090
-      source <(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)
+      eval "$(curl -s https://framagit.org/-/snippets/7183/raw/main/_get_log.sh)"
       echo "${curr_time}" >"${last_download_file}"
     else
       echo -e "\033[1;33m[WARNING]\033[0;33m Unable to get last logger version, will use \`echo\`.\033[0m" >&2
@@ -24,7 +24,7 @@ init_logger() {
     fi
   else
     # shellcheck disable=SC1090
-    source <(cat "${log_file}")
+    eval "$(cat "${log_file}")"
   fi
 }
 
