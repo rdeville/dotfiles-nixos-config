@@ -100,9 +100,11 @@
       "google"
     ];
   };
-  userChrome = builtins.readFile ./chrome/userChrome.css;
+  userChrome = if config.hm.isDarwin
+  then builtins.readFile ./chrome/userChrome.darwin.css else
+builtins.readFile ./chrome/userChrome.css ;
 in {
-  config = lib.mkIf (! config.hm.isDarwin) {
+  config = lib.mkIf cfg.enable {
     programs = {
       firefox = {
         profiles =
@@ -110,14 +112,13 @@ in {
           then {
             pro =
               {
-                id = 1;
+                id = 0;
                 isDefault = config.hm.isWork;
                 name = "pro";
                 userContent = "";
                 settings = settings // {};
                 inherit
                   search
-                  userChrome
                   ;
               }
               // (

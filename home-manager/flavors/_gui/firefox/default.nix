@@ -35,11 +35,14 @@ in {
     };
   };
 
-  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
+  config = lib.mkIf cfg.enable {
     programs = {
       firefox = {
         enable = true;
-        package = pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
+        package =
+          if config.hm.isDarwin
+          then pkgs.firefox-bin
+          else pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
       };
     };
   };
