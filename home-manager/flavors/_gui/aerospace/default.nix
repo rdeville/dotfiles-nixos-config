@@ -28,6 +28,7 @@ in {
       aerospace = {
         enable = true;
         settings = {
+          config-version = 2;
           # # You can use it to add commands that run after AeroSpace startup.
           # # Available commands : https://nikitabobko.github.io/AeroSpace/commands
           # after-startup-command = []
@@ -36,8 +37,8 @@ in {
           start-at-login = false;
 
           # Normalizations. See: https://nikitabobko.github.io/AeroSpace/guide#normalization
-          enable-normalization-flatten-containers = true;
-          enable-normalization-opposite-orientation-for-nested-containers = true;
+          enable-normalization-flatten-containers = false;
+          enable-normalization-opposite-orientation-for-nested-containers = false;
 
           # See: https://nikitabobko.github.io/AeroSpace/guide#layouts
           # The 'accordion-padding' specifies the size of accordion padding
@@ -81,6 +82,56 @@ in {
           # See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
           key-mapping = {
             preset = "qwerty";
+            key-notation-to-key-code = {
+              "&" = "1";
+              "é" = "2";
+              "'\"'" = "3";
+              "" = "4";
+              "(" = "5";
+              "§" = "6";
+              "è" = "7";
+              "!" = "8";
+              "ç" = "9";
+              "à" = "0";
+              ")" = "minus";
+              "minus" = "equal";
+
+              a = "q";
+              z = "w";
+              e = "e";
+              r = "r";
+              t = "t";
+              y = "y";
+              u = "u";
+              i = "i";
+              o = "o";
+              p = "p";
+              "^" = "leftSquareBracket";
+              "$" = "rightSquareBracket";
+
+              q = "a";
+              s = "s";
+              d = "d";
+              f = "f";
+              g = "g";
+              h = "h";
+              j = "j";
+              k = "k";
+              l = "l";
+              m = "semicolon";
+              "ù" = "quote";
+
+              w = "z";
+              x = "x";
+              c = "c";
+              v = "v";
+              b = "b";
+              n = "n";
+              comma = "m";
+              semicolon = "comma";
+              colon = "period";
+              "=" = "slash";
+            };
           };
 
           # Gaps between windows (inner-*) and between monitor edges (outer-*).
@@ -92,19 +143,23 @@ in {
           #                 See:
           #                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
           gaps = {
-            "inner.horizontal" = 5;
-            "inner.vertical" = 5;
-            "outer.left" = 5;
-            "outer.bottom" = 5;
-            "outer.top" = 5;
-            "outer.right" = 5;
+            inner = {
+              horizontal = 5;
+              vertical = 5;
+            };
+            outer = {
+              left = 5;
+              bottom = 5;
+              top = 5;
+              right = 5;
+            };
           };
 
           # 'main' binding mode declaration
           # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
           # 'main' binding mode must be always presented
           # Fallback value (if you omit the key): mode.main.binding = {}
-          "mode.main.binding" = {
+          mode.main.binding = {
             # All possible keys:
             # - Letters.        a, b, c, ..., z
             # - Numbers.        0, 1, 2, ..., 9
@@ -124,20 +179,20 @@ in {
             # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
             # You can uncomment the following lines to open up terminal with alt + enter shortcut
             # (like in i3)
-            cmd-enter = "exec-and-forget open -n /Applications/Kitty.app";
+            # cmd-enter = "kitty";
 
             # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-            cmd-space = "layout tiles accordion";
+            cmd-shift-space = "layout tiling floating";
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
-            cmd-ctrl-h = "focus-monitor left";
-            cmd-ctrl-j = "focus-monitor down";
-            cmd-ctrl-k = "focus-monitor up";
-            cmd-ctrl-l = "focus-monitor right";
+            cmd-ctrl-h = "join-with left";
+            cmd-ctrl-j = "join-with down";
+            cmd-ctrl-k = "join-with up";
+            cmd-ctrl-l = "join-with right";
             # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-            cmd-h = "focus left";
-            cmd-j = "focus down";
-            cmd-k = "focus up";
-            cmd-l = "focus right";
+            cmd-h = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors left";
+            cmd-j = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors down";
+            cmd-k = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors up";
+            cmd-l = "focus --boundaries all-monitors-outer-frame --boundaries-action wrap-around-all-monitors right";
             # See: https://nikitabobko.github.io/AeroSpace/commands#move
             cmd-shift-h = "move left";
             cmd-shift-j = "move down";
@@ -145,9 +200,9 @@ in {
             cmd-shift-l = "move right";
             # See: https://nikitabobko.github.io/AeroSpace/commands#resize
             cmd-alt-h = "resize width +10";
-            cmd-alt-j = "resize width -10";
-            cmd-alt-k = "resize height +10";
-            cmd-alt-l = "resize height -10";
+            cmd-alt-j = "resize height +10";
+            cmd-alt-k = "resize height -10";
+            cmd-alt-l = "resize width -10";
             # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
             cmd-1 = "summon-workspace 1";
             cmd-2 = "summon-workspace 2";
@@ -172,8 +227,8 @@ in {
             cmd-shift-0 = "move-node-to-workspace 0";
 
             # Window size management
-            cmd-f = "fullscreen --no-outer-gaps";
-            cmd-m = "fullscreen";
+            cmd-shift-f = "fullscreen --no-outer-gaps";
+            cmd-shift-m = "fullscreen";
           };
         };
       };

@@ -115,7 +115,7 @@ in {
     };
   };
 
-  config = {
+  config = lib.mkIf cfg.enable {
     programs = {
       firefox = {
         # See list of policies https://mozilla.github.io/policy-templates/

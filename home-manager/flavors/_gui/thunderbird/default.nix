@@ -23,7 +23,8 @@ in {
     };
   };
 
-  config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
+  # config = lib.mkIf (cfg.enable && (! config.hm.isDarwin)) {
+  config = lib.mkIf cfg.enable {
     programs = {
       thunderbird = {
         enable = true;
