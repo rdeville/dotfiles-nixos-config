@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.50.11 (2026-01-27)
+
+### 🩹 Patch
+
+  * ⚡️ Multiple HM fixes and some tweaks in nix config for Darwin (!190) by Romain Deville ([`cebc405`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cebc40583ab146ea78845a2cab0506654e0f7300))
+  * 🔧(hm/gui/thunderbird): Activate thunderbird module even for Darwin by Romain Deville ([`ebf650d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ebf650d250dfdd087a596c815be22962ac43c7a2)) 🔏
+  * 🔧(hm/gui/aerospace): Update mapping to work on azerty keyboard and some tweak by Romain Deville ([`58d3979`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/58d39792c85c86ac8d84bfba1c71f5e12054be6e)) 🔏
+  * 🔧(hm/gui/firefox): Update firefox module for Darwin by Romain Deville ([`d7a6cfe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d7a6cfe1c039df083b1a157c7a7c9bfef7c6c350)) 🔏
+  * 🔧(hm/core/mr): Refacto MR to support Darwin by Romain Deville ([`725c535`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/725c5358928896b64ef696768cf5e1e1b4b5dffd)) 🔏
+  * 🔧(darwin): Update nix gc retention and add optimise configuration by Romain Deville ([`a0dab86`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a0dab86d3294fe1b2b16290f559f5251c2d6f09e)) 🔏
+
 ## v0.50.10 (2026-01-25)
 
 ### 🩹 Patch
