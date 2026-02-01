@@ -1,11 +1,8 @@
 {
-  config,
   lib,
   name,
   ...
-}: let
-  cfg = config;
-in {
+}: {
   options = {
     enable = lib.mkDefaultEnabledOption "Enable interface";
 

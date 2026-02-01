@@ -9,7 +9,6 @@ in {
   imports = [
     ../modules
     ./flavors
-    ./services
     ./users.nix
   ];
 
