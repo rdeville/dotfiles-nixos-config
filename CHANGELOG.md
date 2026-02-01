@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.51.0 (2026-02-01)
+
+### ✨ Minor
+
+  * ✨(os/openbao): Rework module to support PG and integrate service (!191) by Romain Deville ([`6d0a894`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6d0a894511598d273c0a639651772985c53532a8))
+
+### 🩹 Patch
+
+  * ⚡️(os/openbao): Rework flavor to support PG and directly setup service by Romain Deville ([`af502e9`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/af502e9206bfe34d3dcfd393581ec28aad4cbc16)) 🔏
+
+### 🔊 Others
+
+  * 🔥(os): As openbao flavors integrate service, remove useless module by Romain Deville ([`7d06707`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7d06707d59cae2de724874873d409bd6fc5b5a62)) 🔏
+
 ## v0.50.11 (2026-01-27)
 
 ### 🩹 Patch
