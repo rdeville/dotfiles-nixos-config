@@ -100,9 +100,10 @@
       "google"
     ];
   };
-  userChrome = if config.hm.isDarwin
-  then builtins.readFile ./chrome/userChrome.darwin.css else
-builtins.readFile ./chrome/userChrome.css ;
+  userChrome =
+    if config.hm.isDarwin
+    then builtins.readFile ./chrome/userChrome.darwin.css
+    else builtins.readFile ./chrome/userChrome.css;
 in {
   config = lib.mkIf cfg.enable {
     programs = {
