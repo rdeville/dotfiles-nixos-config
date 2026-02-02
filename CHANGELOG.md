@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.51.1 (2026-02-02)
+
+### 🩹 Patch
+
+  * ⚡️(hm): Improve starship k8s module with context and firefox userChrome (!192) by Romain Deville ([`02c6ebe`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/02c6ebe9dc59df242c099bc6ee77937ee5201b48))
+  * ⚡️(hm/gui/firefox): Add new userChrome.css for Darwin by Romain Deville ([`040429a`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/040429a299747f67c23efba3431583b69e66594b))
+  * ⚡️(hm/core/starship): Improve management of k8s contexts by Romain Deville ([`7068b31`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7068b31ac0d762f055f0b7bb0c6665132c6228bb))
+
 ## v0.51.0 (2026-02-01)
 
 ### ✨ Minor
