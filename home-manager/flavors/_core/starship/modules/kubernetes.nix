@@ -11,11 +11,11 @@
   fg = mkLib.colors.grey_100;
   bg = mkLib.colors.blue_700;
 
-  prod = mkLib.colors.red_500;
-  stg = mkLib.colors.yellow_500;
+  prod = mkLib.colors.red_800;
+  stg = mkLib.colors.yellow_800;
 
   mkContextParam = context: param:
-    if context.${param} != null
+    if context?${param} && context.${param} != null
     then {"${param}" = context.${param};}
     else {};
 
@@ -27,10 +27,33 @@
         // (mkContextParam elem "user_pattern")
         // (mkContextParam elem "user_alias")
         // (mkContextParam elem "symbol")
-        // (mkContextParam elem "style")
-        ;
-    in [context] ++ acc) []
+        // (mkContextParam elem "style");
+    in
+      [context] ++ acc) []
     contexts;
+
+  defaultContext = [
+    {
+      context_pattern = ".*(prod).*";
+      symbol = "🚨 ";
+      style = "fg:${prod} bg:${bg}";
+    }
+    {
+      context_pattern = ".*(preprod|staging|stg).*";
+      symbol = "⚠️ ";
+      style = "fg:${stg} bg:${bg}";
+    }
+    {
+      context_pattern = ".*(dev).*";
+      symbol = "✅ ";
+      style = "fg:${fg} bg:${bg}";
+    }
+    {
+      context_pattern = ".*(local|lab).*";
+      symbol = "🧪 ";
+      style = "fg:${fg} bg:${bg}";
+    }
+  ];
 in {
   options = mkLib.mkSetStarshipModuleOptions name {
     disabled = lib.mkEnableOption "Disable starship ${name} module.";
@@ -40,6 +63,8 @@ in {
       description = "Position of the module (right or left)";
       default = "left";
     };
+
+    useDefaultContexts = lib.mkDefaultEnabledOption "Use the default contexts";
 
     contexts = lib.mkOption {
       description = "Customized styles and symbols for specific contexts.";
@@ -82,28 +107,7 @@ in {
           };
         };
       });
-      default = [
-        {
-          context_pattern = ".*(prod).*";
-          symbol = "󱃾 🚨";
-          style = "bold fg:${prod} bg:${bg}";
-        }
-        {
-          context_pattern = ".*(preprod|staging|stg).*";
-          symbol = "󱃾 ⚠️";
-          style = "bold fg:${stg} bg:${bg}";
-        }
-        {
-          context_pattern = ".*(dev).*";
-          symbol = "󱃾 ✅";
-          style = "fg:${fg} bg:${bg}";
-        }
-        {
-          context_pattern = ".*(local|lab).*";
-          symbol = "󱃾 🧪";
-          style = "fg:${fg} bg:${bg}";
-        }
-      ];
+      default = [];
     };
   };
 
@@ -116,9 +120,12 @@ in {
               (cfg)
               disabled
               ;
-            contexts = mkContext cfg.contexts;
+            contexts =
+              if cfg.useDefaultContexts
+              then mkContext defaultContext ++ cfg.contexts
+              else mkContext cfg.contexts;
             # A format string representing the symbol displayed before the Cluster.
-            symbol = "󱃾 ";
+            symbol = "⚠️ ";
             # Which extensions should trigger this module.
             detect_extensions = [];
             # Which filenames should trigger this module.
