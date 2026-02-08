@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.0 (2026-02-08)
+
+### ✨ Minor
+
+  * ✨(os/gitlab-runner): Add new flavor to deploy gitlab-runner (!193) by Romain Deville ([`1aa7c25`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1aa7c25da424fe6d33074043a3a02c6acafd85ff))
+  * ✨(os/gitlab-runner): Add new flavor to deploy gitlab-runner by Romain Deville ([`1cab47b`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1cab47b4deb00c75cbf454209be3215a3456a49e)) 🔏
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`66061a1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/66061a1907fe00d9774aaff2009e7327aebac4ed)) 🔏
+
 ## v0.51.1 (2026-02-02)
 
 ### 🩹 Patch
