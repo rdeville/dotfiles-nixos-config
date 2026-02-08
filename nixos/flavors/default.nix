@@ -1,9 +1,10 @@
-{lib, ...}: {
+_: {
   imports = [
     ./_core
     ./audio
     ./display-manager
     ./docker
+    ./gitlab-runner
     ./k3s
     ./openbao
     ./printing
