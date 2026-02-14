@@ -1,6 +1,15 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.1 (2026-02-14)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`832bd23`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/832bd236f55740ed7d087b5b3e66fa73e03fd0ad)) 🔏
+  * 🔧(hm): Update tmux binding and kitty font_size (!194) by Romain Deville ([`36b2ba5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/36b2ba59aa33a85a73ca43dba30b8245fa3eb0d3))
+  * 🔧(hm/gui/kitty): Change font size by Romain Deville ([`63a3772`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/63a37727db1ed8a1c8abe7b543273098d721d575)) 🔏
+  * 🔧(hm/core/tmux): Change binding to maximize tmux pane by Romain Deville ([`4f8f527`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4f8f527e15ba0e1ef19347a2a01bc1ca8ae1389a)) 🔏
+
 ## v0.52.0 (2026-02-08)
 
 ### ✨ Minor
