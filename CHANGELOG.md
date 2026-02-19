@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.2 (2026-02-19)
+
+### 🩹 Patch
+
+  * 🔧(hm/core/tmux): Update tmux config to load two user config files (!195) by Romain Deville ([`4068abc`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4068abc46732a0db620077e38bc6cc756d0b4613))
+  * 🔧(hm/core/tmux): Update tmux config to load two user config files by Romain Deville ([`a0e9276`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a0e927686928c393069febdcbe3feb0d1c8ef78d)) 🔏
+
 ## v0.52.1 (2026-02-14)
 
 ### 🩹 Patch
