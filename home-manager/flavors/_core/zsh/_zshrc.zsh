@@ -24,6 +24,7 @@ fi
 
 if command -v fastfetch >/dev/null 2>&1 &&
   [[ -z "${VIRTUAL_ENV}" ]] &&
-  [[ -z "${VIMRUNTIME}" ]]; then
+  [[ -z "${VIMRUNTIME}" ]] &&
+  [[ -z "${TMUX}" ]]; then
   fastfetch
 fi
