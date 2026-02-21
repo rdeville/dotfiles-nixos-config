@@ -56,7 +56,7 @@ in {
           bold_font = "auto";
           italic_font = "auto";
           bold_italic_font = "auto";
-          font_size = "10.0";
+          font_size = "8.0";
           disable_ligatures = "always";
           # Cursor Customization
           # -----------------------------------------------------------------------------
@@ -92,7 +92,7 @@ in {
 
           # Color Scheme
           # -----------------------------------------------------------------------------
-          background_opacity = "0.6";
+          background_opacity = "0.8";
           foreground = "#EEEEEE";
           background = "#000000";
           selection_foreground = "#000000";
