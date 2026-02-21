@@ -1,6 +1,16 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.3 (2026-02-21)
+
+### 🩹 Patch
+
+  * ⚡️ Improve tmux and kitty configuration (!196) by Romain Deville ([`6df7ae4`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6df7ae4842d71ee2d6ea7253a6b18356100a83ba))
+  * ⚡️(hm/core/tmux): Update tmux config, remove quake pane (now private) by Romain Deville ([`ae5d77f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ae5d77fc4abcb9118d6bc84c23493ff45a9f38a5)) 🔏
+  * ⬆️ Update flake.lock by Romain Deville ([`351a339`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/351a339a913b743f80b6abf739cbc241b025397d)) 🔏
+  * 🔧(hm/gui/kitty): Update kitty config (lower font size, more bg opacity) by Romain Deville ([`c92d764`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c92d76460f2a49a6e2a4c3be36d9411de8ddcaaa)) 🔏
+  * 🔧(hm/core/zsh): Do not show fastfetch if in tmux session by Romain Deville ([`328cd82`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/328cd82010821974afb930d8b7160564a7e660c2)) 🔏
+
 ## v0.52.2 (2026-02-19)
 
 ### 🩹 Patch
