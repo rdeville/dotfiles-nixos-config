@@ -28,7 +28,10 @@
     [
       (
         {
-          inherit (listenerCfg) type;
+          inherit (listenerCfg)
+            type
+            telemetry
+          ;
           address =
             if listenerCfg.interface != null
             then let

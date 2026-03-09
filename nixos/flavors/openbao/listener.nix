@@ -133,5 +133,45 @@
       default = {};
       readOnly = true;
     };
+
+    telemetry = {
+      unauthenticated_metrics_access = lib.mkOption {
+        type = lib.types.bool;
+        description = ''
+          If set to true, allows unauthenticated access to the /v1/sys/metrics
+          endpoint.
+        '';
+        default = false;
+      };
+
+      disallow_metrics = lib.mkOption {
+        type = lib.types.bool;
+        description = ''
+          Specifies if the /v1/sys/metrics endpoint is disabled on this
+          listener. This is useful for hardening a listener that handles general
+          client traffic, preventing API clients from scraping metrics.
+        '';
+        default = false;
+      };
+
+      metrics_only = lib.mkOption {
+        type = lib.types.bool;
+        description = ''
+          Specifies if the listener should only serve the /v1/sys/metrics
+          endpoint, blocking all other API requests. This is useful for creating
+          a dedicated, secure listener for monitoring systems.
+        '';
+        default = false;
+      };
+
+      metrics_path = lib.mkOption {
+        type = lib.types.nullOr lib.types.str;
+        description = ''
+          If present, specifies an alternative path the metrics should be
+          reported on. Only allowed in conjunction with metrics_only=true.
+        '';
+        default = null;
+      };
+    };
   };
-}
+  }
