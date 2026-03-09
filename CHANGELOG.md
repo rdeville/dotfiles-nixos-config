@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.4 (2026-03-09)
+
+### 🩹 Patch
+
+  * ⚡️(os/openbao): Add support for OpenBao telemetry configuration (!197) by Romain Deville ([`0dc0e0f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0dc0e0f41fcfaa2552b30e01e4da8eb54795c8be))
+  * ⚡️(os/openbao): Add support for OpenBao telemetry configuration by Romain Deville ([`7b33b07`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7b33b0749147b563674cfa92149619aa0b5aea07)) 🔏
+
 ## v0.52.3 (2026-02-21)
 
 ### 🩹 Patch
