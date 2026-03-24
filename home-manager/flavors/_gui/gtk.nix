@@ -55,6 +55,17 @@ in {
       gtk2 = {
         configLocation = "${config.xdg.configHome}/gtk-2.0/gtkrc";
       };
+
+      gtk4 = {
+        theme = {
+          name = "Qogir-Manjaro-Dark";
+          package = pkgs.qogir-theme.override {
+            themeVariants = ["manjaro"];
+            colorVariants = ["dark"];
+            tweaks = ["square"];
+          };
+        };
+      };
     };
   };
 }
