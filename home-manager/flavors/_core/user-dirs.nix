@@ -42,6 +42,7 @@ in {
         # for more XDG folder, except config, data or cache.
         createDirectories = false;
         enable = true;
+        setSessionVariables = false;
         desktop = "${config.home.homeDirectory}/";
         documents = "${config.home.homeDirectory}/";
         download = "${config.home.homeDirectory}/downloads";
