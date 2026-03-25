@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.6 (2026-03-25)
+
+### 🩹 Patch
+
+  * 👽️ Mainly update to prepare config update for 26.05 (!198) by Romain Deville ([`141a1b3`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/141a1b32de5685822c21c22d163254f40b51dd83))
+  * 👽️(hm): Update config due to API changes that&#39;ll occurs in 26.05 by Romain Deville ([`1bdd441`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1bdd4410ce33bceeae65b4aa3907d5e3ddbd4305)) 🔏
+
+### 🔊 Others
+
+  * 🎨(os): Run nix fmt by Romain Deville ([`ac788b6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/ac788b6fb629c78fd2ec5d1e4fe0da960b2feeeb)) 🔏
+
 ## v0.52.5 (2026-03-25)
 
 ### 🩹 Patch
