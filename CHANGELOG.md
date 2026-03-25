@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.5 (2026-03-25)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock (!199) by Romain Deville ([`463b7a8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/463b7a8612f7d2d93f04860f77e567fa472acf85))
+  * ⬆️ Update flake.lock by Romain Deville ([`4b354c0`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/4b354c02ea678ac937f7afc6beff32cd34a22e21)) 🔏
+
+### 🔊 Others
+
+  * 💚 Fix CI using defensive bash variable for commitlint branch var by Romain Deville ([`0d4c7ce`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0d4c7ceb1bae9616a892f601cdf1d9325e78b1c5)) 🔏
+
 ## v0.52.4 (2026-03-09)
 
 ### 🩹 Patch
