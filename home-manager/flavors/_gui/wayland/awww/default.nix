@@ -49,7 +49,7 @@ in {
   };
 
   config = lib.mkIf cfg.enable (let
-    # Randomize wallpaper every 6 hours, adaptated from hyprpaper to swww
+    # Randomize wallpaper every 6 hours, adapted from hyprpaper to awww
     # From : https://github.com/hyprwm/hyprpaper/issues/108#issuecomment-2119611893
     wallpapers = lib.filesystem.listFilesRecursive cfg.wallpaperDir;
 
@@ -64,7 +64,7 @@ in {
       wallpaper=''${wallpapers[$rand]}
 
       monitor=(`hyprctl monitors | grep Monitor | awk '{print $2}'`)
-      swww img $wallpaper \
+      awww img $wallpaper \
         --transition-type wipe \
         --transition-fps 255 \
         --transition-step 255 --transition-duration 1
@@ -72,7 +72,7 @@ in {
   in {
     home = {
       packages = with pkgs; [
-        swww
+        awww
         wallpaperRandomizer
       ];
     };
@@ -86,7 +86,7 @@ in {
             };
 
             Unit = {
-              Description = "Set random desktop background using swww";
+              Description = "Set random desktop background using awww";
               After = [
                 "hyrpland.target"
               ];
@@ -105,7 +105,7 @@ in {
 
         timers.wallpaperRandomizer = {
           Unit = {
-            Description = "Set random desktop background using swww on an interval";
+            Description = "Set random desktop background using awww on an interval";
           };
           Timer = {
             OnUnitActiveSec = "${toString cfg.wallpaperRefresh}m";
