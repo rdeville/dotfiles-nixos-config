@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.7 (2026-04-02)
+
+### 🩹 Patch
+
+  * 👽️(hm): Update from swww to awww after package renaming (!200) by Romain Deville ([`0f67f48`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0f67f487d60924cc54cd71400a6b5e77e9936bf3))
+  * 👽️(hm): Update from swww to awww after package renaming by Romain Deville ([`b86a23f`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b86a23f90f16a1e9a035b53adf5e4e19507fa827)) 🔏
+
 ## v0.52.6 (2026-03-25)
 
 ### 🩹 Patch
