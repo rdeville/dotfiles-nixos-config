@@ -159,9 +159,9 @@ in {
                 else ""
               )
               + (
-                if config.hm.flavors._gui.wayland.swww.enable
+                if config.hm.flavors._gui.wayland.awww.enable
                 then ''
-                  exec-once=swww-daemon
+                  exec-once=awww-daemon
                 ''
                 else ""
               )
