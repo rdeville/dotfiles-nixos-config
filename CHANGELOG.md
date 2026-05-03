@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.8 (2026-05-03)
+
+### 🩹 Patch
+
+  * 👽️(hm/gui/firefox): Explicitly set firefox.configPath due to HM update (!201) by Romain Deville ([`d718897`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/d7188972ae23783aa750e8a174ee78d788dcefcc))
+  * 👽️(hm/gui/firefox): Explicitly set firefox.configPath due to HM update by Romain Deville ([`cf35b1d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/cf35b1d1aece2c541825160f63b875acde6c7342)) 🔏
+
 ## v0.52.7 (2026-04-02)
 
 ### 🩹 Patch
