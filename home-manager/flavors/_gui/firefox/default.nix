@@ -39,6 +39,7 @@ in {
     programs = {
       firefox = {
         enable = true;
+        configPath = "${config.xdg.configHome}/mozilla/firefox";
         package =
           if config.hm.isDarwin
           then pkgs.firefox-bin
