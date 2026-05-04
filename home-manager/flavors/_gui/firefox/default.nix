@@ -29,6 +29,16 @@ in {
                 Enable my firefox custom CSS.
               ''
               config.hm.flavors.${name}.enable;
+            configPath = lib.mkOption {
+              type = lib.types.str;
+              description = ''
+                Path where to store firefox configuration
+                '';
+              default = lib.warn ''
+                Using old programs.firefox.configPath. Set value to "${config.xdg.configHome}/mozilla/firefox" for new computer.
+                Currently kept with older values since new values break firefox current configuration.
+                '' ".mozilla/firefox";
+            };
           };
         };
       };
@@ -38,8 +48,9 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       firefox = {
+        inherit (cfg)
+        configPath;
         enable = true;
-        configPath = "${config.xdg.configHome}/mozilla/firefox";
         package =
           if config.hm.isDarwin
           then pkgs.firefox-bin
