@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.9 (2026-05-04)
+
+### 🩹 Patch
+
+  * ⏪️(hm/gui/firefox): Revert previous change due to breaking config (!202) by Romain Deville ([`6b5095d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/6b5095d2c8a0ae4748dc20d8511d2f1cda340fbb))
+  * ⏪️(hm/gui/firefox): Revert previous change due to breaking config by Romain Deville ([`2378a47`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2378a472b024c03490e6ed7b8f19862ab6fa41b1)) 🔏
+
 ## v0.52.8 (2026-05-03)
 
 ### 🩹 Patch
