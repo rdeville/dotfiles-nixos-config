@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.52.10 (2026-05-17)
+
+### 🩹 Patch
+
+  * ⚡️(os/net): Add new option &#34;bound&#34; for activationPolicy (!203) by Romain Deville ([`492f861`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/492f861333dcff0d2ec1833615ff0e6c425813cc))
+  * ⚡️(os/net): Add new option &#34;bound&#34; for activationPolicy by Romain Deville ([`3c73917`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3c73917da8eb68711cae4ad73c2f5d0598d57641)) 🔏
+
 ## v0.52.9 (2026-05-04)
 
 ### 🩹 Patch
