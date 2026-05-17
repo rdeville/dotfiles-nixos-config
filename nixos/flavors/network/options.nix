@@ -192,7 +192,7 @@ in {
     };
 
     activationPolicy = lib.mkOption {
-      type = lib.types.enum ["up" "down"];
+      type = lib.types.enum ["up" "down" "bound"];
       description = ''
         Activation policy for this interface, either `up` or `down`.
       '';
