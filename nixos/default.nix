@@ -76,6 +76,17 @@ in {
       isMain = lib.mkEnableOption "Main computer.";
       isGui = lib.mkEnableOption "GUI computer.";
       isWork = lib.mkEnableOption "Work computer.";
+
+      gc = {
+        keepLast = lib.mkOption {
+          type = lib.types.int;
+          default = 5;
+          description = ''
+            Number of most-recent Nix profile generations to keep when
+            the automatic GC runs (`--delete-older-than +N` syntax).
+          '';
+        };
+      };
     };
   };
 
@@ -93,7 +104,7 @@ in {
       gc = {
         automatic = true;
         dates = "weekly";
-        options = "--delete-older-than 7d";
+        options = "--delete-older-than +${toString cfg.gc.keepLast}";
       };
 
       package = pkgs.nixVersions.latest;

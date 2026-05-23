@@ -119,7 +119,7 @@ in {
           dates = "weekly";
           extraArgs = builtins.concatStringsSep " " [
             "--keep 5"
-            "--keep-since 3d"
+            "--keep-since 7d"
           ];
         };
       };

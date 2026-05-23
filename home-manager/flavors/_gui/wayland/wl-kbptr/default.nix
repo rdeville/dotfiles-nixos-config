@@ -1,5 +1,4 @@
 {
-  inputs,
   config,
   lib,
   pkgs,
@@ -10,6 +9,30 @@
   subsubname = builtins.baseNameOf ./.;
   cfg = config.hm.flavors.${name}.${subname}.${subsubname};
   clr = config.colors.material.hex;
+
+  enable =
+    if ! builtins.elem config.hm.stateVersion ["24.11" "25.05" "25.11"]
+    then
+      lib.warn ''
+        Due to hyprland migrating to lua config for home-manager >= 26.05 and
+        since I do not use wl-kbptr, this module will not be installed.
+      ''
+      false
+    else if config.hm.flavors.${name}.${subname}.hyprland.configType == "lua"
+    then
+      lib.warn ''
+        Due to hyprland migrating to lua config for home-manager >= 26.05 and
+        since I do not use wl-kbptr, this module is not supported for hyrpland
+        "lua" configuration type file. So it will not be installed.
+      ''
+      false
+    else
+      lib.warn ''
+        Due to hyprland migrating to lua config for home-manager >= 26.05 and
+        since I do not use wl-kbptr, this module will be deprecated and
+        will not be installed if home-manager >= 26.05.
+      ''
+      cfg.enable;
 in {
   options = {
     hm = {
@@ -33,7 +56,7 @@ in {
     };
   };
 
-  config = lib.mkIf cfg.enable {
+  config = lib.mkIf enable {
     home = {
       packages = with pkgs; [
         wl-kbptr

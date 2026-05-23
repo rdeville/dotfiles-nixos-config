@@ -33,11 +33,11 @@ in {
               type = lib.types.str;
               description = ''
                 Path where to store firefox configuration
-                '';
+              '';
               default = lib.warn ''
                 Using old programs.firefox.configPath. Set value to "${config.xdg.configHome}/mozilla/firefox" for new computer.
                 Currently kept with older values since new values break firefox current configuration.
-                '' ".mozilla/firefox";
+              '' ".mozilla/firefox";
             };
           };
         };
@@ -48,8 +48,10 @@ in {
   config = lib.mkIf cfg.enable {
     programs = {
       firefox = {
-        inherit (cfg)
-        configPath;
+        inherit
+          (cfg)
+          configPath
+          ;
         enable = true;
         package =
           if config.hm.isDarwin
