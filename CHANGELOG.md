@@ -1,6 +1,23 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.53.0 (2026-05-23)
+
+### ✨ Minor
+
+  * ✨(hm,nixos): Add gc.keepLast option to replace time-based nix GC by Romain Deville ([`aed5524`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/aed5524c5e4c3ead07a344e26c2468c5d2a7e939)) 🔏
+  * ✨(hm/gui/wayland/hyprland): Migrate to Lua config, add startup/monitor opts by Romain Deville ([`a6a3829`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a6a38290825e26fc6403f1c15a6550f40076a2fa)) 🔏
+
+### 🩹 Patch
+
+  * 👽️(hm): Migrate Hyprland to Lua and misc improvements for HM 26.05 (!204) by Romain Deville ([`95f21e8`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/95f21e8a81153c9d11dec13c8758ec5c9bbf3d17))
+  * 👽️(hm/gui/wayland): Deprecate wl-kbptr, not install for HM &gt;= 26.05 by Romain Deville ([`3504d1e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/3504d1ecea51ba1412e407241c2b2ba471d58815)) 🔏
+  * 🔧(hm/core): Extend nh gc keep-since from 3d to 7d by Romain Deville ([`7c362f5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7c362f554a1b012990810897e40978af95be7375)) 🔏
+
+### 🔊 Others
+
+  * 🎨(hm/gui/firefox): Fix indentation and formatting by Romain Deville ([`9ade313`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9ade3137389bb6510db88e4448bdb24f58a9c516)) 🔏
+
 ## v0.52.10 (2026-05-17)
 
 ### 🩹 Patch
