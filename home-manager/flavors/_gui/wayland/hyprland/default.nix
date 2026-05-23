@@ -37,8 +37,8 @@
     group = {
       auto_group = false;
       "col.border_active" = {
-          colors = ["rgba(${clr.str.cyan_A400}ee)" "rgba(${clr.str.green_A400}ee)"];
-          angle = 45;
+        colors = ["rgba(${clr.str.cyan_A400}ee)" "rgba(${clr.str.green_A400}ee)"];
+        angle = 45;
       };
       "col.border_inactive" = "rgba(${clr.str.grey_900}aa)";
       groupbar = {
