@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.54.0 (2026-05-23)
+
+### ✨ Minor
+
+  * ✨(hm/ssh-client): Add settings option and deprecate matchBlocks by Romain Deville ([`7351137`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/735113740c42930181902f742de5656f294fc59d)) 🔏
+
+### 🩹 Patch
+
+  * 👽️(hm): Adapt SSH client to HM settings rename and misc improvements (!205) by Romain Deville ([`1cffd65`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1cffd65ac6a82764f89bdbaa10cdfaffe264f148))
+
+### 🔊 Others
+
+  * 🎨(hm/gui/hyprland): Fix indentation of col.border_active options by Romain Deville ([`9bdf8cd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9bdf8cdf480f9c2b5f643d1ee3b340b3e863b04e)) 🔏
+
 ## v0.53.0 (2026-05-23)
 
 ### ✨ Minor
