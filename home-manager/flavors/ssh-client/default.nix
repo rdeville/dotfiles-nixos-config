@@ -165,27 +165,52 @@ in {
             ];
           };
 
-          matchBlocks = lib.mkOption {
-            type = lib.hm.types.dagOf matchBlockModule;
-            default = {};
-            example = lib.literalExpression ''
-              {
-                "john.example.com" = {
-                  hostname = "example.com";
-                  user = "john";
+          settings = lib.mkOption {
+              type = lib.hm.types.dagOf matchBlockModule;
+              default = {};
+              example = lib.literalExpression ''
+                {
+                  "john.example.com" = {
+                    hostname = "example.com";
+                    user = "john";
+                  };
+                  foo = lib.hm.dag.entryBefore ["john.example.com"] {
+                    hostname = "example.com";
+                    identityFile = "/home/john/.ssh/foo_rsa";
+                  };
                 };
-                foo = lib.hm.dag.entryBefore ["john.example.com"] {
-                  hostname = "example.com";
-                  identityFile = "/home/john/.ssh/foo_rsa";
+              '';
+              description = ''
+                Specify per-host settings. Note, if the order of rules matter
+                then use the DAG functions to express the dependencies as
+                shown in the example.
+              '';
+            };
+
+          matchBlocks =
+            lib.warn ''
+              Option hm.ssh-client.matchBlocks is deprecated, use settings instead.
+            '' (lib.mkOption {
+              type = lib.hm.types.dagOf matchBlockModule;
+              default = {};
+              example = lib.literalExpression ''
+                {
+                  "john.example.com" = {
+                    hostname = "example.com";
+                    user = "john";
+                  };
+                  foo = lib.hm.dag.entryBefore ["john.example.com"] {
+                    hostname = "example.com";
+                    identityFile = "/home/john/.ssh/foo_rsa";
+                  };
                 };
-              };
-            '';
-            description = ''
-              Specify per-host settings. Note, if the order of rules matter
-              then use the DAG functions to express the dependencies as
-              shown in the example.
-            '';
-          };
+              '';
+              description = ''
+                Specify per-host settings. Note, if the order of rules matter
+                then use the DAG functions to express the dependencies as
+                shown in the example.
+              '';
+            });
 
           file = lib.mkOption {
             type = lib.types.attrs;
@@ -216,10 +241,12 @@ in {
           enable
           includes
           ;
-        matchBlocks =
-          {
+        settings =
+          cfg.matchBlocks
+          // cfg.settings
+          // {
             "*" = {
-              forwardAgent = true;
+              forwardAgent = false;
               serverAliveInterval = 0;
               serverAliveCountMax = 3;
               compression = false;
@@ -230,8 +257,7 @@ in {
               controlPath = "~/.ssh/master-%r@%n:%p";
               controlPersist = "no";
             };
-          }
-          // cfg.matchBlocks;
+          };
       };
     };
 
