@@ -36,14 +36,18 @@ in {
                 };
               };
 
-              battery = lib.mkOption {
-                type = lib.types.attr;
-                description = ''
-                  Configuration of the battery segment. If not null, will
-                  display battery information provided by this option in the
-                  right of the waybar.
-                '';
-                default = {};
+              battery = {
+                enable = lib.mkEnableOption "battery module in waybar";
+                bat = lib.mkOption {
+                  type = lib.types.str;
+                  description = "Battery name as shown in /sys/class/power_supply/";
+                  default = "BAT0";
+                };
+                adapter = lib.mkOption {
+                  type = lib.types.str;
+                  description = "Adapter name as shown in /sys/class/power_supply/";
+                  default = "ACAD";
+                };
               };
             };
           };
