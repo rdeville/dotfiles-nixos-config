@@ -1,6 +1,20 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.55.0 (2026-06-13)
+
+### ✨ Minor
+
+  * 🔧(hm/wayland) &amp; ✨(openbao): battery optional + TLS CA (!206) by Romain Deville ([`9ec4c8e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9ec4c8e965aa808e726c03ba21a41530f70e7c99))
+  * ✨(openbao/listener): add tlsClientCaFile option by Romain Deville ([`f96fe24`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f96fe24e3603a56ad0a1be10115475504a1e0be8)) 🔏
+
+### 🩹 Patch
+
+  * 🐛(ci/commitlint): use --from-last-tag on default branch push (!207) by Romain Deville ([`2b071db`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2b071db1afbfc9d6ce62dfda908133c41f01ee77))
+  * 🐛(ci/commitlint): use --from-last-tag on default branch push by Romain Deville ([`9bb134c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9bb134c2ba79e2001942f62d38a24841b3eb6f12)) 🔏
+  * 🐛(hm/gui/wayland/waybar): fix memory format argument indexing by Romain Deville ([`b39116d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b39116d2b4daafaad101799b51f13d31e8d68ca4)) 🔏
+  * 🔧(hm/gui/wayland): Make Waybar battery segment optional by Romain Deville ([`8517010`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8517010825ba0f3f4c11c9f5489b1a70782ea9dc)) 🔏
+
 ## v0.54.0 (2026-05-23)
 
 ### ✨ Minor
