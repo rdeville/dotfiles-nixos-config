@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.55.1 (2026-06-13)
+
+### 🩹 Patch
+
+  * 🐛(hm): fix evaluation warnings firing unconditionally (!208) by Romain Deville ([`3014299`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/30142992d2e3e9f985f6623e8f0f4e6534910acd))
+  * 🐛(hm/ssh-client): fix matchBlocks warning firing unconditionally by Romain Deville ([`579d0db`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/579d0db6ffd3357622205f8b9449fe33916071fa)) 🔏
+
+### 🔊 Others
+
+  * 🔇(hm/wl-kbptr): silence warning for stateVersion &gt;= 26.05 by Romain Deville ([`46ecb81`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/46ecb810a973ddff3871d44577218e59baed9260)) 🔏
+
 ## v0.55.0 (2026-06-13)
 
 ### ✨ Minor
