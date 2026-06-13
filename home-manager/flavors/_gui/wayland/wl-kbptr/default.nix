@@ -12,12 +12,7 @@
 
   enable =
     if ! builtins.elem config.hm.stateVersion ["24.11" "25.05" "25.11"]
-    then
-      lib.warn ''
-        Due to hyprland migrating to lua config for home-manager >= 26.05 and
-        since I do not use wl-kbptr, this module will not be installed.
-      ''
-      false
+    then false
     else if config.hm.flavors.${name}.${subname}.hyprland.configType == "lua"
     then
       lib.warn ''

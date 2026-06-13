@@ -187,30 +187,32 @@ in {
               '';
             };
 
-          matchBlocks =
-            lib.warn ''
-              Option hm.ssh-client.matchBlocks is deprecated, use settings instead.
-            '' (lib.mkOption {
-              type = lib.hm.types.dagOf matchBlockModule;
-              default = {};
-              example = lib.literalExpression ''
-                {
-                  "john.example.com" = {
-                    hostname = "example.com";
-                    user = "john";
-                  };
-                  foo = lib.hm.dag.entryBefore ["john.example.com"] {
-                    hostname = "example.com";
-                    identityFile = "/home/john/.ssh/foo_rsa";
-                  };
+          matchBlocks = lib.mkOption {
+            type = lib.hm.types.dagOf matchBlockModule;
+            default = {};
+            apply = v:
+              lib.warnIf (v != {}) ''
+                Option hm.ssh-client.matchBlocks is deprecated, use settings instead.
+              ''
+              v;
+            example = lib.literalExpression ''
+              {
+                "john.example.com" = {
+                  hostname = "example.com";
+                  user = "john";
                 };
-              '';
-              description = ''
-                Specify per-host settings. Note, if the order of rules matter
-                then use the DAG functions to express the dependencies as
-                shown in the example.
-              '';
-            });
+                foo = lib.hm.dag.entryBefore ["john.example.com"] {
+                  hostname = "example.com";
+                  identityFile = "/home/john/.ssh/foo_rsa";
+                };
+              };
+            '';
+            description = ''
+              Specify per-host settings. Note, if the order of rules matter
+              then use the DAG functions to express the dependencies as
+              shown in the example.
+            '';
+          };
 
           file = lib.mkOption {
             type = lib.types.attrs;
