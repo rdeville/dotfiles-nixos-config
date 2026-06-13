@@ -63,6 +63,11 @@
             tls_cert_file = listenerCfg.tlsCertFile;
             tls_key_file = listenerCfg.tlsKeyFile;
           }
+          // (
+            lib.optionalAttrs (listenerCfg.tlsClientCaFile != null) {
+              tls_client_ca_file = listenerCfg.tlsClientCaFile;
+            }
+          )
         )
       )
     ]

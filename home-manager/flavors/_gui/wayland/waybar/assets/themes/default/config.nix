@@ -21,22 +21,25 @@ in
 
             modules-left = [
               "hyprland/workspaces"
-              "hyprland/mode"
+              "hyprland/submap"
               "hyprland/window"
             ];
-            modules-right = [
-              "battery"
-              "network#speed"
-              "network#ip"
-              "memory"
-              "cpu"
-              "tray"
-              "clock"
-            ];
+            modules-right =
+              (lib.optional cfg.battery.enable "battery")
+              ++ [
+                "network#speed"
+                "network#ip"
+                "memory"
+                "cpu"
+                "tray"
+                "clock"
+              ];
 
             # Modules
             # -------------------------------------------------------------------
-            battery = {
+            battery = lib.mkIf cfg.battery.enable {
+              bat = cfg.battery.bat;
+              adapter = cfg.battery.adapter;
               interval = 60;
               states = {
                 warning = 30;
@@ -66,7 +69,7 @@ in
 
             memory = {
               interval = 5;
-              format = " {used:0.1f}Go({}%)";
+              format = " {used:0.1f}Go({used_percent}%)";
               states = {
                 warning = 70;
                 critical = 90;

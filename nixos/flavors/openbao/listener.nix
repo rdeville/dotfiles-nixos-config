@@ -74,6 +74,16 @@
       '';
     };
 
+    tlsClientCaFile = lib.mkOption {
+      type = lib.types.nullOr lib.types.path;
+      description = ''
+        Specifies the path to the CA certificate used for client certificate
+        verification. Setting this causes the listener to request client
+        certificates from connecting clients, which is required for cert auth.
+      '';
+      default = null;
+    };
+
     tlsAcmeCaDirectory = lib.mkOption {
       type = lib.types.str;
       description = ''
