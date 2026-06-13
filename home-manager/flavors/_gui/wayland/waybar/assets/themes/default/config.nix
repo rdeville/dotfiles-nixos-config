@@ -69,7 +69,7 @@ in
 
             memory = {
               interval = 5;
-              format = " {used:0.1f}Go({used_percent}%)";
+              format = " {used}Go({percentage}%)";
               states = {
                 warning = 70;
                 critical = 90;
