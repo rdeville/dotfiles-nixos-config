@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.55.2 (2026-06-13)
+
+### 🩹 Patch
+
+  * 🐛(hm/waybar): fix invalid memory format tokens (!209) by Romain Deville ([`9fd008c`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/9fd008c8c74d1d180fcf27ddfd33905d9eb17feb))
+  * 🐛(hm/waybar): fix invalid memory format tokens by Romain Deville ([`2554d75`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2554d750f544838c4afc266ccf75d12a0b09417f)) 🔏
+
 ## v0.55.1 (2026-06-13)
 
 ### 🩹 Patch
