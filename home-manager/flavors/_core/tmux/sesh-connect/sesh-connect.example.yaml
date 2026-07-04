@@ -1,0 +1,36 @@
+---
+# sesh-connect configuration example.
+# Copy to ~/.config/tmuxp/sesh-connect.yaml and adapt to your setup.
+# Override the config path via the SESH_CONNECT_CONFIG environment variable.
+
+defaults:
+  # Default tmuxp session layout used when creating a new session.
+  tmuxp_config: '~/.config/tmuxp/code.yaml'
+
+rules:
+  # Rules are evaluated top-to-bottom; the first match wins.
+  #
+  # Single-quoted strings are recommended: backslashes are always literal,
+  # so regex capture groups (\1, \2) and special chars need no escaping.
+  #
+  # Rule types:
+  #   path:  exact path match (~ is expanded to $HOME)
+  #   regex: sed -E expression matched against the expanded path
+  #          capture groups (\1, \2, ...) can be used in `name`
+  #
+  # Both types accept an optional `tmuxp_config` to override the default.
+
+  # --- Exact path rules (highest priority) ---
+  # - path: '~/git/example.com/org/special-repo'
+  #   name: 'my-special-session'
+  #   tmuxp_config: '~/.config/tmuxp/special.yaml'
+
+  # --- Regex rules ---
+  # - regex: '.*/example\.com/public/([^/]+)/([^/]+)$'
+  #   name: 'pub-\1-\2'
+
+  # - regex: '.*/example\.com/private/([^/]+)/([^/]+)$'
+  #   name: 'pri-\1-\2'
+
+  # - regex: '.*/github\.com/([^/]+)/([^/]+)$'
+  #   name: '\1-\2'

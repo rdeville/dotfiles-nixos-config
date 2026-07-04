@@ -9,6 +9,7 @@
   cfg = config.hm.flavors.${name}.${subname};
 in {
   imports = [
+    ./sesh-connect
     ./tmuxp
     ./tmuxrc
   ];
@@ -33,6 +34,7 @@ in {
     home = {
       packages = with pkgs; [
         tmux # Terminal multiplexer
+        sesh # Smart tmux session switcher with fzf and zoxide integration
       ];
     };
 
