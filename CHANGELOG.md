@@ -1,6 +1,18 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.56.0 (2026-07-04)
+
+### ✨ Minor
+
+  * ✨(hm/tmux): add AI agent session management with sesh and tmux-agent-sidebar (!210) by Romain Deville ([`75f05b1`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/75f05b1566b22482dbe01b5a43c0e7c64530bb16))
+  * ✨(hm/tmux): add sesh, agent-sidebar, and agent-deck key bindings by Romain Deville ([`3553980`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/35539809dad79093757063d09974348b8cfaa85f)) 🔏
+  * ✨(hm/tmux): add sesh package and sesh-connect module by Romain Deville ([`f79c169`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/f79c169481da17a3e880b0bc8b92f586f5e58b26)) 🔏
+
+### 🩹 Patch
+
+  * 🔧(hm/tmux): replace tmux-fzf-session-switch with tmux-agent-sidebar by Romain Deville ([`350a8dd`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/350a8dd5eb868d851af5e9752bef0adaa6066d67)) 🔏
+
 ## v0.55.2 (2026-06-13)
 
 ### 🩹 Patch
