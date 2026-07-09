@@ -72,9 +72,40 @@ if [ -z "$NAME" ]; then
   exit 0
 fi
 
-# Desired session already exists → switch directly
+# Return focus to the most-recently-active non-sidebar pane in a session.
+# Called after switching to an existing session so the sidebar pane (if it
+# was the last active one) does not keep focus.
+_focus_main_pane() {
+  local target="$1"
+  local pane
+  pane=$(tmux list-panes -t "${target}" \
+    -F '#{pane_last_activity} #{pane_id} #{pane_current_command}' \
+    | grep -v 'tmux-agent-sidebar' \
+    | sort -rn \
+    | awk 'NR==1{print $2}')
+  [ -n "$pane" ] && tmux select-pane -t "$pane" 2>/dev/null
+}
+
+# After creating a new session, tmuxp already focused the right pane.
+# tmux-agent-sidebar auto-creates its pane after @sidebar_auto_create_delay
+# seconds and steals focus. Capture the tmuxp-designated pane id now and
+# reselect it once the sidebar delay has elapsed.
+_refocus_after_sidebar() {
+  local target="$1"
+  local pane_id="$2"
+  local delay
+  delay=$(tmux show-option -gqv @sidebar_auto_create_delay 2>/dev/null)
+  delay="${delay:-0}"
+  # Add 0.5 s margin so the sidebar pane is fully created before we reselect.
+  local wait
+  wait=$(awk "BEGIN{printf \"%.1f\", $delay + 0.5}")
+  (sleep "$wait" && tmux select-pane -t "$pane_id" 2>/dev/null) &
+}
+
+# Desired session already exists → switch and restore last non-sidebar pane.
 if tmux has-session -t "$NAME" 2>/dev/null; then
   tmux switch-client -t "$NAME"
+  _focus_main_pane "$NAME"
   exit 0
 fi
 
@@ -84,6 +115,7 @@ SESH_NAME="$(basename "$EXPANDED")"
 if tmux has-session -t "$SESH_NAME" 2>/dev/null; then
   tmux rename-session -t "$SESH_NAME" "$NAME"
   tmux switch-client -t "$NAME"
+  _focus_main_pane "$NAME"
   exit 0
 fi
 
@@ -93,3 +125,6 @@ fi
   TMUXP_SESSION_NAME="$NAME" tmuxp load -d "$TMUXP_CONFIG"
 )
 tmux switch-client -t "$NAME"
+# Capture the tmuxp-designated pane before the sidebar delay fires.
+TMUXP_FOCUS=$(tmux display-message -p -t "${NAME}" '#{pane_id}')
+_refocus_after_sidebar "$NAME" "$TMUXP_FOCUS"
