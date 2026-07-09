@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.57.0 (2026-07-09)
+
+### ✨ Minor
+
+  * ✨(hm/tmux): add conditional agent sidebar and sesh focus control (!211) by Romain Deville ([`22ce2c5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/22ce2c599cc4583d588c2da863b1ee2b29827454))
+  * ✨(hm/tmux): add conditional agent sidebar and sesh focus control by Romain Deville ([`7a61ee6`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/7a61ee635fdc4b0fb66b1facfeed12e71763a59d)) 🔏
+
 ## v0.56.0 (2026-07-04)
 
 ### ✨ Minor
