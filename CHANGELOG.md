@@ -1,6 +1,17 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.57.1 (2026-07-19)
+
+### 🩹 Patch
+
+  * ➕ feat(nixos): wire nix-topology into nixosConfigurations by Romain Deville ([`8646d5d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/8646d5d00ff72d4d1294298f9b90c67e4b89bec2)) 🔏
+  * ⬆️ chore: update flake lock by Romain Deville ([`a7ed1ec`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a7ed1ecc3ae6158f665949fd7bc4cd531480f82d)) 🔏
+  * 🐛(nixos): fix nixos-rebuild build .#dev-max failures (!212) by Romain Deville ([`b6bec84`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/b6bec84749a076a3251b18aeadcf186d5a4428fa))
+  * 🐛 fix(hm/tmux): update default sesh-connect tmuxp config to default.yaml by Romain Deville ([`c7526e5`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/c7526e5ae75873453db6f326079d319fbb144403)) 🔏
+  * 🐛 fix(machines): add missing stateVersion and topology config by Romain Deville ([`0b75c33`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/0b75c335d65a1268c9898720d6111a76dc4dda0a)) 🔏
+  * 🐛 fix(awesome): avoid GI_TYPELIB_PATH env/derivation collision by Romain Deville ([`22d930e`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/22d930e055ef04e613409922c9731790b97aa7dc)) 🔏
+
 ## v0.57.0 (2026-07-09)
 
 ### ✨ Minor
