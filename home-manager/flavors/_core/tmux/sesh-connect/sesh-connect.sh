@@ -29,7 +29,7 @@ if [ ! -f "$CONFIG" ]; then
   exit 0
 fi
 
-DEFAULT_TMUXP="$(yq -r '.defaults.tmuxp_config // "~/.config/tmuxp/code.yaml"' "$CONFIG")"
+DEFAULT_TMUXP="$(yq -r '.defaults.tmuxp_config // "~/.config/tmuxp/default.yaml"' "$CONFIG")"
 DEFAULT_TMUXP="${DEFAULT_TMUXP/#\~/$HOME}"
 
 NAME=""

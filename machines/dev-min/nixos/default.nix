@@ -11,7 +11,7 @@ in {
 
   hm = {
     inherit username;
-    inherit (base) hostName system;
+    inherit (base) hostName system stateVersion;
 
     flavors = {
       _core = {

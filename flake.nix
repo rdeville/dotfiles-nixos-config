@@ -133,6 +133,7 @@
               ./machines/${host}
               # External Modules
               inputs.home-manager.nixosModules.home-manager
+              inputs.nix-topology.nixosModules.default
               # Internal Modules
               self.nixosModules.os
               (

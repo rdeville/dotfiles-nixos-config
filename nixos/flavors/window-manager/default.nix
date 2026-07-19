@@ -29,7 +29,7 @@
             "-DGENERATE_MANPAGES=OFF"
             "-DCMAKE_POLICY_VERSION_MINIMUM=3.5"
           ];
-        GI_TYPELIB_PATH = let
+        env.GI_TYPELIB_PATH = let
           mkTypeLibPath = pkg: "${pkg}/lib/girepository-1.0";
           extraGITypeLibPaths = lib.forEach extraGIPackages mkTypeLibPath;
         in
