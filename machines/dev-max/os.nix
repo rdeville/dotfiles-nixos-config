@@ -12,7 +12,7 @@ _: let
   };
 in {
   os = {
-    inherit (base) hostName system;
+    inherit (base) hostName system stateVersion;
     users = {
       inherit users;
     };
