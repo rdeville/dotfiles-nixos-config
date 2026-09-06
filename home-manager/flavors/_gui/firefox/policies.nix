@@ -4,6 +4,7 @@
 {
   config,
   lib,
+  pkgs,
   ...
 }: let
   name = builtins.baseNameOf ../.;
@@ -14,6 +15,9 @@ in {
     programs = {
       firefox = {
         policies = {
+          SecurityDevices = {
+            "System Trust" = "${pkgs.p11-kit}/lib/pkcs11/p11-kit-trust.so";
+          };
           # DEACTIVATE FIREFOX AI !
           GenerativeAI = {
             Enabled = false;
