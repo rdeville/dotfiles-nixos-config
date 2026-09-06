@@ -1,6 +1,14 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.57.2 (2026-09-06)
+
+### 🩹 Patch
+
+  * ⬆️ Update flake.lock by Romain Deville ([`687a864`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/687a8642978f174a6e127a2b8589996dacc9708d)) 🔏
+  * 🐛(hm/gui/firefox): Remove unsupported pkgs argument (!213) by Romain Deville ([`1caaeab`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/1caaeab0c658d0ffbcad63aa65080e262bbbdc91))
+  * 🐛(hm/gui/firefox): remove now unsupported arg in firefox overlay by Romain Deville ([`2f5b660`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/2f5b660c7bb7e30045bf852267aff619ed41bcf5)) 🔏
+
 ## v0.57.1 (2026-07-19)
 
 ### 🩹 Patch
