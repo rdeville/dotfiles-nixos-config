@@ -53,10 +53,7 @@ in {
           configPath
           ;
         enable = true;
-        package =
-          if config.hm.isDarwin
-          then pkgs.firefox-bin
-          else pkgs.wrapFirefox (pkgs.firefox-unwrapped.override {pipewireSupport = true;}) {};
+        package = pkgs.firefox-bin;
       };
     };
   };
