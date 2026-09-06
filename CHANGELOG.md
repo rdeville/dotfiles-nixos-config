@@ -1,6 +1,13 @@
 <!-- markdownlint-disable-file -->
 # CHANGELOG
 
+## v0.57.3 (2026-09-06)
+
+### 🩹 Patch
+
+  * 🐛(hm/gui/firefox): load p11-kit trust module for system CA support (!214) by Romain Deville ([`e8de132`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/e8de132bf480ec16928e823cc8d5379388280fb9))
+  * 🐛(hm/gui/firefox): load p11-kit trust module for system CA support by Romain Deville ([`a50804d`](https://framagit.org/rdeville-public/dotfiles/nixos-config/-/commit/a50804dceaaaed2ce9113bb0f1b82143d9330ef2)) 🔏
+
 ## v0.57.2 (2026-09-06)
 
 ### 🩹 Patch
